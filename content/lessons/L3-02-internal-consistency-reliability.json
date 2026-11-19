@@ -1,0 +1,123 @@
+{
+  "id": "internal-consistency-reliability",
+  "level": 3,
+  "order": 2,
+  "title": "Internal consistency: α, ρA and ρC",
+  "summary": "Cronbach's α, ρA and composite reliability ρC all estimate how consistently a reflective construct's indicators measure it, under different assumptions.",
+  "minutes": 9,
+  "prerequisites": [
+    "loadings-and-indicator-reliability"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "[[cronbachs-alpha]] assumes all indicators load equally (tau-equivalence); with unequal loadings it tends to underestimate reliability. [[rho-c]], composite reliability, uses the estimated loadings; with classic PLS it tends to overestimate reliability because PLS loadings are inflated. [[rho-a]] (Dijkstra & Henseler 2015) usually lies between the two and is the reliability that PLSc uses."
+    },
+    {
+      "kind": "formula",
+      "display": "ρC = (Σλᵢ)² / ((Σλᵢ)² + Σ(1 − λᵢ²))",
+      "explanation": "λᵢ are the standardised loadings. The numerator is the variance due to the construct, the second term in the denominator is the error variance of the indicators."
+    },
+    {
+      "kind": "demo",
+      "demo": "reliability-from-loadings",
+      "initial": {
+        "loadings": [
+          0.85,
+          0.8,
+          0.75
+        ]
+      },
+      "caption": "Change the loadings and watch α, ρC and AVE. With equal loadings α and ρC coincide."
+    },
+    {
+      "kind": "p",
+      "text": "Hair et al. (2022) treat .70–.90 as satisfactory (.60–.70 acceptable in exploratory research) and values above .95 as a sign of redundant items or patterned responding. They are heuristics. All three measures apply only to reflective constructs. In the TAM example PEOU has α = .830, ρA = .834 and ρC = .887."
+    }
+  ],
+  "mistake": {
+    "title": "Assuming higher reliability is always better",
+    "text": "Values above .95 often mean the items are near-paraphrases and the construct is measured narrowly. And none of these measures is meaningful for a formative index."
+  },
+  "tryIt": {
+    "task": "Run the TAM example and open the reliability table. Compare α, ρA and ρC for each construct, then switch to PLSc and compare ρC again.",
+    "starter": {
+      "title": "TAM example",
+      "exampleId": "tam-mediation",
+      "open": "analysis"
+    }
+  },
+  "checks": [
+    {
+      "id": "rhoc-calc",
+      "question": "Three indicators all load .80. What is ρC?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "About .84",
+          "correct": true,
+          "feedback": "Correct: (2.4)² = 5.76; error = 3 × (1 − .64) = 1.08; 5.76 / 6.84 ≈ .842. With equal loadings α gives the same value."
+        },
+        {
+          "id": "b",
+          "text": ".80",
+          "correct": false,
+          "feedback": "ρC is not the average loading; combining items raises reliability above that of a single item."
+        },
+        {
+          "id": "c",
+          "text": ".64",
+          "correct": false,
+          "feedback": ".64 is one item's reliability (λ²), not the reliability of the three-item composite."
+        },
+        {
+          "id": "d",
+          "text": "About .96",
+          "correct": false,
+          "feedback": "Check the error term: each item contributes 1 − .64 = .36 of error variance."
+        }
+      ],
+      "explanation": "Reliability of a sum rises with the number of good items."
+    },
+    {
+      "id": "ordering",
+      "question": "With classic PLS you often see α ≤ ρA ≤ ρC. Why is ρC typically the highest?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "It is computed from PLS loadings, which tend to be inflated for reflective constructs.",
+          "correct": true,
+          "feedback": "Correct. Inflated loadings make the construct seem to explain more variance than it does."
+        },
+        {
+          "id": "b",
+          "text": "It assumes equal loadings.",
+          "correct": false,
+          "feedback": "That is α's assumption, which makes α conservative when loadings differ."
+        },
+        {
+          "id": "c",
+          "text": "It includes the structural paths.",
+          "correct": false,
+          "feedback": "All three measures are block-level; structural paths play no role."
+        }
+      ],
+      "explanation": "Know the assumption behind each coefficient."
+    }
+  ],
+  "references": [
+    "cronbach1951",
+    "dijkstra2015",
+    "hair2022",
+    "nunnally1994"
+  ],
+  "glossary": [
+    "cronbachs-alpha",
+    "rho-a",
+    "rho-c",
+    "reliability",
+    "reflective-measurement"
+  ]
+}

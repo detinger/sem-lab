@@ -1,0 +1,350 @@
+{
+  "id": "discriminant-validity-repair",
+  "number": 7,
+  "title": "Improve a discriminant validity analysis",
+  "category": "diagnose",
+  "method": "pls",
+  "difficulty": 2,
+  "prerequisiteLessons": [
+    "discriminant-validity",
+    "collinearity-vif"
+  ],
+  "skills": [
+    "HTMT versus Fornell–Larcker",
+    "Remedies without automatic item deletion"
+  ],
+  "brief": [
+    {
+      "kind": "p",
+      "text": "In a SYNTHETIC study, constructs A and B (four items each) are hypothesised to predict C. The authors' draft says: \"Discriminant validity was established with the Fornell–Larcker criterion.\" Run the model and review that claim."
+    }
+  ],
+  "starter": {
+    "title": "Two overlapping predictors",
+    "model": {
+      "constructs": [
+        {
+          "id": "c_a",
+          "indicatorIds": [
+            "i_a1",
+            "i_a2",
+            "i_a3",
+            "i_a4"
+          ],
+          "label": "Construct A",
+          "measurement": "reflective",
+          "name": "A"
+        },
+        {
+          "id": "c_b",
+          "indicatorIds": [
+            "i_b1",
+            "i_b2",
+            "i_b3",
+            "i_b4"
+          ],
+          "label": "Construct B",
+          "measurement": "reflective",
+          "name": "B"
+        },
+        {
+          "id": "c_c",
+          "indicatorIds": [
+            "i_c1",
+            "i_c2",
+            "i_c3"
+          ],
+          "label": "Construct C",
+          "measurement": "reflective",
+          "name": "C"
+        }
+      ],
+      "indicators": [
+        {
+          "column": "a1",
+          "id": "i_a1",
+          "level": "ordinal",
+          "name": "a1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "a2",
+          "id": "i_a2",
+          "level": "ordinal",
+          "name": "a2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "a3",
+          "id": "i_a3",
+          "level": "ordinal",
+          "name": "a3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "a4",
+          "id": "i_a4",
+          "level": "ordinal",
+          "name": "a4",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "b1",
+          "id": "i_b1",
+          "level": "ordinal",
+          "name": "b1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "b2",
+          "id": "i_b2",
+          "level": "ordinal",
+          "name": "b2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "b3",
+          "id": "i_b3",
+          "level": "ordinal",
+          "name": "b3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "b4",
+          "id": "i_b4",
+          "level": "ordinal",
+          "name": "b4",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "c1",
+          "id": "i_c1",
+          "level": "ordinal",
+          "name": "c1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "c2",
+          "id": "i_c2",
+          "level": "ordinal",
+          "name": "c2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "c3",
+          "id": "i_c3",
+          "level": "ordinal",
+          "name": "c3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        }
+      ],
+      "relationships": [
+        {
+          "id": "r_a_c",
+          "kind": "structural",
+          "sourceId": "c_a",
+          "targetId": "c_c"
+        },
+        {
+          "id": "r_b_c",
+          "kind": "structural",
+          "sourceId": "c_b",
+          "targetId": "c_c"
+        },
+        {
+          "id": "r_a_b",
+          "kind": "covariance",
+          "sourceId": "c_a",
+          "targetId": "c_b"
+        }
+      ]
+    },
+    "open": "analysis",
+    "bundledDatasetId": "poor-discriminant",
+    "analysis": {
+      "method": "pls-sem",
+      "engine": "browser",
+      "estimator": "pls-pm",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    }
+  },
+  "tasks": [
+    {
+      "id": "verdict",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "Read HTMT, HTMT2 and the Fornell–Larcker table. Which conclusion is correct?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "HTMT(A, B) is about .97, far above .85/.90, so discriminant validity of A and B is not supported, although Fornell–Larcker narrowly passes.",
+          "correct": true,
+          "feedback": "Correct. Fornell–Larcker is known to miss such problems (Henseler et al. 2015)."
+        },
+        {
+          "id": "b",
+          "text": "Discriminant validity holds because Fornell–Larcker is satisfied.",
+          "correct": false,
+          "feedback": "Fornell–Larcker passes by a margin of .003 here and has low sensitivity; HTMT clearly flags the problem."
+        },
+        {
+          "id": "c",
+          "text": "Only C has a discriminant validity problem.",
+          "correct": false,
+          "feedback": "HTMT values involving C are moderate (about .56); the problem is A versus B."
+        }
+      ]
+    },
+    {
+      "id": "remedy",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "Which responses are methodologically sound? Select all that apply.",
+      "multiple": true,
+      "options": [
+        {
+          "id": "a",
+          "text": "Re-examine whether A and B are conceptually distinct and compare their item wording.",
+          "correct": true,
+          "feedback": "Correct. The first question is conceptual."
+        },
+        {
+          "id": "b",
+          "text": "If theory allows, treat A and B as one construct and report the change.",
+          "correct": true,
+          "feedback": "Correct, as a transparent, theory-based decision."
+        },
+        {
+          "id": "c",
+          "text": "Delete items of A and B one at a time until HTMT drops below .85.",
+          "correct": false,
+          "feedback": "Automatic deletion narrows the constructs and capitalises on chance."
+        },
+        {
+          "id": "d",
+          "text": "Report HTMT/HTMT2 instead of relying on Fornell–Larcker alone.",
+          "correct": true,
+          "feedback": "Correct. HTMT is the more sensitive criterion."
+        },
+        {
+          "id": "e",
+          "text": "Keep the draft as it is, since the paths to C are significant.",
+          "correct": false,
+          "feedback": "Significant paths do not establish that A and B are distinct; their high overlap also makes the paths hard to interpret."
+        }
+      ]
+    },
+    {
+      "id": "structural",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "What does the overlap of A and B mean for their paths to C?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Their structural VIF is about 3.5; their separate effects are poorly identified and each f² is small.",
+          "correct": true,
+          "feedback": "Correct. Strongly overlapping predictors share most of their explanatory power."
+        },
+        {
+          "id": "b",
+          "text": "Nothing, because PLS is robust to collinearity.",
+          "correct": false,
+          "feedback": "Path coefficients are OLS regressions and suffer from collinearity like any regression."
+        },
+        {
+          "id": "c",
+          "text": "Their paths must be added together to get the true effect.",
+          "correct": false,
+          "feedback": "Adding partial coefficients has no general meaning."
+        }
+      ]
+    },
+    {
+      "id": "ave-a",
+      "dimension": "numeric",
+      "kind": "number",
+      "prompt": "Enter the AVE of A.",
+      "answer": 0.719,
+      "tolerance": 0.004,
+      "feedbackCorrect": "Correct. A converges well; its problem is not convergent validity but its overlap with B.",
+      "feedbackWrong": "Not the expected value. Read the AVE row of construct A in the reliability table.",
+      "derivation": {
+        "source": {
+          "fixture": "poor-discriminant"
+        },
+        "analysis": {
+          "method": "pls-sem",
+          "engine": "browser",
+          "estimator": "pls-pm",
+          "missingData": "listwise",
+          "pls": {
+            "innerWeighting": "path",
+            "maxIterations": 300,
+            "tolerance": 1e-07
+          }
+        },
+        "constructMetric": {
+          "constructId": "c_a",
+          "metric": "ave"
+        }
+      }
+    }
+  ],
+  "hints": [
+    "Compare the Fornell–Larcker diagonal for A with the off-diagonal entry for A and B. How large is the margin?",
+    "HTMT approximates the correlation the two constructs would have without measurement error.",
+    "Good discriminant-validity remedies start from the construct definitions, not from the item list."
+  ],
+  "solution": [
+    {
+      "kind": "p",
+      "text": "HTMT(A, B) ≈ .973 (HTMT2 ≈ .973): the two constructs are empirically almost identical. Fornell–Larcker passes only by .003 (AVE(A) = .719 versus a squared correlation of .716), illustrating its low sensitivity. A and B also overlap as predictors of C (VIF ≈ 3.5, f² ≈ .02 and .03)."
+    },
+    {
+      "kind": "p",
+      "text": "Sound responses: report HTMT/HTMT2, revisit whether A and B are conceptually distinct, examine item wording, and if theory permits merge them transparently or develop more discriminating items in new data. Do not delete items automatically to pass a threshold."
+    }
+  ],
+  "nextLesson": "collinearity-vif"
+}

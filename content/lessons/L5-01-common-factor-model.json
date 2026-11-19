@@ -1,0 +1,290 @@
+{
+  "id": "common-factor-model",
+  "level": 5,
+  "order": 1,
+  "title": "The common-factor model",
+  "summary": "CB-SEM explains the covariances among indicators by a few common factors plus unique errors, and estimates the parameters that make the implied covariance matrix closest to the observed one.",
+  "minutes": 8,
+  "prerequisites": [
+    "composites-and-common-factors"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "In CB-SEM each reflective indicator is a weighted common factor plus a unique error. The model implies a covariance matrix for the indicators, and estimation chooses the parameters that bring this implied matrix as close as possible to the sample covariance matrix S (Bollen 1989)."
+    },
+    {
+      "kind": "formula",
+      "display": "Σ(θ) = Λ Φ Λ′ + Θ",
+      "explanation": "Λ holds the loadings, Φ the variances and covariances of the factors, Θ the unique (error) variances; θ collects all free parameters. With structural paths, Φ is itself a function of the paths and disturbance variances."
+    },
+    {
+      "kind": "diagram",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_f1",
+            "name": "F1",
+            "measurement": "reflective",
+            "indicatorIds": [
+              "i_v1",
+              "i_v2",
+              "i_v3",
+              "i_v4"
+            ],
+            "label": "Factor 1"
+          },
+          {
+            "id": "c_f2",
+            "name": "F2",
+            "measurement": "reflective",
+            "indicatorIds": [
+              "i_v5",
+              "i_v6",
+              "i_v7",
+              "i_v8"
+            ],
+            "label": "Factor 2"
+          }
+        ],
+        "indicators": [
+          {
+            "id": "i_v1",
+            "name": "v1",
+            "column": null
+          },
+          {
+            "id": "i_v2",
+            "name": "v2",
+            "column": null
+          },
+          {
+            "id": "i_v3",
+            "name": "v3",
+            "column": null
+          },
+          {
+            "id": "i_v4",
+            "name": "v4",
+            "column": null
+          },
+          {
+            "id": "i_v5",
+            "name": "v5",
+            "column": null
+          },
+          {
+            "id": "i_v6",
+            "name": "v6",
+            "column": null
+          },
+          {
+            "id": "i_v7",
+            "name": "v7",
+            "column": null
+          },
+          {
+            "id": "i_v8",
+            "name": "v8",
+            "column": null
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_f1_f2",
+            "kind": "covariance",
+            "sourceId": "c_f1",
+            "targetId": "c_f2"
+          }
+        ]
+      },
+      "caption": "A two-factor CFA: each indicator loads on one factor; the factors covary.",
+      "highlight": [
+        "r_f1_f2"
+      ]
+    },
+    {
+      "kind": "p",
+      "text": "Because unique variance is separated from the factors, factor correlations and structural paths are not attenuated by random measurement error, provided the model is correct. And because the model restricts S (here 36 variances and covariances are reproduced by 17 parameters), the restrictions can be tested: that is global fit (lesson 5.4). In the two-factor example the estimated factor correlation is .287."
+    },
+    {
+      "kind": "callout",
+      "variant": "info",
+      "text": "SEM Studio's CB engine estimates reflective (common-factor) constructs only; composite-formative blocks are rejected with an explanation rather than silently treated as factors."
+    }
+  ],
+  "mistake": {
+    "title": "Treating a sum score as the factor",
+    "text": "The mean of a scale's items still contains measurement error; the factor in a CFA does not. Correlations of sum scores are therefore smaller than factor correlations, and the two must not be mixed in one comparison."
+  },
+  "tryIt": {
+    "task": "Run CB-SEM (ML) on this two-factor model and read the standardised loadings, the unique variances and the factor correlation.",
+    "starter": {
+      "title": "Two-factor CFA",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_f1",
+            "indicatorIds": [
+              "i_v1",
+              "i_v2",
+              "i_v3",
+              "i_v4"
+            ],
+            "label": "Factor 1",
+            "measurement": "reflective",
+            "name": "F1"
+          },
+          {
+            "id": "c_f2",
+            "indicatorIds": [
+              "i_v5",
+              "i_v6",
+              "i_v7",
+              "i_v8"
+            ],
+            "label": "Factor 2",
+            "measurement": "reflective",
+            "name": "F2"
+          }
+        ],
+        "indicators": [
+          {
+            "column": "v1",
+            "id": "i_v1",
+            "level": "continuous",
+            "name": "v1"
+          },
+          {
+            "column": "v2",
+            "id": "i_v2",
+            "level": "continuous",
+            "name": "v2"
+          },
+          {
+            "column": "v3",
+            "id": "i_v3",
+            "level": "continuous",
+            "name": "v3"
+          },
+          {
+            "column": "v4",
+            "id": "i_v4",
+            "level": "continuous",
+            "name": "v4"
+          },
+          {
+            "column": "v5",
+            "id": "i_v5",
+            "level": "continuous",
+            "name": "v5"
+          },
+          {
+            "column": "v6",
+            "id": "i_v6",
+            "level": "continuous",
+            "name": "v6"
+          },
+          {
+            "column": "v7",
+            "id": "i_v7",
+            "level": "continuous",
+            "name": "v7"
+          },
+          {
+            "column": "v8",
+            "id": "i_v8",
+            "level": "continuous",
+            "name": "v8"
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_f1_f2",
+            "kind": "covariance",
+            "sourceId": "c_f1",
+            "targetId": "c_f2"
+          }
+        ]
+      },
+      "open": "analysis",
+      "bundledDatasetId": "cfa-two-factor",
+      "analysis": {
+        "method": "cb-sem",
+        "engine": "browser",
+        "estimator": "ML",
+        "missingData": "listwise",
+        "cb": {
+          "identification": "std-lv",
+          "meanStructure": false
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "theta",
+      "question": "In Σ(θ) = ΛΦΛ′ + Θ, what does Θ contain?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "The unique (error) variances of the indicators, and any error covariances you specify",
+          "correct": true,
+          "feedback": "Correct."
+        },
+        {
+          "id": "b",
+          "text": "The factor correlations",
+          "correct": false,
+          "feedback": "Factor variances and covariances are in Φ."
+        },
+        {
+          "id": "c",
+          "text": "The structural paths",
+          "correct": false,
+          "feedback": "Paths enter through Φ (via the structural equations), not Θ."
+        }
+      ],
+      "explanation": "Λ loadings, Φ factors, Θ uniquenesses."
+    },
+    {
+      "id": "why-testable",
+      "question": "Why can a CFA be tested against the data?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Because it reproduces many variances and covariances with fewer parameters, which imposes restrictions the data can violate.",
+          "correct": true,
+          "feedback": "Correct. The degrees of freedom count those restrictions."
+        },
+        {
+          "id": "b",
+          "text": "Because its estimates are always significant.",
+          "correct": false,
+          "feedback": "Significance of parameters is a different question from whether the model reproduces the covariances."
+        },
+        {
+          "id": "c",
+          "text": "Because it uses bootstrapping.",
+          "correct": false,
+          "feedback": "The χ² test of fit is an analytic likelihood-ratio test, not a bootstrap."
+        }
+      ],
+      "explanation": "Restrictions make a model testable."
+    }
+  ],
+  "references": [
+    "bollen1989",
+    "kline2016",
+    "rosseel2012"
+  ],
+  "glossary": [
+    "cb-sem",
+    "common-factor",
+    "cfa",
+    "model-fit",
+    "measurement-error"
+  ]
+}

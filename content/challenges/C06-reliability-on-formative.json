@@ -1,0 +1,362 @@
+{
+  "id": "reliability-on-formative",
+  "number": 6,
+  "title": "Spot inappropriate α and AVE on a formative construct",
+  "category": "diagnose",
+  "method": "pls",
+  "difficulty": 2,
+  "prerequisiteLessons": [
+    "validating-formative-constructs",
+    "internal-consistency-reliability",
+    "convergent-validity-ave"
+  ],
+  "skills": [
+    "Matching quality criteria to the measurement model",
+    "Responding to reviewers"
+  ],
+  "brief": [
+    {
+      "kind": "p",
+      "text": "The retail model (SYNTHETIC) has a composite-formative convenience index F (f1–f4) and reflective constructs X and Y. A reviewer writes:"
+    },
+    {
+      "kind": "callout",
+      "variant": "warning",
+      "text": "\"The authors do not report Cronbach's α and AVE for F. I computed them myself: α = .52 and AVE = .41, both below accepted thresholds. Please drop the weakest indicators of F until α exceeds .70.\"",
+      "title": "Reviewer 2"
+    },
+    {
+      "kind": "p",
+      "text": "Run the model and prepare a methodologically sound response."
+    }
+  ],
+  "starter": {
+    "title": "Retail satisfaction",
+    "model": {
+      "constructs": [
+        {
+          "id": "c_f",
+          "indicatorIds": [
+            "i_f1",
+            "i_f2",
+            "i_f3",
+            "i_f4"
+          ],
+          "label": "Composite F",
+          "measurement": "composite-formative",
+          "name": "F"
+        },
+        {
+          "id": "c_x",
+          "indicatorIds": [
+            "i_x1",
+            "i_x2",
+            "i_x3"
+          ],
+          "label": "Reflective X",
+          "measurement": "reflective",
+          "name": "X"
+        },
+        {
+          "id": "c_y",
+          "indicatorIds": [
+            "i_y1",
+            "i_y2",
+            "i_y3",
+            "i_y4"
+          ],
+          "label": "Reflective Y",
+          "measurement": "reflective",
+          "name": "Y"
+        }
+      ],
+      "indicators": [
+        {
+          "column": "f1",
+          "id": "i_f1",
+          "level": "ordinal",
+          "name": "f1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "f2",
+          "id": "i_f2",
+          "level": "ordinal",
+          "name": "f2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "f3",
+          "id": "i_f3",
+          "level": "ordinal",
+          "name": "f3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "f4",
+          "id": "i_f4",
+          "level": "ordinal",
+          "name": "f4",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "x1",
+          "id": "i_x1",
+          "level": "ordinal",
+          "name": "x1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "x2",
+          "id": "i_x2",
+          "level": "ordinal",
+          "name": "x2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "x3",
+          "id": "i_x3",
+          "level": "ordinal",
+          "name": "x3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "y1",
+          "id": "i_y1",
+          "level": "ordinal",
+          "name": "y1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "y2",
+          "id": "i_y2",
+          "level": "ordinal",
+          "name": "y2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "y3",
+          "id": "i_y3",
+          "level": "ordinal",
+          "name": "y3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "y4",
+          "id": "i_y4",
+          "level": "ordinal",
+          "name": "y4",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        }
+      ],
+      "relationships": [
+        {
+          "id": "r_f_y",
+          "kind": "structural",
+          "sourceId": "c_f",
+          "targetId": "c_y"
+        },
+        {
+          "id": "r_x_y",
+          "kind": "structural",
+          "sourceId": "c_x",
+          "targetId": "c_y"
+        },
+        {
+          "id": "r_f_x",
+          "kind": "covariance",
+          "sourceId": "c_f",
+          "targetId": "c_x"
+        }
+      ]
+    },
+    "open": "analysis",
+    "bundledDatasetId": "pls-mixed-composite",
+    "analysis": {
+      "method": "pls-sem",
+      "engine": "browser",
+      "estimator": "pls-pm",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      },
+      "seed": 20260601,
+      "bootstrap": {
+        "enabled": true,
+        "repetitions": 1000,
+        "ci": "percentile",
+        "confidenceLevel": 0.95,
+        "sides": "two-sided"
+      }
+    }
+  },
+  "tasks": [
+    {
+      "id": "respond",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "How should you respond to the reviewer?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Explain that α and AVE assume a common factor and are not meaningful for a formative index; report weights with intervals, loadings, indicator VIFs and the content definition instead.",
+          "correct": true,
+          "feedback": "Correct. The criteria must match the measurement model (Hair et al. 2022; Cenfetelli & Bassellier 2009)."
+        },
+        {
+          "id": "b",
+          "text": "Drop f3 and f4 as requested, since α then rises.",
+          "correct": false,
+          "feedback": "Deleting components of an index changes its meaning, and α is not a criterion it must meet."
+        },
+        {
+          "id": "c",
+          "text": "Re-specify F as reflective so that α and AVE can be reported.",
+          "correct": false,
+          "feedback": "The specification follows from the construct definition, not from the criteria a reviewer asks for."
+        }
+      ]
+    },
+    {
+      "id": "report-f",
+      "dimension": "reporting",
+      "kind": "choice",
+      "prompt": "Which results do you report for F? Select all that apply.",
+      "multiple": true,
+      "options": [
+        {
+          "id": "a",
+          "text": "Outer weights with bootstrap confidence intervals",
+          "correct": true,
+          "feedback": "Correct."
+        },
+        {
+          "id": "b",
+          "text": "Outer loadings (absolute contributions)",
+          "correct": true,
+          "feedback": "Correct. They help decide about indicators with small weights."
+        },
+        {
+          "id": "c",
+          "text": "Indicator VIFs",
+          "correct": true,
+          "feedback": "Correct. Mode B weights are sensitive to collinearity."
+        },
+        {
+          "id": "d",
+          "text": "HTMT between F and Y",
+          "correct": false,
+          "feedback": "HTMT assumes reflective measurement; SEM Studio does not compute it for composite-formative blocks."
+        },
+        {
+          "id": "e",
+          "text": "Composite reliability ρC of F",
+          "correct": false,
+          "feedback": "Like α, ρC is a common-factor reliability."
+        }
+      ]
+    },
+    {
+      "id": "vif-read",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "Read the indicator VIFs of F. What do they show?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "All are about 1.1–1.2, so collinearity does not threaten the weights.",
+          "correct": true,
+          "feedback": "Correct. Well below the heuristic limits of 3 and 5."
+        },
+        {
+          "id": "b",
+          "text": "They are high, so F should be reflective.",
+          "correct": false,
+          "feedback": "They are low; and VIF never decides the measurement model."
+        },
+        {
+          "id": "c",
+          "text": "They cannot be computed for formative constructs.",
+          "correct": false,
+          "feedback": "Indicator VIFs are precisely a formative-construct diagnostic."
+        }
+      ]
+    },
+    {
+      "id": "loading-f1",
+      "dimension": "numeric",
+      "kind": "number",
+      "prompt": "Enter the outer loading of f1 (with F composite-formative).",
+      "answer": 0.655,
+      "tolerance": 0.004,
+      "feedbackCorrect": "Correct. f1 also has a sizeable absolute contribution.",
+      "feedbackWrong": "Not the expected value. Make sure F is composite-formative and that you read the loading, not the weight.",
+      "derivation": {
+        "source": {
+          "fixture": "pls-mixed-composite"
+        },
+        "analysis": {
+          "method": "pls-sem",
+          "engine": "browser",
+          "estimator": "pls-pm",
+          "missingData": "listwise",
+          "pls": {
+            "innerWeighting": "path",
+            "maxIterations": 300,
+            "tolerance": 1e-07
+          }
+        },
+        "parameterKey": "loading:c_f:i_f1"
+      }
+    }
+  ],
+  "hints": [
+    "What does α assume about the relation between the indicators?",
+    "Would you expect opening hours and parking to correlate strongly? Should they?",
+    "The Results page marks some criteria as not applicable for F. Which ones, and why?"
+  ],
+  "solution": [
+    {
+      "kind": "p",
+      "text": "α (.52) and AVE (.41) come from treating F as reflective; for a formative index they are not meaningful, and deleting components to raise α would change what F measures. Report F's weights with bootstrap intervals, its loadings (f1 ≈ .655), its indicator VIFs (all ≈ 1.1–1.2) and the content definition; a redundancy analysis against a global convenience item would add convergent-validity evidence."
+    }
+  ],
+  "nextLesson": "discriminant-validity"
+}

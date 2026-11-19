@@ -1,0 +1,178 @@
+{
+  "id": "specific-indirect-effect",
+  "number": 9,
+  "title": "Calculate and interpret a specific indirect effect",
+  "category": "analyze",
+  "method": "pls",
+  "difficulty": 2,
+  "prerequisiteLessons": [
+    "mediation",
+    "direct-indirect-total-effects"
+  ],
+  "skills": [
+    "Products of paths",
+    "Specific versus total indirect effects",
+    "Mediation typology"
+  ],
+  "brief": [
+    {
+      "kind": "p",
+      "text": "Open the DeLone & McLean example (SYNTHETIC data) and run it with its settings (5,000 draws, seed 20261401). System quality (SYSQ) has no direct path to net benefits (NB) in this model; it reaches NB through use (USE) and user satisfaction (SAT)."
+    }
+  ],
+  "starter": {
+    "title": "DeLone & McLean example",
+    "exampleId": "delone-mclean",
+    "open": "analysis"
+  },
+  "tasks": [
+    {
+      "id": "calc",
+      "dimension": "numeric",
+      "kind": "number",
+      "prompt": "Using the two path coefficients SYSQ → SAT and SAT → NB, calculate the specific indirect effect SYSQ → SAT → NB. Enter it with three decimals.",
+      "answer": 0.131,
+      "tolerance": 0.004,
+      "feedbackCorrect": "Correct: the product of the two paths, which the effects table also lists.",
+      "feedbackWrong": "Not the expected value. Multiply SYSQ → SAT by SAT → NB; do not add them, and do not use the total effect, which also contains the routes through USE.",
+      "derivation": {
+        "source": {
+          "exampleId": "delone-mclean"
+        },
+        "analysis": {
+          "bootstrap": {
+            "enabled": true,
+            "repetitions": 5000,
+            "ci": "percentile",
+            "confidenceLevel": 0.95,
+            "sides": "two-sided"
+          },
+          "engine": "browser",
+          "estimator": "pls-pm",
+          "ipma": {
+            "targetConstructId": "c_nb"
+          },
+          "method": "pls-sem",
+          "missingData": "listwise",
+          "pls": {
+            "innerWeighting": "path",
+            "maxIterations": 300,
+            "tolerance": 1e-07
+          },
+          "seed": 20261401
+        },
+        "parameterKey": "specific-indirect:c_sysq->c_sat->c_nb"
+      }
+    },
+    {
+      "id": "ci-lower",
+      "dimension": "numeric",
+      "kind": "number",
+      "prompt": "Enter the lower limit of the 95% bootstrap interval of that specific indirect effect.",
+      "answer": 0.09,
+      "tolerance": 0.005,
+      "feedbackCorrect": "Correct. The interval excludes zero.",
+      "feedbackWrong": "Not the expected value. Read the interval of the specific indirect effect SYSQ → SAT → NB, not of the total indirect effect of SYSQ on NB.",
+      "derivation": {
+        "source": {
+          "exampleId": "delone-mclean"
+        },
+        "analysis": {
+          "bootstrap": {
+            "enabled": true,
+            "repetitions": 5000,
+            "ci": "percentile",
+            "confidenceLevel": 0.95,
+            "sides": "two-sided"
+          },
+          "engine": "browser",
+          "estimator": "pls-pm",
+          "ipma": {
+            "targetConstructId": "c_nb"
+          },
+          "method": "pls-sem",
+          "missingData": "listwise",
+          "pls": {
+            "innerWeighting": "path",
+            "maxIterations": 300,
+            "tolerance": 1e-07
+          },
+          "seed": 20261401
+        },
+        "parameterKey": "specific-indirect:c_sysq->c_sat->c_nb",
+        "field": "ciLower"
+      }
+    },
+    {
+      "id": "total-vs-specific",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "The total effect of SYSQ on NB (≈ .19) is larger than the specific indirect effect via SAT. Why?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "It sums all routes from SYSQ to NB: via SAT, via USE, and via USE then SAT.",
+          "correct": true,
+          "feedback": "Correct. Total = direct (none here) + every specific indirect effect."
+        },
+        {
+          "id": "b",
+          "text": "Because it includes measurement error.",
+          "correct": false,
+          "feedback": "Total and specific effects come from the same estimates; the difference is the number of routes."
+        },
+        {
+          "id": "c",
+          "text": "Because the bootstrap inflates totals.",
+          "correct": false,
+          "feedback": "Point estimates are computed on the original sample; resampling only provides intervals."
+        }
+      ]
+    },
+    {
+      "id": "typology",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "How should you classify the mediation of SYSQ → NB under Zhao et al. (2010)?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Indirect-only by design: the model fixes the direct path to zero, so the data were not allowed to show a direct effect; say so when reporting.",
+          "correct": true,
+          "feedback": "Correct. Without a direct path in the model, the classification rests on that specification."
+        },
+        {
+          "id": "b",
+          "text": "Complementary mediation.",
+          "correct": false,
+          "feedback": "Complementary requires a significant direct effect, which the model does not estimate."
+        },
+        {
+          "id": "c",
+          "text": "No mediation, because there is no direct path.",
+          "correct": false,
+          "feedback": "Mediation is about the indirect effect, which is significant."
+        }
+      ]
+    }
+  ],
+  "hints": [
+    "A specific indirect effect follows one route; write down the arrows on that route.",
+    "Effects along a route multiply.",
+    "The effects table distinguishes specific indirect effects from the total indirect and total effects.",
+    "Ask what the model allows: is there an arrow SYSQ → NB?"
+  ],
+  "solution": [
+    {
+      "kind": "p",
+      "text": "SYSQ → SAT ≈ .284 and SAT → NB ≈ .464, so the specific indirect effect is ≈ .131, 95% CI ≈ [.090, .175]. The total effect of SYSQ on NB (≈ .189) adds the routes via USE (≈ .037) and via USE and SAT (≈ .020)."
+    },
+    {
+      "kind": "p",
+      "text": "Because the model has no SYSQ → NB path, the result is indirect-only by specification. A test of complementary or competitive mediation would require estimating the direct path."
+    }
+  ],
+  "nextLesson": "prediction-versus-explanation"
+}

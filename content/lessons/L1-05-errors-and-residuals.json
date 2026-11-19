@@ -1,0 +1,114 @@
+{
+  "id": "errors-and-residuals",
+  "level": 1,
+  "order": 5,
+  "title": "Measurement error, residuals and disturbances",
+  "summary": "Observed indicators contain measurement error, endogenous constructs have disturbances, and ignoring error weakens the relationships you estimate.",
+  "minutes": 7,
+  "prerequisites": [
+    "measurement-and-structural-model"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "No indicator measures its construct perfectly. In a reflective model each indicator is the construct plus an error: the [[measurement-error]] contains random noise and anything specific to that item."
+    },
+    {
+      "kind": "formula",
+      "display": "xᵢ = λᵢ · ξ + εᵢ",
+      "explanation": "Indicator xᵢ equals its loading λᵢ times the construct ξ plus an error εᵢ that is uncorrelated with ξ. With standardised variables, λᵢ² is the share of the indicator's variance due to the construct: its reliability."
+    },
+    {
+      "kind": "p",
+      "text": "An endogenous construct has a [[disturbance]] ζ: the combined effect of every cause not in the model. 1 − R² is the share of its variance left to the disturbance; an R² below 1 is expected, not a defect. More generally a [[residual]] is the difference between what is observed and what the model implies."
+    },
+    {
+      "kind": "p",
+      "text": "Error matters because random error weakens observed relationships. If two constructs correlate ρ, scores with reliabilities r_x and r_y correlate only about ρ·√(r_x·r_y). CB-SEM and consistent PLS model the error of common-factor constructs explicitly; classic PLS composites contain it (Dijkstra & Henseler 2015)."
+    }
+  ],
+  "mistake": {
+    "title": "Treating scale scores as error-free",
+    "text": "Averaging items and running a regression on the averages treats them as perfectly reliable, which attenuates the effects you estimate. Models that separate error from the construct, or at least a report of reliability, are needed to judge how much."
+  },
+  "tryIt": {
+    "task": "Open the TAM example and run it. For each endogenous construct, compute 1 − R², the share of variance left to its disturbance.",
+    "starter": {
+      "title": "TAM example",
+      "exampleId": "tam-mediation",
+      "open": "analysis"
+    }
+  },
+  "checks": [
+    {
+      "id": "attenuation",
+      "question": "Two constructs correlate .60. Each is measured with reliability .80. What correlation do you expect between their observed scores?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "About .48",
+          "correct": true,
+          "feedback": "Correct: .60 × √(.80 × .80) = .60 × .80 = .48."
+        },
+        {
+          "id": "b",
+          "text": ".60",
+          "correct": false,
+          "feedback": "That would require perfectly reliable scores. Random error always weakens the observed correlation."
+        },
+        {
+          "id": "c",
+          "text": "About .75",
+          "correct": false,
+          "feedback": "Dividing by the reliability is the correction for attenuation, which goes from observed to true, not the other way."
+        },
+        {
+          "id": "d",
+          "text": "About .38",
+          "correct": false,
+          "feedback": "That multiplies by .80 twice. The factor is the square root of the product of the two reliabilities, here .80."
+        }
+      ],
+      "explanation": "Attenuation: observed r ≈ true r × √(reliability_x × reliability_y)."
+    },
+    {
+      "id": "disturbance",
+      "question": "BI has R² = .33. What does the disturbance of BI represent?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "All influences on BI that the model does not contain, about 67% of its variance here.",
+          "correct": true,
+          "feedback": "Correct. The disturbance collects omitted causes and randomness."
+        },
+        {
+          "id": "b",
+          "text": "Measurement error in the BI items.",
+          "correct": false,
+          "feedback": "Item errors belong to the measurement model. The disturbance is a structural-level residual of the construct itself."
+        },
+        {
+          "id": "c",
+          "text": "A sign that the model is wrong.",
+          "correct": false,
+          "feedback": "Almost every behavioural outcome has causes outside a given model. An R² below 1 is normal."
+        }
+      ],
+      "explanation": "Disturbance = the unexplained part of an endogenous construct."
+    }
+  ],
+  "references": [
+    "bollen1989",
+    "dijkstra2015",
+    "nunnally1994"
+  ],
+  "glossary": [
+    "measurement-error",
+    "residual",
+    "disturbance",
+    "reliability",
+    "attenuation"
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "id": "residuals-and-respecification",
+  "level": 5,
+  "order": 5,
+  "title": "Residual diagnostics and principled respecification",
+  "summary": "When a model fits poorly, locate the misfit in the residuals and revise only for substantive reasons, never by following modification indices mechanically.",
+  "minutes": 9,
+  "prerequisites": [
+    "fit-indices"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "A poor global fit says something is wrong, not what. Residual correlations, the differences between observed and model-implied correlations, show where: a cluster of large positive residuals among items assigned to different factors suggests a missing factor or cross-loading (Kline 2016). A [[standardized-residual]] puts each covariance residual on a z-like scale."
+    },
+    {
+      "kind": "p",
+      "text": "A [[modification-index]] estimates how much χ² would drop if one fixed parameter were freed. Freeing parameters because their MI is large capitalises on chance: the modified models fit the sample but often do not replicate (MacCallum et al. 1992). Free a parameter only with a substantive reason, report it, and validate on new data."
+    },
+    {
+      "kind": "callout",
+      "variant": "warning",
+      "text": "SEM Studio reports SRMR, the summary of residual correlations, but does not yet show the residual matrix or modification indices. In the exported lavaan script, `residuals(fit, type = \"cor\")` and `modindices(fit)` provide them.",
+      "title": "Not available in SEM Studio"
+    },
+    {
+      "kind": "p",
+      "text": "In the starter, all eight items of the two-factor data are forced onto one factor: χ²(20) = 585, RMSEA = .238, CFI = .61, SRMR = .18. The principled response is to return to the instrument: the items were written for two facets, so a two-factor model is the theoretically motivated revision. It fits well (RMSEA = .013, CFI = .999). Adding error covariances until CFI exceeds .95 would also raise fit, but without meaning."
+    }
+  ],
+  "mistake": {
+    "title": "Correlating errors until the fit is good",
+    "text": "Error covariances freed only because of large MIs are post-hoc patches. They make the model fit this sample and obscure the real problem, such as a missing factor."
+  },
+  "tryIt": {
+    "task": "Run CB-SEM on this one-factor model and read the fit. Then rebuild it as two factors (v1–v4 and v5–v8, correlated) and run again.",
+    "starter": {
+      "title": "One factor for two facets (misspecified)",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_g",
+            "name": "G",
+            "label": "One general factor (misspecified)",
+            "measurement": "reflective",
+            "indicatorIds": [
+              "i_v1",
+              "i_v2",
+              "i_v3",
+              "i_v4",
+              "i_v5",
+              "i_v6",
+              "i_v7",
+              "i_v8"
+            ]
+          }
+        ],
+        "indicators": [
+          {
+            "column": "v1",
+            "id": "i_v1",
+            "level": "continuous",
+            "name": "v1"
+          },
+          {
+            "column": "v2",
+            "id": "i_v2",
+            "level": "continuous",
+            "name": "v2"
+          },
+          {
+            "column": "v3",
+            "id": "i_v3",
+            "level": "continuous",
+            "name": "v3"
+          },
+          {
+            "column": "v4",
+            "id": "i_v4",
+            "level": "continuous",
+            "name": "v4"
+          },
+          {
+            "column": "v5",
+            "id": "i_v5",
+            "level": "continuous",
+            "name": "v5"
+          },
+          {
+            "column": "v6",
+            "id": "i_v6",
+            "level": "continuous",
+            "name": "v6"
+          },
+          {
+            "column": "v7",
+            "id": "i_v7",
+            "level": "continuous",
+            "name": "v7"
+          },
+          {
+            "column": "v8",
+            "id": "i_v8",
+            "level": "continuous",
+            "name": "v8"
+          }
+        ],
+        "relationships": []
+      },
+      "open": "modeler",
+      "bundledDatasetId": "cfa-two-factor",
+      "analysis": {
+        "method": "cb-sem",
+        "engine": "browser",
+        "estimator": "ML",
+        "missingData": "listwise",
+        "cb": {
+          "identification": "std-lv",
+          "meanStructure": false
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "mi-response",
+      "question": "A modification index suggests a residual covariance between v3 (factor 1) and v6 (factor 2), and you have no substantive reason for it. What do you do?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Do not free it on that basis; examine the residual pattern and the theory of the items instead.",
+          "correct": true,
+          "feedback": "Correct. MI-driven changes without theory capitalise on chance."
+        },
+        {
+          "id": "b",
+          "text": "Free it, since it improves fit significantly.",
+          "correct": false,
+          "feedback": "Almost any freed parameter improves fit in-sample; that is not evidence for it."
+        },
+        {
+          "id": "c",
+          "text": "Delete v3 and v6.",
+          "correct": false,
+          "feedback": "Deleting items to remove misfit is another data-driven change that narrows the constructs."
+        }
+      ],
+      "explanation": "Theory first, diagnostics second."
+    },
+    {
+      "id": "residual-meaning",
+      "question": "What does a large positive residual correlation between two items tell you?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "The model under-predicts their association: something they share is not in the model.",
+          "correct": true,
+          "feedback": "Correct. Observed minus implied is positive."
+        },
+        {
+          "id": "b",
+          "text": "The two items are unreliable.",
+          "correct": false,
+          "feedback": "Unreliable items have low loadings; a residual concerns what the model fails to reproduce."
+        },
+        {
+          "id": "c",
+          "text": "The model over-predicts their association.",
+          "correct": false,
+          "feedback": "That would be a negative residual."
+        }
+      ],
+      "explanation": "Residual = observed − implied."
+    }
+  ],
+  "references": [
+    "maccallum1992",
+    "kline2016",
+    "anderson1988",
+    "rosseel2012"
+  ],
+  "glossary": [
+    "standardized-residual",
+    "modification-index",
+    "model-fit",
+    "srmr",
+    "rmsea",
+    "cfi"
+  ]
+}

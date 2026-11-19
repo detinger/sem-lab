@@ -1,0 +1,308 @@
+{
+  "id": "ipma",
+  "level": 4,
+  "order": 7,
+  "title": "Importance–performance map analysis",
+  "summary": "IPMA plots each predecessor's unstandardised total effect on a target construct against its average performance on a 0–100 scale built from the declared scale endpoints.",
+  "minutes": 9,
+  "prerequisites": [
+    "direct-indirect-total-effects",
+    "constructs-indicators-scales"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "[[ipma]] (Ringle & Sarstedt 2016) adds a second dimension to the path results. For a chosen target construct, each construct that reaches it along a directed path gets an [[importance]], its unstandardised total effect on the target, and a [[performance]], its mean score rescaled to 0–100. Constructs with high importance and relatively low performance are candidates for attention."
+    },
+    {
+      "kind": "formula",
+      "display": "performance = (x̄ − min) / (max − min) × 100",
+      "explanation": "x̄ is the mean (of an indicator, or of a construct score built from rescaled indicators); min and max are the scale endpoints of the questionnaire, such as 1 and 7, never the smallest and largest values observed."
+    },
+    {
+      "kind": "demo",
+      "demo": "ipma-rescale",
+      "initial": {
+        "min": 1,
+        "max": 7,
+        "observedMin": 3,
+        "observedMax": 7,
+        "mean": 4.955
+      },
+      "caption": "Compare rescaling with the declared endpoints and with the observed extrema for an item nobody answered below 3."
+    },
+    {
+      "kind": "callout",
+      "variant": "warning",
+      "text": "In the ipma-range-restricted data the PEOU items were answered only from 3 to 7. With the correct endpoints 1–7, item peou1 has performance 65.9; rescaling with the observed 3–7 would give 48.9 and make PEOU look far worse than respondents rated it. SEM Studio requires declared endpoints for IPMA and never uses observed extrema.",
+      "title": "Try a wrong model: invalid scale"
+    },
+    {
+      "kind": "p",
+      "text": "Importance is an unstandardised total effect: one point more performance of the predictor goes with that many points more performance of the target, holding the rest of the model constant. IPMA is descriptive decision support conditional on the model; it does not show that an intervention would change the outcome, and negative importance keeps its sign."
+    }
+  ],
+  "mistake": {
+    "title": "Using standardised paths or observed extrema",
+    "text": "Importance must be the unstandardised total effect (direct plus indirect), not the standardised direct path, and performance must use the endpoints of the response scale. Either mistake changes the map."
+  },
+  "tryIt": {
+    "task": "Run this model; IPMA with target BI is already configured. On the IPMA page read importance and performance of PEOU and PU, and check that the convention note says the declared endpoints 1–7 were used.",
+    "starter": {
+      "title": "IPMA with range-restricted items",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_peou",
+            "indicatorIds": [
+              "i_peou1",
+              "i_peou2",
+              "i_peou3",
+              "i_peou4"
+            ],
+            "label": "Perceived ease of use (synthetic)",
+            "measurement": "reflective",
+            "name": "PEOU"
+          },
+          {
+            "id": "c_pu",
+            "indicatorIds": [
+              "i_pu1",
+              "i_pu2",
+              "i_pu3",
+              "i_pu4"
+            ],
+            "label": "Perceived usefulness (synthetic)",
+            "measurement": "reflective",
+            "name": "PU"
+          },
+          {
+            "id": "c_bi",
+            "indicatorIds": [
+              "i_bi1",
+              "i_bi2",
+              "i_bi3"
+            ],
+            "label": "Behavioural intention (synthetic)",
+            "measurement": "reflective",
+            "name": "BI"
+          }
+        ],
+        "indicators": [
+          {
+            "column": "peou1",
+            "id": "i_peou1",
+            "level": "ordinal",
+            "name": "peou1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "peou2",
+            "id": "i_peou2",
+            "level": "ordinal",
+            "name": "peou2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "peou3",
+            "id": "i_peou3",
+            "level": "ordinal",
+            "name": "peou3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "peou4",
+            "id": "i_peou4",
+            "level": "ordinal",
+            "name": "peou4",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "pu1",
+            "id": "i_pu1",
+            "level": "ordinal",
+            "name": "pu1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "pu2",
+            "id": "i_pu2",
+            "level": "ordinal",
+            "name": "pu2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "pu3",
+            "id": "i_pu3",
+            "level": "ordinal",
+            "name": "pu3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "pu4",
+            "id": "i_pu4",
+            "level": "ordinal",
+            "name": "pu4",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "bi1",
+            "id": "i_bi1",
+            "level": "ordinal",
+            "name": "bi1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "bi2",
+            "id": "i_bi2",
+            "level": "ordinal",
+            "name": "bi2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "bi3",
+            "id": "i_bi3",
+            "level": "ordinal",
+            "name": "bi3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_peou_pu",
+            "kind": "structural",
+            "sourceId": "c_peou",
+            "targetId": "c_pu"
+          },
+          {
+            "id": "r_peou_bi",
+            "kind": "structural",
+            "sourceId": "c_peou",
+            "targetId": "c_bi"
+          },
+          {
+            "id": "r_pu_bi",
+            "kind": "structural",
+            "sourceId": "c_pu",
+            "targetId": "c_bi"
+          }
+        ]
+      },
+      "open": "analysis",
+      "bundledDatasetId": "ipma-range-restricted",
+      "analysis": {
+        "method": "pls-sem",
+        "engine": "browser",
+        "estimator": "pls-pm",
+        "missingData": "listwise",
+        "pls": {
+          "innerWeighting": "path",
+          "maxIterations": 300,
+          "tolerance": 1e-07
+        },
+        "ipma": {
+          "targetConstructId": "c_bi"
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "perf-calc",
+      "question": "An item on a 1–7 scale has mean 5.2. What is its IPMA performance?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "70",
+          "correct": true,
+          "feedback": "Correct: (5.2 − 1) / (7 − 1) × 100 = 4.2 / 6 × 100 = 70."
+        },
+        {
+          "id": "b",
+          "text": "About 74",
+          "correct": false,
+          "feedback": "That divides 5.2 by 7. The scale starts at 1, so subtract 1 and divide by 6."
+        },
+        {
+          "id": "c",
+          "text": "52",
+          "correct": false,
+          "feedback": "Performance is not the mean times ten; it is rescaled using both endpoints."
+        }
+      ],
+      "explanation": "Rescale with the declared endpoints."
+    },
+    {
+      "id": "importance-def",
+      "question": "What is IPMA importance?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "The unstandardised total effect of a predecessor on the target construct.",
+          "correct": true,
+          "feedback": "Correct. It includes indirect routes and keeps the sign."
+        },
+        {
+          "id": "b",
+          "text": "The standardised direct path to the target.",
+          "correct": false,
+          "feedback": "Direct paths ignore indirect routes, and standardised values are not on the 0–100 performance metric."
+        },
+        {
+          "id": "c",
+          "text": "The predecessor's R².",
+          "correct": false,
+          "feedback": "R² belongs to endogenous constructs and is not an effect on the target."
+        }
+      ],
+      "explanation": "Total, unstandardised, signed."
+    }
+  ],
+  "references": [
+    "ringle2016",
+    "hair2022"
+  ],
+  "glossary": [
+    "ipma",
+    "importance",
+    "performance",
+    "scale-endpoints",
+    "total-effect",
+    "unstandardized-coefficient"
+  ]
+}

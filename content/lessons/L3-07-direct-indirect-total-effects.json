@@ -1,0 +1,205 @@
+{
+  "id": "direct-indirect-total-effects",
+  "level": 3,
+  "order": 7,
+  "title": "Direct, indirect and total effects",
+  "summary": "A predictor can affect an outcome directly and through mediators; the total effect is the sum of the direct effect and every indirect route.",
+  "minutes": 7,
+  "prerequisites": [
+    "r2-and-f2"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "The [[direct-effect]] of X on Y is the path X → Y. An [[indirect-effect]] runs through one or more mediators and equals the product of the paths along its route; each route is a [[specific-indirect-effect]]. The [[total-effect]] is the direct effect plus all indirect effects (Bollen 1987)."
+    },
+    {
+      "kind": "diagram",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_peou",
+            "name": "PEOU",
+            "measurement": "reflective",
+            "indicatorIds": [
+              "i_peou1",
+              "i_peou2"
+            ],
+            "label": "Perceived ease of use"
+          },
+          {
+            "id": "c_pu",
+            "name": "PU",
+            "measurement": "reflective",
+            "indicatorIds": [
+              "i_pu1",
+              "i_pu2"
+            ],
+            "label": "Perceived usefulness"
+          },
+          {
+            "id": "c_bi",
+            "name": "BI",
+            "measurement": "reflective",
+            "indicatorIds": [
+              "i_bi1",
+              "i_bi2"
+            ],
+            "label": "Behavioural intention"
+          }
+        ],
+        "indicators": [
+          {
+            "id": "i_peou1",
+            "name": "peou1",
+            "column": null
+          },
+          {
+            "id": "i_peou2",
+            "name": "peou2",
+            "column": null
+          },
+          {
+            "id": "i_pu1",
+            "name": "pu1",
+            "column": null
+          },
+          {
+            "id": "i_pu2",
+            "name": "pu2",
+            "column": null
+          },
+          {
+            "id": "i_bi1",
+            "name": "bi1",
+            "column": null
+          },
+          {
+            "id": "i_bi2",
+            "name": "bi2",
+            "column": null
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_peou_pu",
+            "kind": "structural",
+            "sourceId": "c_peou",
+            "targetId": "c_pu"
+          },
+          {
+            "id": "r_pu_bi",
+            "kind": "structural",
+            "sourceId": "c_pu",
+            "targetId": "c_bi"
+          },
+          {
+            "id": "r_peou_bi",
+            "kind": "structural",
+            "sourceId": "c_peou",
+            "targetId": "c_bi"
+          }
+        ]
+      },
+      "caption": "PEOU affects BI directly and indirectly through PU.",
+      "highlight": [
+        "r_peou_pu",
+        "r_pu_bi",
+        "r_peou_bi"
+      ]
+    },
+    {
+      "kind": "formula",
+      "display": "total = c′ + Σ (product of the paths along each indirect route)",
+      "explanation": "c′ is the direct path. In TAM: indirect PEOU → PU → BI = .498 × .501 = .249; total = .128 + .249 = .377."
+    },
+    {
+      "kind": "p",
+      "text": "In larger models, such as the DeLone & McLean example, a construct can reach the outcome along several routes. SEM Studio lists every specific indirect effect separately, so you can say which route carries the effect, and bootstraps each one."
+    }
+  ],
+  "mistake": {
+    "title": "Judging a predictor by its direct path alone",
+    "text": "PEOU's direct path to BI is small (.128), but its total effect (.377) is not. Concluding that PEOU \"does not matter\" ignores the route through PU."
+  },
+  "tryIt": {
+    "task": "Open the DeLone & McLean example and run it. In the effects table, find the specific indirect effect SYSQ → SAT → NB and the total effect of SYSQ on NB.",
+    "starter": {
+      "title": "DeLone & McLean example",
+      "exampleId": "delone-mclean",
+      "open": "analysis"
+    }
+  },
+  "checks": [
+    {
+      "id": "effects-calc",
+      "question": "X → M = .60, M → Y = .50 and X → Y = .20. What are the indirect and total effects of X on Y?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Indirect .30, total .50",
+          "correct": true,
+          "feedback": "Correct: .60 × .50 = .30; .20 + .30 = .50."
+        },
+        {
+          "id": "b",
+          "text": "Indirect 1.10, total 1.30",
+          "correct": false,
+          "feedback": "Indirect effects multiply along a route; they are not sums of paths."
+        },
+        {
+          "id": "c",
+          "text": "Indirect .30, total .30",
+          "correct": false,
+          "feedback": "The total effect also includes the direct path .20."
+        },
+        {
+          "id": "d",
+          "text": "Indirect .10, total .30",
+          "correct": false,
+          "feedback": ".10 is .60 − .50; effects along a route are products."
+        }
+      ],
+      "explanation": "Multiply along routes, add across routes."
+    },
+    {
+      "id": "specific-vs-total",
+      "question": "What is the difference between a specific indirect effect and the total indirect effect?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "A specific indirect effect is one route through particular mediators; the total indirect effect sums all routes.",
+          "correct": true,
+          "feedback": "Correct. With one mediator they coincide."
+        },
+        {
+          "id": "b",
+          "text": "There is no difference.",
+          "correct": false,
+          "feedback": "They differ whenever there is more than one route, as in the DeLone & McLean model."
+        },
+        {
+          "id": "c",
+          "text": "The specific indirect effect excludes the direct path, the total indirect effect includes it.",
+          "correct": false,
+          "feedback": "Neither includes the direct path; that is the total effect."
+        }
+      ],
+      "explanation": "Specific = one route; total indirect = all routes; total = direct + total indirect."
+    }
+  ],
+  "references": [
+    "bollen1987",
+    "hair2022",
+    "preacher2008"
+  ],
+  "glossary": [
+    "direct-effect",
+    "indirect-effect",
+    "specific-indirect-effect",
+    "total-effect",
+    "mediation"
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "id": "r2-and-f2",
+  "level": 3,
+  "order": 6,
+  "title": "Explained variance: R² and f²",
+  "summary": "R² is the in-sample share of an endogenous construct's variance explained by its predictors, and f² measures how much one predictor adds to it.",
+  "minutes": 7,
+  "prerequisites": [
+    "collinearity-vif"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "[[r-squared]] is the share of an endogenous construct's variance explained by its predictors in the estimation sample. [[adjusted-r-squared]] corrects for the number of predictors. Hair et al. (2022) describe .25, .50 and .75 as weak, moderate and substantial for marketing research, while stressing that acceptable values depend on the discipline and the outcome."
+    },
+    {
+      "kind": "formula",
+      "display": "f² = (R²included − R²excluded) / (1 − R²included)",
+      "explanation": "R²included is the R² of the outcome with the predictor, R²excluded without it. f² is the change in explained variance relative to the variance left unexplained."
+    },
+    {
+      "kind": "demo",
+      "demo": "f2",
+      "initial": {
+        "r2Included": 0.331,
+        "r2Excluded": 0.319
+      },
+      "caption": "Change the two R² values; Cohen's .02 / .15 / .35 marks are drawn as guides, not verdicts."
+    },
+    {
+      "kind": "p",
+      "text": "Cohen (1988) suggested .02, .15 and .35 as small, medium and large [[f-squared]] values. In the TAM example f² is .018 for PEOU → BI and .282 for PU → BI: PEOU adds little to BI once PU is known, which matches its small direct path. R² measures in-sample explanation only; it rises with every predictor and says nothing about predicting new cases (Level 4)."
+    }
+  ],
+  "mistake": {
+    "title": "Adding predictors to raise R²",
+    "text": "R² cannot decrease when a predictor is added, even a useless one. A model built to maximise R² overfits; judge predictors by theory, f² and, for prediction claims, out-of-sample performance."
+  },
+  "tryIt": {
+    "task": "Run the TAM example. Read R² and adjusted R² of PU and BI, and the f² table. Which predictor matters most for BI?",
+    "starter": {
+      "title": "TAM example",
+      "exampleId": "tam-mediation",
+      "open": "analysis"
+    }
+  },
+  "checks": [
+    {
+      "id": "f2-calc",
+      "question": "R² of BI is .33 with PEOU and .32 without it. What is f² for PEOU?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "About .015",
+          "correct": true,
+          "feedback": "Correct: (.33 − .32) / (1 − .33) = .01 / .67 ≈ .015, below Cohen's \"small\"."
+        },
+        {
+          "id": "b",
+          "text": ".01",
+          "correct": false,
+          "feedback": "That is only the change in R²; f² divides it by the unexplained variance 1 − R²included."
+        },
+        {
+          "id": "c",
+          "text": "About .03",
+          "correct": false,
+          "feedback": "Check the denominator: 1 − .33 = .67."
+        }
+      ],
+      "explanation": "f² scales the R² change by what is left to explain."
+    },
+    {
+      "id": "r2-meaning",
+      "question": "BI has R² = .33. Which statement is correct?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "PEOU and PU together explain about a third of the variance of BI in this sample.",
+          "correct": true,
+          "feedback": "Correct. It is an in-sample, joint measure."
+        },
+        {
+          "id": "b",
+          "text": "The model will predict a third of BI's variance in new data.",
+          "correct": false,
+          "feedback": "In-sample R² is usually optimistic about new data; that needs an out-of-sample assessment."
+        },
+        {
+          "id": "c",
+          "text": "The model is weak and should be rejected.",
+          "correct": false,
+          "feedback": "R² is not a test of the model; its adequacy depends on the outcome and the field."
+        }
+      ],
+      "explanation": "R² = in-sample explanatory power."
+    }
+  ],
+  "references": [
+    "cohen1988",
+    "hair2022",
+    "shmueli2019"
+  ],
+  "glossary": [
+    "r-squared",
+    "adjusted-r-squared",
+    "f-squared",
+    "in-sample-fit"
+  ]
+}

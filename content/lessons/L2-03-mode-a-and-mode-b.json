@@ -1,0 +1,298 @@
+{
+  "id": "mode-a-and-mode-b",
+  "level": 2,
+  "order": 3,
+  "title": "Mode A and Mode B weights",
+  "summary": "PLS estimates outer weights either from simple correlations (Mode A) or from a multiple regression (Mode B); the mode is an estimation choice that is not the same thing as formative measurement.",
+  "minutes": 8,
+  "prerequisites": [
+    "reflective-and-formative"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "Each PLS construct score is a weighted sum of its indicators. The weights are estimated in one of two ways. In [[mode-a]] each weight is proportional to the correlation of the indicator with the construct's inner proxy, as if each indicator were regressed on that proxy separately. In [[mode-b]] the proxy is regressed on all indicators of the block jointly, so the weights are multiple-regression coefficients."
+    },
+    {
+      "kind": "formula",
+      "display": "Mode A: wᵢ ∝ cor(xᵢ, Z)    Mode B: w ∝ R⁻¹ · r",
+      "explanation": "Z is the inner proxy of the construct. In Mode A each weight is proportional to the correlation of indicator xᵢ with Z. In Mode B the weight vector is the inverse of the indicators' correlation matrix R times the vector r of their correlations with Z, so the weights depend on how the indicators correlate with each other."
+    },
+    {
+      "kind": "p",
+      "text": "Because Mode B uses the indicators' intercorrelations, collinear indicators make its weights unstable and can even flip their signs; check the indicator [[vif]]. Mode A is unaffected by collinearity within the block."
+    },
+    {
+      "kind": "p",
+      "text": "Mode is an estimation choice, not a theory of measurement. Mode B consistently estimates the weights of a composite model, while Mode A combined with the consistency correction of PLSc matches the reflective common-factor model (Dijkstra 2017). Composites can also be built with Mode A or fixed weights, and a formative construct with causal indicators and its own error term is not a composite at all (Bollen & Bauldry 2011). SEM Studio ties the mode to the declared measurement: reflective blocks use Mode A, composite-formative blocks Mode B; some other programs let you choose."
+    }
+  ],
+  "mistake": {
+    "title": "Treating Mode B as proof of formative measurement",
+    "text": "Estimating a block with Mode B does not validate a formative theory, and choosing Mode A for an index is not automatically an error. Justify the measurement model conceptually and report the weighting mode as an estimation decision."
+  },
+  "tryIt": {
+    "task": "Run PLS-SEM on this model. On the Results page compare the outer weights of F (Mode B) with those of X (Mode A), and look up the indicator VIFs of F.",
+    "starter": {
+      "title": "Mixed composite and reflective model",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_f",
+            "indicatorIds": [
+              "i_f1",
+              "i_f2",
+              "i_f3",
+              "i_f4"
+            ],
+            "label": "Composite F",
+            "measurement": "composite-formative",
+            "name": "F"
+          },
+          {
+            "id": "c_x",
+            "indicatorIds": [
+              "i_x1",
+              "i_x2",
+              "i_x3"
+            ],
+            "label": "Reflective X",
+            "measurement": "reflective",
+            "name": "X"
+          },
+          {
+            "id": "c_y",
+            "indicatorIds": [
+              "i_y1",
+              "i_y2",
+              "i_y3",
+              "i_y4"
+            ],
+            "label": "Reflective Y",
+            "measurement": "reflective",
+            "name": "Y"
+          }
+        ],
+        "indicators": [
+          {
+            "column": "f1",
+            "id": "i_f1",
+            "level": "ordinal",
+            "name": "f1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "f2",
+            "id": "i_f2",
+            "level": "ordinal",
+            "name": "f2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "f3",
+            "id": "i_f3",
+            "level": "ordinal",
+            "name": "f3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "f4",
+            "id": "i_f4",
+            "level": "ordinal",
+            "name": "f4",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "x1",
+            "id": "i_x1",
+            "level": "ordinal",
+            "name": "x1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "x2",
+            "id": "i_x2",
+            "level": "ordinal",
+            "name": "x2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "x3",
+            "id": "i_x3",
+            "level": "ordinal",
+            "name": "x3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "y1",
+            "id": "i_y1",
+            "level": "ordinal",
+            "name": "y1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "y2",
+            "id": "i_y2",
+            "level": "ordinal",
+            "name": "y2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "y3",
+            "id": "i_y3",
+            "level": "ordinal",
+            "name": "y3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "y4",
+            "id": "i_y4",
+            "level": "ordinal",
+            "name": "y4",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_f_y",
+            "kind": "structural",
+            "sourceId": "c_f",
+            "targetId": "c_y"
+          },
+          {
+            "id": "r_x_y",
+            "kind": "structural",
+            "sourceId": "c_x",
+            "targetId": "c_y"
+          },
+          {
+            "id": "r_f_x",
+            "kind": "covariance",
+            "sourceId": "c_f",
+            "targetId": "c_x"
+          }
+        ]
+      },
+      "open": "analysis",
+      "bundledDatasetId": "pls-mixed-composite",
+      "analysis": {
+        "method": "pls-sem",
+        "engine": "browser",
+        "estimator": "pls-pm",
+        "missingData": "listwise",
+        "pls": {
+          "innerWeighting": "path",
+          "maxIterations": 300,
+          "tolerance": 1e-07
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "mode-b-true",
+      "question": "Which statement about Mode B is correct?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Its weights are multiple-regression coefficients, so collinearity among the block's indicators affects them.",
+          "correct": true,
+          "feedback": "Correct. That is why indicator VIFs are checked for Mode B blocks."
+        },
+        {
+          "id": "b",
+          "text": "It is required whenever indicators are measured on Likert scales.",
+          "correct": false,
+          "feedback": "The response format has nothing to do with the weighting mode."
+        },
+        {
+          "id": "c",
+          "text": "It turns any block into a formative construct.",
+          "correct": false,
+          "feedback": "The mode only changes how weights are estimated; whether a construct is formative is a conceptual question."
+        },
+        {
+          "id": "d",
+          "text": "It corrects composites for measurement error.",
+          "correct": false,
+          "feedback": "Error correction for common factors is the job of PLSc, not of Mode B."
+        }
+      ],
+      "explanation": "Mode B = regression weights."
+    },
+    {
+      "id": "negative-weight",
+      "question": "In a Mode B block, indicator f3 has a positive loading but a negative weight. What is the most plausible explanation?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Collinearity or suppression among the block's indicators; inspect the VIFs and the content before acting.",
+          "correct": true,
+          "feedback": "Correct. Regression weights can change sign when predictors overlap, even if each correlates positively with the composite."
+        },
+        {
+          "id": "b",
+          "text": "f3 is reverse-worded and must be reverse scored.",
+          "correct": false,
+          "feedback": "A reverse-worded item would show a negative loading too. Here the loading is positive."
+        },
+        {
+          "id": "c",
+          "text": "The algorithm failed to converge.",
+          "correct": false,
+          "feedback": "Sign differences between weights and loadings are common in converged solutions; convergence is reported separately."
+        }
+      ],
+      "explanation": "Weights and loadings answer different questions in Mode B."
+    }
+  ],
+  "references": [
+    "dijkstra2017",
+    "lohmoller1989",
+    "bollen2011",
+    "hair2022"
+  ],
+  "glossary": [
+    "mode-a",
+    "mode-b",
+    "outer-weight",
+    "vif",
+    "collinearity",
+    "formative-measurement"
+  ]
+}

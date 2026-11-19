@@ -1,0 +1,225 @@
+{
+  "id": "signs-and-orientation",
+  "level": 2,
+  "order": 6,
+  "title": "Signs, orientation and reverse scoring",
+  "summary": "A construct has no natural sign, so negatively worded items must be reverse scored with the scale endpoints before estimation, or reliability and validity results become meaningless.",
+  "minutes": 8,
+  "prerequisites": [
+    "standardized-coefficients"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "Multiplying all weights of a block by −1 gives an equally valid solution: [[sign-indeterminacy]]. Software therefore orients each block, typically so that most loadings are positive, and SEM Studio warns when a loading is negative."
+    },
+    {
+      "kind": "p",
+      "text": "A negatively worded item (\"I regret choosing this provider\") correlates negatively with the other items of its scale. [[reverse-scoring]] flips it with the scale endpoints:"
+    },
+    {
+      "kind": "formula",
+      "display": "x′ = (min + max) − x",
+      "explanation": "min and max are the endpoints of the response scale, so on a 1–7 scale x′ = 8 − x: 1 becomes 7, 4 stays 4, 7 becomes 1. Use the scale endpoints, never the observed minimum and maximum."
+    },
+    {
+      "kind": "p",
+      "text": "Forgetting it is not always visible in the paths. In the item-screening data, with the negatively worded item left as answered, its loading is −.81 and Cronbach's α of the scale collapses to .06, yet the path to loyalty is unchanged (.465), because Mode A simply gives the item a negative weight. Reliability and validity checks expose the problem; the structural results hide it."
+    },
+    {
+      "kind": "callout",
+      "variant": "tip",
+      "text": "In SEM Studio, mark the indicator as reverse scored and enter its endpoints, or create a reversed column in Data Lab. Do one or the other, not both."
+    }
+  ],
+  "mistake": {
+    "title": "Deleting a negatively loading item",
+    "text": "A negative loading usually means a coding issue, not a bad item. Check the wording first; reverse score it if it is negatively worded. Reverse scoring with the observed minimum and maximum instead of the endpoints silently shifts the values."
+  },
+  "tryIt": {
+    "task": "In this starter, indicator x3 is bound to the column x3_rev, a reverse-worded copy of x3. Run PLS-SEM and look at the warning and the loading of x3. Then mark x3 as reverse scored (scale 1–7) and run again.",
+    "starter": {
+      "title": "Two constructs with a reverse-worded item",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_x",
+            "indicatorIds": [
+              "i_x1",
+              "i_x2",
+              "i_x3"
+            ],
+            "label": "Exogenous construct X",
+            "measurement": "reflective",
+            "name": "X"
+          },
+          {
+            "id": "c_y",
+            "indicatorIds": [
+              "i_y1",
+              "i_y2",
+              "i_y3"
+            ],
+            "label": "Endogenous construct Y",
+            "measurement": "reflective",
+            "name": "Y"
+          }
+        ],
+        "indicators": [
+          {
+            "column": "x1",
+            "id": "i_x1",
+            "level": "ordinal",
+            "name": "x1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "x2",
+            "id": "i_x2",
+            "level": "ordinal",
+            "name": "x2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "x3_rev",
+            "id": "i_x3",
+            "level": "ordinal",
+            "name": "x3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "y1",
+            "id": "i_y1",
+            "level": "ordinal",
+            "name": "y1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "y2",
+            "id": "i_y2",
+            "level": "ordinal",
+            "name": "y2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "y3",
+            "id": "i_y3",
+            "level": "ordinal",
+            "name": "y3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_x_y",
+            "kind": "structural",
+            "sourceId": "c_x",
+            "targetId": "c_y"
+          }
+        ]
+      },
+      "open": "modeler",
+      "bundledDatasetId": "pls-two-construct",
+      "analysis": {
+        "method": "pls-sem",
+        "engine": "browser",
+        "estimator": "pls-pm",
+        "missingData": "listwise",
+        "pls": {
+          "innerWeighting": "path",
+          "maxIterations": 300,
+          "tolerance": 1e-07
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "reverse-five",
+      "question": "On a 1–5 scale, what is the reverse-scored value of a response of 2?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "4",
+          "correct": true,
+          "feedback": "Correct: (1 + 5) − 2 = 4."
+        },
+        {
+          "id": "b",
+          "text": "3",
+          "correct": false,
+          "feedback": "That subtracts from 5 only. The formula uses min + max = 6."
+        },
+        {
+          "id": "c",
+          "text": "−2",
+          "correct": false,
+          "feedback": "Multiplying by −1 flips the sign but leaves values outside the response scale; standardised results would agree, but IPMA and descriptive statistics would not."
+        },
+        {
+          "id": "d",
+          "text": "2",
+          "correct": false,
+          "feedback": "Only the midpoint (3) maps onto itself."
+        }
+      ],
+      "explanation": "x′ = (min + max) − x."
+    },
+    {
+      "id": "hidden",
+      "question": "Why can a forgotten reverse scoring leave the PLS path almost unchanged while α collapses?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Mode A gives the unreversed item a negative weight, so the composite is exactly the same, but α assumes all items point the same way.",
+          "correct": true,
+          "feedback": "Correct. The composite absorbs the sign; internal-consistency measures do not."
+        },
+        {
+          "id": "b",
+          "text": "Because the path coefficient ignores all indicators.",
+          "correct": false,
+          "feedback": "Paths are computed from construct scores, which are built from all indicators."
+        },
+        {
+          "id": "c",
+          "text": "Because PLS automatically reverse scores items.",
+          "correct": false,
+          "feedback": "PLS orients blocks, not individual items. Item coding is the analyst's responsibility."
+        }
+      ],
+      "explanation": "Check loadings and reliability, not only paths."
+    }
+  ],
+  "references": [
+    "hair2022",
+    "nunnally1994"
+  ],
+  "glossary": [
+    "sign-indeterminacy",
+    "reverse-scoring",
+    "scale-endpoints",
+    "outer-loading",
+    "cronbachs-alpha"
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "id": "reporting-specification-and-estimation",
+  "level": 6,
+  "order": 2,
+  "title": "Reporting the model and the estimator",
+  "summary": "Another researcher should be able to rebuild your model and rerun your estimation exactly from what you report.",
+  "minutes": 7,
+  "prerequisites": [
+    "reporting-sample-and-data"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "Report the specification and the estimation choices completely (Hair et al. 2019; Appelbaum et al. 2018):"
+    },
+    {
+      "kind": "list",
+      "ordered": false,
+      "items": [
+        "A diagram with all constructs, indicators and paths, and the hypotheses on the paths.",
+        "For each construct: reflective or composite-formative, and why.",
+        "Method and estimand: classic PLS (composites), PLSc (common factors via PLS) or CB-SEM; for CB-SEM the estimator (ML, MLR), the identification (marker or std-lv) and the missing-data method.",
+        "PLS settings: weighting scheme, iteration limit, tolerance, convergence.",
+        "Inference: bootstrap draws, seed, interval type (percentile), confidence level, one- or two-sided.",
+        "Software and versions: SEM Studio and its engine version, or the R/Python packages of an export."
+      ]
+    },
+    {
+      "kind": "p",
+      "text": "SEM Studio writes a method statement with every run that contains most of these items. Check and edit it; it does not know why you chose reflective measurement or which hypotheses were directional."
+    }
+  ],
+  "mistake": {
+    "title": "\"We used SmartPLS/SEM Studio\" as the whole method section",
+    "text": "The software name tells readers nothing about the estimand, the settings or the inference. Two analyses in the same program can differ in every one of them."
+  },
+  "tryIt": {
+    "task": "Run the TAM example and open the method statement on the Results page. List any item from this lesson that it does not cover.",
+    "starter": {
+      "title": "TAM example",
+      "exampleId": "tam-mediation",
+      "open": "analysis"
+    }
+  },
+  "checks": [
+    {
+      "id": "missing-item",
+      "question": "Which detail is most important to add to \"Paths were tested with bootstrapping (p < .05)\"?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "The number of draws, the seed, the interval type and whether tests were one- or two-sided.",
+          "correct": true,
+          "feedback": "Correct. These determine and reproduce the inference."
+        },
+        {
+          "id": "b",
+          "text": "The colour of the arrows in the diagram.",
+          "correct": false,
+          "feedback": "Layout and colours are not part of the analysis."
+        },
+        {
+          "id": "c",
+          "text": "Nothing; bootstrapping is standard.",
+          "correct": false,
+          "feedback": "Bootstrap results depend on B, the seed and the interval method."
+        }
+      ],
+      "explanation": "Report everything needed to rerun."
+    },
+    {
+      "id": "estimand",
+      "question": "Why should a PLS report say whether classic PLS or PLSc was used?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "They target different estimands (composites versus common factors) and give different numbers.",
+          "correct": true,
+          "feedback": "Correct."
+        },
+        {
+          "id": "b",
+          "text": "Because PLSc is always better.",
+          "correct": false,
+          "feedback": "Neither is better in general; they answer different questions."
+        },
+        {
+          "id": "c",
+          "text": "It does not matter for reflective models.",
+          "correct": false,
+          "feedback": "It matters most for reflective models, where PLSc changes loadings and paths."
+        }
+      ],
+      "explanation": "Name the estimand."
+    }
+  ],
+  "references": [
+    "hair2019",
+    "appelbaum2018",
+    "rosseel2012"
+  ],
+  "glossary": [
+    "pls-sem",
+    "plsc",
+    "cb-sem",
+    "random-seed",
+    "bootstrap",
+    "reproducibility"
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "id": "diagnose-poor-fit",
+  "number": 11,
+  "title": "Diagnose poor CB-SEM fit without blindly following modification indices",
+  "category": "diagnose",
+  "method": "cb",
+  "difficulty": 3,
+  "prerequisiteLessons": [
+    "fit-indices",
+    "residuals-and-respecification"
+  ],
+  "skills": [
+    "Reading global fit",
+    "Theory-based respecification",
+    "Resisting MI-driven changes"
+  ],
+  "brief": [
+    {
+      "kind": "p",
+      "text": "A questionnaire (SYNTHETIC) has eight items. Its authors wrote v1–v4 to measure one facet of the construct and v5–v8 to measure a second facet, but the analyst specified a single factor. Run the starter model with CB-SEM (ML)."
+    },
+    {
+      "kind": "callout",
+      "variant": "info",
+      "text": "SEM Studio does not compute modification indices yet. Suppose a colleague ran the model in lavaan and sends you the largest ones: residual covariances v5~~v6 (MI = 98), v7~~v8 (MI = 85) and v1~~v2 (MI = 71).",
+      "title": "A colleague's suggestion"
+    }
+  ],
+  "starter": {
+    "title": "One factor for two facets",
+    "model": {
+      "constructs": [
+        {
+          "id": "c_g",
+          "name": "G",
+          "label": "One general factor (misspecified)",
+          "measurement": "reflective",
+          "indicatorIds": [
+            "i_v1",
+            "i_v2",
+            "i_v3",
+            "i_v4",
+            "i_v5",
+            "i_v6",
+            "i_v7",
+            "i_v8"
+          ]
+        }
+      ],
+      "indicators": [
+        {
+          "column": "v1",
+          "id": "i_v1",
+          "level": "continuous",
+          "name": "v1"
+        },
+        {
+          "column": "v2",
+          "id": "i_v2",
+          "level": "continuous",
+          "name": "v2"
+        },
+        {
+          "column": "v3",
+          "id": "i_v3",
+          "level": "continuous",
+          "name": "v3"
+        },
+        {
+          "column": "v4",
+          "id": "i_v4",
+          "level": "continuous",
+          "name": "v4"
+        },
+        {
+          "column": "v5",
+          "id": "i_v5",
+          "level": "continuous",
+          "name": "v5"
+        },
+        {
+          "column": "v6",
+          "id": "i_v6",
+          "level": "continuous",
+          "name": "v6"
+        },
+        {
+          "column": "v7",
+          "id": "i_v7",
+          "level": "continuous",
+          "name": "v7"
+        },
+        {
+          "column": "v8",
+          "id": "i_v8",
+          "level": "continuous",
+          "name": "v8"
+        }
+      ],
+      "relationships": []
+    },
+    "open": "modeler",
+    "bundledDatasetId": "cfa-two-factor",
+    "analysis": {
+      "method": "cb-sem",
+      "engine": "browser",
+      "estimator": "ML",
+      "missingData": "listwise",
+      "cb": {
+        "identification": "std-lv",
+        "meanStructure": false
+      }
+    }
+  },
+  "tasks": [
+    {
+      "id": "read-fit",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "How do you read the fit of the one-factor model?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Clearly unacceptable: χ²(20) ≈ 585, RMSEA ≈ .24, CFI ≈ .61, SRMR ≈ .18; the model does not reproduce the covariances.",
+          "correct": true,
+          "feedback": "Correct. Every index points to severe misfit."
+        },
+        {
+          "id": "b",
+          "text": "Acceptable, because CFI exceeds .50.",
+          "correct": false,
+          "feedback": "No published guideline considers CFI = .61 acceptable."
+        },
+        {
+          "id": "c",
+          "text": "Unacceptable only because N = 500 makes χ² sensitive.",
+          "correct": false,
+          "feedback": "RMSEA, CFI and SRMR also signal severe misfit; it is not just a χ² sample-size effect."
+        }
+      ]
+    },
+    {
+      "id": "response",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "What is the principled response?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Return to the instrument's design and specify two correlated factors (v1–v4, v5–v8).",
+          "correct": true,
+          "feedback": "Correct. The revision is motivated by theory, not by the indices."
+        },
+        {
+          "id": "b",
+          "text": "Free the three suggested residual covariances and re-run.",
+          "correct": false,
+          "feedback": "They would patch symptoms of the missing second factor and capitalise on chance (MacCallum et al. 1992)."
+        },
+        {
+          "id": "c",
+          "text": "Delete items until CFI exceeds .95.",
+          "correct": false,
+          "feedback": "Item deletion driven by fit narrows the construct and is not a substantive revision."
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "dimension": "structure",
+      "kind": "model",
+      "prompt": "Respecify the model as the instrument was designed.",
+      "check": {
+        "constructs": [
+          {
+            "key": "f1",
+            "aliases": [
+              "F1",
+              "Facet 1",
+              "Factor 1",
+              "A"
+            ],
+            "measurement": "reflective",
+            "indicators": [
+              "v1",
+              "v2",
+              "v3",
+              "v4"
+            ]
+          },
+          {
+            "key": "f2",
+            "aliases": [
+              "F2",
+              "Facet 2",
+              "Factor 2",
+              "B"
+            ],
+            "measurement": "reflective",
+            "indicators": [
+              "v5",
+              "v6",
+              "v7",
+              "v8"
+            ]
+          }
+        ],
+        "paths": [],
+        "exactPaths": true,
+        "allowExtraConstructs": false
+      }
+    },
+    {
+      "id": "rmsea",
+      "dimension": "numeric",
+      "kind": "number",
+      "prompt": "Run CB-SEM (ML) on the two-factor model and enter its RMSEA.",
+      "answer": 0.013,
+      "tolerance": 0.003,
+      "feedbackCorrect": "Correct. The theoretically specified model fits well.",
+      "feedbackWrong": "Not the expected value. Check that each item loads only on its own factor and that the two factors are allowed to correlate.",
+      "derivation": {
+        "source": {
+          "fixture": "cfa-two-factor"
+        },
+        "analysis": {
+          "method": "cb-sem",
+          "engine": "browser",
+          "estimator": "ML",
+          "missingData": "listwise",
+          "cb": {
+            "identification": "std-lv",
+            "meanStructure": false
+          }
+        },
+        "fitIndex": "rmsea"
+      }
+    }
+  ],
+  "hints": [
+    "Compare each index with what you know about typical values, but look at the whole pattern.",
+    "Where do the suggested residual covariances lie: within one facet or across facets?",
+    "What structure did the questionnaire's authors intend?"
+  ],
+  "solution": [
+    {
+      "kind": "p",
+      "text": "The one-factor model misfits severely (χ²(20) ≈ 585, RMSEA ≈ .238, CFI ≈ .61, SRMR ≈ .18). The large MIs are all within the item groups v1–v4 and v5–v8: symptoms of a missing second factor. Freeing them would raise fit without explaining anything."
+    },
+    {
+      "kind": "p",
+      "text": "Two correlated factors (v1–v4, v5–v8), as designed, give χ²(19) ≈ 20.5, RMSEA ≈ .013, CFI ≈ .999, SRMR ≈ .025, with a factor correlation of ≈ .29. Report the change and its rationale; ideally confirm on new data."
+    }
+  ],
+  "nextLesson": "heywood-cases"
+}

@@ -23,6 +23,16 @@ describe('example content', () => {
     expect(EXAMPLES.map((e) => e.id).sort()).toEqual([...ids].sort());
   });
 
+  it.each(ids)("%s: a saved layout places exactly the model's constructs and indicators", (id) => {
+    const ex = parseExample(JSON.parse(readFileSync(join(DIR, `${id}.json`), 'utf8')));
+    if (!ex.layout) return; // automatic layout
+    const nodeIds = [
+      ...ex.model.constructs.map((c) => c.id),
+      ...ex.model.indicators.map((i) => i.id),
+    ];
+    expect(Object.keys(ex.layout.nodes).sort()).toEqual(nodeIds.sort());
+  });
+
   it.each(ids)(
     '%s: parses, has its dataset, validates and estimates',
     async (id) => {

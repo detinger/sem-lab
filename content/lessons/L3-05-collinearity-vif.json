@@ -1,0 +1,292 @@
+{
+  "id": "collinearity-vif",
+  "level": 3,
+  "order": 5,
+  "title": "Collinearity and the VIF",
+  "summary": "When predictors overlap strongly, their separate effects are hard to estimate; the variance inflation factor measures that overlap.",
+  "minutes": 7,
+  "prerequisites": [
+    "discriminant-validity"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "Each endogenous construct is regressed on its predictors. If predictors correlate strongly, the data contain little information about their separate effects: standard errors grow and coefficients can even change sign. This is [[collinearity]]."
+    },
+    {
+      "kind": "formula",
+      "display": "VIFⱼ = 1 / (1 − R²ⱼ)",
+      "explanation": "R²ⱼ is the R² from regressing predictor j on the other predictors of the same outcome. VIF = 1 means no overlap; VIF = 5 means 80% of predictor j is explained by the others."
+    },
+    {
+      "kind": "demo",
+      "demo": "vif",
+      "initial": {
+        "r2": 0.716
+      },
+      "caption": "Move R²ⱼ and watch the VIF explode as it approaches 1."
+    },
+    {
+      "kind": "p",
+      "text": "Hair et al. (2022) treat VIF values of 5 or more as critical, 3–5 as possibly problematic and below 3 as ideal; these are heuristics. The [[vif]] is checked for predictor constructs in the structural model and for indicators of Mode B blocks. It is not a criterion for reflective indicators, which should correlate. In the poor-discriminant model, A and B both predict C with VIF = 3.52 and both get small f² values (.02 and .03)."
+    }
+  ],
+  "mistake": {
+    "title": "Computing VIF for reflective indicators",
+    "text": "High correlations among reflective indicators are what you want. Deleting reflective items because of their VIF lowers reliability for no reason."
+  },
+  "tryIt": {
+    "task": "Run PLS-SEM on the poor-discriminant data and find the structural VIFs of A and B as predictors of C. Then read their paths and f² values.",
+    "starter": {
+      "title": "Poor discriminant validity",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_a",
+            "indicatorIds": [
+              "i_a1",
+              "i_a2",
+              "i_a3",
+              "i_a4"
+            ],
+            "label": "Construct A",
+            "measurement": "reflective",
+            "name": "A"
+          },
+          {
+            "id": "c_b",
+            "indicatorIds": [
+              "i_b1",
+              "i_b2",
+              "i_b3",
+              "i_b4"
+            ],
+            "label": "Construct B",
+            "measurement": "reflective",
+            "name": "B"
+          },
+          {
+            "id": "c_c",
+            "indicatorIds": [
+              "i_c1",
+              "i_c2",
+              "i_c3"
+            ],
+            "label": "Construct C",
+            "measurement": "reflective",
+            "name": "C"
+          }
+        ],
+        "indicators": [
+          {
+            "column": "a1",
+            "id": "i_a1",
+            "level": "ordinal",
+            "name": "a1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "a2",
+            "id": "i_a2",
+            "level": "ordinal",
+            "name": "a2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "a3",
+            "id": "i_a3",
+            "level": "ordinal",
+            "name": "a3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "a4",
+            "id": "i_a4",
+            "level": "ordinal",
+            "name": "a4",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "b1",
+            "id": "i_b1",
+            "level": "ordinal",
+            "name": "b1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "b2",
+            "id": "i_b2",
+            "level": "ordinal",
+            "name": "b2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "b3",
+            "id": "i_b3",
+            "level": "ordinal",
+            "name": "b3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "b4",
+            "id": "i_b4",
+            "level": "ordinal",
+            "name": "b4",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "c1",
+            "id": "i_c1",
+            "level": "ordinal",
+            "name": "c1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "c2",
+            "id": "i_c2",
+            "level": "ordinal",
+            "name": "c2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "c3",
+            "id": "i_c3",
+            "level": "ordinal",
+            "name": "c3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_a_c",
+            "kind": "structural",
+            "sourceId": "c_a",
+            "targetId": "c_c"
+          },
+          {
+            "id": "r_b_c",
+            "kind": "structural",
+            "sourceId": "c_b",
+            "targetId": "c_c"
+          },
+          {
+            "id": "r_a_b",
+            "kind": "covariance",
+            "sourceId": "c_a",
+            "targetId": "c_b"
+          }
+        ]
+      },
+      "open": "analysis",
+      "bundledDatasetId": "poor-discriminant",
+      "analysis": {
+        "method": "pls-sem",
+        "engine": "browser",
+        "estimator": "pls-pm",
+        "missingData": "listwise",
+        "pls": {
+          "innerWeighting": "path",
+          "maxIterations": 300,
+          "tolerance": 1e-07
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "vif-calc",
+      "question": "Regressing predictor j on the other predictors gives R² = .80. What is its VIF?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "5",
+          "correct": true,
+          "feedback": "Correct: 1 / (1 − .80) = 5."
+        },
+        {
+          "id": "b",
+          "text": "1.25",
+          "correct": false,
+          "feedback": "That is 1 / .80; the denominator is 1 − R²."
+        },
+        {
+          "id": "c",
+          "text": ".20",
+          "correct": false,
+          "feedback": ".20 is the tolerance (1 − R²); VIF is its reciprocal."
+        }
+      ],
+      "explanation": "VIF = 1 / tolerance."
+    },
+    {
+      "id": "where-vif",
+      "question": "Where is the VIF a relevant criterion? Select all that apply.",
+      "multiple": true,
+      "options": [
+        {
+          "id": "a",
+          "text": "Predictor constructs of the same endogenous construct",
+          "correct": true,
+          "feedback": "Correct. Structural paths are regression coefficients."
+        },
+        {
+          "id": "b",
+          "text": "Indicators of a Mode B (formative) block",
+          "correct": true,
+          "feedback": "Correct. Mode B weights are regression coefficients too."
+        },
+        {
+          "id": "c",
+          "text": "Indicators of a reflective block",
+          "correct": false,
+          "feedback": "Reflective indicators are supposed to correlate; their VIF is not a quality criterion."
+        }
+      ],
+      "explanation": "VIF matters wherever regression weights are estimated."
+    }
+  ],
+  "references": [
+    "hair2022",
+    "hair2019"
+  ],
+  "glossary": [
+    "collinearity",
+    "vif",
+    "mode-b",
+    "f-squared"
+  ]
+}

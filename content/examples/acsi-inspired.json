@@ -275,5 +275,94 @@
       "tolerance": 1e-07
     },
     "seed": 20261403
+  },
+  "layout": {
+    "nodes": {
+      "c_pq": {
+        "x": 208,
+        "y": -32
+      },
+      "i_pq1": {
+        "x": 34,
+        "y": -61
+      },
+      "i_pq2": {
+        "x": 34,
+        "y": -13
+      },
+      "i_pq3": {
+        "x": 34,
+        "y": 35
+      },
+      "c_ce": {
+        "x": 208,
+        "y": 328
+      },
+      "i_ce1": {
+        "x": 34,
+        "y": 299
+      },
+      "i_ce2": {
+        "x": 34,
+        "y": 347
+      },
+      "i_ce3": {
+        "x": 34,
+        "y": 395
+      },
+      "c_loy": {
+        "x": 992,
+        "y": 136
+      },
+      "i_loy1": {
+        "x": 1184,
+        "y": 107
+      },
+      "i_loy2": {
+        "x": 1184,
+        "y": 155
+      },
+      "i_loy3": {
+        "x": 1184,
+        "y": 203
+      },
+      "c_pv": {
+        "x": 528,
+        "y": 136
+      },
+      "i_pv1": {
+        "x": 320,
+        "y": 136
+      },
+      "i_pv2": {
+        "x": 320,
+        "y": 191
+      },
+      "c_sat": {
+        "x": 800,
+        "y": 136
+      },
+      "i_sat1": {
+        "x": 677,
+        "y": 46
+      },
+      "i_sat2": {
+        "x": 809,
+        "y": 46
+      },
+      "i_sat3": {
+        "x": 941,
+        "y": 46
+      }
+    },
+    "settings": {
+      "direction": "LR",
+      "gridSize": 16,
+      "snapToGrid": true,
+      "gridVisibility": "hidden",
+      "constructShape": "ellipse",
+      "indicatorDensity": "default",
+      "collapsedConstructIds": []
+    }
   }
 }

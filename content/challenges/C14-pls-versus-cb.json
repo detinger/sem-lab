@@ -1,0 +1,186 @@
+{
+  "id": "pls-versus-cb",
+  "number": 14,
+  "title": "Compare a PLS and a CB analysis",
+  "category": "interpret",
+  "method": "both",
+  "difficulty": 3,
+  "prerequisiteLessons": [
+    "composites-and-common-factors",
+    "consistent-pls",
+    "common-factor-model"
+  ],
+  "skills": [
+    "Estimands of PLS, PLSc and CB-SEM",
+    "Comparing results across methods honestly"
+  ],
+  "brief": [
+    {
+      "kind": "p",
+      "text": "Open the service-quality example (SYNTHETIC data): service quality (SQ) → satisfaction (SAT) → loyalty (LOY), with a direct path SQ → LOY. All constructs are reflective, and the measurement model has been validated. Run CB-SEM (ML, the example's setting) and then classic PLS-SEM on the same model."
+    }
+  ],
+  "starter": {
+    "title": "Service quality example",
+    "exampleId": "service-quality",
+    "open": "analysis"
+  },
+  "tasks": [
+    {
+      "id": "r2-cb",
+      "dimension": "numeric",
+      "kind": "number",
+      "prompt": "Enter R² of LOY from CB-SEM (ML).",
+      "answer": 0.52,
+      "tolerance": 0.004,
+      "feedbackCorrect": "Correct.",
+      "feedbackWrong": "Not the expected value. Run CB-SEM with ML and read R² of LOY.",
+      "derivation": {
+        "source": {
+          "exampleId": "service-quality"
+        },
+        "analysis": {
+          "method": "cb-sem",
+          "engine": "browser",
+          "estimator": "ML",
+          "missingData": "listwise",
+          "cb": {
+            "identification": "marker",
+            "meanStructure": false
+          }
+        },
+        "constructMetric": {
+          "constructId": "c_loy",
+          "metric": "r2"
+        }
+      }
+    },
+    {
+      "id": "r2-pls",
+      "dimension": "numeric",
+      "kind": "number",
+      "prompt": "Enter R² of LOY from classic PLS-SEM.",
+      "answer": 0.421,
+      "tolerance": 0.004,
+      "feedbackCorrect": "Correct.",
+      "feedbackWrong": "Not the expected value. Switch the method to classic PLS-SEM (not PLSc) and read R² of LOY.",
+      "derivation": {
+        "source": {
+          "exampleId": "service-quality"
+        },
+        "analysis": {
+          "method": "pls-sem",
+          "engine": "browser",
+          "estimator": "pls-pm",
+          "missingData": "listwise",
+          "pls": {
+            "innerWeighting": "path",
+            "maxIterations": 300,
+            "tolerance": 1e-07
+          }
+        },
+        "constructMetric": {
+          "constructId": "c_loy",
+          "metric": "r2"
+        }
+      }
+    },
+    {
+      "id": "why",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "Why is R² of LOY lower with classic PLS?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "PLS explains composites that contain measurement error, which attenuates their correlations; CB-SEM explains error-free common factors.",
+          "correct": true,
+          "feedback": "Correct. Different estimands, not a better or worse fit."
+        },
+        {
+          "id": "b",
+          "text": "PLS fits the data worse.",
+          "correct": false,
+          "feedback": "R² of composites and of factors are different quantities; neither is a fit index here."
+        },
+        {
+          "id": "c",
+          "text": "CB-SEM overestimates R².",
+          "correct": false,
+          "feedback": "If the common-factor model holds, CB-SEM estimates the factor R² consistently."
+        }
+      ]
+    },
+    {
+      "id": "plsc",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "What would you expect from PLSc on this model?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Values close to CB-SEM, because PLSc also targets common factors.",
+          "correct": true,
+          "feedback": "Correct. PLSc gives R²(LOY) ≈ .523 here."
+        },
+        {
+          "id": "b",
+          "text": "Values close to classic PLS, because it is a PLS method.",
+          "correct": false,
+          "feedback": "The consistency correction changes the estimand to the common factor."
+        },
+        {
+          "id": "c",
+          "text": "Lower values than classic PLS.",
+          "correct": false,
+          "feedback": "Disattenuation raises correlations among reflective constructs."
+        }
+      ]
+    },
+    {
+      "id": "report",
+      "dimension": "reporting",
+      "kind": "choice",
+      "prompt": "How should both results appear in a paper?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Report the method chosen for the research question as the main analysis; if the other is shown, label it with its estimand and explain the difference.",
+          "correct": true,
+          "feedback": "Correct. Never merge or average them."
+        },
+        {
+          "id": "b",
+          "text": "Average the two R² values.",
+          "correct": false,
+          "feedback": "Averaging estimates of different quantities produces a number that estimates nothing."
+        },
+        {
+          "id": "c",
+          "text": "Report whichever gives the higher R².",
+          "correct": false,
+          "feedback": "Choosing the method by its result is outcome-driven reporting."
+        }
+      ]
+    }
+  ],
+  "hints": [
+    "Both methods report R² for LOY, but of different things. Of what?",
+    "Recall how measurement error affects correlations between composites.",
+    "PLSc and CB-SEM share an estimand; classic PLS has another."
+  ],
+  "solution": [
+    {
+      "kind": "p",
+      "text": "CB-SEM (ML): R²(LOY) ≈ .520 and standardised SAT → LOY ≈ .598. Classic PLS: R²(LOY) ≈ .421 and SAT → LOY ≈ .534. PLSc: R²(LOY) ≈ .523 and SAT → LOY ≈ .602, close to CB-SEM."
+    },
+    {
+      "kind": "p",
+      "text": "The difference is the estimand: composites with their measurement error versus common factors. Report the analysis suited to your construct theory, label any comparison with its estimand, and never merge or average results."
+    }
+  ],
+  "nextLesson": "reporting-specification-and-estimation"
+}

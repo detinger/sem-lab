@@ -1,0 +1,289 @@
+{
+  "id": "reproduce-in-r-or-python",
+  "number": 16,
+  "title": "Reproduce a model result in R or Python",
+  "category": "report",
+  "method": "pls",
+  "difficulty": 2,
+  "prerequisiteLessons": [
+    "reproducibility"
+  ],
+  "skills": [
+    "Exporting analysis code",
+    "Running R or Python scripts",
+    "Cross-engine verification"
+  ],
+  "brief": [
+    {
+      "kind": "p",
+      "text": "Run classic PLS-SEM on the TAM starter (SYNTHETIC data; no bootstrap, so the script runs quickly). Then export the analysis as an R (cSEM) or Python script from the Results page, run it on your computer or in a notebook, and read the direct path PEOU → BI from the script's output."
+    }
+  ],
+  "starter": {
+    "title": "TAM for export",
+    "model": {
+      "constructs": [
+        {
+          "id": "c_peou",
+          "indicatorIds": [
+            "i_peou1",
+            "i_peou2",
+            "i_peou3",
+            "i_peou4"
+          ],
+          "label": "Perceived ease of use (synthetic)",
+          "measurement": "reflective",
+          "name": "PEOU"
+        },
+        {
+          "id": "c_pu",
+          "indicatorIds": [
+            "i_pu1",
+            "i_pu2",
+            "i_pu3",
+            "i_pu4"
+          ],
+          "label": "Perceived usefulness (synthetic)",
+          "measurement": "reflective",
+          "name": "PU"
+        },
+        {
+          "id": "c_bi",
+          "indicatorIds": [
+            "i_bi1",
+            "i_bi2",
+            "i_bi3"
+          ],
+          "label": "Behavioural intention (synthetic)",
+          "measurement": "reflective",
+          "name": "BI"
+        }
+      ],
+      "indicators": [
+        {
+          "column": "peou1",
+          "id": "i_peou1",
+          "level": "ordinal",
+          "name": "peou1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "peou2",
+          "id": "i_peou2",
+          "level": "ordinal",
+          "name": "peou2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "peou3",
+          "id": "i_peou3",
+          "level": "ordinal",
+          "name": "peou3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "peou4",
+          "id": "i_peou4",
+          "level": "ordinal",
+          "name": "peou4",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "pu1",
+          "id": "i_pu1",
+          "level": "ordinal",
+          "name": "pu1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "pu2",
+          "id": "i_pu2",
+          "level": "ordinal",
+          "name": "pu2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "pu3",
+          "id": "i_pu3",
+          "level": "ordinal",
+          "name": "pu3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "pu4",
+          "id": "i_pu4",
+          "level": "ordinal",
+          "name": "pu4",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "bi1",
+          "id": "i_bi1",
+          "level": "ordinal",
+          "name": "bi1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "bi2",
+          "id": "i_bi2",
+          "level": "ordinal",
+          "name": "bi2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "bi3",
+          "id": "i_bi3",
+          "level": "ordinal",
+          "name": "bi3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        }
+      ],
+      "relationships": [
+        {
+          "id": "r_peou_pu",
+          "kind": "structural",
+          "sourceId": "c_peou",
+          "targetId": "c_pu"
+        },
+        {
+          "id": "r_peou_bi",
+          "kind": "structural",
+          "sourceId": "c_peou",
+          "targetId": "c_bi"
+        },
+        {
+          "id": "r_pu_bi",
+          "kind": "structural",
+          "sourceId": "c_pu",
+          "targetId": "c_bi"
+        }
+      ]
+    },
+    "open": "analysis",
+    "bundledDatasetId": "tam-mediation",
+    "analysis": {
+      "method": "pls-sem",
+      "engine": "browser",
+      "estimator": "pls-pm",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    }
+  },
+  "tasks": [
+    {
+      "id": "path",
+      "dimension": "numeric",
+      "kind": "number",
+      "prompt": "Enter the path PEOU → BI printed by your script, with four decimals.",
+      "answer": 0.1276,
+      "tolerance": 0.0005,
+      "feedbackCorrect": "Correct. The exported script reproduces the app's estimate.",
+      "feedbackWrong": "Not the expected value. Check that the script read the exported data file unchanged and that you copied the direct path PEOU → BI.",
+      "derivation": {
+        "source": {
+          "fixture": "tam-mediation"
+        },
+        "analysis": {
+          "method": "pls-sem",
+          "engine": "browser",
+          "estimator": "pls-pm",
+          "missingData": "listwise",
+          "pls": {
+            "innerWeighting": "path",
+            "maxIterations": 300,
+            "tolerance": 1e-07
+          }
+        },
+        "parameterKey": "path:c_peou->c_bi"
+      }
+    },
+    {
+      "id": "ran",
+      "dimension": "reporting",
+      "kind": "self-assess",
+      "prompt": "Tick what you did.",
+      "checklist": [
+        "I exported the script together with its data file and README",
+        "I installed the required packages at the versions the README names (or noted the versions I used)",
+        "I ran the script without editing the data file",
+        "The Python script's final check reported OK (or the R output matched the app's paths)",
+        "I recorded the software versions for my methods section"
+      ]
+    },
+    {
+      "id": "mismatch",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "A classmate's script prints PEOU → BI = .0994. What is the most likely reason?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "They exported a PLSc run, which targets a different estimand.",
+          "correct": true,
+          "feedback": "Correct. PLSc gives about .099 for this path; the export reproduces whatever method was run."
+        },
+        {
+          "id": "b",
+          "text": "Floating-point differences between R and the browser.",
+          "correct": false,
+          "feedback": "Those are around 1e-12, far below a difference of .03."
+        },
+        {
+          "id": "c",
+          "text": "Random variation of the PLS algorithm.",
+          "correct": false,
+          "feedback": "The PLS point estimates are deterministic; no seed is involved without bootstrapping."
+        }
+      ]
+    }
+  ],
+  "hints": [
+    "The export button is on the Results page of a finished run.",
+    "Follow the README in the exported folder; it names the packages and how to start the script.",
+    "The Python script prints a structural-paths table and a final agreement check; the R script prints cSEM's summary."
+  ],
+  "solution": [
+    {
+      "kind": "p",
+      "text": "The exported script estimates the same model on the same prepared data and reproduces PEOU → BI = .1276 (the browser engine and the exports agree to about 1e-12 for PLS). A large difference means different inputs: another method (PLSc gives ≈ .0994), edited data or changed options."
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "id": "tables-and-figures",
+  "level": 6,
+  "order": 3,
+  "title": "Word-ready tables and figures",
+  "summary": "Good result tables are labelled, consistent and self-explanatory, with a note that states the estimator, the inference and the abbreviations.",
+  "minutes": 7,
+  "prerequisites": [
+    "reporting-specification-and-estimation"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "A results table should make sense without the text. Use one table per assessment step (measurement, discriminant validity, structural paths), consistent decimals (two or three), and clear column labels that say whether coefficients are standardised."
+    },
+    {
+      "kind": "list",
+      "ordered": false,
+      "items": [
+        "Structural table: hypothesis, path, estimate, 95% CI, p, supported or not, plus R² of each endogenous construct.",
+        "Measurement table: loadings (or weights for composites), α, ρA, ρC, AVE, marking not-applicable cells as such rather than leaving them blank.",
+        "Note under the table: estimator, bootstrap draws, seed and interval type, N, abbreviations.",
+        "Write p < .001 instead of p = .000, and do not round confidence limits so that they appear to touch zero."
+      ]
+    },
+    {
+      "kind": "p",
+      "text": "Figures: a path diagram with standardised paths, significance marking and R² values is the usual summary. SEM Studio copies tables to Word with a note and exports diagrams; check that labels and notes are complete before pasting."
+    }
+  ],
+  "mistake": {
+    "title": "Unlabelled tables",
+    "text": "A table of numbers without a note on the estimator, the interval method or which coefficients are standardised forces readers to guess, and invites misinterpretation."
+  },
+  "tryIt": {
+    "task": "Run the TAM example and use the copy-to-Word action on the structural paths table. Check that the note states the estimator, the bootstrap settings and that the paths are standardised.",
+    "starter": {
+      "title": "TAM example",
+      "exampleId": "tam-mediation",
+      "open": "analysis"
+    }
+  },
+  "checks": [
+    {
+      "id": "p-zero",
+      "question": "The software shows p = 0.000 for a path. How should you report it?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "p < .001",
+          "correct": true,
+          "feedback": "Correct. A p value is never exactly zero."
+        },
+        {
+          "id": "b",
+          "text": "p = .000",
+          "correct": false,
+          "feedback": "This suggests an impossible exact zero."
+        },
+        {
+          "id": "c",
+          "text": "p = 0",
+          "correct": false,
+          "feedback": "Same problem: bootstrap and analytic p values are positive."
+        }
+      ],
+      "explanation": "Report small p values as an inequality."
+    },
+    {
+      "id": "note-content",
+      "question": "Which belongs in the note under a PLS path table? Select all that apply.",
+      "multiple": true,
+      "options": [
+        {
+          "id": "a",
+          "text": "The number of bootstrap draws, the seed and the CI type",
+          "correct": true,
+          "feedback": "Correct."
+        },
+        {
+          "id": "b",
+          "text": "Abbreviations of the constructs",
+          "correct": true,
+          "feedback": "Correct."
+        },
+        {
+          "id": "c",
+          "text": "That coefficients are standardised",
+          "correct": true,
+          "feedback": "Correct."
+        },
+        {
+          "id": "d",
+          "text": "The analyst's favourite hypothesis",
+          "correct": false,
+          "feedback": "Notes describe how the numbers were obtained, not preferences."
+        }
+      ],
+      "explanation": "A note makes the table self-contained."
+    }
+  ],
+  "references": [
+    "appelbaum2018",
+    "hair2019"
+  ],
+  "glossary": [
+    "path-coefficient",
+    "confidence-interval",
+    "standardized-coefficient",
+    "p-value"
+  ]
+}

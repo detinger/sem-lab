@@ -1,0 +1,51 @@
+/* Styles of ModelDiagram; imported by the component so every page that shows a diagram
+   (Learn, Reference, Examples) gets them, whichever route loaded first. */
+.diagram {
+  margin: 0;
+}
+
+.diagram__canvas {
+  overflow: auto;
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #ffffff; /* publication colours inside: the exporter draws on white */
+  text-align: center;
+}
+
+.diagram__canvas svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.diagram__canvas svg {
+  max-height: 340px;
+}
+
+.diagram--compact .diagram__canvas svg {
+  max-height: 200px;
+}
+
+.diagram__canvas .hl rect,
+.diagram__canvas .hl ellipse {
+  stroke: #d9822b;
+  stroke-width: 3;
+  fill: #fbeedd;
+}
+
+.diagram__canvas path.hl {
+  stroke: #d9822b !important;
+  stroke-width: 3 !important;
+}
+
+.diagram__empty {
+  margin: var(--space-8);
+  color: #4b5867;
+  font-size: 12px;
+}
+
+.diagram figcaption {
+  margin-top: var(--space-3);
+  color: var(--text-muted);
+  font-size: 12px;
+}

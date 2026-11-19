@@ -1,0 +1,216 @@
+{
+  "id": "fit-indices",
+  "level": 5,
+  "order": 4,
+  "title": "Global fit: χ², RMSEA, CFI, TLI and SRMR",
+  "summary": "Fit indices summarise how far the model-implied covariances are from the observed ones; their cut-offs are context-dependent heuristics, not tests of truth.",
+  "minutes": 10,
+  "prerequisites": [
+    "identification"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "The [[chi-square-test]] tests whether the model reproduces the population covariances exactly; with large samples it rejects even trivial misfit. Approximate indices complement it: [[rmsea]] measures misfit per degree of freedom (Steiger 1990; Browne & Cudeck 1993), [[cfi]] and [[tli]] compare the model with a baseline model of uncorrelated indicators (Bentler 1990), and [[srmr]] is the root mean square of the differences between observed and implied correlations."
+    },
+    {
+      "kind": "formula",
+      "display": "RMSEA = √( max(χ² − df, 0) / (df · N) )",
+      "explanation": "χ² is the model test statistic, df its degrees of freedom and N the sample size (SEM Studio follows lavaan in using N). Values near 0 mean little misfit per degree of freedom."
+    },
+    {
+      "kind": "demo",
+      "demo": "rmsea-cfi",
+      "initial": {
+        "chisq": 20.52,
+        "df": 19,
+        "n": 500,
+        "baselineChisq": 1476.66,
+        "baselineDf": 28
+      },
+      "caption": "Starts at the two-factor CFA (RMSEA ≈ .013, CFI ≈ .999). Increase χ² to see how both indices respond."
+    },
+    {
+      "kind": "p",
+      "text": "Hu and Bentler (1999) proposed combinations such as CFI ≥ .95, RMSEA ≤ .06 and SRMR ≤ .08 for ML with continuous data. These came from specific simulation conditions; misfit detection depends on sample size, degrees of freedom and loading size, so the values are heuristics, not golden rules (Marsh et al. 2004). Good fit does not prove a model: equivalent models fit identically, and fit says nothing about R²."
+    }
+  ],
+  "mistake": {
+    "title": "Using fit indices as pass/fail stamps",
+    "text": "A CFI of .951 is not \"valid\" and .949 \"invalid\". Report several indices with the χ² test, examine where the misfit lies (residuals), and remember that a well-fitting model can still be wrong."
+  },
+  "tryIt": {
+    "task": "Run CB-SEM on the two-factor model and read χ², df, RMSEA, CFI, TLI and SRMR. Then build a one-factor model with all eight items (next lesson's starter does this for you) and compare.",
+    "starter": {
+      "title": "Two-factor CFA",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_f1",
+            "indicatorIds": [
+              "i_v1",
+              "i_v2",
+              "i_v3",
+              "i_v4"
+            ],
+            "label": "Factor 1",
+            "measurement": "reflective",
+            "name": "F1"
+          },
+          {
+            "id": "c_f2",
+            "indicatorIds": [
+              "i_v5",
+              "i_v6",
+              "i_v7",
+              "i_v8"
+            ],
+            "label": "Factor 2",
+            "measurement": "reflective",
+            "name": "F2"
+          }
+        ],
+        "indicators": [
+          {
+            "column": "v1",
+            "id": "i_v1",
+            "level": "continuous",
+            "name": "v1"
+          },
+          {
+            "column": "v2",
+            "id": "i_v2",
+            "level": "continuous",
+            "name": "v2"
+          },
+          {
+            "column": "v3",
+            "id": "i_v3",
+            "level": "continuous",
+            "name": "v3"
+          },
+          {
+            "column": "v4",
+            "id": "i_v4",
+            "level": "continuous",
+            "name": "v4"
+          },
+          {
+            "column": "v5",
+            "id": "i_v5",
+            "level": "continuous",
+            "name": "v5"
+          },
+          {
+            "column": "v6",
+            "id": "i_v6",
+            "level": "continuous",
+            "name": "v6"
+          },
+          {
+            "column": "v7",
+            "id": "i_v7",
+            "level": "continuous",
+            "name": "v7"
+          },
+          {
+            "column": "v8",
+            "id": "i_v8",
+            "level": "continuous",
+            "name": "v8"
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_f1_f2",
+            "kind": "covariance",
+            "sourceId": "c_f1",
+            "targetId": "c_f2"
+          }
+        ]
+      },
+      "open": "analysis",
+      "bundledDatasetId": "cfa-two-factor",
+      "analysis": {
+        "method": "cb-sem",
+        "engine": "browser",
+        "estimator": "ML",
+        "missingData": "listwise",
+        "cb": {
+          "identification": "std-lv",
+          "meanStructure": false
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "rmsea-calc",
+      "question": "χ² = 50, df = 20, N = 200. What is the RMSEA (lavaan convention with N)?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "About .087",
+          "correct": true,
+          "feedback": "Correct: (50 − 20) / (20 × 200) = .0075; √.0075 ≈ .087."
+        },
+        {
+          "id": "b",
+          "text": "About .056",
+          "correct": false,
+          "feedback": "Check the numerator: it is χ² − df = 30, not χ² / df."
+        },
+        {
+          "id": "c",
+          "text": "About .25",
+          "correct": false,
+          "feedback": "Remember to divide by df · N before taking the square root."
+        }
+      ],
+      "explanation": "RMSEA = √((χ² − df) / (df · N))."
+    },
+    {
+      "id": "hu-bentler",
+      "question": "Which statement about the Hu and Bentler (1999) cut-offs is correct?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "They are heuristics derived from particular simulation conditions and should not be applied mechanically.",
+          "correct": true,
+          "feedback": "Correct (Marsh et al. 2004)."
+        },
+        {
+          "id": "b",
+          "text": "A model meeting all of them is the correct model.",
+          "correct": false,
+          "feedback": "Fit cannot rule out equivalent or alternative models."
+        },
+        {
+          "id": "c",
+          "text": "They apply equally to PLS-SEM results.",
+          "correct": false,
+          "feedback": "They were developed for ML CB-SEM; PLS fit measures have different properties."
+        }
+      ],
+      "explanation": "Context matters."
+    }
+  ],
+  "references": [
+    "hu1999",
+    "marsh2004",
+    "browne1993",
+    "steiger1990",
+    "bentler1990"
+  ],
+  "glossary": [
+    "model-fit",
+    "chi-square-test",
+    "rmsea",
+    "cfi",
+    "tli",
+    "srmr",
+    "equivalent-models"
+  ]
+}

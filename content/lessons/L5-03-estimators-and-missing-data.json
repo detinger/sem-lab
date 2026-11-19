@@ -1,0 +1,208 @@
+{
+  "id": "estimators-and-missing-data",
+  "level": 5,
+  "order": 3,
+  "title": "Estimators: ML, robust ML, ordinal data and FIML",
+  "summary": "Maximum likelihood assumes multivariate normality; robust ML keeps its estimates but corrects standard errors and the test, ordinal items may need ordinal estimators, and FIML uses all available data under MAR.",
+  "minutes": 9,
+  "prerequisites": [
+    "identification"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "[[maximum-likelihood]] (ML) is the default CB-SEM estimator. Its estimates are consistent under fairly general conditions, but its standard errors and χ² test assume multivariate normality. [[mlr]] keeps the ML estimates and replaces the standard errors with robust (sandwich) ones and the test with a scaled statistic (Yuan & Bentler 2000). In SEM Studio, ML and MLR give identical point estimates; only SEs, p values and the scaled fit indices differ."
+    },
+    {
+      "kind": "p",
+      "text": "Rating items are ordinal. With five or more roughly symmetric categories, ML or MLR on the raw items usually performs acceptably; with fewer categories or strong skew, diagonally weighted least squares on polychoric correlations ([[wlsmv]]) is preferable (Flora & Curran 2004; Rhemtulla et al. 2012). SEM Studio's browser engine offers ML and MLR; WLSMV and MLM are not available in it."
+    },
+    {
+      "kind": "p",
+      "text": "Missing data: [[listwise-deletion]] drops every case with any missing value; it is unbiased only if data are missing completely at random and wastes information. [[fiml]] uses every observed value and is unbiased under missing at random (Enders & Bandalos 2001; Schafer & Graham 2002). In the missing-mcar data listwise deletion keeps 258 of 500 cases; FIML uses all 500. SEM Studio supports FIML for CB-SEM with a mean structure; it is not defined for PLS-SEM."
+    },
+    {
+      "kind": "callout",
+      "variant": "tip",
+      "text": "State the [[missing-data-mechanism]] you assume (MCAR, MAR) and why; FIML does not fix data that are missing not at random."
+    }
+  ],
+  "mistake": {
+    "title": "Thinking MLR changes the estimates",
+    "text": "MLR is not a different model: loadings and paths are the same as ML. If a result changes \"with MLR\", only its standard error or p value changed."
+  },
+  "tryIt": {
+    "task": "Run this two-factor CFA with listwise deletion, then set missing-data handling to FIML (with a mean structure) and run again. Compare the number of cases used and the factor correlation.",
+    "starter": {
+      "title": "CFA with missing data",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_f1",
+            "indicatorIds": [
+              "i_v1",
+              "i_v2",
+              "i_v3",
+              "i_v4"
+            ],
+            "label": "Factor 1",
+            "measurement": "reflective",
+            "name": "F1"
+          },
+          {
+            "id": "c_f2",
+            "indicatorIds": [
+              "i_v5",
+              "i_v6",
+              "i_v7",
+              "i_v8"
+            ],
+            "label": "Factor 2",
+            "measurement": "reflective",
+            "name": "F2"
+          }
+        ],
+        "indicators": [
+          {
+            "column": "v1",
+            "id": "i_v1",
+            "level": "continuous",
+            "name": "v1"
+          },
+          {
+            "column": "v2",
+            "id": "i_v2",
+            "level": "continuous",
+            "name": "v2"
+          },
+          {
+            "column": "v3",
+            "id": "i_v3",
+            "level": "continuous",
+            "name": "v3"
+          },
+          {
+            "column": "v4",
+            "id": "i_v4",
+            "level": "continuous",
+            "name": "v4"
+          },
+          {
+            "column": "v5",
+            "id": "i_v5",
+            "level": "continuous",
+            "name": "v5"
+          },
+          {
+            "column": "v6",
+            "id": "i_v6",
+            "level": "continuous",
+            "name": "v6"
+          },
+          {
+            "column": "v7",
+            "id": "i_v7",
+            "level": "continuous",
+            "name": "v7"
+          },
+          {
+            "column": "v8",
+            "id": "i_v8",
+            "level": "continuous",
+            "name": "v8"
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_f1_f2",
+            "kind": "covariance",
+            "sourceId": "c_f1",
+            "targetId": "c_f2"
+          }
+        ]
+      },
+      "open": "analysis",
+      "bundledDatasetId": "missing-mcar",
+      "analysis": {
+        "method": "cb-sem",
+        "engine": "browser",
+        "estimator": "ML",
+        "missingData": "listwise",
+        "cb": {
+          "identification": "std-lv",
+          "meanStructure": false
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "ml-mlr",
+      "question": "You re-run a CB model with MLR instead of ML. What changes?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Standard errors, p values and the (scaled) test statistic; the estimates stay the same.",
+          "correct": true,
+          "feedback": "Correct."
+        },
+        {
+          "id": "b",
+          "text": "The loadings and paths.",
+          "correct": false,
+          "feedback": "MLR uses the ML estimates; only the inference around them changes."
+        },
+        {
+          "id": "c",
+          "text": "Nothing at all.",
+          "correct": false,
+          "feedback": "The standard errors and the test statistic are corrected for non-normality."
+        }
+      ],
+      "explanation": "Robust = same estimates, corrected inference."
+    },
+    {
+      "id": "missing",
+      "question": "About 8% of cells are missing at random across eight items. Which approach does the literature favour for CB-SEM?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "FIML",
+          "correct": true,
+          "feedback": "Correct. It uses all available information and is unbiased under MAR."
+        },
+        {
+          "id": "b",
+          "text": "Listwise deletion",
+          "correct": false,
+          "feedback": "Here it would discard about half of the cases, losing power, and it requires the stricter MCAR assumption."
+        },
+        {
+          "id": "c",
+          "text": "Replacing missing values by the item mean",
+          "correct": false,
+          "feedback": "Mean substitution shrinks variances and correlations and biases estimates."
+        }
+      ],
+      "explanation": "Prefer FIML (or multiple imputation) under MAR."
+    }
+  ],
+  "references": [
+    "yuan2000",
+    "flora2004",
+    "rhemtulla2012",
+    "enders2001",
+    "schafer2002",
+    "rosseel2012"
+  ],
+  "glossary": [
+    "maximum-likelihood",
+    "mlr",
+    "wlsmv",
+    "fiml",
+    "listwise-deletion",
+    "missing-data-mechanism"
+  ]
+}

@@ -30,6 +30,7 @@ uv run --python 3.12 --with numpy python packages/fixtures/scripts/generate_synt
 | `service-quality` | sampled | 450 | Reference/teaching project for CB-SEM (SYNTHETIC; inspired by the service quality -> satisfaction -> loyalty chain, e.g. Cronin & Taylor 1992; Zeithaml, Berry & Parasuraman 1996; does not reproduce any published dataset): ML/MLR SEM, mediation, PLS vs CB estimands |
 | `acsi-inspired` | sampled | 500 | Reference/teaching project (SYNTHETIC; inspired by the ACSI model structure of Fornell et al. 1996; NOT ACSI data): PLS-SEM on 10-point items with bootstrap, mediation and IPMA of loyalty/satisfaction |
 | `utaut2-inspired` | sampled | 450 | Reference/teaching project (SYNTHETIC; inspired by UTAUT2, Venkatesh, Thong & Xu 2012; does not reproduce any published dataset): eight-construct PLS-SEM, hypothesis tests incl. a near-zero path, indirect effects |
+| `item-screening` | sampled | 300 | Item screening (Challenge 5): detect a reverse-worded item (sat3r) and a constant item (loy4) before estimation |
 | `broken-mapping` | model-only | — | Broken CSV mapping: cannot run; precisely names missing columns |
 
 ## Kinds

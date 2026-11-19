@@ -1,0 +1,111 @@
+{
+  "id": "bootstrap",
+  "level": 4,
+  "order": 1,
+  "title": "The bootstrap",
+  "summary": "Bootstrapping re-estimates the model on many resamples of the data to show how much an estimate would vary from sample to sample.",
+  "minutes": 8,
+  "prerequisites": [
+    "direct-indirect-total-effects"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "PLS-SEM makes no distributional assumption from which standard errors could be derived, so it uses the [[bootstrap]] (Efron & Tibshirani 1993): draw B samples of the same size n from your data with replacement, re-estimate the model on each, and look at the distribution of the B estimates."
+    },
+    {
+      "kind": "demo",
+      "demo": "bootstrap",
+      "initial": {
+        "draws": 500,
+        "seed": 7
+      },
+      "caption": "Resample a small fixed sample. The spread of the resampled estimates approximates sampling variability; the same seed gives the same draws."
+    },
+    {
+      "kind": "p",
+      "text": "The [[standard-error]] is the standard deviation of the bootstrap estimates, and percentile confidence intervals are read off their quantiles (next lesson). Because the draws are random, results depend slightly on B and on the [[random-seed]]. SEM Studio requires a seed so that every result can be reproduced exactly, and the exported R and Python scripts draw the same resamples."
+    },
+    {
+      "kind": "p",
+      "text": "Use a few hundred draws to explore and several thousand for reported results; if a conclusion changes when you rerun with another seed, B is too small or the effect is borderline. Report B, the seed and the interval type (Streukens & Leroi-Werelds 2016)."
+    }
+  ],
+  "mistake": {
+    "title": "Changing the seed until p < .05",
+    "text": "Rerunning with different seeds and keeping the \"best\" result is p-hacking. Fix the seed and B before running, and report them."
+  },
+  "tryIt": {
+    "task": "Open the TAM example; its analysis settings already request 5,000 bootstrap draws with a fixed seed. Run it and inspect the bootstrap distribution of PEOU → BI on the Results page.",
+    "starter": {
+      "title": "TAM example (bootstrap)",
+      "exampleId": "tam-mediation",
+      "open": "analysis"
+    }
+  },
+  "checks": [
+    {
+      "id": "se-meaning",
+      "question": "What does the bootstrap standard error of a path represent?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "The standard deviation of the path across the bootstrap resamples, an estimate of its sampling variability.",
+          "correct": true,
+          "feedback": "Correct."
+        },
+        {
+          "id": "b",
+          "text": "The standard deviation of the indicators.",
+          "correct": false,
+          "feedback": "Indicator SDs describe the data, not the uncertainty of an estimate."
+        },
+        {
+          "id": "c",
+          "text": "The average error of the model's predictions.",
+          "correct": false,
+          "feedback": "Prediction error is a different concept; the SE concerns the estimate of a parameter."
+        }
+      ],
+      "explanation": "SE = spread of an estimate across samples."
+    },
+    {
+      "id": "seed-change",
+      "question": "You rerun a bootstrap with a different seed and the confidence limits change in the third decimal. What does that mean?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Monte Carlo variation from a finite number of draws; more draws reduce it.",
+          "correct": true,
+          "feedback": "Correct. It is expected and should not change conclusions if B is large enough."
+        },
+        {
+          "id": "b",
+          "text": "The model is misspecified.",
+          "correct": false,
+          "feedback": "Small differences between seeds come from random resampling, not from the model."
+        },
+        {
+          "id": "c",
+          "text": "The first result was wrong and the second is right.",
+          "correct": false,
+          "feedback": "Both are valid approximations of the same bootstrap distribution."
+        }
+      ],
+      "explanation": "Bootstrap results carry simulation error."
+    }
+  ],
+  "references": [
+    "efron1993",
+    "streukens2016",
+    "hair2022"
+  ],
+  "glossary": [
+    "bootstrap",
+    "standard-error",
+    "random-seed",
+    "confidence-interval"
+  ]
+}

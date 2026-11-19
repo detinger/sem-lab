@@ -1,0 +1,152 @@
+{
+  "id": "heywood-cases",
+  "level": 5,
+  "order": 6,
+  "title": "Heywood cases and inadmissible solutions",
+  "summary": "A negative variance estimate makes a CB-SEM solution inadmissible; it signals sampling problems, misspecification or weak identification and must be investigated, not hidden.",
+  "minutes": 7,
+  "prerequisites": [
+    "identification"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "A [[heywood-case]] is an estimate of a variance below zero, typically a unique variance, which makes the standardised loading exceed 1. The solution is inadmissible: no real population has negative variances. Causes include sampling fluctuation with small N or a near-zero true variance, misspecification, outliers and empirical underidentification (Kolenikov & Bollen 2012)."
+    },
+    {
+      "kind": "formula",
+      "display": "λ₁² = r₁₂ · r₁₃ / r₂₃",
+      "explanation": "For one factor with three standardised indicators (just identified), the squared loading of item 1 follows from the three correlations. With r₁₂ = r₁₃ = .85 and r₂₃ = .50 it is 1.445, so the unique variance of item 1 is 1 − 1.445 = −.445."
+    },
+    {
+      "kind": "p",
+      "text": "The starter reproduces exactly that case. SEM Studio flags the solution as inadmissible, names the indicator and also notes that the model is just identified (df = 0), so its \"perfect\" fit carries no information."
+    },
+    {
+      "kind": "p",
+      "text": "Investigate the data and the specification; test whether the negative estimate is compatible with a small positive variance (if its confidence interval includes zero, sampling error is a plausible cause; Kolenikov & Bollen 2012); consider more indicators or a theoretically better model. Fixing the variance to zero or a small positive value is a constraint that must be justified and reported."
+    }
+  ],
+  "mistake": {
+    "title": "Fixing the variance at .001 and reporting the fit",
+    "text": "Silencing the warning with a constraint hides the symptom and leaves its cause. If you impose a constraint, report why, report the unconstrained result, and treat the fit with caution."
+  },
+  "tryIt": {
+    "task": "Run CB-SEM on this three-indicator factor. Read the warnings, the negative unique variance and the standardised loading of h1.",
+    "starter": {
+      "title": "Heywood case",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_h",
+            "indicatorIds": [
+              "i_h1",
+              "i_h2",
+              "i_h3"
+            ],
+            "label": "Single factor H",
+            "measurement": "reflective",
+            "name": "H"
+          }
+        ],
+        "indicators": [
+          {
+            "column": "h1",
+            "id": "i_h1",
+            "level": "continuous",
+            "name": "h1"
+          },
+          {
+            "column": "h2",
+            "id": "i_h2",
+            "level": "continuous",
+            "name": "h2"
+          },
+          {
+            "column": "h3",
+            "id": "i_h3",
+            "level": "continuous",
+            "name": "h3"
+          }
+        ],
+        "relationships": []
+      },
+      "open": "analysis",
+      "bundledDatasetId": "cb-heywood-exact",
+      "analysis": {
+        "method": "cb-sem",
+        "engine": "browser",
+        "estimator": "ML",
+        "missingData": "listwise",
+        "cb": {
+          "identification": "std-lv",
+          "meanStructure": false
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "heywood-meaning",
+      "question": "A standardised loading of 1.20 appears. What does it imply?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "A negative unique variance: the solution is inadmissible and must be investigated.",
+          "correct": true,
+          "feedback": "Correct. 1 − 1.20² = −.44."
+        },
+        {
+          "id": "b",
+          "text": "An excellent indicator.",
+          "correct": false,
+          "feedback": "Standardised loadings above 1 are impossible in a proper solution."
+        },
+        {
+          "id": "c",
+          "text": "A rounding issue.",
+          "correct": false,
+          "feedback": "Rounding cannot push a loading from below 1 to 1.20."
+        }
+      ],
+      "explanation": "Heywood case = inadmissible."
+    },
+    {
+      "id": "heywood-action",
+      "question": "Which response is most defensible?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Check data and specification, examine the interval of the negative variance, and report what you did.",
+          "correct": true,
+          "feedback": "Correct. Diagnose before constraining."
+        },
+        {
+          "id": "b",
+          "text": "Constrain the variance to .001 and report the fit indices as usual.",
+          "correct": false,
+          "feedback": "The constraint hides the problem; the fit is not interpretable as if nothing happened."
+        },
+        {
+          "id": "c",
+          "text": "Switch to PLS-SEM to make the warning disappear.",
+          "correct": false,
+          "feedback": "Changing estimand to avoid a diagnostic does not address its cause."
+        }
+      ],
+      "explanation": "Heywood cases are symptoms."
+    }
+  ],
+  "references": [
+    "kolenikov2012",
+    "bollen1989",
+    "kline2016"
+  ],
+  "glossary": [
+    "heywood-case",
+    "identification",
+    "degrees-of-freedom"
+  ]
+}

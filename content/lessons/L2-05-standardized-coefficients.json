@@ -1,0 +1,113 @@
+{
+  "id": "standardized-coefficients",
+  "level": 2,
+  "order": 5,
+  "title": "Standardised path coefficients",
+  "summary": "PLS paths are standardised partial regression coefficients: the expected change in standard deviations of the outcome per standard deviation of a predictor, holding the other predictors constant.",
+  "minutes": 6,
+  "prerequisites": [
+    "pls-algorithm"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "PLS standardises indicators, so construct scores have mean 0 and standard deviation 1, and the paths are [[standardized-coefficient]]s. BI = 0.13·PEOU + 0.50·PU means: one standard deviation more PU goes with half a standard deviation more BI, holding PEOU constant."
+    },
+    {
+      "kind": "formula",
+      "display": "β = b · s_x / s_y",
+      "explanation": "A standardised coefficient β is the unstandardised slope b multiplied by the ratio of the standard deviations of predictor x and outcome y."
+    },
+    {
+      "kind": "p",
+      "text": "With several predictors each path is a partial effect. In the TAM example the correlation of PEOU and BI is .377 but the path PEOU → BI is only .128, because most of PEOU's association with BI runs through PU, which is also in the regression."
+    },
+    {
+      "kind": "p",
+      "text": "Standardised coefficients depend on the sample variances. They compare predictors within one model, but not the same path across groups with different variances, and they say nothing about original units. Decisions on the original scale, as in IPMA, use [[unstandardized-coefficient]]s."
+    }
+  ],
+  "mistake": {
+    "title": "Reading a path as a percentage or as explained variance",
+    "text": "A path of .50 does not mean \"50% of BI\" and β² is not the share of variance a predictor explains when predictors correlate. Use R² and f² for explained variance."
+  },
+  "tryIt": {
+    "task": "Run the TAM example. Compare the path PEOU → BI with the PEOU–BI construct correlation on the Results page and explain the difference.",
+    "starter": {
+      "title": "TAM example",
+      "exampleId": "tam-mediation",
+      "open": "analysis"
+    }
+  },
+  "checks": [
+    {
+      "id": "interpret",
+      "question": "In BI = 0.13·PEOU + 0.50·PU (standardised), what does 0.50 mean?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "A one-SD higher PU is associated with a 0.50-SD higher BI, holding PEOU constant.",
+          "correct": true,
+          "feedback": "Correct. Partial, standardised, associational."
+        },
+        {
+          "id": "b",
+          "text": "PU explains 50% of BI.",
+          "correct": false,
+          "feedback": "Explained variance is R² (here about .33 for both predictors together), not the path."
+        },
+        {
+          "id": "c",
+          "text": "Raising PU by one scale point raises BI by half a point.",
+          "correct": false,
+          "feedback": "That would be an unstandardised slope in original units."
+        },
+        {
+          "id": "d",
+          "text": "PU causes 50% of the changes in BI.",
+          "correct": false,
+          "feedback": "The coefficient is not a share and does not by itself establish causation."
+        }
+      ],
+      "explanation": "Standardised = in standard-deviation units; partial = holding other predictors constant."
+    },
+    {
+      "id": "corr-vs-path",
+      "question": "Why can the correlation of PEOU and BI (.377) be much larger than the path PEOU → BI (.128)?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "The path is adjusted for PU, through which much of the association runs.",
+          "correct": true,
+          "feedback": "Correct. The total association splits into a direct part (.128) and an indirect part through PU."
+        },
+        {
+          "id": "b",
+          "text": "Because of rounding.",
+          "correct": false,
+          "feedback": "The gap is far too large for rounding."
+        },
+        {
+          "id": "c",
+          "text": "Because the path is unstandardised.",
+          "correct": false,
+          "feedback": "PLS paths are standardised; the difference is partial versus bivariate."
+        }
+      ],
+      "explanation": "Partial coefficients remove the overlap with other predictors."
+    }
+  ],
+  "references": [
+    "hair2022",
+    "bollen1989",
+    "kline2016"
+  ],
+  "glossary": [
+    "standardized-coefficient",
+    "unstandardized-coefficient",
+    "path-coefficient",
+    "r-squared"
+  ]
+}

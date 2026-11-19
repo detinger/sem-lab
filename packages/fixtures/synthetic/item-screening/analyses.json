@@ -1,0 +1,17 @@
+[
+  {
+    "analysis": {
+      "engine": "browser",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "The screened model in model.json: i_sat3r reverse scored with scale {min:1,max:7}; loy4 not in the model; classic PLS-SEM.",
+    "id": "pls-browser-screened"
+  }
+]

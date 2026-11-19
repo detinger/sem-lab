@@ -1,0 +1,107 @@
+{
+  "id": "measurement-invariance-cb",
+  "level": 5,
+  "order": 7,
+  "title": "Measurement invariance in CB-SEM",
+  "summary": "Before comparing factor means or paths across groups, test that the measurement model is equivalent, from configural to metric to scalar invariance.",
+  "minutes": 7,
+  "prerequisites": [
+    "fit-indices",
+    "group-comparisons-and-invariance"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "Group comparisons assume that the instrument measures the same constructs in the same way in every group. [[measurement-invariance]] is tested with a sequence of increasingly constrained multigroup CFAs (Vandenberg & Lance 2000):"
+    },
+    {
+      "kind": "list",
+      "ordered": true,
+      "items": [
+        "**Configural:** the same pattern of loadings in every group.",
+        "**Metric (weak):** equal loadings; needed to compare relationships such as paths or factor covariances.",
+        "**Scalar (strong):** equal intercepts as well; needed to compare factor means.",
+        "**Partial invariance:** some parameters freed when full invariance fails, with a substantive justification."
+      ]
+    },
+    {
+      "kind": "p",
+      "text": "Each step is compared with the previous one, with a χ² difference test and changes in fit indices; a drop in CFI of no more than .01 is a widely used heuristic (Cheung & Rensvold 2002)."
+    },
+    {
+      "kind": "callout",
+      "variant": "warning",
+      "text": "SEM Studio does not run multigroup CFA or invariance tests yet. Export the lavaan script and add the grouping variable (lavaan's `group` and `group.equal` arguments) to test invariance in R.",
+      "title": "Not available in SEM Studio"
+    }
+  ],
+  "mistake": {
+    "title": "Comparing latent means without scalar invariance",
+    "text": "If intercepts differ between groups, a mean difference may reflect item functioning rather than a difference in the construct."
+  },
+  "checks": [
+    {
+      "id": "which-level",
+      "question": "You want to compare the latent mean of satisfaction between two countries. Which level of invariance do you need at least?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Scalar (equal loadings and intercepts)",
+          "correct": true,
+          "feedback": "Correct. Mean comparisons require equal intercepts."
+        },
+        {
+          "id": "b",
+          "text": "Configural",
+          "correct": false,
+          "feedback": "Configural invariance only shows the same factor pattern; scales may still differ."
+        },
+        {
+          "id": "c",
+          "text": "Metric",
+          "correct": false,
+          "feedback": "Metric invariance supports comparing relationships, not means."
+        }
+      ],
+      "explanation": "Means need scalar invariance."
+    },
+    {
+      "id": "delta-cfi",
+      "question": "Moving from configural to metric invariance, CFI drops from .962 to .958. What does the Cheung and Rensvold heuristic suggest?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "The drop (.004) is within .01, so metric invariance is not rejected on that criterion.",
+          "correct": true,
+          "feedback": "Correct, as a heuristic, alongside the χ² difference test."
+        },
+        {
+          "id": "b",
+          "text": "Metric invariance fails because CFI fell.",
+          "correct": false,
+          "feedback": "Constraints always reduce fit somewhat; the question is whether the drop is negligible."
+        },
+        {
+          "id": "c",
+          "text": "CFI cannot be used for nested comparisons.",
+          "correct": false,
+          "feedback": "ΔCFI is widely used for exactly this purpose."
+        }
+      ],
+      "explanation": "Judge the change, not the direction."
+    }
+  ],
+  "references": [
+    "vandenberg2000",
+    "cheung2002",
+    "kline2016"
+  ],
+  "glossary": [
+    "measurement-invariance",
+    "cfa",
+    "chi-square-test",
+    "cfi"
+  ]
+}

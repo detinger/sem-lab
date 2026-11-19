@@ -1,0 +1,323 @@
+{
+  "id": "reconstruct-tam",
+  "number": 1,
+  "title": "Reconstruct TAM from written hypotheses",
+  "category": "model",
+  "method": "pls",
+  "difficulty": 1,
+  "prerequisiteLessons": [
+    "from-theory-to-model",
+    "measurement-and-structural-model"
+  ],
+  "skills": [
+    "Translating hypotheses into a path diagram",
+    "Assigning indicators to constructs",
+    "Reading R²"
+  ],
+  "brief": [
+    {
+      "kind": "p",
+      "text": "A study of a new learning platform states its measures and hypotheses in words. Build the model that the text describes; the dataset (SYNTHETIC) is already loaded and every item is bound to its column."
+    },
+    {
+      "kind": "list",
+      "ordered": false,
+      "items": [
+        "**Perceived ease of use (PEOU):** items peou1–peou4, e.g. \"Learning to use the platform is easy for me.\"",
+        "**Perceived usefulness (PU):** items pu1–pu4, e.g. \"Using the platform improves my learning.\"",
+        "**Behavioural intention (BI):** items bi1–bi3, e.g. \"I intend to keep using the platform.\"",
+        "All three are measured reflectively on 7-point agreement scales."
+      ]
+    },
+    {
+      "kind": "list",
+      "ordered": false,
+      "items": [
+        "**H1:** Perceived ease of use positively influences perceived usefulness.",
+        "**H2:** Perceived usefulness positively influences behavioural intention.",
+        "**H3:** Perceived ease of use positively influences behavioural intention."
+      ]
+    }
+  ],
+  "starter": {
+    "title": "Learning platform study (items only)",
+    "model": {
+      "constructs": [],
+      "indicators": [
+        {
+          "column": "peou1",
+          "id": "i_peou1",
+          "level": "ordinal",
+          "name": "peou1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "peou2",
+          "id": "i_peou2",
+          "level": "ordinal",
+          "name": "peou2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "peou3",
+          "id": "i_peou3",
+          "level": "ordinal",
+          "name": "peou3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "peou4",
+          "id": "i_peou4",
+          "level": "ordinal",
+          "name": "peou4",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "pu1",
+          "id": "i_pu1",
+          "level": "ordinal",
+          "name": "pu1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "pu2",
+          "id": "i_pu2",
+          "level": "ordinal",
+          "name": "pu2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "pu3",
+          "id": "i_pu3",
+          "level": "ordinal",
+          "name": "pu3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "pu4",
+          "id": "i_pu4",
+          "level": "ordinal",
+          "name": "pu4",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "bi1",
+          "id": "i_bi1",
+          "level": "ordinal",
+          "name": "bi1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "bi2",
+          "id": "i_bi2",
+          "level": "ordinal",
+          "name": "bi2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "bi3",
+          "id": "i_bi3",
+          "level": "ordinal",
+          "name": "bi3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        }
+      ],
+      "relationships": []
+    },
+    "open": "modeler",
+    "bundledDatasetId": "tam-mediation",
+    "analysis": {
+      "method": "pls-sem",
+      "engine": "browser",
+      "estimator": "pls-pm",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    }
+  },
+  "tasks": [
+    {
+      "id": "model",
+      "dimension": "structure",
+      "kind": "model",
+      "prompt": "Build the measurement and structural model described in the brief. Names may differ (e.g. \"Ease of use\" for PEOU); layout is not scored.",
+      "check": {
+        "constructs": [
+          {
+            "key": "peou",
+            "aliases": [
+              "PEOU",
+              "Perceived ease of use",
+              "Ease of use",
+              "EOU"
+            ],
+            "measurement": "reflective",
+            "indicators": [
+              "peou1",
+              "peou2",
+              "peou3",
+              "peou4"
+            ]
+          },
+          {
+            "key": "pu",
+            "aliases": [
+              "PU",
+              "Perceived usefulness",
+              "Usefulness"
+            ],
+            "measurement": "reflective",
+            "indicators": [
+              "pu1",
+              "pu2",
+              "pu3",
+              "pu4"
+            ]
+          },
+          {
+            "key": "bi",
+            "aliases": [
+              "BI",
+              "Behavioural intention",
+              "Behavioral intention",
+              "Intention",
+              "Intention to use"
+            ],
+            "measurement": "reflective",
+            "indicators": [
+              "bi1",
+              "bi2",
+              "bi3"
+            ]
+          }
+        ],
+        "paths": [
+          [
+            "peou",
+            "pu"
+          ],
+          [
+            "pu",
+            "bi"
+          ],
+          [
+            "peou",
+            "bi"
+          ]
+        ],
+        "exactPaths": true,
+        "allowExtraConstructs": false
+      }
+    },
+    {
+      "id": "role-pu",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "Given H1–H3, what role does PU play in the model?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "A mediator between PEOU and BI: PEOU can affect BI directly (H3) and through PU (H1 and H2).",
+          "correct": true,
+          "feedback": "Correct. H1 and H2 together form an indirect route; H3 is the direct route."
+        },
+        {
+          "id": "b",
+          "text": "A moderator of the PEOU → BI relationship.",
+          "correct": false,
+          "feedback": "A moderator changes the strength of an effect and would need an interaction term. Nothing in H1–H3 says that."
+        },
+        {
+          "id": "c",
+          "text": "An exogenous construct.",
+          "correct": false,
+          "feedback": "PU receives an arrow from PEOU (H1), so it is endogenous."
+        }
+      ]
+    },
+    {
+      "id": "r2-bi",
+      "dimension": "numeric",
+      "kind": "number",
+      "prompt": "Run PLS-SEM with the default settings (path weighting). Enter the R² of BI.",
+      "answer": 0.331,
+      "tolerance": 0.004,
+      "feedbackCorrect": "Correct. PEOU and PU together explain about a third of the variance of BI in this sample.",
+      "feedbackWrong": "Not the expected value. Check that BI has exactly the three bi items, that both PEOU and PU point at BI, and that you read R² of BI rather than of PU.",
+      "derivation": {
+        "source": {
+          "fixture": "tam-mediation"
+        },
+        "analysis": {
+          "method": "pls-sem",
+          "engine": "browser",
+          "estimator": "pls-pm",
+          "missingData": "listwise",
+          "pls": {
+            "innerWeighting": "path",
+            "maxIterations": 300,
+            "tolerance": 1e-07
+          }
+        },
+        "constructMetric": {
+          "constructId": "c_bi",
+          "metric": "r2"
+        }
+      }
+    }
+  ],
+  "hints": [
+    "Start with the three constructs; each hypothesis names its two constructs and its direction.",
+    "Every item belongs to exactly one construct; the item prefix tells you which.",
+    "\"X influences Y\" means an arrow from X to Y. Count your structural arrows: there is one per hypothesis.",
+    "R² is reported for endogenous constructs only. Which constructs receive arrows?"
+  ],
+  "solution": [
+    {
+      "kind": "p",
+      "text": "Three reflective constructs: PEOU (peou1–peou4), PU (pu1–pu4), BI (bi1–bi3). Structural paths PEOU → PU (H1), PU → BI (H2) and PEOU → BI (H3)."
+    },
+    {
+      "kind": "p",
+      "text": "With classic PLS-SEM and path weighting R²(BI) ≈ .331 and R²(PU) ≈ .248. PU lies on the indirect route PEOU → PU → BI, so it is a mediator; whether mediation is supported is tested in Level 4."
+    }
+  ],
+  "nextLesson": "pls-algorithm"
+}

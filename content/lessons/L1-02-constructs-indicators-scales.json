@@ -1,0 +1,109 @@
+{
+  "id": "constructs-indicators-scales",
+  "level": 1,
+  "order": 2,
+  "title": "Constructs, indicators and scales",
+  "summary": "Constructs are concepts measured through observed indicators, and every indicator has a response scale whose permissible endpoints belong to the questionnaire, not to the sample.",
+  "minutes": 6,
+  "prerequisites": [
+    "from-theory-to-model"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "A [[construct]] such as perceived usefulness is a concept: you cannot read it off a ruler. You observe it through [[indicator]]s, for example survey items such as \"Using the system improves my performance\". In a model the construct is a [[latent-variable]], and each indicator is an observed variable bound to a data column."
+    },
+    {
+      "kind": "p",
+      "text": "Every indicator has a [[measurement-scale]]. On a 7-point [[likert-item]] (1 = strongly disagree … 7 = strongly agree) the permissible values are 1 to 7. These [[scale-endpoints]] describe the instrument: if nobody in your sample answered 1, the scale still starts at 1. SEM Studio stores endpoints with each indicator because reverse scoring and the 0–100 rescaling in IPMA depend on them."
+    },
+    {
+      "kind": "p",
+      "text": "Rating items are ordinal. Treating items with five or more roughly symmetric categories as continuous is common in PLS-SEM and in ML-based CB-SEM and usually works acceptably; with fewer categories or strong skew, ordinal estimators are preferable for CB-SEM (Rhemtulla et al. 2012)."
+    },
+    {
+      "kind": "callout",
+      "variant": "tip",
+      "text": "Before collecting data, document for each scale: the item wording, the source, the response format and its endpoints, and which items are negatively worded."
+    }
+  ],
+  "mistake": {
+    "title": "Using the observed range as the scale",
+    "text": "Replacing the questionnaire endpoints (1 and 7) by the smallest and largest values that happen to occur in the sample changes reverse-scored values and IPMA performance, and it makes results depend on who answered. Always enter the endpoints of the response format."
+  },
+  "tryIt": {
+    "task": "Open the TAM example and go to the Data page. Check that every indicator is bound to a column and has the endpoints 1 and 7.",
+    "starter": {
+      "title": "TAM example",
+      "exampleId": "tam-mediation",
+      "open": "data"
+    }
+  },
+  "checks": [
+    {
+      "id": "endpoints",
+      "question": "A 7-point agreement item (1 = strongly disagree, 7 = strongly agree) shows observed values from 3 to 7 in your sample. What are its scale endpoints?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "1 and 7",
+          "correct": true,
+          "feedback": "Correct. Endpoints come from the response format, not from the observed data."
+        },
+        {
+          "id": "b",
+          "text": "3 and 7",
+          "correct": false,
+          "feedback": "That is the observed range of this sample. Another sample with the same questionnaire could show 1 to 7; the endpoints must not change with the sample."
+        },
+        {
+          "id": "c",
+          "text": "0 and 100",
+          "correct": false,
+          "feedback": "0–100 is the target scale of IPMA performance, not the scale respondents answered on."
+        }
+      ],
+      "explanation": "Endpoints are a property of the instrument."
+    },
+    {
+      "id": "which-indicator",
+      "question": "Which of these is an indicator?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "The answers to \"Using the system improves my performance\" (1–7).",
+          "correct": true,
+          "feedback": "Correct. It is an observed variable, a column in the data."
+        },
+        {
+          "id": "b",
+          "text": "Perceived usefulness.",
+          "correct": false,
+          "feedback": "Perceived usefulness is the construct; the items are its indicators."
+        },
+        {
+          "id": "c",
+          "text": "The arrow from perceived usefulness to intention.",
+          "correct": false,
+          "feedback": "An arrow between constructs is a structural relationship, not a measurement."
+        }
+      ],
+      "explanation": "Indicators are observed; constructs are what the indicators are meant to capture."
+    }
+  ],
+  "references": [
+    "hair2022",
+    "rhemtulla2012",
+    "bollen1989"
+  ],
+  "glossary": [
+    "construct",
+    "indicator",
+    "latent-variable",
+    "measurement-scale",
+    "likert-item",
+    "scale-endpoints"
+  ]
+}

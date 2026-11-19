@@ -1,0 +1,115 @@
+{
+  "id": "confidence-intervals",
+  "level": 4,
+  "order": 2,
+  "title": "Confidence intervals and significance",
+  "summary": "A percentile bootstrap confidence interval shows the range of plausible values for an effect; whether it excludes zero answers significance, its location answers relevance.",
+  "minutes": 8,
+  "prerequisites": [
+    "bootstrap"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "A 95% [[percentile-interval]] consists of the 2.5th and 97.5th percentiles of the bootstrap estimates. If it excludes zero, the effect is significant at the 5% level in a two-sided test. SEM Studio also reports a [[p-value]] from the bootstrap t statistic (estimate / SE)."
+    },
+    {
+      "kind": "formula",
+      "display": "95% CI = [ q₀.₀₂₅(θ̂⁽ᵇ⁾) , q₀.₉₇₅(θ̂⁽ᵇ⁾) ]",
+      "explanation": "θ̂⁽ᵇ⁾ (b = 1 … B) are the B bootstrap estimates of a parameter θ, and q₀.₀₂₅ and q₀.₉₇₅ their 2.5th and 97.5th percentiles."
+    },
+    {
+      "kind": "p",
+      "text": "In the TAM example PEOU → BI = .128 with 95% CI [.047, .210] (5,000 draws, seed 20261103): significantly positive, but plausibly anywhere from very small to modest. Significance is not importance: report the estimate and its interval and judge the size in context (Wasserstein & Lazar 2016)."
+    },
+    {
+      "kind": "callout",
+      "variant": "info",
+      "text": "Bias-corrected and accelerated ([[bca-interval]]) intervals adjust for bias and skewness of the bootstrap distribution. SEM Studio does not compute them yet; it offers percentile intervals. One-sided tests are appropriate only for a directional hypothesis stated before seeing the data."
+    }
+  ],
+  "mistake": {
+    "title": "Equating \"significant\" with \"important\"",
+    "text": "With a large sample a trivial effect can be significant, and with a small sample an important one may not be. An interval that includes zero does not show that the effect is zero either."
+  },
+  "tryIt": {
+    "task": "Run the TAM example and read the 95% intervals of the three paths. Which interval is the widest relative to its estimate?",
+    "starter": {
+      "title": "TAM example (bootstrap)",
+      "exampleId": "tam-mediation",
+      "open": "analysis"
+    }
+  },
+  "checks": [
+    {
+      "id": "interpret-ci",
+      "question": "PEOU → BI = .128, 95% CI [.047, .210]. Which interpretation is best?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "The effect is positive and significant at 5%, and the data are consistent with values from about .05 to .21.",
+          "correct": true,
+          "feedback": "Correct. The interval conveys both direction and the range of plausible sizes."
+        },
+        {
+          "id": "b",
+          "text": "There is a 95% probability that the true effect is exactly .128.",
+          "correct": false,
+          "feedback": "The point estimate is one value; the interval, not the estimate, expresses uncertainty, and frequentist intervals do not assign probabilities to fixed parameters."
+        },
+        {
+          "id": "c",
+          "text": "PEOU causes BI.",
+          "correct": false,
+          "feedback": "A confidence interval quantifies sampling uncertainty under the model; it does not establish causation."
+        },
+        {
+          "id": "d",
+          "text": "The effect is large because it is significant.",
+          "correct": false,
+          "feedback": "Significance says nothing about size; .128 is small to modest."
+        }
+      ],
+      "explanation": "Read both the location and the width of the interval."
+    },
+    {
+      "id": "includes-zero",
+      "question": "Another path is .14 with 95% CI [−.02, .30]. What may you conclude?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "It is not significant at 5%, and the data are compatible with a zero, a small negative or a moderate positive effect.",
+          "correct": true,
+          "feedback": "Correct. Absence of evidence is not evidence of absence."
+        },
+        {
+          "id": "b",
+          "text": "The true effect is zero.",
+          "correct": false,
+          "feedback": "The interval also includes .30. Non-significance does not show the effect is zero."
+        },
+        {
+          "id": "c",
+          "text": "The effect is significant at 10%.",
+          "correct": false,
+          "feedback": "A 95% interval does not tell you directly about the 10% level; you would need the 90% interval or the p value."
+        }
+      ],
+      "explanation": "Non-significant ≠ zero."
+    }
+  ],
+  "references": [
+    "efron1993",
+    "wasserstein2016",
+    "hair2022"
+  ],
+  "glossary": [
+    "confidence-interval",
+    "percentile-interval",
+    "bca-interval",
+    "p-value",
+    "standard-error"
+  ]
+}

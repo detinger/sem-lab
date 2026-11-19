@@ -1,0 +1,694 @@
+{
+  "theories": [
+    {
+      "id": "tam",
+      "name": "Technology Acceptance Model (TAM)",
+      "field": "Information systems",
+      "summary": "TAM explains people's intention to use an information technology by two beliefs: how useful they expect it to be and how easy they expect it to be to use. Ease of use influences intention directly and through usefulness. It is one of the most widely applied models in information-systems research.",
+      "constructs": [
+        {
+          "name": "Perceived usefulness",
+          "abbreviation": "PU",
+          "definition": "\"The degree to which a person believes that using a particular system would enhance his or her job performance\" (Davis 1989)."
+        },
+        {
+          "name": "Perceived ease of use",
+          "abbreviation": "PEOU",
+          "definition": "\"The degree to which a person believes that using a particular system would be free of effort\" (Davis 1989)."
+        },
+        {
+          "name": "Behavioural intention to use",
+          "abbreviation": "BI",
+          "definition": "The strength of a person's intention to use the system; in TAM the proximal predictor of actual use (Davis, Bagozzi & Warshaw 1989)."
+        }
+      ],
+      "relationships": [
+        "PEOU → PU: a system that is easier to use is perceived as more useful.",
+        "PU → BI: usefulness is the main driver of intention.",
+        "PEOU → BI: a direct effect of ease of use, often small once PU is in the model, so much of its influence runs through PU.",
+        "Later versions (TAM2; Venkatesh & Davis 2000) add antecedents of PU such as subjective norm and job relevance."
+      ],
+      "model": {
+        "constructs": [
+          {
+            "id": "c_peou",
+            "name": "PEOU",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Perceived ease of use"
+          },
+          {
+            "id": "c_pu",
+            "name": "PU",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Perceived usefulness"
+          },
+          {
+            "id": "c_bi",
+            "name": "BI",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Behavioural intention"
+          }
+        ],
+        "indicators": [],
+        "relationships": [
+          {
+            "id": "r_peou_pu",
+            "kind": "structural",
+            "sourceId": "c_peou",
+            "targetId": "c_pu"
+          },
+          {
+            "id": "r_pu_bi",
+            "kind": "structural",
+            "sourceId": "c_pu",
+            "targetId": "c_bi"
+          },
+          {
+            "id": "r_peou_bi",
+            "kind": "structural",
+            "sourceId": "c_peou",
+            "targetId": "c_bi"
+          }
+        ]
+      },
+      "examples": [
+        "tam-mediation"
+      ],
+      "notebooks": [
+        "01_tam_pls_sem.ipynb"
+      ],
+      "references": [
+        "davis1989",
+        "davis1989b",
+        "venkatesh2000"
+      ],
+      "caveats": "TAM is parsimonious by design and explains intention better than actual use. Most TAM studies are cross-sectional self-reports, so the PEOU → PU → BI ordering is a theoretical assumption rather than an established causal sequence, and common method variance is a concern. The original 1989 formulation also included attitude toward using; the three-construct core shown here is the commonly tested version. The SEM Studio example uses synthetic data."
+    },
+    {
+      "id": "utaut2",
+      "name": "Unified Theory of Acceptance and Use of Technology 2 (UTAUT2)",
+      "field": "Information systems / consumer research",
+      "summary": "UTAUT2 adapts the unified acceptance model UTAUT (Venkatesh et al. 2003) to consumer technology use. Besides performance expectancy, effort expectancy, social influence and facilitating conditions, it adds hedonic motivation, price value and habit, and lets age, gender and experience moderate key effects (Venkatesh, Thong & Xu 2012).",
+      "constructs": [
+        {
+          "name": "Performance expectancy",
+          "abbreviation": "PE",
+          "definition": "The degree to which using a technology will provide benefits to consumers in performing certain activities."
+        },
+        {
+          "name": "Effort expectancy",
+          "abbreviation": "EE",
+          "definition": "The degree of ease associated with consumers' use of the technology."
+        },
+        {
+          "name": "Social influence",
+          "abbreviation": "SI",
+          "definition": "The extent to which consumers perceive that important others, such as family and friends, believe they should use the technology."
+        },
+        {
+          "name": "Facilitating conditions",
+          "abbreviation": "FC",
+          "definition": "Consumers' perceptions of the resources and support available to perform the behaviour."
+        },
+        {
+          "name": "Hedonic motivation",
+          "abbreviation": "HM",
+          "definition": "The fun or pleasure derived from using the technology."
+        },
+        {
+          "name": "Price value",
+          "abbreviation": "PV",
+          "definition": "Consumers' cognitive trade-off between the perceived benefits of the technology and the monetary cost of using it."
+        },
+        {
+          "name": "Habit",
+          "abbreviation": "HT",
+          "definition": "The extent to which people tend to perform the behaviour automatically because of learning."
+        },
+        {
+          "name": "Behavioural intention",
+          "abbreviation": "BI",
+          "definition": "The intention to use the technology in the future."
+        },
+        {
+          "name": "Use behaviour",
+          "abbreviation": "USE",
+          "definition": "The actual frequency or extent of use of the technology."
+        }
+      ],
+      "relationships": [
+        "PE, EE, SI, FC, HM, PV and HT → BI.",
+        "FC, HT and BI → use behaviour.",
+        "Age, gender and experience moderate several of these effects in the original model (moderation, not shown in the diagram)."
+      ],
+      "model": {
+        "constructs": [
+          {
+            "id": "c_pe",
+            "name": "PE",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Performance expectancy"
+          },
+          {
+            "id": "c_ee",
+            "name": "EE",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Effort expectancy"
+          },
+          {
+            "id": "c_si",
+            "name": "SI",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Social influence"
+          },
+          {
+            "id": "c_fc",
+            "name": "FC",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Facilitating conditions"
+          },
+          {
+            "id": "c_hm",
+            "name": "HM",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Hedonic motivation"
+          },
+          {
+            "id": "c_pv",
+            "name": "PV",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Price value"
+          },
+          {
+            "id": "c_ht",
+            "name": "HT",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Habit"
+          },
+          {
+            "id": "c_bi",
+            "name": "BI",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Behavioural intention"
+          },
+          {
+            "id": "c_use",
+            "name": "USE",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Use behaviour"
+          }
+        ],
+        "indicators": [],
+        "relationships": [
+          {
+            "id": "r_pe_bi",
+            "kind": "structural",
+            "sourceId": "c_pe",
+            "targetId": "c_bi"
+          },
+          {
+            "id": "r_ee_bi",
+            "kind": "structural",
+            "sourceId": "c_ee",
+            "targetId": "c_bi"
+          },
+          {
+            "id": "r_si_bi",
+            "kind": "structural",
+            "sourceId": "c_si",
+            "targetId": "c_bi"
+          },
+          {
+            "id": "r_fc_bi",
+            "kind": "structural",
+            "sourceId": "c_fc",
+            "targetId": "c_bi"
+          },
+          {
+            "id": "r_hm_bi",
+            "kind": "structural",
+            "sourceId": "c_hm",
+            "targetId": "c_bi"
+          },
+          {
+            "id": "r_pv_bi",
+            "kind": "structural",
+            "sourceId": "c_pv",
+            "targetId": "c_bi"
+          },
+          {
+            "id": "r_ht_bi",
+            "kind": "structural",
+            "sourceId": "c_ht",
+            "targetId": "c_bi"
+          },
+          {
+            "id": "r_fc_use",
+            "kind": "structural",
+            "sourceId": "c_fc",
+            "targetId": "c_use"
+          },
+          {
+            "id": "r_ht_use",
+            "kind": "structural",
+            "sourceId": "c_ht",
+            "targetId": "c_use"
+          },
+          {
+            "id": "r_bi_use",
+            "kind": "structural",
+            "sourceId": "c_bi",
+            "targetId": "c_use"
+          }
+        ]
+      },
+      "examples": [
+        "utaut2-inspired"
+      ],
+      "notebooks": [
+        "04_utaut2_pls_sem.ipynb"
+      ],
+      "references": [
+        "venkatesh2012",
+        "venkatesh2003"
+      ],
+      "caveats": "The SEM Studio example is inspired by UTAUT2 but simplified: it omits price value and the age, gender and experience moderators (SEM Studio does not estimate interaction effects yet), and its data are synthetic. With many correlated predictors of BI, check structural VIFs; a non-significant path in one sample is not evidence that the construct is irrelevant."
+    },
+    {
+      "id": "delone-mclean",
+      "name": "DeLone & McLean IS Success Model",
+      "field": "Information systems",
+      "summary": "The DeLone and McLean model organises information-system success into interrelated dimensions. The updated model (2003) states that system, information and service quality affect use (or intention to use) and user satisfaction, which in turn produce net benefits; net benefits feed back into use and satisfaction.",
+      "constructs": [
+        {
+          "name": "System quality",
+          "abbreviation": "SYSQ",
+          "definition": "Desirable characteristics of the system itself, such as ease of use, reliability, flexibility and response time."
+        },
+        {
+          "name": "Information quality",
+          "abbreviation": "INFQ",
+          "definition": "Desirable characteristics of the system's outputs, such as relevance, accuracy, completeness and timeliness."
+        },
+        {
+          "name": "Service quality",
+          "abbreviation": "SERVQ",
+          "definition": "The quality of the support users receive from the IS function or provider, added in the 2003 update."
+        },
+        {
+          "name": "Use / intention to use",
+          "abbreviation": "USE",
+          "definition": "The degree and manner in which users use the system, or intend to."
+        },
+        {
+          "name": "User satisfaction",
+          "abbreviation": "SAT",
+          "definition": "Users' level of satisfaction with the system and its outputs."
+        },
+        {
+          "name": "Net benefits",
+          "abbreviation": "NB",
+          "definition": "The extent to which the system contributes to the success of individuals, groups, organisations or wider units."
+        }
+      ],
+      "relationships": [
+        "SYSQ, INFQ and SERVQ → USE and → SAT.",
+        "USE and SAT are associated; use leads to more satisfaction and satisfaction to more (intention to) use.",
+        "USE and SAT → NB.",
+        "NB feeds back to intention to use and user satisfaction (a feedback loop in the 2003 model)."
+      ],
+      "model": {
+        "constructs": [
+          {
+            "id": "c_sysq",
+            "name": "SYSQ",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "System quality"
+          },
+          {
+            "id": "c_infq",
+            "name": "INFQ",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Information quality"
+          },
+          {
+            "id": "c_servq",
+            "name": "SERVQ",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Service quality"
+          },
+          {
+            "id": "c_use",
+            "name": "USE",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Use"
+          },
+          {
+            "id": "c_sat",
+            "name": "SAT",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "User satisfaction"
+          },
+          {
+            "id": "c_nb",
+            "name": "NB",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Net benefits"
+          }
+        ],
+        "indicators": [],
+        "relationships": [
+          {
+            "id": "r_sysq_use",
+            "kind": "structural",
+            "sourceId": "c_sysq",
+            "targetId": "c_use"
+          },
+          {
+            "id": "r_infq_use",
+            "kind": "structural",
+            "sourceId": "c_infq",
+            "targetId": "c_use"
+          },
+          {
+            "id": "r_servq_use",
+            "kind": "structural",
+            "sourceId": "c_servq",
+            "targetId": "c_use"
+          },
+          {
+            "id": "r_sysq_sat",
+            "kind": "structural",
+            "sourceId": "c_sysq",
+            "targetId": "c_sat"
+          },
+          {
+            "id": "r_infq_sat",
+            "kind": "structural",
+            "sourceId": "c_infq",
+            "targetId": "c_sat"
+          },
+          {
+            "id": "r_servq_sat",
+            "kind": "structural",
+            "sourceId": "c_servq",
+            "targetId": "c_sat"
+          },
+          {
+            "id": "r_use_sat",
+            "kind": "structural",
+            "sourceId": "c_use",
+            "targetId": "c_sat"
+          },
+          {
+            "id": "r_use_nb",
+            "kind": "structural",
+            "sourceId": "c_use",
+            "targetId": "c_nb"
+          },
+          {
+            "id": "r_sat_nb",
+            "kind": "structural",
+            "sourceId": "c_sat",
+            "targetId": "c_nb"
+          }
+        ]
+      },
+      "examples": [
+        "delone-mclean"
+      ],
+      "notebooks": [
+        "03_delone_mclean_is_success_pls_sem.ipynb"
+      ],
+      "references": [
+        "delone1992",
+        "delone2003"
+      ],
+      "caveats": "The diagram shows the recursive part of the model that PLS-SEM can estimate: the 2003 model's feedback from net benefits and the reciprocal use–satisfaction link cannot be estimated as such with cross-sectional PLS-SEM, so the example specifies USE → SAT only. Net benefits must be defined for a stated unit (individual, organisation). The example data are synthetic."
+    },
+    {
+      "id": "acsi",
+      "name": "American Customer Satisfaction Index (ACSI) model",
+      "field": "Marketing",
+      "summary": "The ACSI model explains customer satisfaction by its antecedents, customer expectations, perceived quality and perceived value, and links satisfaction to customer complaints and loyalty. It underlies a national index of customer satisfaction estimated with PLS (Fornell et al. 1996).",
+      "constructs": [
+        {
+          "name": "Customer expectations",
+          "abbreviation": "CE",
+          "definition": "Customers' prior experience and information about the offering and their forecast of the firm's ability to deliver quality in the future."
+        },
+        {
+          "name": "Perceived quality",
+          "abbreviation": "PQ",
+          "definition": "The served market's evaluation of recent consumption experience, including customisation and reliability."
+        },
+        {
+          "name": "Perceived value",
+          "abbreviation": "PV",
+          "definition": "The perceived level of quality relative to the price paid."
+        },
+        {
+          "name": "Customer satisfaction",
+          "abbreviation": "SAT",
+          "definition": "The cumulative overall evaluation of the consumption experience; in the ACSI measured by overall satisfaction, confirmation of expectations and comparison with an ideal."
+        },
+        {
+          "name": "Customer complaints",
+          "abbreviation": "COMP",
+          "definition": "Whether customers have complained formally or informally."
+        },
+        {
+          "name": "Customer loyalty",
+          "abbreviation": "LOY",
+          "definition": "Repurchase likelihood and price tolerance."
+        }
+      ],
+      "relationships": [
+        "CE → PQ, CE → PV, CE → SAT.",
+        "PQ → PV, PQ → SAT.",
+        "PV → SAT.",
+        "SAT → COMP (negative), SAT → LOY.",
+        "COMP → LOY."
+      ],
+      "model": {
+        "constructs": [
+          {
+            "id": "c_ce",
+            "name": "CE",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Customer expectations"
+          },
+          {
+            "id": "c_pq",
+            "name": "PQ",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Perceived quality"
+          },
+          {
+            "id": "c_pv",
+            "name": "PV",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Perceived value"
+          },
+          {
+            "id": "c_sat",
+            "name": "SAT",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Customer satisfaction"
+          },
+          {
+            "id": "c_comp",
+            "name": "COMP",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Customer complaints"
+          },
+          {
+            "id": "c_loy",
+            "name": "LOY",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Customer loyalty"
+          }
+        ],
+        "indicators": [],
+        "relationships": [
+          {
+            "id": "r_ce_pq",
+            "kind": "structural",
+            "sourceId": "c_ce",
+            "targetId": "c_pq"
+          },
+          {
+            "id": "r_ce_pv",
+            "kind": "structural",
+            "sourceId": "c_ce",
+            "targetId": "c_pv"
+          },
+          {
+            "id": "r_pq_pv",
+            "kind": "structural",
+            "sourceId": "c_pq",
+            "targetId": "c_pv"
+          },
+          {
+            "id": "r_ce_sat",
+            "kind": "structural",
+            "sourceId": "c_ce",
+            "targetId": "c_sat"
+          },
+          {
+            "id": "r_pq_sat",
+            "kind": "structural",
+            "sourceId": "c_pq",
+            "targetId": "c_sat"
+          },
+          {
+            "id": "r_pv_sat",
+            "kind": "structural",
+            "sourceId": "c_pv",
+            "targetId": "c_sat"
+          },
+          {
+            "id": "r_sat_comp",
+            "kind": "structural",
+            "sourceId": "c_sat",
+            "targetId": "c_comp"
+          },
+          {
+            "id": "r_sat_loy",
+            "kind": "structural",
+            "sourceId": "c_sat",
+            "targetId": "c_loy"
+          },
+          {
+            "id": "r_comp_loy",
+            "kind": "structural",
+            "sourceId": "c_comp",
+            "targetId": "c_loy"
+          }
+        ]
+      },
+      "examples": [
+        "acsi-2015",
+        "acsi-inspired"
+      ],
+      "notebooks": [
+        "02_acsi_pls_sem.ipynb"
+      ],
+      "references": [
+        "fornell1996",
+        "ringle2016"
+      ],
+      "caveats": "Both SEM Studio examples omit the complaints construct. acsi-2015 uses the published ACSI sample data (CC BY 4.0), with loyalty measured by a single item; acsi-inspired is synthetic and not ACSI data. Satisfaction and loyalty items are typically skewed towards the top of the scale. IPMA on this model is descriptive and does not show that raising satisfaction would raise loyalty."
+    },
+    {
+      "id": "service-quality-chain",
+      "name": "Service quality → satisfaction → loyalty chain",
+      "field": "Services marketing",
+      "summary": "A widely tested chain in services research: perceived service quality raises customer satisfaction, and satisfaction (together with quality) drives favourable behavioural intentions such as loyalty. Cronin and Taylor (1992) found service quality to be an antecedent of satisfaction, and Zeithaml, Berry and Parasuraman (1996) linked service quality to behavioural intentions.",
+      "constructs": [
+        {
+          "name": "Service quality",
+          "abbreviation": "SQ",
+          "definition": "Customers' evaluation of the excellence of a service; SERVQUAL describes it by tangibles, reliability, responsiveness, assurance and empathy (Parasuraman et al. 1988)."
+        },
+        {
+          "name": "Customer satisfaction",
+          "abbreviation": "SAT",
+          "definition": "Customers' overall evaluation of their experience with the service provider."
+        },
+        {
+          "name": "Loyalty intentions",
+          "abbreviation": "LOY",
+          "definition": "Favourable behavioural intentions such as recommending, repurchasing and staying with the provider."
+        }
+      ],
+      "relationships": [
+        "SQ → SAT.",
+        "SAT → LOY.",
+        "SQ → LOY (direct), so SAT partly mediates the effect of quality on loyalty."
+      ],
+      "model": {
+        "constructs": [
+          {
+            "id": "c_sq",
+            "name": "SQ",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Service quality"
+          },
+          {
+            "id": "c_sat",
+            "name": "SAT",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Customer satisfaction"
+          },
+          {
+            "id": "c_loy",
+            "name": "LOY",
+            "measurement": "reflective",
+            "indicatorIds": [],
+            "label": "Loyalty intentions"
+          }
+        ],
+        "indicators": [],
+        "relationships": [
+          {
+            "id": "r_sq_sat",
+            "kind": "structural",
+            "sourceId": "c_sq",
+            "targetId": "c_sat"
+          },
+          {
+            "id": "r_sat_loy",
+            "kind": "structural",
+            "sourceId": "c_sat",
+            "targetId": "c_loy"
+          },
+          {
+            "id": "r_sq_loy",
+            "kind": "structural",
+            "sourceId": "c_sq",
+            "targetId": "c_loy"
+          }
+        ]
+      },
+      "examples": [
+        "service-quality"
+      ],
+      "notebooks": [
+        "05_service_quality_cb_sem.ipynb"
+      ],
+      "references": [
+        "cronin1992",
+        "zeithaml1996",
+        "parasuraman1988"
+      ],
+      "caveats": "The order of quality and satisfaction was debated in the literature; the chain shown here follows Cronin and Taylor (1992). The SEM Studio example measures service quality with a single reflective construct rather than SERVQUAL's five dimensions, uses synthetic data, and is analysed with CB-SEM; with PLS-SEM it targets a different estimand."
+    }
+  ]
+}

@@ -1,0 +1,358 @@
+{
+  "id": "reflective-or-formative",
+  "number": 2,
+  "title": "Assign reflective and formative measurement",
+  "category": "model",
+  "method": "pls",
+  "difficulty": 2,
+  "prerequisiteLessons": [
+    "reflective-and-formative",
+    "mode-a-and-mode-b"
+  ],
+  "skills": [
+    "Choosing the measurement model from construct definitions",
+    "Mode A versus Mode B",
+    "Reading outer weights"
+  ],
+  "brief": [
+    {
+      "kind": "p",
+      "text": "A retailer studies satisfaction (SYNTHETIC data). The starter declares every construct reflective. Decide from the definitions below how each construct must be measured and correct the model."
+    },
+    {
+      "kind": "list",
+      "ordered": false,
+      "items": [
+        "**F – Service convenience (index):** defined by management as the combination of f1 opening hours, f2 store location, f3 online booking and f4 parking. A store can score high on one and low on another.",
+        "**X – Staff friendliness:** x1 \"Staff were friendly\", x2 \"Staff were courteous\", x3 \"Staff were pleasant to deal with\".",
+        "**Y – Satisfaction:** y1–y4, four statements of overall satisfaction with the store.",
+        "Hypotheses: F → Y and X → Y."
+      ]
+    }
+  ],
+  "starter": {
+    "title": "Retail satisfaction (all reflective)",
+    "model": {
+      "constructs": [
+        {
+          "id": "c_f",
+          "indicatorIds": [
+            "i_f1",
+            "i_f2",
+            "i_f3",
+            "i_f4"
+          ],
+          "label": "Composite F",
+          "measurement": "reflective",
+          "name": "F"
+        },
+        {
+          "id": "c_x",
+          "indicatorIds": [
+            "i_x1",
+            "i_x2",
+            "i_x3"
+          ],
+          "label": "Reflective X",
+          "measurement": "reflective",
+          "name": "X"
+        },
+        {
+          "id": "c_y",
+          "indicatorIds": [
+            "i_y1",
+            "i_y2",
+            "i_y3",
+            "i_y4"
+          ],
+          "label": "Reflective Y",
+          "measurement": "reflective",
+          "name": "Y"
+        }
+      ],
+      "indicators": [
+        {
+          "column": "f1",
+          "id": "i_f1",
+          "level": "ordinal",
+          "name": "f1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "f2",
+          "id": "i_f2",
+          "level": "ordinal",
+          "name": "f2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "f3",
+          "id": "i_f3",
+          "level": "ordinal",
+          "name": "f3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "f4",
+          "id": "i_f4",
+          "level": "ordinal",
+          "name": "f4",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "x1",
+          "id": "i_x1",
+          "level": "ordinal",
+          "name": "x1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "x2",
+          "id": "i_x2",
+          "level": "ordinal",
+          "name": "x2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "x3",
+          "id": "i_x3",
+          "level": "ordinal",
+          "name": "x3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "y1",
+          "id": "i_y1",
+          "level": "ordinal",
+          "name": "y1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "y2",
+          "id": "i_y2",
+          "level": "ordinal",
+          "name": "y2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "y3",
+          "id": "i_y3",
+          "level": "ordinal",
+          "name": "y3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "y4",
+          "id": "i_y4",
+          "level": "ordinal",
+          "name": "y4",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        }
+      ],
+      "relationships": [
+        {
+          "id": "r_f_y",
+          "kind": "structural",
+          "sourceId": "c_f",
+          "targetId": "c_y"
+        },
+        {
+          "id": "r_x_y",
+          "kind": "structural",
+          "sourceId": "c_x",
+          "targetId": "c_y"
+        },
+        {
+          "id": "r_f_x",
+          "kind": "covariance",
+          "sourceId": "c_f",
+          "targetId": "c_x"
+        }
+      ]
+    },
+    "open": "modeler",
+    "bundledDatasetId": "pls-mixed-composite",
+    "analysis": {
+      "method": "pls-sem",
+      "engine": "browser",
+      "estimator": "pls-pm",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    }
+  },
+  "tasks": [
+    {
+      "id": "measurement",
+      "dimension": "structure",
+      "kind": "model",
+      "prompt": "Set the measurement of each construct according to its definition. Keep the indicators and the two paths.",
+      "check": {
+        "constructs": [
+          {
+            "key": "f",
+            "aliases": [
+              "F",
+              "Convenience",
+              "Service convenience"
+            ],
+            "measurement": "composite-formative",
+            "indicators": [
+              "f1",
+              "f2",
+              "f3",
+              "f4"
+            ]
+          },
+          {
+            "key": "x",
+            "aliases": [
+              "X",
+              "Friendliness",
+              "Staff friendliness"
+            ],
+            "measurement": "reflective",
+            "indicators": [
+              "x1",
+              "x2",
+              "x3"
+            ]
+          },
+          {
+            "key": "y",
+            "aliases": [
+              "Y",
+              "Satisfaction"
+            ],
+            "measurement": "reflective",
+            "indicators": [
+              "y1",
+              "y2",
+              "y3",
+              "y4"
+            ]
+          }
+        ],
+        "paths": [
+          [
+            "f",
+            "y"
+          ],
+          [
+            "x",
+            "y"
+          ]
+        ],
+        "exactPaths": true,
+        "allowExtraConstructs": false
+      }
+    },
+    {
+      "id": "why-f",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "Which argument best justifies your choice for F?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Its indicators define the construct and need not move together; dropping one would change what F means.",
+          "correct": true,
+          "feedback": "Correct. These are the hallmarks of formative (composite) measurement."
+        },
+        {
+          "id": "b",
+          "text": "Its indicators correlate only weakly, so reflective criteria would fail.",
+          "correct": false,
+          "feedback": "Low correlations are a consequence, not a justification. The choice must follow from the definition, never from which statistics look better."
+        },
+        {
+          "id": "c",
+          "text": "Formative constructs give larger path coefficients.",
+          "correct": false,
+          "feedback": "Choosing a specification for its results is outcome-driven analysis, and it is not even generally true."
+        }
+      ]
+    },
+    {
+      "id": "weight-f1",
+      "dimension": "numeric",
+      "kind": "number",
+      "prompt": "Run PLS-SEM with the corrected model and enter the outer weight of f1.",
+      "answer": 0.423,
+      "tolerance": 0.004,
+      "feedbackCorrect": "Correct. With F composite-formative, SEM Studio estimates its weights with Mode B (regression weights).",
+      "feedbackWrong": "Not the expected value. Make sure F is composite-formative (so Mode B weights are estimated) and that you read the outer weight, not the loading.",
+      "derivation": {
+        "source": {
+          "fixture": "pls-mixed-composite"
+        },
+        "analysis": {
+          "method": "pls-sem",
+          "engine": "browser",
+          "estimator": "pls-pm",
+          "missingData": "listwise",
+          "pls": {
+            "innerWeighting": "path",
+            "maxIterations": 300,
+            "tolerance": 1e-07
+          }
+        },
+        "parameterKey": "weight:c_f:i_f1"
+      }
+    }
+  ],
+  "hints": [
+    "Ask of each construct: does it cause its items, or do the items make it up?",
+    "Could a store have long opening hours but poor parking? What does that imply for how f1–f4 should correlate?",
+    "Friendliness, courtesy and pleasantness are three ways of saying the same thing. What does that suggest?",
+    "In SEM Studio the weighting mode follows the measurement kind; weights and loadings are listed separately in the results."
+  ],
+  "solution": [
+    {
+      "kind": "p",
+      "text": "F is composite-formative: its four components define convenience and need not covary. X and Y are reflective: their items are interchangeable expressions of one attribute. Paths F → Y and X → Y stay."
+    },
+    {
+      "kind": "p",
+      "text": "With F composite-formative its weights are Mode B regression weights (f1 ≈ .423, f2 ≈ .430, f3 ≈ .283, f4 ≈ .421). Declaring F reflective would make α (≈ .52) and AVE (≈ .41) appear, criteria that do not apply to an index."
+    }
+  ],
+  "nextLesson": "validating-formative-constructs"
+}

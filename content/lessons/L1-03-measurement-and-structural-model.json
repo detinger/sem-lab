@@ -1,0 +1,225 @@
+{
+  "id": "measurement-and-structural-model",
+  "level": 1,
+  "order": 3,
+  "title": "Measurement model and structural model",
+  "summary": "Every SEM has a measurement part linking constructs to indicators and a structural part linking constructs to each other, and the first must be sound before the second is interpreted.",
+  "minutes": 6,
+  "prerequisites": [
+    "constructs-indicators-scales"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "The [[measurement-model]] (in PLS called the *outer model*) states which indicators belong to which construct and how. The [[structural-model]] (the *inner model*) contains the hypothesised relationships between constructs."
+    },
+    {
+      "kind": "diagram",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_peou",
+            "name": "PEOU",
+            "measurement": "reflective",
+            "indicatorIds": [
+              "i_peou1",
+              "i_peou2",
+              "i_peou3"
+            ],
+            "label": "Perceived ease of use"
+          },
+          {
+            "id": "c_pu",
+            "name": "PU",
+            "measurement": "reflective",
+            "indicatorIds": [
+              "i_pu1",
+              "i_pu2",
+              "i_pu3"
+            ],
+            "label": "Perceived usefulness"
+          },
+          {
+            "id": "c_bi",
+            "name": "BI",
+            "measurement": "reflective",
+            "indicatorIds": [
+              "i_bi1",
+              "i_bi2",
+              "i_bi3"
+            ],
+            "label": "Behavioural intention"
+          }
+        ],
+        "indicators": [
+          {
+            "id": "i_peou1",
+            "name": "peou1",
+            "column": null
+          },
+          {
+            "id": "i_peou2",
+            "name": "peou2",
+            "column": null
+          },
+          {
+            "id": "i_peou3",
+            "name": "peou3",
+            "column": null
+          },
+          {
+            "id": "i_pu1",
+            "name": "pu1",
+            "column": null
+          },
+          {
+            "id": "i_pu2",
+            "name": "pu2",
+            "column": null
+          },
+          {
+            "id": "i_pu3",
+            "name": "pu3",
+            "column": null
+          },
+          {
+            "id": "i_bi1",
+            "name": "bi1",
+            "column": null
+          },
+          {
+            "id": "i_bi2",
+            "name": "bi2",
+            "column": null
+          },
+          {
+            "id": "i_bi3",
+            "name": "bi3",
+            "column": null
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_peou_pu",
+            "kind": "structural",
+            "sourceId": "c_peou",
+            "targetId": "c_pu",
+            "hypothesis": "H1"
+          },
+          {
+            "id": "r_pu_bi",
+            "kind": "structural",
+            "sourceId": "c_pu",
+            "targetId": "c_bi",
+            "hypothesis": "H2"
+          },
+          {
+            "id": "r_peou_bi",
+            "kind": "structural",
+            "sourceId": "c_peou",
+            "targetId": "c_bi",
+            "hypothesis": "H3"
+          }
+        ]
+      },
+      "caption": "Structural arrows (H1–H3) form the inner model; the arrows between each construct and its items form the outer model.",
+      "highlight": [
+        "r_peou_pu",
+        "r_pu_bi",
+        "r_peou_bi"
+      ]
+    },
+    {
+      "kind": "p",
+      "text": "A construct with no incoming structural arrow is [[exogenous]]: the model does not explain it. A construct with at least one incoming arrow is [[endogenous]]: it has an R² and a [[disturbance]] for everything the model leaves out. In the TAM diagram PEOU is exogenous; PU and BI are endogenous."
+    },
+    {
+      "kind": "p",
+      "text": "Assessment follows the same order: first establish that each construct is measured reliably and validly, then interpret the structural paths (Anderson & Gerbing 1988; Hair et al. 2022). A path between poorly measured constructs cannot be interpreted, however significant it is."
+    }
+  ],
+  "mistake": {
+    "title": "Reading paths before checking measurement",
+    "text": "A significant path tells you little if one of its constructs is measured with low reliability or is not distinct from another construct. Check loadings, reliability and discriminant validity first (Level 3)."
+  },
+  "tryIt": {
+    "task": "Open the TAM example. Name the exogenous construct and the endogenous constructs, then count the structural and the measurement arrows.",
+    "starter": {
+      "title": "TAM example",
+      "exampleId": "tam-mediation",
+      "open": "modeler"
+    }
+  },
+  "checks": [
+    {
+      "id": "endogenous",
+      "question": "In the model PEOU → PU → BI with an additional arrow PEOU → BI, which constructs are endogenous?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "PU and BI",
+          "correct": true,
+          "feedback": "Correct. Both receive at least one structural arrow."
+        },
+        {
+          "id": "b",
+          "text": "Only BI",
+          "correct": false,
+          "feedback": "PU also receives an arrow (from PEOU), so it is endogenous too, even though it also predicts BI."
+        },
+        {
+          "id": "c",
+          "text": "Only PEOU",
+          "correct": false,
+          "feedback": "PEOU receives no structural arrow; it is the exogenous construct."
+        },
+        {
+          "id": "d",
+          "text": "All three",
+          "correct": false,
+          "feedback": "PEOU is not explained by anything in the model, so it is exogenous."
+        }
+      ],
+      "explanation": "Endogenous = has at least one incoming structural arrow."
+    },
+    {
+      "id": "order",
+      "question": "Why assess the measurement model before interpreting structural paths?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Because a path is only meaningful if both constructs are measured reliably and are empirically distinct.",
+          "correct": true,
+          "feedback": "Correct. Measurement problems distort or invalidate the meaning of structural estimates."
+        },
+        {
+          "id": "b",
+          "text": "Because the software cannot estimate paths otherwise.",
+          "correct": false,
+          "feedback": "Both parts are estimated together. The order is about interpretation, not computation."
+        },
+        {
+          "id": "c",
+          "text": "Because measurement quality is more important than the hypotheses.",
+          "correct": false,
+          "feedback": "Both matter. Measurement comes first because it is a precondition for interpreting the hypotheses."
+        }
+      ],
+      "explanation": "The two-step logic of Anderson and Gerbing (1988)."
+    }
+  ],
+  "references": [
+    "anderson1988",
+    "hair2022",
+    "bollen1989"
+  ],
+  "glossary": [
+    "measurement-model",
+    "structural-model",
+    "exogenous",
+    "endogenous",
+    "disturbance"
+  ]
+}

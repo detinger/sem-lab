@@ -1,0 +1,170 @@
+{
+  "id": "prediction-and-leakage",
+  "number": 12,
+  "title": "Interpret PLSpredict and avoid train/test leakage",
+  "category": "interpret",
+  "method": "pls",
+  "difficulty": 2,
+  "prerequisiteLessons": [
+    "prediction-versus-explanation",
+    "r2-and-f2"
+  ],
+  "skills": [
+    "In-sample versus out-of-sample assessment",
+    "Benchmarks in PLSpredict",
+    "Recognising leakage"
+  ],
+  "brief": [
+    {
+      "kind": "callout",
+      "variant": "warning",
+      "text": "SEM Studio does not compute PLSpredict or CVPAT yet. This is a concept challenge: the output below is illustrative, as a dedicated R package would report it for a TAM model (10 folds, 10 repetitions); it was not computed by SEM Studio.",
+      "title": "Concept challenge"
+    },
+    {
+      "kind": "p",
+      "text": "A team reports R²(BI) = .33 and writes \"the model has high predictive power\". Their PLSpredict output for the three BI indicators (prediction errors on held-out folds):"
+    },
+    {
+      "kind": "list",
+      "ordered": false,
+      "items": [
+        "bi1: Q²predict = .14; RMSE PLS = 1.21, RMSE LM = 1.24",
+        "bi2: Q²predict = .12; RMSE PLS = 1.30, RMSE LM = 1.28",
+        "bi3: Q²predict = .11; RMSE PLS = 1.25, RMSE LM = 1.27"
+      ]
+    },
+    {
+      "kind": "p",
+      "text": "Before running PLSpredict, the team had dropped two BI items with low loadings in the full sample and tried three model variants, keeping the one with the best PLSpredict result."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "r2-claim",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "Does R²(BI) = .33 support the claim of \"high predictive power\"?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "No. R² is in-sample explanatory power; predictive power has to be shown out of sample against a benchmark.",
+          "correct": true,
+          "feedback": "Correct (Shmueli 2010; Shmueli et al. 2019)."
+        },
+        {
+          "id": "b",
+          "text": "Yes, R² above .25 means the model predicts well.",
+          "correct": false,
+          "feedback": "R² thresholds describe in-sample explanation and say nothing about new cases."
+        },
+        {
+          "id": "c",
+          "text": "Yes, because the paths are significant.",
+          "correct": false,
+          "feedback": "Significance concerns parameters, not prediction of new observations."
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "What do the positive Q²predict values show?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "The model's out-of-sample predictions beat the naive training-mean prediction for every BI indicator.",
+          "correct": true,
+          "feedback": "Correct. Q²predict > 0 compares with the mean benchmark only."
+        },
+        {
+          "id": "b",
+          "text": "The model predicts better than the linear-model benchmark.",
+          "correct": false,
+          "feedback": "That comparison uses RMSE (or MAE) against LM, not Q²predict."
+        },
+        {
+          "id": "c",
+          "text": "The model explains 11–14% of the variance of BI.",
+          "correct": false,
+          "feedback": "Q²predict is a relative prediction-error measure, not an explained-variance share."
+        }
+      ]
+    },
+    {
+      "id": "lm",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "Compare RMSE of PLS with the LM benchmark. Following Shmueli et al. (2019), what predictive power does this suggest?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Medium: PLS has lower prediction error than LM for the majority (two of three) of the indicators.",
+          "correct": true,
+          "feedback": "Correct. All lower = high, majority = medium, minority = low, none = no predictive power (in their guidelines)."
+        },
+        {
+          "id": "b",
+          "text": "High: PLS beats LM for all indicators.",
+          "correct": false,
+          "feedback": "For bi2, PLS (1.30) is worse than LM (1.28)."
+        },
+        {
+          "id": "c",
+          "text": "None: Q²predict is below .25.",
+          "correct": false,
+          "feedback": "Q²predict is not compared with R² thresholds; the LM comparison decides the level."
+        }
+      ]
+    },
+    {
+      "id": "leakage",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "Which steps leaked information from the evaluation data into model building? Select all that apply.",
+      "multiple": true,
+      "options": [
+        {
+          "id": "a",
+          "text": "Dropping BI items based on full-sample loadings before cross-validation.",
+          "correct": true,
+          "feedback": "Correct. The held-out folds influenced the measurement model."
+        },
+        {
+          "id": "b",
+          "text": "Choosing among three model variants by their PLSpredict results and reporting only the best.",
+          "correct": true,
+          "feedback": "Correct. The cross-validation became part of model selection; its result is optimistic."
+        },
+        {
+          "id": "c",
+          "text": "Using 10 folds and 10 repetitions.",
+          "correct": false,
+          "feedback": "Repetitions stabilise the estimate; they do not leak information."
+        },
+        {
+          "id": "d",
+          "text": "Comparing PLS with an LM benchmark.",
+          "correct": false,
+          "feedback": "Benchmarks are part of a proper assessment."
+        }
+      ]
+    }
+  ],
+  "hints": [
+    "What data were used to compute R², and what data are used to compute Q²predict?",
+    "Q²predict and the LM comparison use different benchmarks; check which one each statement refers to.",
+    "Ask of every step: did the cases that later served as test folds influence this decision?"
+  ],
+  "solution": [
+    {
+      "kind": "p",
+      "text": "R² = .33 is in-sample explanation. The positive Q²predict values show that the model beats the naive mean out of sample; PLS beats the LM benchmark for two of three indicators, which Shmueli et al. (2019) would call medium predictive power. However, dropping items on full-sample results and selecting the best of three variants by PLSpredict leak information, so even these results are optimistic. A clean assessment fixes the model in advance (or selects it inside the training folds only) and runs the cross-validation once."
+    }
+  ],
+  "nextLesson": "ipma"
+}

@@ -1,0 +1,339 @@
+{
+  "id": "reverse-and-constant-items",
+  "number": 5,
+  "title": "Detect reverse-coded and constant items",
+  "category": "diagnose",
+  "method": "pls",
+  "difficulty": 2,
+  "prerequisiteLessons": [
+    "signs-and-orientation",
+    "constructs-indicators-scales"
+  ],
+  "skills": [
+    "Item screening",
+    "Reverse scoring with scale endpoints",
+    "Recognising zero-variance columns"
+  ],
+  "brief": [
+    {
+      "kind": "p",
+      "text": "A customer survey (SYNTHETIC) measures satisfaction (SAT: sat1, sat2, sat3r, sat4) and loyalty intention (LOY: loy1–loy4) on 1–7 agreement scales and hypothesises SAT → LOY. The model was built exactly as the questionnaire was answered. Two items need attention before any estimate can be trusted. Use Data Lab (descriptives and correlations) and the validation messages to find them and fix the model."
+    },
+    {
+      "kind": "callout",
+      "variant": "info",
+      "text": "Item wording: sat3r \"I regret choosing this provider\"; loy4 \"I would consider other providers in future\" (the survey tool pre-selected the middle category for this question)."
+    }
+  ],
+  "starter": {
+    "title": "Customer survey as answered",
+    "model": {
+      "constructs": [
+        {
+          "id": "c_sat",
+          "indicatorIds": [
+            "i_sat1",
+            "i_sat2",
+            "i_sat3r",
+            "i_sat4"
+          ],
+          "label": "Satisfaction (synthetic)",
+          "measurement": "reflective",
+          "name": "SAT"
+        },
+        {
+          "id": "c_loy",
+          "indicatorIds": [
+            "i_loy1",
+            "i_loy2",
+            "i_loy3",
+            "i_loy4"
+          ],
+          "label": "Loyalty intention (synthetic)",
+          "measurement": "reflective",
+          "name": "LOY"
+        }
+      ],
+      "indicators": [
+        {
+          "column": "sat1",
+          "id": "i_sat1",
+          "level": "ordinal",
+          "name": "sat1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "sat2",
+          "id": "i_sat2",
+          "level": "ordinal",
+          "name": "sat2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "sat3r",
+          "id": "i_sat3r",
+          "level": "ordinal",
+          "name": "sat3r",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "sat4",
+          "id": "i_sat4",
+          "level": "ordinal",
+          "name": "sat4",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "loy1",
+          "id": "i_loy1",
+          "level": "ordinal",
+          "name": "loy1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "loy2",
+          "id": "i_loy2",
+          "level": "ordinal",
+          "name": "loy2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "loy3",
+          "id": "i_loy3",
+          "level": "ordinal",
+          "name": "loy3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "id": "i_loy4",
+          "name": "loy4",
+          "column": "loy4",
+          "level": "ordinal",
+          "scale": {
+            "min": 1,
+            "max": 7
+          }
+        }
+      ],
+      "relationships": [
+        {
+          "id": "r_sat_loy",
+          "kind": "structural",
+          "sourceId": "c_sat",
+          "targetId": "c_loy"
+        }
+      ]
+    },
+    "open": "data",
+    "bundledDatasetId": "item-screening",
+    "analysis": {
+      "method": "pls-sem",
+      "engine": "browser",
+      "estimator": "pls-pm",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    }
+  },
+  "tasks": [
+    {
+      "id": "mapping",
+      "dimension": "mapping",
+      "kind": "mapping",
+      "prompt": "Bind the remaining indicators and mark the item that must be reverse scored, with its scale endpoints.",
+      "expected": {
+        "sat1": "sat1",
+        "sat2": "sat2",
+        "sat3r": "sat3r",
+        "sat4": "sat4",
+        "loy1": "loy1",
+        "loy2": "loy2",
+        "loy3": "loy3"
+      },
+      "reverse": [
+        {
+          "indicator": "sat3r",
+          "min": 1,
+          "max": 7
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "dimension": "structure",
+      "kind": "model",
+      "prompt": "The screened model: keep every informative item in its construct and the hypothesised path.",
+      "check": {
+        "constructs": [
+          {
+            "key": "sat",
+            "aliases": [
+              "SAT",
+              "Satisfaction"
+            ],
+            "measurement": "reflective",
+            "indicators": [
+              "sat1",
+              "sat2",
+              "sat3r",
+              "sat4"
+            ]
+          },
+          {
+            "key": "loy",
+            "aliases": [
+              "LOY",
+              "Loyalty",
+              "Loyalty intention"
+            ],
+            "measurement": "reflective",
+            "indicators": [
+              "loy1",
+              "loy2",
+              "loy3"
+            ]
+          }
+        ],
+        "paths": [
+          [
+            "sat",
+            "loy"
+          ]
+        ],
+        "exactPaths": true,
+        "allowExtraConstructs": false
+      }
+    },
+    {
+      "id": "loy4",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "Why is reverse scoring not a fix for loy4?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Every respondent has the same value, so the column has zero variance and carries no information; it must be left out.",
+          "correct": true,
+          "feedback": "Correct. A constant cannot correlate with anything, whichever way it is coded."
+        },
+        {
+          "id": "b",
+          "text": "Because loy4 is not negatively worded.",
+          "correct": false,
+          "feedback": "Even a negatively worded constant item would remain constant after reverse scoring; the problem is the lack of variance."
+        },
+        {
+          "id": "c",
+          "text": "It is a fix: reversing turns 4 into 4, which is valid.",
+          "correct": false,
+          "feedback": "Reversing a constant gives another constant. The issue is that the column cannot inform any estimate."
+        }
+      ]
+    },
+    {
+      "id": "evidence",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "Which evidence identifies sat3r as reverse-worded? Select all that apply.",
+      "multiple": true,
+      "options": [
+        {
+          "id": "a",
+          "text": "Its wording expresses the opposite pole of satisfaction.",
+          "correct": true,
+          "feedback": "Correct. Wording is the primary evidence."
+        },
+        {
+          "id": "b",
+          "text": "It correlates negatively with sat1, sat2 and sat4 in Data Lab.",
+          "correct": true,
+          "feedback": "Correct. Items of one reflective scale should correlate positively once keyed the same way."
+        },
+        {
+          "id": "c",
+          "text": "It loads negatively and SEM Studio warns about a negative loading when it is not reversed.",
+          "correct": true,
+          "feedback": "Correct. The warning points to item coding."
+        },
+        {
+          "id": "d",
+          "text": "Its mean is lower than the other items' means.",
+          "correct": false,
+          "feedback": "A lower mean can have many reasons; it does not show reversed keying."
+        }
+      ]
+    },
+    {
+      "id": "alpha-sat",
+      "dimension": "numeric",
+      "kind": "number",
+      "prompt": "Run PLS-SEM on the screened model and enter Cronbach's α of SAT.",
+      "answer": 0.857,
+      "tolerance": 0.004,
+      "feedbackCorrect": "Correct. Once sat3r is keyed like the other items, SAT is internally consistent.",
+      "feedbackWrong": "Not the expected value. A value near zero means sat3r is still not reverse scored; check its flag and endpoints (1 and 7).",
+      "derivation": {
+        "source": {
+          "fixture": "item-screening"
+        },
+        "analysis": {
+          "method": "pls-sem",
+          "engine": "browser",
+          "estimator": "pls-pm",
+          "missingData": "listwise",
+          "pls": {
+            "innerWeighting": "path",
+            "maxIterations": 300,
+            "tolerance": 1e-07
+          }
+        },
+        "constructMetric": {
+          "constructId": "c_sat",
+          "metric": "cronbach-alpha"
+        }
+      }
+    }
+  ],
+  "hints": [
+    "Try to run the model as it is. What does the validation message say, and about which column?",
+    "In Data Lab, look at the number of distinct values of every column.",
+    "In the correlation matrix, look for an item whose correlations with its own scale have the wrong sign.",
+    "Reverse scoring needs the questionnaire's endpoints, not the observed range."
+  ],
+  "solution": [
+    {
+      "kind": "p",
+      "text": "loy4 has the value 4 for every respondent (zero variance): SEM Studio refuses to estimate while it is in the model. Remove it from LOY; reverse scoring cannot help."
+    },
+    {
+      "kind": "p",
+      "text": "sat3r is negatively worded: it correlates negatively with the other SAT items and loads −.81 if left as answered, with α(SAT) ≈ .06. Mark it reverse scored with endpoints 1 and 7 (8 − x). Then α(SAT) ≈ .857 and all loadings are positive. Note that the SAT → LOY path (≈ .465) is the same either way: only the measurement checks reveal the coding problem."
+    }
+  ],
+  "nextLesson": "internal-consistency-reliability"
+}

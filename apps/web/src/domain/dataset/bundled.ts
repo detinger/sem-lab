@@ -89,6 +89,7 @@ export const BUNDLED_DATASETS: readonly BundledDatasetInfo[] = [
     14,
   ),
   synthetic('utaut2-inspired', 'Technology adoption model inspired by UTAUT2 (SYNTHETIC)', 450, 27),
+  synthetic('item-screening', 'Item screening: a reverse-worded and a constant item', 300, 8),
   {
     id: 'acsi-2015',
     title: 'American Customer Satisfaction Index (ACSI) 2015 sample data',

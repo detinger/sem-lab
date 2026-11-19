@@ -1,0 +1,1669 @@
+{
+  "terms": [
+    {
+      "id": "sem",
+      "term": "structural equation modeling",
+      "aliases": [
+        "SEM"
+      ],
+      "definition": "A family of methods that estimates a system of relationships among constructs together with the measurement of those constructs by observed indicators.",
+      "lessons": [
+        "from-theory-to-model"
+      ],
+      "seeAlso": [
+        "pls-sem",
+        "cb-sem"
+      ]
+    },
+    {
+      "id": "theory",
+      "term": "theory",
+      "aliases": [],
+      "definition": "A reasoned explanation of why constructs are related. In SEM it is the source of the hypotheses and of the direction of every arrow; estimation cannot supply it.",
+      "lessons": [
+        "from-theory-to-model"
+      ],
+      "seeAlso": [
+        "hypothesis"
+      ]
+    },
+    {
+      "id": "hypothesis",
+      "term": "hypothesis",
+      "aliases": [
+        "hypotheses"
+      ],
+      "definition": "A testable statement derived from theory, such as \"perceived usefulness positively influences intention\". In a path diagram each structural hypothesis is one directed arrow.",
+      "lessons": [
+        "from-theory-to-model"
+      ],
+      "seeAlso": [
+        "theory",
+        "path-diagram"
+      ]
+    },
+    {
+      "id": "path-diagram",
+      "term": "path diagram",
+      "aliases": [
+        "model diagram"
+      ],
+      "definition": "A drawing of a model: constructs as ovals, indicators as rectangles, measurement and structural relationships as arrows, covariances as two-headed arrows.",
+      "lessons": [
+        "from-theory-to-model"
+      ],
+      "seeAlso": [
+        "measurement-model",
+        "structural-model"
+      ]
+    },
+    {
+      "id": "construct",
+      "term": "construct",
+      "aliases": [],
+      "definition": "A concept that cannot be observed directly, such as satisfaction or perceived usefulness, and is measured through indicators.",
+      "lessons": [
+        "from-theory-to-model",
+        "constructs-indicators-scales"
+      ],
+      "seeAlso": [
+        "latent-variable",
+        "indicator"
+      ]
+    },
+    {
+      "id": "latent-variable",
+      "term": "latent variable",
+      "aliases": [
+        "unobserved variable"
+      ],
+      "definition": "The variable that represents a construct in a model. In CB-SEM it is a common factor; in PLS-SEM it is approximated by a weighted composite of indicators.",
+      "lessons": [
+        "constructs-indicators-scales"
+      ],
+      "seeAlso": [
+        "common-factor",
+        "composite"
+      ]
+    },
+    {
+      "id": "indicator",
+      "term": "indicator",
+      "aliases": [
+        "item",
+        "manifest variable",
+        "observed variable"
+      ],
+      "definition": "An observed variable, usually a questionnaire item, that measures a construct. In SEM Studio each indicator is bound to a data column.",
+      "lessons": [
+        "constructs-indicators-scales"
+      ],
+      "seeAlso": [
+        "construct",
+        "measurement-model"
+      ]
+    },
+    {
+      "id": "measurement-scale",
+      "term": "measurement scale",
+      "aliases": [
+        "response scale"
+      ],
+      "definition": "The set of values an indicator can take, given by the response format (for example 1–7 agreement). Its endpoints belong to the instrument, not to the sample.",
+      "lessons": [
+        "constructs-indicators-scales"
+      ],
+      "seeAlso": [
+        "scale-endpoints",
+        "likert-item"
+      ]
+    },
+    {
+      "id": "likert-item",
+      "term": "Likert-type item",
+      "aliases": [
+        "rating item",
+        "Likert item"
+      ],
+      "definition": "A rating item with ordered response categories, such as 1 = strongly disagree to 7 = strongly agree. Items with five or more roughly symmetric categories are often analysed as continuous.",
+      "lessons": [
+        "constructs-indicators-scales"
+      ],
+      "seeAlso": [
+        "measurement-scale"
+      ]
+    },
+    {
+      "id": "scale-endpoints",
+      "term": "scale endpoints",
+      "aliases": [
+        "scale minimum and maximum"
+      ],
+      "definition": "The lowest and highest permissible values of an indicator's response scale, such as 1 and 7. Needed for reverse scoring and IPMA; never replaced by the observed minimum and maximum.",
+      "lessons": [
+        "constructs-indicators-scales",
+        "signs-and-orientation",
+        "ipma"
+      ],
+      "seeAlso": [
+        "reverse-scoring",
+        "performance"
+      ]
+    },
+    {
+      "id": "measurement-model",
+      "term": "measurement model",
+      "aliases": [
+        "outer model"
+      ],
+      "definition": "The part of a model that links each construct to its indicators (reflective or formative). In PLS-SEM it is called the outer model.",
+      "lessons": [
+        "measurement-and-structural-model",
+        "exploratory-and-confirmatory"
+      ],
+      "seeAlso": [
+        "structural-model"
+      ]
+    },
+    {
+      "id": "structural-model",
+      "term": "structural model",
+      "aliases": [
+        "inner model"
+      ],
+      "definition": "The part of a model that links constructs to each other with directed paths. In PLS-SEM it is called the inner model.",
+      "lessons": [
+        "measurement-and-structural-model"
+      ],
+      "seeAlso": [
+        "measurement-model",
+        "path-coefficient"
+      ]
+    },
+    {
+      "id": "exogenous",
+      "term": "exogenous construct",
+      "aliases": [
+        "exogenous"
+      ],
+      "definition": "A construct that receives no structural arrow; the model does not explain it.",
+      "lessons": [
+        "measurement-and-structural-model"
+      ],
+      "seeAlso": [
+        "endogenous"
+      ]
+    },
+    {
+      "id": "endogenous",
+      "term": "endogenous construct",
+      "aliases": [
+        "endogenous"
+      ],
+      "definition": "A construct that receives at least one structural arrow; it has an R² and a disturbance.",
+      "lessons": [
+        "measurement-and-structural-model"
+      ],
+      "seeAlso": [
+        "exogenous",
+        "disturbance",
+        "r-squared"
+      ]
+    },
+    {
+      "id": "covariance",
+      "term": "covariance",
+      "aliases": [],
+      "definition": "The average product of two variables' deviations from their means; positive when they tend to move together. Its size depends on the variables' units.",
+      "lessons": [
+        "covariance-and-correlation"
+      ],
+      "seeAlso": [
+        "correlation"
+      ]
+    },
+    {
+      "id": "correlation",
+      "term": "correlation",
+      "aliases": [
+        "Pearson correlation"
+      ],
+      "definition": "Covariance divided by the product of the two standard deviations; unit-free, between −1 and 1, and symmetric.",
+      "lessons": [
+        "covariance-and-correlation"
+      ],
+      "seeAlso": [
+        "covariance"
+      ]
+    },
+    {
+      "id": "measurement-error",
+      "term": "measurement error",
+      "aliases": [
+        "error variance",
+        "unique variance"
+      ],
+      "definition": "The part of an indicator not due to its construct: random noise plus item-specific variance. Random error attenuates relationships between observed scores.",
+      "lessons": [
+        "errors-and-residuals",
+        "common-factor-model"
+      ],
+      "seeAlso": [
+        "reliability",
+        "attenuation"
+      ]
+    },
+    {
+      "id": "residual",
+      "term": "residual",
+      "aliases": [],
+      "definition": "The difference between an observed value and the value a model implies, for a case, a variance or a covariance.",
+      "lessons": [
+        "errors-and-residuals"
+      ],
+      "seeAlso": [
+        "standardized-residual",
+        "disturbance"
+      ]
+    },
+    {
+      "id": "disturbance",
+      "term": "disturbance",
+      "aliases": [
+        "structural error",
+        "zeta"
+      ],
+      "definition": "The unexplained part of an endogenous construct, collecting all causes not in the model; its variance is 1 − R² in standardised terms.",
+      "lessons": [
+        "measurement-and-structural-model",
+        "errors-and-residuals"
+      ],
+      "seeAlso": [
+        "endogenous",
+        "r-squared"
+      ]
+    },
+    {
+      "id": "reliability",
+      "term": "reliability",
+      "aliases": [],
+      "definition": "The share of an observed score's variance that is not random measurement error.",
+      "lessons": [
+        "errors-and-residuals",
+        "internal-consistency-reliability"
+      ],
+      "seeAlso": [
+        "cronbachs-alpha",
+        "rho-a",
+        "rho-c",
+        "indicator-reliability"
+      ]
+    },
+    {
+      "id": "validity",
+      "term": "validity",
+      "aliases": [],
+      "definition": "The degree to which a measure captures the construct it is intended to measure; assessed through content, convergent and discriminant validity, among others.",
+      "lessons": [
+        "discriminant-validity"
+      ],
+      "seeAlso": [
+        "content-validity",
+        "convergent-validity",
+        "discriminant-validity"
+      ]
+    },
+    {
+      "id": "efa",
+      "term": "exploratory factor analysis",
+      "aliases": [
+        "EFA"
+      ],
+      "definition": "Factor analysis in which every item may load on every factor, used to discover a measurement structure from data.",
+      "lessons": [
+        "exploratory-and-confirmatory"
+      ],
+      "seeAlso": [
+        "cfa"
+      ]
+    },
+    {
+      "id": "cfa",
+      "term": "confirmatory factor analysis",
+      "aliases": [
+        "CFA"
+      ],
+      "definition": "Factor analysis in which the analyst specifies in advance which indicators load on which factor; the omitted loadings are testable constraints.",
+      "lessons": [
+        "exploratory-and-confirmatory",
+        "common-factor-model",
+        "measurement-invariance-cb"
+      ],
+      "seeAlso": [
+        "efa",
+        "cb-sem"
+      ]
+    },
+    {
+      "id": "equivalent-models",
+      "term": "equivalent models",
+      "aliases": [],
+      "definition": "Different models that imply the same covariance matrix and therefore fit any data equally well, such as X → Y and Y → X in a two-variable model.",
+      "lessons": [
+        "covariance-and-correlation",
+        "fit-indices",
+        "interpretation-and-limitations"
+      ],
+      "seeAlso": [
+        "causal-inference",
+        "model-fit"
+      ]
+    },
+    {
+      "id": "causal-inference",
+      "term": "causal inference",
+      "aliases": [
+        "causality"
+      ],
+      "definition": "Drawing conclusions about cause and effect. In SEM, causal interpretation rests on theory and design (temporal order, experiments, ruling out confounders), not on estimates or fit.",
+      "lessons": [
+        "covariance-and-correlation",
+        "interpretation-and-limitations"
+      ],
+      "seeAlso": [
+        "equivalent-models"
+      ]
+    },
+    {
+      "id": "pls-sem",
+      "term": "PLS-SEM",
+      "aliases": [
+        "partial least squares SEM",
+        "PLS path modeling",
+        "variance-based SEM"
+      ],
+      "definition": "SEM in which constructs are estimated as weighted composites of their indicators by an iterative algorithm, with paths estimated by OLS on the composite scores.",
+      "lessons": [
+        "composites-and-common-factors",
+        "pls-algorithm",
+        "reporting-specification-and-estimation"
+      ],
+      "seeAlso": [
+        "composite",
+        "plsc",
+        "cb-sem"
+      ]
+    },
+    {
+      "id": "cb-sem",
+      "term": "CB-SEM",
+      "aliases": [
+        "covariance-based SEM",
+        "factor-based SEM"
+      ],
+      "definition": "SEM in which constructs are common factors and parameters are chosen so that the model-implied covariance matrix reproduces the observed one, usually by maximum likelihood.",
+      "lessons": [
+        "composites-and-common-factors",
+        "common-factor-model",
+        "reporting-specification-and-estimation"
+      ],
+      "seeAlso": [
+        "common-factor",
+        "pls-sem",
+        "maximum-likelihood"
+      ]
+    },
+    {
+      "id": "composite",
+      "term": "composite",
+      "aliases": [
+        "weighted composite"
+      ],
+      "definition": "A construct represented as an exact weighted sum of its indicators. It contains everything in the indicators, including their measurement error.",
+      "lessons": [
+        "composites-and-common-factors",
+        "reflective-and-formative",
+        "consistent-pls"
+      ],
+      "seeAlso": [
+        "common-factor",
+        "pls-sem"
+      ]
+    },
+    {
+      "id": "common-factor",
+      "term": "common factor",
+      "aliases": [
+        "factor"
+      ],
+      "definition": "A construct represented as the shared cause of its indicators; each indicator is the factor times a loading plus a unique error.",
+      "lessons": [
+        "composites-and-common-factors",
+        "consistent-pls",
+        "common-factor-model"
+      ],
+      "seeAlso": [
+        "composite",
+        "cb-sem"
+      ]
+    },
+    {
+      "id": "reflective-measurement",
+      "term": "reflective measurement",
+      "aliases": [
+        "reflective"
+      ],
+      "definition": "A measurement model in which the construct causes its indicators: items are interchangeable, should correlate highly, and dropping one does not change the construct's meaning.",
+      "lessons": [
+        "reflective-and-formative",
+        "internal-consistency-reliability"
+      ],
+      "seeAlso": [
+        "formative-measurement",
+        "mode-a"
+      ]
+    },
+    {
+      "id": "formative-measurement",
+      "term": "formative measurement",
+      "aliases": [
+        "formative",
+        "composite-formative"
+      ],
+      "definition": "A measurement model in which the indicators form the construct: they need not correlate, and dropping one changes the construct's meaning. In SEM Studio such blocks are declared composite-formative.",
+      "lessons": [
+        "reflective-and-formative",
+        "mode-a-and-mode-b",
+        "validating-formative-constructs"
+      ],
+      "seeAlso": [
+        "reflective-measurement",
+        "mode-b",
+        "composite"
+      ]
+    },
+    {
+      "id": "mode-a",
+      "term": "Mode A",
+      "aliases": [
+        "correlation weights"
+      ],
+      "definition": "PLS outer-weight estimation in which each weight is proportional to the correlation between the indicator and the construct's inner proxy. Used for reflective blocks.",
+      "lessons": [
+        "mode-a-and-mode-b"
+      ],
+      "seeAlso": [
+        "mode-b",
+        "outer-weight"
+      ]
+    },
+    {
+      "id": "mode-b",
+      "term": "Mode B",
+      "aliases": [
+        "regression weights"
+      ],
+      "definition": "PLS outer-weight estimation in which the inner proxy is regressed on all of a block's indicators jointly; weights are multiple-regression coefficients and are sensitive to collinearity.",
+      "lessons": [
+        "mode-a-and-mode-b",
+        "collinearity-vif"
+      ],
+      "seeAlso": [
+        "mode-a",
+        "vif",
+        "formative-measurement"
+      ]
+    },
+    {
+      "id": "outer-weight",
+      "term": "outer weight",
+      "aliases": [
+        "weight"
+      ],
+      "definition": "An indicator's coefficient in the weighted sum that forms its construct score; the main result for composite constructs.",
+      "lessons": [
+        "mode-a-and-mode-b",
+        "pls-algorithm",
+        "validating-formative-constructs",
+        "loadings-and-indicator-reliability"
+      ],
+      "seeAlso": [
+        "outer-loading",
+        "mode-a",
+        "mode-b"
+      ]
+    },
+    {
+      "id": "outer-loading",
+      "term": "outer loading",
+      "aliases": [
+        "loading"
+      ],
+      "definition": "The correlation between an indicator and its construct score (PLS), or the coefficient of the factor in the indicator's equation (CB-SEM, standardised).",
+      "lessons": [
+        "signs-and-orientation",
+        "validating-formative-constructs",
+        "loadings-and-indicator-reliability",
+        "convergent-validity-ave"
+      ],
+      "seeAlso": [
+        "indicator-reliability",
+        "outer-weight"
+      ]
+    },
+    {
+      "id": "inner-weighting-scheme",
+      "term": "inner weighting scheme",
+      "aliases": [
+        "path weighting",
+        "centroid scheme",
+        "factorial scheme"
+      ],
+      "definition": "The rule PLS uses to build a construct's inner proxy from its neighbours: centroid (signs of correlations), factorial (correlations) or path weighting (regression for predecessors, correlation for successors).",
+      "lessons": [
+        "pls-algorithm"
+      ],
+      "seeAlso": [
+        "pls-sem"
+      ]
+    },
+    {
+      "id": "path-coefficient",
+      "term": "path coefficient",
+      "aliases": [
+        "structural path",
+        "path"
+      ],
+      "definition": "The estimated effect of one construct on another in the structural model: a partial regression coefficient, usually standardised.",
+      "lessons": [
+        "from-theory-to-model",
+        "pls-algorithm",
+        "standardized-coefficients",
+        "tables-and-figures"
+      ],
+      "seeAlso": [
+        "standardized-coefficient",
+        "direct-effect"
+      ]
+    },
+    {
+      "id": "standardized-coefficient",
+      "term": "standardised coefficient",
+      "aliases": [
+        "standardized coefficient",
+        "beta"
+      ],
+      "definition": "A coefficient in standard-deviation units: the expected change in SDs of the outcome per SD of the predictor, holding other predictors constant.",
+      "lessons": [
+        "standardized-coefficients",
+        "tables-and-figures"
+      ],
+      "seeAlso": [
+        "unstandardized-coefficient"
+      ]
+    },
+    {
+      "id": "unstandardized-coefficient",
+      "term": "unstandardised coefficient",
+      "aliases": [
+        "unstandardized coefficient"
+      ],
+      "definition": "A coefficient in the original units of the variables; IPMA importance is an unstandardised total effect on the rescaled 0–100 scores.",
+      "lessons": [
+        "standardized-coefficients",
+        "ipma"
+      ],
+      "seeAlso": [
+        "standardized-coefficient",
+        "importance"
+      ]
+    },
+    {
+      "id": "sign-indeterminacy",
+      "term": "sign indeterminacy",
+      "aliases": [],
+      "definition": "The fact that a construct's sign is arbitrary: reversing all its weights or loadings gives an equally valid solution. Software orients blocks by a convention.",
+      "lessons": [
+        "signs-and-orientation"
+      ],
+      "seeAlso": [
+        "reverse-scoring"
+      ]
+    },
+    {
+      "id": "reverse-scoring",
+      "term": "reverse scoring",
+      "aliases": [
+        "reverse coding",
+        "recoding"
+      ],
+      "definition": "Transforming a negatively worded item so that high values mean the same as for the other items: x′ = (min + max) − x, with the scale endpoints.",
+      "lessons": [
+        "signs-and-orientation",
+        "reporting-sample-and-data"
+      ],
+      "seeAlso": [
+        "scale-endpoints",
+        "sign-indeterminacy"
+      ]
+    },
+    {
+      "id": "plsc",
+      "term": "consistent PLS",
+      "aliases": [
+        "PLSc"
+      ],
+      "definition": "A correction of PLS (Dijkstra & Henseler 2015) that uses ρA to disattenuate correlations among reflective constructs, so that they are estimated as common factors. Composites are left unchanged.",
+      "lessons": [
+        "composites-and-common-factors",
+        "consistent-pls",
+        "loadings-and-indicator-reliability",
+        "convergent-validity-ave",
+        "reporting-specification-and-estimation"
+      ],
+      "seeAlso": [
+        "rho-a",
+        "attenuation",
+        "pls-sem"
+      ]
+    },
+    {
+      "id": "attenuation",
+      "term": "attenuation",
+      "aliases": [
+        "attenuation bias"
+      ],
+      "definition": "The weakening of correlations and regression coefficients between scores that contain random measurement error.",
+      "lessons": [
+        "errors-and-residuals",
+        "composites-and-common-factors",
+        "consistent-pls"
+      ],
+      "seeAlso": [
+        "measurement-error",
+        "plsc"
+      ]
+    },
+    {
+      "id": "redundancy-analysis",
+      "term": "redundancy analysis",
+      "aliases": [],
+      "definition": "A convergent-validity check for a formative construct: its correlation with an alternative (often single-item, reflective) measure of the same concept. SEM Studio does not run it automatically yet.",
+      "lessons": [
+        "validating-formative-constructs"
+      ],
+      "seeAlso": [
+        "formative-measurement",
+        "convergent-validity"
+      ]
+    },
+    {
+      "id": "content-validity",
+      "term": "content validity",
+      "aliases": [],
+      "definition": "The extent to which the indicators cover the full domain of the construct as defined; established by definition and expert judgement before data analysis.",
+      "lessons": [
+        "validating-formative-constructs"
+      ],
+      "seeAlso": [
+        "validity",
+        "formative-measurement"
+      ]
+    },
+    {
+      "id": "indicator-reliability",
+      "term": "indicator reliability",
+      "aliases": [],
+      "definition": "The share of an indicator's variance explained by its construct: the squared standardised loading, λ².",
+      "lessons": [
+        "loadings-and-indicator-reliability"
+      ],
+      "seeAlso": [
+        "outer-loading",
+        "reliability"
+      ]
+    },
+    {
+      "id": "cronbachs-alpha",
+      "term": "Cronbach's α",
+      "aliases": [
+        "Cronbach's alpha",
+        "coefficient alpha"
+      ],
+      "definition": "An internal-consistency reliability coefficient for reflective scales that assumes equal loadings; with unequal loadings it tends to underestimate reliability.",
+      "lessons": [
+        "reflective-and-formative",
+        "signs-and-orientation",
+        "internal-consistency-reliability"
+      ],
+      "seeAlso": [
+        "rho-a",
+        "rho-c"
+      ]
+    },
+    {
+      "id": "rho-a",
+      "term": "ρA",
+      "aliases": [
+        "rho_A",
+        "rho A",
+        "Dijkstra–Henseler rho"
+      ],
+      "definition": "A reliability coefficient for reflective constructs in PLS (Dijkstra & Henseler 2015), typically between α and ρC; used by PLSc for the consistency correction.",
+      "lessons": [
+        "consistent-pls",
+        "internal-consistency-reliability"
+      ],
+      "seeAlso": [
+        "cronbachs-alpha",
+        "rho-c",
+        "plsc"
+      ]
+    },
+    {
+      "id": "rho-c",
+      "term": "composite reliability (ρC)",
+      "aliases": [
+        "rho_C",
+        "composite reliability",
+        "CR"
+      ],
+      "definition": "A reliability coefficient computed from the loadings: (Σλ)² / ((Σλ)² + Σ(1 − λ²)). With classic PLS loadings it tends to overstate reliability.",
+      "lessons": [
+        "internal-consistency-reliability"
+      ],
+      "seeAlso": [
+        "cronbachs-alpha",
+        "rho-a"
+      ]
+    },
+    {
+      "id": "ave",
+      "term": "AVE",
+      "aliases": [
+        "average variance extracted"
+      ],
+      "definition": "The mean of the squared standardised loadings of a reflective construct's indicators; .50 or more is the usual heuristic for convergent validity.",
+      "lessons": [
+        "reflective-and-formative",
+        "convergent-validity-ave"
+      ],
+      "seeAlso": [
+        "convergent-validity",
+        "fornell-larcker"
+      ]
+    },
+    {
+      "id": "convergent-validity",
+      "term": "convergent validity",
+      "aliases": [],
+      "definition": "Evidence that the indicators of a construct measure the same thing: for reflective constructs AVE, for formative ones redundancy analysis.",
+      "lessons": [
+        "convergent-validity-ave"
+      ],
+      "seeAlso": [
+        "ave",
+        "redundancy-analysis"
+      ]
+    },
+    {
+      "id": "discriminant-validity",
+      "term": "discriminant validity",
+      "aliases": [],
+      "definition": "Evidence that a construct is empirically distinct from other constructs; assessed mainly with HTMT or HTMT2.",
+      "lessons": [
+        "discriminant-validity"
+      ],
+      "seeAlso": [
+        "htmt",
+        "htmt2",
+        "fornell-larcker"
+      ]
+    },
+    {
+      "id": "htmt",
+      "term": "HTMT",
+      "aliases": [
+        "heterotrait–monotrait ratio"
+      ],
+      "definition": "The mean correlation between indicators of two different constructs divided by the geometric mean of their mean within-construct correlations; estimates the construct correlation (Henseler et al. 2015).",
+      "lessons": [
+        "discriminant-validity"
+      ],
+      "seeAlso": [
+        "htmt2",
+        "discriminant-validity"
+      ]
+    },
+    {
+      "id": "htmt2",
+      "term": "HTMT2",
+      "aliases": [
+        "HTMT2"
+      ],
+      "definition": "A variant of HTMT that uses geometric instead of arithmetic means of correlations and remains consistent when loadings differ within a construct (Roemer et al. 2021).",
+      "lessons": [
+        "discriminant-validity"
+      ],
+      "seeAlso": [
+        "htmt"
+      ]
+    },
+    {
+      "id": "fornell-larcker",
+      "term": "Fornell–Larcker criterion",
+      "aliases": [],
+      "definition": "The requirement that each construct's AVE exceeds its squared correlations with other constructs. It often fails to detect discriminant-validity problems (Henseler et al. 2015).",
+      "lessons": [
+        "discriminant-validity"
+      ],
+      "seeAlso": [
+        "ave",
+        "htmt"
+      ]
+    },
+    {
+      "id": "cross-loadings",
+      "term": "cross-loadings",
+      "aliases": [],
+      "definition": "Correlations of an indicator with constructs other than its own; an indicator should correlate more with its own construct. A weak criterion for discriminant validity on its own.",
+      "lessons": [
+        "discriminant-validity"
+      ],
+      "seeAlso": [
+        "discriminant-validity"
+      ]
+    },
+    {
+      "id": "vif",
+      "term": "VIF",
+      "aliases": [
+        "variance inflation factor"
+      ],
+      "definition": "1 / (1 − R²ⱼ), where R²ⱼ comes from regressing predictor j on the other predictors. Measures collinearity among predictor constructs or Mode B indicators.",
+      "lessons": [
+        "mode-a-and-mode-b",
+        "validating-formative-constructs",
+        "collinearity-vif"
+      ],
+      "seeAlso": [
+        "collinearity",
+        "mode-b"
+      ]
+    },
+    {
+      "id": "collinearity",
+      "term": "collinearity",
+      "aliases": [
+        "multicollinearity"
+      ],
+      "definition": "Strong overlap among predictors, which makes their separate effects hard to estimate, inflates standard errors and can flip signs.",
+      "lessons": [
+        "mode-a-and-mode-b",
+        "collinearity-vif"
+      ],
+      "seeAlso": [
+        "vif"
+      ]
+    },
+    {
+      "id": "r-squared",
+      "term": "R²",
+      "aliases": [
+        "coefficient of determination",
+        "R-squared"
+      ],
+      "definition": "The share of an endogenous construct's variance explained by its predictors in the estimation sample.",
+      "lessons": [
+        "standardized-coefficients",
+        "r2-and-f2",
+        "prediction-versus-explanation"
+      ],
+      "seeAlso": [
+        "adjusted-r-squared",
+        "f-squared",
+        "in-sample-fit"
+      ]
+    },
+    {
+      "id": "adjusted-r-squared",
+      "term": "adjusted R²",
+      "aliases": [],
+      "definition": "R² corrected for the number of predictors relative to the sample size, so that adding useless predictors does not raise it automatically.",
+      "lessons": [
+        "r2-and-f2"
+      ],
+      "seeAlso": [
+        "r-squared"
+      ]
+    },
+    {
+      "id": "f-squared",
+      "term": "f²",
+      "aliases": [
+        "effect size f²",
+        "Cohen's f²"
+      ],
+      "definition": "The change in R² when a predictor is omitted, divided by 1 − R² of the full model; .02, .15 and .35 are Cohen's small, medium and large.",
+      "lessons": [
+        "collinearity-vif",
+        "r2-and-f2"
+      ],
+      "seeAlso": [
+        "r-squared"
+      ]
+    },
+    {
+      "id": "direct-effect",
+      "term": "direct effect",
+      "aliases": [],
+      "definition": "The effect of one construct on another along their direct path, holding the other predictors constant.",
+      "lessons": [
+        "direct-indirect-total-effects",
+        "mediation"
+      ],
+      "seeAlso": [
+        "indirect-effect",
+        "total-effect"
+      ]
+    },
+    {
+      "id": "indirect-effect",
+      "term": "indirect effect",
+      "aliases": [],
+      "definition": "An effect transmitted through one or more mediators; along a route it equals the product of the path coefficients.",
+      "lessons": [
+        "direct-indirect-total-effects",
+        "mediation"
+      ],
+      "seeAlso": [
+        "specific-indirect-effect",
+        "mediation"
+      ]
+    },
+    {
+      "id": "specific-indirect-effect",
+      "term": "specific indirect effect",
+      "aliases": [],
+      "definition": "The indirect effect along one particular route through specified mediators.",
+      "lessons": [
+        "direct-indirect-total-effects",
+        "mediation"
+      ],
+      "seeAlso": [
+        "indirect-effect",
+        "total-effect"
+      ]
+    },
+    {
+      "id": "total-effect",
+      "term": "total effect",
+      "aliases": [],
+      "definition": "The direct effect plus all indirect effects of one construct on another.",
+      "lessons": [
+        "direct-indirect-total-effects",
+        "mediation",
+        "ipma"
+      ],
+      "seeAlso": [
+        "direct-effect",
+        "indirect-effect",
+        "importance"
+      ]
+    },
+    {
+      "id": "mediation",
+      "term": "mediation",
+      "aliases": [],
+      "definition": "An effect of X on Y that runs, at least partly, through a mediator M. Tested through the indirect effect with a bootstrap interval and classified with the Zhao et al. (2010) typology.",
+      "lessons": [
+        "direct-indirect-total-effects",
+        "mediation",
+        "moderation"
+      ],
+      "seeAlso": [
+        "indirect-effect",
+        "moderation"
+      ]
+    },
+    {
+      "id": "moderation",
+      "term": "moderation",
+      "aliases": [
+        "interaction effect"
+      ],
+      "definition": "A situation in which the strength of an effect depends on a third variable; modelled with an interaction term or a multigroup analysis. SEM Studio does not estimate interactions yet.",
+      "lessons": [
+        "moderation"
+      ],
+      "seeAlso": [
+        "mediation",
+        "multigroup-analysis"
+      ]
+    },
+    {
+      "id": "srmr",
+      "term": "SRMR",
+      "aliases": [
+        "standardised root mean square residual"
+      ],
+      "definition": "The root mean square of the differences between observed and model-implied correlations. Used in CB-SEM and, with different properties, in PLS-SEM.",
+      "lessons": [
+        "fit-indices",
+        "residuals-and-respecification"
+      ],
+      "seeAlso": [
+        "model-fit",
+        "standardized-residual"
+      ]
+    },
+    {
+      "id": "bootstrap",
+      "term": "bootstrap",
+      "aliases": [
+        "bootstrapping"
+      ],
+      "definition": "A resampling method: draw many samples with replacement from the data, re-estimate on each, and use the distribution of the estimates for standard errors and intervals.",
+      "lessons": [
+        "bootstrap",
+        "reporting-specification-and-estimation",
+        "reproducibility"
+      ],
+      "seeAlso": [
+        "standard-error",
+        "percentile-interval",
+        "random-seed"
+      ]
+    },
+    {
+      "id": "standard-error",
+      "term": "standard error",
+      "aliases": [
+        "SE"
+      ],
+      "definition": "The standard deviation of an estimate across repeated samples; with the bootstrap, the SD of the resampled estimates.",
+      "lessons": [
+        "bootstrap",
+        "confidence-intervals"
+      ],
+      "seeAlso": [
+        "bootstrap",
+        "confidence-interval"
+      ]
+    },
+    {
+      "id": "confidence-interval",
+      "term": "confidence interval",
+      "aliases": [
+        "CI"
+      ],
+      "definition": "A range of values for a parameter produced by a procedure that covers the true value in a stated share (e.g. 95%) of repeated samples.",
+      "lessons": [
+        "bootstrap",
+        "confidence-intervals",
+        "mediation",
+        "tables-and-figures"
+      ],
+      "seeAlso": [
+        "percentile-interval",
+        "bca-interval"
+      ]
+    },
+    {
+      "id": "percentile-interval",
+      "term": "percentile interval",
+      "aliases": [
+        "percentile bootstrap CI"
+      ],
+      "definition": "A bootstrap confidence interval whose limits are percentiles of the bootstrap estimates, e.g. the 2.5th and 97.5th for 95%.",
+      "lessons": [
+        "confidence-intervals"
+      ],
+      "seeAlso": [
+        "confidence-interval",
+        "bca-interval"
+      ]
+    },
+    {
+      "id": "bca-interval",
+      "term": "BCa interval",
+      "aliases": [
+        "bias-corrected and accelerated interval"
+      ],
+      "definition": "A bootstrap interval that adjusts the percentiles for bias and skewness of the bootstrap distribution. Not yet available in SEM Studio.",
+      "lessons": [
+        "confidence-intervals"
+      ],
+      "seeAlso": [
+        "percentile-interval"
+      ]
+    },
+    {
+      "id": "random-seed",
+      "term": "random seed",
+      "aliases": [
+        "seed"
+      ],
+      "definition": "The starting value of a random-number generator; with the same seed, data and settings, a bootstrap draws exactly the same resamples.",
+      "lessons": [
+        "bootstrap",
+        "reporting-specification-and-estimation",
+        "reproducibility"
+      ],
+      "seeAlso": [
+        "bootstrap",
+        "reproducibility"
+      ]
+    },
+    {
+      "id": "p-value",
+      "term": "p value",
+      "aliases": [
+        "p-value"
+      ],
+      "definition": "The probability, under the null hypothesis and the model, of a test statistic at least as extreme as the one observed. Not the probability that the hypothesis is true, and not a measure of effect size.",
+      "lessons": [
+        "confidence-intervals",
+        "group-comparisons-and-invariance",
+        "tables-and-figures"
+      ],
+      "seeAlso": [
+        "confidence-interval",
+        "practical-significance"
+      ]
+    },
+    {
+      "id": "multigroup-analysis",
+      "term": "multigroup analysis",
+      "aliases": [
+        "MGA",
+        "PLS-MGA"
+      ],
+      "definition": "Comparing model parameters between groups with a formal test of the differences. Not yet available in SEM Studio.",
+      "lessons": [
+        "moderation",
+        "group-comparisons-and-invariance"
+      ],
+      "seeAlso": [
+        "measurement-invariance",
+        "micom"
+      ]
+    },
+    {
+      "id": "measurement-invariance",
+      "term": "measurement invariance",
+      "aliases": [
+        "measurement equivalence"
+      ],
+      "definition": "Evidence that constructs are measured the same way across groups; required before comparing paths or means (configural, metric, scalar levels in CB-SEM; MICOM for composites).",
+      "lessons": [
+        "group-comparisons-and-invariance",
+        "measurement-invariance-cb"
+      ],
+      "seeAlso": [
+        "micom",
+        "multigroup-analysis"
+      ]
+    },
+    {
+      "id": "micom",
+      "term": "MICOM",
+      "aliases": [
+        "measurement invariance of composite models"
+      ],
+      "definition": "A three-step procedure for composites: configural invariance, compositional invariance, and equality of composite means and variances (Henseler et al. 2016). Not yet available in SEM Studio.",
+      "lessons": [
+        "group-comparisons-and-invariance"
+      ],
+      "seeAlso": [
+        "measurement-invariance"
+      ]
+    },
+    {
+      "id": "in-sample-fit",
+      "term": "in-sample fit",
+      "aliases": [
+        "explanatory power"
+      ],
+      "definition": "How well a model reproduces or explains the data used to estimate it, e.g. R². Optimistic about new data.",
+      "lessons": [
+        "r2-and-f2",
+        "prediction-versus-explanation"
+      ],
+      "seeAlso": [
+        "out-of-sample-prediction",
+        "r-squared"
+      ]
+    },
+    {
+      "id": "out-of-sample-prediction",
+      "term": "out-of-sample prediction",
+      "aliases": [
+        "predictive power"
+      ],
+      "definition": "How well a model estimated on training data predicts cases it has not seen, assessed by cross-validation or a hold-out sample.",
+      "lessons": [
+        "prediction-versus-explanation"
+      ],
+      "seeAlso": [
+        "plspredict",
+        "data-leakage"
+      ]
+    },
+    {
+      "id": "plspredict",
+      "term": "PLSpredict",
+      "aliases": [],
+      "definition": "A k-fold cross-validation procedure for PLS-SEM that reports Q²predict and compares prediction errors with a linear-model benchmark (Shmueli et al. 2016, 2019). Not yet available in SEM Studio.",
+      "lessons": [
+        "prediction-versus-explanation"
+      ],
+      "seeAlso": [
+        "cvpat",
+        "out-of-sample-prediction"
+      ]
+    },
+    {
+      "id": "cvpat",
+      "term": "CVPAT",
+      "aliases": [
+        "cross-validated predictive ability test"
+      ],
+      "definition": "A significance test of whether a model's out-of-sample prediction loss differs from a benchmark's or another model's (Liengaard et al. 2021). Not yet available in SEM Studio.",
+      "lessons": [
+        "prediction-versus-explanation"
+      ],
+      "seeAlso": [
+        "plspredict"
+      ]
+    },
+    {
+      "id": "data-leakage",
+      "term": "data leakage",
+      "aliases": [
+        "train/test leakage"
+      ],
+      "definition": "Information from evaluation cases influencing model building, for example by selecting items on the full sample before cross-validation; it makes out-of-sample results optimistic.",
+      "lessons": [
+        "prediction-versus-explanation"
+      ],
+      "seeAlso": [
+        "out-of-sample-prediction"
+      ]
+    },
+    {
+      "id": "ipma",
+      "term": "IPMA",
+      "aliases": [
+        "importance–performance map analysis"
+      ],
+      "definition": "A map of each predecessor of a target construct by importance (unstandardised total effect) and performance (mean score rescaled to 0–100 with the scale endpoints).",
+      "lessons": [
+        "ipma"
+      ],
+      "seeAlso": [
+        "importance",
+        "performance"
+      ]
+    },
+    {
+      "id": "importance",
+      "term": "importance (IPMA)",
+      "aliases": [
+        "importance"
+      ],
+      "definition": "In IPMA, the unstandardised total effect of a construct on the target construct, computed on the rescaled scores; it keeps its sign.",
+      "lessons": [
+        "ipma"
+      ],
+      "seeAlso": [
+        "ipma",
+        "total-effect"
+      ]
+    },
+    {
+      "id": "performance",
+      "term": "performance (IPMA)",
+      "aliases": [
+        "performance"
+      ],
+      "definition": "In IPMA, the mean of a construct or indicator rescaled to 0–100 with the declared scale endpoints: (x̄ − min) / (max − min) × 100.",
+      "lessons": [
+        "ipma"
+      ],
+      "seeAlso": [
+        "ipma",
+        "scale-endpoints"
+      ]
+    },
+    {
+      "id": "identification",
+      "term": "identification",
+      "aliases": [
+        "model identification"
+      ],
+      "definition": "The property that a model's parameters can be determined uniquely from the variances and covariances of the indicators. Necessary: no more free parameters than distinct moments.",
+      "lessons": [
+        "identification",
+        "heywood-cases"
+      ],
+      "seeAlso": [
+        "degrees-of-freedom"
+      ]
+    },
+    {
+      "id": "degrees-of-freedom",
+      "term": "degrees of freedom",
+      "aliases": [
+        "df"
+      ],
+      "definition": "In CB-SEM, the number of distinct variances and covariances minus the number of free parameters; df > 0 makes global fit testable.",
+      "lessons": [
+        "identification",
+        "heywood-cases"
+      ],
+      "seeAlso": [
+        "identification",
+        "chi-square-test"
+      ]
+    },
+    {
+      "id": "marker-variable",
+      "term": "marker variable",
+      "aliases": [
+        "marker indicator",
+        "reference indicator"
+      ],
+      "definition": "An identification method that fixes one loading of each factor to 1, giving the factor the scale of that indicator.",
+      "lessons": [
+        "identification"
+      ],
+      "seeAlso": [
+        "fixed-factor-variance",
+        "identification"
+      ]
+    },
+    {
+      "id": "fixed-factor-variance",
+      "term": "fixed factor variance",
+      "aliases": [
+        "std-lv",
+        "unit variance identification"
+      ],
+      "definition": "An identification method that fixes each exogenous factor's variance to 1. Fit and standardised results equal those of marker identification.",
+      "lessons": [
+        "identification"
+      ],
+      "seeAlso": [
+        "marker-variable"
+      ]
+    },
+    {
+      "id": "maximum-likelihood",
+      "term": "maximum likelihood",
+      "aliases": [
+        "ML"
+      ],
+      "definition": "The default CB-SEM estimator: chooses parameters that maximise the likelihood under multivariate normality.",
+      "lessons": [
+        "estimators-and-missing-data"
+      ],
+      "seeAlso": [
+        "mlr",
+        "cb-sem"
+      ]
+    },
+    {
+      "id": "mlr",
+      "term": "MLR",
+      "aliases": [
+        "robust maximum likelihood"
+      ],
+      "definition": "ML estimates with robust (sandwich) standard errors and a scaled test statistic, for non-normal continuous data.",
+      "lessons": [
+        "estimators-and-missing-data"
+      ],
+      "seeAlso": [
+        "maximum-likelihood"
+      ]
+    },
+    {
+      "id": "wlsmv",
+      "term": "WLSMV",
+      "aliases": [
+        "diagonally weighted least squares"
+      ],
+      "definition": "An estimator for ordinal indicators that fits polychoric correlations with a diagonal weight matrix and robust corrections. Available in lavaan, not in SEM Studio's browser engine.",
+      "lessons": [
+        "estimators-and-missing-data"
+      ],
+      "seeAlso": [
+        "maximum-likelihood"
+      ]
+    },
+    {
+      "id": "fiml",
+      "term": "FIML",
+      "aliases": [
+        "full information maximum likelihood"
+      ],
+      "definition": "ML estimation that uses every observed value of every case, unbiased when data are missing at random. Available for CB-SEM in SEM Studio, with a mean structure.",
+      "lessons": [
+        "estimators-and-missing-data",
+        "reporting-sample-and-data"
+      ],
+      "seeAlso": [
+        "listwise-deletion",
+        "missing-data-mechanism"
+      ]
+    },
+    {
+      "id": "listwise-deletion",
+      "term": "listwise deletion",
+      "aliases": [
+        "complete-case analysis"
+      ],
+      "definition": "Dropping every case that has any missing value. Unbiased only if data are missing completely at random, and wasteful.",
+      "lessons": [
+        "estimators-and-missing-data",
+        "reporting-sample-and-data"
+      ],
+      "seeAlso": [
+        "fiml",
+        "missing-data-mechanism"
+      ]
+    },
+    {
+      "id": "missing-data-mechanism",
+      "term": "missing-data mechanism",
+      "aliases": [
+        "MCAR",
+        "MAR",
+        "MNAR"
+      ],
+      "definition": "The process that produced missing values: missing completely at random (MCAR), at random given observed data (MAR), or not at random (MNAR).",
+      "lessons": [
+        "estimators-and-missing-data",
+        "reporting-sample-and-data"
+      ],
+      "seeAlso": [
+        "fiml",
+        "listwise-deletion"
+      ]
+    },
+    {
+      "id": "chi-square-test",
+      "term": "χ² test of model fit",
+      "aliases": [
+        "chi-square test",
+        "likelihood-ratio test"
+      ],
+      "definition": "A test of whether the model reproduces the population covariances exactly; sensitive to sample size.",
+      "lessons": [
+        "identification",
+        "fit-indices",
+        "measurement-invariance-cb"
+      ],
+      "seeAlso": [
+        "model-fit",
+        "degrees-of-freedom"
+      ]
+    },
+    {
+      "id": "rmsea",
+      "term": "RMSEA",
+      "aliases": [
+        "root mean square error of approximation"
+      ],
+      "definition": "Misfit per degree of freedom: √(max(χ² − df, 0) / (df · N)) in lavaan's convention. Near 0 means close fit.",
+      "lessons": [
+        "fit-indices",
+        "residuals-and-respecification"
+      ],
+      "seeAlso": [
+        "model-fit",
+        "cfi"
+      ]
+    },
+    {
+      "id": "cfi",
+      "term": "CFI",
+      "aliases": [
+        "comparative fit index"
+      ],
+      "definition": "Improvement in fit relative to a baseline model of uncorrelated indicators: 1 − max(χ² − df, 0) / max(χ²_B − df_B, χ² − df, 0).",
+      "lessons": [
+        "fit-indices",
+        "residuals-and-respecification",
+        "measurement-invariance-cb"
+      ],
+      "seeAlso": [
+        "tli",
+        "model-fit"
+      ]
+    },
+    {
+      "id": "tli",
+      "term": "TLI",
+      "aliases": [
+        "Tucker–Lewis index",
+        "non-normed fit index"
+      ],
+      "definition": "An incremental fit index that compares χ²/df of the model and of the baseline model, penalising complexity.",
+      "lessons": [
+        "fit-indices"
+      ],
+      "seeAlso": [
+        "cfi",
+        "model-fit"
+      ]
+    },
+    {
+      "id": "model-fit",
+      "term": "model fit",
+      "aliases": [
+        "global fit"
+      ],
+      "definition": "How closely the model-implied covariances reproduce the observed ones. Good fit is necessary but not sufficient for a model to be correct.",
+      "lessons": [
+        "common-factor-model",
+        "fit-indices",
+        "residuals-and-respecification"
+      ],
+      "seeAlso": [
+        "chi-square-test",
+        "rmsea",
+        "cfi",
+        "srmr",
+        "equivalent-models"
+      ]
+    },
+    {
+      "id": "standardized-residual",
+      "term": "standardised residual",
+      "aliases": [
+        "residual correlation"
+      ],
+      "definition": "A covariance or correlation residual (observed minus implied) on a standardised scale; large values show where a model fails.",
+      "lessons": [
+        "residuals-and-respecification"
+      ],
+      "seeAlso": [
+        "residual",
+        "modification-index"
+      ]
+    },
+    {
+      "id": "modification-index",
+      "term": "modification index",
+      "aliases": [
+        "MI"
+      ],
+      "definition": "The expected drop in χ² if one fixed parameter were freed. A diagnostic suggestion, never a reason to change a model on its own. Not yet available in SEM Studio.",
+      "lessons": [
+        "residuals-and-respecification"
+      ],
+      "seeAlso": [
+        "standardized-residual",
+        "model-fit"
+      ]
+    },
+    {
+      "id": "heywood-case",
+      "term": "Heywood case",
+      "aliases": [
+        "negative variance"
+      ],
+      "definition": "A negative variance estimate (and a standardised loading above 1), which makes a solution inadmissible.",
+      "lessons": [
+        "heywood-cases"
+      ],
+      "seeAlso": [
+        "identification"
+      ]
+    },
+    {
+      "id": "reproducibility",
+      "term": "reproducibility",
+      "aliases": [],
+      "definition": "Obtaining the same results from the same model, data, settings, seed and code.",
+      "lessons": [
+        "reporting-sample-and-data",
+        "reporting-specification-and-estimation",
+        "reproducibility"
+      ],
+      "seeAlso": [
+        "random-seed"
+      ]
+    },
+    {
+      "id": "practical-significance",
+      "term": "practical significance",
+      "aliases": [
+        "relevance"
+      ],
+      "definition": "Whether an effect is large enough to matter in context, judged from its size and interval rather than its p value.",
+      "lessons": [
+        "interpretation-and-limitations"
+      ],
+      "seeAlso": [
+        "p-value",
+        "f-squared"
+      ]
+    },
+    {
+      "id": "common-method-variance",
+      "term": "common method variance",
+      "aliases": [
+        "common method bias"
+      ],
+      "definition": "Variance shared by measures because of the measurement method (e.g. one questionnaire, one respondent) rather than the constructs; it can inflate relationships.",
+      "lessons": [
+        "interpretation-and-limitations"
+      ],
+      "seeAlso": [
+        "causal-inference"
+      ]
+    }
+  ]
+}

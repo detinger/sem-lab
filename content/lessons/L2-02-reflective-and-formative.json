@@ -1,0 +1,300 @@
+{
+  "id": "reflective-and-formative",
+  "level": 2,
+  "order": 2,
+  "title": "Reflective or formative measurement",
+  "summary": "Whether indicators reflect a construct or form it is a theoretical decision about the construct, made before estimation and never because one specification gives better statistics.",
+  "minutes": 9,
+  "prerequisites": [
+    "composites-and-common-factors"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "In [[reflective-measurement]] the construct causes its indicators: the items are interchangeable manifestations, they should correlate highly, and dropping one does not change what is measured. In [[formative-measurement]] the indicators make up the construct: they can be uncorrelated, and dropping one changes the construct's meaning (Jarvis et al. 2003; Diamantopoulos & Winklhofer 2001)."
+    },
+    {
+      "kind": "list",
+      "ordered": true,
+      "items": [
+        "Does a change in the construct cause changes in all items (reflective), or do changes in an item change the construct (formative)?",
+        "Are the items interchangeable, sharing one theme?",
+        "Must the items covary? If one rises, should the others?",
+        "Do the items share the same antecedents and consequences?"
+      ]
+    },
+    {
+      "kind": "demo",
+      "demo": "reflective-formative",
+      "initial": {},
+      "caption": "Flip a small block between reflective (Mode A) and formative (Mode B) and watch which quality criteria apply."
+    },
+    {
+      "kind": "callout",
+      "variant": "warning",
+      "text": "The starter below has an index F whose four indicators were designed as separate components (they correlate only about .25). Declare F reflective and run: Cronbach's α is about .52 and the AVE about .41, so F seems to \"fail\". Those criteria assume a common factor, which F never was. The opposite error, declaring a reflective scale formative, hides genuine reliability problems and changes what the construct means (Jarvis et al. 2003).",
+      "title": "Try a wrong model: misspecified measurement"
+    }
+  ],
+  "mistake": {
+    "title": "Choosing formative because reflective criteria failed",
+    "text": "Switching a block to formative when α or AVE look poor is a misuse: the specification must follow from the construct definition. Low reliability of a reflective scale is a measurement problem to report and fix, not a reason to relabel it."
+  },
+  "tryIt": {
+    "task": "Run PLS-SEM on this model, then open construct F, change its measurement to reflective and run again. Compare α and AVE of F, and the F → Y path, between the two runs. Change F back afterwards.",
+    "starter": {
+      "title": "Mixed composite and reflective model",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_f",
+            "indicatorIds": [
+              "i_f1",
+              "i_f2",
+              "i_f3",
+              "i_f4"
+            ],
+            "label": "Composite F",
+            "measurement": "composite-formative",
+            "name": "F"
+          },
+          {
+            "id": "c_x",
+            "indicatorIds": [
+              "i_x1",
+              "i_x2",
+              "i_x3"
+            ],
+            "label": "Reflective X",
+            "measurement": "reflective",
+            "name": "X"
+          },
+          {
+            "id": "c_y",
+            "indicatorIds": [
+              "i_y1",
+              "i_y2",
+              "i_y3",
+              "i_y4"
+            ],
+            "label": "Reflective Y",
+            "measurement": "reflective",
+            "name": "Y"
+          }
+        ],
+        "indicators": [
+          {
+            "column": "f1",
+            "id": "i_f1",
+            "level": "ordinal",
+            "name": "f1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "f2",
+            "id": "i_f2",
+            "level": "ordinal",
+            "name": "f2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "f3",
+            "id": "i_f3",
+            "level": "ordinal",
+            "name": "f3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "f4",
+            "id": "i_f4",
+            "level": "ordinal",
+            "name": "f4",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "x1",
+            "id": "i_x1",
+            "level": "ordinal",
+            "name": "x1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "x2",
+            "id": "i_x2",
+            "level": "ordinal",
+            "name": "x2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "x3",
+            "id": "i_x3",
+            "level": "ordinal",
+            "name": "x3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "y1",
+            "id": "i_y1",
+            "level": "ordinal",
+            "name": "y1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "y2",
+            "id": "i_y2",
+            "level": "ordinal",
+            "name": "y2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "y3",
+            "id": "i_y3",
+            "level": "ordinal",
+            "name": "y3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "y4",
+            "id": "i_y4",
+            "level": "ordinal",
+            "name": "y4",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_f_y",
+            "kind": "structural",
+            "sourceId": "c_f",
+            "targetId": "c_y"
+          },
+          {
+            "id": "r_x_y",
+            "kind": "structural",
+            "sourceId": "c_x",
+            "targetId": "c_y"
+          },
+          {
+            "id": "r_f_x",
+            "kind": "covariance",
+            "sourceId": "c_f",
+            "targetId": "c_x"
+          }
+        ]
+      },
+      "open": "modeler",
+      "bundledDatasetId": "pls-mixed-composite",
+      "analysis": {
+        "method": "pls-sem",
+        "engine": "browser",
+        "estimator": "pls-pm",
+        "missingData": "listwise",
+        "pls": {
+          "innerWeighting": "path",
+          "maxIterations": 300,
+          "tolerance": 1e-07
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "classify",
+      "question": "Which block is most plausibly formative?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Socio-economic status measured by income, education and occupational prestige.",
+          "correct": true,
+          "feedback": "Correct. The components define status, and a rise in income does not have to come with a rise in education."
+        },
+        {
+          "id": "b",
+          "text": "Loyalty measured by \"I would recommend…\", \"I will buy again…\" and \"I will stay with…\".",
+          "correct": false,
+          "feedback": "These items express the same underlying disposition and should move together: reflective."
+        },
+        {
+          "id": "c",
+          "text": "Anxiety measured by four items such as \"I feel tense\" and \"I feel worried\".",
+          "correct": false,
+          "feedback": "A state of anxiety plausibly causes all four feelings; the items are interchangeable manifestations."
+        }
+      ],
+      "explanation": "Formative indicators define the construct and need not correlate."
+    },
+    {
+      "id": "alpha-after-switch",
+      "question": "You declare the index F reflective and obtain α = .52. What is the right conclusion?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "α is the wrong criterion for an index; keep F as composite-formative and assess it with weights, indicator collinearity and content validity.",
+          "correct": true,
+          "feedback": "Correct. α measures internal consistency of interchangeable items, which an index does not need."
+        },
+        {
+          "id": "b",
+          "text": "Delete items until α exceeds .70.",
+          "correct": false,
+          "feedback": "Deleting components of an index changes what it measures, and chasing α optimises a criterion that does not apply."
+        },
+        {
+          "id": "c",
+          "text": "Report F as unreliable and drop it from the model.",
+          "correct": false,
+          "feedback": "F is not unreliable in any meaningful sense; it was simply misspecified as a common factor."
+        }
+      ],
+      "explanation": "Quality criteria follow the measurement model, not the other way round."
+    }
+  ],
+  "references": [
+    "jarvis2003",
+    "diamantopoulos2001",
+    "bollen2011",
+    "hair2022"
+  ],
+  "glossary": [
+    "reflective-measurement",
+    "formative-measurement",
+    "cronbachs-alpha",
+    "ave",
+    "composite"
+  ]
+}

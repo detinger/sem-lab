@@ -1,0 +1,102 @@
+{
+  "id": "convergent-validity-ave",
+  "level": 3,
+  "order": 3,
+  "title": "Convergent validity and AVE",
+  "summary": "The average variance extracted measures how much of its indicators' variance a reflective construct explains on average; .50 or more is the usual heuristic.",
+  "minutes": 6,
+  "prerequisites": [
+    "internal-consistency-reliability"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "[[convergent-validity]] asks whether the indicators of a reflective construct converge on one thing. Its usual measure is the average variance extracted, [[ave]] (Fornell & Larcker 1981)."
+    },
+    {
+      "kind": "formula",
+      "display": "AVE = (λ₁² + λ₂² + … + λ_k²) / k",
+      "explanation": "The mean of the squared standardised loadings of the k indicators: the average share of indicator variance explained by the construct."
+    },
+    {
+      "kind": "p",
+      "text": "An AVE of .50 or more means the construct explains at least half of its indicators' variance on average (Fornell & Larcker 1981; Hair et al. 2022). Like loadings, classic PLS AVE values are inflated for reflective constructs: in the TAM example PEOU has AVE .662 under PLS and .551 under PLSc. AVE is not defined for formative constructs."
+    }
+  ],
+  "mistake": {
+    "title": "Treating .49 and .51 as different verdicts",
+    "text": "The .50 threshold is a convention. Report the value, consider its uncertainty and the estimator (PLS inflates AVE), and do not delete items only to step over the line."
+  },
+  "tryIt": {
+    "task": "Run the TAM example with PLS-SEM and with PLSc. Compare the AVE of each construct under both estimators.",
+    "starter": {
+      "title": "TAM example",
+      "exampleId": "tam-mediation",
+      "open": "analysis"
+    }
+  },
+  "checks": [
+    {
+      "id": "ave-calc",
+      "question": "Three indicators load .90, .70 and .50. What is the AVE?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "About .52",
+          "correct": true,
+          "feedback": "Correct: (.81 + .49 + .25) / 3 = 1.55 / 3 ≈ .517."
+        },
+        {
+          "id": "b",
+          "text": ".70",
+          "correct": false,
+          "feedback": ".70 is the mean loading. AVE averages the squared loadings."
+        },
+        {
+          "id": "c",
+          "text": "About .49",
+          "correct": false,
+          "feedback": "That is the square of the mean loading (.70²). Square first, then average."
+        }
+      ],
+      "explanation": "Square, then average."
+    },
+    {
+      "id": "ave-formative",
+      "question": "Should you report AVE for a composite-formative index?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "No. AVE assumes a common factor behind the indicators, which an index does not posit.",
+          "correct": true,
+          "feedback": "Correct. SEM Studio shows AVE as not applicable for such blocks."
+        },
+        {
+          "id": "b",
+          "text": "Yes, and it should exceed .50.",
+          "correct": false,
+          "feedback": "Index components need not share variance, so a low AVE carries no message about quality."
+        },
+        {
+          "id": "c",
+          "text": "Only if it is above .50.",
+          "correct": false,
+          "feedback": "Reporting a criterion only when it looks good is selective reporting; here the criterion does not apply at all."
+        }
+      ],
+      "explanation": "AVE is a reflective criterion."
+    }
+  ],
+  "references": [
+    "fornell1981",
+    "hair2022"
+  ],
+  "glossary": [
+    "ave",
+    "convergent-validity",
+    "outer-loading",
+    "plsc"
+  ]
+}

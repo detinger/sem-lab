@@ -1,0 +1,145 @@
+{
+  "id": "word-ready-table",
+  "number": 15,
+  "title": "Produce a complete Word-ready results table",
+  "category": "report",
+  "method": "pls",
+  "difficulty": 1,
+  "prerequisiteLessons": [
+    "tables-and-figures",
+    "confidence-intervals"
+  ],
+  "skills": [
+    "Table structure",
+    "Notes and labels",
+    "Reporting conventions"
+  ],
+  "brief": [
+    {
+      "kind": "p",
+      "text": "Run the TAM example (5,000 bootstrap draws, seed 20261103) and produce the structural results table for H1–H3 in Word, using SEM Studio's copy-to-Word action and your own edits."
+    }
+  ],
+  "starter": {
+    "title": "TAM example (bootstrap)",
+    "exampleId": "tam-mediation",
+    "open": "analysis"
+  },
+  "tasks": [
+    {
+      "id": "checklist",
+      "dimension": "reporting",
+      "kind": "self-assess",
+      "prompt": "Tick what your table contains.",
+      "checklist": [
+        "A numbered title that names the model and the estimator",
+        "One row per hypothesis with its path (e.g. H1: PEOU → PU)",
+        "Standardised estimate, 95% percentile CI and p value for each path",
+        "R² (and adjusted R²) of PU and BI",
+        "A conclusion column (supported / not supported) consistent with the intervals",
+        "Consistent decimals (three) and p < .001 instead of p = .000",
+        "A note: classic PLS-SEM, path weighting, 5,000 bootstrap draws, seed 20261103, percentile CI, N = 500, abbreviations spelled out",
+        "A statement that the data are synthetic teaching data"
+      ]
+    },
+    {
+      "id": "note",
+      "dimension": "reporting",
+      "kind": "choice",
+      "prompt": "Which items belong in the note under the table? Select all that apply.",
+      "multiple": true,
+      "options": [
+        {
+          "id": "a",
+          "text": "Bootstrap draws, seed and interval type",
+          "correct": true,
+          "feedback": "Correct."
+        },
+        {
+          "id": "b",
+          "text": "That coefficients are standardised",
+          "correct": true,
+          "feedback": "Correct."
+        },
+        {
+          "id": "c",
+          "text": "Construct abbreviations",
+          "correct": true,
+          "feedback": "Correct."
+        },
+        {
+          "id": "d",
+          "text": "The analyst's interpretation of why H3 is weaker than H2",
+          "correct": false,
+          "feedback": "Interpretation belongs in the text; notes describe how the numbers were produced."
+        }
+      ]
+    },
+    {
+      "id": "pvalue",
+      "dimension": "reporting",
+      "kind": "choice",
+      "prompt": "The results show p = 0.000 for H1. What do you write?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "p < .001",
+          "correct": true,
+          "feedback": "Correct."
+        },
+        {
+          "id": "b",
+          "text": "p = .000",
+          "correct": false,
+          "feedback": "A p value is never exactly zero."
+        },
+        {
+          "id": "c",
+          "text": "p = 0",
+          "correct": false,
+          "feedback": "Same problem; report an inequality."
+        }
+      ]
+    },
+    {
+      "id": "which-r2",
+      "dimension": "reporting",
+      "kind": "choice",
+      "prompt": "Where should R² values appear?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "For the endogenous constructs PU and BI, in the table or its last rows.",
+          "correct": true,
+          "feedback": "Correct. Exogenous constructs have no R²."
+        },
+        {
+          "id": "b",
+          "text": "For every construct, including PEOU.",
+          "correct": false,
+          "feedback": "PEOU is exogenous; nothing in the model explains it."
+        },
+        {
+          "id": "c",
+          "text": "R² is not reported in PLS-SEM.",
+          "correct": false,
+          "feedback": "R² is a standard structural-model result in PLS-SEM."
+        }
+      ]
+    }
+  ],
+  "hints": [
+    "Start from the copied table and compare it with the checklist.",
+    "A reader should understand the table without the text: what would they need to know about the method?",
+    "Check every cell type: estimates, intervals, p values, R²."
+  ],
+  "solution": [
+    {
+      "kind": "p",
+      "text": "A complete table lists H1–H3 with standardised estimates (PEOU → PU ≈ .498, PU → BI ≈ .501, PEOU → BI ≈ .128), 95% percentile intervals, p values (p < .001 where applicable) and a conclusion per hypothesis; R² of PU (≈ .248) and BI (≈ .331). The note states classic PLS-SEM with path weighting, 5,000 bootstrap draws, seed 20261103, percentile intervals, N = 500, abbreviations and that the data are synthetic."
+    }
+  ],
+  "nextLesson": "interpretation-and-limitations"
+}

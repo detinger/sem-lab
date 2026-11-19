@@ -1,0 +1,222 @@
+{
+  "id": "covariance-and-correlation",
+  "level": 1,
+  "order": 4,
+  "title": "Covariance, correlation and direction",
+  "summary": "SEM estimates are built from how indicators vary together, and because correlation is symmetric the data alone cannot tell you which way an arrow points.",
+  "minutes": 7,
+  "prerequisites": [
+    "measurement-and-structural-model"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "[[covariance]] measures how two variables vary together, in their own units. [[correlation]] rescales covariance to the range −1 to 1 so it can be compared across variables and studies."
+    },
+    {
+      "kind": "formula",
+      "display": "r_xy = cov(x, y) / (s_x · s_y)",
+      "explanation": "The correlation r of x and y is their covariance divided by the product of their standard deviations s. It is unit-free and symmetric: r_xy = r_yx."
+    },
+    {
+      "kind": "p",
+      "text": "CB-SEM fits the model to the covariance matrix of the indicators; PLS-SEM works with standardised indicators, that is with their correlations. Both therefore inherit a basic limitation: the correlation of X and Y is the same whichever you call the cause."
+    },
+    {
+      "kind": "callout",
+      "variant": "warning",
+      "text": "In a model with only X and Y, the standardised path X → Y equals their correlation. Reverse the arrow to Y → X and you get exactly the same number; only the R² moves from Y to X. Both models reproduce the data equally well: they are [[equivalent-models]] (MacCallum et al. 1993). Direction must come from theory and design.",
+      "title": "Try a wrong model: causal reversal"
+    }
+  ],
+  "mistake": {
+    "title": "Taking a good estimate as evidence for direction",
+    "text": "A strong, significant path does not show that X causes Y. The reversed model, and many others, fit identically. Claims about direction need a theory, temporal order, or an experiment."
+  },
+  "tryIt": {
+    "task": "Run PLS-SEM on this two-construct model and note the X → Y path and the R² of Y. Then select the arrow, reverse it to Y → X, and run again. Compare the two results.",
+    "starter": {
+      "title": "Two constructs (causal reversal)",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_x",
+            "indicatorIds": [
+              "i_x1",
+              "i_x2",
+              "i_x3"
+            ],
+            "label": "Exogenous construct X",
+            "measurement": "reflective",
+            "name": "X"
+          },
+          {
+            "id": "c_y",
+            "indicatorIds": [
+              "i_y1",
+              "i_y2",
+              "i_y3"
+            ],
+            "label": "Endogenous construct Y",
+            "measurement": "reflective",
+            "name": "Y"
+          }
+        ],
+        "indicators": [
+          {
+            "column": "x1",
+            "id": "i_x1",
+            "level": "ordinal",
+            "name": "x1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "x2",
+            "id": "i_x2",
+            "level": "ordinal",
+            "name": "x2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "x3",
+            "id": "i_x3",
+            "level": "ordinal",
+            "name": "x3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "y1",
+            "id": "i_y1",
+            "level": "ordinal",
+            "name": "y1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "y2",
+            "id": "i_y2",
+            "level": "ordinal",
+            "name": "y2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "y3",
+            "id": "i_y3",
+            "level": "ordinal",
+            "name": "y3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_x_y",
+            "kind": "structural",
+            "sourceId": "c_x",
+            "targetId": "c_y"
+          }
+        ]
+      },
+      "open": "modeler",
+      "bundledDatasetId": "pls-two-construct",
+      "analysis": {
+        "method": "pls-sem",
+        "engine": "browser",
+        "estimator": "pls-pm",
+        "missingData": "listwise",
+        "pls": {
+          "innerWeighting": "path",
+          "maxIterations": 300,
+          "tolerance": 1e-07
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "reversal",
+      "question": "In a model with two constructs, you reverse X → Y to Y → X and re-estimate. What happens to the standardised path?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "It stays exactly the same.",
+          "correct": true,
+          "feedback": "Correct. With one predictor the standardised path is the correlation, which is symmetric. Only the R² moves to the other construct."
+        },
+        {
+          "id": "b",
+          "text": "It changes sign.",
+          "correct": false,
+          "feedback": "Correlation does not depend on which variable is called the predictor, so the sign cannot change."
+        },
+        {
+          "id": "c",
+          "text": "It becomes its reciprocal.",
+          "correct": false,
+          "feedback": "Unstandardised slopes of y on x and x on y differ, but standardised ones in a two-variable model are both the correlation."
+        },
+        {
+          "id": "d",
+          "text": "The reversed model fits worse, which shows the original direction is right.",
+          "correct": false,
+          "feedback": "Both models reproduce the data equally well. Fit cannot choose between equivalent models."
+        }
+      ],
+      "explanation": "Equivalent models fit the data identically; direction is an assumption."
+    },
+    {
+      "id": "compare-units",
+      "question": "In one study cov(income in €, satisfaction) = 1200 and r = .30. Another study reports income in US$. Which number can you compare directly?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "The correlation, .30",
+          "correct": true,
+          "feedback": "Correct. Correlation is unit-free."
+        },
+        {
+          "id": "b",
+          "text": "The covariance, 1200",
+          "correct": false,
+          "feedback": "Covariance depends on the units of both variables; changing currency changes it."
+        },
+        {
+          "id": "c",
+          "text": "Neither",
+          "correct": false,
+          "feedback": "Correlations are comparable across units, though not across populations with very different variances."
+        }
+      ],
+      "explanation": "Standardised measures remove units, not every difference between populations."
+    }
+  ],
+  "references": [
+    "maccallum1993",
+    "bollen1989",
+    "kline2016"
+  ],
+  "glossary": [
+    "covariance",
+    "correlation",
+    "equivalent-models",
+    "causal-inference"
+  ]
+}

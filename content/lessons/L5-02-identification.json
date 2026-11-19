@@ -1,0 +1,173 @@
+{
+  "id": "identification",
+  "level": 5,
+  "order": 2,
+  "title": "Identification and degrees of freedom",
+  "summary": "A CB-SEM model is identified when its parameters can be recovered uniquely from the covariances; counting moments and parameters gives the degrees of freedom that make fit testable.",
+  "minutes": 8,
+  "prerequisites": [
+    "common-factor-model"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "A model is identified if only one set of parameter values reproduces its implied covariance matrix ([[identification]]). A necessary condition is that the number of free parameters t does not exceed the number of distinct variances and covariances of p indicators."
+    },
+    {
+      "kind": "formula",
+      "display": "df = p(p + 1)/2 − t",
+      "explanation": "p(p + 1)/2 is the number of distinct variances and covariances of p indicators; t is the number of free parameters. df < 0: not identified; df = 0: just identified; df > 0: over-identified and testable."
+    },
+    {
+      "kind": "p",
+      "text": "Every factor also needs a scale. With a [[marker-variable]] the first loading is fixed to 1; with a [[fixed-factor-variance]] (std-lv) the factor variance is fixed to 1. Both give the same fit and the same standardised solution. One factor needs at least three indicators to be identified on its own; two-indicator factors are identified only through their correlations with other factors (Bollen 1989)."
+    },
+    {
+      "kind": "p",
+      "text": "In the two-factor example p = 8: 36 moments, 17 parameters (8 loadings, 8 unique variances, 1 factor correlation under std-lv), so df = 19. A one-factor model with three indicators has df = 0: it reproduces the data perfectly whatever they are, so its fit says nothing."
+    }
+  ],
+  "mistake": {
+    "title": "Celebrating perfect fit with df = 0",
+    "text": "A just-identified model has χ² = 0 and \"perfect\" fit indices by construction. SEM Studio warns about this; the model may still be wrong, and you cannot tell from its fit."
+  },
+  "tryIt": {
+    "task": "Run CB-SEM on this one-factor model with five indicators and check df = 5. Then switch the identification between marker and std-lv on the Analysis page and compare χ² and the standardised loadings.",
+    "starter": {
+      "title": "One-factor CFA",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_g",
+            "indicatorIds": [
+              "i_g1",
+              "i_g2",
+              "i_g3",
+              "i_g4",
+              "i_g5"
+            ],
+            "label": "General factor",
+            "measurement": "reflective",
+            "name": "G"
+          }
+        ],
+        "indicators": [
+          {
+            "column": "g1",
+            "id": "i_g1",
+            "level": "continuous",
+            "name": "g1"
+          },
+          {
+            "column": "g2",
+            "id": "i_g2",
+            "level": "continuous",
+            "name": "g2"
+          },
+          {
+            "column": "g3",
+            "id": "i_g3",
+            "level": "continuous",
+            "name": "g3"
+          },
+          {
+            "column": "g4",
+            "id": "i_g4",
+            "level": "continuous",
+            "name": "g4"
+          },
+          {
+            "column": "g5",
+            "id": "i_g5",
+            "level": "continuous",
+            "name": "g5"
+          }
+        ],
+        "relationships": []
+      },
+      "open": "analysis",
+      "bundledDatasetId": "cfa-one-factor",
+      "analysis": {
+        "method": "cb-sem",
+        "engine": "browser",
+        "estimator": "ML",
+        "missingData": "listwise",
+        "cb": {
+          "identification": "std-lv",
+          "meanStructure": false
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "df-calc",
+      "question": "A one-factor model with 6 indicators, identified by fixing the factor variance to 1. What are the degrees of freedom?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "9",
+          "correct": true,
+          "feedback": "Correct: 6 × 7 / 2 = 21 moments; 6 loadings + 6 unique variances = 12 parameters; 21 − 12 = 9."
+        },
+        {
+          "id": "b",
+          "text": "15",
+          "correct": false,
+          "feedback": "That is the number of covariances without the variances; the moments include the 6 variances too."
+        },
+        {
+          "id": "c",
+          "text": "8",
+          "correct": false,
+          "feedback": "With std-lv the factor variance is fixed, not estimated, so there are 12 free parameters, not 13."
+        },
+        {
+          "id": "d",
+          "text": "0",
+          "correct": false,
+          "feedback": "Six indicators over-identify one factor."
+        }
+      ],
+      "explanation": "Count moments, count parameters, subtract."
+    },
+    {
+      "id": "marker-vs-stdlv",
+      "question": "What changes when you switch from marker to std-lv identification?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Only the unstandardised scale of the factors; χ², df and the standardised solution stay the same.",
+          "correct": true,
+          "feedback": "Correct. They are two scalings of the same model."
+        },
+        {
+          "id": "b",
+          "text": "The fit, because a different parameter is fixed.",
+          "correct": false,
+          "feedback": "Both choices fix exactly one scale per factor; fit is identical."
+        },
+        {
+          "id": "c",
+          "text": "The standardised loadings.",
+          "correct": false,
+          "feedback": "Standardised loadings do not depend on the scaling choice."
+        }
+      ],
+      "explanation": "Scaling is arbitrary; fit is not affected."
+    }
+  ],
+  "references": [
+    "bollen1989",
+    "kline2016"
+  ],
+  "glossary": [
+    "identification",
+    "degrees-of-freedom",
+    "marker-variable",
+    "fixed-factor-variance",
+    "chi-square-test"
+  ]
+}

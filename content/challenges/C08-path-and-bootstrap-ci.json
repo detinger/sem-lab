@@ -1,0 +1,174 @@
+{
+  "id": "path-and-bootstrap-ci",
+  "number": 8,
+  "title": "Interpret a path coefficient and its bootstrap CI",
+  "category": "interpret",
+  "method": "pls",
+  "difficulty": 1,
+  "prerequisiteLessons": [
+    "confidence-intervals",
+    "standardized-coefficients"
+  ],
+  "skills": [
+    "Reading percentile intervals",
+    "Significance versus size",
+    "Non-causal wording"
+  ],
+  "brief": [
+    {
+      "kind": "p",
+      "text": "Open the TAM example (SYNTHETIC data). Its analysis is set to 5,000 percentile bootstrap draws with seed 20261103; do not change these settings, so that your numbers match. Run it and look at H3, the direct path PEOU → BI."
+    }
+  ],
+  "starter": {
+    "title": "TAM example (bootstrap)",
+    "exampleId": "tam-mediation",
+    "open": "analysis"
+  },
+  "tasks": [
+    {
+      "id": "ci-lower",
+      "dimension": "numeric",
+      "kind": "number",
+      "prompt": "Enter the lower limit of the 95% confidence interval of PEOU → BI.",
+      "answer": 0.047,
+      "tolerance": 0.005,
+      "feedbackCorrect": "Correct.",
+      "feedbackWrong": "Not the expected value. Use the example's settings (5,000 draws, seed 20261103) and read the lower limit of the direct path PEOU → BI, not of the total effect.",
+      "derivation": {
+        "source": {
+          "exampleId": "tam-mediation"
+        },
+        "analysis": {
+          "bootstrap": {
+            "enabled": true,
+            "repetitions": 5000,
+            "ci": "percentile",
+            "confidenceLevel": 0.95,
+            "sides": "two-sided"
+          },
+          "engine": "browser",
+          "estimator": "pls-pm",
+          "method": "pls-sem",
+          "missingData": "listwise",
+          "pls": {
+            "innerWeighting": "path",
+            "maxIterations": 300,
+            "tolerance": 1e-07
+          },
+          "seed": 20261103
+        },
+        "parameterKey": "path:c_peou->c_bi",
+        "field": "ciLower"
+      }
+    },
+    {
+      "id": "ci-upper",
+      "dimension": "numeric",
+      "kind": "number",
+      "prompt": "Enter the upper limit of the same interval.",
+      "answer": 0.21,
+      "tolerance": 0.005,
+      "feedbackCorrect": "Correct.",
+      "feedbackWrong": "Not the expected value. Read the upper limit of the direct path PEOU → BI with the example's bootstrap settings.",
+      "derivation": {
+        "source": {
+          "exampleId": "tam-mediation"
+        },
+        "analysis": {
+          "bootstrap": {
+            "enabled": true,
+            "repetitions": 5000,
+            "ci": "percentile",
+            "confidenceLevel": 0.95,
+            "sides": "two-sided"
+          },
+          "engine": "browser",
+          "estimator": "pls-pm",
+          "method": "pls-sem",
+          "missingData": "listwise",
+          "pls": {
+            "innerWeighting": "path",
+            "maxIterations": 300,
+            "tolerance": 1e-07
+          },
+          "seed": 20261103
+        },
+        "parameterKey": "path:c_peou->c_bi",
+        "field": "ciUpper"
+      }
+    },
+    {
+      "id": "interpret",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "Which interpretation of H3 is best supported?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "PEOU has a small positive direct association with BI (β ≈ .13); the interval excludes zero, so H3 is supported at the 5% level, and the effect may be anywhere from very small to modest.",
+          "correct": true,
+          "feedback": "Correct. Direction, significance and the plausible range of sizes."
+        },
+        {
+          "id": "b",
+          "text": "PEOU strongly drives BI because the path is significant.",
+          "correct": false,
+          "feedback": "Significance is not strength, and \"drives\" is a causal claim the design does not support."
+        },
+        {
+          "id": "c",
+          "text": "PEOU does not matter for BI because its direct path is much smaller than PU's.",
+          "correct": false,
+          "feedback": "A small direct path is still significant here, and PEOU also acts indirectly through PU."
+        },
+        {
+          "id": "d",
+          "text": "There is a 95% probability that the true path lies in the interval.",
+          "correct": false,
+          "feedback": "Frequentist intervals describe the procedure's long-run coverage, not a probability for a fixed parameter."
+        }
+      ]
+    },
+    {
+      "id": "wording",
+      "dimension": "reporting",
+      "kind": "choice",
+      "prompt": "Which sentence would you put in the results section?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "H3 was supported: PEOU was positively related to BI (β = .13, 95% percentile CI [.05, .21], 5,000 bootstrap draws).",
+          "correct": true,
+          "feedback": "Correct. Estimate, interval, method and non-causal wording."
+        },
+        {
+          "id": "b",
+          "text": "H3 was supported (p < .05).",
+          "correct": false,
+          "feedback": "Without the estimate and interval, readers cannot judge the size or precision."
+        },
+        {
+          "id": "c",
+          "text": "PEOU causes a 13% increase in BI.",
+          "correct": false,
+          "feedback": "A standardised coefficient is not a percentage, and the claim is causal."
+        }
+      ]
+    }
+  ],
+  "hints": [
+    "The interval belongs to the direct path, listed under the structural paths, not to the total effect.",
+    "An interval excludes zero when both limits have the same sign.",
+    "Separate three questions: is it different from zero, how big could it be, and what kind of claim does the design allow?"
+  ],
+  "solution": [
+    {
+      "kind": "p",
+      "text": "With 5,000 draws and seed 20261103, PEOU → BI = .128 with 95% percentile CI ≈ [.047, .210]. The interval excludes zero, so H3 is supported at the 5% level; the plausible size ranges from very small to modest. Report it as an association with the estimate, interval and bootstrap settings, without causal language."
+    }
+  ],
+  "nextLesson": "mediation"
+}

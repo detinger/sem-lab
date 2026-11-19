@@ -1,5 +1,6 @@
 import { ChartColumnIncreasing, FileText, FlaskConical, Table, Workflow } from 'lucide-react';
 
+import { ProgressCard } from '@/features/learn/ProgressCard';
 import { Badge, Card, CardHeader, EmptyState, LinkCard, PageHeader } from '@/components/ui';
 
 import './pages.css';
@@ -73,6 +74,11 @@ export function OverviewPage() {
             </p>
           </EmptyState>
         </Card>
+      </section>
+
+      <section aria-labelledby="learning-heading" className="overview__section">
+        <h2 id="learning-heading">Learning</h2>
+        <ProgressCard />
       </section>
     </>
   );

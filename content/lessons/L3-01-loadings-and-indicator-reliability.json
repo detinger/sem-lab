@@ -1,0 +1,107 @@
+{
+  "id": "loadings-and-indicator-reliability",
+  "level": 3,
+  "order": 1,
+  "title": "Outer loadings and indicator reliability",
+  "summary": "An outer loading is the correlation between an indicator and its construct; its square, the indicator reliability, tells how much of the item the construct explains.",
+  "minutes": 7,
+  "prerequisites": [
+    "measurement-and-structural-model",
+    "pls-algorithm"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "For a reflective construct the [[outer-loading]] of an indicator is its correlation with the construct score. Its square is the [[indicator-reliability]]: the share of the indicator's variance explained by the construct."
+    },
+    {
+      "kind": "formula",
+      "display": "indicator reliability = λᵢ²",
+      "explanation": "λᵢ is the standardised outer loading of indicator i. A loading of .708 gives λ² ≈ .50: the construct explains half of the item's variance."
+    },
+    {
+      "kind": "p",
+      "text": "Hair et al. (2022) recommend loadings of about .708 or more; items between .40 and .70 should be removed only if that raises composite reliability or AVE above their thresholds and the content of the construct survives; items below .40 are candidates for removal. These are heuristics, not tests."
+    },
+    {
+      "kind": "p",
+      "text": "[[outer-weight]]s show each indicator's contribution to the composite score. For reflective constructs they are rarely interpreted; for composites they are the main result. Note also that classic PLS loadings tend to overstate the loadings of a common factor: in the TAM example peou4 loads .784 under PLS and .644 under PLSc."
+    }
+  ],
+  "mistake": {
+    "title": "Deleting every item below .708 automatically",
+    "text": "Mechanical deletion can narrow a construct until it no longer covers its definition, and it capitalises on sample idiosyncrasies. Look at content, at the effect on reliability and AVE, and report every deletion."
+  },
+  "tryIt": {
+    "task": "Run the TAM example and read the outer loadings. Square the lowest one: how much of that item does its construct explain?",
+    "starter": {
+      "title": "TAM example",
+      "exampleId": "tam-mediation",
+      "open": "analysis"
+    }
+  },
+  "checks": [
+    {
+      "id": "lambda-squared",
+      "question": "An indicator loads .65 on its construct. What is its indicator reliability?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "About .42",
+          "correct": true,
+          "feedback": "Correct: .65² = .4225."
+        },
+        {
+          "id": "b",
+          "text": ".65",
+          "correct": false,
+          "feedback": "The loading is a correlation; reliability is its square."
+        },
+        {
+          "id": "c",
+          "text": "About .81",
+          "correct": false,
+          "feedback": "That is the square root of .65, the wrong direction."
+        }
+      ],
+      "explanation": "Square the loading."
+    },
+    {
+      "id": "decide",
+      "question": "An item loads .65, its construct has ρC = .88 and AVE = .58, and the item covers an aspect no other item covers. What do the guidelines suggest?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep it: reliability and AVE are already adequate and removing it would narrow the content.",
+          "correct": true,
+          "feedback": "Correct. Removal of .40–.70 items is only considered if it is needed to reach the thresholds and content permits."
+        },
+        {
+          "id": "b",
+          "text": "Delete it because it is below .708.",
+          "correct": false,
+          "feedback": ".708 is a heuristic for good indicators, not a deletion rule."
+        },
+        {
+          "id": "c",
+          "text": "Make the construct formative so the loading does not matter.",
+          "correct": false,
+          "feedback": "The measurement model follows from theory, not from one item's loading."
+        }
+      ],
+      "explanation": "Weigh statistics against content."
+    }
+  ],
+  "references": [
+    "hair2022",
+    "hair2019"
+  ],
+  "glossary": [
+    "outer-loading",
+    "indicator-reliability",
+    "outer-weight",
+    "plsc"
+  ]
+}

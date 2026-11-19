@@ -1,0 +1,359 @@
+{
+  "id": "ipma-endpoints-and-priority",
+  "number": 13,
+  "title": "Set IPMA endpoints and identify an improvement priority",
+  "category": "analyze",
+  "method": "pls",
+  "difficulty": 2,
+  "prerequisiteLessons": [
+    "ipma",
+    "constructs-indicators-scales"
+  ],
+  "skills": [
+    "Declaring scale endpoints",
+    "Reading importance and performance",
+    "Cautious managerial interpretation"
+  ],
+  "brief": [
+    {
+      "kind": "p",
+      "text": "A customer-satisfaction model inspired by the ACSI structure (SYNTHETIC data, not ACSI data): customer expectations (CE), perceived quality (PQ), perceived value (PV), satisfaction (SAT) and loyalty (LOY). All items were answered on a 10-point scale from 1 (\"very poor\") to 10 (\"excellent\"). Management asks which driver to prioritise to raise loyalty."
+    },
+    {
+      "kind": "p",
+      "text": "The model was imported without scale endpoints. Some items were never answered with 1 in this sample."
+    }
+  ],
+  "starter": {
+    "title": "Customer satisfaction model (no endpoints)",
+    "model": {
+      "constructs": [
+        {
+          "id": "c_ce",
+          "indicatorIds": [
+            "i_ce1",
+            "i_ce2",
+            "i_ce3"
+          ],
+          "label": "Customer expectations (synthetic)",
+          "measurement": "reflective",
+          "name": "CE"
+        },
+        {
+          "id": "c_pq",
+          "indicatorIds": [
+            "i_pq1",
+            "i_pq2",
+            "i_pq3"
+          ],
+          "label": "Perceived quality (synthetic)",
+          "measurement": "reflective",
+          "name": "PQ"
+        },
+        {
+          "id": "c_pv",
+          "indicatorIds": [
+            "i_pv1",
+            "i_pv2"
+          ],
+          "label": "Perceived value (synthetic)",
+          "measurement": "reflective",
+          "name": "PV"
+        },
+        {
+          "id": "c_sat",
+          "indicatorIds": [
+            "i_sat1",
+            "i_sat2",
+            "i_sat3"
+          ],
+          "label": "Customer satisfaction (synthetic)",
+          "measurement": "reflective",
+          "name": "SAT"
+        },
+        {
+          "id": "c_loy",
+          "indicatorIds": [
+            "i_loy1",
+            "i_loy2",
+            "i_loy3"
+          ],
+          "label": "Customer loyalty (synthetic)",
+          "measurement": "reflective",
+          "name": "LOY"
+        }
+      ],
+      "indicators": [
+        {
+          "column": "ce1",
+          "id": "i_ce1",
+          "level": "ordinal",
+          "name": "ce1"
+        },
+        {
+          "column": "ce2",
+          "id": "i_ce2",
+          "level": "ordinal",
+          "name": "ce2"
+        },
+        {
+          "column": "ce3",
+          "id": "i_ce3",
+          "level": "ordinal",
+          "name": "ce3"
+        },
+        {
+          "column": "pq1",
+          "id": "i_pq1",
+          "level": "ordinal",
+          "name": "pq1"
+        },
+        {
+          "column": "pq2",
+          "id": "i_pq2",
+          "level": "ordinal",
+          "name": "pq2"
+        },
+        {
+          "column": "pq3",
+          "id": "i_pq3",
+          "level": "ordinal",
+          "name": "pq3"
+        },
+        {
+          "column": "pv1",
+          "id": "i_pv1",
+          "level": "ordinal",
+          "name": "pv1"
+        },
+        {
+          "column": "pv2",
+          "id": "i_pv2",
+          "level": "ordinal",
+          "name": "pv2"
+        },
+        {
+          "column": "sat1",
+          "id": "i_sat1",
+          "level": "ordinal",
+          "name": "sat1"
+        },
+        {
+          "column": "sat2",
+          "id": "i_sat2",
+          "level": "ordinal",
+          "name": "sat2"
+        },
+        {
+          "column": "sat3",
+          "id": "i_sat3",
+          "level": "ordinal",
+          "name": "sat3"
+        },
+        {
+          "column": "loy1",
+          "id": "i_loy1",
+          "level": "ordinal",
+          "name": "loy1"
+        },
+        {
+          "column": "loy2",
+          "id": "i_loy2",
+          "level": "ordinal",
+          "name": "loy2"
+        },
+        {
+          "column": "loy3",
+          "id": "i_loy3",
+          "level": "ordinal",
+          "name": "loy3"
+        }
+      ],
+      "relationships": [
+        {
+          "id": "r_ce_pq",
+          "kind": "structural",
+          "sourceId": "c_ce",
+          "targetId": "c_pq"
+        },
+        {
+          "id": "r_ce_pv",
+          "kind": "structural",
+          "sourceId": "c_ce",
+          "targetId": "c_pv"
+        },
+        {
+          "id": "r_pq_pv",
+          "kind": "structural",
+          "sourceId": "c_pq",
+          "targetId": "c_pv"
+        },
+        {
+          "id": "r_ce_sat",
+          "kind": "structural",
+          "sourceId": "c_ce",
+          "targetId": "c_sat"
+        },
+        {
+          "id": "r_pq_sat",
+          "kind": "structural",
+          "sourceId": "c_pq",
+          "targetId": "c_sat"
+        },
+        {
+          "id": "r_pv_sat",
+          "kind": "structural",
+          "sourceId": "c_pv",
+          "targetId": "c_sat"
+        },
+        {
+          "id": "r_sat_loy",
+          "kind": "structural",
+          "sourceId": "c_sat",
+          "targetId": "c_loy"
+        }
+      ]
+    },
+    "open": "data",
+    "bundledDatasetId": "acsi-inspired",
+    "analysis": {
+      "method": "pls-sem",
+      "engine": "browser",
+      "estimator": "pls-pm",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    }
+  },
+  "tasks": [
+    {
+      "id": "config",
+      "dimension": "estimator",
+      "kind": "config",
+      "prompt": "Configure an IPMA with loyalty as the target construct (after entering the endpoints on the Data page).",
+      "expected": {
+        "method": "pls-sem",
+        "ipmaTarget": "c_loy"
+      }
+    },
+    {
+      "id": "perf-pq",
+      "dimension": "numeric",
+      "kind": "number",
+      "prompt": "Enter the IPMA performance of PQ (0–100).",
+      "answer": 71.67,
+      "tolerance": 0.4,
+      "feedbackCorrect": "Correct. Performance was rescaled with the declared endpoints 1 and 10.",
+      "feedbackWrong": "Not the expected value. Enter the questionnaire's endpoints (1 and 10) for every item; do not use the smallest and largest observed values, and do not use 0 as the minimum.",
+      "derivation": {
+        "source": {
+          "exampleId": "acsi-inspired"
+        },
+        "analysis": {
+          "method": "pls-sem",
+          "engine": "browser",
+          "estimator": "pls-pm",
+          "missingData": "listwise",
+          "pls": {
+            "innerWeighting": "path",
+            "maxIterations": 300,
+            "tolerance": 1e-07
+          },
+          "ipma": {
+            "targetConstructId": "c_loy"
+          }
+        },
+        "ipma": {
+          "constructId": "c_pq",
+          "value": "performance"
+        }
+      }
+    },
+    {
+      "id": "imp-sat",
+      "dimension": "numeric",
+      "kind": "number",
+      "prompt": "Enter the IPMA importance of SAT for LOY.",
+      "answer": 0.572,
+      "tolerance": 0.004,
+      "feedbackCorrect": "Correct. Importance is SAT's unstandardised total effect on LOY.",
+      "feedbackWrong": "Not the expected value. Read importance on the IPMA page (unstandardised total effect), not the standardised path SAT → LOY.",
+      "derivation": {
+        "source": {
+          "exampleId": "acsi-inspired"
+        },
+        "analysis": {
+          "method": "pls-sem",
+          "engine": "browser",
+          "estimator": "pls-pm",
+          "missingData": "listwise",
+          "pls": {
+            "innerWeighting": "path",
+            "maxIterations": 300,
+            "tolerance": 1e-07
+          },
+          "ipma": {
+            "targetConstructId": "c_loy"
+          }
+        },
+        "ipma": {
+          "constructId": "c_sat",
+          "value": "importance"
+        }
+      }
+    },
+    {
+      "id": "priority",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "Which driver is the most plausible priority, and how should you phrase the recommendation?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "SAT: it has by far the largest importance (≈ .57) and only mid-range performance (≈ 67), so gains there are associated with the largest gains in loyalty, under this model and its assumptions.",
+          "correct": true,
+          "feedback": "Correct. High importance with room to improve, stated as a model-based association rather than a guaranteed outcome."
+        },
+        {
+          "id": "b",
+          "text": "PV, because it has the lowest performance.",
+          "correct": false,
+          "feedback": "PV has the lowest performance but also the lowest importance (≈ .16). Low performance alone does not make a priority."
+        },
+        {
+          "id": "c",
+          "text": "PQ, because it has the highest performance.",
+          "correct": false,
+          "feedback": "High performance means less room to improve; PQ is already a strength."
+        },
+        {
+          "id": "d",
+          "text": "SAT, because raising it by 10 points will raise loyalty by 5.7 points.",
+          "correct": false,
+          "feedback": "This reads the importance as a causal guarantee. IPMA is descriptive decision support conditional on the model."
+        }
+      ]
+    }
+  ],
+  "hints": [
+    "Endpoints come from the response format described in the brief.",
+    "After setting endpoints, choose LOY as the IPMA target on the Analysis page.",
+    "Importance is on the vertical axis, performance on the horizontal one. Look for high importance with relatively low performance.",
+    "Phrase recommendations as associations under the model, not as promises."
+  ],
+  "solution": [
+    {
+      "kind": "p",
+      "text": "Every item has endpoints 1 and 10. With LOY as target: SAT importance ≈ .572 (performance ≈ 67.1), PQ ≈ .343 (≈ 71.7), CE ≈ .216 (≈ 63.5), PV ≈ .164 (≈ 54.7). Using observed extrema (some items start at 2) or 0–10 would shift the performance values."
+    },
+    {
+      "kind": "p",
+      "text": "SAT is the most plausible priority: its importance is much larger than the others' and its performance leaves room. Present this as descriptive, model-conditional decision support; IPMA does not show that an intervention on SAT would change loyalty."
+    }
+  ],
+  "nextLesson": "interpretation-and-limitations"
+}

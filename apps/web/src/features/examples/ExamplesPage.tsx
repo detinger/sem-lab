@@ -1,10 +1,12 @@
-import { FolderOpen, NotebookText } from 'lucide-react';
+import { Download, ExternalLink, FolderOpen, NotebookText } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Badge, Button, Card, CardHeader, Dialog, PageHeader, useToast } from '@/components/ui';
 import { CC_BY_4_URL, bundledDatasetInfo } from '@/domain/dataset/bundled';
+import { ModelDiagram } from '@/features/learn/ModelDiagram';
 import { EXAMPLES, type Example } from './examples';
+import { REPOSITORY_URL, notebookFor } from './notebooks';
 import { openExample, projectHasContent } from './openExample';
 import './examples.css';
 
@@ -23,6 +25,7 @@ function ExampleCard({
   const info = bundledDatasetInfo(dataset.bundledId);
   const boot = analysis.bootstrap?.enabled ? analysis.bootstrap.repetitions : null;
   const nf = new Intl.NumberFormat('en-US');
+  const notebook = notebookFor(example.id);
   return (
     <Card className="ex-card" aria-label={example.title} role="group">
       <CardHeader title={example.title} />
@@ -35,6 +38,14 @@ function ExampleCard({
         ) : (
           <Badge variant="success">Real data · {dataset.licence ?? 'licensed'}</Badge>
         )}
+      </div>
+      <div className="ex-preview">
+        <ModelDiagram
+          model={model}
+          layout={example.layout}
+          compact
+          title={`${example.title}: model preview`}
+        />
       </div>
       <p className="ex-summary">{example.summary}</p>
       <p className="ex-size">
@@ -62,6 +73,33 @@ function ExampleCard({
         >
           Open example
         </Button>
+        {notebook ? (
+          <a
+            className="ui-btn ui-btn--default"
+            href={notebook.colabUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open in Colab (new tab): ${example.title}`}
+          >
+            <span className="ui-btn__icon" aria-hidden="true">
+              <ExternalLink size={16} />
+            </span>
+            Open in Colab
+          </a>
+        ) : null}
+        {notebook ? (
+          <a
+            className="ui-btn ui-btn--default"
+            href={notebook.url}
+            download={notebook.fileName}
+            aria-label={`Download notebook (.ipynb): ${example.title}`}
+          >
+            <span className="ui-btn__icon" aria-hidden="true">
+              <Download size={16} />
+            </span>
+            Download notebook (.ipynb)
+          </a>
+        ) : null}
       </div>
     </Card>
   );
@@ -124,9 +162,16 @@ export function ExamplesPage() {
           <p className="ex-summary">
             TAM, ACSI-inspired, IS success, UTAUT2-inspired and service quality (CB-SEM). Each
             notebook regenerates its synthetic data and runs SEM Studio’s engine in Python, so it
-            reproduces the matching example above exactly, bootstrap intervals included. They are in
-            the repository’s <code>notebooks/colab</code> folder; Open in Colab links will be added
-            once the repository is public.
+            reproduces the matching example above exactly, bootstrap intervals included. Open them
+            in Google Colab from the example cards above, or download them; the sources are in{' '}
+            <a
+              href={`${REPOSITORY_URL}/tree/main/notebooks`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              the repository’s notebooks folder
+            </a>
+            .
           </p>
         </Card>
       </section>

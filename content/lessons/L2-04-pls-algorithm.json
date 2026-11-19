@@ -1,0 +1,113 @@
+{
+  "id": "pls-algorithm",
+  "level": 2,
+  "order": 4,
+  "title": "Inner and outer estimation in PLS",
+  "summary": "The PLS algorithm alternates between outer estimation of construct scores from indicators and inner estimation from neighbouring constructs, then estimates paths by regression on the final scores.",
+  "minutes": 8,
+  "prerequisites": [
+    "mode-a-and-mode-b"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "PLS path modeling (Wold 1982; Lohmöller 1989) is an iterative algorithm. It starts with equal weights and then repeats two steps until the weights stop changing:"
+    },
+    {
+      "kind": "list",
+      "ordered": true,
+      "items": [
+        "**Outer estimation:** each construct proxy is the weighted sum of its own indicators.",
+        "**Inner estimation:** each proxy is replaced by a weighted sum of the proxies of the constructs it is connected to; the [[inner-weighting-scheme]] decides those inner weights.",
+        "**Weight update:** new outer weights come from Mode A or Mode B using the inner proxy.",
+        "**Stop** when the largest weight change is below the tolerance; then compute construct scores, loadings, and the path coefficients by OLS regression of each endogenous construct on its predictors."
+      ]
+    },
+    {
+      "kind": "p",
+      "text": "The **centroid** scheme uses only the signs of the correlations between adjacent constructs, the **factorial** scheme uses the correlations, and the **path** scheme uses regression coefficients for predecessors and correlations for successors, so it respects the direction of the arrows. Path weighting is the usual default (Hair et al. 2022). Differences are usually tiny: in the TAM example PU → BI is .5007 (path), .5002 (centroid) and .5005 (factorial)."
+    },
+    {
+      "kind": "callout",
+      "variant": "info",
+      "text": "SEM Studio reports the number of iterations, the tolerance and the convergence criterion with every PLS result. A solution that did not converge within the iteration limit must not be interpreted."
+    }
+  ],
+  "mistake": {
+    "title": "Treating the weighting scheme as a tuning knob",
+    "text": "Trying schemes until a path becomes significant is a form of p-hacking. Choose the scheme in advance (normally path weighting), report it, and if you test sensitivity, report all results."
+  },
+  "tryIt": {
+    "task": "Open the TAM example and run PLS-SEM. Then change the inner weighting scheme to centroid on the Analysis page, run again and compare the paths.",
+    "starter": {
+      "title": "TAM example",
+      "exampleId": "tam-mediation",
+      "open": "analysis"
+    }
+  },
+  "checks": [
+    {
+      "id": "final-paths",
+      "question": "How are the final PLS path coefficients obtained?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "By OLS regression of each endogenous construct score on the scores of its predictors, after the weights have converged.",
+          "correct": true,
+          "feedback": "Correct. The iteration only determines the weights; paths come from ordinary regressions on the resulting scores."
+        },
+        {
+          "id": "b",
+          "text": "By maximum likelihood on the indicator covariance matrix.",
+          "correct": false,
+          "feedback": "That is CB-SEM. PLS never fits a model-implied covariance matrix during estimation."
+        },
+        {
+          "id": "c",
+          "text": "They are the inner weights of the last iteration.",
+          "correct": false,
+          "feedback": "Inner weights only build proxies during iteration; the reported paths are separate regressions."
+        }
+      ],
+      "explanation": "PLS = iterate weights, then regress."
+    },
+    {
+      "id": "scheme-change",
+      "question": "Switching from path to centroid weighting changes PU → BI from .5007 to .5002. What should you do?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Report the scheme chosen in advance (path weighting); the difference is negligible.",
+          "correct": true,
+          "feedback": "Correct. Differences in the fourth decimal do not affect conclusions; what matters is transparent reporting."
+        },
+        {
+          "id": "b",
+          "text": "Report whichever scheme gives the larger coefficient.",
+          "correct": false,
+          "feedback": "Selecting settings by their results biases estimates upward and is not reproducible reasoning."
+        },
+        {
+          "id": "c",
+          "text": "Conclude the model is unstable.",
+          "correct": false,
+          "feedback": "Tiny differences between schemes are expected and are not evidence of instability."
+        }
+      ],
+      "explanation": "Fix settings a priori and report them."
+    }
+  ],
+  "references": [
+    "wold1982",
+    "lohmoller1989",
+    "hair2022"
+  ],
+  "glossary": [
+    "pls-sem",
+    "inner-weighting-scheme",
+    "outer-weight",
+    "path-coefficient"
+  ]
+}

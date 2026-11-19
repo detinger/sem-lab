@@ -1,0 +1,299 @@
+{
+  "id": "map-csv-columns",
+  "number": 4,
+  "title": "Map a CSV's indicators to constructs",
+  "category": "model",
+  "method": "pls",
+  "difficulty": 1,
+  "prerequisiteLessons": [
+    "constructs-indicators-scales"
+  ],
+  "skills": [
+    "Binding indicators to data columns",
+    "Reading validation messages"
+  ],
+  "brief": [
+    {
+      "kind": "p",
+      "text": "The TAM model was built before the data arrived. Two indicators were bound to column names that do not exist in the delivered file (SYNTHETIC tam-mediation data), so the analysis is blocked. Fix the bindings on the Data page."
+    }
+  ],
+  "starter": {
+    "title": "TAM with broken bindings",
+    "model": {
+      "constructs": [
+        {
+          "id": "c_peou",
+          "indicatorIds": [
+            "i_peou1",
+            "i_peou2",
+            "i_peou3",
+            "i_peou4"
+          ],
+          "label": "Perceived ease of use (synthetic)",
+          "measurement": "reflective",
+          "name": "PEOU"
+        },
+        {
+          "id": "c_pu",
+          "indicatorIds": [
+            "i_pu1",
+            "i_pu2",
+            "i_pu3",
+            "i_pu4"
+          ],
+          "label": "Perceived usefulness (synthetic)",
+          "measurement": "reflective",
+          "name": "PU"
+        },
+        {
+          "id": "c_bi",
+          "indicatorIds": [
+            "i_bi1",
+            "i_bi2",
+            "i_bi3"
+          ],
+          "label": "Behavioural intention (synthetic)",
+          "measurement": "reflective",
+          "name": "BI"
+        }
+      ],
+      "indicators": [
+        {
+          "column": "peou1",
+          "id": "i_peou1",
+          "level": "ordinal",
+          "name": "peou1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "peou2",
+          "id": "i_peou2",
+          "level": "ordinal",
+          "name": "peou2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "peou3",
+          "id": "i_peou3",
+          "level": "ordinal",
+          "name": "peou3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "peou4",
+          "id": "i_peou4",
+          "level": "ordinal",
+          "name": "peou4",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "pu1",
+          "id": "i_pu1",
+          "level": "ordinal",
+          "name": "pu1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "pu2",
+          "id": "i_pu2",
+          "level": "ordinal",
+          "name": "pu2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "pu3",
+          "id": "i_pu3",
+          "level": "ordinal",
+          "name": "pu3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "pu5",
+          "id": "i_pu4",
+          "level": "ordinal",
+          "name": "pu4",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "bi1",
+          "id": "i_bi1",
+          "level": "ordinal",
+          "name": "bi1",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "bi2",
+          "id": "i_bi2",
+          "level": "ordinal",
+          "name": "bi2",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        },
+        {
+          "column": "bi_4",
+          "id": "i_bi3",
+          "level": "ordinal",
+          "name": "bi3",
+          "scale": {
+            "max": 7,
+            "min": 1
+          }
+        }
+      ],
+      "relationships": [
+        {
+          "id": "r_peou_pu",
+          "kind": "structural",
+          "sourceId": "c_peou",
+          "targetId": "c_pu"
+        },
+        {
+          "id": "r_peou_bi",
+          "kind": "structural",
+          "sourceId": "c_peou",
+          "targetId": "c_bi"
+        },
+        {
+          "id": "r_pu_bi",
+          "kind": "structural",
+          "sourceId": "c_pu",
+          "targetId": "c_bi"
+        }
+      ]
+    },
+    "open": "data",
+    "bundledDatasetId": "tam-mediation",
+    "analysis": {
+      "method": "pls-sem",
+      "engine": "browser",
+      "estimator": "pls-pm",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    }
+  },
+  "tasks": [
+    {
+      "id": "mapping",
+      "dimension": "mapping",
+      "kind": "mapping",
+      "prompt": "Bind every indicator to the data column that holds its responses.",
+      "expected": {
+        "peou1": "peou1",
+        "peou2": "peou2",
+        "peou3": "peou3",
+        "peou4": "peou4",
+        "pu1": "pu1",
+        "pu2": "pu2",
+        "pu3": "pu3",
+        "pu4": "pu4",
+        "bi1": "bi1",
+        "bi2": "bi2",
+        "bi3": "bi3"
+      },
+      "reverse": []
+    },
+    {
+      "id": "behaviour",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "What should an SEM program do when indicators are bound to columns that are missing from the data?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Refuse to estimate and name the missing columns.",
+          "correct": true,
+          "feedback": "Correct. That is what SEM Studio does; any estimate would be for a different model than the one specified."
+        },
+        {
+          "id": "b",
+          "text": "Drop the affected indicators silently and estimate the rest.",
+          "correct": false,
+          "feedback": "That changes the measurement model without telling you; results would not correspond to your specification."
+        },
+        {
+          "id": "c",
+          "text": "Fill the missing columns with zeros.",
+          "correct": false,
+          "feedback": "Invented values would produce meaningless estimates."
+        }
+      ]
+    },
+    {
+      "id": "ave-bi",
+      "dimension": "numeric",
+      "kind": "number",
+      "prompt": "Run PLS-SEM once the mapping is fixed and enter the AVE of BI.",
+      "answer": 0.806,
+      "tolerance": 0.004,
+      "feedbackCorrect": "Correct. With all three items bound, BI's indicators share most of their variance with the construct.",
+      "feedbackWrong": "Not the expected value. Check that bi3 is bound to column bi3 (not another column) and that you read the AVE of BI.",
+      "derivation": {
+        "source": {
+          "fixture": "tam-mediation"
+        },
+        "analysis": {
+          "method": "pls-sem",
+          "engine": "browser",
+          "estimator": "pls-pm",
+          "missingData": "listwise",
+          "pls": {
+            "innerWeighting": "path",
+            "maxIterations": 300,
+            "tolerance": 1e-07
+          }
+        },
+        "constructMetric": {
+          "constructId": "c_bi",
+          "metric": "ave"
+        }
+      }
+    }
+  ],
+  "hints": [
+    "Run the validation first: which indicators does it name?",
+    "Compare the bound column names with the column list of the dataset. Look for a typo and a numbering slip.",
+    "Indicator names and column names follow the same scheme in this dataset."
+  ],
+  "solution": [
+    {
+      "kind": "p",
+      "text": "Indicator pu4 was bound to \"pu5\" and bi3 to \"bi_4\"; neither column exists. Binding them to pu4 and bi3 lets the model run. With the correct mapping AVE(BI) ≈ .806."
+    }
+  ],
+  "nextLesson": "signs-and-orientation"
+}

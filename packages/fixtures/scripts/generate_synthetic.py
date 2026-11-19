@@ -1425,6 +1425,47 @@ def case_utaut2_inspired():
                   extra_manifest={"inspiredBy": UTAUT2_INSPIRED_BY, "note": SYNTH_NOTE})
 
 
+@case
+def case_item_screening():
+    """Challenge 5 (detect reverse-coded and constant items): a negatively worded item stored
+    as raw responses and a column with zero variance, inside an otherwise ordinary model."""
+    cid_, seed, n = "item-screening", 1501, 300
+    spec = {"constructs": [reflective("SAT", "Satisfaction (synthetic)", ["sat1", "sat2", "sat3", "sat4"], [.85, .80, .80, .75]),
+                           reflective("LOY", "Loyalty intention (synthetic)", ["loy1", "loy2", "loy3"], [.85, .80, .75])],
+            "paths": [("SAT", "LOY", .55)]}
+    pop = build_population(spec)
+    std, _, _ = draw_sampled(pop, n, seed)
+    profiles = {c: SYM for c in pop["columns"]}
+    lik = discretise(std, pop["columns"], profiles)
+    j3 = pop["columns"].index("sat3")
+    # sat3r: the negatively worded version of sat3 ("I regret choosing this provider"), as answered;
+    # loy4: a question the survey tool pre-filled with 4 that nobody changed (zero variance).
+    rows = [[8 - v if j == j3 else v for j, v in enumerate(r)] + [4] for r in lik]
+    header = ["sat1", "sat2", "sat3r", "sat4", "loy1", "loy2", "loy3", "loy4"]
+    require(len(header) == len(rows[0]), "item-screening header")
+    meta = likert_meta(header)
+    screened = [dict(c, indicators=["sat1", "sat2", "sat3r", "sat4"]) if c["name"] == "SAT" else c
+                for c in spec["constructs"]]
+    model = build_model(screened, [("SAT", "LOY")], likert_cols={c: (1, 7) for c in header})
+    for ind in model["indicators"]:
+        if ind["id"] == "i_sat3r":
+            ind["reverseScored"] = True
+    an = [analysis("pls-browser-screened", "The screened model in model.json: i_sat3r reverse scored with scale {min:1,max:7}; loy4 not in the model; classic PLS-SEM.", pls("pls-sem", "browser"))]
+    truths = [
+        "Population (continuous, pre-discretisation): standardised loadings sat1..sat4 = .85,.80,.80,.75, loy1..loy3 = .85,.80,.75; path SAT->LOY = 0.55.",
+        "sat3r = 8 - sat3 in every row, where sat3 is the positively keyed response: sat3r correlates NEGATIVELY with sat1, sat2 and sat4. Marking i_sat3r reverseScored with scale {1,7} restores positive loadings for every SAT indicator.",
+        "loy4 = 4 in every row (nUnique = 1, zero variance): it carries no information, must be removed from the model (reverse scoring cannot repair it) and any estimation that includes it must be refused with a zero-variance diagnostic.",
+        "model.json is the SCREENED model (i_sat3r reverse scored, loy4 left out). The model as answered (i_sat3r not reverse scored, i_loy4 in the LOY block) cannot be estimated until loy4 is removed; with loy4 removed but sat3r not reversed, sat3r loads negatively and Cronbach's alpha of SAT collapses, while the SAT->LOY path is unchanged.",
+    ]
+    return finish(cid_, title="Item screening: a reverse-worded and a constant item", kind="sampled",
+                  purpose="Item screening (Challenge 5): detect a reverse-worded item (sat3r) and a constant item (loy4) before estimation",
+                  seed=seed, header=header, rows=rows, meta=meta,
+                  population=population_json(pop, cid_, profiles=profiles,
+                                             extra={"derivedColumns": {"sat3r": "8 - sat3 (negatively worded sat3, as answered)",
+                                                                       "loy4": "constant 4 (pre-filled, never changed)"}}),
+                  model=model, analyses=an, truths=truths)
+
+
 def case_broken_mapping(tam_files):
     cid_ = "broken-mapping"
     pop = build_population(spec_tam())

@@ -159,15 +159,19 @@ describe('routes', () => {
     expect(screen.queryByText('Planned for Phase 6')).not.toBeInTheDocument();
   });
 
-  it.each([
-    ['/comparison', 'Phase 5'],
-    ['/learn', 'Phase 6'],
-    ['/challenges', 'Phase 6'],
-    ['/reference', 'Phase 6'],
-  ])('%s names its roadmap phase (%s)', async (path, phase) => {
-    renderAt(path);
-    expect(await screen.findByText(`Planned for ${phase}`)).toBeInTheDocument();
+  it('/comparison names its roadmap phase', async () => {
+    renderAt('/comparison');
+    expect(await screen.findByText('Planned for Phase 5')).toBeInTheDocument();
   });
+
+  it.each(['/learn', '/learn/no-such-lesson', '/challenges', '/challenges/none', '/reference'])(
+    '%s is a real page, not a Phase 6 placeholder',
+    async (path) => {
+      renderAt(path);
+      await screen.findByRole('heading', { level: 1 });
+      expect(screen.queryByText('Planned for Phase 6')).not.toBeInTheDocument();
+    },
+  );
 
   it('Overview links the four workflow steps and shows an empty recent-projects state', async () => {
     renderAt('/');

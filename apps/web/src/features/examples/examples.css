@@ -48,3 +48,13 @@
 .ex-section {
   margin-bottom: var(--space-13);
 }
+
+.ex-preview {
+  margin-bottom: var(--space-6);
+}
+
+.ex-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}

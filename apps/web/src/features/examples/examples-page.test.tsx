@@ -60,10 +60,20 @@ describe('Examples page', () => {
 
     expect(screen.getByRole('heading', { name: /Python notebooks/ })).toBeVisible();
     expect(screen.getByText(/reproduces the matching example above exactly/)).toBeVisible();
-    // no invented links: the notebooks section has none until the repository is public
+    // links point at the public repository's main branch (checked to resolve on GitHub)
     expect(
-      within(screen.getByRole('region', { name: /Python notebooks/ })).queryAllByRole('link'),
-    ).toHaveLength(0);
+      within(screen.getByRole('region', { name: /Python notebooks/ })).getByRole('link'),
+    ).toHaveAttribute('href', 'https://github.com/detinger/sem-studio/tree/main/notebooks');
+    const tam = within(card(EXAMPLES.find((e) => e.id === 'tam-mediation')!.title));
+    expect(tam.getByRole('link', { name: /Open in Colab/ })).toHaveAttribute(
+      'href',
+      'https://colab.research.google.com/github/detinger/sem-studio/blob/main/notebooks/colab/01_tam_pls_sem.ipynb',
+    );
+    expect(
+      within(card(EXAMPLES.find((e) => e.id === 'acsi-2015')!.title)).queryByRole('link', {
+        name: /Open in Colab/,
+      }),
+    ).toBeNull();
   });
 
   it('opens an example on an empty project: model, dataset, analysis settings, navigation', async () => {
@@ -124,5 +134,19 @@ describe('Examples page', () => {
     });
     expect(useModeler.getState().projectId).not.toBe(oldId);
     expect(useAnalysisConfig.getState().config.method).toBe('cb-sem');
+  }, 30_000);
+
+  it('opens an example with its saved layout exactly as arranged', async () => {
+    const user = userEvent.setup();
+    const ex = EXAMPLES.find((e) => e.id === 'acsi-inspired')!;
+    expect(ex.layout).toBeDefined();
+    const router = renderApp();
+    await user.click(await screen.findByRole('button', { name: `Open example: ${ex.title}` }));
+    await waitFor(() => expect(router.state.location.pathname).toBe('/modeler'), {
+      timeout: 15_000,
+    });
+    const nodes = useModeler.getState().layout.nodes;
+    for (const [id, p] of Object.entries(ex.layout!.nodes))
+      expect(nodes[id], id).toMatchObject({ x: p.x, y: p.y });
   }, 30_000);
 });

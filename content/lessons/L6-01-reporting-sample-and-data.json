@@ -1,0 +1,218 @@
+{
+  "id": "reporting-sample-and-data",
+  "level": 6,
+  "order": 1,
+  "title": "Reporting the sample and the data",
+  "summary": "A results section starts with who the data come from, how many cases were analysed and how missing values, screening and transformations were handled.",
+  "minutes": 7,
+  "prerequisites": [
+    "estimators-and-missing-data"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "Readers can only judge estimates if they know the data behind them (Appelbaum et al. 2018). Report:"
+    },
+    {
+      "kind": "list",
+      "ordered": false,
+      "items": [
+        "Population, sampling procedure, period and response rate.",
+        "N collected and N analysed, with the reason for every exclusion; SEM Studio reports the number of cases used after listwise deletion.",
+        "Amount and pattern of missing data, the assumed [[missing-data-mechanism]] and the handling (listwise, FIML).",
+        "Item screening: reverse-scored items (with endpoints), dropped constant or problematic items, any other transformation.",
+        "Descriptive statistics of the indicators and the response scales with their endpoints.",
+        "Data provenance and licence, and clearly label synthetic or simulated data."
+      ]
+    },
+    {
+      "kind": "p",
+      "text": "Justify the sample size with a power analysis for the smallest effect of interest. Simple rules such as \"ten times the largest number of arrows pointing at a construct\" are rough and are not a substitute for a power analysis (Hair et al. 2022)."
+    },
+    {
+      "kind": "callout",
+      "variant": "tip",
+      "text": "SEM Studio keeps a transformation log in Data Lab and a method statement with every run; copy both into your notes before writing."
+    }
+  ],
+  "mistake": {
+    "title": "Reporting only the final N",
+    "text": "Saying \"N = 258\" without mentioning that 242 of 500 cases were dropped for missing values hides a choice that can bias the results. Report N collected, N analysed and why they differ."
+  },
+  "tryIt": {
+    "task": "Run this CFA with listwise deletion and read how many cases the result used and how many were dropped. Write one sentence reporting it.",
+    "starter": {
+      "title": "CFA with missing data",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_f1",
+            "indicatorIds": [
+              "i_v1",
+              "i_v2",
+              "i_v3",
+              "i_v4"
+            ],
+            "label": "Factor 1",
+            "measurement": "reflective",
+            "name": "F1"
+          },
+          {
+            "id": "c_f2",
+            "indicatorIds": [
+              "i_v5",
+              "i_v6",
+              "i_v7",
+              "i_v8"
+            ],
+            "label": "Factor 2",
+            "measurement": "reflective",
+            "name": "F2"
+          }
+        ],
+        "indicators": [
+          {
+            "column": "v1",
+            "id": "i_v1",
+            "level": "continuous",
+            "name": "v1"
+          },
+          {
+            "column": "v2",
+            "id": "i_v2",
+            "level": "continuous",
+            "name": "v2"
+          },
+          {
+            "column": "v3",
+            "id": "i_v3",
+            "level": "continuous",
+            "name": "v3"
+          },
+          {
+            "column": "v4",
+            "id": "i_v4",
+            "level": "continuous",
+            "name": "v4"
+          },
+          {
+            "column": "v5",
+            "id": "i_v5",
+            "level": "continuous",
+            "name": "v5"
+          },
+          {
+            "column": "v6",
+            "id": "i_v6",
+            "level": "continuous",
+            "name": "v6"
+          },
+          {
+            "column": "v7",
+            "id": "i_v7",
+            "level": "continuous",
+            "name": "v7"
+          },
+          {
+            "column": "v8",
+            "id": "i_v8",
+            "level": "continuous",
+            "name": "v8"
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_f1_f2",
+            "kind": "covariance",
+            "sourceId": "c_f1",
+            "targetId": "c_f2"
+          }
+        ]
+      },
+      "open": "analysis",
+      "bundledDatasetId": "missing-mcar",
+      "analysis": {
+        "method": "cb-sem",
+        "engine": "browser",
+        "estimator": "ML",
+        "missingData": "listwise",
+        "cb": {
+          "identification": "std-lv",
+          "meanStructure": false
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "what-report",
+      "question": "Your CB-SEM analysis used listwise deletion and kept 258 of 500 cases. What should the report state? Select all that apply.",
+      "multiple": true,
+      "options": [
+        {
+          "id": "a",
+          "text": "That 500 cases were collected and 258 analysed after listwise deletion",
+          "correct": true,
+          "feedback": "Correct. Both numbers and the reason belong in the report."
+        },
+        {
+          "id": "b",
+          "text": "The amount and pattern of missing values",
+          "correct": true,
+          "feedback": "Correct. Readers need it to judge whether listwise deletion was reasonable."
+        },
+        {
+          "id": "c",
+          "text": "The assumption under which listwise deletion is unbiased (MCAR) and why it is plausible",
+          "correct": true,
+          "feedback": "Correct. Listwise deletion requires missingness to be completely at random."
+        },
+        {
+          "id": "d",
+          "text": "Nothing; the analysed N is sufficient.",
+          "correct": false,
+          "feedback": "Hiding exclusions prevents readers from assessing bias and power."
+        }
+      ],
+      "explanation": "Transparency about the sample is a precondition for interpretation."
+    },
+    {
+      "id": "ten-times",
+      "question": "A reviewer asks you to justify your sample size. Which answer is strongest?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "A power analysis for the smallest effect of substantive interest, stating the assumed effect size, α and power.",
+          "correct": true,
+          "feedback": "Correct. It ties N to the effects you want to detect."
+        },
+        {
+          "id": "b",
+          "text": "N exceeds ten times the largest number of arrows pointing at a construct.",
+          "correct": false,
+          "feedback": "This rule ignores effect sizes and reliability and is widely criticised as insufficient."
+        },
+        {
+          "id": "c",
+          "text": "All paths were significant, so N was large enough.",
+          "correct": false,
+          "feedback": "Post-hoc significance does not justify N; non-significant paths would not show it was too small either."
+        }
+      ],
+      "explanation": "Plan N from the effects of interest."
+    }
+  ],
+  "references": [
+    "appelbaum2018",
+    "hair2022",
+    "schafer2002"
+  ],
+  "glossary": [
+    "listwise-deletion",
+    "fiml",
+    "missing-data-mechanism",
+    "reverse-scoring",
+    "reproducibility"
+  ]
+}

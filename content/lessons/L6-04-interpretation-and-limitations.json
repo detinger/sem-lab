@@ -1,0 +1,102 @@
+{
+  "id": "interpretation-and-limitations",
+  "level": 6,
+  "order": 4,
+  "title": "Interpretation without causal overreach",
+  "summary": "SEM results from observational data show whether patterns are consistent with a theory; causal language, generalisation and limitations must match what the design can support.",
+  "minutes": 8,
+  "prerequisites": [
+    "reporting-specification-and-estimation"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "An estimated path from cross-sectional survey data is a conditional association under the model's assumptions. Equivalent models fit identically (MacCallum et al. 1993), omitted variables can bias paths (endogeneity; Antonakis et al. 2010; Hult et al. 2018), and when all constructs come from one questionnaire, shared method variance can inflate relationships (Podsakoff et al. 2003)."
+    },
+    {
+      "kind": "list",
+      "ordered": false,
+      "items": [
+        "Prefer \"is associated with\", \"is consistent with\", \"predicts (in the sample)\" unless the design supports causal claims.",
+        "Separate statistical significance from practical relevance: report effect sizes and intervals.",
+        "State what the sample can generalise to.",
+        "Name the limitations that matter for your conclusions, not a generic list.",
+        "For synthetic or teaching data, say so; such results describe the generating model, not the world."
+      ]
+    },
+    {
+      "kind": "p",
+      "text": "A good limitations paragraph says what alternative explanation remains, how large its impact could be, and what design would rule it out."
+    }
+  ],
+  "mistake": {
+    "title": "\"X drives Y\" from a single survey",
+    "text": "Writing that perceived usefulness drives intention, or that improving satisfaction will raise loyalty by .57, claims a causal effect the design did not test. Describe the association and its conditions."
+  },
+  "checks": [
+    {
+      "id": "wording",
+      "question": "Which sentence fits a cross-sectional survey analysed with PLS-SEM?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Perceived usefulness was positively associated with intention (β = .50, 95% CI [.42, .58]), consistent with H2.",
+          "correct": true,
+          "feedback": "Correct. It reports size and uncertainty and makes no claim beyond the design."
+        },
+        {
+          "id": "b",
+          "text": "Perceived usefulness causes intention to rise by half a standard deviation.",
+          "correct": false,
+          "feedback": "This is a causal claim the design cannot support."
+        },
+        {
+          "id": "c",
+          "text": "The model proves TAM.",
+          "correct": false,
+          "feedback": "Data can be consistent with a theory; they do not prove it, and equivalent models fit equally well."
+        }
+      ],
+      "explanation": "Match language to design."
+    },
+    {
+      "id": "cmv",
+      "question": "All constructs were measured in one questionnaire at one time. Which limitation is specifically relevant?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Common method variance may inflate the relationships among constructs.",
+          "correct": true,
+          "feedback": "Correct (Podsakoff et al. 2003)."
+        },
+        {
+          "id": "b",
+          "text": "The bootstrap is invalid.",
+          "correct": false,
+          "feedback": "The bootstrap does not depend on how many questionnaires were used."
+        },
+        {
+          "id": "c",
+          "text": "PLS cannot be used with survey data.",
+          "correct": false,
+          "feedback": "PLS is routinely used with survey data; the concern is the design, not the estimator."
+        }
+      ],
+      "explanation": "Design-specific limitations."
+    }
+  ],
+  "references": [
+    "antonakis2010",
+    "podsakoff2003",
+    "maccallum1993",
+    "hult2018"
+  ],
+  "glossary": [
+    "causal-inference",
+    "equivalent-models",
+    "practical-significance",
+    "common-method-variance"
+  ]
+}

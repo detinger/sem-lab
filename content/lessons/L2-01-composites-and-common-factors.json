@@ -1,0 +1,117 @@
+{
+  "id": "composites-and-common-factors",
+  "level": 2,
+  "order": 1,
+  "title": "Composites and common factors",
+  "summary": "PLS-SEM represents constructs as weighted composites of their indicators, CB-SEM as common factors behind them; the same diagram therefore has two different estimands.",
+  "minutes": 8,
+  "prerequisites": [
+    "errors-and-residuals"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "A [[common-factor]] model says the indicators share one underlying cause. The construct is what the indicators have in common; whatever is specific to an item is treated as error. A [[composite]] is a weighted sum of the indicators. It contains everything in them, including their measurement error."
+    },
+    {
+      "kind": "formula",
+      "display": "C = w₁x₁ + w₂x₂ + … + w_k·x_k",
+      "explanation": "A composite C is a weighted sum of its k standardised indicators x with weights w. PLS-SEM estimates the weights; the construct score is then an exact linear combination of observed data."
+    },
+    {
+      "kind": "p",
+      "text": "[[pls-sem]] estimates composites; [[cb-sem]] estimates common factors. When the constructs really are common factors, classic PLS tends to overestimate loadings and to underestimate the correlations between constructs, because composites still carry measurement error (Dijkstra & Henseler 2015). Paths are biased as a consequence: the main paths are usually too small, but with several correlated predictors an individual path can also come out too large. On the service-quality example the standardised path SAT → LOY is .534 with classic PLS, .602 with consistent PLS and .598 with CB-SEM (ML)."
+    },
+    {
+      "kind": "p",
+      "text": "Neither estimand is wrong in general. Composites suit constructs that are designed or defined as combinations, such as an index; common factors suit attributes measured by interchangeable items (Henseler 2017; Rigdon 2012). Choose by your theory of the construct, not by which method gives larger or more significant numbers (Sarstedt et al. 2016)."
+    }
+  ],
+  "mistake": {
+    "title": "Comparing PLS and CB numbers as if they estimated the same thing",
+    "text": "A PLS path of .53 and a CB path of .60 are not a disagreement to be resolved by picking one: they target different quantities. Report which estimand your method addresses and why."
+  },
+  "tryIt": {
+    "task": "Open the service-quality example. Run CB-SEM (ML), then switch the method to PLS-SEM and run again. Compare the standardised path SAT → LOY and the R² of LOY.",
+    "starter": {
+      "title": "Service quality example",
+      "exampleId": "service-quality",
+      "open": "analysis"
+    }
+  },
+  "checks": [
+    {
+      "id": "why-smaller",
+      "question": "On the same data the classic PLS path SAT → LOY is .534 and the CB-SEM standardised path is .598. What is the main reason?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Composites include measurement error, which attenuates relations between them; CB-SEM separates the error.",
+          "correct": true,
+          "feedback": "Correct. With reflective constructs, composite-based paths are typically smaller than factor-based ones."
+        },
+        {
+          "id": "b",
+          "text": "PLS-SEM is simply biased and should not be used.",
+          "correct": false,
+          "feedback": "PLS consistently estimates composite-model parameters. It is \"biased\" only if you use it to estimate a common-factor model, which is what PLSc is for."
+        },
+        {
+          "id": "c",
+          "text": "The sample is too small for PLS.",
+          "correct": false,
+          "feedback": "The gap comes from the estimand, not from sample size; it does not disappear in large samples."
+        },
+        {
+          "id": "d",
+          "text": "CB-SEM reports unstandardised paths.",
+          "correct": false,
+          "feedback": "The .598 is CB-SEM's standardised estimate, so the scales are comparable; the difference is conceptual."
+        }
+      ],
+      "explanation": "Different estimands, not a contest between methods."
+    },
+    {
+      "id": "index",
+      "question": "Managers define \"service convenience\" as a weighted combination of opening hours, location, online booking and parking. Which representation fits this construct?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "A composite",
+          "correct": true,
+          "feedback": "Correct. The construct is defined by its components; it is not a common cause of them."
+        },
+        {
+          "id": "b",
+          "text": "A common factor",
+          "correct": false,
+          "feedback": "A common factor assumes one cause of all four items, so they should correlate highly. Opening hours and parking need not correlate at all."
+        },
+        {
+          "id": "c",
+          "text": "Either, as long as the reliability is high",
+          "correct": false,
+          "feedback": "Reliability is a common-factor concept and is not the right criterion for choosing how to represent an index."
+        }
+      ],
+      "explanation": "The construct's definition decides the representation."
+    }
+  ],
+  "references": [
+    "dijkstra2015",
+    "sarstedt2016",
+    "rigdon2012",
+    "henseler2017",
+    "hair2022"
+  ],
+  "glossary": [
+    "composite",
+    "common-factor",
+    "pls-sem",
+    "cb-sem",
+    "attenuation",
+    "plsc"
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "constructs": [
+    {
+      "id": "c_sat",
+      "indicatorIds": [
+        "i_sat1",
+        "i_sat2",
+        "i_sat3r",
+        "i_sat4"
+      ],
+      "label": "Satisfaction (synthetic)",
+      "measurement": "reflective",
+      "name": "SAT"
+    },
+    {
+      "id": "c_loy",
+      "indicatorIds": [
+        "i_loy1",
+        "i_loy2",
+        "i_loy3"
+      ],
+      "label": "Loyalty intention (synthetic)",
+      "measurement": "reflective",
+      "name": "LOY"
+    }
+  ],
+  "indicators": [
+    {
+      "column": "sat1",
+      "id": "i_sat1",
+      "level": "ordinal",
+      "name": "sat1",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "sat2",
+      "id": "i_sat2",
+      "level": "ordinal",
+      "name": "sat2",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "sat3r",
+      "id": "i_sat3r",
+      "level": "ordinal",
+      "name": "sat3r",
+      "reverseScored": true,
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "sat4",
+      "id": "i_sat4",
+      "level": "ordinal",
+      "name": "sat4",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "loy1",
+      "id": "i_loy1",
+      "level": "ordinal",
+      "name": "loy1",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "loy2",
+      "id": "i_loy2",
+      "level": "ordinal",
+      "name": "loy2",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "loy3",
+      "id": "i_loy3",
+      "level": "ordinal",
+      "name": "loy3",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r_sat_loy",
+      "kind": "structural",
+      "sourceId": "c_sat",
+      "targetId": "c_loy"
+    }
+  ]
+}

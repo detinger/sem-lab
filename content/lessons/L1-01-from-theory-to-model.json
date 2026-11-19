@@ -1,0 +1,231 @@
+{
+  "id": "from-theory-to-model",
+  "level": 1,
+  "order": 1,
+  "title": "From theory to model",
+  "summary": "A structural equation model writes a theory down as a set of directed hypotheses among constructs, which data can then confront.",
+  "minutes": 6,
+  "prerequisites": [],
+  "body": [
+    {
+      "kind": "p",
+      "text": "A [[sem]] analysis starts with a [[theory]]: a reasoned argument about why some concepts are related. The Technology Acceptance Model, for example, argues that people intend to use a system when they find it useful, and that ease of use makes a system seem more useful (Davis 1989). Each such claim becomes a [[hypothesis]], and each hypothesis becomes an arrow in a [[path-diagram]]."
+    },
+    {
+      "kind": "diagram",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_peou",
+            "name": "PEOU",
+            "measurement": "reflective",
+            "indicatorIds": [
+              "i_peou1",
+              "i_peou2",
+              "i_peou3"
+            ],
+            "label": "Perceived ease of use"
+          },
+          {
+            "id": "c_pu",
+            "name": "PU",
+            "measurement": "reflective",
+            "indicatorIds": [
+              "i_pu1",
+              "i_pu2",
+              "i_pu3"
+            ],
+            "label": "Perceived usefulness"
+          },
+          {
+            "id": "c_bi",
+            "name": "BI",
+            "measurement": "reflective",
+            "indicatorIds": [
+              "i_bi1",
+              "i_bi2",
+              "i_bi3"
+            ],
+            "label": "Behavioural intention"
+          }
+        ],
+        "indicators": [
+          {
+            "id": "i_peou1",
+            "name": "peou1",
+            "column": null
+          },
+          {
+            "id": "i_peou2",
+            "name": "peou2",
+            "column": null
+          },
+          {
+            "id": "i_peou3",
+            "name": "peou3",
+            "column": null
+          },
+          {
+            "id": "i_pu1",
+            "name": "pu1",
+            "column": null
+          },
+          {
+            "id": "i_pu2",
+            "name": "pu2",
+            "column": null
+          },
+          {
+            "id": "i_pu3",
+            "name": "pu3",
+            "column": null
+          },
+          {
+            "id": "i_bi1",
+            "name": "bi1",
+            "column": null
+          },
+          {
+            "id": "i_bi2",
+            "name": "bi2",
+            "column": null
+          },
+          {
+            "id": "i_bi3",
+            "name": "bi3",
+            "column": null
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_peou_pu",
+            "kind": "structural",
+            "sourceId": "c_peou",
+            "targetId": "c_pu",
+            "hypothesis": "H1"
+          },
+          {
+            "id": "r_pu_bi",
+            "kind": "structural",
+            "sourceId": "c_pu",
+            "targetId": "c_bi",
+            "hypothesis": "H2"
+          },
+          {
+            "id": "r_peou_bi",
+            "kind": "structural",
+            "sourceId": "c_peou",
+            "targetId": "c_bi",
+            "hypothesis": "H3"
+          }
+        ]
+      },
+      "caption": "The TAM core as a path diagram. Each structural arrow carries one hypothesis (H1–H3); the thin arrows link each construct to its questionnaire items.",
+      "highlight": [
+        "r_peou_pu",
+        "r_pu_bi",
+        "r_peou_bi"
+      ]
+    },
+    {
+      "kind": "p",
+      "text": "SEM combines two things in one estimation: the measurement of constructs that cannot be observed directly, through several indicators each, and a system of regressions among those constructs. An arrow PU → BI is a **partial** regression effect: the expected change in BI with PU, holding the other predictors of BI constant."
+    },
+    {
+      "kind": "p",
+      "text": "Estimation tells you whether the data are consistent with the hypotheses: the sign, size and precision of each effect, and for some methods how well the whole model reproduces the data. It does not tell you that the arrows point the right way. Direction comes from theory and from the research design (timing, experiments), not from the estimates (Bollen 1989; Antonakis et al. 2010)."
+    },
+    {
+      "kind": "callout",
+      "variant": "info",
+      "text": "SEM Studio offers two families of estimators for the same diagram: PLS-SEM, which builds constructs as weighted composites (Level 2), and CB-SEM, which models them as common factors (Level 5). They answer related but different questions.",
+      "title": "Two families of SEM"
+    }
+  ],
+  "mistake": {
+    "title": "Drawing the arrows from the data",
+    "text": "Adding arrows wherever two constructs correlate strongly, and then reporting the result as a test of hypotheses, is circular: the same data generated and \"confirmed\" the model. Write the hypotheses down before estimating, and label any later change as exploratory."
+  },
+  "tryIt": {
+    "task": "Open the TAM example. In the modeler, find the hypothesis label on each structural arrow and say in one sentence what each arrow claims.",
+    "starter": {
+      "title": "TAM example",
+      "exampleId": "tam-mediation",
+      "open": "modeler"
+    }
+  },
+  "checks": [
+    {
+      "id": "arrow-meaning",
+      "question": "What does the structural arrow PU → BI state in a model that also contains PEOU → BI?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "A hypothesis that BI changes with PU when PEOU is held constant; the direction is assumed from theory.",
+          "correct": true,
+          "feedback": "Correct. A path is a partial regression effect, and its direction is an assumption the model makes, not a finding."
+        },
+        {
+          "id": "b",
+          "text": "That the data have proven PU causes BI.",
+          "correct": false,
+          "feedback": "No estimate can prove causation by itself. Reversing the arrow in many models fits the data equally well; causal claims need theory and design."
+        },
+        {
+          "id": "c",
+          "text": "Only that PU and BI are correlated.",
+          "correct": false,
+          "feedback": "A path is more than a correlation: it is adjusted for the other predictors of BI (here PEOU) and it encodes a direction."
+        },
+        {
+          "id": "d",
+          "text": "That BI is an indicator of PU.",
+          "correct": false,
+          "feedback": "Indicators are linked to their own construct by measurement arrows. PU → BI connects two constructs, so it belongs to the structural model."
+        }
+      ],
+      "explanation": "Structural arrows are directed, partial effects whose direction is supplied by theory."
+    },
+    {
+      "id": "hypothesis-source",
+      "question": "Where should the hypotheses of a confirmatory SEM study come from?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "From prior theory and evidence, written down before the estimates are seen.",
+          "correct": true,
+          "feedback": "Correct. Specifying the model in advance is what allows the data to confront it."
+        },
+        {
+          "id": "b",
+          "text": "From the strongest correlations in the sample.",
+          "correct": false,
+          "feedback": "Choosing arrows from the same sample you test them on capitalises on chance; the p values no longer mean what they claim."
+        },
+        {
+          "id": "c",
+          "text": "From whatever paths turn out significant after trying several models.",
+          "correct": false,
+          "feedback": "That is model search. It can be useful for exploration, but its results must be reported as exploratory and checked on new data."
+        }
+      ],
+      "explanation": "Theory first, then estimation."
+    }
+  ],
+  "references": [
+    "bollen1989",
+    "davis1989",
+    "antonakis2010",
+    "hair2022"
+  ],
+  "glossary": [
+    "sem",
+    "theory",
+    "hypothesis",
+    "path-diagram",
+    "construct",
+    "path-coefficient"
+  ]
+}

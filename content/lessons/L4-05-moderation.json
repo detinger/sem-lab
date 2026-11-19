@@ -1,0 +1,100 @@
+{
+  "id": "moderation",
+  "level": 4,
+  "order": 5,
+  "title": "Moderation and interaction effects",
+  "summary": "Moderation means the strength of an effect depends on a third variable; it is modelled with an interaction term and is a different idea from mediation.",
+  "minutes": 7,
+  "prerequisites": [
+    "mediation"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "[[moderation]] means that the effect of X on Y depends on the level of a moderator W: for example, usefulness may matter more for intention among experienced users. It is modelled with an interaction term."
+    },
+    {
+      "kind": "formula",
+      "display": "Y = b₁·X + b₂·W + b₃·(X·W) + ζ",
+      "explanation": "b₃ is the interaction: the change in the effect of X on Y for each unit increase in W. With the interaction in the model, b₁ is the effect of X when W = 0 (the mean, if W is standardised), not an average effect."
+    },
+    {
+      "kind": "p",
+      "text": "In PLS-SEM the interaction term between latent constructs is built with the product-indicator, the two-stage or the orthogonalising approach; Henseler and Chin (2010) compared them, and the two-stage approach is a common default (Hair et al. 2022). In CB-SEM latent interactions need specialised estimators. A categorical moderator such as group membership leads to multigroup analysis (next lesson)."
+    },
+    {
+      "kind": "callout",
+      "variant": "warning",
+      "text": "SEM Studio does not estimate interaction effects yet; the feature is planned. Use R packages such as cSEM or seminr for moderation analysis, and report which approach you used.",
+      "title": "Not available in SEM Studio"
+    }
+  ],
+  "mistake": {
+    "title": "Confusing moderation with mediation",
+    "text": "A mediator transmits an effect (X → M → Y); a moderator changes the strength of an effect (W changes X → Y). They answer different questions and are tested differently (Baron & Kenny 1986)."
+  },
+  "checks": [
+    {
+      "id": "b3",
+      "question": "In Y = .40·X + .10·W + .15·(X·W), with standardised X and W, what does .15 mean?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "The effect of X on Y increases by .15 for every standard deviation increase in W.",
+          "correct": true,
+          "feedback": "Correct. At W = +1 SD the effect of X is about .55, at W = −1 SD about .25."
+        },
+        {
+          "id": "b",
+          "text": "W mediates 15% of the effect of X.",
+          "correct": false,
+          "feedback": "Interactions do not split an effect into routes; that is mediation."
+        },
+        {
+          "id": "c",
+          "text": "The average effect of X is .15.",
+          "correct": false,
+          "feedback": "With standardised W, .40 is the effect of X at the average of W."
+        }
+      ],
+      "explanation": "Interaction = effect of one variable depends on another."
+    },
+    {
+      "id": "which-is-moderation",
+      "question": "Which hypothesis describes moderation?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "The effect of usefulness on intention is stronger for experienced users.",
+          "correct": true,
+          "feedback": "Correct. Experience changes the strength of an effect."
+        },
+        {
+          "id": "b",
+          "text": "Ease of use increases usefulness, which in turn increases intention.",
+          "correct": false,
+          "feedback": "That is a mediation chain."
+        },
+        {
+          "id": "c",
+          "text": "Experience increases intention.",
+          "correct": false,
+          "feedback": "That is a direct effect of experience."
+        }
+      ],
+      "explanation": "Look for \"depends on\" or \"stronger/weaker when\"."
+    }
+  ],
+  "references": [
+    "henseler2010",
+    "baron1986",
+    "hair2022"
+  ],
+  "glossary": [
+    "moderation",
+    "mediation",
+    "multigroup-analysis"
+  ]
+}

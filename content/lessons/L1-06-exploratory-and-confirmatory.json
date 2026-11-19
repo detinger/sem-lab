@@ -1,0 +1,198 @@
+{
+  "id": "exploratory-and-confirmatory",
+  "level": 1,
+  "order": 6,
+  "title": "Exploratory and confirmatory analysis",
+  "summary": "Exploratory analysis lets the data suggest a structure, while confirmatory SEM tests a structure specified in advance; mixing the two on one sample overstates the evidence.",
+  "minutes": 6,
+  "prerequisites": [
+    "measurement-and-structural-model"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "In [[efa]] every item may load on every factor and the analysis suggests how many factors there are and which items group together. In [[cfa]] and in SEM you specify beforehand which indicators measure which construct and which paths exist. Every arrow you leave out is a constraint the data can contradict."
+    },
+    {
+      "kind": "p",
+      "text": "SEM is confirmatory by design: the model is written before estimation. Deleting items, adding paths or correlating errors after seeing the results turns a test into a search. Such changes may be justified, but they must be reported as exploratory and ideally checked on new data, because they capitalise on chance features of the sample (MacCallum et al. 1992)."
+    },
+    {
+      "kind": "p",
+      "text": "PLS-SEM is often recommended for research at an early, more exploratory stage of theory (Hair et al. 2022). That describes the maturity of the theory, not permission to build the model by trial and error."
+    }
+  ],
+  "mistake": {
+    "title": "Calling a model fitted to the same data a confirmation",
+    "text": "Running an EFA, keeping the structure it suggests and then \"confirming\" it with a CFA on the same sample proves little: the CFA is guaranteed to look good. Split the sample or confirm on new data (Fabrigar et al. 1999)."
+  },
+  "tryIt": {
+    "task": "This starter is a confirmatory two-factor model. Run CB-SEM, then check that each item has a loading only on its own factor; the missing cross-loadings are what the χ² test with 19 degrees of freedom evaluates.",
+    "starter": {
+      "title": "Two-factor CFA",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_f1",
+            "indicatorIds": [
+              "i_v1",
+              "i_v2",
+              "i_v3",
+              "i_v4"
+            ],
+            "label": "Factor 1",
+            "measurement": "reflective",
+            "name": "F1"
+          },
+          {
+            "id": "c_f2",
+            "indicatorIds": [
+              "i_v5",
+              "i_v6",
+              "i_v7",
+              "i_v8"
+            ],
+            "label": "Factor 2",
+            "measurement": "reflective",
+            "name": "F2"
+          }
+        ],
+        "indicators": [
+          {
+            "column": "v1",
+            "id": "i_v1",
+            "level": "continuous",
+            "name": "v1"
+          },
+          {
+            "column": "v2",
+            "id": "i_v2",
+            "level": "continuous",
+            "name": "v2"
+          },
+          {
+            "column": "v3",
+            "id": "i_v3",
+            "level": "continuous",
+            "name": "v3"
+          },
+          {
+            "column": "v4",
+            "id": "i_v4",
+            "level": "continuous",
+            "name": "v4"
+          },
+          {
+            "column": "v5",
+            "id": "i_v5",
+            "level": "continuous",
+            "name": "v5"
+          },
+          {
+            "column": "v6",
+            "id": "i_v6",
+            "level": "continuous",
+            "name": "v6"
+          },
+          {
+            "column": "v7",
+            "id": "i_v7",
+            "level": "continuous",
+            "name": "v7"
+          },
+          {
+            "column": "v8",
+            "id": "i_v8",
+            "level": "continuous",
+            "name": "v8"
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_f1_f2",
+            "kind": "covariance",
+            "sourceId": "c_f1",
+            "targetId": "c_f2"
+          }
+        ]
+      },
+      "open": "modeler",
+      "bundledDatasetId": "cfa-two-factor",
+      "analysis": {
+        "method": "cb-sem",
+        "engine": "browser",
+        "estimator": "ML",
+        "missingData": "listwise",
+        "cb": {
+          "identification": "std-lv",
+          "meanStructure": false
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "which-confirmatory",
+      "question": "Which analysis is confirmatory?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Specifying in advance that items v1–v4 measure factor F1 and v5–v8 measure F2, and testing whether the data agree.",
+          "correct": true,
+          "feedback": "Correct. The structure is fixed before estimation, including the zero loadings."
+        },
+        {
+          "id": "b",
+          "text": "Letting all eight items load on two factors and seeing which items group together.",
+          "correct": false,
+          "feedback": "That is exploratory factor analysis: the data determine the structure."
+        },
+        {
+          "id": "c",
+          "text": "Removing items with low loadings until all reliabilities exceed .80.",
+          "correct": false,
+          "feedback": "This is data-driven respecification, an exploratory step."
+        }
+      ],
+      "explanation": "Confirmatory = the structure is fixed before you see the estimates."
+    },
+    {
+      "id": "respecification",
+      "question": "A researcher deletes three items with low loadings, adds two paths that the results suggested, and reports all p values as tests of the original hypotheses. What is the main problem?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "The changes capitalise on chance, so the reported p values overstate the evidence.",
+          "correct": true,
+          "feedback": "Correct. Decisions made after seeing the data make significance tests too optimistic; the modified model needs new data."
+        },
+        {
+          "id": "b",
+          "text": "There is no problem as long as the final model fits.",
+          "correct": false,
+          "feedback": "Fit after data-driven modification is expected and therefore weak evidence."
+        },
+        {
+          "id": "c",
+          "text": "Deleting items is never allowed.",
+          "correct": false,
+          "feedback": "Deleting a poor item can be justified on content and measurement grounds; the issue is presenting the modified model as if it had been specified in advance."
+        }
+      ],
+      "explanation": "Report respecification honestly and replicate."
+    }
+  ],
+  "references": [
+    "fabrigar1999",
+    "maccallum1992",
+    "anderson1988",
+    "hair2022"
+  ],
+  "glossary": [
+    "efa",
+    "cfa",
+    "measurement-model"
+  ]
+}

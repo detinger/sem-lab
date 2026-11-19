@@ -1,0 +1,464 @@
+{
+  "caseId": "item-screening",
+  "constructs": [
+    {
+      "indicators": [
+        "sat1",
+        "sat2",
+        "sat3",
+        "sat4"
+      ],
+      "label": "Satisfaction (synthetic)",
+      "measurement": "reflective",
+      "name": "SAT",
+      "standardizedLoadings": {
+        "sat1": 0.85,
+        "sat2": 0.8,
+        "sat3": 0.8,
+        "sat4": 0.75
+      }
+    },
+    {
+      "indicators": [
+        "loy1",
+        "loy2",
+        "loy3"
+      ],
+      "label": "Loyalty intention (synthetic)",
+      "measurement": "reflective",
+      "name": "LOY",
+      "standardizedLoadings": {
+        "loy1": 0.85,
+        "loy2": 0.8,
+        "loy3": 0.75
+      }
+    }
+  ],
+  "conventions": {
+    "composite": "a composite block's indicators covary with everything outside the block only through the composite: cov(x_block, y) = (R w) cov(C, y)",
+    "sigma": "Sigma_std = L Phi L' + blockdiag(diag(1-lambda^2) for reflective, R-(Rw)(Rw)' for composite); Sigma_raw = D Sigma_std D, D = diag(sd)"
+  },
+  "derivedColumns": {
+    "loy4": "constant 4 (pre-filled, never changed)",
+    "sat3r": "8 - sat3 (negatively worded sat3, as answered)"
+  },
+  "derivedTruths": {
+    "classicPlsPopulationLimit": {
+      "compositeCorrelations": {
+        "matrix": [
+          [
+            1.0,
+            0.474101772205026
+          ],
+          [
+            0.474101772205026,
+            1.0
+          ]
+        ],
+        "order": [
+          "SAT",
+          "LOY"
+        ]
+      },
+      "description": "Population limit of classic PLS-SEM (Mode A for reflective, Mode B for composite blocks, no consistency correction) on standardised data; independent of the inner weighting scheme.",
+      "paths": [
+        {
+          "coefficient": 0.474101772205026,
+          "commonFactorValue": 0.55,
+          "source": "SAT",
+          "target": "LOY"
+        }
+      ]
+    },
+    "constructs": {
+      "LOY": {
+        "AVE": 0.6416666666666667,
+        "definitions": {
+          "AVE": "mean of squared standardised loadings",
+          "rhoA": "population rho_A = reliability of the Mode A composite, whose population weights are proportional to lambda: (l'l)^2 / ((l'l)^2 + l'Theta l)",
+          "rhoC": "(sum lambda)^2 / ((sum lambda)^2 + sum(1 - lambda^2))"
+        },
+        "rhoA": 0.8455287799229341,
+        "rhoC": 0.8427212874908558
+      },
+      "SAT": {
+        "AVE": 0.6412500000000001,
+        "definitions": {
+          "AVE": "mean of squared standardised loadings",
+          "rhoA": "population rho_A = reliability of the Mode A composite, whose population weights are proportional to lambda: (l'l)^2 / ((l'l)^2 + l'Theta l)",
+          "rhoC": "(sum lambda)^2 / ((sum lambda)^2 + sum(1 - lambda^2))"
+        },
+        "rhoA": 0.8787986556002465,
+        "rhoC": 0.8770877944325481
+      }
+    },
+    "effects": [
+      {
+        "direct": 0.55,
+        "indirect": 0.0,
+        "source": "SAT",
+        "target": "LOY",
+        "total": 0.55
+      }
+    ]
+  },
+  "exogenousCorrelations": [],
+  "impliedCorrelation": {
+    "columns": [
+      "sat1",
+      "sat2",
+      "sat3",
+      "sat4",
+      "loy1",
+      "loy2",
+      "loy3"
+    ],
+    "matrix": [
+      [
+        1.0,
+        0.68,
+        0.68,
+        0.6375,
+        0.39737500000000003,
+        0.37400000000000005,
+        0.350625
+      ],
+      [
+        0.68,
+        1.0,
+        0.6400000000000001,
+        0.6000000000000001,
+        0.37400000000000005,
+        0.3520000000000001,
+        0.33000000000000007
+      ],
+      [
+        0.68,
+        0.6400000000000001,
+        1.0,
+        0.6000000000000001,
+        0.37400000000000005,
+        0.3520000000000001,
+        0.33000000000000007
+      ],
+      [
+        0.6375,
+        0.6000000000000001,
+        0.6000000000000001,
+        1.0,
+        0.350625,
+        0.33000000000000007,
+        0.309375
+      ],
+      [
+        0.39737500000000003,
+        0.37400000000000005,
+        0.37400000000000005,
+        0.350625,
+        1.0,
+        0.68,
+        0.6375
+      ],
+      [
+        0.37400000000000005,
+        0.3520000000000001,
+        0.3520000000000001,
+        0.33000000000000007,
+        0.68,
+        1.0,
+        0.6000000000000001
+      ],
+      [
+        0.350625,
+        0.33000000000000007,
+        0.33000000000000007,
+        0.309375,
+        0.6375,
+        0.6000000000000001,
+        1.0
+      ]
+    ]
+  },
+  "impliedCovariance": {
+    "columns": [
+      "sat1",
+      "sat2",
+      "sat3",
+      "sat4",
+      "loy1",
+      "loy2",
+      "loy3"
+    ],
+    "divisor": "population (equals the N-1 sample covariance for EXACT cases)",
+    "matrix": [
+      [
+        1.0,
+        0.68,
+        0.68,
+        0.6375,
+        0.39737500000000003,
+        0.37400000000000005,
+        0.350625
+      ],
+      [
+        0.68,
+        1.0,
+        0.6400000000000001,
+        0.6000000000000001,
+        0.37400000000000005,
+        0.3520000000000001,
+        0.33000000000000007
+      ],
+      [
+        0.68,
+        0.6400000000000001,
+        1.0,
+        0.6000000000000001,
+        0.37400000000000005,
+        0.3520000000000001,
+        0.33000000000000007
+      ],
+      [
+        0.6375,
+        0.6000000000000001,
+        0.6000000000000001,
+        1.0,
+        0.350625,
+        0.33000000000000007,
+        0.309375
+      ],
+      [
+        0.39737500000000003,
+        0.37400000000000005,
+        0.37400000000000005,
+        0.350625,
+        1.0,
+        0.68,
+        0.6375
+      ],
+      [
+        0.37400000000000005,
+        0.3520000000000001,
+        0.3520000000000001,
+        0.33000000000000007,
+        0.68,
+        1.0,
+        0.6000000000000001
+      ],
+      [
+        0.350625,
+        0.33000000000000007,
+        0.33000000000000007,
+        0.309375,
+        0.6375,
+        0.6000000000000001,
+        1.0
+      ]
+    ]
+  },
+  "indicators": [
+    {
+      "column": "sat1",
+      "construct": "SAT",
+      "likert": {
+        "highestCategory": 7,
+        "lowestCategory": 1,
+        "profile": "symmetric-7",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 7,
+        "scaleMin": 1,
+        "thresholds": [
+          -1.8,
+          -1.1,
+          -0.4,
+          0.4,
+          1.1,
+          1.8
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.2775000000000001,
+      "residualVarianceStandardized": 0.2775000000000001,
+      "sd": 1.0,
+      "standardizedLoading": 0.85
+    },
+    {
+      "column": "sat2",
+      "construct": "SAT",
+      "likert": {
+        "highestCategory": 7,
+        "lowestCategory": 1,
+        "profile": "symmetric-7",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 7,
+        "scaleMin": 1,
+        "thresholds": [
+          -1.8,
+          -1.1,
+          -0.4,
+          0.4,
+          1.1,
+          1.8
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.3599999999999999,
+      "residualVarianceStandardized": 0.3599999999999999,
+      "sd": 1.0,
+      "standardizedLoading": 0.8
+    },
+    {
+      "column": "sat3",
+      "construct": "SAT",
+      "likert": {
+        "highestCategory": 7,
+        "lowestCategory": 1,
+        "profile": "symmetric-7",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 7,
+        "scaleMin": 1,
+        "thresholds": [
+          -1.8,
+          -1.1,
+          -0.4,
+          0.4,
+          1.1,
+          1.8
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.3599999999999999,
+      "residualVarianceStandardized": 0.3599999999999999,
+      "sd": 1.0,
+      "standardizedLoading": 0.8
+    },
+    {
+      "column": "sat4",
+      "construct": "SAT",
+      "likert": {
+        "highestCategory": 7,
+        "lowestCategory": 1,
+        "profile": "symmetric-7",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 7,
+        "scaleMin": 1,
+        "thresholds": [
+          -1.8,
+          -1.1,
+          -0.4,
+          0.4,
+          1.1,
+          1.8
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.4375,
+      "residualVarianceStandardized": 0.4375,
+      "sd": 1.0,
+      "standardizedLoading": 0.75
+    },
+    {
+      "column": "loy1",
+      "construct": "LOY",
+      "likert": {
+        "highestCategory": 7,
+        "lowestCategory": 1,
+        "profile": "symmetric-7",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 7,
+        "scaleMin": 1,
+        "thresholds": [
+          -1.8,
+          -1.1,
+          -0.4,
+          0.4,
+          1.1,
+          1.8
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.2775000000000001,
+      "residualVarianceStandardized": 0.2775000000000001,
+      "sd": 1.0,
+      "standardizedLoading": 0.85
+    },
+    {
+      "column": "loy2",
+      "construct": "LOY",
+      "likert": {
+        "highestCategory": 7,
+        "lowestCategory": 1,
+        "profile": "symmetric-7",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 7,
+        "scaleMin": 1,
+        "thresholds": [
+          -1.8,
+          -1.1,
+          -0.4,
+          0.4,
+          1.1,
+          1.8
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.3599999999999999,
+      "residualVarianceStandardized": 0.3599999999999999,
+      "sd": 1.0,
+      "standardizedLoading": 0.8
+    },
+    {
+      "column": "loy3",
+      "construct": "LOY",
+      "likert": {
+        "highestCategory": 7,
+        "lowestCategory": 1,
+        "profile": "symmetric-7",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 7,
+        "scaleMin": 1,
+        "thresholds": [
+          -1.8,
+          -1.1,
+          -0.4,
+          0.4,
+          1.1,
+          1.8
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.4375,
+      "residualVarianceStandardized": 0.4375,
+      "sd": 1.0,
+      "standardizedLoading": 0.75
+    }
+  ],
+  "latentCorrelation": {
+    "formula": "Phi = (I-B)^-1 Psi (I-B)^-T, every latent variance exactly 1",
+    "matrix": [
+      [
+        1.0,
+        0.55
+      ],
+      [
+        0.55,
+        1.0
+      ]
+    ],
+    "order": [
+      "SAT",
+      "LOY"
+    ]
+  },
+  "latentDisturbanceVariances": {
+    "LOY": 0.6975
+  },
+  "structuralCoefficients": [
+    {
+      "coefficient": 0.55,
+      "source": "SAT",
+      "target": "LOY"
+    }
+  ],
+  "synthetic": true
+}

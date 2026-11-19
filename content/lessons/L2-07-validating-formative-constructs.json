@@ -1,0 +1,317 @@
+{
+  "id": "validating-formative-constructs",
+  "level": 2,
+  "order": 7,
+  "title": "Validating formative constructs",
+  "summary": "Formative constructs are assessed by content validity, convergent validity, indicator collinearity and the significance and relevance of their weights, not by α, AVE or HTMT.",
+  "minutes": 8,
+  "prerequisites": [
+    "mode-a-and-mode-b"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "Internal consistency, AVE and HTMT assume indicators that share a common factor. A formative or composite construct needs different evidence (Hair et al. 2022; Cenfetelli & Bassellier 2009):"
+    },
+    {
+      "kind": "list",
+      "ordered": true,
+      "items": [
+        "**Content validity:** the indicators cover the construct's domain as defined before data collection (Diamantopoulos & Winklhofer 2001).",
+        "**Convergent validity:** [[redundancy-analysis]], the correlation of the formative construct with an alternative measure of the same concept, often a global single item; Hair et al. (2022) suggest about .70 or more. SEM Studio does not run redundancy analysis automatically yet; you can build the two-construct model yourself.",
+        "**Collinearity:** indicator [[vif]] values; ideally below 3, with 5 as a commonly used upper heuristic (Hair et al. 2022).",
+        "**Weights:** significance (bootstrap) and size. A non-significant weight whose loading is sizeable (about .50 or more) can be kept because the indicator still matters absolutely (Cenfetelli & Bassellier 2009; Hair et al. 2022)."
+      ]
+    },
+    {
+      "kind": "callout",
+      "variant": "info",
+      "text": "For composite-formative blocks SEM Studio shows α, ρA, ρC, AVE and HTMT as not applicable instead of displaying numbers that would look like passing or failing scores."
+    },
+    {
+      "kind": "p",
+      "text": "Never drop a formative indicator only because its weight is small: the construct would change meaning. Statistical results are one input; the content definition is another."
+    }
+  ],
+  "mistake": {
+    "title": "Reporting α and AVE for a formative index",
+    "text": "These numbers are computable but meaningless for an index, and low values invite deleting components that define the construct. Report weights, loadings, VIFs and the content argument instead."
+  },
+  "tryIt": {
+    "task": "Run this model with bootstrapping (already configured). For index F, read the outer weights with their confidence intervals, the loadings and the indicator VIFs. Note which reflective criteria are shown as not applicable.",
+    "starter": {
+      "title": "Mixed composite and reflective model (bootstrap)",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_f",
+            "indicatorIds": [
+              "i_f1",
+              "i_f2",
+              "i_f3",
+              "i_f4"
+            ],
+            "label": "Composite F",
+            "measurement": "composite-formative",
+            "name": "F"
+          },
+          {
+            "id": "c_x",
+            "indicatorIds": [
+              "i_x1",
+              "i_x2",
+              "i_x3"
+            ],
+            "label": "Reflective X",
+            "measurement": "reflective",
+            "name": "X"
+          },
+          {
+            "id": "c_y",
+            "indicatorIds": [
+              "i_y1",
+              "i_y2",
+              "i_y3",
+              "i_y4"
+            ],
+            "label": "Reflective Y",
+            "measurement": "reflective",
+            "name": "Y"
+          }
+        ],
+        "indicators": [
+          {
+            "column": "f1",
+            "id": "i_f1",
+            "level": "ordinal",
+            "name": "f1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "f2",
+            "id": "i_f2",
+            "level": "ordinal",
+            "name": "f2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "f3",
+            "id": "i_f3",
+            "level": "ordinal",
+            "name": "f3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "f4",
+            "id": "i_f4",
+            "level": "ordinal",
+            "name": "f4",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "x1",
+            "id": "i_x1",
+            "level": "ordinal",
+            "name": "x1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "x2",
+            "id": "i_x2",
+            "level": "ordinal",
+            "name": "x2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "x3",
+            "id": "i_x3",
+            "level": "ordinal",
+            "name": "x3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "y1",
+            "id": "i_y1",
+            "level": "ordinal",
+            "name": "y1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "y2",
+            "id": "i_y2",
+            "level": "ordinal",
+            "name": "y2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "y3",
+            "id": "i_y3",
+            "level": "ordinal",
+            "name": "y3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "y4",
+            "id": "i_y4",
+            "level": "ordinal",
+            "name": "y4",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_f_y",
+            "kind": "structural",
+            "sourceId": "c_f",
+            "targetId": "c_y"
+          },
+          {
+            "id": "r_x_y",
+            "kind": "structural",
+            "sourceId": "c_x",
+            "targetId": "c_y"
+          },
+          {
+            "id": "r_f_x",
+            "kind": "covariance",
+            "sourceId": "c_f",
+            "targetId": "c_x"
+          }
+        ]
+      },
+      "open": "analysis",
+      "bundledDatasetId": "pls-mixed-composite",
+      "analysis": {
+        "method": "pls-sem",
+        "engine": "browser",
+        "estimator": "pls-pm",
+        "missingData": "listwise",
+        "pls": {
+          "innerWeighting": "path",
+          "maxIterations": 300,
+          "tolerance": 1e-07
+        },
+        "seed": 20260201,
+        "bootstrap": {
+          "enabled": true,
+          "repetitions": 1000,
+          "ci": "percentile",
+          "confidenceLevel": 0.95,
+          "sides": "two-sided"
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "appropriate",
+      "question": "Which assessments are appropriate for a formative index? Select all that apply.",
+      "multiple": true,
+      "options": [
+        {
+          "id": "a",
+          "text": "Significance and size of the outer weights",
+          "correct": true,
+          "feedback": "Correct. Weights show each indicator's relative contribution."
+        },
+        {
+          "id": "b",
+          "text": "Indicator VIFs",
+          "correct": true,
+          "feedback": "Correct. Mode B weights are regression coefficients and suffer from collinearity."
+        },
+        {
+          "id": "c",
+          "text": "Redundancy analysis with a global measure",
+          "correct": true,
+          "feedback": "Correct. It is the usual convergent-validity check for formative constructs."
+        },
+        {
+          "id": "d",
+          "text": "Cronbach's α of the indicators",
+          "correct": false,
+          "feedback": "α assumes interchangeable items driven by one factor. Index components need not correlate."
+        },
+        {
+          "id": "e",
+          "text": "AVE of the indicators",
+          "correct": false,
+          "feedback": "AVE measures variance explained by a common factor, which an index does not posit."
+        }
+      ],
+      "explanation": "Different measurement models, different criteria."
+    },
+    {
+      "id": "keep-or-drop",
+      "question": "Indicator f3 of an index has a non-significant weight (.08) but a significant loading of .56. What do the guidelines suggest?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Consider keeping it: its absolute contribution is sizeable, and dropping it would change the index's content.",
+          "correct": true,
+          "feedback": "Correct. A small relative weight with a sizeable loading is not a reason to delete."
+        },
+        {
+          "id": "b",
+          "text": "Delete it because its weight is not significant.",
+          "correct": false,
+          "feedback": "Weight significance alone ignores the absolute contribution and the content definition."
+        },
+        {
+          "id": "c",
+          "text": "Make it reflective.",
+          "correct": false,
+          "feedback": "Changing one indicator's measurement direction has no conceptual basis here."
+        }
+      ],
+      "explanation": "Relative versus absolute contribution (Cenfetelli & Bassellier 2009)."
+    }
+  ],
+  "references": [
+    "hair2022",
+    "cenfetelli2009",
+    "diamantopoulos2001"
+  ],
+  "glossary": [
+    "formative-measurement",
+    "content-validity",
+    "redundancy-analysis",
+    "vif",
+    "outer-weight",
+    "outer-loading"
+  ]
+}

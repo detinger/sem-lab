@@ -54,3 +54,9 @@
 .settings-grid .ui-callout {
   margin-top: var(--space-6);
 }
+
+.progress-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}

@@ -1,0 +1,108 @@
+{
+  "id": "consistent-pls",
+  "level": 2,
+  "order": 8,
+  "title": "Consistent PLS (PLSc)",
+  "summary": "Consistent PLS corrects composite correlations for measurement error so that reflective constructs are estimated as common factors, while composite constructs are left as they are.",
+  "minutes": 8,
+  "prerequisites": [
+    "composites-and-common-factors",
+    "pls-algorithm"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "With reflective constructs, classic PLS composites still contain measurement error: compared with the common-factor model, loadings tend to be too high and correlations between constructs too low, which biases the paths. [[plsc]] corrects this (Dijkstra & Henseler 2015). It estimates the reliability of each composite with [[rho-a]] and disattenuates the construct correlations before estimating paths and loadings."
+    },
+    {
+      "kind": "formula",
+      "display": "cor(ηᵢ, ηⱼ) = cor(Cᵢ, Cⱼ) / √(ρA,ᵢ · ρA,ⱼ)",
+      "explanation": "The correlation between the common factors ηᵢ and ηⱼ is estimated as the correlation of their composites Cᵢ and Cⱼ divided by the square root of the product of their reliabilities ρA."
+    },
+    {
+      "kind": "p",
+      "text": "In the TAM example PU → BI rises from .501 (classic PLS) to .584 (PLSc); CB-SEM with ML gives .590. PEOU → BI falls from .128 to .099 (CB-SEM: .088): disattenuation can make paths smaller as well as larger, because the predictors' correlation is corrected too."
+    },
+    {
+      "kind": "p",
+      "text": "Use PLSc when your constructs are conceived as common factors and you want factor-model estimates, for example to compare with CB-SEM. Composite-formative constructs are not corrected; SEM Studio leaves them unchanged and says so. In small samples PLSc can produce inadmissible values such as correlations above 1; inspect the warnings."
+    }
+  ],
+  "mistake": {
+    "title": "Switching to PLSc because the paths get bigger",
+    "text": "PLSc is a choice of estimand. Selecting it, or not, because of the size of the results is outcome-driven analysis. Decide from the measurement model, and report which estimator you used."
+  },
+  "tryIt": {
+    "task": "Open the TAM example and run PLS-SEM. Then switch the method to PLSc, run again and compare the three paths and the loadings.",
+    "starter": {
+      "title": "TAM example",
+      "exampleId": "tam-mediation",
+      "open": "analysis"
+    }
+  },
+  "checks": [
+    {
+      "id": "why-larger",
+      "question": "Why does PU → BI increase from .501 to .584 under PLSc?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "PLSc removes the attenuation caused by measurement error in the composites.",
+          "correct": true,
+          "feedback": "Correct. Correcting the construct correlations for unreliability raises the main path towards the factor-model value."
+        },
+        {
+          "id": "b",
+          "text": "PLSc uses more bootstrap draws.",
+          "correct": false,
+          "feedback": "Point estimates do not depend on bootstrapping."
+        },
+        {
+          "id": "c",
+          "text": "PLSc always inflates paths, so it should be avoided.",
+          "correct": false,
+          "feedback": "PEOU → BI became smaller under PLSc; the correction goes in whatever direction the error structure implies."
+        }
+      ],
+      "explanation": "PLSc targets the common-factor estimand."
+    },
+    {
+      "id": "which-constructs",
+      "question": "In a model with one composite-formative and two reflective constructs, what does PLSc change?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Only quantities involving the reflective constructs; the composite stays a composite.",
+          "correct": true,
+          "feedback": "Correct. The correction assumes a common factor and applies only where one is specified."
+        },
+        {
+          "id": "b",
+          "text": "Everything, including the composite's weights.",
+          "correct": false,
+          "feedback": "Composite weights are not disattenuated; a composite has no measurement error in the factor sense."
+        },
+        {
+          "id": "c",
+          "text": "Nothing, because PLSc requires all constructs to be reflective.",
+          "correct": false,
+          "feedback": "PLSc handles mixed models: it corrects the reflective parts and leaves composites unchanged."
+        }
+      ],
+      "explanation": "Correction only where a common factor is assumed."
+    }
+  ],
+  "references": [
+    "dijkstra2015",
+    "hair2022"
+  ],
+  "glossary": [
+    "plsc",
+    "rho-a",
+    "attenuation",
+    "common-factor",
+    "composite"
+  ]
+}

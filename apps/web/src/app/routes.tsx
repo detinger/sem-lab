@@ -36,6 +36,15 @@ const IpmaPage = lazy(() =>
 const ExamplesPage = lazy(() =>
   import('@/features/examples/ExamplesPage').then((m) => ({ default: m.ExamplesPage })),
 );
+const LearnPage = lazy(() =>
+  import('@/features/learn/LearnPage').then((m) => ({ default: m.LearnPage })),
+);
+const ChallengesPage = lazy(() =>
+  import('@/features/learn/ChallengesPage').then((m) => ({ default: m.ChallengesPage })),
+);
+const ReferencePage = lazy(() =>
+  import('@/features/learn/ReferencePage').then((m) => ({ default: m.ReferencePage })),
+);
 const PlaceholderRoute: ComponentType<{ path: string }> = lazy(
   () => import('@/pages/PlaceholderRoute'),
 );
@@ -79,9 +88,19 @@ export const routes: RouteObject[] = [
       child('/ipma', page(<IpmaPage />)),
       child('/comparison', placeholder('/comparison')),
       child('/examples', page(<ExamplesPage />)),
-      child('/learn', placeholder('/learn')),
-      child('/challenges', placeholder('/challenges')),
-      child('/reference', placeholder('/reference')),
+      child('/learn', page(<LearnPage />)),
+      {
+        path: 'learn/:lessonId',
+        element: page(<LearnPage />),
+        handle: { title: 'Lessons' } satisfies RouteHandle,
+      },
+      child('/challenges', page(<ChallengesPage />)),
+      {
+        path: 'challenges/:challengeId',
+        element: page(<ChallengesPage />),
+        handle: { title: 'Challenges' } satisfies RouteHandle,
+      },
+      child('/reference', page(<ReferencePage />)),
       child('/settings', page(<SettingsPage />)),
       // Visual-review page; deliberately not in the sidebar.
       {

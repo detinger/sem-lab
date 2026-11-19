@@ -1,0 +1,97 @@
+{
+  "id": "group-comparisons-and-invariance",
+  "level": 4,
+  "order": 6,
+  "title": "Group comparisons and measurement invariance",
+  "summary": "Comparing paths between groups requires a formal test of the difference and evidence that the constructs are measured the same way in each group.",
+  "minutes": 8,
+  "prerequisites": [
+    "confidence-intervals"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "[[multigroup-analysis]] asks whether a path differs between groups, for example between countries. Two facts must hold before differences can be interpreted. First, the difference itself must be tested: one group having a significant path and the other not does not show that the paths differ (Gelman & Stern 2006). Permutation tests and PLS-MGA are common procedures in PLS-SEM (Sarstedt et al. 2011)."
+    },
+    {
+      "kind": "p",
+      "text": "Second, the constructs must mean the same in each group: [[measurement-invariance]]. For composites, the [[micom]] procedure (Henseler et al. 2016) checks configural invariance, compositional invariance (composite scores built with each group's weights correlate almost perfectly) and the equality of composite means and variances. Without it, a different path may reflect a different construct rather than a different effect."
+    },
+    {
+      "kind": "callout",
+      "variant": "warning",
+      "text": "SEM Studio does not run MICOM, permutation tests or PLS-MGA yet; they are planned. Estimating separate models per group is possible, but comparing them by eye is not a test.",
+      "title": "Not available in SEM Studio"
+    }
+  ],
+  "mistake": {
+    "title": "\"Significant in group A, not in group B, so the groups differ\"",
+    "text": "Two p values on either side of .05 can come from nearly identical estimates. Test the difference, and establish invariance first."
+  },
+  "checks": [
+    {
+      "id": "sig-nonsig",
+      "question": "A path is .30 (p = .01) for women and .22 (p = .08) for men. What can you conclude?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Nothing yet about a difference; you need a test of the difference and evidence of invariance.",
+          "correct": true,
+          "feedback": "Correct. The estimates are close, and the difference has not been tested."
+        },
+        {
+          "id": "b",
+          "text": "The effect exists only for women.",
+          "correct": false,
+          "feedback": "A p value of .08 is not evidence of no effect, and the two estimates are similar."
+        },
+        {
+          "id": "c",
+          "text": "The groups differ significantly.",
+          "correct": false,
+          "feedback": "Significance in one group and not in the other is not a significant difference (Gelman & Stern 2006)."
+        }
+      ],
+      "explanation": "Test differences directly."
+    },
+    {
+      "id": "micom-why",
+      "question": "Why is measurement invariance assessed before comparing structural paths?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Because path differences are only interpretable if the constructs have the same meaning and composition in each group.",
+          "correct": true,
+          "feedback": "Correct."
+        },
+        {
+          "id": "b",
+          "text": "Because it increases statistical power.",
+          "correct": false,
+          "feedback": "Invariance testing is about comparability, not power."
+        },
+        {
+          "id": "c",
+          "text": "Because the software requires it to run.",
+          "correct": false,
+          "feedback": "Models can be estimated without it; the issue is interpretation."
+        }
+      ],
+      "explanation": "Compare like with like."
+    }
+  ],
+  "references": [
+    "henseler2016",
+    "sarstedt2011",
+    "gelman2006",
+    "hair2022"
+  ],
+  "glossary": [
+    "multigroup-analysis",
+    "measurement-invariance",
+    "micom",
+    "p-value"
+  ]
+}

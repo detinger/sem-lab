@@ -1,0 +1,298 @@
+{
+  "id": "discriminant-validity",
+  "level": 3,
+  "order": 4,
+  "title": "Discriminant validity: HTMT and HTMT2",
+  "summary": "Discriminant validity asks whether constructs are empirically distinct; the HTMT ratio estimates their correlation and the Fornell–Larcker criterion often misses problems.",
+  "minutes": 9,
+  "prerequisites": [
+    "convergent-validity-ave"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "Two constructs measured as distinct must not be empirically the same. The [[htmt]] estimates the correlation between two reflective constructs from the indicator correlations (Henseler et al. 2015)."
+    },
+    {
+      "kind": "formula",
+      "display": "HTMTᵢⱼ = r̄(between i and j) / √( r̄(within i) · r̄(within j) )",
+      "explanation": "r̄(between) is the mean correlation of indicators of construct i with indicators of j; r̄(within) is the mean correlation among the indicators of one construct. [[htmt2]] uses geometric instead of arithmetic means, which is more robust when loadings differ (Roemer et al. 2021)."
+    },
+    {
+      "kind": "demo",
+      "demo": "htmt",
+      "initial": {
+        "heterotrait": 0.62,
+        "monotraitA": 0.7,
+        "monotraitB": 0.66
+      },
+      "caption": "Raise the between-construct correlations and watch HTMT approach 1."
+    },
+    {
+      "kind": "p",
+      "text": "Henseler et al. (2015) suggest flagging HTMT above .85 for conceptually distinct constructs, or above .90 for conceptually similar ones; a stronger version tests whether HTMT is significantly below the threshold. SEM Studio currently reports point values of HTMT and HTMT2. The [[fornell-larcker]] criterion (AVE greater than the squared construct correlation) performs poorly at detecting problems (Henseler et al. 2015). In the poor-discriminant data HTMT(A, B) is .973, yet Fornell–Larcker passes by a hair: AVE(A) = .719 against a squared correlation of .716."
+    }
+  ],
+  "mistake": {
+    "title": "Deleting items until HTMT passes",
+    "text": "Removing indicators to push HTMT under .85 changes the constructs and capitalises on chance. Ask first whether the constructs are conceptually distinct, examine item wording and [[cross-loadings]], and consider whether theory allows treating them as one construct."
+  },
+  "tryIt": {
+    "task": "Run PLS-SEM on the poor-discriminant data. Read HTMT and HTMT2 for A and B, then the Fornell–Larcker table. Which criterion flags the problem?",
+    "starter": {
+      "title": "Poor discriminant validity",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_a",
+            "indicatorIds": [
+              "i_a1",
+              "i_a2",
+              "i_a3",
+              "i_a4"
+            ],
+            "label": "Construct A",
+            "measurement": "reflective",
+            "name": "A"
+          },
+          {
+            "id": "c_b",
+            "indicatorIds": [
+              "i_b1",
+              "i_b2",
+              "i_b3",
+              "i_b4"
+            ],
+            "label": "Construct B",
+            "measurement": "reflective",
+            "name": "B"
+          },
+          {
+            "id": "c_c",
+            "indicatorIds": [
+              "i_c1",
+              "i_c2",
+              "i_c3"
+            ],
+            "label": "Construct C",
+            "measurement": "reflective",
+            "name": "C"
+          }
+        ],
+        "indicators": [
+          {
+            "column": "a1",
+            "id": "i_a1",
+            "level": "ordinal",
+            "name": "a1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "a2",
+            "id": "i_a2",
+            "level": "ordinal",
+            "name": "a2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "a3",
+            "id": "i_a3",
+            "level": "ordinal",
+            "name": "a3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "a4",
+            "id": "i_a4",
+            "level": "ordinal",
+            "name": "a4",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "b1",
+            "id": "i_b1",
+            "level": "ordinal",
+            "name": "b1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "b2",
+            "id": "i_b2",
+            "level": "ordinal",
+            "name": "b2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "b3",
+            "id": "i_b3",
+            "level": "ordinal",
+            "name": "b3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "b4",
+            "id": "i_b4",
+            "level": "ordinal",
+            "name": "b4",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "c1",
+            "id": "i_c1",
+            "level": "ordinal",
+            "name": "c1",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "c2",
+            "id": "i_c2",
+            "level": "ordinal",
+            "name": "c2",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          },
+          {
+            "column": "c3",
+            "id": "i_c3",
+            "level": "ordinal",
+            "name": "c3",
+            "scale": {
+              "max": 7,
+              "min": 1
+            }
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_a_c",
+            "kind": "structural",
+            "sourceId": "c_a",
+            "targetId": "c_c"
+          },
+          {
+            "id": "r_b_c",
+            "kind": "structural",
+            "sourceId": "c_b",
+            "targetId": "c_c"
+          },
+          {
+            "id": "r_a_b",
+            "kind": "covariance",
+            "sourceId": "c_a",
+            "targetId": "c_b"
+          }
+        ]
+      },
+      "open": "analysis",
+      "bundledDatasetId": "poor-discriminant",
+      "analysis": {
+        "method": "pls-sem",
+        "engine": "browser",
+        "estimator": "pls-pm",
+        "missingData": "listwise",
+        "pls": {
+          "innerWeighting": "path",
+          "maxIterations": 300,
+          "tolerance": 1e-07
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "htmt-fl",
+      "question": "HTMT(A, B) = .97 while Fornell–Larcker is satisfied for A and B. What do you conclude?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Discriminant validity of A and B is doubtful; Fornell–Larcker is known to miss such cases.",
+          "correct": true,
+          "feedback": "Correct. HTMT near 1 means A and B are nearly the same empirically."
+        },
+        {
+          "id": "b",
+          "text": "Discriminant validity holds because one criterion is met.",
+          "correct": false,
+          "feedback": "Fornell–Larcker has low sensitivity; a passing value does not outweigh an HTMT of .97."
+        },
+        {
+          "id": "c",
+          "text": "HTMT is not valid when loadings are high.",
+          "correct": false,
+          "feedback": "High loadings make HTMT a good estimate of the construct correlation, not a worse one."
+        }
+      ],
+      "explanation": "Prefer HTMT/HTMT2 over Fornell–Larcker."
+    },
+    {
+      "id": "htmt-meaning",
+      "question": "What does HTMT estimate?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "The correlation between two reflective constructs, from their indicators.",
+          "correct": true,
+          "feedback": "Correct, under the assumption of equal loadings within each construct (HTMT2 relaxes it)."
+        },
+        {
+          "id": "b",
+          "text": "The reliability of a construct.",
+          "correct": false,
+          "feedback": "Reliability is a within-construct property; HTMT is a between-construct ratio."
+        },
+        {
+          "id": "c",
+          "text": "The path coefficient between the two constructs.",
+          "correct": false,
+          "feedback": "A path is a directed, partial effect; HTMT is a symmetric correlation estimate."
+        }
+      ],
+      "explanation": "HTMT ≈ disattenuated construct correlation."
+    }
+  ],
+  "references": [
+    "henseler2015",
+    "roemer2021",
+    "fornell1981",
+    "hair2022"
+  ],
+  "glossary": [
+    "discriminant-validity",
+    "validity",
+    "htmt",
+    "htmt2",
+    "fornell-larcker",
+    "cross-loadings"
+  ]
+}

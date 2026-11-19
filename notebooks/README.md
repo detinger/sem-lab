@@ -18,13 +18,18 @@ represents a real study, and the ACSI-inspired notebook does not use ACSI data.
 
 ## Opening the notebooks
 
-The repository is not published yet, so there are no "Open in Colab" links.
+**Google Colab.** Open a notebook straight from GitHub and choose *Runtime → Run all*:
 
-**Google Colab now.** Download a notebook file from `notebooks/colab/`, open
-<https://colab.research.google.com>, choose *File → Upload notebook*, select the file and run
-*Runtime → Run all*. Nothing else is needed: the notebook writes the engine file and generates
-its data itself, needs no Google Drive, no uploads and no tokens, and installs nothing that
-Colab does not already have (05 optionally installs `semopy` for its cross-check).
+- [01_tam_pls_sem.ipynb](https://colab.research.google.com/github/detinger/sem-studio/blob/main/notebooks/colab/01_tam_pls_sem.ipynb)
+- [02_acsi_pls_sem.ipynb](https://colab.research.google.com/github/detinger/sem-studio/blob/main/notebooks/colab/02_acsi_pls_sem.ipynb)
+- [03_delone_mclean_is_success_pls_sem.ipynb](https://colab.research.google.com/github/detinger/sem-studio/blob/main/notebooks/colab/03_delone_mclean_is_success_pls_sem.ipynb)
+- [04_utaut2_pls_sem.ipynb](https://colab.research.google.com/github/detinger/sem-studio/blob/main/notebooks/colab/04_utaut2_pls_sem.ipynb)
+- [05_service_quality_cb_sem.ipynb](https://colab.research.google.com/github/detinger/sem-studio/blob/main/notebooks/colab/05_service_quality_cb_sem.ipynb)
+
+Nothing else is needed: the notebook writes the engine file and generates its data itself,
+needs no Google Drive, no uploads and no tokens, and installs nothing that Colab does not
+already have (05 optionally installs `semopy` for its cross-check). Alternatively download a
+file from `notebooks/colab/` and use *File → Upload notebook* in Colab.
 
 **Locally (Jupyter).**
 
@@ -33,15 +38,6 @@ cd notebooks
 uv sync                                    # Python 3.12 + the pinned test environment (uv.lock)
 uv run --with jupyterlab jupyter lab colab/
 ```
-
-**Links once the repository is public.** Colab opens notebooks straight from a public GitHub
-repository with URLs of the form
-
-    https://colab.research.google.com/github/<owner>/<repository>/blob/<branch>/notebooks/colab/<notebook>.ipynb
-
-Add such links (and Colab badges) to this README and to the app's example browser only after
-the repository is actually public and the links have been tried; do not guess the owner or
-repository name.
 
 ## What a notebook contains
 

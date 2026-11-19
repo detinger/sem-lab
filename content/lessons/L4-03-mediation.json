@@ -1,0 +1,226 @@
+{
+  "id": "mediation",
+  "level": 4,
+  "order": 3,
+  "title": "Mediation",
+  "summary": "Mediation means an effect runs through an intermediate construct; test the indirect effect itself with a bootstrap interval and classify the result with the Zhao et al. (2010) typology.",
+  "minutes": 9,
+  "prerequisites": [
+    "confidence-intervals",
+    "direct-indirect-total-effects"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "[[mediation]] claims that X affects Y at least partly through M. The indirect effect is a·b, the product of X → M (a) and M → Y (b); c′ is the direct effect. Test the indirect effect directly with a bootstrap confidence interval (Preacher & Hayes 2008; Zhao et al. 2010) rather than with the causal-steps procedure of Baron and Kenny (1986), which also required a significant total effect."
+    },
+    {
+      "kind": "diagram",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_x",
+            "name": "X",
+            "measurement": "reflective",
+            "indicatorIds": [
+              "i_x1",
+              "i_x2"
+            ],
+            "label": "Predictor"
+          },
+          {
+            "id": "c_m",
+            "name": "M",
+            "measurement": "reflective",
+            "indicatorIds": [
+              "i_m1",
+              "i_m2"
+            ],
+            "label": "Mediator"
+          },
+          {
+            "id": "c_y",
+            "name": "Y",
+            "measurement": "reflective",
+            "indicatorIds": [
+              "i_y1",
+              "i_y2"
+            ],
+            "label": "Outcome"
+          }
+        ],
+        "indicators": [
+          {
+            "id": "i_x1",
+            "name": "x1",
+            "column": null
+          },
+          {
+            "id": "i_x2",
+            "name": "x2",
+            "column": null
+          },
+          {
+            "id": "i_m1",
+            "name": "m1",
+            "column": null
+          },
+          {
+            "id": "i_m2",
+            "name": "m2",
+            "column": null
+          },
+          {
+            "id": "i_y1",
+            "name": "y1",
+            "column": null
+          },
+          {
+            "id": "i_y2",
+            "name": "y2",
+            "column": null
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_x_m",
+            "kind": "structural",
+            "sourceId": "c_x",
+            "targetId": "c_m",
+            "hypothesis": "a"
+          },
+          {
+            "id": "r_m_y",
+            "kind": "structural",
+            "sourceId": "c_m",
+            "targetId": "c_y",
+            "hypothesis": "b"
+          },
+          {
+            "id": "r_x_y",
+            "kind": "structural",
+            "sourceId": "c_x",
+            "targetId": "c_y",
+            "hypothesis": "c′"
+          }
+        ]
+      },
+      "caption": "Mediation: a and b form the indirect route, c′ is the direct path.",
+      "highlight": [
+        "r_x_m",
+        "r_m_y"
+      ]
+    },
+    {
+      "kind": "demo",
+      "demo": "mediation",
+      "initial": {
+        "a": 0.498,
+        "b": 0.501,
+        "cPrime": 0.128
+      },
+      "caption": "Set a, b and c′; the demo shows the indirect and total effects and the Zhao et al. (2010) type. Signs, not only sizes, matter."
+    },
+    {
+      "kind": "list",
+      "ordered": false,
+      "items": [
+        "**Complementary mediation:** indirect and direct effects both significant, same sign.",
+        "**Competitive mediation:** both significant, opposite signs.",
+        "**Indirect-only mediation:** indirect significant, direct not.",
+        "**Direct-only non-mediation:** direct significant, indirect not.",
+        "**No-effect non-mediation:** neither is significant."
+      ]
+    },
+    {
+      "kind": "p",
+      "text": "Mediation is a causal claim about a sequence. Cross-sectional survey data are consistent with it but cannot establish temporal order or rule out confounding of M and Y; say \"the results are consistent with mediation\" unless the design supports more."
+    }
+  ],
+  "mistake": {
+    "title": "Requiring a significant total effect first",
+    "text": "Under Baron and Kenny's steps, mediation is ruled out if X → Y is not significant overall. Opposite-signed direct and indirect effects can cancel in the total, so a meaningful indirect effect can exist without a total effect (Zhao et al. 2010)."
+  },
+  "tryIt": {
+    "task": "Run the TAM example and find the specific indirect effect PEOU → PU → BI with its interval. Classify the mediation type.",
+    "starter": {
+      "title": "TAM example (bootstrap)",
+      "exampleId": "tam-mediation",
+      "open": "analysis"
+    }
+  },
+  "checks": [
+    {
+      "id": "tam-type",
+      "question": "TAM: indirect PEOU → PU → BI = .250, 95% CI [.198, .307]; direct PEOU → BI = .128, 95% CI [.047, .210]. Which type is this?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Complementary mediation",
+          "correct": true,
+          "feedback": "Correct. Both effects are significant and positive."
+        },
+        {
+          "id": "b",
+          "text": "Indirect-only mediation",
+          "correct": false,
+          "feedback": "The direct effect is also significant (its interval excludes zero)."
+        },
+        {
+          "id": "c",
+          "text": "Competitive mediation",
+          "correct": false,
+          "feedback": "Competitive requires opposite signs; both are positive here."
+        },
+        {
+          "id": "d",
+          "text": "Full mediation",
+          "correct": false,
+          "feedback": "In Baron–Kenny terms \"full\" mediation would need a non-significant direct effect. Here the direct effect is significant, and Zhao et al. call this pattern complementary."
+        }
+      ],
+      "explanation": "Classify by the significance and sign of both effects."
+    },
+    {
+      "id": "competitive",
+      "question": "a = .40, b = −.30, c′ = .25; the indirect and direct effects are both significant. Which type?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Competitive mediation",
+          "correct": true,
+          "feedback": "Correct. The indirect effect (−.12) and the direct effect (.25) have opposite signs."
+        },
+        {
+          "id": "b",
+          "text": "Complementary mediation",
+          "correct": false,
+          "feedback": "Complementary requires the same sign; here a·b is negative."
+        },
+        {
+          "id": "c",
+          "text": "No mediation, because the total effect .13 is small",
+          "correct": false,
+          "feedback": "The size of the total effect does not decide whether mediation exists."
+        }
+      ],
+      "explanation": "The sign of a·b matters."
+    }
+  ],
+  "references": [
+    "zhao2010",
+    "preacher2008",
+    "baron1986",
+    "bollen1987"
+  ],
+  "glossary": [
+    "mediation",
+    "indirect-effect",
+    "specific-indirect-effect",
+    "direct-effect",
+    "total-effect",
+    "confidence-interval"
+  ]
+}
