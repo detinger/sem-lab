@@ -1,0 +1,292 @@
+[
+  {
+    "name": "INDUSTRY",
+    "scaleType": "METRIC",
+    "scaleMin": 1001,
+    "scaleMax": 5001,
+    "observedMin": 1001,
+    "observedMax": 5001,
+    "nMissing": 0,
+    "nUnique": 4
+  },
+  {
+    "name": "YEAR",
+    "scaleType": "BINARY",
+    "scaleMin": 2015,
+    "scaleMax": 2015,
+    "observedMin": 2015,
+    "observedMax": 2015,
+    "nMissing": 0,
+    "nUnique": 1
+  },
+  {
+    "name": "SATIS",
+    "scaleType": "METRIC",
+    "scaleMin": 1,
+    "scaleMax": 10,
+    "observedMin": 1,
+    "observedMax": 10,
+    "nMissing": 7,
+    "nUnique": 10
+  },
+  {
+    "name": "CONFIRM",
+    "scaleType": "METRIC",
+    "scaleMin": 1,
+    "scaleMax": 10,
+    "observedMin": 1,
+    "observedMax": 10,
+    "nMissing": 43,
+    "nUnique": 10
+  },
+  {
+    "name": "IDEAL",
+    "scaleType": "METRIC",
+    "scaleMin": 1,
+    "scaleMax": 10,
+    "observedMin": 1,
+    "observedMax": 10,
+    "nMissing": 76,
+    "nUnique": 10
+  },
+  {
+    "name": "OVERALLX",
+    "scaleType": "METRIC",
+    "scaleMin": 1,
+    "scaleMax": 10,
+    "observedMin": 1,
+    "observedMax": 10,
+    "nMissing": 335,
+    "nUnique": 10
+  },
+  {
+    "name": "CUSTOMX",
+    "scaleType": "METRIC",
+    "scaleMin": 1,
+    "scaleMax": 10,
+    "observedMin": 1,
+    "observedMax": 10,
+    "nMissing": 257,
+    "nUnique": 10
+  },
+  {
+    "name": "WRONGX",
+    "scaleType": "METRIC",
+    "scaleMin": 1,
+    "scaleMax": 10,
+    "observedMin": 1,
+    "observedMax": 10,
+    "nMissing": 325,
+    "nUnique": 10
+  },
+  {
+    "name": "OVERALLQ",
+    "scaleType": "METRIC",
+    "scaleMin": 1,
+    "scaleMax": 10,
+    "observedMin": 1,
+    "observedMax": 10,
+    "nMissing": 208,
+    "nUnique": 10
+  },
+  {
+    "name": "CUSTOMQ",
+    "scaleType": "METRIC",
+    "scaleMin": 1,
+    "scaleMax": 10,
+    "observedMin": 1,
+    "observedMax": 10,
+    "nMissing": 208,
+    "nUnique": 10
+  },
+  {
+    "name": "WRONGQ",
+    "scaleType": "METRIC",
+    "scaleMin": 1,
+    "scaleMax": 10,
+    "observedMin": 1,
+    "observedMax": 10,
+    "nMissing": 252,
+    "nUnique": 10
+  },
+  {
+    "name": "PQ",
+    "scaleType": "METRIC",
+    "scaleMin": 1,
+    "scaleMax": 10,
+    "observedMin": 1,
+    "observedMax": 10,
+    "nMissing": 270,
+    "nUnique": 10
+  },
+  {
+    "name": "QP",
+    "scaleType": "METRIC",
+    "scaleMin": 1,
+    "scaleMax": 10,
+    "observedMin": 1,
+    "observedMax": 10,
+    "nMissing": 262,
+    "nUnique": 10
+  },
+  {
+    "name": "COMP",
+    "scaleType": "BINARY",
+    "scaleMin": 0,
+    "scaleMax": 1,
+    "observedMin": 0,
+    "observedMax": 1,
+    "nMissing": 277,
+    "nUnique": 2
+  },
+  {
+    "name": "HANDLE",
+    "scaleType": "METRIC",
+    "scaleMin": 1,
+    "scaleMax": 10,
+    "observedMin": 1,
+    "observedMax": 10,
+    "nMissing": 6868,
+    "nUnique": 10
+  },
+  {
+    "name": "REPUR",
+    "scaleType": "METRIC",
+    "scaleMin": 1,
+    "scaleMax": 10,
+    "observedMin": 1,
+    "observedMax": 10,
+    "nMissing": 412,
+    "nUnique": 10
+  },
+  {
+    "name": "HIGHPTOL",
+    "scaleType": "METRIC",
+    "scaleMin": 0,
+    "scaleMax": 101,
+    "observedMin": 0,
+    "observedMax": 101,
+    "nMissing": 2961,
+    "nUnique": 27
+  },
+  {
+    "name": "LOWPTOL",
+    "scaleType": "METRIC",
+    "scaleMin": 0,
+    "scaleMax": 101,
+    "observedMin": 0,
+    "observedMax": 101,
+    "nMissing": 7167,
+    "nUnique": 18
+  },
+  {
+    "name": "AGE",
+    "scaleType": "METRIC",
+    "scaleMin": 18,
+    "scaleMax": 90,
+    "observedMin": 18,
+    "observedMax": 90,
+    "nMissing": 0,
+    "nUnique": 72
+  },
+  {
+    "name": "EDUCAT",
+    "scaleType": "METRIC",
+    "scaleMin": 1,
+    "scaleMax": 5,
+    "observedMin": 1,
+    "observedMax": 5,
+    "nMissing": 85,
+    "nUnique": 5
+  },
+  {
+    "name": "HISPANIC",
+    "scaleType": "BINARY",
+    "scaleMin": 0,
+    "scaleMax": 1,
+    "observedMin": 0,
+    "observedMax": 1,
+    "nMissing": 145,
+    "nUnique": 2
+  },
+  {
+    "name": "RACE_1",
+    "scaleType": "METRIC",
+    "scaleMin": 1,
+    "scaleMax": 6,
+    "observedMin": 1,
+    "observedMax": 6,
+    "nMissing": 162,
+    "nUnique": 6
+  },
+  {
+    "name": "RACE_2",
+    "scaleType": "METRIC",
+    "scaleMin": 2,
+    "scaleMax": 6,
+    "observedMin": 2,
+    "observedMax": 6,
+    "nMissing": 8069,
+    "nUnique": 5
+  },
+  {
+    "name": "RACE_3",
+    "scaleType": "METRIC",
+    "scaleMin": 3,
+    "scaleMax": 6,
+    "observedMin": 3,
+    "observedMax": 6,
+    "nMissing": 8211,
+    "nUnique": 4
+  },
+  {
+    "name": "RACE_4",
+    "scaleType": "BINARY",
+    "scaleMin": 4,
+    "scaleMax": 6,
+    "observedMin": 4,
+    "observedMax": 6,
+    "nMissing": 8232,
+    "nUnique": 2
+  },
+  {
+    "name": "RACE_5",
+    "scaleType": "BINARY",
+    "scaleMin": 5,
+    "scaleMax": 6,
+    "observedMin": 5,
+    "observedMax": 6,
+    "nMissing": 8235,
+    "nUnique": 2
+  },
+  {
+    "name": "INCOME",
+    "scaleType": "METRIC",
+    "scaleMin": 1,
+    "scaleMax": 7,
+    "observedMin": 1,
+    "observedMax": 7,
+    "nMissing": 629,
+    "nUnique": 7
+  },
+  {
+    "name": "GENDER",
+    "scaleType": "BINARY",
+    "scaleMin": 1,
+    "scaleMax": 2,
+    "observedMin": 1,
+    "observedMax": 2,
+    "nMissing": 83,
+    "nUnique": 2
+  },
+  {
+    "name": "ZIPCODE",
+    "scaleType": "METRIC",
+    "scaleMin": 1001,
+    "scaleMax": 99801,
+    "observedMin": 1001,
+    "observedMax": 99801,
+    "nMissing": 146,
+    "nUnique": 5302
+  }
+]

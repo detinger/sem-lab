@@ -1,0 +1,77 @@
+{
+  "generatedAt": "2026-11-19T12:53:54.976Z",
+  "generatedBy": "apps/web/src/tests/spike (npm run spike:evidence -w @sem-studio/web)",
+  "runtime": {
+    "node": "v26.13.1",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "packages": [
+    {
+      "name": "elkjs",
+      "version": "0.12.1",
+      "license": "EPL-2.0 OR GPL-3.0-or-later"
+    }
+  ],
+  "data": {
+    "INCLUDE_CHILDREN": {
+      "group": {
+        "x": 12,
+        "y": 12,
+        "width": 316,
+        "height": 193
+      },
+      "childRelativeToGroup": {
+        "x": 20,
+        "y": 24.2
+      },
+      "crossHierarchyEdge": {
+        "id": "A-B",
+        "sources": [
+          "A"
+        ],
+        "targets": [
+          "B"
+        ],
+        "sections": [
+          {
+            "id": "A-B_s0",
+            "startPoint": {
+              "x": 150,
+              "y": 87.4
+            },
+            "endPoint": {
+              "x": 438,
+              "y": 184
+            },
+            "bendPoints": [
+              {
+                "x": 160,
+                "y": 87.4
+              },
+              {
+                "x": 160,
+                "y": 184
+              }
+            ],
+            "incomingShape": "A",
+            "outgoingShape": "B"
+          }
+        ],
+        "container": "root"
+      }
+    },
+    "defaultHandling": {
+      "crossHierarchyEdge": {
+        "id": "A-B",
+        "sources": [
+          "A"
+        ],
+        "targets": [
+          "B"
+        ],
+        "container": "root"
+      }
+    }
+  }
+}

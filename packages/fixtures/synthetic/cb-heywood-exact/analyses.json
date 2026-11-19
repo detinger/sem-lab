@@ -1,0 +1,30 @@
+[
+  {
+    "analysis": {
+      "cb": {
+        "identification": "std-lv",
+        "meanStructure": false
+      },
+      "engine": "r-lavaan",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "ML one-factor CFA on a correlation structure whose exact solution has a negative residual variance.",
+    "id": "cb-lavaan-ml"
+  },
+  {
+    "analysis": {
+      "cb": {
+        "identification": "std-lv",
+        "meanStructure": false
+      },
+      "engine": "py-semopy",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "Same in semopy.",
+    "id": "cb-semopy-ml"
+  }
+]

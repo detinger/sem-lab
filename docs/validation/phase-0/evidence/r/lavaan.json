@@ -1,0 +1,1212 @@
+{
+  "evidence": "lavaan",
+  "script": "services/r-engine/spike/lavaan_01.R",
+  "generated": "2026-11-19T14:19:20+0100",
+  "r": "R version 4.6.2 (2026-10-29)",
+  "platform": "aarch64-apple-darwin27.0.0",
+  "packages": {
+    "lavaan": "0.7.3"
+  },
+  "findings": {
+    "api": {
+      "version": "0.7.3",
+      "parameterEstimates": {
+        "object": "<no default>",
+        "se": "TRUE",
+        "zstat": "TRUE",
+        "pvalue": "TRUE",
+        "ci": "TRUE",
+        "standardized": "FALSE",
+        "fmi": "FALSE",
+        "plabel": "FALSE",
+        "level": "0.95",
+        "boot_ci_type": "\"perc\"",
+        "cov_std": "TRUE",
+        "fmi_options": "list()",
+        "rsquare": "FALSE",
+        "remove_system_eq": "TRUE",
+        "remove_eq": "TRUE",
+        "remove_ineq": "TRUE",
+        "remove_def": "FALSE",
+        "remove_nonfree": "FALSE",
+        "remove_step1": "TRUE",
+        "remove_unused": "FALSE",
+        "remove_aux": "TRUE",
+        "add_attributes": "FALSE",
+        "output": "\"data.frame\"",
+        "header": "FALSE",
+        "...": "<no default>"
+      },
+      "standardizedSolution": {
+        "object": "<no default>",
+        "type": "\"std_all\"",
+        "se": "TRUE",
+        "zstat": "TRUE",
+        "pvalue": "TRUE",
+        "ci": "TRUE",
+        "level": "0.95",
+        "boot_ci_type": "\"perc\"",
+        "cov_std": "TRUE",
+        "remove_eq": "TRUE",
+        "remove_ineq": "TRUE",
+        "remove_def": "FALSE",
+        "remove_aux": "TRUE",
+        "partable": "NULL",
+        "glist": "NULL",
+        "est": "NULL",
+        "output": "\"data.frame\"",
+        "...": "<no default>"
+      },
+      "bootstrapLavaan": {
+        "object": "<no default>",
+        "r": "1000L",
+        "type": "\"ordinary\"",
+        "verbose": "FALSE",
+        "fun": "\"coef\"",
+        "keep_idx": "FALSE",
+        "parallel": "c(\"no\", \"multicore\", \"snow\")",
+        "ncpus": "min(2L, max(1L, parallel::detectCores() - 2L, na.rm = TRUE))",
+        "cl": "NULL",
+        "iseed": "NULL",
+        "h0_rmsea": "NULL",
+        "...": "<no default>"
+      },
+      "modindices_args": ["object", "standardized", "cov_std", "information", "power", "delta", "alpha", "high_power", "sort", "minimum_value", "maximum_number", "free_remove", "na_remove", "op", "..."],
+      "option_names": ["allow.empty.cell", "auto.cov.lv.x", "auto.cov.x", "auto.cov.y", "auto.delta", "auto.efa", "auto.fix.first", "auto.fix.single", "auto.th", "auto.var", "bad.marker.crit", "bad.marker.switch", "baseline", "baseline.conditional.x.free.slopes", "baseline.fixed.x.free.cov", "baseline.type", "bootstrap", "bounds", "cat.wls.w", "categorical", "ceq.simple", "check.delta.cat.mediator", "check.gradient", "check.lv.interaction", "check.lv.names", "check.post", "check.sigma.pd", "check.start", "check.vcov", "cl", "cmd", "composites", "composites.cov", "conditional.x", "control", "correlation", "do.fit", "effect.coding", "em.args", "em.h1.args", "estimator", "estimator.args", "estimator.orig", "fit.by.level", "fixed.x", "gamma.n.minus.one", "gamma.unbiased", "gamma.vcov.mplus", "gamma.wls.mplus", "gls.v11.mplus", "gn.args", "group.equal", "group.label", "group.partial", "group.w.free", "h1", "h1.information", "h1.information.meat", "h1.missing.method", "implied", "information", "information.bread", "information.expected.mplus", "information.meat", "information.meat.hc", "int.lv.free", "int.ov.free", "integration.ngh", "iseed", "level.label", "likelihood", "link", "loglik", "marker.int.zero", "meanstructure", "mimic", "missing", "model.type", "monte.carlo", "ncpus", "observed.information", "omega.h1.information", "omega.h1.information.meat", "omega.information", "omega.information.meat", "optim.attempts", "optim.bounds", "optim.dx.tol", "optim.fix.saturated", "optim.force.converged", "optim.gradient", "optim.init_nelder_mead", "optim.method", "optim.parscale", "optim.partrace", "optim.var.transform", "orthogonal", "orthogonal.x", "orthogonal.y", "parallel", "parameterization", "parser", "representation", "rescale.data", "ridge", "ridge.constant", "rmsea.scaled.mplus", "rotation", "rotation.args", "rotation.se", "rstarts", "sample.cov.rescale", "sample.cov.robust", "sample.icov", "samplestats", "sampling.weights.normalization", "sampling.weights.type", "scaled.test", "se", "se.def", "se.delta.second.order", "standard.test", "start", "std.lv", "std.ov", "store.vcov", "test", "ug2.old.approach", "zero.add", "zero.cell.warn", "zero.keep.margins"],
+      "renamed_arguments_note": "lavaan 0.7 uses snake_case argument names in several functions: parameterEstimates(boot_ci_type =), standardizedSolution(type = 'std_all'), bootstrapLavaan(r =, fun =). See old_argument_names below for whether the 0.6 names still work.",
+      "old_argument_names": {
+        "standardizedSolution_type_std.all": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.241,
+          "result": {
+            "rows": 55
+          }
+        },
+        "parameterEstimates_boot.ci.type": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00300000000000011,
+          "result": {
+            "rows": 55
+          }
+        }
+      }
+    },
+    "estimators": {
+      "cfa_ML": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.263,
+        "result": {
+          "converged": true,
+          "post_check": true,
+          "iterations": 48,
+          "se": "standard",
+          "test": ["standard", "browne.residual.nt.model"],
+          "names_returned": ["npar", "fmin", "chisq", "df", "pvalue", "baseline.chisq", "baseline.df", "baseline.pvalue", "cfi", "tli", "nnfi", "rfi", "nfi", "pnfi", "ifi", "rni", "logl", "unrestricted.logl", "aic", "bic", "ntotal", "bic2", "rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "rmsea.ci.level", "rmsea.pvalue", "rmsea.close.h0", "rmsea.notclose.pvalue", "rmsea.notclose.h0", "rmr", "rmr_nomean", "srmr", "srmr_bentler", "srmr_bentler_nomean", "crmr", "crmr_nomean", "srmr_mplus", "srmr_mplus_nomean", "gfi", "gfi.ci.lower", "gfi.ci.upper", "gfi.ci.level", "cn_05", "cn_01", "gfi_lisrel", "agfi_lisrel", "pgfi", "mfi", "ecvi"],
+          "selected": {
+            "npar": 54,
+            "chisq": 1110.24486997586,
+            "df": 199,
+            "pvalue": 0,
+            "baseline.chisq": 15916.435471689,
+            "baseline.df": 231,
+            "cfi": 0.941905032115902,
+            "tli": 0.93256312773253,
+            "rmsea": 0.0620322493358907,
+            "rmsea.ci.lower": 0.0584989748160848,
+            "rmsea.ci.upper": 0.0656173428906474,
+            "rmsea.pvalue": 1.57370474429541e-08,
+            "srmr": 0.039685940211586,
+            "srmr_bentler": 0.039685940211586,
+            "aic": 67638.8363585429,
+            "bic": 67913.2486221926,
+            "bic2": 67741.7243954759,
+            "logl": -33765.4181792715,
+            "ntotal": 1190
+          }
+        }
+      },
+      "cfa_MLR": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.423,
+        "result": {
+          "converged": true,
+          "post_check": true,
+          "iterations": 48,
+          "se": "robust.huber.white",
+          "test": ["standard", "yuan.bentler.mplus"],
+          "names_returned": ["npar", "fmin", "chisq", "df", "pvalue", "chisq.scaled", "df.scaled", "pvalue.scaled", "chisq.scaling.factor", "baseline.chisq", "baseline.df", "baseline.pvalue", "baseline.chisq.scaled", "baseline.df.scaled", "baseline.pvalue.scaled", "baseline.chisq.scaling.factor", "cfi", "tli", "cfi.scaled", "tli.scaled", "cfi.robust", "tli.robust", "nnfi", "rfi", "nfi", "pnfi", "ifi", "rni", "nnfi.scaled", "rfi.scaled", "nfi.scaled", "pnfi.scaled", "ifi.scaled", "rni.scaled", "nnfi.robust", "rni.robust", "logl", "unrestricted.logl", "aic", "bic", "ntotal", "bic2", "scaling.factor.h1", "scaling.factor.h0", "rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "rmsea.ci.level", "rmsea.pvalue", "rmsea.close.h0", "rmsea.notclose.pvalue", "rmsea.notclose.h0", "rmsea.scaled", "rmsea.ci.lower.scaled", "rmsea.ci.upper.scaled", "rmsea.pvalue.scaled", "rmsea.notclose.pvalue.scaled", "rmsea.robust", "rmsea.ci.lower.robust", "rmsea.ci.upper.robust", "rmsea.pvalue.robust", "rmsea.notclose.pvalue.robust", "rmr", "rmr_nomean", "srmr", "srmr_bentler", "srmr_bentler_nomean", "crmr", "crmr_nomean", "srmr_mplus", "srmr_mplus_nomean", "gfi", "gfi.ci.lower", "gfi.ci.upper", "gfi.ci.level", "gfi.robust", "gfi.ci.lower.robust", "gfi.ci.upper.robust", "cn_05", "cn_01", "gfi_lisrel", "agfi_lisrel", "pgfi", "mfi", "ecvi"],
+          "selected": {
+            "npar": 54,
+            "chisq": 1110.24486997586,
+            "df": 199,
+            "pvalue": 0,
+            "chisq.scaled": 749.260198596228,
+            "df.scaled": 199,
+            "pvalue.scaled": 0,
+            "chisq.scaling.factor": 1.4817881318879,
+            "baseline.chisq": 15916.435471689,
+            "baseline.df": 231,
+            "cfi": 0.941905032115902,
+            "tli": 0.93256312773253,
+            "cfi.scaled": 0.941415348581606,
+            "tli.scaled": 0.931994701117342,
+            "cfi.robust": 0.947511982018252,
+            "tli.robust": 0.93907169771968,
+            "rmsea": 0.0620322493358907,
+            "rmsea.ci.lower": 0.0584989748160848,
+            "rmsea.ci.upper": 0.0656173428906474,
+            "rmsea.pvalue": 1.57370474429541e-08,
+            "rmsea.scaled": 0.0482041058444396,
+            "rmsea.ci.lower.scaled": 0.045204825163157,
+            "rmsea.ci.upper.scaled": 0.0512387547468882,
+            "rmsea.robust": 0.0586782411230409,
+            "rmsea.ci.lower.robust": 0.0542399277644861,
+            "rmsea.ci.upper.robust": 0.0631803722070193,
+            "srmr": 0.039685940211586,
+            "srmr_bentler": 0.039685940211586,
+            "aic": 67638.8363585429,
+            "bic": 67913.2486221926,
+            "bic2": 67741.7243954759,
+            "logl": -33765.4181792715,
+            "ntotal": 1190
+          }
+        }
+      },
+      "cfa_MLM": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.269,
+        "result": {
+          "converged": true,
+          "post_check": true,
+          "iterations": 48,
+          "se": "robust.sem",
+          "test": ["standard", "satorra.bentler"],
+          "names_returned": ["npar", "fmin", "chisq", "df", "pvalue", "chisq.scaled", "df.scaled", "pvalue.scaled", "chisq.scaling.factor", "baseline.chisq", "baseline.df", "baseline.pvalue", "baseline.chisq.scaled", "baseline.df.scaled", "baseline.pvalue.scaled", "baseline.chisq.scaling.factor", "cfi", "tli", "cfi.scaled", "tli.scaled", "cfi.robust", "tli.robust", "nnfi", "rfi", "nfi", "pnfi", "ifi", "rni", "nnfi.scaled", "rfi.scaled", "nfi.scaled", "pnfi.scaled", "ifi.scaled", "rni.scaled", "nnfi.robust", "rni.robust", "logl", "unrestricted.logl", "aic", "bic", "ntotal", "bic2", "rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "rmsea.ci.level", "rmsea.pvalue", "rmsea.close.h0", "rmsea.notclose.pvalue", "rmsea.notclose.h0", "rmsea.scaled", "rmsea.ci.lower.scaled", "rmsea.ci.upper.scaled", "rmsea.pvalue.scaled", "rmsea.notclose.pvalue.scaled", "rmsea.robust", "rmsea.ci.lower.robust", "rmsea.ci.upper.robust", "rmsea.pvalue.robust", "rmsea.notclose.pvalue.robust", "rmr", "rmr_nomean", "srmr", "srmr_bentler", "srmr_bentler_nomean", "crmr", "crmr_nomean", "srmr_mplus", "srmr_mplus_nomean", "gfi", "gfi.ci.lower", "gfi.ci.upper", "gfi.ci.level", "gfi.robust", "gfi.ci.lower.robust", "gfi.ci.upper.robust", "cn_05", "cn_01", "gfi_lisrel", "agfi_lisrel", "pgfi", "mfi", "ecvi"],
+          "selected": {
+            "npar": 54,
+            "chisq": 1110.24486997586,
+            "df": 199,
+            "pvalue": 0,
+            "chisq.scaled": 719.197059033706,
+            "df.scaled": 199,
+            "pvalue.scaled": 0,
+            "chisq.scaling.factor": 1.5437283231769,
+            "baseline.chisq": 15916.435471689,
+            "baseline.df": 231,
+            "cfi": 0.941905032115902,
+            "tli": 0.93256312773253,
+            "cfi.scaled": 0.92656657231328,
+            "tli.scaled": 0.914758181931496,
+            "cfi.robust": 0.947901061974332,
+            "tli.robust": 0.939523343296837,
+            "rmsea": 0.0620322493358907,
+            "rmsea.ci.lower": 0.0584989748160848,
+            "rmsea.ci.upper": 0.0656173428906474,
+            "rmsea.pvalue": 1.57370474429541e-08,
+            "rmsea.scaled": 0.0468688100498669,
+            "rmsea.ci.lower.scaled": 0.043916666569203,
+            "rmsea.ci.upper.scaled": 0.0498544635675151,
+            "rmsea.robust": 0.058233026714903,
+            "rmsea.ci.lower.robust": 0.0536823015837407,
+            "rmsea.ci.upper.robust": 0.0628480476390705,
+            "srmr": 0.039685940211586,
+            "srmr_bentler": 0.039685940211586,
+            "aic": 67638.8363585429,
+            "bic": 67913.2486221926,
+            "bic2": 67741.7243954759,
+            "logl": -33765.4181792715,
+            "ntotal": 1190
+          }
+        }
+      },
+      "sem_ML": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.205,
+        "result": {
+          "converged": true,
+          "post_check": true,
+          "iterations": 43,
+          "se": "standard",
+          "test": ["standard", "browne.residual.nt.model"],
+          "names_returned": ["npar", "fmin", "chisq", "df", "pvalue", "baseline.chisq", "baseline.df", "baseline.pvalue", "cfi", "tli", "nnfi", "rfi", "nfi", "pnfi", "ifi", "rni", "logl", "unrestricted.logl", "aic", "bic", "ntotal", "bic2", "rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "rmsea.ci.level", "rmsea.pvalue", "rmsea.close.h0", "rmsea.notclose.pvalue", "rmsea.notclose.h0", "rmr", "rmr_nomean", "srmr", "srmr_bentler", "srmr_bentler_nomean", "crmr", "crmr_nomean", "srmr_mplus", "srmr_mplus_nomean", "gfi", "gfi.ci.lower", "gfi.ci.upper", "gfi.ci.level", "cn_05", "cn_01", "gfi_lisrel", "agfi_lisrel", "pgfi", "mfi", "ecvi"],
+          "selected": {
+            "npar": 50,
+            "chisq": 1399.50829226067,
+            "df": 203,
+            "pvalue": 0,
+            "baseline.chisq": 15916.435471689,
+            "baseline.df": 231,
+            "cfi": 0.923718516172517,
+            "tli": 0.913196932196312,
+            "rmsea": 0.0703779085762544,
+            "rmsea.ci.lower": 0.0669167656283292,
+            "rmsea.ci.upper": 0.0738870190366177,
+            "rmsea.pvalue": 0,
+            "srmr": 0.0873446767936493,
+            "srmr_bentler": 0.0873446767936493,
+            "aic": 67920.0997808278,
+            "bic": 68174.185210133,
+            "bic2": 68015.3664816916,
+            "logl": -33910.0498904139,
+            "ntotal": 1190
+          }
+        }
+      },
+      "sem_MLR": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.534,
+        "result": {
+          "converged": true,
+          "post_check": true,
+          "iterations": 43,
+          "se": "robust.huber.white",
+          "test": ["standard", "yuan.bentler.mplus"],
+          "names_returned": ["npar", "fmin", "chisq", "df", "pvalue", "chisq.scaled", "df.scaled", "pvalue.scaled", "chisq.scaling.factor", "baseline.chisq", "baseline.df", "baseline.pvalue", "baseline.chisq.scaled", "baseline.df.scaled", "baseline.pvalue.scaled", "baseline.chisq.scaling.factor", "cfi", "tli", "cfi.scaled", "tli.scaled", "cfi.robust", "tli.robust", "nnfi", "rfi", "nfi", "pnfi", "ifi", "rni", "nnfi.scaled", "rfi.scaled", "nfi.scaled", "pnfi.scaled", "ifi.scaled", "rni.scaled", "nnfi.robust", "rni.robust", "logl", "unrestricted.logl", "aic", "bic", "ntotal", "bic2", "scaling.factor.h1", "scaling.factor.h0", "rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "rmsea.ci.level", "rmsea.pvalue", "rmsea.close.h0", "rmsea.notclose.pvalue", "rmsea.notclose.h0", "rmsea.scaled", "rmsea.ci.lower.scaled", "rmsea.ci.upper.scaled", "rmsea.pvalue.scaled", "rmsea.notclose.pvalue.scaled", "rmsea.robust", "rmsea.ci.lower.robust", "rmsea.ci.upper.robust", "rmsea.pvalue.robust", "rmsea.notclose.pvalue.robust", "rmr", "rmr_nomean", "srmr", "srmr_bentler", "srmr_bentler_nomean", "crmr", "crmr_nomean", "srmr_mplus", "srmr_mplus_nomean", "gfi", "gfi.ci.lower", "gfi.ci.upper", "gfi.ci.level", "gfi.robust", "gfi.ci.lower.robust", "gfi.ci.upper.robust", "cn_05", "cn_01", "gfi_lisrel", "agfi_lisrel", "pgfi", "mfi", "ecvi"],
+          "selected": {
+            "npar": 50,
+            "chisq": 1399.50829226067,
+            "df": 203,
+            "pvalue": 0,
+            "chisq.scaled": 937.698151440649,
+            "df.scaled": 203,
+            "pvalue.scaled": 0,
+            "chisq.scaling.factor": 1.49249338938177,
+            "baseline.chisq": 15916.435471689,
+            "baseline.df": 231,
+            "cfi": 0.923718516172517,
+            "tli": 0.913196932196312,
+            "cfi.scaled": 0.921778759921772,
+            "tli.scaled": 0.910989623359258,
+            "cfi.robust": 0.929412577448306,
+            "tli.robust": 0.919676381234279,
+            "rmsea": 0.0703779085762544,
+            "rmsea.ci.lower": 0.0669167656283292,
+            "rmsea.ci.upper": 0.0738870190366177,
+            "rmsea.pvalue": 0,
+            "rmsea.scaled": 0.0551484072349474,
+            "rmsea.ci.lower.scaled": 0.0522438165081851,
+            "rmsea.ci.upper.scaled": 0.0580879869905181,
+            "rmsea.robust": 0.0673735112970262,
+            "rmsea.ci.lower.robust": 0.0630445087951086,
+            "rmsea.ci.upper.robust": 0.0717663317104154,
+            "srmr": 0.0873446767936493,
+            "srmr_bentler": 0.0873446767936493,
+            "aic": 67920.0997808278,
+            "bic": 68174.185210133,
+            "bic2": 68015.3664816916,
+            "logl": -33910.0498904139,
+            "ntotal": 1190
+          }
+        }
+      },
+      "sem_MLM": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.175,
+        "result": {
+          "converged": true,
+          "post_check": true,
+          "iterations": 43,
+          "se": "robust.sem",
+          "test": ["standard", "satorra.bentler"],
+          "names_returned": ["npar", "fmin", "chisq", "df", "pvalue", "chisq.scaled", "df.scaled", "pvalue.scaled", "chisq.scaling.factor", "baseline.chisq", "baseline.df", "baseline.pvalue", "baseline.chisq.scaled", "baseline.df.scaled", "baseline.pvalue.scaled", "baseline.chisq.scaling.factor", "cfi", "tli", "cfi.scaled", "tli.scaled", "cfi.robust", "tli.robust", "nnfi", "rfi", "nfi", "pnfi", "ifi", "rni", "nnfi.scaled", "rfi.scaled", "nfi.scaled", "pnfi.scaled", "ifi.scaled", "rni.scaled", "nnfi.robust", "rni.robust", "logl", "unrestricted.logl", "aic", "bic", "ntotal", "bic2", "rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "rmsea.ci.level", "rmsea.pvalue", "rmsea.close.h0", "rmsea.notclose.pvalue", "rmsea.notclose.h0", "rmsea.scaled", "rmsea.ci.lower.scaled", "rmsea.ci.upper.scaled", "rmsea.pvalue.scaled", "rmsea.notclose.pvalue.scaled", "rmsea.robust", "rmsea.ci.lower.robust", "rmsea.ci.upper.robust", "rmsea.pvalue.robust", "rmsea.notclose.pvalue.robust", "rmr", "rmr_nomean", "srmr", "srmr_bentler", "srmr_bentler_nomean", "crmr", "crmr_nomean", "srmr_mplus", "srmr_mplus_nomean", "gfi", "gfi.ci.lower", "gfi.ci.upper", "gfi.ci.level", "gfi.robust", "gfi.ci.lower.robust", "gfi.ci.upper.robust", "cn_05", "cn_01", "gfi_lisrel", "agfi_lisrel", "pgfi", "mfi", "ecvi"],
+          "selected": {
+            "npar": 50,
+            "chisq": 1399.50829226067,
+            "df": 203,
+            "pvalue": 0,
+            "chisq.scaled": 906.004115936806,
+            "df.scaled": 203,
+            "pvalue.scaled": 0,
+            "chisq.scaling.factor": 1.54470412180587,
+            "baseline.chisq": 15916.435471689,
+            "baseline.df": 231,
+            "cfi": 0.923718516172517,
+            "tli": 0.913196932196312,
+            "cfi.scaled": 0.900760680948473,
+            "tli.scaled": 0.887072499010332,
+            "cfi.robust": 0.929548007686383,
+            "tli.robust": 0.919830491505195,
+            "rmsea": 0.0703779085762544,
+            "rmsea.ci.lower": 0.0669167656283292,
+            "rmsea.ci.upper": 0.0738870190366177,
+            "rmsea.pvalue": 0,
+            "rmsea.scaled": 0.0539457746941034,
+            "rmsea.ci.lower.scaled": 0.0510825658534068,
+            "rmsea.ci.upper.scaled": 0.0568428398874498,
+            "rmsea.robust": 0.0670471137292892,
+            "rmsea.ci.lower.robust": 0.0626309754440454,
+            "rmsea.ci.upper.robust": 0.0715282760599072,
+            "srmr": 0.0873446767936493,
+            "srmr_bentler": 0.0873446767936493,
+            "aic": 67920.0997808278,
+            "bic": 68174.185210133,
+            "bic2": 68015.3664816916,
+            "logl": -33910.0498904139,
+            "ntotal": 1190
+          }
+        }
+      },
+      "point_estimates_ML_vs_MLR_vs_MLM": {
+        "sem_ML_vs_MLR": 0,
+        "sem_ML_vs_MLM": 0,
+        "note": "MLR / MLM change SEs and the test statistic, not the point estimates"
+      }
+    },
+    "identities_sem_ML": {
+      "sample_cov_divisor_is_N": 9.54791801177635e-15,
+      "chisq_vs_N_times_FML": 1.70530256582424e-11,
+      "chisq_vs_N_minus_1_times_FML": 1.17605738843736,
+      "df_vs_moments_minus_npar": 0,
+      "pvalue_vs_pchisq": 1.29790514372361e-177,
+      "cfi_vs_formula": 0,
+      "tli_vs_formula": 0,
+      "rmsea_vs_formula_N": 0,
+      "rmsea_vs_formula_N_minus_1": 2.95891997837555e-05,
+      "srmr_vs_bentler_formula_incl_diag": 2.77555756156289e-17,
+      "aic_vs_minus2logl_plus_2npar": 0,
+      "bic_vs_minus2logl_plus_logN_npar": 0,
+      "logl_vs_normal_loglik": 7.27595761418343e-12,
+      "residuals_cor_vs_cov2cor_difference": 4.44089209850063e-16,
+      "latent_cor_CFA_cor_lv_vs_standardizedSolution_covariances": {
+        "n_pairs": 10,
+        "max_abs_diff": 1.11022302462516e-16
+      },
+      "cor_lv_matrix": {
+        "PU": {
+          "PU": 1,
+          "PEOU": 0.509596577539653,
+          "ATU": 0.408361131034527,
+          "BI": 0.536877160284183,
+          "USE": 0.165737035339218
+        },
+        "PEOU": {
+          "PU": 0.509596577539653,
+          "PEOU": 1,
+          "ATU": 0.417021990625251,
+          "BI": 0.309882287569669,
+          "USE": 0.0956624260543068
+        },
+        "ATU": {
+          "PU": 0.408361131034527,
+          "PEOU": 0.417021990625251,
+          "ATU": 1,
+          "BI": 0.363980443588696,
+          "USE": 0.112362834749596
+        },
+        "BI": {
+          "PU": 0.536877160284183,
+          "PEOU": 0.309882287569669,
+          "ATU": 0.363980443588696,
+          "BI": 1,
+          "USE": 0.308705692101875
+        },
+        "USE": {
+          "PU": 0.165737035339218,
+          "PEOU": 0.0956624260543068,
+          "ATU": 0.112362834749596,
+          "BI": 0.308705692101874,
+          "USE": 1
+        }
+      },
+      "observed_regression_ML_vs_OLS": {
+        "slopes": 2.58126853225349e-15,
+        "residual_variance_ML_is_RSS_over_N": 1.50990331349021e-14,
+        "se_ML_vs_OLS_se_times_sqrt_N_minus_k_over_N": 2.84494650060196e-16
+      }
+    },
+    "identification": {
+      "default": "marker: first loading of each factor fixed to 1 (auto.fix.first = TRUE)",
+      "first_loadings_fixed": [1, 1, 1, 1, 1],
+      "std_lv_TRUE": "factor variances (exogenous) / residual variances of endogenous factors fixed to 1, all loadings free",
+      "chisq_marker_vs_stdlv": 6.16698798694415e-08,
+      "std_all_marker_vs_stdlv": 4.42504369263519e-06,
+      "stdlv_endogenous_latent_variance_note": "with std.lv = TRUE lavaan fixes the RESIDUAL variance of endogenous latents to 1, so unstandardised paths differ from the marker solution; standardised ones agree"
+    },
+    "parameterEstimates": {
+      "columns": ["lhs", "op", "rhs", "est", "se", "z", "pvalue", "ci.lower", "ci.upper", "std.lv", "std.all"],
+      "ci_is_wald": 0,
+      "rows_by_op": {
+        "=~": 22,
+        "~": 6,
+        "~~": 27,
+        "r2": 26
+      },
+      "structural": [
+        {
+          "lhs": "PU",
+          "rhs": "PEOU",
+          "est": 0.385282838754682,
+          "se": 0.0269037002191873,
+          "z": 14.3208122160053,
+          "pvalue": 0,
+          "ci.lower": 0.332552555274213,
+          "ci.upper": 0.438013122235152,
+          "std.all": 0.509596577539653
+        },
+        {
+          "lhs": "ATU",
+          "rhs": "PEOU",
+          "est": 0.307410937134403,
+          "se": 0.0390770712519255,
+          "z": 7.86678549046215,
+          "pvalue": 3.5527136788005e-15,
+          "ci.lower": 0.230821284859324,
+          "ci.upper": 0.384000589409483,
+          "std.all": 0.282209048953952
+        },
+        {
+          "lhs": "ATU",
+          "rhs": "PU",
+          "est": 0.381153840297942,
+          "se": 0.0502665912398145,
+          "z": 7.58264745821958,
+          "pvalue": 3.37507799486048e-14,
+          "ci.lower": 0.282633131842309,
+          "ci.upper": 0.479674548753576,
+          "std.all": 0.264548365536873
+        },
+        {
+          "lhs": "BI",
+          "rhs": "PU",
+          "est": 0.585044634099838,
+          "se": 0.0463104961194179,
+          "z": 12.6330893236648,
+          "pvalue": 0,
+          "ci.lower": 0.494277729599597,
+          "ci.upper": 0.675811538600079,
+          "std.all": 0.465941555556087
+        },
+        {
+          "lhs": "BI",
+          "rhs": "ATU",
+          "est": 0.151384780501254,
+          "se": 0.0278509878383706,
+          "z": 5.43552643015017,
+          "pvalue": 5.46348857266565e-08,
+          "ci.lower": 0.0967978474041849,
+          "ci.upper": 0.205971713598324,
+          "std.all": 0.173708022965825
+        },
+        {
+          "lhs": "USE",
+          "rhs": "BI",
+          "est": 0.424356869964127,
+          "se": 0.049572778119814,
+          "z": 8.56028017914359,
+          "pvalue": 0,
+          "ci.lower": 0.327196010235697,
+          "ci.upper": 0.521517729692558,
+          "std.all": 0.308705692101875
+        }
+      ],
+      "standardizedSolution_columns": ["lhs", "op", "rhs", "est.std", "se", "z", "pvalue", "ci.lower", "ci.upper"],
+      "r2": {
+        "USEF1": 0.545911965048225,
+        "USEF2": 0.649916581228871,
+        "USEF3": 0.730890507944142,
+        "USEF4": 0.704455729257585,
+        "USEF5": 0.664876710289317,
+        "EOU1": 0.476813072927699,
+        "EOU2": 0.605233988367621,
+        "EOU3": 0.700701827091473,
+        "EOU4": 0.568616016156865,
+        "EOU5": 0.522939257567237,
+        "ATT1": 0.76971708290812,
+        "ATT2": 0.78260224086349,
+        "ATT3": 0.757243594028215,
+        "ATT4": 0.705417223717169,
+        "ATT5": 0.705236271654282,
+        "BI1": 0.51034444756962,
+        "BI2": 0.589978176635614,
+        "BI3": 0.750472105270215,
+        "USE1": 0.648544285409719,
+        "USE2": 0.535342176934361,
+        "USE3": 0.328611728788346,
+        "USE4": 0.190683638691318,
+        "PU": 0.259688671840127,
+        "ATU": 0.225718649131209,
+        "BI": 0.313379702459363,
+        "USE": 0.0952992043360973
+      }
+    },
+    "defined_parameter": {
+      "model_lines": ["ATU ~ PEOU + a*PU", "BI ~ c*PU + b*ATU", "ind_PU_ATU_BI := a*b", "tot_PU_BI := a*b + c"],
+      "rows": [
+        {
+          "lhs": "ind_PU_ATU_BI",
+          "rhs": "a*b",
+          "est": 0.0577008904507141,
+          "se": 0.012703194579162,
+          "z": 4.54223463957368,
+          "pvalue": 5.56610380431088e-06,
+          "ci.lower": 0.0328030865869522,
+          "ci.upper": 0.0825986943144761
+        },
+        {
+          "lhs": "tot_PU_BI",
+          "rhs": "a*b+c",
+          "est": 0.642745524550552,
+          "se": 0.0453800009846717,
+          "z": 14.1636295858093,
+          "pvalue": 0,
+          "ci.lower": 0.553802357002204,
+          "ci.upper": 0.731688692098901
+        }
+      ],
+      "est_vs_product": 0,
+      "se_vs_hand_delta_method": 0,
+      "vcov_rownames_use_labels": true
+    },
+    "bootstrap": {
+      "call": "sem(model, data, se = 'bootstrap', bootstrap = 50, iseed = <seed>)",
+      "run": {
+        "ok": true,
+        "warnings": [
+          "lavaan->lav_model_vcov():  \n   The variance-covariance matrix of the estimated parameters (vcov) does not \n   appear to be positive definite! The smallest eigenvalue (= -1.166340e-18) \n   is smaller than zero. This may be a symptom that the model is not \n   identified."
+        ],
+        "n_warnings": 1,
+        "messages": [],
+        "seconds": 4.39,
+        "result": {
+          "boot_dim": [50, 50],
+          "seconds_per_R": null,
+          "error_idx_attr": [],
+          "nonadmissible_attr": [],
+          "attributes": ["dim", "error.idx", "nonadmissible", "seed", "dimnames", "class"]
+        }
+      },
+      "seconds": 4.39,
+      "same_iseed_identical": true,
+      "different_iseed_identical": false,
+      "se_vs_sd_of_draws": {
+        "columns_are_free_parameters": true,
+        "sd_n_minus_1": 0.00203951512290379,
+        "sd_divisor_R": 1.38777878078145e-17
+      },
+      "boot_ci_types": {
+        "norm": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000122,
+          "result": {
+            "est": 0.0577008904507141,
+            "ci.lower": 0.0328509835778415,
+            "ci.upper": 0.0855665167204631
+          }
+        },
+        "basic": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.041999999999998,
+          "result": {
+            "est": 0.0577008904507141,
+            "ci.lower": 0.0294884466626237,
+            "ci.upper": 0.0854942861627436
+          }
+        },
+        "perc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.0180000000000007,
+          "result": {
+            "est": 0.0577008904507141,
+            "ci.lower": 0.0299074947386847,
+            "ci.upper": 0.0859133342388046
+          }
+        },
+        "bca.simple": {
+          "ok": true,
+          "warnings": [
+            "lavaan->lav_bootstrap_norm_inter():  \n   Extreme order statistics used as endpoints."
+          ],
+          "n_warnings": 35,
+          "messages": [],
+          "seconds": 0.0429999999999993,
+          "result": {
+            "est": 0.0577008904507141,
+            "ci.lower": 0.0305958463813098,
+            "ci.upper": 0.0884526082041036
+          }
+        },
+        "bca": {
+          "ok": false,
+          "error": "lavaan->lav_bootstrap_bca_design():  \n   BCa confidence intervals require more (successful) bootstrap runs (50) \n   than the number of observations (1190).",
+          "error_class": "simpleError",
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00199999999999889
+        }
+      },
+      "perc_vs_own_quantile_free_parameter_a": {
+        "type1": 0.0117964379438692,
+        "type2": 0.0117964379438692,
+        "type3": 0.0117964379438692,
+        "type4": 0.0185802675785329,
+        "type5": 0.00734475629231623,
+        "type6": 0.0011134388456342,
+        "type7": 0.0179018846150666,
+        "type8": 0.00452535791299946,
+        "type9": 0.00523020750782865
+      },
+      "perc_vs_boot_norm_inter_free_parameter_a": 0,
+      "perc_vs_own_quantile_defined_a_times_b": {
+        "type1": 0.00498385176436068,
+        "type2": 0.00498385176436068,
+        "type3": 0.00498385176436068,
+        "type4": 0.00536208569029088,
+        "type5": 0.00310307033194576,
+        "type6": 0.000470414389642626,
+        "type7": 0.00532426229769786,
+        "type8": 0.00191190875808298,
+        "type9": 0.00220969915154867
+      }
+    },
+    "bootstrapLavaan": {
+      "call": "bootstrapLavaan(fit, r = 20, fun = 'coef', iseed = 7)",
+      "run": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 1.565,
+        "result": {
+          "dim": [20, 50],
+          "attributes": ["dim", "dimnames", "error.idx", "nonadmissible", "seed"]
+        }
+      },
+      "same_iseed_identical": true,
+      "old_argument_names_R_FUN": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.521999999999998,
+        "result": {
+          "dim": [5, 50]
+        }
+      }
+    },
+    "ordinal": {
+      "cfa": {
+        "WLSMV": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 4.174,
+          "result": {
+            "converged": true,
+            "n_thresholds": 133,
+            "parameterization": "delta",
+            "se": "robust.sem",
+            "test": ["standard", "scaled.shifted"],
+            "categories_per_item": {
+              "USEF1": 7,
+              "USEF2": 7,
+              "USEF3": 7,
+              "USEF4": 7,
+              "USEF5": 7,
+              "EOU1": 7,
+              "EOU2": 7,
+              "EOU3": 7,
+              "EOU4": 7,
+              "EOU5": 7,
+              "ATT1": 7,
+              "ATT2": 7,
+              "ATT3": 7,
+              "ATT4": 7,
+              "ATT5": 7,
+              "BI1": 7,
+              "BI2": 7,
+              "BI3": 7,
+              "USE1": 6,
+              "USE2": 6,
+              "USE3": 6,
+              "USE4": 11
+            },
+            "names_returned": ["npar", "fmin", "chisq", "df", "pvalue", "chisq.scaled", "df.scaled", "pvalue.scaled", "chisq.scaling.factor", "baseline.chisq", "baseline.df", "baseline.pvalue", "baseline.chisq.scaled", "baseline.df.scaled", "baseline.pvalue.scaled", "baseline.chisq.scaling.factor", "cfi", "tli", "cfi.scaled", "tli.scaled", "cfi.robust", "tli.robust", "nnfi", "rfi", "nfi", "pnfi", "ifi", "rni", "nnfi.scaled", "rfi.scaled", "nfi.scaled", "pnfi.scaled", "ifi.scaled", "rni.scaled", "nnfi.robust", "rni.robust", "rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "rmsea.ci.level", "rmsea.pvalue", "rmsea.close.h0", "rmsea.notclose.pvalue", "rmsea.notclose.h0", "rmsea.scaled", "rmsea.ci.lower.scaled", "rmsea.ci.upper.scaled", "rmsea.pvalue.scaled", "rmsea.notclose.pvalue.scaled", "rmsea.robust", "rmsea.ci.lower.robust", "rmsea.ci.upper.robust", "rmsea.pvalue.robust", "rmsea.notclose.pvalue.robust", "rmr", "rmr_nomean", "srmr", "srmr_bentler", "srmr_bentler_nomean", "crmr", "crmr_nomean", "srmr_mplus", "srmr_mplus_nomean", "gfi", "gfi.ci.lower", "gfi.ci.upper", "gfi.ci.level", "gfi.robust", "gfi.ci.lower.robust", "gfi.ci.upper.robust", "cn_05", "cn_01", "gfi_lisrel", "agfi_lisrel", "pgfi", "mfi", "wrmr"],
+            "selected": {
+              "npar": 165,
+              "chisq": 592.493613687202,
+              "df": 199,
+              "pvalue": null,
+              "chisq.scaled": 852.236784720187,
+              "df.scaled": 199,
+              "pvalue.scaled": 0,
+              "chisq.scaling.factor": 0.763117865902175,
+              "baseline.chisq": 137665.807472772,
+              "baseline.df": 231,
+              "cfi": 0.997136870775876,
+              "tli": 0.996676468086569,
+              "cfi.scaled": 0.985340998092573,
+              "tli.scaled": 0.982983771655198,
+              "cfi.robust": 0.933412167835037,
+              "tli.robust": 0.922704576733133,
+              "rmsea": 0.0407803903576234,
+              "rmsea.ci.lower": 0.0370181129264119,
+              "rmsea.ci.upper": 0.0445872912297394,
+              "rmsea.pvalue": 0.999973881907776,
+              "rmsea.scaled": 0.0525433611485977,
+              "rmsea.ci.lower.scaled": 0.0489408729902331,
+              "rmsea.ci.upper.scaled": 0.056199237643151,
+              "rmsea.robust": 0.0789319636507076,
+              "rmsea.ci.lower.robust": 0.0730154885928306,
+              "rmsea.ci.upper.robust": 0.0849338635745016,
+              "srmr": 0.0363175383999561,
+              "srmr_bentler": 0.0294024156441405
+            }
+          }
+        },
+        "DWLS": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 4.124,
+          "result": {
+            "converged": true,
+            "n_thresholds": 133,
+            "parameterization": "delta",
+            "se": "robust.sem",
+            "test": "standard",
+            "categories_per_item": {
+              "USEF1": 7,
+              "USEF2": 7,
+              "USEF3": 7,
+              "USEF4": 7,
+              "USEF5": 7,
+              "EOU1": 7,
+              "EOU2": 7,
+              "EOU3": 7,
+              "EOU4": 7,
+              "EOU5": 7,
+              "ATT1": 7,
+              "ATT2": 7,
+              "ATT3": 7,
+              "ATT4": 7,
+              "ATT5": 7,
+              "BI1": 7,
+              "BI2": 7,
+              "BI3": 7,
+              "USE1": 6,
+              "USE2": 6,
+              "USE3": 6,
+              "USE4": 11
+            },
+            "names_returned": ["npar", "fmin", "chisq", "df", "pvalue", "baseline.chisq", "baseline.df", "baseline.pvalue", "cfi", "tli", "nnfi", "rfi", "nfi", "pnfi", "ifi", "rni", "rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "rmsea.ci.level", "rmsea.pvalue", "rmsea.close.h0", "rmsea.notclose.pvalue", "rmsea.notclose.h0", "rmr", "rmr_nomean", "srmr", "srmr_bentler", "srmr_bentler_nomean", "crmr", "crmr_nomean", "srmr_mplus", "srmr_mplus_nomean", "gfi", "gfi.ci.lower", "gfi.ci.upper", "gfi.ci.level", "cn_05", "cn_01", "gfi_lisrel", "agfi_lisrel", "pgfi", "mfi", "wrmr"],
+            "selected": {
+              "npar": 165,
+              "chisq": 592.493613687202,
+              "df": 199,
+              "pvalue": null,
+              "baseline.chisq": 137665.807472772,
+              "baseline.df": 231,
+              "cfi": 0.997136870775876,
+              "tli": 0.996676468086569,
+              "rmsea": 0.0407803903576234,
+              "rmsea.ci.lower": 0.0370181129264119,
+              "rmsea.ci.upper": 0.0445872912297394,
+              "rmsea.pvalue": 0.999973881907776,
+              "srmr": 0.0363175383999561,
+              "srmr_bentler": 0.0294024156441405
+            }
+          }
+        }
+      },
+      "ordered_TRUE_shortcut": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 4.149,
+        "result": {
+          "n_thresholds": 133
+        }
+      },
+      "sem_WLSMV": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 4.851,
+        "result": {
+          "converged": true,
+          "fm": {
+            "npar": 161,
+            "chisq": 1937.30260119046,
+            "df": 203,
+            "pvalue": null,
+            "chisq.scaled": 1984.79520397858,
+            "df.scaled": 203,
+            "pvalue.scaled": 0,
+            "chisq.scaling.factor": 1.02427409071643,
+            "baseline.chisq": 137665.807472772,
+            "baseline.df": 231,
+            "cfi": 0.987380907114567,
+            "tli": 0.985640342578646,
+            "cfi.scaled": 0.96001551060087,
+            "tli.scaled": 0.954500408614783,
+            "cfi.robust": 0.906820039090167,
+            "tli.robust": 0.89396763068881,
+            "rmsea": 0.0847663516453937,
+            "rmsea.ci.lower": 0.0813435111892556,
+            "rmsea.ci.upper": 0.0882318861655846,
+            "rmsea.pvalue": 1.55431223447522e-15,
+            "rmsea.scaled": 0.0859191449851807,
+            "rmsea.ci.lower.scaled": 0.0824986307654865,
+            "rmsea.ci.upper.scaled": 0.0893819454485554,
+            "rmsea.robust": 0.0924475168194089,
+            "rmsea.ci.lower.robust": 0.0868829289447011,
+            "rmsea.ci.upper.robust": 0.0980938531634747,
+            "srmr": 0.0770923499603974,
+            "srmr_bentler": 0.0624134073063136
+          }
+        }
+      },
+      "ml_with_ordered": {
+        "ok": false,
+        "error": "lavaan->lav_options_set():  \n   estimator ML for ordered data is not supported yet; use WLSMV instead.",
+        "error_class": "simpleError",
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.00399999999999778
+      }
+    },
+    "missing": {
+      "setup": "30 NA injected in each of USEF2, ATT3, BI1, USE4 (set.seed(77))",
+      "incomplete_rows": 118,
+      "default_listwise": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.367999999999995,
+        "result": {
+          "nobs": 1072,
+          "norig": 1190,
+          "missing": "listwise"
+        }
+      },
+      "fiml": {
+        "ML": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 1.533,
+          "result": {
+            "nobs": 1190,
+            "missing_option": "ml",
+            "n_patterns": 154,
+            "fm": {
+              "npar": 72,
+              "chisq": 1394.08300599937,
+              "df": 203,
+              "pvalue": 0,
+              "baseline.chisq": 15794.5745603148,
+              "baseline.df": 231,
+              "cfi": 0.923469830058418,
+              "tli": 0.912913944549235,
+              "cfi.robust": 0.923507764022259,
+              "tli.robust": 0.91295711078395,
+              "rmsea": 0.0702181712365006,
+              "rmsea.ci.lower": 0.0667564385688324,
+              "rmsea.ci.upper": 0.0737279300230056,
+              "rmsea.pvalue": 0,
+              "rmsea.robust": 0.0704044751863155,
+              "rmsea.ci.lower.robust": 0.0669262180227643,
+              "rmsea.ci.upper.robust": 0.0739310313088298,
+              "srmr": 0.0841440410384239,
+              "srmr_bentler": 0.0841440410384239,
+              "aic": 67652.726756509,
+              "bic": 68018.6097747086,
+              "bic2": 67789.910805753,
+              "logl": -33754.3633782545,
+              "ntotal": 1190
+            }
+          }
+        },
+        "MLR": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 6.96899999999999,
+          "result": {
+            "nobs": 1190,
+            "missing_option": "ml",
+            "n_patterns": 154,
+            "fm": {
+              "npar": 72,
+              "chisq": 1394.08300599937,
+              "df": 203,
+              "pvalue": 0,
+              "chisq.scaled": 933.81861426467,
+              "df.scaled": 203,
+              "pvalue.scaled": 0,
+              "chisq.scaling.factor": 1.49288414763196,
+              "baseline.chisq": 15794.5745603148,
+              "baseline.df": 231,
+              "cfi": 0.923469830058418,
+              "tli": 0.912913944549235,
+              "cfi.scaled": 0.921541891427369,
+              "tli.scaled": 0.910720083348385,
+              "cfi.robust": 0.92963014087737,
+              "tli.robust": 0.919923953412179,
+              "rmsea": 0.0702181712365006,
+              "rmsea.ci.lower": 0.0667564385688324,
+              "rmsea.ci.upper": 0.0737279300230056,
+              "rmsea.pvalue": 0,
+              "rmsea.scaled": 0.0550026102962325,
+              "rmsea.ci.lower.scaled": 0.0520974609624242,
+              "rmsea.ci.upper.scaled": 0.0579427483696861,
+              "rmsea.robust": 0.0672432862687729,
+              "rmsea.ci.lower.robust": 0.0628571960124128,
+              "rmsea.ci.upper.robust": 0.0716940002414303,
+              "srmr": 0.0841440410384239,
+              "srmr_bentler": 0.0841440410384239,
+              "aic": 67652.726756509,
+              "bic": 68018.6097747086,
+              "bic2": 67789.910805753,
+              "logl": -33754.3633782545,
+              "ntotal": 1190
+            }
+          }
+        }
+      },
+      "fiml_with_MLM": {
+        "ok": false,
+        "error": "lavaan->lav_options_set():  \n   missing=“ml” is not allowed for estimator “MLM”",
+        "error_class": "simpleError",
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.00699999999999079
+      },
+      "fiml_with_WLSMV_ordered": {
+        "ok": false,
+        "error": "lavaan->lav_options_set():  \n   missing = “ml” not available in the categorical setting",
+        "error_class": "simpleError",
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.0380000000000109
+      },
+      "pairwise_with_WLSMV_ordered": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 6.06099999999999,
+        "result": {
+          "nobs": 1190
+        }
+      }
+    },
+    "modindices": {
+      "columns": ["lhs", "op", "rhs", "mi", "epc", "sepc.lv", "sepc.all", "sepc.nox"],
+      "top": [
+        {
+          "lhs": "ATT4",
+          "op": "~~",
+          "rhs": "ATT5",
+          "mi": 396.157761298054,
+          "epc": 0.222170916468976,
+          "sepc.all": 0.734081311452085
+        },
+        {
+          "lhs": "USE3",
+          "op": "~~",
+          "rhs": "USE4",
+          "mi": 177.637991710971,
+          "epc": 1.0547495065695,
+          "sepc.all": 0.439415930132891
+        },
+        {
+          "lhs": "PEOU",
+          "op": "~",
+          "rhs": "BI",
+          "mi": 176.446606009816,
+          "epc": 0.745926703170323,
+          "sepc.all": 0.70812001894078
+        },
+        {
+          "lhs": "ATU",
+          "op": "~~",
+          "rhs": "BI",
+          "mi": 176.446051727947,
+          "epc": -1.02842875983561,
+          "sepc.all": -1.82954448351606
+        },
+        {
+          "lhs": "BI",
+          "op": "~",
+          "rhs": "PEOU",
+          "mi": 176.444755806034,
+          "epc": 0.461564023734094,
+          "sepc.all": 0.486207028917219
+        },
+        {
+          "lhs": "PEOU",
+          "op": "~~",
+          "rhs": "BI",
+          "mi": 176.444755806034,
+          "epc": 0.344109271864618,
+          "sepc.all": 0.586763261808704
+        },
+        {
+          "lhs": "PU",
+          "op": "~~",
+          "rhs": "BI",
+          "mi": 176.442207239789,
+          "epc": -0.377949950688989,
+          "sepc.all": -0.990696143758133
+        },
+        {
+          "lhs": "PU",
+          "op": "~",
+          "rhs": "BI",
+          "mi": 176.438211044634,
+          "epc": -0.819269671046782,
+          "sepc.all": -1.02868979856201
+        }
+      ]
+    },
+    "pathological": {
+      "heywood_near_duplicate_indicator_n40": {
+        "ok": true,
+        "warnings": [
+          "lavaan->lav_object_post_check():  \n   some estimated ov variances are negative"
+        ],
+        "n_warnings": 1,
+        "messages": [],
+        "seconds": 0.262999999999991,
+        "diagnostics": {
+          "converged": true,
+          "post_check": false,
+          "negative_variances": [
+            {
+              "lhs": "BI1",
+              "est": -0.00647886573379272
+            }
+          ],
+          "vcov_ok": true,
+          "fit_chisq": 34.4714029013522,
+          "df": 13
+        }
+      },
+      "npd_exact_duplicate_column": {
+        "ok": true,
+        "warnings": [
+          "lavaan->lav_data_full():  \n   some observed variables are perfectly correlated; please check your data; \n   variables involved are: BI1 BI1dup",
+          "lavaan->lav_step11_estoptim():  \n   the optimizer warns that a solution has NOT been found!"
+        ],
+        "n_warnings": 2,
+        "messages": [],
+        "seconds": 0.641000000000005,
+        "diagnostics": {
+          "converged": false,
+          "post_check": false,
+          "negative_variances": [
+            {
+              "lhs": "BI1",
+              "est": -6.1935352087408e-05
+            }
+          ],
+          "vcov_ok": true,
+          "fit_chisq": "lavaan->lav_fit():  \n   fit measures not available if model did not converge",
+          "df": "lavaan->lav_fit():  \n   fit measures not available if model did not converge"
+        }
+      },
+      "nonconvergence_iter_max_3": {
+        "ok": true,
+        "warnings": [
+          "lavaan->lav_step11_estoptim():  \n   the optimizer warns that a solution has NOT been found!"
+        ],
+        "n_warnings": 1,
+        "messages": [],
+        "seconds": 0.215000000000003,
+        "diagnostics": {
+          "converged": false,
+          "post_check": true,
+          "negative_variances": [],
+          "vcov_ok": true,
+          "fit_chisq": "lavaan->lav_fit():  \n   fit measures not available if model did not converge",
+          "df": "lavaan->lav_fit():  \n   fit measures not available if model did not converge"
+        }
+      },
+      "not_identified_two_indicator_single_factor": {
+        "ok": true,
+        "warnings": [
+          "lavaan->lav_model_vcov():  \n   Could not compute standard errors! The information matrix could not be \n   inverted. This may be a symptom that the model is not identified."
+        ],
+        "n_warnings": 1,
+        "messages": [],
+        "seconds": 0.10199999999999,
+        "diagnostics": {
+          "converged": true,
+          "post_check": true,
+          "negative_variances": [],
+          "vcov_ok": true,
+          "fit_chisq": null,
+          "df": -1
+        }
+      },
+      "fixed_huge_loading": {
+        "ok": true,
+        "warnings": [
+          "lavaan->lav_object_post_check():  \n   some estimated ov variances are negative"
+        ],
+        "n_warnings": 1,
+        "messages": [],
+        "seconds": 0.100999999999999,
+        "diagnostics": {
+          "converged": true,
+          "post_check": false,
+          "negative_variances": [
+            {
+              "lhs": "BI2",
+              "est": -1.73279340753534
+            }
+          ],
+          "vcov_ok": true,
+          "fit_chisq": 15.0840375085218,
+          "df": 1
+        }
+      },
+      "capture_recipe": ["wrap the fit in withCallingHandlers(): lavaan reports problems as WARNINGS (not errors) and still returns an object", "lavInspect(fit, 'converged') -> FALSE on non-convergence", "lavInspect(fit, 'post.check') -> FALSE (+ warning) when a variance is negative or a covariance matrix of lv/ov is not PD", "negative variances: parameterEstimates(fit) rows with op == '~~', lhs == rhs, est < 0"]
+    }
+  }
+}

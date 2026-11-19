@@ -1,0 +1,824 @@
+{
+  "question": "Do the plain-JSON side files contain construct-to-construct (structural) information?",
+  "method": [
+    "Collect every construct name from every initialWeights list of the folder.",
+    "Walk every leaf of every plain-JSON side file (*.settings, *.ok).",
+    "A: record each string leaf that equals a construct name (or contains one of 6+ characters).",
+    "B: record each JSON object or array element that holds two or more different construct names.",
+    "C: record every key whose name hints at structure and summarise its values."
+  ],
+  "folders": {
+    "Example - ACSI": {
+      "constructNames": [
+        "CUEX",
+        "CUSA",
+        "CUSL",
+        "PERQ",
+        "PERV"
+      ],
+      "plainJsonFilesSearched": [
+        "ACSI (modified) - CB-SEM.splscb.settings",
+        "ACSI (modified) - GSCA.splsge.settings",
+        "ACSI (modified) - PLS-SEM.splsm.settings",
+        "ACSI (modified) - Path analysis and PROCESS.splspm.settings",
+        "ACSI Data 2015.txt.ok",
+        "ACSI Data 2015.txt.settings"
+      ],
+      "A_constructNameOccurrences": [
+        {
+          "file": "ACSI (modified) - GSCA.splsge.settings",
+          "jsonPath": "gscaBasicAlgorithmSettings.initialWeights[].lv",
+          "count": 12
+        },
+        {
+          "file": "ACSI (modified) - PLS-SEM.splsm.settings",
+          "jsonPath": "plsAlgorithmSettings.initialWeights[].lv",
+          "count": 12
+        }
+      ],
+      "A_onlyInsideInitialWeightsLv": true,
+      "B_objectsWithTwoOrMoreConstructNames": [],
+      "C_structureLikeKeys": {
+        "considerControlVariables": {
+          "occurrences": 4,
+          "distinctValues": [
+            "true"
+          ],
+          "nDistinctValues": 1
+        },
+        "construct": {
+          "occurrences": 4,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        },
+        "constructDecoratorId": {
+          "occurrences": 124,
+          "distinctValues": [
+            "\"CBSEM_R_SQUARE\"",
+            "\"PLS_R_SQUARE\"",
+            "\"PROCESS_R_SQUARE\"",
+            "null"
+          ],
+          "nDistinctValues": 4
+        },
+        "correlationsDecoratorId": {
+          "occurrences": 124,
+          "distinctValues": [
+            "\"-\"",
+            "\"CBSEM_CORRELATIONS_LV\"",
+            "null"
+          ],
+          "nDistinctValues": 3
+        },
+        "dependentDecoratorId": {
+          "occurrences": 124,
+          "distinctValues": [
+            "\"-\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "implyCausalIndicatorCorrelationsPerConstruct": {
+          "occurrences": 4,
+          "distinctValues": [
+            "false"
+          ],
+          "nDistinctValues": 1
+        },
+        "implyLatentVariableCorrelations": {
+          "occurrences": 4,
+          "distinctValues": [
+            "false"
+          ],
+          "nDistinctValues": 1
+        },
+        "independentDecoratorId": {
+          "occurrences": 124,
+          "distinctValues": [
+            "\"-\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "innerModelDecoratorId": {
+          "occurrences": 124,
+          "distinctValues": [
+            "\"CBSEM_PATH_COEFFICIENTS_STANDARDIZED\"",
+            "\"PLS_PATH_COEFFICIENTS\"",
+            "\"PROCESS_PATH_COEFFICIENTS\"",
+            "null"
+          ],
+          "nDistinctValues": 4
+        },
+        "localConstruct": {
+          "occurrences": 4,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        },
+        "lv": {
+          "occurrences": 24,
+          "distinctValues": [
+            "\"CUEX\"",
+            "\"CUSA\"",
+            "\"CUSL\"",
+            "\"PERQ\"",
+            "\"PERV\""
+          ],
+          "nDistinctValues": 5
+        },
+        "outerModelDecoratorId": {
+          "occurrences": 124,
+          "distinctValues": [
+            "\"-\"",
+            "\"CBSEM_WEIGHTS_AND_LOADINGS_STANDARDIZED\"",
+            "\"PLS_LOADINGS\"",
+            "\"PLS_WEIGHTS_AND_LOADINGS\"",
+            "null"
+          ],
+          "nDistinctValues": 5
+        },
+        "pathWeighting": {
+          "occurrences": 124,
+          "distinctValues": [
+            "\"NONE\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "targetFolder": {
+          "occurrences": 4,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        },
+        "targetValue": {
+          "occurrences": 4,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        }
+      },
+      "structuralPathsFound": false
+    },
+    "Example - OI": {
+      "constructNames": [
+        "ACJ",
+        "ACL",
+        "Affective _Commitment (Joy)",
+        "Affective _Commitment (Love)",
+        "OI",
+        "OP",
+        "Organizational_Identification",
+        "Organizational_Prestige"
+      ],
+      "plainJsonFilesSearched": [
+        "Data.txt.ok",
+        "Data.txt.settings",
+        "OI - CB-SEM.splscb.settings",
+        "OI - GSCA.splsge.settings",
+        "OI - PLS-SEM.splsm.settings",
+        "OI - Path analysis and PROCESS.splspm.settings"
+      ],
+      "A_constructNameOccurrences": [
+        {
+          "file": "OI - GSCA.splsge.settings",
+          "jsonPath": "gscaBasicAlgorithmSettings.initialWeights[].lv",
+          "count": 21
+        },
+        {
+          "file": "OI - PLS-SEM.splsm.settings",
+          "jsonPath": "plsAlgorithmSettings.initialWeights[].lv",
+          "count": 21
+        }
+      ],
+      "A_onlyInsideInitialWeightsLv": true,
+      "B_objectsWithTwoOrMoreConstructNames": [],
+      "C_structureLikeKeys": {
+        "considerControlVariables": {
+          "occurrences": 4,
+          "distinctValues": [
+            "true"
+          ],
+          "nDistinctValues": 1
+        },
+        "construct": {
+          "occurrences": 4,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        },
+        "constructDecoratorId": {
+          "occurrences": 129,
+          "distinctValues": [
+            "\"CBSEM_R_SQUARE\"",
+            "\"PLS_R_SQUARE\"",
+            "\"PROCESS_R_SQUARE\"",
+            "null"
+          ],
+          "nDistinctValues": 4
+        },
+        "correlationsDecoratorId": {
+          "occurrences": 129,
+          "distinctValues": [
+            "\"-\"",
+            "\"CBSEM_CORRELATIONS_LV\"",
+            "null"
+          ],
+          "nDistinctValues": 3
+        },
+        "dependentDecoratorId": {
+          "occurrences": 129,
+          "distinctValues": [
+            "\"-\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "implyCausalIndicatorCorrelationsPerConstruct": {
+          "occurrences": 4,
+          "distinctValues": [
+            "false"
+          ],
+          "nDistinctValues": 1
+        },
+        "implyCausalIndicatorCorrelationsPerConstruct1": {
+          "occurrences": 1,
+          "distinctValues": [
+            "false"
+          ],
+          "nDistinctValues": 1
+        },
+        "implyCausalIndicatorCorrelationsPerConstruct2": {
+          "occurrences": 1,
+          "distinctValues": [
+            "false"
+          ],
+          "nDistinctValues": 1
+        },
+        "implyLatentVariableCorrelations": {
+          "occurrences": 4,
+          "distinctValues": [
+            "false"
+          ],
+          "nDistinctValues": 1
+        },
+        "implyLatentVariableCorrelations1": {
+          "occurrences": 1,
+          "distinctValues": [
+            "false"
+          ],
+          "nDistinctValues": 1
+        },
+        "implyLatentVariableCorrelations2": {
+          "occurrences": 1,
+          "distinctValues": [
+            "false"
+          ],
+          "nDistinctValues": 1
+        },
+        "independentDecoratorId": {
+          "occurrences": 129,
+          "distinctValues": [
+            "\"-\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "innerModelDecoratorId": {
+          "occurrences": 129,
+          "distinctValues": [
+            "\"CBSEM_PATH_COEFFICIENTS_STANDARDIZED\"",
+            "\"PLS_PATH_COEFFICIENTS\"",
+            "\"PROCESS_PATH_COEFFICIENTS\"",
+            "null"
+          ],
+          "nDistinctValues": 4
+        },
+        "localConstruct": {
+          "occurrences": 4,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        },
+        "lv": {
+          "occurrences": 42,
+          "distinctValues": [
+            "\"ACJ\"",
+            "\"ACL\"",
+            "\"Affective _Commitment (Joy)\"",
+            "\"Affective _Commitment (Love)\"",
+            "\"OI\"",
+            "\"OP\"",
+            "\"Organizational_Identification\"",
+            "\"Organizational_Prestige\""
+          ],
+          "nDistinctValues": 8
+        },
+        "outerModelDecoratorId": {
+          "occurrences": 129,
+          "distinctValues": [
+            "\"-\"",
+            "\"CBSEM_WEIGHTS_AND_LOADINGS_STANDARDIZED\"",
+            "\"PLS_WEIGHTS_AND_LOADINGS\"",
+            "null"
+          ],
+          "nDistinctValues": 4
+        },
+        "pathWeighting": {
+          "occurrences": 129,
+          "distinctValues": [
+            "\"NONE\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "targetFolder": {
+          "occurrences": 4,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        },
+        "targetValue": {
+          "occurrences": 4,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        }
+      },
+      "structuralPathsFound": false
+    },
+    "Example - Regression": {
+      "constructNames": [],
+      "plainJsonFilesSearched": [
+        "Concise guide book.splsrm.settings",
+        "Concise_guide_data.txt.ok",
+        "Concise_guide_data.txt.settings",
+        "HBAT_regression_data.txt.ok",
+        "HBAT_regression_data.txt.settings",
+        "Multivariate data analysis (MDA) book.splsrm.settings"
+      ],
+      "A_constructNameOccurrences": [],
+      "A_onlyInsideInitialWeightsLv": true,
+      "B_objectsWithTwoOrMoreConstructNames": [],
+      "C_structureLikeKeys": {
+        "considerControlVariables": {
+          "occurrences": 2,
+          "distinctValues": [
+            "true"
+          ],
+          "nDistinctValues": 1
+        },
+        "construct": {
+          "occurrences": 2,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        },
+        "constructDecoratorId": {
+          "occurrences": 62,
+          "distinctValues": [
+            "\"-\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "correlationsDecoratorId": {
+          "occurrences": 62,
+          "distinctValues": [
+            "\"-\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "dependentDecoratorId": {
+          "occurrences": 62,
+          "distinctValues": [
+            "\"REGRESSION_R_SQUARE\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "implyCausalIndicatorCorrelationsPerConstruct": {
+          "occurrences": 2,
+          "distinctValues": [
+            "false"
+          ],
+          "nDistinctValues": 1
+        },
+        "implyLatentVariableCorrelations": {
+          "occurrences": 2,
+          "distinctValues": [
+            "false"
+          ],
+          "nDistinctValues": 1
+        },
+        "independentDecoratorId": {
+          "occurrences": 62,
+          "distinctValues": [
+            "\"REGRESSION_STANDARDIZED_COEFFICIENTS\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "innerModelDecoratorId": {
+          "occurrences": 62,
+          "distinctValues": [
+            "\"-\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "localConstruct": {
+          "occurrences": 2,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        },
+        "outerModelDecoratorId": {
+          "occurrences": 62,
+          "distinctValues": [
+            "\"-\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "pathWeighting": {
+          "occurrences": 62,
+          "distinctValues": [
+            "\"NONE\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "targetFolder": {
+          "occurrences": 2,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        },
+        "targetValue": {
+          "occurrences": 2,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        }
+      },
+      "structuralPathsFound": false
+    },
+    "Example - TAM": {
+      "constructNames": [
+        "ATU",
+        "BI",
+        "PEOU",
+        "PU",
+        "USE"
+      ],
+      "plainJsonFilesSearched": [
+        "Data.txt.ok",
+        "Data.txt.settings",
+        "TAM - CB-SEM.splscb.settings",
+        "TAM - PLS-SEM.splsm.settings",
+        "TAM - Path model.splspm.settings"
+      ],
+      "A_constructNameOccurrences": [
+        {
+          "file": "TAM - PLS-SEM.splsm.settings",
+          "jsonPath": "plsAlgorithmSettings.initialWeights[].lv",
+          "count": 22
+        }
+      ],
+      "A_onlyInsideInitialWeightsLv": true,
+      "B_objectsWithTwoOrMoreConstructNames": [],
+      "C_structureLikeKeys": {
+        "considerControlVariables": {
+          "occurrences": 3,
+          "distinctValues": [
+            "true"
+          ],
+          "nDistinctValues": 1
+        },
+        "construct": {
+          "occurrences": 3,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        },
+        "constructDecoratorId": {
+          "occurrences": 101,
+          "distinctValues": [
+            "\"CBSEM_R_SQUARE\"",
+            "\"PLS_R_SQUARE\"",
+            "\"PROCESS_R_SQUARE\"",
+            "null"
+          ],
+          "nDistinctValues": 4
+        },
+        "correlationsDecoratorId": {
+          "occurrences": 101,
+          "distinctValues": [
+            "\"-\"",
+            "\"CBSEM_CORRELATIONS_LV\"",
+            "null"
+          ],
+          "nDistinctValues": 3
+        },
+        "dependentDecoratorId": {
+          "occurrences": 101,
+          "distinctValues": [
+            "\"-\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "implyCausalIndicatorCorrelationsPerConstruct": {
+          "occurrences": 3,
+          "distinctValues": [
+            "false"
+          ],
+          "nDistinctValues": 1
+        },
+        "implyCausalIndicatorCorrelationsPerConstruct1": {
+          "occurrences": 2,
+          "distinctValues": [
+            "false"
+          ],
+          "nDistinctValues": 1
+        },
+        "implyCausalIndicatorCorrelationsPerConstruct2": {
+          "occurrences": 2,
+          "distinctValues": [
+            "false"
+          ],
+          "nDistinctValues": 1
+        },
+        "implyLatentVariableCorrelations": {
+          "occurrences": 3,
+          "distinctValues": [
+            "false"
+          ],
+          "nDistinctValues": 1
+        },
+        "implyLatentVariableCorrelations1": {
+          "occurrences": 2,
+          "distinctValues": [
+            "false"
+          ],
+          "nDistinctValues": 1
+        },
+        "implyLatentVariableCorrelations2": {
+          "occurrences": 2,
+          "distinctValues": [
+            "false"
+          ],
+          "nDistinctValues": 1
+        },
+        "independentDecoratorId": {
+          "occurrences": 101,
+          "distinctValues": [
+            "\"-\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "innerModelDecoratorId": {
+          "occurrences": 101,
+          "distinctValues": [
+            "\"CBSEM_PATH_COEFFICIENTS_STANDARDIZED\"",
+            "\"PLS_PATH_COEFFICIENTS\"",
+            "\"PROCESS_PATH_COEFFICIENTS\"",
+            "null"
+          ],
+          "nDistinctValues": 4
+        },
+        "localConstruct": {
+          "occurrences": 3,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        },
+        "lv": {
+          "occurrences": 22,
+          "distinctValues": [
+            "\"ATU\"",
+            "\"BI\"",
+            "\"PEOU\"",
+            "\"PU\"",
+            "\"USE\""
+          ],
+          "nDistinctValues": 5
+        },
+        "outerModelDecoratorId": {
+          "occurrences": 101,
+          "distinctValues": [
+            "\"-\"",
+            "\"CBSEM_WEIGHTS_AND_LOADINGS_STANDARDIZED\"",
+            "\"PLS_WEIGHTS_AND_LOADINGS\"",
+            "null"
+          ],
+          "nDistinctValues": 4
+        },
+        "pathWeighting": {
+          "occurrences": 101,
+          "distinctValues": [
+            "\"NONE\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "targetFolder": {
+          "occurrences": 3,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        },
+        "targetValue": {
+          "occurrences": 3,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        }
+      },
+      "structuralPathsFound": false
+    },
+    "Example - UTAUT": {
+      "constructNames": [
+        "BI",
+        "EE",
+        "FC",
+        "PE",
+        "SI",
+        "SN",
+        "USE"
+      ],
+      "plainJsonFilesSearched": [
+        "Data.txt.ok",
+        "Data.txt.settings",
+        "UTAUT - CB-SEM.splscb.settings",
+        "UTAUT - GSCA.splsge.settings",
+        "UTAUT - PLS-SEM.splsm.settings",
+        "UTAUT - Path analysis and PROCESS.splspm.settings"
+      ],
+      "A_constructNameOccurrences": [
+        {
+          "file": "UTAUT - GSCA.splsge.settings",
+          "jsonPath": "gscaBasicAlgorithmSettings.initialWeights[].lv",
+          "count": 21
+        },
+        {
+          "file": "UTAUT - PLS-SEM.splsm.settings",
+          "jsonPath": "plsAlgorithmSettings.initialWeights[].lv",
+          "count": 21
+        }
+      ],
+      "A_onlyInsideInitialWeightsLv": true,
+      "B_objectsWithTwoOrMoreConstructNames": [],
+      "C_structureLikeKeys": {
+        "considerControlVariables": {
+          "occurrences": 4,
+          "distinctValues": [
+            "true"
+          ],
+          "nDistinctValues": 1
+        },
+        "construct": {
+          "occurrences": 4,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        },
+        "constructDecoratorId": {
+          "occurrences": 126,
+          "distinctValues": [
+            "\"CBSEM_R_SQUARE\"",
+            "\"PLS_R_SQUARE\"",
+            "\"PROCESS_R_SQUARE\"",
+            "null"
+          ],
+          "nDistinctValues": 4
+        },
+        "correlationsDecoratorId": {
+          "occurrences": 126,
+          "distinctValues": [
+            "\"-\"",
+            "\"CBSEM_CORRELATIONS_LV\"",
+            "null"
+          ],
+          "nDistinctValues": 3
+        },
+        "dependentDecoratorId": {
+          "occurrences": 126,
+          "distinctValues": [
+            "\"-\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "implyCausalIndicatorCorrelationsPerConstruct": {
+          "occurrences": 4,
+          "distinctValues": [
+            "false"
+          ],
+          "nDistinctValues": 1
+        },
+        "implyLatentVariableCorrelations": {
+          "occurrences": 4,
+          "distinctValues": [
+            "false"
+          ],
+          "nDistinctValues": 1
+        },
+        "independentDecoratorId": {
+          "occurrences": 126,
+          "distinctValues": [
+            "\"-\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "innerModelDecoratorId": {
+          "occurrences": 126,
+          "distinctValues": [
+            "\"CBSEM_PATH_COEFFICIENTS_STANDARDIZED\"",
+            "\"PLS_PATH_COEFFICIENTS\"",
+            "\"PROCESS_PATH_COEFFICIENTS\"",
+            "null"
+          ],
+          "nDistinctValues": 4
+        },
+        "localConstruct": {
+          "occurrences": 4,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        },
+        "lv": {
+          "occurrences": 42,
+          "distinctValues": [
+            "\"BI\"",
+            "\"EE\"",
+            "\"FC\"",
+            "\"PE\"",
+            "\"SI\"",
+            "\"SN\"",
+            "\"USE\""
+          ],
+          "nDistinctValues": 7
+        },
+        "outerModelDecoratorId": {
+          "occurrences": 126,
+          "distinctValues": [
+            "\"-\"",
+            "\"CBSEM_WEIGHTS_AND_LOADINGS_STANDARDIZED\"",
+            "\"PLS_WEIGHTS_AND_LOADINGS\"",
+            "null"
+          ],
+          "nDistinctValues": 4
+        },
+        "pathWeighting": {
+          "occurrences": 126,
+          "distinctValues": [
+            "\"NONE\"",
+            "null"
+          ],
+          "nDistinctValues": 2
+        },
+        "targetFolder": {
+          "occurrences": 4,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        },
+        "targetValue": {
+          "occurrences": 4,
+          "distinctValues": [
+            "null"
+          ],
+          "nDistinctValues": 1
+        }
+      },
+      "structuralPathsFound": false
+    }
+  },
+  "conclusion": "No structural path information exists in plain form."
+}

@@ -1,0 +1,209 @@
+{
+  "generatedAt": "2026-11-19T12:54:05.356Z",
+  "packages": [
+    {
+      "name": "@dagrejs/dagre",
+      "group": "dependencies",
+      "version": "3.1.3",
+      "license": "MIT"
+    },
+    {
+      "name": "@fontsource-variable/inter",
+      "group": "dependencies",
+      "version": "5.3.0",
+      "license": "OFL-1.1"
+    },
+    {
+      "name": "@fontsource-variable/jetbrains-mono",
+      "group": "dependencies",
+      "version": "5.3.0",
+      "license": "OFL-1.1"
+    },
+    {
+      "name": "@tanstack/react-query",
+      "group": "dependencies",
+      "version": "5.107.1",
+      "license": "MIT"
+    },
+    {
+      "name": "@xyflow/react",
+      "group": "dependencies",
+      "version": "12.12.1",
+      "license": "MIT"
+    },
+    {
+      "name": "d3-array",
+      "group": "dependencies",
+      "version": "3.2.5",
+      "license": "ISC"
+    },
+    {
+      "name": "d3-scale",
+      "group": "dependencies",
+      "version": "4.0.3",
+      "license": "ISC"
+    },
+    {
+      "name": "dexie",
+      "group": "dependencies",
+      "version": "4.4.7",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "elkjs",
+      "group": "dependencies",
+      "version": "0.12.1",
+      "license": "EPL-2.0 OR GPL-3.0-or-later"
+    },
+    {
+      "name": "lucide-react",
+      "group": "dependencies",
+      "version": "1.72.0",
+      "license": "ISC"
+    },
+    {
+      "name": "papaparse",
+      "group": "dependencies",
+      "version": "5.7.1",
+      "license": "MIT"
+    },
+    {
+      "name": "react",
+      "group": "dependencies",
+      "version": "19.3.1",
+      "license": "MIT"
+    },
+    {
+      "name": "react-dom",
+      "group": "dependencies",
+      "version": "19.3.1",
+      "license": "MIT"
+    },
+    {
+      "name": "react-is",
+      "group": "dependencies",
+      "version": "19.3.1",
+      "license": "MIT"
+    },
+    {
+      "name": "react-router-dom",
+      "group": "dependencies",
+      "version": "7.18.5",
+      "license": "MIT"
+    },
+    {
+      "name": "recharts",
+      "group": "dependencies",
+      "version": "3.10.1",
+      "license": "MIT"
+    },
+    {
+      "name": "zod",
+      "group": "dependencies",
+      "version": "4.6.7",
+      "license": "MIT"
+    },
+    {
+      "name": "zustand",
+      "group": "dependencies",
+      "version": "5.1.0",
+      "license": "MIT"
+    },
+    {
+      "name": "@playwright/test",
+      "group": "devDependencies",
+      "version": "1.65.0",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "@testing-library/dom",
+      "group": "devDependencies",
+      "version": "10.4.2",
+      "license": "MIT"
+    },
+    {
+      "name": "@testing-library/jest-dom",
+      "group": "devDependencies",
+      "version": "7.0.1",
+      "license": "MIT"
+    },
+    {
+      "name": "@testing-library/react",
+      "group": "devDependencies",
+      "version": "16.3.3",
+      "license": "MIT"
+    },
+    {
+      "name": "@testing-library/user-event",
+      "group": "devDependencies",
+      "version": "14.6.10",
+      "license": "MIT"
+    },
+    {
+      "name": "@types/d3-array",
+      "group": "devDependencies",
+      "version": "3.2.2",
+      "license": "MIT"
+    },
+    {
+      "name": "@types/d3-scale",
+      "group": "devDependencies",
+      "version": "4.0.9",
+      "license": "MIT"
+    },
+    {
+      "name": "@types/node",
+      "group": "devDependencies",
+      "version": "26.6.6",
+      "license": "MIT"
+    },
+    {
+      "name": "@types/papaparse",
+      "group": "devDependencies",
+      "version": "5.5.2",
+      "license": "MIT"
+    },
+    {
+      "name": "@types/react",
+      "group": "devDependencies",
+      "version": "19.3.0",
+      "license": "MIT"
+    },
+    {
+      "name": "@types/react-dom",
+      "group": "devDependencies",
+      "version": "19.3.0",
+      "license": "MIT"
+    },
+    {
+      "name": "@vitejs/plugin-react",
+      "group": "devDependencies",
+      "version": "6.3.0",
+      "license": "MIT"
+    },
+    {
+      "name": "fake-indexeddb",
+      "group": "devDependencies",
+      "version": "6.2.8",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "jsdom",
+      "group": "devDependencies",
+      "version": "31.0.0",
+      "license": "MIT"
+    },
+    {
+      "name": "vite",
+      "group": "devDependencies",
+      "version": "8.3.8",
+      "license": "MIT"
+    },
+    {
+      "name": "vitest",
+      "group": "devDependencies",
+      "version": "5.1.0",
+      "license": "MIT"
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "generatedAt": "2026-11-19T12:53:52.404Z",
+  "generatedBy": "apps/web/src/tests/spike (npm run spike:evidence -w @sem-studio/web)",
+  "runtime": {
+    "node": "v26.13.1",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "packages": [
+    {
+      "name": "@xyflow/react",
+      "version": "12.12.1",
+      "license": "MIT"
+    },
+    {
+      "name": "@xyflow/system",
+      "version": "0.0.84",
+      "license": "MIT"
+    },
+    {
+      "name": "react",
+      "version": "19.3.1",
+      "license": "MIT"
+    },
+    {
+      "name": "react-dom",
+      "version": "19.3.1",
+      "license": "MIT"
+    },
+    {
+      "name": "jsdom",
+      "version": "31.0.0",
+      "license": "MIT"
+    }
+  ],
+  "data": {
+    "jsdomMissingGlobals": [
+      "ResizeObserver",
+      "DOMMatrixReadOnly",
+      "IntersectionObserver",
+      "Worker"
+    ],
+    "route1": {
+      "polyfills": [
+        "ResizeObserver (no-op)"
+      ],
+      "nodeRequires": [
+        "width",
+        "height",
+        "handles"
+      ],
+      "edgePath": "M 119,32.5L 208,32.5",
+      "useNodesInitialized": false,
+      "consoleErrors": 0,
+      "consoleWarnings": 0
+    },
+    "route2": {
+      "polyfills": [
+        "ResizeObserver (reports each observed element once)",
+        "DOMMatrixReadOnly (only m22 is read)",
+        "HTMLElement.prototype.offsetWidth / offsetHeight"
+      ],
+      "measured": {
+        "width": 118,
+        "height": 64
+      },
+      "useNodesInitialized": true,
+      "fitViewPromise": "does not settle under jsdom; viewport stays {x:0,y:0,zoom:1}"
+    },
+    "instance": {
+      "methodsOnInstance": [
+        "fitView",
+        "fitBounds",
+        "getNodesBounds",
+        "screenToFlowPosition",
+        "setViewport"
+      ],
+      "standaloneExports": [
+        "getViewportForBounds",
+        "getNodesBounds"
+      ],
+      "getNodesBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 326,
+        "height": 64
+      },
+      "getViewportForBounds": {
+        "args": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 326,
+            "height": 64
+          },
+          1024,
+          768,
+          0.1,
+          4,
+          0.1
+        ],
+        "viewport": {
+          "x": 46,
+          "y": 292.5153374233129,
+          "zoom": 2.8588957055214723
+        }
+      },
+      "fitViewPromiseInJsdomRoute1": "never settles (no measuring pass)"
+    },
+    "snapToGrid": {
+      "snapGrid": [
+        16,
+        16
+      ],
+      "rule": "final position = nearest grid point to (start + pointer travel since drag start)",
+      "onGridStart": {
+        "start": {
+          "x": 208,
+          "y": 0
+        },
+        "position": {
+          "x": 256,
+          "y": 32
+        },
+        "pointerTravel": {
+          "x": 41,
+          "y": 35
+        }
+      },
+      "offGridStart": {
+        "start": {
+          "x": 5,
+          "y": 131
+        },
+        "position": {
+          "x": 32,
+          "y": 176
+        },
+        "pointerTravel": {
+          "x": 28,
+          "y": 48
+        }
+      },
+      "jsdomDragSimulation": {
+        "eventViewMustBe": "globalThis.jsdom.window",
+        "vitestWindowAcceptedAsView": false,
+        "autoPanOnNodeDragMustBeFalse": true,
+        "oneActPerPointerEvent": true,
+        "firstMoveOnlyStartsTheDrag": true
+      }
+    },
+    "connection": {
+      "path": "connectOnClick (default true): click a source handle, then a target handle",
+      "isValidConnectionReceives": {
+        "source": "PU",
+        "sourceHandle": null,
+        "target": "PEOU",
+        "targetHandle": null
+      },
+      "onConnectReceives": {
+        "source": "PU",
+        "sourceHandle": null,
+        "target": "PEOU",
+        "targetHandle": null
+      },
+      "jsdomNeeds": "document.elementFromPoint stub"
+    },
+    "versions": {
+      "xyflowReact": "12.12.1",
+      "xyflowSystem": "0.0.84",
+      "enums": {
+        "ConnectionMode": {
+          "Strict": "strict",
+          "Loose": "loose"
+        },
+        "SelectionMode": {
+          "Partial": "partial",
+          "Full": "full"
+        },
+        "BackgroundVariant": {
+          "Lines": "lines",
+          "Dots": "dots",
+          "Cross": "cross"
+        }
+      }
+    }
+  }
+}

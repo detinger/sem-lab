@@ -1,0 +1,64 @@
+{
+  "generatedAt": "2026-11-19T12:53:54.947Z",
+  "generatedBy": "apps/web/src/tests/spike (npm run spike:evidence -w @sem-studio/web)",
+  "runtime": {
+    "node": "v26.13.1",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "packages": [
+    {
+      "name": "elkjs",
+      "version": "0.12.1",
+      "license": "EPL-2.0 OR GPL-3.0-or-later"
+    }
+  ],
+  "data": {
+    "widthWithoutLabels": 934,
+    "widthWithLabels": 1478,
+    "labels": [
+      {
+        "edge": "s:PEOU->PU",
+        "x": 210,
+        "y": 93,
+        "width": 56,
+        "height": 18
+      },
+      {
+        "edge": "s:PEOU->ATU",
+        "x": 377,
+        "y": 12,
+        "width": 56,
+        "height": 18
+      },
+      {
+        "edge": "s:PU->ATU",
+        "x": 544,
+        "y": 58.33333333333334,
+        "width": 56,
+        "height": 18
+      },
+      {
+        "edge": "s:PU->BI",
+        "x": 711,
+        "y": 103.66666666666667,
+        "width": 56,
+        "height": 18
+      },
+      {
+        "edge": "s:ATU->BI",
+        "x": 878,
+        "y": 23.66666666666667,
+        "width": 56,
+        "height": 18
+      },
+      {
+        "edge": "s:BI->USE",
+        "x": 1212,
+        "y": 93,
+        "width": 56,
+        "height": 18
+      }
+    ]
+  }
+}

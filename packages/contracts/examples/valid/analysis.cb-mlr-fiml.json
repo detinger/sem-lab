@@ -1,0 +1,10 @@
+{
+  "method": "cb-sem",
+  "engine": "r-lavaan",
+  "estimator": "MLR",
+  "missingData": "fiml",
+  "cb": {
+    "identification": "marker",
+    "meanStructure": true
+  }
+}

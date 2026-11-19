@@ -1,0 +1,253 @@
+{
+  "$id": "https://sem-studio.local/schema/sem-model.json",
+  "title": "sem-model",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "constructs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "label": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "measurement": {
+            "type": "string",
+            "enum": [
+              "reflective",
+              "composite-formative"
+            ]
+          },
+          "indicatorIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+            }
+          },
+          "plsWeightingMode": {
+            "type": "string",
+            "enum": [
+              "mode-a",
+              "mode-b"
+            ]
+          },
+          "higherOrder": {
+            "type": "object",
+            "properties": {
+              "approach": {
+                "type": "string",
+                "enum": [
+                  "repeated-indicators",
+                  "two-stage"
+                ]
+              },
+              "childConstructIds": {
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128,
+                  "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+                }
+              }
+            },
+            "required": [
+              "approach",
+              "childConstructIds"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "measurement",
+          "indicatorIds"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "indicators": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "label": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "column": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 500
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "scale": {
+            "type": "object",
+            "properties": {
+              "min": {
+                "type": "number"
+              },
+              "max": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "min",
+              "max"
+            ],
+            "additionalProperties": false
+          },
+          "reverseScored": {
+            "type": "boolean"
+          },
+          "level": {
+            "type": "string",
+            "enum": [
+              "continuous",
+              "ordinal",
+              "binary"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "column"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128,
+                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+              },
+              "sourceId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128,
+                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+              },
+              "targetId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128,
+                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+              },
+              "parameterLabel": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$"
+              },
+              "fixedValue": {
+                "type": "number"
+              },
+              "kind": {
+                "type": "string",
+                "const": "structural"
+              },
+              "hypothesis": {
+                "type": "string",
+                "maxLength": 40
+              }
+            },
+            "required": [
+              "id",
+              "sourceId",
+              "targetId",
+              "kind"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128,
+                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+              },
+              "sourceId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128,
+                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+              },
+              "targetId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128,
+                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+              },
+              "parameterLabel": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_]{0,63}$"
+              },
+              "fixedValue": {
+                "type": "number"
+              },
+              "kind": {
+                "type": "string",
+                "const": "covariance"
+              }
+            },
+            "required": [
+              "id",
+              "sourceId",
+              "targetId",
+              "kind"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "constructs",
+    "indicators",
+    "relationships"
+  ],
+  "additionalProperties": false
+}

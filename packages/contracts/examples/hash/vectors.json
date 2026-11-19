@@ -1,0 +1,60 @@
+[
+  {
+    "name": "key-order-and-nesting",
+    "input": {
+      "b": 1,
+      "a": [
+        3,
+        {
+          "z": null,
+          "y": true
+        }
+      ],
+      "c": "x"
+    },
+    "canonical": "{\"a\":[3,{\"y\":true,\"z\":null}],\"b\":1,\"c\":\"x\"}",
+    "sha256": "8d5503bf8c7f734059a308e649cab26042304cbfb6618db618ec3c304f2dd13c"
+  },
+  {
+    "name": "integral-floats",
+    "input": {
+      "x": 1.0,
+      "y": -0.0,
+      "z": 100.0
+    },
+    "canonical": "{\"x\":1,\"y\":0,\"z\":100}",
+    "sha256": "95f0eb93c96707ec69006d82cd0bc06c9eaedd1dd097aec9949a5bf070399ce8"
+  },
+  {
+    "name": "exponents",
+    "input": [1e-7, 1e21, 1.5e-10, 1.2345678901234568e20, 0.1],
+    "canonical": "[1e-7,1e+21,1.5e-10,123456789012345680000,0.1]",
+    "sha256": "2cfd004c4bc0f0666300e0f250d7721a540058cb7c8974300e7400e8cf7f1c7e"
+  },
+  {
+    "name": "shortest-round-trip",
+    "input": [0.30000000000000004, 0.3333333333333333, 2.5],
+    "canonical": "[0.30000000000000004,0.3333333333333333,2.5]",
+    "sha256": "2ed273c5d94b4fe8ecce2ac77123211b4bdf0bc3844ffaf026e8b6bc9136e700"
+  },
+  {
+    "name": "unicode-and-escapes",
+    "input": {
+      "é": "Ü\"\\\n",
+      "a": "été – 😀"
+    },
+    "canonical": "{\"a\":\"été – 😀\",\"é\":\"Ü\\\"\\\\\\n\"}",
+    "sha256": "89d6b917b093e373a6596df2e34d0cd47ce3e6d80b1df7e6a4dd512fb7c64c3d"
+  },
+  {
+    "name": "code-point-key-order",
+    "input": {
+      "～": 1,
+      "😀": 2,
+      "Z": 3,
+      "a": 4
+    },
+    "canonical": "{\"Z\":3,\"a\":4,\"～\":1,\"😀\":2}",
+    "sha256": "44f8d9cbc11e79131f7c3851ed732ec7e9cc2f9b55c72db1f861f764bb91ac47"
+  }
+]

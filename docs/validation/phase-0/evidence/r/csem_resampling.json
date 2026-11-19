@@ -1,0 +1,697 @@
+{
+  "evidence": "csem_resampling",
+  "script": "services/r-engine/spike/csem_04_resampling.R",
+  "generated": "2026-11-19T14:04:14+0100",
+  "r": "R version 4.6.2 (2026-10-29)",
+  "platform": "aarch64-apple-darwin27.0.0",
+  "packages": {
+    "cSEM": "0.7.1",
+    "future": "1.82.0",
+    "future.apply": "1.21.0"
+  },
+  "findings": {
+    "api": {
+      "csem_resample_args": {
+        ".resample_method": "c(\"none\", \"bootstrap\", \"jackknife\")",
+        ".resample_method2": "c(\"none\", \"bootstrap\", \"jackknife\")",
+        ".R": "499",
+        ".R2": "199",
+        ".handle_inadmissibles": "c(\"drop\", \"ignore\", \"replace\")",
+        ".user_funs": "NULL",
+        ".eval_plan": "c(\"sequential\", \"multicore\", \"multisession\")",
+        ".seed": "NULL",
+        ".sign_change_option": "c(\"none\", \"individual\", \"individual_reestimate\", \"construct_reestimate\")"
+      },
+      "resamplecSEMResults_formals": {
+        ".object": "NULL",
+        ".resample_method": "c(\"bootstrap\", \"jackknife\")",
+        ".resample_method2": "c(\"none\", \"bootstrap\", \"jackknife\")",
+        ".R": "499",
+        ".R2": "199",
+        ".handle_inadmissibles": "c(\"drop\", \"ignore\", \"replace\")",
+        ".user_funs": "NULL",
+        ".eval_plan": "c(\"sequential\", \"multicore\", \"multisession\")",
+        ".force": "FALSE",
+        ".seed": "NULL",
+        ".sign_change_option": "c(\"none\", \"individual\", \"individual_reestimate\", \"construct_reestimate\")",
+        "...": "<no default>"
+      },
+      "infer_formals": {
+        ".object": "NULL",
+        ".quantity": "c(\"all\", \"mean\", \"sd\", \"bias\", \"CI_standard_z\", \"CI_standard_t\", \"CI_percentile\", \"CI_basic\", \"CI_bc\", \"CI_bca\", \"CI_t_interval\")",
+        ".alpha": "0.05",
+        ".bias_corrected": "TRUE"
+      },
+      "infer_quantity_values": ["all", "mean", "sd", "bias", "CI_standard_z", "CI_standard_t", "CI_percentile", "CI_basic", "CI_bc", "CI_bca", "CI_t_interval"],
+      "resampleData_formals": {
+        ".object": "NULL",
+        ".data": "NULL",
+        ".resample_method": "c(\"bootstrap\", \"jackknife\", \"permutation\", \"cross-validation\")",
+        ".cv_folds": "10",
+        ".id": "NULL",
+        ".R": "499",
+        ".seed": "NULL"
+      }
+    },
+    "reproducibility": {
+      "R": 60,
+      "same_seed_csem_twice_identical": true,
+      "same_seed_all_quantities_identical": true,
+      "different_seed_identical": false,
+      "different_seed_max_abs_diff": 0.184286560633588,
+      "csem_vs_resamplecSEMResults_same_seed_identical": true,
+      "prefix_property_first_R_over_2_draws_identical": true,
+      "prefix_property_note": "draw i depends only on (.seed, i): future.apply::future_lapply(1:.R, ..., future.seed = .seed) assigns one L'Ecuyer-CMRG stream per replication index",
+      "global_RNG_state_untouched_by_seeded_run": true,
+      "seed_NULL_after_set_seed_reproducible": false,
+      "seed_NULL_recorded_seed": {
+        "run1": 1355259704,
+        "run2": -844392563
+      },
+      "information_resample": {
+        "Method": "bootstrap",
+        "Method2": "none",
+        "Number_of_admissibles": 60,
+        "Number_of_observations": 1190,
+        "Number_of_runs": 60,
+        "Number_of_runs2": 199,
+        "Seed": 101,
+        "Handle_inadmissibles": "drop",
+        "Sign_change_option": "none"
+      },
+      "where_raw_draws_live": {
+        "path": "res$Estimates$Estimates_resample$Estimates1$Path_estimates$Resampled  (matrix: admissible draws x parameters)",
+        "original": "res$Estimates$Estimates_resample$Estimates1$Path_estimates$Original",
+        "quantities": ["Path_estimates", "Loading_estimates", "Weight_estimates", "Indirect_effect", "Total_effect"],
+        "dims": {
+          "Path_estimates": [60, 6],
+          "Loading_estimates": [60, 22],
+          "Weight_estimates": [60, 22],
+          "Indirect_effect": [60, 6],
+          "Total_effect": [60, 10]
+        },
+        "colnames": {
+          "Path_estimates": ["PU ~ PEOU", "ATU ~ PEOU", "ATU ~ PU", "BI ~ PU", "BI ~ ATU", "USE ~ BI"],
+          "Loading_estimates": ["PEOU =~ EOU1", "PEOU =~ EOU2", "PEOU =~ EOU3", "PEOU =~ EOU4", "PEOU =~ EOU5", "PU =~ USEF1", "PU =~ USEF2", "PU =~ USEF3", "PU =~ USEF4", "PU =~ USEF5", "ATU =~ ATT1", "ATU =~ ATT2", "ATU =~ ATT3", "ATU =~ ATT4", "ATU =~ ATT5", "BI =~ BI1", "BI =~ BI2", "BI =~ BI3", "USE =~ USE1", "USE =~ USE2", "USE =~ USE3", "USE =~ USE4"],
+          "Weight_estimates": ["PEOU <~ EOU1", "PEOU <~ EOU2", "PEOU <~ EOU3", "PEOU <~ EOU4", "PEOU <~ EOU5", "PU <~ USEF1", "PU <~ USEF2", "PU <~ USEF3", "PU <~ USEF4", "PU <~ USEF5", "ATU <~ ATT1", "ATU <~ ATT2", "ATU <~ ATT3", "ATU <~ ATT4", "ATU <~ ATT5", "BI <~ BI1", "BI <~ BI2", "BI <~ BI3", "USE <~ USE1", "USE <~ USE2", "USE <~ USE3", "USE <~ USE4"],
+          "Indirect_effect": ["ATU ~ PEOU", "BI ~ PEOU", "BI ~ PU", "USE ~ PEOU", "USE ~ PU", "USE ~ ATU"],
+          "Total_effect": ["PU ~ PEOU", "ATU ~ PEOU", "ATU ~ PU", "BI ~ PEOU", "BI ~ PU", "BI ~ ATU", "USE ~ PEOU", "USE ~ PU", "USE ~ ATU", "USE ~ BI"]
+        },
+        "rownames_present": false,
+        "bookkeeping": "res$Information$Information_resample: Method, Number_of_admissibles, Number_of_observations, Number_of_runs, Seed, Handle_inadmissibles, Sign_change_option"
+      },
+      "seconds_for_R": 10.172
+    },
+    "draws_first_principles": {
+      "replications_checked": 6,
+      "max_abs_diff_csem_draw_vs_refit_on_same_indices": 0,
+      "resampling_unit": "rows (observations) with replacement, size n",
+      "n_unique_rows_in_first_resample": 746,
+      "conclusion": "CONFIRMED: a cSEM bootstrap draw is exactly csem() on the rows sample(1:n, n, replace = TRUE) drawn from RNG stream i of seed .seed."
+    },
+    "infer": {
+      "class": "cSEMInfer",
+      "top_level_names": ["Path_estimates", "Loading_estimates", "Weight_estimates", "Indirect_effect", "Total_effect"],
+      "default_quantities_returned": ["mean", "sd", "bias", "CI_standard_z", "CI_standard_t", "CI_percentile", "CI_basic", "CI_bc"],
+      "ci_dimnames_alpha_0.05": [
+        ["95%L", "95%U"],
+        ["PU ~ PEOU", "ATU ~ PEOU", "ATU ~ PU", "BI ~ PU", "BI ~ ATU", "USE ~ BI"]
+      ],
+      "percentile_ci_path": {
+        "95%L": {
+          "PU ~ PEOU": 0.368576177509471,
+          "ATU ~ PEOU": 0.179643698897784,
+          "ATU ~ PU": 0.194203547777225,
+          "BI ~ PU": 0.310810682478642,
+          "BI ~ ATU": 0.119051642356857,
+          "USE ~ BI": 0.170401820057189
+        },
+        "95%U": {
+          "PU ~ PEOU": 0.528652619826185,
+          "ATU ~ PEOU": 0.319596209445215,
+          "ATU ~ PU": 0.339785216648137,
+          "BI ~ PU": 0.490418546072815,
+          "BI ~ ATU": 0.231830282470393,
+          "USE ~ BI": 0.304014142964197
+        }
+      },
+      "own_quantile_vs_infer_CI_percentile": [
+        {
+          "type": 1,
+          "max_abs_diff_alpha_half": 0.0111749041630372,
+          "max_abs_diff_alpha_full": 0.0181003129829763
+        },
+        {
+          "type": 2,
+          "max_abs_diff_alpha_half": 0.0111749041630372,
+          "max_abs_diff_alpha_full": 0.0152257614236928
+        },
+        {
+          "type": 3,
+          "max_abs_diff_alpha_half": 0.0123512098644094,
+          "max_abs_diff_alpha_full": 0.0181003129829763
+        },
+        {
+          "type": 4,
+          "max_abs_diff_alpha_half": 0.0115216130327088,
+          "max_abs_diff_alpha_full": 0.0181003129829763
+        },
+        {
+          "type": 5,
+          "max_abs_diff_alpha_half": 0.0111749041630372,
+          "max_abs_diff_alpha_full": 0.0152257614236928
+        },
+        {
+          "type": 6,
+          "max_abs_diff_alpha_half": 0.0245851097693743,
+          "max_abs_diff_alpha_full": 0.0126386650203378
+        },
+        {
+          "type": 7,
+          "max_abs_diff_alpha_half": 0,
+          "max_abs_diff_alpha_full": 0.0178128578270479
+        },
+        {
+          "type": 8,
+          "max_abs_diff_alpha_half": 0.0127792110570045,
+          "max_abs_diff_alpha_full": 0.0143633959559078
+        },
+        {
+          "type": 9,
+          "max_abs_diff_alpha_half": 0.0123781343335127,
+          "max_abs_diff_alpha_full": 0.0145789873228541
+        }
+      ],
+      "alpha_semantics": "CI_percentile with .alpha = 0.05 is the central 95% interval: quantile(draws, c(alpha/2, 1 - alpha/2)) - see the type table; the help text ('alpha and 1-alpha quantiles') is misleading",
+      "sd_is_stats_sd_of_draws": 6.93889390390723e-18,
+      "bias_is_mean_minus_original": 0,
+      "CI_standard_z_default_is_bias_corrected": 5.55111512312578e-17,
+      "CI_standard_z_bias_corrected_FALSE": 5.55111512312578e-17,
+      "CI_basic_vs_2theta_minus_percentile": 0.0173995805019503,
+      "CI_bc_vs_own_bias_corrected_percentile": 0,
+      "multiple_alpha_dimnames": [
+        ["99%L", "99%U", "95%L", "95%U", "90%L", "90%U"],
+        ["PU ~ PEOU", "ATU ~ PEOU", "ATU ~ PU", "BI ~ PU", "BI ~ ATU", "USE ~ BI"]
+      ],
+      "seconds_infer_all_default": 0.105000000000004,
+      "seconds_infer_percentile_only": 0.00399999999999778,
+      "CI_bca": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 120.692,
+        "result": {
+          "returned": "CI_bca",
+          "dimnames": [
+            ["95%L", "95%U"],
+            ["PU ~ PEOU", "ATU ~ PEOU", "ATU ~ PU", "BI ~ PU", "BI ~ ATU", "USE ~ BI"]
+          ],
+          "ci": {
+            "95%L": {
+              "PU ~ PEOU": 0.365710747366252,
+              "ATU ~ PEOU": 0.168218369289525,
+              "ATU ~ PU": 0.208759241046638,
+              "BI ~ PU": 0.313079582025934,
+              "BI ~ ATU": 0.114855212037703,
+              "USE ~ BI": 0.16179135322365
+            },
+            "95%U": {
+              "PU ~ PEOU": 0.518364982535146,
+              "ATU ~ PEOU": 0.31647743542625,
+              "ATU ~ PU": 0.354032336900552,
+              "BI ~ PU": 0.494839077174717,
+              "BI ~ ATU": 0.22798577036251,
+              "USE ~ BI": 0.293333454157164
+            }
+          },
+          "max_abs_diff_vs_percentile": 0.0145556932694136,
+          "extra_resampling": "jackknife: n leave-one-out estimations are run inside infer() on every call (not cached in the object)"
+        }
+      },
+      "CI_t_interval": {
+        "without_second_resample": {
+          "ok": false,
+          "error": "The following error occured in the `infer()` function:\n`CI_t_interval` requires (jackknife) resamples for each resample. Rerun your original estimation using .resample_method2 = 'jackknife'. and try again.",
+          "error_class": "simpleError",
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000477
+        },
+        "double_bootstrap_R8_R2_8": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 30.703,
+          "result": {
+            "estimates2_class": "list",
+            "number_of_runs2": 8
+          }
+        },
+        "infer_on_double_bootstrap": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.0029999999999859,
+          "result": {
+            "returned": "CI_t_interval"
+          }
+        }
+      },
+      "on_object_without_resamples": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 38.201,
+        "result": {
+          "returned": "CI_percentile"
+        }
+      }
+    },
+    "summarize": {
+      "columns": ["Name", "Construct_type", "Estimate", "Std_err", "t_stat", "p_value", "CI_percentile.95%L", "CI_percentile.95%U"],
+      "t_stat_is_estimate_over_bootstrap_sd": 0,
+      "p_value_vs_two_sided_normal": 0,
+      "p_value_vs_two_sided_t_df_n_minus_1": 3.2998068721764e-08,
+      "summarize_formals": {
+        ".object": "NULL",
+        ".alpha": "0.05",
+        ".ci": "NULL",
+        "...": "<no default>"
+      }
+    },
+    "chunked_design": {
+      "chunk_seeds": [20262119, 20263119, 20264119, 20265119, 20266119],
+      "i_single_chunk_reproducible": true,
+      "ii_own_quantile_type7_vs_infer_on_same_500_draws": 0,
+      "iii_seconds_per_100_resamples_sequential": [7.851, 8.23699999999999, 10.312, 9.73900000000003, 7.73499999999996],
+      "seconds_single_run_500": 35.029,
+      "concatenated_dim": [500, 6],
+      "duplicated_draw_rows_across_chunks": 0,
+      "admissible_per_chunk": [100, 100, 100, 100, 100],
+      "ci_chunked_5x100": {
+        "2.5%": {
+          "PU ~ PEOU": 0.373839805751926,
+          "ATU ~ PEOU": 0.189902941456742,
+          "ATU ~ PU": 0.193718272460067,
+          "BI ~ PU": 0.331942292535426,
+          "BI ~ ATU": 0.106298342852453,
+          "USE ~ BI": 0.173365833655279
+        },
+        "97.5%": {
+          "PU ~ PEOU": 0.52057536055976,
+          "ATU ~ PEOU": 0.326732313676522,
+          "ATU ~ PU": 0.33284352204116,
+          "BI ~ PU": 0.470546382971033,
+          "BI ~ ATU": 0.243833324139822,
+          "USE ~ BI": 0.293290482478166
+        }
+      },
+      "ci_single_500": {
+        "2.5%": {
+          "PU ~ PEOU": 0.374876474626901,
+          "ATU ~ PEOU": 0.18699603585671,
+          "ATU ~ PU": 0.20062013500418,
+          "BI ~ PU": 0.32407451705342,
+          "BI ~ ATU": 0.106064106746869,
+          "USE ~ BI": 0.173488434348854
+        },
+        "97.5%": {
+          "PU ~ PEOU": 0.516555395571336,
+          "ATU ~ PEOU": 0.31787242164969,
+          "ATU ~ PU": 0.338294351790208,
+          "BI ~ PU": 0.470424013561364,
+          "BI ~ ATU": 0.238299380736186,
+          "USE ~ BI": 0.292152736591183
+        }
+      },
+      "max_abs_diff_chunked_vs_single_ci": 0.00885989202683229,
+      "approx_monte_carlo_se_of_a_ci_bound_at_B500": {
+        "PU ~ PEOU": 0.00455098030487369,
+        "ATU ~ PEOU": 0.0042370848931348,
+        "ATU ~ PU": 0.00431650937620306,
+        "BI ~ PU": 0.00467472099131926,
+        "BI ~ ATU": 0.00403157500123138,
+        "USE ~ BI": 0.0036849382599632
+      },
+      "sd_chunked_vs_single": {
+        "chunked": {
+          "PU ~ PEOU": 0.0368853858295602,
+          "ATU ~ PEOU": 0.0347136028103202,
+          "ATU ~ PU": 0.03592325670078,
+          "BI ~ PU": 0.03615096491735,
+          "BI ~ ATU": 0.0320549996204397,
+          "USE ~ BI": 0.0319999105586003
+        },
+        "single": {
+          "PU ~ PEOU": 0.0380947850747337,
+          "ATU ~ PEOU": 0.0354672680465163,
+          "ATU ~ PU": 0.0361321047211371,
+          "BI ~ PU": 0.0391305783630712,
+          "BI ~ ATU": 0.033747011170342,
+          "USE ~ BI": 0.0308454270559313
+        }
+      },
+      "cpu_seconds_per_100_resamples_sequential": [1.89, 1.989, 2.045, 2.125, 1.882],
+      "cpu_seconds_single_run_500": 8.217,
+      "computed_verdicts": {
+        "chunk_reproducible": true,
+        "own_type7_equals_infer": true,
+        "no_duplicate_draws_across_chunks": true,
+        "chunked_vs_single_ci_diff_within_4_mc_se": true
+      }
+    },
+    "own_bootstrap_loop": {
+      "seconds_per_100": 7.42100000000005,
+      "sd_own_loop_100": {
+        "PU ~ PEOU": 0.037386544686261,
+        "ATU ~ PEOU": 0.0366268666062734,
+        "ATU ~ PU": 0.0317025112667206,
+        "BI ~ PU": 0.0406964174830813,
+        "BI ~ ATU": 0.035414230551895,
+        "USE ~ BI": 0.0288575612421112
+      },
+      "sd_csem_500": {
+        "PU ~ PEOU": 0.0380947850747337,
+        "ATU ~ PEOU": 0.0354672680465163,
+        "ATU ~ PU": 0.0361321047211371,
+        "BI ~ PU": 0.0391305783630712,
+        "BI ~ ATU": 0.033747011170342,
+        "USE ~ BI": 0.0308454270559313
+      },
+      "note": "A hand-written loop around csem() gives the same sampling distribution; cSEM's resampler additionally runs summarize()/verify()/effects per draw."
+    },
+    "timing_plsc_seconds_per_100": 7.36999999999995,
+    "plsc_admissible_of_100": 90,
+    "parallel": {
+      "eval_plan_values": ["sequential", "multicore", "multisession"],
+      "cores_detected": 8,
+      "future_available_cores": 8,
+      "R": 200,
+      "sequential": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 14.269,
+        "result": {
+          "draws": [200, 6],
+          ".digest": "b467f413016354f1a11e32f46c605bd9"
+        }
+      },
+      "multisession": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 10.315,
+        "result": {
+          "draws": [200, 6],
+          ".digest": "b467f413016354f1a11e32f46c605bd9"
+        }
+      },
+      "multicore": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 5.21100000000001,
+        "result": {
+          "draws": [200, 6],
+          ".digest": "b467f413016354f1a11e32f46c605bd9"
+        }
+      },
+      "multisession_identical_to_sequential": true,
+      "multicore_identical_to_sequential": true,
+      "plan_after_call": "FutureStrategy",
+      "note": "cSEM calls future::plan() itself; worker count is all available cores unless options(future.workers / mc.cores) or env R_FUTURE_AVAILABLECORES_FALLBACK etc. restrict it."
+    },
+    "inadmissibles": {
+      "setup": "random subsample n = 45 of tam-v1, PLSc ('=~', default), .R = 100, .seed = 3",
+      "original_fit_verify": {
+        "1": false,
+        "2": true,
+        "3": true,
+        "4": true,
+        "5": true
+      },
+      "by_option": {
+        "drop": {
+          "ok": false,
+          "error": "The following error occured in the `resamplecSEMResults()` functions:\nLess than 2 admissible results produced. Consider setting `.handle_inadmissibles == 'replace'` instead.",
+          "error_class": "simpleError",
+          "warnings": [
+            "The following issue was encountered in the `resamplecSEMResults()` function:\nEstimation based on the original data has produced inadmissible results.\nThis may be a sign that something is wrong. Resampling will continue but may not produce reliable results."
+          ],
+          "n_warnings": 1,
+          "messages": [],
+          "seconds": 6.72399999999999
+        },
+        "ignore": {
+          "ok": true,
+          "warnings": [
+            "The following issue was encountered in the `resamplecSEMResults()` function:\nEstimation based on the original data has produced inadmissible results.\nThis may be a sign that something is wrong. Resampling will continue but may not produce reliable results."
+          ],
+          "n_warnings": 1,
+          "messages": [],
+          "seconds": 10.549,
+          "result": {
+            "number_of_runs": 100,
+            "number_of_admissibles": 100,
+            "rows_in_draw_matrix": 100,
+            "handle": "ignore",
+            "max_abs_loading_draw": 2.03599868534436
+          }
+        },
+        "replace": {
+          "ok": false,
+          "error": "NAs are not allowed in subscripted assignments",
+          "error_class": "simpleError",
+          "warnings": [
+            "The following issue was encountered in the `resamplecSEMResults()` function:\nEstimation based on the original data has produced inadmissible results.\nThis may be a sign that something is wrong. Resampling will continue but may not produce reliable results.",
+            "the standard deviation is zero"
+          ],
+          "n_warnings": 2,
+          "messages": [
+            "Caught simpleError. Canceling all iterations ..."
+          ],
+          "seconds": 37.486
+        }
+      },
+      "how_decided": "each replication is checked with verify(); sum(verify(.)) != 0 => inadmissible",
+      "replace_uses_seed_plus_1": "resamplecSEMResultsCore(): replacements are drawn with .seed + 1, .seed + 2, ... - so with 'replace' the extra draws of seed S coincide with the first draws of seed S + 1. Never combine 'replace' with consecutive chunk seeds."
+    },
+    "replication_error": {
+      "setup": "12-row data set where one indicator is constant in many bootstrap samples",
+      "ok": false,
+      "error": "NAs are not allowed in subscripted assignments",
+      "error_class": "simpleError",
+      "warnings": [
+        "the standard deviation is zero"
+      ],
+      "n_warnings": 1,
+      "messages": [],
+      "seconds": 0.0080000000000382
+    },
+    "sign_change_option": {
+      "values": ["none", "individual", "individual_reestimate", "construct_reestimate"],
+      "setup": "n = 40 random subsample, USE3/USE4 replaced by uniform noise 1..7 (weak block), classic Mode A, .R = 100, .seed = 9, .handle_inadmissibles = 'ignore'",
+      "original_weights_USE": {
+        "USE1": 0.570583533512271,
+        "USE2": 0.544108194096503,
+        "USE3": 0.100789176819594,
+        "USE4": 0.0914393351878105
+      },
+      "by_option": {
+        "none": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 7.93900000000002,
+          "result": {
+            "recorded": "none",
+            "admissible": 100,
+            "draws": 100,
+            "draws_with_any_weight_sign_differing_from_original": 45,
+            "negative_loading_draws": 64,
+            "sd_USE_paths": 0.100924486013794
+          }
+        },
+        "individual": {
+          "ok": true,
+          "warnings": [
+            "Element 3 must be length 5, not 0",
+            "Element 5 must be length 5, not 0",
+            "Element 6 must be length 5, not 0",
+            "Element 7 must be length 5, not 0",
+            "Element 8 must be length 5, not 0",
+            "Element 11 must be length 5, not 0",
+            "Element 14 must be length 5, not 0",
+            "Element 19 must be length 5, not 0",
+            "Element 21 must be length 5, not 0",
+            "Element 22 must be length 5, not 0",
+            "Element 27 must be length 5, not 0",
+            "Element 31 must be length 5, not 0",
+            "Element 32 must be length 5, not 0",
+            "Element 33 must be length 5, not 0",
+            "Element 38 must be length 5, not 0",
+            "Element 39 must be length 5, not 0",
+            "Element 40 must be length 5, not 0",
+            "Element 42 must be length 5, not 0",
+            "Element 54 must be length 5, not 0",
+            "Element 55 must be length 5, not 0",
+            "Element 56 must be length 5, not 0",
+            "Element 57 must be length 5, not 0",
+            "Element 61 must be length 5, not 0",
+            "Element 62 must be length 5, not 0",
+            "Element 66 must be length 5, not 0",
+            "Element 67 must be length 5, not 0",
+            "Element 68 must be length 5, not 0",
+            "Element 69 must be length 5, not 0",
+            "Element 71 must be length 5, not 0",
+            "Element 72 must be length 5, not 0",
+            "Element 73 must be length 5, not 0",
+            "Element 74 must be length 5, not 0",
+            "Element 75 must be length 5, not 0",
+            "Element 76 must be length 5, not 0",
+            "Element 79 must be length 5, not 0",
+            "Element 83 must be length 5, not 0",
+            "Element 84 must be length 5, not 0",
+            "Element 85 must be length 5, not 0",
+            "Element 87 must be length 5, not 0",
+            "Element 88 must be length 5, not 0",
+            "Element 91 must be length 5, not 0",
+            "Element 93 must be length 5, not 0",
+            "Element 98 must be length 5, not 0",
+            "Element 99 must be length 5, not 0",
+            "Element 100 must be length 5, not 0"
+          ],
+          "n_warnings": 45,
+          "messages": [],
+          "seconds": 8.05400000000003,
+          "result": {
+            "recorded": "individual",
+            "admissible": 100,
+            "draws": 55,
+            "draws_with_any_weight_sign_differing_from_original": 0,
+            "negative_loading_draws": 10,
+            "sd_USE_paths": 0.0989785343629367
+          }
+        },
+        "individual_reestimate": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 7.85899999999998,
+          "result": {
+            "recorded": "individual_reestimate",
+            "admissible": 100,
+            "draws": 100,
+            "draws_with_any_weight_sign_differing_from_original": 0,
+            "negative_loading_draws": 33,
+            "sd_USE_paths": 0.104958398279057
+          }
+        },
+        "construct_reestimate": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 7.63600000000002,
+          "result": {
+            "recorded": "construct_reestimate",
+            "admissible": 100,
+            "draws": 100,
+            "draws_with_any_weight_sign_differing_from_original": 45,
+            "negative_loading_draws": 64,
+            "sd_USE_paths": 0.100924486013794
+          }
+        }
+      },
+      "identical_to_none": {
+        "none": true,
+        "individual": false,
+        "individual_reestimate": false,
+        "construct_reestimate": false
+      },
+      "applies_only_when": "source: resamplecSEMResultsCore applies the option only if .approach_weights == 'PLS-PM'; the reference is the sign of the ORIGINAL weight estimates"
+    },
+    "dominant_indicators": {
+      "argument": ".dominant_indicators = list(<construct> = '<indicator>'): flips the construct sign so the dominant indicator's weight/loading is positive",
+      "default": "NULL",
+      "point_estimate": {
+        "ok": false,
+        "error": "invalid subscript type 'list'",
+        "error_class": "simpleError",
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.0120000000000005
+      },
+      "bootstrap": {
+        "ok": false,
+        "error": "invalid subscript type 'list'",
+        "error_class": "simpleError",
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.00899999999995771
+      },
+      "dominant_is_noise_indicator_USE3": {
+        "ok": false,
+        "error": "invalid subscript type 'list'",
+        "error_class": "simpleError",
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.00799999999998136
+      }
+    },
+    "user_funs": {
+      "ok": true,
+      "warnings": [],
+      "n_warnings": 0,
+      "messages": [],
+      "seconds": 2.90899999999999,
+      "result": {
+        "quantities": ["Path_estimates", "Loading_estimates", "Weight_estimates", "Indirect_effect", "Total_effect", "r2", "htmt"],
+        "r2_dim": [20, 4],
+        "r2_colnames": ["PU", "ATU", "BI", "USE"],
+        "r2_original": {
+          "PU": 0.198366437392963,
+          "ATU": 0.195792350714501,
+          "BI": 0.243552682536377,
+          "USE": 0.0526261868898828
+        },
+        "htmt_dim": [20, 10]
+      }
+    },
+    "jackknife_smoke": {
+      "ok": true,
+      "warnings": [],
+      "n_warnings": 0,
+      "messages": [],
+      "seconds": 8.38600000000002,
+      "result": {
+        "setup": "first 120 rows",
+        "method": "jackknife",
+        "runs": 499,
+        "draws": [120, 6]
+      }
+    },
+    "threads": {
+      "OMP_NUM_THREADS_in_this_process": "1",
+      "seconds_per_100_resamples_by_OMP_NUM_THREADS": {
+        "1": 9.521,
+        "8": 10.161
+      },
+      "note": "services/r-engine/bin/rscript defaults OMP_NUM_THREADS to 1"
+    }
+  }
+}

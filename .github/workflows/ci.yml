@@ -1,0 +1,44 @@
+# SEM Studio continuous integration.
+# Jobs mirror the local commands documented in README.md; nothing here is CI-only.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  web:
+    name: web + contracts + registry
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm run test
+      - name: JSON Schema is up to date with the Zod contracts
+        run: npm run check-schema --workspace @sem-studio/contracts
+      - run: npm run build
+
+  fixtures:
+    name: synthetic fixtures are reproducible
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Regenerate in memory and compare byte-for-byte
+        # Also the first run on Linux: the generator was only verified on macOS arm64.
+        run: uv run --python 3.12 --with numpy python packages/fixtures/scripts/generate_synthetic.py --check

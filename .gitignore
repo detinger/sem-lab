@@ -1,0 +1,49 @@
+# dependencies / build
+node_modules/
+dist/
+.vite/
+coverage/
+*.tsbuildinfo
+playwright-report/
+test-results/
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# R
+services/r-engine/r-lib/
+.Rhistory
+.RData
+.Rproj.user/
+
+# local runtime data (job store, uploaded datasets) — never commit
+.sem-studio-data/
+apps/api/.data/
+
+# env / secrets
+.env
+.env.local
+.env.*.local
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Source material supplied by the project owner (encrypted SmartPLS project files + raw data).
+# Cleaned copies with provenance live in packages/fixtures/third-party/.
+TEMP/
+
+# Raw sample data whose redistribution terms are unverified (see
+# packages/fixtures/third-party/smartpls-samples/PROVENANCE.md). Metadata and hashes stay
+# tracked; regenerate the CSVs locally from TEMP/ with packages/fixtures/scripts/build_third_party.py.
+packages/fixtures/third-party/smartpls-samples/tam/data.csv
+packages/fixtures/third-party/smartpls-samples/utaut/data.csv
+packages/fixtures/third-party/smartpls-samples/oi/data.csv
+packages/fixtures/third-party/smartpls-samples/concise-guide/data.csv
+packages/fixtures/third-party/smartpls-samples/hbat/data.csv

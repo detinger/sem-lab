@@ -1,0 +1,171 @@
+{
+  "constructs": [
+    {
+      "id": "c_peou",
+      "indicatorIds": [
+        "i_peou1",
+        "i_peou2",
+        "i_peou3",
+        "i_peou4"
+      ],
+      "label": "Perceived ease of use (synthetic)",
+      "measurement": "reflective",
+      "name": "PEOU"
+    },
+    {
+      "id": "c_pu",
+      "indicatorIds": [
+        "i_pu1",
+        "i_pu2",
+        "i_pu3",
+        "i_pu4"
+      ],
+      "label": "Perceived usefulness (synthetic)",
+      "measurement": "reflective",
+      "name": "PU"
+    },
+    {
+      "id": "c_bi",
+      "indicatorIds": [
+        "i_bi1",
+        "i_bi2",
+        "i_bi3"
+      ],
+      "label": "Behavioural intention (synthetic)",
+      "measurement": "reflective",
+      "name": "BI"
+    }
+  ],
+  "indicators": [
+    {
+      "column": "peou1",
+      "id": "i_peou1",
+      "level": "ordinal",
+      "name": "peou1",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "peou2",
+      "id": "i_peou2",
+      "level": "ordinal",
+      "name": "peou2",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "peou3",
+      "id": "i_peou3",
+      "level": "ordinal",
+      "name": "peou3",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "peou4",
+      "id": "i_peou4",
+      "level": "ordinal",
+      "name": "peou4",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "pu1",
+      "id": "i_pu1",
+      "level": "ordinal",
+      "name": "pu1",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "pu2",
+      "id": "i_pu2",
+      "level": "ordinal",
+      "name": "pu2",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "pu3",
+      "id": "i_pu3",
+      "level": "ordinal",
+      "name": "pu3",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "pu4",
+      "id": "i_pu4",
+      "level": "ordinal",
+      "name": "pu4",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "bi1",
+      "id": "i_bi1",
+      "level": "ordinal",
+      "name": "bi1",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "bi2",
+      "id": "i_bi2",
+      "level": "ordinal",
+      "name": "bi2",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "bi3",
+      "id": "i_bi3",
+      "level": "ordinal",
+      "name": "bi3",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r_peou_pu",
+      "kind": "structural",
+      "sourceId": "c_peou",
+      "targetId": "c_pu"
+    },
+    {
+      "id": "r_peou_bi",
+      "kind": "structural",
+      "sourceId": "c_peou",
+      "targetId": "c_bi"
+    },
+    {
+      "id": "r_pu_bi",
+      "kind": "structural",
+      "sourceId": "c_pu",
+      "targetId": "c_bi"
+    }
+  ]
+}

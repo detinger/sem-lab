@@ -1,0 +1,17 @@
+[
+  {
+    "analysis": {
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "Must be rejected by validation before any estimation.",
+    "id": "pls-csem"
+  }
+]

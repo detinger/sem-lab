@@ -1,0 +1,61 @@
+{
+  "generatedAt": "2026-11-19T12:53:52.613Z",
+  "generatedBy": "apps/web/src/tests/spike (npm run spike:evidence -w @sem-studio/web)",
+  "runtime": {
+    "node": "v26.13.1",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "packages": [
+    {
+      "name": "zod",
+      "version": "4.6.7",
+      "license": "MIT"
+    }
+  ],
+  "data": {
+    "nativeToJSONSchema": true,
+    "draft2020": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "pls",
+            "cb"
+          ]
+        },
+        "label": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "weight": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "id",
+              "weight"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "kind",
+        "items"
+      ],
+      "additionalProperties": false
+    },
+    "draft7Schema": "http://json-schema.org/draft-07/schema#",
+    "notes": "optional fields are omitted from required; objects get additionalProperties:false"
+  }
+}

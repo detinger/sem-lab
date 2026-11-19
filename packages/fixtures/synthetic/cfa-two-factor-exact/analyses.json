@@ -1,0 +1,44 @@
+[
+  {
+    "analysis": {
+      "cb": {
+        "identification": "marker",
+        "meanStructure": false
+      },
+      "engine": "r-lavaan",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "ML CFA on exact data, marker identification.",
+    "id": "cb-lavaan-ml-marker"
+  },
+  {
+    "analysis": {
+      "cb": {
+        "identification": "std-lv",
+        "meanStructure": false
+      },
+      "engine": "r-lavaan",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "ML CFA on exact data, std-lv identification.",
+    "id": "cb-lavaan-ml-stdlv"
+  },
+  {
+    "analysis": {
+      "cb": {
+        "identification": "marker",
+        "meanStructure": false
+      },
+      "engine": "py-semopy",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "ML CFA in semopy on exact data.",
+    "id": "cb-semopy-ml"
+  }
+]

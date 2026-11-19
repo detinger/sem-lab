@@ -1,0 +1,3 @@
+# project-local R library and build logs are machine-specific; the lock file is the record
+r-lib/
+install-logs/

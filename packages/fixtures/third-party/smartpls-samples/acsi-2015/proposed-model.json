@@ -1,0 +1,123 @@
+{
+  "label": "SEM Studio specification — not extracted from the SmartPLS project file",
+  "status": "proposal-awaiting-architect-approval",
+  "dataset": "acsi-2015",
+  "id": "acsi-v1",
+  "summary": "ACSI base model without the complaints construct, matching the 'ACSI (modified)' / 'ACSI (without COMP)' naming of the sample files and the five constructs present in the measurement assignment.",
+  "measurementMode": "reflective (SEM Studio's choice; the plain side files do not state the measurement mode)",
+  "constructs": [
+    {
+      "code": "CUEX",
+      "sourceName": "CUEX",
+      "label": "Customer Expectations",
+      "indicators": [
+        "CUSTOMX",
+        "OVERALLX",
+        "WRONGX"
+      ]
+    },
+    {
+      "code": "PERQ",
+      "sourceName": "PERQ",
+      "label": "Perceived Quality",
+      "indicators": [
+        "CUSTOMQ",
+        "OVERALLQ",
+        "WRONGQ"
+      ]
+    },
+    {
+      "code": "PERV",
+      "sourceName": "PERV",
+      "label": "Perceived Value",
+      "indicators": [
+        "PQ",
+        "QP"
+      ]
+    },
+    {
+      "code": "CUSA",
+      "sourceName": "CUSA",
+      "label": "Customer Satisfaction (ACSI)",
+      "indicators": [
+        "CONFIRM",
+        "IDEAL",
+        "SATIS"
+      ]
+    },
+    {
+      "code": "CUSL",
+      "sourceName": "CUSL",
+      "label": "Customer Loyalty",
+      "indicators": [
+        "REPUR"
+      ]
+    }
+  ],
+  "paths": [
+    {
+      "from": "CUEX",
+      "to": "PERQ"
+    },
+    {
+      "from": "CUEX",
+      "to": "PERV"
+    },
+    {
+      "from": "PERQ",
+      "to": "PERV"
+    },
+    {
+      "from": "CUEX",
+      "to": "CUSA"
+    },
+    {
+      "from": "PERQ",
+      "to": "CUSA"
+    },
+    {
+      "from": "PERV",
+      "to": "CUSA"
+    },
+    {
+      "from": "CUSA",
+      "to": "CUSL"
+    }
+  ],
+  "variants": [
+    {
+      "id": "acsi-v1-complaints",
+      "summary": "Full base model of Fig. 1 with complaints as a single-indicator construct COMPL measured by the binary item COMP: adds CUSA -> COMPL and COMPL -> CUSL. Needs an explicit decision on how a binary single indicator is treated; not recommended as a default example.",
+      "additionalConstructs": [
+        {
+          "code": "COMPL",
+          "indicators": [
+            "COMP"
+          ]
+        }
+      ],
+      "additionalPaths": [
+        {
+          "from": "CUSA",
+          "to": "COMPL"
+        },
+        {
+          "from": "COMPL",
+          "to": "CUSL"
+        }
+      ]
+    }
+  ],
+  "citations": [
+    "Fornell, C., Johnson, M. D., Anderson, E. W., Cha, J., & Bryant, B. E. (1996). The American Customer Satisfaction Index: Nature, purpose, and findings. Journal of Marketing, 60(4), 7-18. https://doi.org/10.1177/002224299606000403",
+    "Morgeson, F. V., III, Hult, G. T. M., Sharma, U., & Fornell, C. (2023). The American Customer Satisfaction Index (ACSI): A sample dataset and description. Data in Brief, 48, 109123. https://doi.org/10.1016/j.dib.2023.109123"
+  ],
+  "citationBasis": "All nine arrows of the base model were read from Fig. 1 ('The ACSI base model') of Morgeson et al. (2023), which was opened; the seven proposed paths are the seven that do not involve complaints. Fornell et al. (1996) is cited as the original model and was not opened.",
+  "notes": [
+    "CUSL is measured by the single indicator REPUR: reliability and AVE are not applicable; in CB-SEM the error variance of a single indicator must be fixed.",
+    "PERV has two indicators (PQ, QP).",
+    "HIGHPTOL and LOWPTOL (price tolerance) are in the data but are not assigned to CUSL in the sample. They contain the codes 26 and 101 although the data dictionary gives 0-25 as the valid range; do not use them as indicators without a documented recode.",
+    "COMP is binary (0/1) and HANDLE is answered only by complainers (1,371 of 8,239).",
+    "Missing data: the 12 model indicators have missing values, so this dataset is the natural listwise-versus-FIML fixture. The sample's own setting for missing values is MEAN_REPLACEMENT."
+  ]
+}

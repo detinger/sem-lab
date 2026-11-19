@@ -1,0 +1,127 @@
+{
+  "constructs": [
+    {
+      "id": "c_f",
+      "indicatorIds": [
+        "i_f1",
+        "i_f2",
+        "i_f3",
+        "i_f4"
+      ],
+      "label": "Composite F",
+      "measurement": "composite-formative",
+      "name": "F"
+    },
+    {
+      "id": "c_x",
+      "indicatorIds": [
+        "i_x1",
+        "i_x2",
+        "i_x3"
+      ],
+      "label": "Reflective X",
+      "measurement": "reflective",
+      "name": "X"
+    },
+    {
+      "id": "c_y",
+      "indicatorIds": [
+        "i_y1",
+        "i_y2",
+        "i_y3",
+        "i_y4"
+      ],
+      "label": "Reflective Y",
+      "measurement": "reflective",
+      "name": "Y"
+    }
+  ],
+  "indicators": [
+    {
+      "column": "f1",
+      "id": "i_f1",
+      "level": "continuous",
+      "name": "f1"
+    },
+    {
+      "column": "f2",
+      "id": "i_f2",
+      "level": "continuous",
+      "name": "f2"
+    },
+    {
+      "column": "f3",
+      "id": "i_f3",
+      "level": "continuous",
+      "name": "f3"
+    },
+    {
+      "column": "f4",
+      "id": "i_f4",
+      "level": "continuous",
+      "name": "f4"
+    },
+    {
+      "column": "x1",
+      "id": "i_x1",
+      "level": "continuous",
+      "name": "x1"
+    },
+    {
+      "column": "x2",
+      "id": "i_x2",
+      "level": "continuous",
+      "name": "x2"
+    },
+    {
+      "column": "x3",
+      "id": "i_x3",
+      "level": "continuous",
+      "name": "x3"
+    },
+    {
+      "column": "y1",
+      "id": "i_y1",
+      "level": "continuous",
+      "name": "y1"
+    },
+    {
+      "column": "y2",
+      "id": "i_y2",
+      "level": "continuous",
+      "name": "y2"
+    },
+    {
+      "column": "y3",
+      "id": "i_y3",
+      "level": "continuous",
+      "name": "y3"
+    },
+    {
+      "column": "y4",
+      "id": "i_y4",
+      "level": "continuous",
+      "name": "y4"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r_f_y",
+      "kind": "structural",
+      "sourceId": "c_f",
+      "targetId": "c_y"
+    },
+    {
+      "id": "r_x_y",
+      "kind": "structural",
+      "sourceId": "c_x",
+      "targetId": "c_y"
+    },
+    {
+      "id": "r_f_x",
+      "kind": "covariance",
+      "sourceId": "c_f",
+      "targetId": "c_x"
+    }
+  ]
+}

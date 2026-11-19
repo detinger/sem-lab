@@ -1,0 +1,62 @@
+[
+  {
+    "analysis": {
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "Classic PLS-SEM (Mode A, path weighting); loadings, path, R^2, repeatability and sign handling.",
+    "id": "pls-csem"
+  },
+  {
+    "analysis": {
+      "engine": "r-seminr",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "Same specification in seminr; compare with r-csem under matching options.",
+    "id": "pls-seminr"
+  },
+  {
+    "analysis": {
+      "engine": "py-plspm",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "Same specification in Python plspm; compare with r-csem under matching options.",
+    "id": "pls-plspm"
+  },
+  {
+    "analysis": {
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "Reverse-scoring check: rebind indicator i_x3 to column x3_rev with reverseScored=true and scale {min:1,max:7}; (1+7) - x3_rev = x3, so every estimate must equal the pls-csem run exactly.",
+    "id": "pls-csem-reverse"
+  }
+]

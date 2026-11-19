@@ -1,0 +1,44 @@
+[
+  {
+    "analysis": {
+      "cb": {
+        "identification": "marker",
+        "meanStructure": false
+      },
+      "engine": "r-lavaan",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "ML CFA, marker identification (g1 loading fixed to 1).",
+    "id": "cb-lavaan-ml-marker"
+  },
+  {
+    "analysis": {
+      "cb": {
+        "identification": "std-lv",
+        "meanStructure": false
+      },
+      "engine": "r-lavaan",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "ML CFA, factor variance fixed to 1.",
+    "id": "cb-lavaan-ml-stdlv"
+  },
+  {
+    "analysis": {
+      "cb": {
+        "identification": "marker",
+        "meanStructure": false
+      },
+      "engine": "py-semopy",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "ML CFA in semopy; compare with lavaan.",
+    "id": "cb-semopy-ml"
+  }
+]

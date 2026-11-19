@@ -1,0 +1,90 @@
+[
+  {
+    "analysis": {
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "method": "plsc",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "PLSc on exact data: recovers the population common-factor parameters.",
+    "id": "plsc-csem"
+  },
+  {
+    "analysis": {
+      "engine": "r-seminr",
+      "estimator": "pls-pm",
+      "method": "plsc",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "PLSc in seminr on exact data.",
+    "id": "plsc-seminr"
+  },
+  {
+    "analysis": {
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "Classic PLS-SEM on exact data: equals the classic-PLS population limit in population.json.",
+    "id": "pls-csem"
+  },
+  {
+    "analysis": {
+      "engine": "py-plspm",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "Classic PLS-SEM in Python plspm on exact data.",
+    "id": "pls-plspm"
+  },
+  {
+    "analysis": {
+      "cb": {
+        "identification": "marker",
+        "meanStructure": false
+      },
+      "engine": "r-lavaan",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "ML SEM on exact data: chi-square 0, population parameters.",
+    "id": "cb-lavaan-ml"
+  },
+  {
+    "analysis": {
+      "cb": {
+        "identification": "marker",
+        "meanStructure": false
+      },
+      "engine": "py-semopy",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "ML SEM in semopy on exact data.",
+    "id": "cb-semopy-ml"
+  }
+]

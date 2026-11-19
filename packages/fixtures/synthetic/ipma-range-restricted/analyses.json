@@ -1,0 +1,38 @@
+[
+  {
+    "analysis": {
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "ipma": {
+        "targetConstructId": "c_bi"
+      },
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "IPMA with target BI: importance = total effects, performance from the ORIGINAL endpoints 1 and 7.",
+    "id": "ipma-csem"
+  },
+  {
+    "analysis": {
+      "engine": "r-seminr",
+      "estimator": "pls-pm",
+      "ipma": {
+        "targetConstructId": "c_bi"
+      },
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "Same IPMA specification via seminr.",
+    "id": "ipma-seminr"
+  }
+]

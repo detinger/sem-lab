@@ -1,0 +1,59 @@
+.ui-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-dialog);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-11);
+  background: rgba(10, 16, 24, 0.5);
+}
+
+.ui-dialog {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 48px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elevated);
+  color: var(--text);
+  box-shadow: var(--shadow-lg);
+}
+
+.ui-dialog:focus {
+  outline: none;
+}
+
+.ui-dialog__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-7) var(--space-9);
+  border-bottom: 1px solid var(--border);
+}
+
+.ui-dialog__title {
+  flex: 1;
+  margin: 0;
+  font-size: 17px;
+}
+
+.ui-dialog__body {
+  flex: 1;
+  min-height: 0;
+  padding: var(--space-9);
+  overflow-y: auto;
+}
+
+.ui-dialog__description {
+  margin-top: 0;
+  color: var(--text-muted);
+}
+
+.ui-dialog__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-4);
+  padding: var(--space-6) var(--space-9);
+  border-top: 1px solid var(--border);
+}

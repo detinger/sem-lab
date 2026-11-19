@@ -1,0 +1,48 @@
+[project]
+name = "sem-studio-api"
+version = "0.0.0"
+description = "SEM Studio API service (Phase 0: pinned Python engine environment for semopy and plspm)"
+requires-python = "==3.12.*"
+# Exact pins. They are the result of the Phase 0 compatibility matrix, not of taste:
+# see docs/validation/phase-0/python-spike.md and
+# docs/validation/phase-0/evidence/python/compat_matrix.json before changing any of them.
+#   * pandas must stay < 3.0  -> plspm 0.5.7 cannot estimate any model on pandas >= 3.0
+#   * scipy  must stay < 1.14 -> semopy 2.3.11 polychoric/ordinal route needs scipy.stats.mvn.mvnun
+#   * numpy  must stay < 2.4  -> semopy 2.3.11 calls np.ma.corrcoef(bias=...) (removed in numpy 2.4);
+#                                scipy 1.13.1 itself requires numpy < 2.3
+dependencies = [
+    "numpy==2.2.6",
+    "pandas==2.3.3",
+    "scipy==1.13.1",
+    "semopy==2.3.11",
+    "plspm==0.5.7",
+]
+
+[dependency-groups]
+dev = [
+    "pytest==9.2.0",
+    "ruff==0.17.5",
+]
+
+[tool.uv]
+# This is a service, not a distributable library: nothing to build or install.
+package = false
+# plspm imports statsmodels (OLS for the inner model and the path scheme) and scikit-learn
+# (PCA for unidimensionality) directly, so their versions can move numbers. They are
+# transitive dependencies, therefore pinned here (and in uv.lock) instead of being listed
+# as our own. Every other transitive package is pinned by uv.lock only.
+constraint-dependencies = [
+    "statsmodels==0.14.6",
+    "scikit-learn==1.7.2",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]

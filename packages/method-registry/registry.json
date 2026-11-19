@@ -1,0 +1,953 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-11-19",
+  "engines": [
+    {
+      "id": "r-csem",
+      "language": "R",
+      "package": "cSEM",
+      "version": "0.7.1",
+      "license": "GPL-3",
+      "notes": "R 4.6.2; pinned in services/r-engine/renv.lock"
+    },
+    {
+      "id": "r-seminr",
+      "language": "R",
+      "package": "seminr",
+      "version": "2.6.0",
+      "license": "GPL-3"
+    },
+    {
+      "id": "r-lavaan",
+      "language": "R",
+      "package": "lavaan",
+      "version": "0.7-3",
+      "license": "GPL (>= 2)"
+    },
+    {
+      "id": "py-semopy",
+      "language": "Python",
+      "package": "semopy",
+      "version": "2.3.11",
+      "license": "MIT",
+      "notes": "Python 3.12; pinned in apps/api/uv.lock"
+    },
+    {
+      "id": "py-plspm",
+      "language": "Python",
+      "package": "plspm",
+      "version": "0.5.7",
+      "license": "GPL-3",
+      "notes": "Unofficial GoogleCloudPlatform port, not an officially supported Google product; repository archived (read-only) since 2026-07-30. Python 3.10–3.12 verified on macOS."
+    }
+  ],
+  "citations": [
+    {
+      "key": "lohmoller1989",
+      "text": "Lohmöller, J.-B. (1989). Latent variable path modeling with partial least squares. Physica."
+    },
+    {
+      "key": "wold1982",
+      "text": "Wold, H. (1982). Soft modeling: The basic design and some extensions. In K. G. Jöreskog & H. Wold (Eds.), Systems under indirect observation (Part II, pp. 1–54). North-Holland."
+    },
+    {
+      "key": "dijkstra2015",
+      "text": "Dijkstra, T. K., & Henseler, J. (2015). Consistent partial least squares path modeling. MIS Quarterly, 39(2), 297–316."
+    },
+    {
+      "key": "dijkstra2017",
+      "text": "Dijkstra, T. K. (2017). A perfect match between a model and a mode. In H. Latan & R. Noonan (Eds.), Partial least squares path modeling (pp. 55–80). Springer."
+    },
+    {
+      "key": "cronbach1951",
+      "text": "Cronbach, L. J. (1951). Coefficient alpha and the internal structure of tests. Psychometrika, 16(3), 297–334."
+    },
+    {
+      "key": "fornell1981",
+      "text": "Fornell, C., & Larcker, D. F. (1981). Evaluating structural equation models with unobservable variables and measurement error. Journal of Marketing Research, 18(1), 39–50."
+    },
+    {
+      "key": "henseler2015",
+      "text": "Henseler, J., Ringle, C. M., & Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. Journal of the Academy of Marketing Science, 43(1), 115–135."
+    },
+    {
+      "key": "roemer2021",
+      "text": "Roemer, E., Schuberth, F., & Henseler, J. (2021). HTMT2 – an improved criterion for assessing discriminant validity in structural equation modeling. Industrial Management & Data Systems, 121(12), 2637–2650."
+    },
+    {
+      "key": "cohen1988",
+      "text": "Cohen, J. (1988). Statistical power analysis for the behavioral sciences (2nd ed.). Lawrence Erlbaum."
+    },
+    {
+      "key": "hair2022",
+      "text": "Hair, J. F., Hult, G. T. M., Ringle, C. M., & Sarstedt, M. (2022). A primer on partial least squares structural equation modeling (PLS-SEM) (3rd ed.). Sage."
+    },
+    {
+      "key": "henseler2014",
+      "text": "Henseler, J., Dijkstra, T. K., Sarstedt, M., et al. (2014). Common beliefs and reality about PLS. Organizational Research Methods, 17(2), 182–209."
+    },
+    {
+      "key": "bollen1987",
+      "text": "Bollen, K. A. (1987). Total, direct, and indirect effects in structural equation models. Sociological Methodology, 17, 37–69."
+    },
+    {
+      "key": "zhao2010",
+      "text": "Zhao, X., Lynch, J. G., & Chen, Q. (2010). Reconsidering Baron and Kenny: Myths and truths about mediation analysis. Journal of Consumer Research, 37(2), 197–206."
+    },
+    {
+      "key": "efron1993",
+      "text": "Efron, B., & Tibshirani, R. J. (1993). An introduction to the bootstrap. Chapman & Hall."
+    },
+    {
+      "key": "ringle2016",
+      "text": "Ringle, C. M., & Sarstedt, M. (2016). Gain more insight from your PLS-SEM results: The importance-performance map analysis. Industrial Management & Data Systems, 116(9), 1865–1886."
+    },
+    {
+      "key": "shmueli2019",
+      "text": "Shmueli, G., Sarstedt, M., Hair, J. F., et al. (2019). Predictive model assessment in PLS-SEM: Guidelines for using PLSpredict. European Journal of Marketing, 53(11), 2322–2347."
+    },
+    {
+      "key": "liengaard2021",
+      "text": "Liengaard, B. D., Sharma, P. N., Hult, G. T. M., et al. (2021). Prediction: Coveted, yet forsaken? Introducing a cross-validated predictive ability test in partial least squares path modeling. Decision Sciences, 52(2), 362–392."
+    },
+    {
+      "key": "henseler2016",
+      "text": "Henseler, J., Ringle, C. M., & Sarstedt, M. (2016). Testing measurement invariance of composites using partial least squares. International Marketing Review, 33(3), 405–431."
+    },
+    {
+      "key": "sarstedt2011",
+      "text": "Sarstedt, M., Henseler, J., & Ringle, C. M. (2011). Multigroup analysis in partial least squares (PLS) path modeling. Advances in International Marketing, 22, 195–218."
+    },
+    {
+      "key": "sarstedt2019",
+      "text": "Sarstedt, M., Hair, J. F., Cheah, J.-H., Becker, J.-M., & Ringle, C. M. (2019). How to specify, estimate, and validate higher-order constructs in PLS-SEM. Australasian Marketing Journal, 27(3), 197–211."
+    },
+    {
+      "key": "henseler2010",
+      "text": "Henseler, J., & Chin, W. W. (2010). A comparison of approaches for the analysis of interaction effects between latent variables using partial least squares path modeling. Structural Equation Modeling, 17(1), 82–109."
+    },
+    {
+      "key": "hult2018",
+      "text": "Hult, G. T. M., Hair, J. F., Proksch, D., et al. (2018). Addressing endogeneity in international marketing applications of partial least squares structural equation modeling. Journal of International Marketing, 26(3), 1–21."
+    },
+    {
+      "key": "rosseel2012",
+      "text": "Rosseel, Y. (2012). lavaan: An R package for structural equation modeling. Journal of Statistical Software, 48(2), 1–36."
+    },
+    {
+      "key": "bollen1989",
+      "text": "Bollen, K. A. (1989). Structural equations with latent variables. Wiley."
+    },
+    {
+      "key": "hu1999",
+      "text": "Hu, L., & Bentler, P. M. (1999). Cutoff criteria for fit indexes in covariance structure analysis. Structural Equation Modeling, 6(1), 1–55."
+    },
+    {
+      "key": "kolenikov2012",
+      "text": "Kolenikov, S., & Bollen, K. A. (2012). Testing negative error variances: Is a Heywood case a symptom of misspecification? Sociological Methods & Research, 41(1), 124–167."
+    },
+    {
+      "key": "enders2001",
+      "text": "Enders, C. K., & Bandalos, D. L. (2001). The relative performance of full information maximum likelihood estimation for missing data in structural equation models. Structural Equation Modeling, 8(3), 430–457."
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "pls.estimation.classic",
+      "family": "pls-sem",
+      "title": "PLS path modeling (classic, Mode A composites)",
+      "description": "Standard PLS-PM without consistency correction; reflective blocks are estimated as Mode A composites.",
+      "priority": "P1",
+      "references": ["lohmoller1989", "wold1982"],
+      "engines": {
+        "r-csem": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": [
+            "docs/validation/phase-0/evidence/r/csem_pls_core.json",
+            "docs/validation/phase-0/evidence/r/parity_csem_pls-modeA-path.json"
+          ],
+          "implementation": "`csem(.model with \"=~\", .disattenuate = FALSE)` — a plain \"=~\" call is PLSc because .disattenuate defaults to TRUE",
+          "notes": "Matches an independent reference implementation (_ref_pls.R) to 3e-16, seminr to 6e-15 and Python plspm to 5e-11 on tam-v1. Becomes supported when the Phase 3 adapter has reference tests."
+        },
+        "r-seminr": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": [
+            "docs/validation/phase-0/evidence/r/seminr.json",
+            "docs/validation/phase-0/evidence/r/parity_seminr_pls-path.json"
+          ],
+          "implementation": "`composite(..., weights = mode_A)` — `reflective()` triggers PLSc automatically",
+          "notes": "Not used for chunked bootstraps: seed S+1 replays seed S shifted by one draw."
+        },
+        "py-plspm": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": [
+            "docs/validation/phase-0/evidence/python/parity_plspm_pls-modeA-path.json",
+            "docs/validation/phase-0/evidence/python/plspm_probe.json",
+            "docs/validation/phase-0/evidence/r/parity_csem_pls-modeA-path.json"
+          ],
+          "implementation": "c.Config(path, default_scale=Scale.NUM) with Mode.A blocks (or pre-standardised data with scaled=False)",
+          "notes": "Agrees with cSEM to 5e-11 and with an independent reference (ref_pls.py) to 5e-10 on tam-v1. The default Config(scaled=True) 'metric' route divides every column by one pooled SD and is NOT standard PLS (paths off by 0.026, loadings by 0.22) — never use it. Unofficial GoogleCloudPlatform port; the repository has been archived (read-only) since 2026-07-30."
+        },
+        "r-lavaan": {
+          "status": "unsupported",
+          "verification": "none",
+          "evidence": [],
+          "reason": "Not a PLS-SEM engine."
+        },
+        "py-semopy": {
+          "status": "unsupported",
+          "verification": "none",
+          "evidence": [],
+          "reason": "Not a PLS-SEM engine."
+        }
+      }
+    },
+    {
+      "id": "pls.inner-weighting.path",
+      "family": "pls-sem",
+      "title": "Path inner weighting scheme",
+      "description": "Inner (structural) weighting scheme 'path' in the PLS iterative algorithm.",
+      "priority": "P1",
+      "references": ["lohmoller1989"],
+      "engines": {
+        "r-csem": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": [
+            "docs/validation/phase-0/evidence/r/csem_pls_core.json",
+            "docs/validation/phase-0/evidence/r/parity_csem_pls-modeA-path.json"
+          ],
+          "implementation": "`.PLS_weight_scheme_inner = \"path\"`",
+          "notes": "Schemes give different estimates (max |Δ| up to 0.009 on tam-v1), so the option is applied."
+        },
+        "py-plspm": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": [
+            "docs/validation/phase-0/evidence/python/parity_plspm_pls-modeA-path.json",
+            "docs/validation/phase-0/evidence/r/parity_csem_pls-modeA-path.json"
+          ],
+          "notes": "Agrees with cSEM to ≤1.4e-10 on tam-v1."
+        },
+        "r-seminr": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/seminr.json"],
+          "implementation": "`inner_weights = path_weighting`"
+        }
+      }
+    },
+    {
+      "id": "pls.inner-weighting.centroid",
+      "family": "pls-sem",
+      "title": "Centroid inner weighting scheme",
+      "description": "Inner (structural) weighting scheme 'centroid' in the PLS iterative algorithm.",
+      "priority": "P1",
+      "references": ["lohmoller1989"],
+      "engines": {
+        "r-csem": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": [
+            "docs/validation/phase-0/evidence/r/csem_pls_core.json",
+            "docs/validation/phase-0/evidence/r/parity_csem_pls-modeA-centroid.json"
+          ],
+          "implementation": "`.PLS_weight_scheme_inner = \"centroid\"`",
+          "notes": "Schemes give different estimates (max |Δ| up to 0.009 on tam-v1), so the option is applied."
+        },
+        "py-plspm": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": [
+            "docs/validation/phase-0/evidence/python/parity_plspm_pls-modeA-centroid.json",
+            "docs/validation/phase-0/evidence/r/parity_csem_pls-modeA-centroid.json"
+          ],
+          "notes": "Agrees with cSEM to ≤1.4e-10 on tam-v1."
+        },
+        "r-seminr": {
+          "status": "unsupported",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/seminr.json"],
+          "reason": "seminr 2.6.0 offers path and factorial weighting only."
+        }
+      }
+    },
+    {
+      "id": "pls.inner-weighting.factorial",
+      "family": "pls-sem",
+      "title": "Factorial inner weighting scheme",
+      "description": "Inner (structural) weighting scheme 'factorial' in the PLS iterative algorithm.",
+      "priority": "P1",
+      "references": ["lohmoller1989"],
+      "engines": {
+        "r-csem": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": [
+            "docs/validation/phase-0/evidence/r/csem_pls_core.json",
+            "docs/validation/phase-0/evidence/r/parity_csem_pls-modeA-factorial.json"
+          ],
+          "implementation": "`.PLS_weight_scheme_inner = \"factorial\"`",
+          "notes": "Schemes give different estimates (max |Δ| up to 0.009 on tam-v1), so the option is applied."
+        },
+        "py-plspm": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": [
+            "docs/validation/phase-0/evidence/python/parity_plspm_pls-modeA-factorial.json",
+            "docs/validation/phase-0/evidence/r/parity_csem_pls-modeA-factorial.json"
+          ],
+          "notes": "Agrees with cSEM to ≤1.4e-10 on tam-v1."
+        },
+        "r-seminr": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/seminr.json"],
+          "implementation": "`inner_weights = path_factorial`"
+        }
+      }
+    },
+    {
+      "id": "pls.mode-b",
+      "family": "pls-sem",
+      "title": "Composite / formative blocks (Mode B)",
+      "description": "Mode B outer weights (multiple regression of the inner proxy on the block's indicators).",
+      "priority": "P1",
+      "references": ["lohmoller1989", "dijkstra2017"],
+      "engines": {
+        "r-csem": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_pls_core.json"],
+          "implementation": "`\"<~\"` (defaults to Mode B); never \"=~\" with .PLS_modes = \"modeB\" and default .disattenuate"
+        },
+        "py-plspm": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/python/plspm_probe.json"],
+          "implementation": "Mode.B blocks, NUM route",
+          "notes": "Mixed and all-Mode-B models match ref_pls.py to 7.6e-10. A missing value in a Mode B block raises."
+        }
+      }
+    },
+    {
+      "id": "pls.estimation.plsc",
+      "family": "pls-sem",
+      "title": "Consistent PLS (PLSc)",
+      "description": "Consistency correction of Mode A composites so reflective constructs estimate common-factor parameters.",
+      "priority": "P1",
+      "references": ["dijkstra2015"],
+      "engines": {
+        "r-csem": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": [
+            "docs/validation/phase-0/evidence/r/csem_pls_core.json",
+            "docs/validation/phase-0/evidence/r/parity_csem_plsc.json"
+          ],
+          "implementation": "`\"=~\"` with `.disattenuate = TRUE` (default)",
+          "notes": "Matches _ref_pls.R and seminr (Δ 8e-15). Bootstrap keeps only ~90 of 100 draws on tam-v1 (inadmissible draws are counted and excluded)."
+        },
+        "r-seminr": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/seminr.json"],
+          "implementation": "`reflective()` constructs (automatic)"
+        },
+        "py-plspm": {
+          "status": "unsupported",
+          "verification": "none",
+          "evidence": [],
+          "reason": "plspm has no consistent PLS. Use the R export (PLAN §2.9 parity policy)."
+        }
+      }
+    },
+    {
+      "id": "assess.reliability",
+      "family": "assessment",
+      "title": "Cronbach's alpha, composite reliability (ρC) and AVE",
+      "description": "Internal consistency and convergent validity for reflective blocks; not applicable to composite/formative blocks.",
+      "priority": "P1",
+      "references": ["cronbach1951", "fornell1981"],
+      "engines": {
+        "r-csem": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_assess.json"],
+          "implementation": "`assess(.quality_criterion = c(\"cronbachs_alpha\", \"rho_C\", \"ave\"))`"
+        }
+      }
+    },
+    {
+      "id": "assess.rho-a",
+      "family": "assessment",
+      "title": "Dijkstra–Henseler ρA",
+      "description": "Consistent reliability coefficient for reflective blocks.",
+      "priority": "P1",
+      "references": ["dijkstra2015"],
+      "engines": {
+        "r-csem": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_assess.json"],
+          "implementation": "`Estimates$Reliabilities` of a PLSc fit (weights are identical to the classic fit)",
+          "notes": "assess() on a classic (non-PLSc) object returns 1 for every block (defect, csem_assess.json); SEM Studio takes ρA from a PLSc run."
+        }
+      }
+    },
+    {
+      "id": "assess.htmt",
+      "family": "assessment",
+      "title": "HTMT and HTMT2",
+      "description": "Heterotrait–monotrait ratio of correlations (arithmetic and geometric-mean variants) for discriminant validity.",
+      "priority": "P1",
+      "references": ["henseler2015", "roemer2021"],
+      "engines": {
+        "r-csem": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_assess.json"],
+          "implementation": "`assess(.quality_criterion = \"htmt\")`, `.type_htmt = \"htmt2\"`"
+        }
+      }
+    },
+    {
+      "id": "assess.fornell-larcker",
+      "family": "assessment",
+      "title": "Fornell–Larcker criterion",
+      "description": "Squared construct correlations compared with AVE.",
+      "priority": "P1",
+      "references": ["fornell1981"],
+      "engines": {
+        "r-csem": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_assess.json"],
+          "implementation": "`assess(.quality_criterion = \"fl_criterion\")`"
+        }
+      }
+    },
+    {
+      "id": "assess.structural",
+      "family": "assessment",
+      "title": "R², adjusted R², f² and VIF",
+      "description": "Explained variance, effect sizes and collinearity of structural predictors and Mode B indicators.",
+      "priority": "P1",
+      "references": ["cohen1988", "hair2022"],
+      "engines": {
+        "r-csem": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_assess.json"],
+          "implementation": "`assess()`, `calculatef2()`, `calculateVIFModeB()`",
+          "notes": "seminr's f² re-estimates the model without the predictor and differs from cSEM by 1.1e-3 on tam-v1; SEM Studio reports cSEM's definition and states it."
+        }
+      }
+    },
+    {
+      "id": "assess.pls-fit",
+      "family": "assessment",
+      "title": "SRMR, d_ULS and d_G",
+      "description": "Discrepancy measures between empirical and model-implied correlation matrices.",
+      "priority": "P1",
+      "references": ["henseler2014", "dijkstra2015"],
+      "engines": {
+        "r-csem": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_assess.json"],
+          "implementation": "`assess()`",
+          "notes": "cSEM's d_G uses log10; the natural-log definition is about 5.3× larger. Shown with that definition stated; no CB-style cutoffs."
+        }
+      }
+    },
+    {
+      "id": "effects.total-indirect",
+      "family": "effects",
+      "title": "Direct, total indirect and total effects",
+      "description": "Effect decomposition along structural paths.",
+      "priority": "P1",
+      "references": ["bollen1987"],
+      "engines": {
+        "r-csem": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_effects.json"],
+          "implementation": "`summarize()$Estimates$Effect_estimates`",
+          "notes": "total = direct + indirect holds exactly on tam-v1."
+        },
+        "r-lavaan": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/lavaan.json"],
+          "implementation": "defined parameters (`:=`)"
+        }
+      }
+    },
+    {
+      "id": "effects.specific-indirect",
+      "family": "effects",
+      "title": "Specific indirect effects",
+      "description": "Products of path coefficients along each mediation route, with bootstrap intervals.",
+      "priority": "P1",
+      "references": ["zhao2010"],
+      "engines": {
+        "r-csem": {
+          "status": "planned",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_effects.json"],
+          "reason": "cSEM does not report specific indirect effects; SEM Studio's adapter computes the products from each bootstrap draw (Phase 3)."
+        }
+      }
+    },
+    {
+      "id": "resampling.bootstrap-percentile",
+      "family": "resampling",
+      "title": "Bootstrap with percentile intervals",
+      "description": "Case resampling with a mandatory seed; percentile confidence intervals from the raw draws.",
+      "priority": "P1",
+      "references": ["efron1993"],
+      "engines": {
+        "r-csem": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": [
+            "docs/validation/phase-0/evidence/r/csem_resampling.json",
+            "docs/validation/phase-0/evidence/r/csem_resampling_followup.json"
+          ],
+          "implementation": "`resamplecSEMResults(.resample_method = \"bootstrap\", .R, .seed)`; intervals = quantile(type = 7) of the concatenated chunk draws",
+          "notes": "Draws depend only on (seed, i) and are identical across future plans; our quantile(type 7) equals infer()$CI_percentile exactly. Always pass .seed (NULL is not reproducible even after set.seed). One erroring replication aborts the whole call."
+        },
+        "r-lavaan": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/lavaan.json"],
+          "implementation": "`bootstrapLavaan(r =, fun =, iseed =)`",
+          "notes": "lavaan's 'perc' interval is boot's norm.inter interpolation, not quantile(); its SE uses divisor R."
+        },
+        "r-seminr": {
+          "status": "unsupported",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/seminr.json"],
+          "reason": "Consecutive seeds replay the same draws shifted by one, which breaks chunked bootstrapping."
+        },
+        "py-plspm": {
+          "status": "unsupported",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/python/plspm_bootstrap.json"],
+          "reason": "plspm's bootstrap has no seed argument: under spawn (macOS) the seed is ignored, under fork with processes>1 every child draws the same resamples, and failed resamples are dropped silently. Python exports use an app-owned seeded loop that counts failures instead."
+        },
+        "py-semopy": {
+          "status": "unsupported",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/python/semopy_probe.json"],
+          "reason": "semopy has no nonparametric bootstrap (only a parametric bias correction)."
+        }
+      }
+    },
+    {
+      "id": "resampling.bootstrap-bca",
+      "family": "resampling",
+      "title": "Bootstrap BCa intervals",
+      "description": "Bias-corrected and accelerated intervals.",
+      "priority": "P2",
+      "references": ["efron1993"],
+      "engines": {
+        "r-csem": {
+          "status": "planned",
+          "verification": "smoke-only",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_resampling.json"],
+          "reason": "CI_bca ran but its numbers are not yet checked; it re-runs an n-row jackknife on every infer() call."
+        },
+        "r-lavaan": {
+          "status": "planned",
+          "verification": "smoke-only",
+          "evidence": ["docs/validation/phase-0/evidence/r/lavaan.json"],
+          "reason": "bca.simple ran but is unchecked; full bca fails when R < N."
+        }
+      }
+    },
+    {
+      "id": "resampling.inadmissible-replace",
+      "family": "resampling",
+      "title": "Replace inadmissible bootstrap draws",
+      "description": "Redraw until admissible instead of excluding.",
+      "priority": "P2",
+      "references": [],
+      "engines": {
+        "r-csem": {
+          "status": "unsupported",
+          "verification": "smoke-only",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_resampling_followup.json"],
+          "reason": "Replacements are drawn with seed+1 (cSEM source), which collides with the next chunk's seed. SEM Studio excludes and counts inadmissible draws."
+        }
+      }
+    },
+    {
+      "id": "resampling.sign-change-individual",
+      "family": "resampling",
+      "title": "Individual sign-change correction",
+      "description": "Per-parameter sign alignment of bootstrap draws.",
+      "priority": "P3",
+      "references": [],
+      "engines": {
+        "r-csem": {
+          "status": "unsupported",
+          "verification": "smoke-only",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_resampling_followup.json"],
+          "reason": "`.sign_change_option = \"individual\"` silently drops draws (55 rows kept while the count says 100). Not offered."
+        }
+      }
+    },
+    {
+      "id": "ipma.construct",
+      "family": "ipma",
+      "title": "Construct-level IPMA",
+      "description": "Importance = unstandardized total effect on a chosen target; performance = 0–100 score from the ORIGINAL scale endpoints.",
+      "priority": "P1",
+      "references": ["ringle2016"],
+      "engines": {
+        "r-csem": {
+          "status": "planned",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_ipma.json"],
+          "implementation": "computed by SEM Studio from a classic PLS fit on endpoint-rescaled data",
+          "notes": "doIPMA() never rescales; it matches the first-principles computation to 9e-14 only when the data were rescaled to 0–100 beforehand. Must not run on a PLSc fit. Implementation in Phase 4."
+        }
+      }
+    },
+    {
+      "id": "ipma.indicator",
+      "family": "ipma",
+      "title": "Indicator-level IPMA",
+      "description": "Importance and performance of individual indicators.",
+      "priority": "P2",
+      "references": ["ringle2016"],
+      "engines": {
+        "r-csem": {
+          "status": "planned",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_ipma.json"],
+          "reason": "Convention verified; implementation in Phase 4."
+        }
+      }
+    },
+    {
+      "id": "prediction.plspredict",
+      "family": "prediction",
+      "title": "PLSpredict",
+      "description": "Out-of-sample k-fold prediction of endogenous indicators.",
+      "priority": "P2",
+      "references": ["shmueli2019"],
+      "engines": {
+        "r-csem": {
+          "status": "planned",
+          "verification": "smoke-only",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_smoke.json"],
+          "implementation": "`predict()`",
+          "reason": "Ran on tam-v1 without error; numbers not yet checked."
+        }
+      }
+    },
+    {
+      "id": "prediction.cvpat",
+      "family": "prediction",
+      "title": "CVPAT",
+      "description": "Cross-validated predictive ability test.",
+      "priority": "P2",
+      "references": ["liengaard2021"],
+      "engines": {
+        "r-csem": {
+          "status": "planned",
+          "verification": "smoke-only",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_smoke.json"],
+          "implementation": "`testCVPAT()`",
+          "reason": "Ran on tam-v1 without error; numbers not yet checked."
+        }
+      }
+    },
+    {
+      "id": "groups.micom",
+      "family": "groups",
+      "title": "MICOM",
+      "description": "Measurement invariance of composite models (permutation).",
+      "priority": "P2",
+      "references": ["henseler2016"],
+      "engines": {
+        "r-csem": {
+          "status": "planned",
+          "verification": "smoke-only",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_smoke.json"],
+          "implementation": "`testMICOM()`",
+          "reason": "Ran on tam-v1 without error; numbers not yet checked (group tests used a fabricated row-parity grouping)."
+        }
+      }
+    },
+    {
+      "id": "groups.mga",
+      "family": "groups",
+      "title": "PLS multigroup analysis",
+      "description": "Group differences in PLS estimates.",
+      "priority": "P2",
+      "references": ["sarstedt2011"],
+      "engines": {
+        "r-csem": {
+          "status": "planned",
+          "verification": "smoke-only",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_smoke.json"],
+          "implementation": "`testMGD()`",
+          "reason": "Ran on tam-v1 without error; numbers not yet checked (group tests used a fabricated row-parity grouping)."
+        }
+      }
+    },
+    {
+      "id": "pls.higher-order",
+      "family": "pls-sem",
+      "title": "Higher-order constructs",
+      "description": "Second-order constructs (two-stage approach).",
+      "priority": "P2",
+      "references": ["sarstedt2019"],
+      "engines": {
+        "r-csem": {
+          "status": "planned",
+          "verification": "smoke-only",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_smoke.json"],
+          "implementation": "second-order syntax",
+          "reason": "Ran on tam-v1 without error; numbers not yet checked."
+        }
+      }
+    },
+    {
+      "id": "pls.interaction",
+      "family": "pls-sem",
+      "title": "Moderation (interaction terms)",
+      "description": "Latent interaction terms.",
+      "priority": "P2",
+      "references": ["henseler2010"],
+      "engines": {
+        "r-csem": {
+          "status": "planned",
+          "verification": "smoke-only",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_smoke.json"],
+          "implementation": "`.` interaction syntax",
+          "reason": "Ran on tam-v1 without error; numbers not yet checked."
+        }
+      }
+    },
+    {
+      "id": "pls.endogeneity",
+      "family": "pls-sem",
+      "title": "Endogeneity tests (Hausman / Gaussian copula)",
+      "description": "Tests for endogenous regressors.",
+      "priority": "P3",
+      "references": ["hult2018"],
+      "engines": {
+        "r-csem": {
+          "status": "unsupported",
+          "verification": "smoke-only",
+          "evidence": ["docs/validation/phase-0/evidence/r/csem_smoke.json"],
+          "reason": "testHausman requires instruments, which the model contract cannot express yet."
+        }
+      }
+    },
+    {
+      "id": "cb.estimation.ml",
+      "family": "cb-sem",
+      "title": "Maximum likelihood CFA / SEM",
+      "description": "Common-factor model estimated by normal-theory ML.",
+      "priority": "P1",
+      "references": ["rosseel2012", "bollen1989"],
+      "engines": {
+        "r-lavaan": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": [
+            "docs/validation/phase-0/evidence/r/lavaan.json",
+            "docs/validation/phase-0/evidence/r/parity_lavaan_sem-ml.json"
+          ],
+          "implementation": "`sem(estimator = \"ML\")`, marker (`auto.fix.first`) or `std.lv = TRUE`",
+          "notes": "Checked by identities: χ² = N·F_ML, CFI/TLI/RMSEA/SRMR/AIC/BIC from their definitions, delta-method SEs, ML regression = OLS on a saturated case. Not yet compared with an independent ML implementation."
+        },
+        "py-semopy": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": [
+            "docs/validation/phase-0/evidence/python/parity_semopy_sem-mlw.json",
+            "docs/validation/phase-0/evidence/python/parity_semopy_cfa-mlw.json",
+            "docs/validation/phase-0/evidence/python/semopy_probe.json"
+          ],
+          "implementation": "semopy.Model(desc).fit(data, obj=\"MLW\")",
+          "notes": "Σ and F_ML rebuilt by hand to 8e-15; covariance divisor N; chi2 = N·F_ML; SEs from expected information. inspect() returns '-' for fixed parameters (object columns)."
+        },
+        "r-csem": {
+          "status": "unsupported",
+          "verification": "none",
+          "evidence": [],
+          "reason": "Not a CB-SEM engine."
+        },
+        "py-plspm": {
+          "status": "unsupported",
+          "verification": "none",
+          "evidence": [],
+          "reason": "Not a CB-SEM engine."
+        }
+      }
+    },
+    {
+      "id": "cb.estimation.mlr",
+      "family": "cb-sem",
+      "title": "Robust ML (MLR)",
+      "description": "ML estimates with robust standard errors and scaled test statistic.",
+      "priority": "P1",
+      "references": ["rosseel2012"],
+      "engines": {
+        "r-lavaan": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/lavaan.json"],
+          "implementation": "`estimator = \"MLR\"`"
+        },
+        "py-semopy": {
+          "status": "planned",
+          "verification": "smoke-only",
+          "evidence": ["docs/validation/phase-0/evidence/python/semopy_probe.json"],
+          "reason": "semopy offers se_robust=True (sandwich SEs, changed SEs by up to 3×) but no scaled test statistic; not equivalent to lavaan's MLR/MLM. Unchecked."
+        }
+      }
+    },
+    {
+      "id": "cb.estimation.mlm",
+      "family": "cb-sem",
+      "title": "Robust ML (MLM)",
+      "description": "ML estimates with robust standard errors and scaled test statistic.",
+      "priority": "P1",
+      "references": ["rosseel2012"],
+      "engines": {
+        "r-lavaan": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/lavaan.json"],
+          "implementation": "`estimator = \"MLM\"`"
+        },
+        "py-semopy": {
+          "status": "planned",
+          "verification": "smoke-only",
+          "evidence": ["docs/validation/phase-0/evidence/python/semopy_probe.json"],
+          "reason": "semopy offers se_robust=True (sandwich SEs, changed SEs by up to 3×) but no scaled test statistic; not equivalent to lavaan's MLR/MLM. Unchecked."
+        }
+      }
+    },
+    {
+      "id": "cb.estimation.wlsmv",
+      "family": "cb-sem",
+      "title": "Ordinal indicators (WLSMV / DWLS)",
+      "description": "Polychoric-based estimation for ordered categorical indicators.",
+      "priority": "P2",
+      "references": ["rosseel2012"],
+      "engines": {
+        "r-lavaan": {
+          "status": "planned",
+          "verification": "smoke-only",
+          "evidence": ["docs/validation/phase-0/evidence/r/lavaan.json"],
+          "implementation": "`ordered = ..., estimator = \"WLSMV\"`",
+          "reason": "Ran on tam-v1; numbers not yet checked against the ordinal synthetic fixture."
+        }
+      }
+    },
+    {
+      "id": "cb.missing.fiml",
+      "family": "cb-sem",
+      "title": "Full-information ML for missing data",
+      "description": "Uses all available data under MAR.",
+      "priority": "P1",
+      "references": ["enders2001"],
+      "engines": {
+        "r-lavaan": {
+          "status": "planned",
+          "verification": "smoke-only",
+          "evidence": ["docs/validation/phase-0/evidence/r/lavaan.json"],
+          "implementation": "`missing = \"fiml\"` with ML or MLR",
+          "reason": "Ran with ML and MLR (MLM and WLSMV are rejected by lavaan); numbers to be checked on the missing-mcar fixture."
+        },
+        "py-semopy": {
+          "status": "planned",
+          "verification": "smoke-only",
+          "evidence": ["docs/validation/phase-0/evidence/python/semopy_probe.json"],
+          "implementation": "semopy.ModelMeans(desc).fit(data, obj=\"ML\")",
+          "reason": "Use ModelMeans(obj=\"ML\"); NEVER Model(obj=\"FIML\"), which has no mean structure and silently assumes zero means (parameters off by up to 43 on raw data). ModelMeans(obj=\"FIML\") raises NotImplementedError. A Model fit on data with NaN silently uses pairwise covariances."
+        }
+      }
+    },
+    {
+      "id": "cb.fit-indices",
+      "family": "cb-sem",
+      "title": "Global fit indices",
+      "description": "χ², df, p, CFI, TLI, RMSEA with CI, SRMR, AIC, BIC and scaled variants.",
+      "priority": "P1",
+      "references": ["hu1999"],
+      "engines": {
+        "r-lavaan": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/lavaan.json"],
+          "implementation": "`fitMeasures()` (errors if the model did not converge — check first)"
+        },
+        "py-semopy": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/python/semopy_probe.json"],
+          "implementation": "semopy.calc_stats()",
+          "notes": "Verified: chi2, DoF, CFI, TLI, NFI, RMSEA (≤5e-9). NOT reported by SEM Studio: GFI (it equals NFI), AGFI, LogLik/AIC/BIC (LogLik is the F_ML value). SRMR and the RMSEA CI are absent. chi2 p-values underflow to 0.0."
+        }
+      }
+    },
+    {
+      "id": "cb.diagnostics",
+      "family": "cb-sem",
+      "title": "Estimation diagnostics",
+      "description": "Non-convergence, Heywood cases, non-positive-definite matrices and non-identification surfaced as warnings.",
+      "priority": "P1",
+      "references": ["kolenikov2012"],
+      "engines": {
+        "r-lavaan": {
+          "status": "beta",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/r/lavaan.json"],
+          "implementation": "`lavInspect(fit, \"converged\")`, `lavInspect(fit, \"post.check\")`, negative variances; problems arrive as warnings with a fit object still returned"
+        },
+        "py-semopy": {
+          "status": "unsupported",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/python/semopy_probe.json"],
+          "reason": "semopy bounds variances at 0: a Heywood case that needs θ = −0.62 returns 3e-11 with success=True, an ordinary SE and no flag. Python exports must check boundary estimates themselves and say so."
+        }
+      }
+    },
+    {
+      "id": "cb.modification-indices",
+      "family": "cb-sem",
+      "title": "Modification indices",
+      "description": "Diagnostic suggestions only; never applied automatically.",
+      "priority": "P2",
+      "references": ["rosseel2012"],
+      "engines": {
+        "r-lavaan": {
+          "status": "planned",
+          "verification": "smoke-only",
+          "evidence": ["docs/validation/phase-0/evidence/r/lavaan.json"],
+          "implementation": "`modindices()`",
+          "reason": "Ran; values not yet checked."
+        },
+        "py-semopy": {
+          "status": "unsupported",
+          "verification": "engine-verified",
+          "evidence": ["docs/validation/phase-0/evidence/python/semopy_probe.json"],
+          "reason": "Absent in semopy 2.3.11."
+        }
+      }
+    }
+  ]
+}

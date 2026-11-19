@@ -1,0 +1,171 @@
+{
+  "constructs": [
+    {
+      "id": "c_a",
+      "indicatorIds": [
+        "i_a1",
+        "i_a2",
+        "i_a3",
+        "i_a4"
+      ],
+      "label": "Construct A",
+      "measurement": "reflective",
+      "name": "A"
+    },
+    {
+      "id": "c_b",
+      "indicatorIds": [
+        "i_b1",
+        "i_b2",
+        "i_b3",
+        "i_b4"
+      ],
+      "label": "Construct B",
+      "measurement": "reflective",
+      "name": "B"
+    },
+    {
+      "id": "c_c",
+      "indicatorIds": [
+        "i_c1",
+        "i_c2",
+        "i_c3"
+      ],
+      "label": "Construct C",
+      "measurement": "reflective",
+      "name": "C"
+    }
+  ],
+  "indicators": [
+    {
+      "column": "a1",
+      "id": "i_a1",
+      "level": "ordinal",
+      "name": "a1",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "a2",
+      "id": "i_a2",
+      "level": "ordinal",
+      "name": "a2",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "a3",
+      "id": "i_a3",
+      "level": "ordinal",
+      "name": "a3",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "a4",
+      "id": "i_a4",
+      "level": "ordinal",
+      "name": "a4",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "b1",
+      "id": "i_b1",
+      "level": "ordinal",
+      "name": "b1",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "b2",
+      "id": "i_b2",
+      "level": "ordinal",
+      "name": "b2",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "b3",
+      "id": "i_b3",
+      "level": "ordinal",
+      "name": "b3",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "b4",
+      "id": "i_b4",
+      "level": "ordinal",
+      "name": "b4",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "c1",
+      "id": "i_c1",
+      "level": "ordinal",
+      "name": "c1",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "c2",
+      "id": "i_c2",
+      "level": "ordinal",
+      "name": "c2",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "c3",
+      "id": "i_c3",
+      "level": "ordinal",
+      "name": "c3",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r_a_c",
+      "kind": "structural",
+      "sourceId": "c_a",
+      "targetId": "c_c"
+    },
+    {
+      "id": "r_b_c",
+      "kind": "structural",
+      "sourceId": "c_b",
+      "targetId": "c_c"
+    },
+    {
+      "id": "r_a_b",
+      "kind": "covariance",
+      "sourceId": "c_a",
+      "targetId": "c_b"
+    }
+  ]
+}

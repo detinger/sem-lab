@@ -1,0 +1,30 @@
+[
+  {
+    "analysis": {
+      "cb": {
+        "identification": "marker",
+        "meanStructure": false
+      },
+      "engine": "r-lavaan",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "ML CFA with a linearly dependent indicator (s7 = s1 + s2).",
+    "id": "cb-lavaan-ml"
+  },
+  {
+    "analysis": {
+      "cb": {
+        "identification": "marker",
+        "meanStructure": false
+      },
+      "engine": "py-semopy",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "Same in semopy.",
+    "id": "cb-semopy-ml"
+  }
+]

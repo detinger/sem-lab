@@ -1,0 +1,2033 @@
+{
+  "generatedAt": "2026-11-19T12:53:55.227Z",
+  "generatedBy": "apps/web/src/tests/spike (npm run spike:evidence -w @sem-studio/web)",
+  "runtime": {
+    "node": "v26.13.1",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "packages": [
+    {
+      "name": "elkjs",
+      "version": "0.12.1",
+      "license": "EPL-2.0 OR GPL-3.0-or-later"
+    }
+  ],
+  "data": {
+    "note": "knownLayoutOptions() reports ids and value TYPES only; it does not list enum members.",
+    "algorithms": [
+      "org.eclipse.elk.fixed",
+      "org.eclipse.elk.box",
+      "org.eclipse.elk.random",
+      "org.eclipse.elk.layered",
+      "org.eclipse.elk.stress",
+      "org.eclipse.elk.mrtree",
+      "org.eclipse.elk.radial",
+      "org.eclipse.elk.force",
+      "org.eclipse.elk.disco",
+      "org.eclipse.elk.sporeOverlap",
+      "org.eclipse.elk.sporeCompaction",
+      "org.eclipse.elk.rectpacking"
+    ],
+    "optionCount": 243,
+    "plannedOptionsPresent": [
+      "org.eclipse.elk.algorithm",
+      "org.eclipse.elk.direction",
+      "org.eclipse.elk.edgeRouting",
+      "org.eclipse.elk.randomSeed",
+      "org.eclipse.elk.padding",
+      "org.eclipse.elk.hierarchyHandling",
+      "org.eclipse.elk.portConstraints",
+      "org.eclipse.elk.port.side",
+      "org.eclipse.elk.port.index",
+      "org.eclipse.elk.spacing.nodeNode",
+      "org.eclipse.elk.spacing.edgeNode",
+      "org.eclipse.elk.spacing.edgeEdge",
+      "org.eclipse.elk.spacing.edgeLabel",
+      "org.eclipse.elk.spacing.componentComponent",
+      "org.eclipse.elk.layered.spacing.nodeNodeBetweenLayers",
+      "org.eclipse.elk.layered.spacing.edgeNodeBetweenLayers",
+      "org.eclipse.elk.layered.spacing.edgeEdgeBetweenLayers",
+      "org.eclipse.elk.layered.considerModelOrder.strategy",
+      "org.eclipse.elk.layered.crossingMinimization.strategy",
+      "org.eclipse.elk.layered.nodePlacement.strategy",
+      "org.eclipse.elk.layered.layering.strategy",
+      "org.eclipse.elk.layered.cycleBreaking.strategy",
+      "org.eclipse.elk.layered.mergeEdges",
+      "org.eclipse.elk.edgeLabels.placement",
+      "org.eclipse.elk.edgeLabels.inline",
+      "org.eclipse.elk.separateConnectedComponents",
+      "org.eclipse.elk.partitioning.activate",
+      "org.eclipse.elk.partitioning.partition"
+    ],
+    "options": [
+      {
+        "id": "org.eclipse.elk.algorithm",
+        "type": "STRING",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.alignment",
+        "type": "ENUM",
+        "targets": [
+          "NODES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.animTimeFactor",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.animate",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.aspectRatio",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.bendPoints",
+        "type": "OBJECT",
+        "targets": [
+          "EDGES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.box.packingMode",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "box"
+      },
+      {
+        "id": "org.eclipse.elk.childAreaHeight",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.childAreaWidth",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.commentBox",
+        "type": "BOOLEAN",
+        "targets": [
+          "NODES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.compaction.compactionStrategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "compaction"
+      },
+      {
+        "id": "org.eclipse.elk.compaction.orthogonal",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "compaction"
+      },
+      {
+        "id": "org.eclipse.elk.contentAlignment",
+        "type": "ENUMSET",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.debugMode",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.direction",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.disco.componentCompaction.componentLayoutAlgorithm",
+        "type": "STRING",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "componentCompaction"
+      },
+      {
+        "id": "org.eclipse.elk.disco.componentCompaction.strategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "componentCompaction"
+      },
+      {
+        "id": "org.eclipse.elk.disco.debug.discoGraph",
+        "type": "OBJECT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "debug"
+      },
+      {
+        "id": "org.eclipse.elk.disco.debug.discoPolys",
+        "type": "OBJECT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "debug"
+      },
+      {
+        "id": "org.eclipse.elk.edge.thickness",
+        "type": "DOUBLE",
+        "targets": [
+          "EDGES"
+        ],
+        "group": "edge"
+      },
+      {
+        "id": "org.eclipse.elk.edge.type",
+        "type": "ENUM",
+        "targets": [
+          "EDGES"
+        ],
+        "group": "edge"
+      },
+      {
+        "id": "org.eclipse.elk.edgeLabels.inline",
+        "type": "BOOLEAN",
+        "targets": [
+          "LABELS"
+        ],
+        "group": "edgeLabels"
+      },
+      {
+        "id": "org.eclipse.elk.edgeLabels.placement",
+        "type": "ENUM",
+        "targets": [
+          "LABELS"
+        ],
+        "group": "edgeLabels"
+      },
+      {
+        "id": "org.eclipse.elk.edgeRouting",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.expandNodes",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.font.name",
+        "type": "STRING",
+        "targets": [
+          "LABELS"
+        ],
+        "group": "font"
+      },
+      {
+        "id": "org.eclipse.elk.font.size",
+        "type": "INT",
+        "targets": [
+          "LABELS"
+        ],
+        "group": "font"
+      },
+      {
+        "id": "org.eclipse.elk.force.iterations",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.force.model",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.force.repulsion",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.force.repulsivePower",
+        "type": "INT",
+        "targets": [
+          "EDGES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.force.temperature",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.hierarchyHandling",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS",
+          "NODES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.hypernode",
+        "type": "BOOLEAN",
+        "targets": [
+          "NODES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.insideSelfLoops.activate",
+        "type": "BOOLEAN",
+        "targets": [
+          "NODES"
+        ],
+        "group": "insideSelfLoops"
+      },
+      {
+        "id": "org.eclipse.elk.insideSelfLoops.yo",
+        "type": "BOOLEAN",
+        "targets": [
+          "EDGES"
+        ],
+        "group": "insideSelfLoops"
+      },
+      {
+        "id": "org.eclipse.elk.interactive",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.interactiveLayout",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.json.edgeCoords",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "json"
+      },
+      {
+        "id": "org.eclipse.elk.json.shapeCoords",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "json"
+      },
+      {
+        "id": "org.eclipse.elk.junctionPoints",
+        "type": "OBJECT",
+        "targets": [
+          "EDGES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.labelManager",
+        "type": "OBJECT",
+        "targets": [
+          "PARENTS",
+          "LABELS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.layered.allowNonFlowPortsToSwitchSides",
+        "type": "BOOLEAN",
+        "targets": [
+          "PORTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.layered.compaction.connectedComponents",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "compaction"
+      },
+      {
+        "id": "org.eclipse.elk.layered.compaction.postCompaction.constraints",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "compaction.postCompaction"
+      },
+      {
+        "id": "org.eclipse.elk.layered.compaction.postCompaction.strategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "compaction.postCompaction"
+      },
+      {
+        "id": "org.eclipse.elk.layered.considerModelOrder.components",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "considerModelOrder"
+      },
+      {
+        "id": "org.eclipse.elk.layered.considerModelOrder.crossingCounterNodeInfluence",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "considerModelOrder"
+      },
+      {
+        "id": "org.eclipse.elk.layered.considerModelOrder.crossingCounterPortInfluence",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "considerModelOrder"
+      },
+      {
+        "id": "org.eclipse.elk.layered.considerModelOrder.groupModelOrder.cbGroupOrderStrategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "considerModelOrder.groupModelOrder"
+      },
+      {
+        "id": "org.eclipse.elk.layered.considerModelOrder.groupModelOrder.cbPreferredSourceId",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "considerModelOrder.groupModelOrder"
+      },
+      {
+        "id": "org.eclipse.elk.layered.considerModelOrder.groupModelOrder.cbPreferredTargetId",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "considerModelOrder.groupModelOrder"
+      },
+      {
+        "id": "org.eclipse.elk.layered.considerModelOrder.groupModelOrder.cmEnforcedGroupOrders",
+        "type": "OBJECT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "considerModelOrder.groupModelOrder"
+      },
+      {
+        "id": "org.eclipse.elk.layered.considerModelOrder.groupModelOrder.cmGroupOrderStrategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "considerModelOrder.groupModelOrder"
+      },
+      {
+        "id": "org.eclipse.elk.layered.considerModelOrder.groupModelOrder.componentGroupId",
+        "type": "INT",
+        "targets": [
+          "NODES",
+          "EDGES",
+          "PORTS"
+        ],
+        "group": "considerModelOrder.groupModelOrder"
+      },
+      {
+        "id": "org.eclipse.elk.layered.considerModelOrder.groupModelOrder.crossingMinimizationId",
+        "type": "INT",
+        "targets": [
+          "NODES",
+          "EDGES",
+          "PORTS"
+        ],
+        "group": "considerModelOrder.groupModelOrder"
+      },
+      {
+        "id": "org.eclipse.elk.layered.considerModelOrder.groupModelOrder.cycleBreakingId",
+        "type": "INT",
+        "targets": [
+          "NODES"
+        ],
+        "group": "considerModelOrder.groupModelOrder"
+      },
+      {
+        "id": "org.eclipse.elk.layered.considerModelOrder.longEdgeStrategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "considerModelOrder"
+      },
+      {
+        "id": "org.eclipse.elk.layered.considerModelOrder.noModelOrder",
+        "type": "BOOLEAN",
+        "targets": [
+          "NODES"
+        ],
+        "group": "considerModelOrder"
+      },
+      {
+        "id": "org.eclipse.elk.layered.considerModelOrder.portModelOrder",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "considerModelOrder"
+      },
+      {
+        "id": "org.eclipse.elk.layered.considerModelOrder.strategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "considerModelOrder"
+      },
+      {
+        "id": "org.eclipse.elk.layered.crossingMinimization.forceNodeModelOrder",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "crossingMinimization"
+      },
+      {
+        "id": "org.eclipse.elk.layered.crossingMinimization.greedySwitch.activationThreshold",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "crossingMinimization.greedySwitch"
+      },
+      {
+        "id": "org.eclipse.elk.layered.crossingMinimization.greedySwitch.type",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "crossingMinimization.greedySwitch"
+      },
+      {
+        "id": "org.eclipse.elk.layered.crossingMinimization.greedySwitchHierarchical.type",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "crossingMinimization.greedySwitchHierarchical"
+      },
+      {
+        "id": "org.eclipse.elk.layered.crossingMinimization.hierarchicalSweepiness",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "crossingMinimization"
+      },
+      {
+        "id": "org.eclipse.elk.layered.crossingMinimization.inLayerPredOf",
+        "type": "STRING",
+        "targets": [
+          "NODES"
+        ],
+        "group": "crossingMinimization"
+      },
+      {
+        "id": "org.eclipse.elk.layered.crossingMinimization.inLayerSuccOf",
+        "type": "STRING",
+        "targets": [
+          "NODES"
+        ],
+        "group": "crossingMinimization"
+      },
+      {
+        "id": "org.eclipse.elk.layered.crossingMinimization.positionChoiceConstraint",
+        "type": "INT",
+        "targets": [
+          "NODES"
+        ],
+        "group": "crossingMinimization"
+      },
+      {
+        "id": "org.eclipse.elk.layered.crossingMinimization.positionId",
+        "type": "INT",
+        "targets": [
+          "NODES"
+        ],
+        "group": "crossingMinimization"
+      },
+      {
+        "id": "org.eclipse.elk.layered.crossingMinimization.semiInteractive",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "crossingMinimization"
+      },
+      {
+        "id": "org.eclipse.elk.layered.crossingMinimization.strategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "crossingMinimization"
+      },
+      {
+        "id": "org.eclipse.elk.layered.cycleBreaking.strategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "cycleBreaking"
+      },
+      {
+        "id": "org.eclipse.elk.layered.directionCongruency",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.layered.edgeLabels.centerLabelPlacementStrategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS",
+          "LABELS"
+        ],
+        "group": "edgeLabels"
+      },
+      {
+        "id": "org.eclipse.elk.layered.edgeLabels.sideSelection",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "edgeLabels"
+      },
+      {
+        "id": "org.eclipse.elk.layered.edgeRouting.polyline.slopedEdgeZoneWidth",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "edgeRouting.polyline"
+      },
+      {
+        "id": "org.eclipse.elk.layered.edgeRouting.selfLoopDistribution",
+        "type": "ENUM",
+        "targets": [
+          "NODES"
+        ],
+        "group": "edgeRouting"
+      },
+      {
+        "id": "org.eclipse.elk.layered.edgeRouting.selfLoopOrdering",
+        "type": "ENUM",
+        "targets": [
+          "NODES"
+        ],
+        "group": "edgeRouting"
+      },
+      {
+        "id": "org.eclipse.elk.layered.edgeRouting.splines.mode",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "edgeRouting.splines"
+      },
+      {
+        "id": "org.eclipse.elk.layered.edgeRouting.splines.sloppy.layerSpacingFactor",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "edgeRouting.splines.sloppy"
+      },
+      {
+        "id": "org.eclipse.elk.layered.feedbackEdges",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.layered.generatePositionAndLayerIds",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.layered.highDegreeNodes.threshold",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "highDegreeNodes"
+      },
+      {
+        "id": "org.eclipse.elk.layered.highDegreeNodes.treatment",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "highDegreeNodes"
+      },
+      {
+        "id": "org.eclipse.elk.layered.highDegreeNodes.treeHeight",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "highDegreeNodes"
+      },
+      {
+        "id": "org.eclipse.elk.layered.interactiveReferencePoint",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.layered.layerUnzipping.layerSplit",
+        "type": "INT",
+        "targets": [
+          "NODES"
+        ],
+        "group": "layerUnzipping"
+      },
+      {
+        "id": "org.eclipse.elk.layered.layerUnzipping.minimizeEdgeLength",
+        "type": "BOOLEAN",
+        "targets": [
+          "NODES"
+        ],
+        "group": "layerUnzipping"
+      },
+      {
+        "id": "org.eclipse.elk.layered.layerUnzipping.resetOnLongEdges",
+        "type": "BOOLEAN",
+        "targets": [
+          "NODES"
+        ],
+        "group": "layerUnzipping"
+      },
+      {
+        "id": "org.eclipse.elk.layered.layerUnzipping.strategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "layerUnzipping"
+      },
+      {
+        "id": "org.eclipse.elk.layered.layering.coffmanGraham.layerBound",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "layering.coffmanGraham"
+      },
+      {
+        "id": "org.eclipse.elk.layered.layering.layerChoiceConstraint",
+        "type": "INT",
+        "targets": [
+          "NODES"
+        ],
+        "group": "layering"
+      },
+      {
+        "id": "org.eclipse.elk.layered.layering.layerConstraint",
+        "type": "ENUM",
+        "targets": [
+          "NODES"
+        ],
+        "group": "layering"
+      },
+      {
+        "id": "org.eclipse.elk.layered.layering.layerId",
+        "type": "INT",
+        "targets": [
+          "NODES"
+        ],
+        "group": "layering"
+      },
+      {
+        "id": "org.eclipse.elk.layered.layering.minWidth.upperBoundOnWidth",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "layering.minWidth"
+      },
+      {
+        "id": "org.eclipse.elk.layered.layering.minWidth.upperLayerEstimationScalingFactor",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "layering.minWidth"
+      },
+      {
+        "id": "org.eclipse.elk.layered.layering.nodePromotion.maxIterations",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "layering.nodePromotion"
+      },
+      {
+        "id": "org.eclipse.elk.layered.layering.nodePromotion.strategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "layering.nodePromotion"
+      },
+      {
+        "id": "org.eclipse.elk.layered.layering.strategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "layering"
+      },
+      {
+        "id": "org.eclipse.elk.layered.mergeEdges",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.layered.mergeHierarchyEdges",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.layered.nodePlacement.bk.edgeStraightening",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "nodePlacement.bk"
+      },
+      {
+        "id": "org.eclipse.elk.layered.nodePlacement.bk.fixedAlignment",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "nodePlacement.bk"
+      },
+      {
+        "id": "org.eclipse.elk.layered.nodePlacement.favorStraightEdges",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "nodePlacement"
+      },
+      {
+        "id": "org.eclipse.elk.layered.nodePlacement.linearSegments.deflectionDampening",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "nodePlacement.linearSegments"
+      },
+      {
+        "id": "org.eclipse.elk.layered.nodePlacement.networkSimplex.nodeFlexibility",
+        "type": "ENUM",
+        "targets": [
+          "NODES"
+        ],
+        "group": "nodePlacement.networkSimplex"
+      },
+      {
+        "id": "org.eclipse.elk.layered.nodePlacement.networkSimplex.nodeFlexibility.default",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "nodePlacement.networkSimplex.nodeFlexibility"
+      },
+      {
+        "id": "org.eclipse.elk.layered.nodePlacement.networkSimplex.nodeFlexibility.recomputeNodePlacement",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "nodePlacement.networkSimplex.nodeFlexibility"
+      },
+      {
+        "id": "org.eclipse.elk.layered.nodePlacement.strategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "nodePlacement"
+      },
+      {
+        "id": "org.eclipse.elk.layered.portSortingStrategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.layered.priority.direction",
+        "type": "INT",
+        "targets": [
+          "EDGES"
+        ],
+        "group": "priority"
+      },
+      {
+        "id": "org.eclipse.elk.layered.priority.shortness",
+        "type": "INT",
+        "targets": [
+          "EDGES"
+        ],
+        "group": "priority"
+      },
+      {
+        "id": "org.eclipse.elk.layered.priority.straightness",
+        "type": "INT",
+        "targets": [
+          "EDGES"
+        ],
+        "group": "priority"
+      },
+      {
+        "id": "org.eclipse.elk.layered.spacing.baseValue",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.layered.spacing.edgeEdgeBetweenLayers",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.layered.spacing.edgeNodeBetweenLayers",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.layered.spacing.nodeNodeBetweenLayers",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.layered.thoroughness",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.layered.unnecessaryBendpoints",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.layered.wrapping.additionalEdgeSpacing",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "wrapping"
+      },
+      {
+        "id": "org.eclipse.elk.layered.wrapping.correctionFactor",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "wrapping"
+      },
+      {
+        "id": "org.eclipse.elk.layered.wrapping.cutting.cuts",
+        "type": "OBJECT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "wrapping.cutting"
+      },
+      {
+        "id": "org.eclipse.elk.layered.wrapping.cutting.msd.freedom",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "wrapping.cutting.msd"
+      },
+      {
+        "id": "org.eclipse.elk.layered.wrapping.cutting.strategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "wrapping.cutting"
+      },
+      {
+        "id": "org.eclipse.elk.layered.wrapping.multiEdge.distancePenalty",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "wrapping.multiEdge"
+      },
+      {
+        "id": "org.eclipse.elk.layered.wrapping.multiEdge.improveCuts",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "wrapping.multiEdge"
+      },
+      {
+        "id": "org.eclipse.elk.layered.wrapping.multiEdge.improveWrappedEdges",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "wrapping.multiEdge"
+      },
+      {
+        "id": "org.eclipse.elk.layered.wrapping.strategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "wrapping"
+      },
+      {
+        "id": "org.eclipse.elk.layered.wrapping.validify.forbiddenIndices",
+        "type": "OBJECT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "wrapping.validify"
+      },
+      {
+        "id": "org.eclipse.elk.layered.wrapping.validify.strategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "wrapping.validify"
+      },
+      {
+        "id": "org.eclipse.elk.layoutAncestors",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.margins",
+        "type": "OBJECT",
+        "targets": [
+          "NODES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.maxAnimTime",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.minAnimTime",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.mrtree.compaction",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.mrtree.edgeEndTextureLength",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.mrtree.edgeRoutingMode",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.mrtree.positionConstraint",
+        "type": "INT",
+        "targets": [
+          "NODES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.mrtree.searchOrder",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.mrtree.treeLevel",
+        "type": "INT",
+        "targets": [
+          "NODES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.mrtree.weighting",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.noLayout",
+        "type": "BOOLEAN",
+        "targets": [
+          "NODES",
+          "EDGES",
+          "PORTS",
+          "LABELS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.nodeLabels.padding",
+        "type": "OBJECT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "nodeLabels"
+      },
+      {
+        "id": "org.eclipse.elk.nodeLabels.placement",
+        "type": "ENUMSET",
+        "targets": [
+          "NODES",
+          "LABELS"
+        ],
+        "group": "nodeLabels"
+      },
+      {
+        "id": "org.eclipse.elk.nodeSize.constraints",
+        "type": "ENUMSET",
+        "targets": [
+          "NODES"
+        ],
+        "group": "nodeSize"
+      },
+      {
+        "id": "org.eclipse.elk.nodeSize.fixedGraphSize",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "nodeSize"
+      },
+      {
+        "id": "org.eclipse.elk.nodeSize.minimum",
+        "type": "OBJECT",
+        "targets": [
+          "NODES"
+        ],
+        "group": "nodeSize"
+      },
+      {
+        "id": "org.eclipse.elk.nodeSize.options",
+        "type": "ENUMSET",
+        "targets": [
+          "NODES"
+        ],
+        "group": "nodeSize"
+      },
+      {
+        "id": "org.eclipse.elk.omitNodeMicroLayout",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.overlapRemoval.maxIterations",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "overlapRemoval"
+      },
+      {
+        "id": "org.eclipse.elk.overlapRemoval.runScanline",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "overlapRemoval"
+      },
+      {
+        "id": "org.eclipse.elk.padding",
+        "type": "OBJECT",
+        "targets": [
+          "PARENTS",
+          "NODES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.partitioning.activate",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "partitioning"
+      },
+      {
+        "id": "org.eclipse.elk.partitioning.partition",
+        "type": "INT",
+        "targets": [
+          "PARENTS",
+          "NODES"
+        ],
+        "group": "partitioning"
+      },
+      {
+        "id": "org.eclipse.elk.polyomino.fill",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "polyomino"
+      },
+      {
+        "id": "org.eclipse.elk.polyomino.highLevelSort",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "polyomino"
+      },
+      {
+        "id": "org.eclipse.elk.polyomino.lowLevelSort",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "polyomino"
+      },
+      {
+        "id": "org.eclipse.elk.polyomino.traversalStrategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "polyomino"
+      },
+      {
+        "id": "org.eclipse.elk.port.anchor",
+        "type": "OBJECT",
+        "targets": [
+          "PORTS"
+        ],
+        "group": "port"
+      },
+      {
+        "id": "org.eclipse.elk.port.borderOffset",
+        "type": "DOUBLE",
+        "targets": [
+          "PORTS"
+        ],
+        "group": "port"
+      },
+      {
+        "id": "org.eclipse.elk.port.index",
+        "type": "INT",
+        "targets": [
+          "PORTS"
+        ],
+        "group": "port"
+      },
+      {
+        "id": "org.eclipse.elk.port.side",
+        "type": "ENUM",
+        "targets": [
+          "PORTS"
+        ],
+        "group": "port"
+      },
+      {
+        "id": "org.eclipse.elk.portAlignment.default",
+        "type": "ENUM",
+        "targets": [
+          "NODES"
+        ],
+        "group": "portAlignment"
+      },
+      {
+        "id": "org.eclipse.elk.portAlignment.east",
+        "type": "ENUM",
+        "targets": [
+          "NODES"
+        ],
+        "group": "portAlignment"
+      },
+      {
+        "id": "org.eclipse.elk.portAlignment.north",
+        "type": "ENUM",
+        "targets": [
+          "NODES"
+        ],
+        "group": "portAlignment"
+      },
+      {
+        "id": "org.eclipse.elk.portAlignment.south",
+        "type": "ENUM",
+        "targets": [
+          "NODES"
+        ],
+        "group": "portAlignment"
+      },
+      {
+        "id": "org.eclipse.elk.portAlignment.west",
+        "type": "ENUM",
+        "targets": [
+          "NODES"
+        ],
+        "group": "portAlignment"
+      },
+      {
+        "id": "org.eclipse.elk.portConstraints",
+        "type": "ENUM",
+        "targets": [
+          "NODES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.portLabels.nextToPortIfPossible",
+        "type": "BOOLEAN",
+        "targets": [
+          "NODES"
+        ],
+        "group": "portLabels"
+      },
+      {
+        "id": "org.eclipse.elk.portLabels.placement",
+        "type": "ENUMSET",
+        "targets": [
+          "NODES"
+        ],
+        "group": "portLabels"
+      },
+      {
+        "id": "org.eclipse.elk.portLabels.treatAsGroup",
+        "type": "BOOLEAN",
+        "targets": [
+          "NODES"
+        ],
+        "group": "portLabels"
+      },
+      {
+        "id": "org.eclipse.elk.position",
+        "type": "OBJECT",
+        "targets": [
+          "NODES",
+          "PORTS",
+          "LABELS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.priority",
+        "type": "INT",
+        "targets": [
+          "NODES",
+          "EDGES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.processingOrder.preferredRoot",
+        "type": "STRING",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "processingOrder"
+      },
+      {
+        "id": "org.eclipse.elk.processingOrder.rootSelection",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "processingOrder"
+      },
+      {
+        "id": "org.eclipse.elk.processingOrder.spanningTreeCostFunction",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "processingOrder"
+      },
+      {
+        "id": "org.eclipse.elk.processingOrder.treeConstruction",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "processingOrder"
+      },
+      {
+        "id": "org.eclipse.elk.progressBar",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.radial.centerOnRoot",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.radial.compactionStepSize",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.radial.compactor",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.radial.optimizationCriteria",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.radial.orderId",
+        "type": "INT",
+        "targets": [
+          "NODES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.radial.radius",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.radial.rotate",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.radial.rotation.computeAdditionalWedgeSpace",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "rotation"
+      },
+      {
+        "id": "org.eclipse.elk.radial.rotation.outgoingEdgeAngles",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "rotation"
+      },
+      {
+        "id": "org.eclipse.elk.radial.rotation.targetAngle",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "rotation"
+      },
+      {
+        "id": "org.eclipse.elk.radial.sorter",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.radial.wedgeCriteria",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.randomSeed",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.rectpacking.currentPosition",
+        "type": "INT",
+        "targets": [
+          "NODES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.rectpacking.desiredPosition",
+        "type": "INT",
+        "targets": [
+          "NODES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.rectpacking.inNewRow",
+        "type": "BOOLEAN",
+        "targets": [
+          "NODES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.rectpacking.orderBySize",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.rectpacking.packing.compaction.iterations",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "packing.compaction"
+      },
+      {
+        "id": "org.eclipse.elk.rectpacking.packing.compaction.rowHeightReevaluation",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "packing.compaction"
+      },
+      {
+        "id": "org.eclipse.elk.rectpacking.packing.strategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "packing"
+      },
+      {
+        "id": "org.eclipse.elk.rectpacking.trybox",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.rectpacking.whiteSpaceElimination.strategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "whiteSpaceElimination"
+      },
+      {
+        "id": "org.eclipse.elk.rectpacking.widthApproximation.lastPlaceShift",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "widthApproximation"
+      },
+      {
+        "id": "org.eclipse.elk.rectpacking.widthApproximation.optimizationGoal",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "widthApproximation"
+      },
+      {
+        "id": "org.eclipse.elk.rectpacking.widthApproximation.strategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "widthApproximation"
+      },
+      {
+        "id": "org.eclipse.elk.rectpacking.widthApproximation.targetWidth",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "widthApproximation"
+      },
+      {
+        "id": "org.eclipse.elk.resolvedAlgorithm",
+        "type": "OBJECT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.scaleFactor",
+        "type": "DOUBLE",
+        "targets": [
+          "NODES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.separateConnectedComponents",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.softwrappingFuzziness",
+        "type": "DOUBLE",
+        "targets": [
+          "LABELS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.spacing.commentComment",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.spacing.commentNode",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.spacing.componentComponent",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.spacing.edgeEdge",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.spacing.edgeLabel",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.spacing.edgeNode",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.spacing.individual",
+        "type": "OBJECT",
+        "targets": [
+          "NODES",
+          "EDGES",
+          "PORTS",
+          "LABELS"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.spacing.labelLabel",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.spacing.labelNode",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.spacing.labelPortHorizontal",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.spacing.labelPortVertical",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.spacing.nodeNode",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.spacing.nodeSelfLoop",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.spacing.portPort",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS",
+          "NODES"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.spacing.portsSurrounding",
+        "type": "OBJECT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "spacing"
+      },
+      {
+        "id": "org.eclipse.elk.stress.desiredEdgeLength",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS",
+          "EDGES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.stress.dimension",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.stress.epsilon",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.stress.fixed",
+        "type": "BOOLEAN",
+        "targets": [
+          "NODES"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.stress.iterationLimit",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.structure.structureExtractionStrategy",
+        "type": "ENUM",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "structure"
+      },
+      {
+        "id": "org.eclipse.elk.topdown.hierarchicalNodeAspectRatio",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS",
+          "NODES"
+        ],
+        "group": "topdown"
+      },
+      {
+        "id": "org.eclipse.elk.topdown.hierarchicalNodeWidth",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS",
+          "NODES"
+        ],
+        "group": "topdown"
+      },
+      {
+        "id": "org.eclipse.elk.topdown.nodeType",
+        "type": "ENUM",
+        "targets": [
+          "NODES"
+        ],
+        "group": "topdown"
+      },
+      {
+        "id": "org.eclipse.elk.topdown.scaleCap",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "topdown"
+      },
+      {
+        "id": "org.eclipse.elk.topdown.scaleFactor",
+        "type": "DOUBLE",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "topdown"
+      },
+      {
+        "id": "org.eclipse.elk.topdown.sizeApproximator",
+        "type": "OBJECT",
+        "targets": [
+          "NODES"
+        ],
+        "group": "topdown"
+      },
+      {
+        "id": "org.eclipse.elk.topdown.sizeCategories",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "topdown"
+      },
+      {
+        "id": "org.eclipse.elk.topdown.sizeCategoriesHierarchicalNodeWeight",
+        "type": "INT",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": "topdown"
+      },
+      {
+        "id": "org.eclipse.elk.topdownLayout",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.underlyingLayoutAlgorithm",
+        "type": "STRING",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.validateGraph",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.validateOptions",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      },
+      {
+        "id": "org.eclipse.elk.zoomToFit",
+        "type": "BOOLEAN",
+        "targets": [
+          "PARENTS"
+        ],
+        "group": ""
+      }
+    ]
+  }
+}

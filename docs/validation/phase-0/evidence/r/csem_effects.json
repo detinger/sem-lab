@@ -1,0 +1,448 @@
+{
+  "evidence": "csem_effects",
+  "script": "services/r-engine/spike/csem_03_effects.R",
+  "generated": "2026-11-19T13:52:52+0100",
+  "r": "R version 4.6.2 (2026-10-29)",
+  "platform": "aarch64-apple-darwin27.0.0",
+  "packages": {
+    "cSEM": "0.7.1"
+  },
+  "findings": {
+    "classic_modeA": {
+      "where": {
+        "assess": "assess(res, .quality_criterion = 'effects')$Effects$<Direct_effect|Indirect_effect|Total_effect|Variance_accounted_for> (data.frame: Name = 'to ~ from', Estimate)",
+        "summarize": "summarize(res)$Estimates$Effect_estimates$<same four>",
+        "resampled": "res$Estimates$Estimates_resample$Estimates1$<Indirect_effect|Total_effect>$<Resampled|Original>",
+        "direct_is": "res$Estimates$Path_estimates[to, from]"
+      },
+      "names_in_assess": ["Direct_effect", "Indirect_effect", "Total_effect", "Variance_accounted_for"],
+      "names_in_summarize": ["Direct_effect", "Indirect_effect", "Total_effect", "Variance_accounted_for"],
+      "direct": [
+        {
+          "Name": "PU ~ PEOU",
+          "Estimate": 0.445383471418466
+        },
+        {
+          "Name": "ATU ~ PEOU",
+          "Estimate": 0.253226246121735
+        },
+        {
+          "Name": "ATU ~ PU",
+          "Estimate": 0.267202446102868
+        },
+        {
+          "Name": "BI ~ PU",
+          "Estimate": 0.401218653048324
+        },
+        {
+          "Name": "BI ~ ATU",
+          "Estimate": 0.172841871830849
+        },
+        {
+          "Name": "USE ~ BI",
+          "Estimate": 0.229403984078654
+        }
+      ],
+      "indirect": [
+        {
+          "Name": "ATU ~ PEOU",
+          "Estimate": 0.119007553016801
+        },
+        {
+          "Name": "BI ~ PEOU",
+          "Estimate": 0.243033743094316
+        },
+        {
+          "Name": "BI ~ PU",
+          "Estimate": 0.0461837709422012
+        },
+        {
+          "Name": "USE ~ PEOU",
+          "Estimate": 0.0557529089313841
+        },
+        {
+          "Name": "USE ~ PU",
+          "Estimate": 0.102635898549873
+        },
+        {
+          "Name": "USE ~ ATU",
+          "Estimate": 0.0396506140136087
+        }
+      ],
+      "total": [
+        {
+          "Name": "PU ~ PEOU",
+          "Estimate": 0.445383471418466
+        },
+        {
+          "Name": "ATU ~ PEOU",
+          "Estimate": 0.372233799138535
+        },
+        {
+          "Name": "ATU ~ PU",
+          "Estimate": 0.267202446102868
+        },
+        {
+          "Name": "BI ~ PEOU",
+          "Estimate": 0.243033743094316
+        },
+        {
+          "Name": "BI ~ PU",
+          "Estimate": 0.447402423990525
+        },
+        {
+          "Name": "BI ~ ATU",
+          "Estimate": 0.172841871830849
+        },
+        {
+          "Name": "USE ~ PEOU",
+          "Estimate": 0.0557529089313841
+        },
+        {
+          "Name": "USE ~ PU",
+          "Estimate": 0.102635898549873
+        },
+        {
+          "Name": "USE ~ ATU",
+          "Estimate": 0.0396506140136087
+        },
+        {
+          "Name": "USE ~ BI",
+          "Estimate": 0.229403984078654
+        }
+      ],
+      "variance_accounted_for": [
+        {
+          "Name": "ATU ~ PEOU",
+          "Estimate": 0.319711840494392
+        },
+        {
+          "Name": "BI ~ PEOU",
+          "Estimate": 1
+        },
+        {
+          "Name": "BI ~ PU",
+          "Estimate": 0.10322646562858
+        },
+        {
+          "Name": "USE ~ PEOU",
+          "Estimate": 1
+        },
+        {
+          "Name": "USE ~ PU",
+          "Estimate": 1
+        },
+        {
+          "Name": "USE ~ ATU",
+          "Estimate": 1
+        }
+      ],
+      "specific_indirect_own": [
+        {
+          "from": "PU",
+          "to": "BI",
+          "path": "PU -> ATU -> BI",
+          "est": 0.0461837709422012
+        },
+        {
+          "from": "PU",
+          "to": "USE",
+          "path": "PU -> ATU -> BI -> USE",
+          "est": 0.0105947410539169
+        },
+        {
+          "from": "PU",
+          "to": "USE",
+          "path": "PU -> BI -> USE",
+          "est": 0.0920411574959565
+        },
+        {
+          "from": "PEOU",
+          "to": "ATU",
+          "path": "PEOU -> PU -> ATU",
+          "est": 0.119007553016801
+        },
+        {
+          "from": "PEOU",
+          "to": "BI",
+          "path": "PEOU -> PU -> ATU -> BI",
+          "est": 0.0205694882254328
+        },
+        {
+          "from": "PEOU",
+          "to": "BI",
+          "path": "PEOU -> PU -> BI",
+          "est": 0.178696156492504
+        },
+        {
+          "from": "PEOU",
+          "to": "BI",
+          "path": "PEOU -> ATU -> BI",
+          "est": 0.0437680983763798
+        },
+        {
+          "from": "PEOU",
+          "to": "USE",
+          "path": "PEOU -> PU -> ATU -> BI -> USE",
+          "est": 0.00471872254937325
+        },
+        {
+          "from": "PEOU",
+          "to": "USE",
+          "path": "PEOU -> PU -> BI -> USE",
+          "est": 0.0409936102389229
+        },
+        {
+          "from": "PEOU",
+          "to": "USE",
+          "path": "PEOU -> ATU -> BI -> USE",
+          "est": 0.010040576143088
+        },
+        {
+          "from": "ATU",
+          "to": "USE",
+          "path": "ATU -> BI -> USE",
+          "est": 0.0396506140136087
+        }
+      ],
+      "checks_max_abs_diff": {
+        "total_minus_direct_minus_indirect": 0,
+        "direct_vs_path_estimates": 0,
+        "total_vs_own_matrix_formula": 0,
+        "indirect_vs_own_matrix_formula": 0,
+        "indirect_vs_sum_of_specific_path_products": 2.77555756156289e-17,
+        "assess_vs_summarize_total": 0,
+        "vaf_vs_indirect_over_total": 0
+      },
+      "notes": {
+        "total_effect_table_lists_only_nonzero_pairs": 10,
+        "indirect_effect_table_rows": 6,
+        "specific_indirect_effects_provided_by_cSEM": false,
+        "specific_indirect_note": "cSEM returns only the TOTAL indirect effect per (from, to) pair. Specific indirect effects (one per mediating chain) must be computed by us as products of path coefficients - on the point estimate and, for inference, on every bootstrap draw of the path coefficients."
+      }
+    },
+    "plsc": {
+      "where": {
+        "assess": "assess(res, .quality_criterion = 'effects')$Effects$<Direct_effect|Indirect_effect|Total_effect|Variance_accounted_for> (data.frame: Name = 'to ~ from', Estimate)",
+        "summarize": "summarize(res)$Estimates$Effect_estimates$<same four>",
+        "resampled": "res$Estimates$Estimates_resample$Estimates1$<Indirect_effect|Total_effect>$<Resampled|Original>",
+        "direct_is": "res$Estimates$Path_estimates[to, from]"
+      },
+      "names_in_assess": ["Direct_effect", "Indirect_effect", "Total_effect", "Variance_accounted_for"],
+      "names_in_summarize": ["Direct_effect", "Indirect_effect", "Total_effect", "Variance_accounted_for"],
+      "direct": [
+        {
+          "Name": "PU ~ PEOU",
+          "Estimate": 0.500371573627408
+        },
+        {
+          "Name": "ATU ~ PEOU",
+          "Estimate": 0.272755164722324
+        },
+        {
+          "Name": "ATU ~ PU",
+          "Estimate": 0.275204403111164
+        },
+        {
+          "Name": "BI ~ PU",
+          "Estimate": 0.460885203738072
+        },
+        {
+          "Name": "BI ~ ATU",
+          "Estimate": 0.174587298508971
+        },
+        {
+          "Name": "USE ~ BI",
+          "Estimate": 0.279658693188041
+        }
+      ],
+      "indirect": [
+        {
+          "Name": "ATU ~ PEOU",
+          "Estimate": 0.137704460253924
+        },
+        {
+          "Name": "BI ~ PEOU",
+          "Estimate": 0.302274891727616
+        },
+        {
+          "Name": "BI ~ PU",
+          "Estimate": 0.0480471932769519
+        },
+        {
+          "Name": "USE ~ PEOU",
+          "Estimate": 0.0845338012041017
+        },
+        {
+          "Name": "USE ~ PU",
+          "Estimate": 0.142327369070279
+        },
+        {
+          "Name": "USE ~ ATU",
+          "Estimate": 0.0488248557482492
+        }
+      ],
+      "total": [
+        {
+          "Name": "PU ~ PEOU",
+          "Estimate": 0.500371573627408
+        },
+        {
+          "Name": "ATU ~ PEOU",
+          "Estimate": 0.410459624976249
+        },
+        {
+          "Name": "ATU ~ PU",
+          "Estimate": 0.275204403111164
+        },
+        {
+          "Name": "BI ~ PEOU",
+          "Estimate": 0.302274891727616
+        },
+        {
+          "Name": "BI ~ PU",
+          "Estimate": 0.508932397015024
+        },
+        {
+          "Name": "BI ~ ATU",
+          "Estimate": 0.174587298508971
+        },
+        {
+          "Name": "USE ~ PEOU",
+          "Estimate": 0.0845338012041017
+        },
+        {
+          "Name": "USE ~ PU",
+          "Estimate": 0.142327369070279
+        },
+        {
+          "Name": "USE ~ ATU",
+          "Estimate": 0.0488248557482492
+        },
+        {
+          "Name": "USE ~ BI",
+          "Estimate": 0.279658693188041
+        }
+      ],
+      "variance_accounted_for": [
+        {
+          "Name": "ATU ~ PEOU",
+          "Estimate": 0.335488442406224
+        },
+        {
+          "Name": "BI ~ PEOU",
+          "Estimate": 1
+        },
+        {
+          "Name": "BI ~ PU",
+          "Estimate": 0.0944078104651167
+        },
+        {
+          "Name": "USE ~ PEOU",
+          "Estimate": 1
+        },
+        {
+          "Name": "USE ~ PU",
+          "Estimate": 1
+        },
+        {
+          "Name": "USE ~ ATU",
+          "Estimate": 1
+        }
+      ],
+      "specific_indirect_own": [
+        {
+          "from": "PU",
+          "to": "BI",
+          "path": "PU -> ATU -> BI",
+          "est": 0.0480471932769519
+        },
+        {
+          "from": "PU",
+          "to": "USE",
+          "path": "PU -> ATU -> BI -> USE",
+          "est": 0.0134368152831856
+        },
+        {
+          "from": "PU",
+          "to": "USE",
+          "path": "PU -> BI -> USE",
+          "est": 0.128890553787093
+        },
+        {
+          "from": "PEOU",
+          "to": "ATU",
+          "path": "PEOU -> PU -> ATU",
+          "est": 0.137704460253924
+        },
+        {
+          "from": "PEOU",
+          "to": "BI",
+          "path": "PEOU -> PU -> ATU -> BI",
+          "est": 0.0240414497083686
+        },
+        {
+          "from": "PEOU",
+          "to": "BI",
+          "path": "PEOU -> PU -> BI",
+          "est": 0.230613854656008
+        },
+        {
+          "from": "PEOU",
+          "to": "BI",
+          "path": "PEOU -> ATU -> BI",
+          "est": 0.04761958736324
+        },
+        {
+          "from": "PEOU",
+          "to": "USE",
+          "path": "PEOU -> PU -> ATU -> BI -> USE",
+          "est": 0.00672340040778837
+        },
+        {
+          "from": "PEOU",
+          "to": "USE",
+          "path": "PEOU -> PU -> BI -> USE",
+          "est": 0.0644931692241559
+        },
+        {
+          "from": "PEOU",
+          "to": "USE",
+          "path": "PEOU -> ATU -> BI -> USE",
+          "est": 0.0133172315721574
+        },
+        {
+          "from": "ATU",
+          "to": "USE",
+          "path": "ATU -> BI -> USE",
+          "est": 0.0488248557482492
+        }
+      ],
+      "checks_max_abs_diff": {
+        "total_minus_direct_minus_indirect": 0,
+        "direct_vs_path_estimates": 0,
+        "total_vs_own_matrix_formula": 0,
+        "indirect_vs_own_matrix_formula": 0,
+        "indirect_vs_sum_of_specific_path_products": 3.46944695195361e-17,
+        "assess_vs_summarize_total": 0,
+        "vaf_vs_indirect_over_total": 0
+      },
+      "notes": {
+        "total_effect_table_lists_only_nonzero_pairs": 10,
+        "indirect_effect_table_rows": 6,
+        "specific_indirect_effects_provided_by_cSEM": false,
+        "specific_indirect_note": "cSEM returns only the TOTAL indirect effect per (from, to) pair. Specific indirect effects (one per mediating chain) must be computed by us as products of path coefficients - on the point estimate and, for inference, on every bootstrap draw of the path coefficients."
+      }
+    },
+    "bootstrap_effects": {
+      "path_draws_dim": [40, 6],
+      "path_draw_colnames": ["PU ~ PEOU", "ATU ~ PEOU", "ATU ~ PU", "BI ~ PU", "BI ~ ATU", "USE ~ BI"],
+      "total_draws_dim": [40, 10],
+      "total_draw_colnames": ["PU ~ PEOU", "ATU ~ PEOU", "ATU ~ PU", "BI ~ PEOU", "BI ~ PU", "BI ~ ATU", "USE ~ PEOU", "USE ~ PU", "USE ~ ATU", "USE ~ BI"],
+      "indirect_draws_dim": [40, 6],
+      "indirect_draw_colnames": ["ATU ~ PEOU", "BI ~ PEOU", "BI ~ PU", "USE ~ PEOU", "USE ~ PU", "USE ~ ATU"],
+      "total_draws_vs_recomputed_from_path_draws": 0,
+      "conclusion": "Per-draw total (and hence specific indirect) effects can be recomputed from the raw path draws alone; SEM Studio only needs to store the path draw matrix."
+    }
+  }
+}

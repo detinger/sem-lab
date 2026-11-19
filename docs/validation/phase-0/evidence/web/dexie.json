@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-11-19T12:53:52.755Z",
+  "generatedBy": "apps/web/src/tests/spike (npm run spike:evidence -w @sem-studio/web)",
+  "runtime": {
+    "node": "v26.13.1",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "packages": [
+    {
+      "name": "dexie",
+      "version": "4.4.7",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "fake-indexeddb",
+      "version": "6.2.8",
+      "license": "Apache-2.0"
+    }
+  ],
+  "data": {
+    "roundTrip": true,
+    "schema": "this.version(1).stores({ models: 'id, title' })"
+  }
+}

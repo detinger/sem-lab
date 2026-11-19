@@ -1,0 +1,165 @@
+{
+  "evidence": "csem_input",
+  "script": "services/r-engine/spike/csem_07_input.R",
+  "generated": "2026-11-19T13:59:29+0100",
+  "r": "R version 4.6.2 (2026-10-29)",
+  "platform": "aarch64-apple-darwin27.0.0",
+  "packages": {
+    "cSEM": "0.7.1"
+  },
+  "findings": {
+    "csem_arguments_mentioning_missing": [],
+    "csem_argument_names": [".data", ".model", ".approach_2ndorder", ".approach_cor_robust", ".approach_nl", ".approach_paths", ".approach_weights", ".conv_criterion", ".disattenuate", ".dominant_indicators", ".estimate_structural", ".id", ".instruments", ".iter_max", ".normality", ".PLS_approach_cf", ".PLS_ignore_structural_model", ".PLS_modes", ".PLS_weight_scheme_inner", ".reliabilities", ".starting_values", ".resample_method", ".resample_method2", ".R", ".R2", ".handle_inadmissibles", ".user_funs", ".eval_plan", ".seed", ".sign_change_option", ".tolerance"],
+    "na_in_indicators": {
+      "setup": "USEF1 NA in 5 rows, BI2 NA in 2 rows (1 row overlaps) -> 6 incomplete rows",
+      "incomplete_rows": 6,
+      "run": {
+        "ok": false,
+        "error": "The following error occured while processing the data:\nData set contains missing values in rows:`3`, `10`, `50`, `400`, `777`, `1000`\nRemove NAs or use imputation methods to replace them.",
+        "error_class": "simpleError",
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.802
+      },
+      "listwise_reference_paths": [0.446273437136221, 0.253878462297931, 0.266831110005849, 0.401675330955548, 0.173208799639317, 0.229598886163291],
+      "max_abs_diff_vs_listwise": null
+    },
+    "na_only_in_unused_column": {
+      "ok": true,
+      "warnings": [],
+      "n_warnings": 0,
+      "messages": [],
+      "seconds": 0.16,
+      "result": {
+        "n_used": 1190,
+        "paths": [0.44538347229434, 0.253226246009254, 0.267202446011147, 0.401218651770031, 0.172841873142115, 0.229403981852719]
+      }
+    },
+    "non_numeric": {
+      "character_digits": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.282,
+        "result": {
+          "n_used": 1190,
+          "max_abs_path_diff_vs_numeric": 0.00305316087841589,
+          "type_of_indicator_correlation": ["Pearson", "polyserial"]
+        }
+      },
+      "character_with_text_value": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.376,
+        "result": {
+          "n_used": 1190,
+          "max_abs_path_diff_vs_numeric": 0.00295756764254629,
+          "type_of_indicator_correlation": ["Pearson", "polyserial"]
+        }
+      },
+      "factor": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.295,
+        "result": {
+          "n_used": 1190,
+          "max_abs_path_diff_vs_numeric": 0.00305316087841589,
+          "type_of_indicator_correlation": ["Pearson", "polyserial"]
+        }
+      },
+      "logical": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.303,
+        "result": {
+          "n_used": 1190,
+          "max_abs_path_diff_vs_numeric": 0.0110649953871932,
+          "type_of_indicator_correlation": ["Pearson", "polyserial"]
+        }
+      },
+      "unused_character_column": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.0800000000000001,
+        "result": {
+          "n_used": 1190,
+          "max_abs_path_diff_vs_numeric": 0,
+          "type_of_indicator_correlation": "Pearson"
+        }
+      }
+    },
+    "zero_variance_indicator": {
+      "ok": false,
+      "error": "NAs are not allowed in subscripted assignments",
+      "error_class": "simpleError",
+      "warnings": [
+        "the standard deviation is zero"
+      ],
+      "n_warnings": 1,
+      "messages": [],
+      "seconds": 0.0499999999999998
+    },
+    "zero_variance_whole_block": {
+      "ok": false,
+      "error": "NAs are not allowed in subscripted assignments",
+      "error_class": "simpleError",
+      "warnings": [
+        "the standard deviation is zero"
+      ],
+      "n_warnings": 1,
+      "messages": [],
+      "seconds": 0.0419999999999998
+    },
+    "unknown_indicator_in_model": {
+      "ok": false,
+      "error": "The following error occured while processing the data:\nUnknown indicator(s): `BI9`. Please verify your model description.",
+      "error_class": "simpleError",
+      "warnings": [],
+      "n_warnings": 0,
+      "messages": [],
+      "seconds": 0.048
+    },
+    "extra_unused_numeric_columns": {
+      "ok": true,
+      "warnings": [],
+      "n_warnings": 0,
+      "messages": [],
+      "seconds": 0.016,
+      "result": {
+        "n_used": 1190,
+        "max_abs_path_diff_vs_numeric": 0,
+        "type_of_indicator_correlation": "Pearson"
+      }
+    },
+    "duplicate_indicator_in_two_blocks": {
+      "ok": false,
+      "error": "The following error occured in the `parseModel()` function:\nAt least one indicator is connected to several constructs.",
+      "error_class": "simpleError",
+      "warnings": [],
+      "n_warnings": 0,
+      "messages": [],
+      "seconds": 0.0869999999999997
+    },
+    "too_few_rows": {
+      "ok": false,
+      "error": "NAs are not allowed in subscripted assignments",
+      "error_class": "simpleError",
+      "warnings": [
+        "the standard deviation is zero"
+      ],
+      "n_warnings": 1,
+      "messages": [],
+      "seconds": 0.0810000000000004
+    }
+  }
+}

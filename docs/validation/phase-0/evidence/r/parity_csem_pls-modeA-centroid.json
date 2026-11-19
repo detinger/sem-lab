@@ -1,0 +1,358 @@
+{
+  "model": "tam-v1",
+  "engine": "cSEM",
+  "engineVersion": "0.7.1",
+  "variant": "pls-modeA-centroid",
+  "options": {
+    ".model_operator": "=~",
+    ".disattenuate": false,
+    ".PLS_weight_scheme_inner": "centroid",
+    ".tolerance": 1e-10,
+    ".iter_max": 300
+  },
+  "n": 1190,
+  "paths": [
+    {
+      "from": "PEOU",
+      "to": "PU",
+      "est": 0.445318877797529
+    },
+    {
+      "from": "PEOU",
+      "to": "ATU",
+      "est": 0.253149417200771
+    },
+    {
+      "from": "PU",
+      "to": "ATU",
+      "est": 0.267267536989468
+    },
+    {
+      "from": "PU",
+      "to": "BI",
+      "est": 0.400748554734752
+    },
+    {
+      "from": "ATU",
+      "to": "BI",
+      "est": 0.173035400122809
+    },
+    {
+      "from": "BI",
+      "to": "USE",
+      "est": 0.228933262691969
+    }
+  ],
+  "loadings": [
+    {
+      "construct": "PU",
+      "indicator": "USEF1",
+      "est": 0.807500994744148
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF2",
+      "est": 0.847623078220332
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF3",
+      "est": 0.880285575908436
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF4",
+      "est": 0.866242364581317
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF5",
+      "est": 0.859596718932012
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU1",
+      "est": 0.765559088846477
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU2",
+      "est": 0.827539206060568
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU3",
+      "est": 0.863051626591564
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU4",
+      "est": 0.808516774279444
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU5",
+      "est": 0.789076163709296
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT1",
+      "est": 0.900976758571922
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT2",
+      "est": 0.90597122854278
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT3",
+      "est": 0.897168809675262
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT4",
+      "est": 0.878634773819688
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT5",
+      "est": 0.876566465656529
+    },
+    {
+      "construct": "BI",
+      "indicator": "BI1",
+      "est": 0.855636656676726
+    },
+    {
+      "construct": "BI",
+      "indicator": "BI2",
+      "est": 0.832279064354165
+    },
+    {
+      "construct": "BI",
+      "indicator": "BI3",
+      "est": 0.888673120110887
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE1",
+      "est": 0.855519720780733
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE2",
+      "est": 0.787227702204945
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE3",
+      "est": 0.72021631055156
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE4",
+      "est": 0.605192844890278
+    }
+  ],
+  "weights": [
+    {
+      "construct": "PU",
+      "indicator": "USEF1",
+      "est": 0.234391684399828
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF2",
+      "est": 0.231173958432546
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF3",
+      "est": 0.236097792949011
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF4",
+      "est": 0.237189312848578
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF5",
+      "est": 0.234392689207256
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU1",
+      "est": 0.22689092637971
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU2",
+      "est": 0.254479338431035
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU3",
+      "est": 0.270228357443689
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU4",
+      "est": 0.256572919778614
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU5",
+      "est": 0.221835907089777
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT1",
+      "est": 0.238380714789691
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT2",
+      "est": 0.241860201463107
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT3",
+      "est": 0.232929133064794
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT4",
+      "est": 0.214607191995949
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT5",
+      "est": 0.192304912841339
+    },
+    {
+      "construct": "BI",
+      "indicator": "BI1",
+      "est": 0.439812561808402
+    },
+    {
+      "construct": "BI",
+      "indicator": "BI2",
+      "est": 0.299794545203656
+    },
+    {
+      "construct": "BI",
+      "indicator": "BI3",
+      "est": 0.421040670637775
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE1",
+      "est": 0.456593703358975
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE2",
+      "est": 0.335506177354935
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE3",
+      "est": 0.27385953020244
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE4",
+      "est": 0.244578610132857
+    }
+  ],
+  "r2": {
+    "PU": 0.198308902922851,
+    "ATU": 0.195775886312504,
+    "BI": 0.243241821089192,
+    "USE": 0.0524104387667902
+  },
+  "extra": {
+    "r2adj": {
+      "PU": 0.197634078767062,
+      "ATU": 0.194420833045971,
+      "BI": 0.241966744123883,
+      "USE": 0.0516128044559878
+    },
+    "iterations": 7,
+    "converged": true,
+    "weightNormalisation": "standardised weights: composite variance w'Sw = 1 on the indicator correlation matrix",
+    "constructCorrelations": {
+      "PEOU": {
+        "PEOU": 1,
+        "PU": 0.445318877797529,
+        "ATU": 0.372168696844631,
+        "BI": 0.551928708809114,
+        "USE": 0.3250564970643
+      },
+      "PU": {
+        "PEOU": 0.445318877797529,
+        "PU": 1,
+        "ATU": 0.379999751372414,
+        "BI": 0.466501963760045,
+        "USE": 0.223510392460621
+      },
+      "ATU": {
+        "PEOU": 0.372168696844631,
+        "PU": 0.379999751372414,
+        "ATU": 1,
+        "BI": 0.325319751284869,
+        "USE": 0.309308055612856
+      },
+      "BI": {
+        "PEOU": 0.551928708809114,
+        "PU": 0.466501963760045,
+        "ATU": 0.325319751284869,
+        "BI": 1,
+        "USE": 0.228933262691969
+      },
+      "USE": {
+        "PEOU": 0.3250564970643,
+        "PU": 0.223510392460621,
+        "ATU": 0.309308055612856,
+        "BI": 0.228933262691969,
+        "USE": 1
+      }
+    },
+    "ave": {
+      "PEOU": 0.658420106534113,
+      "PU": 0.726941557558212,
+      "ATU": 0.795564538793393,
+      "BI": 0.738180814539596,
+      "USE": 0.559152840313627
+    },
+    "rhoC": {
+      "PEOU": 0.905852773992716,
+      "PU": 0.930069408328713,
+      "ATU": 0.951109994529787,
+      "BI": 0.894204035016197,
+      "USE": 0.833223154993783
+    },
+    "rhoA": {
+      "PEOU": 1,
+      "PU": 1,
+      "ATU": 1,
+      "BI": 1,
+      "USE": 1
+    },
+    "cronbachAlpha": {
+      "PEOU": 0.869992530567709,
+      "PU": 0.905805923382122,
+      "ATU": 0.935915020311371,
+      "BI": 0.825229305784041,
+      "USE": 0.739581188055791
+    },
+    "independentReferenceMaxAbsDiff": {
+      "paths": 5.55111512312578e-17,
+      "loadings": 2.22044604925031e-16,
+      "weights": 8.32667268468867e-17,
+      "r2": 5.55111512312578e-17
+    }
+  }
+}

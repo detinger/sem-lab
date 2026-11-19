@@ -1,0 +1,62 @@
+[
+  {
+    "analysis": {
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "Classic PLS-SEM: Mode B weights for composite F, Mode A for X and Y.",
+    "id": "pls-csem"
+  },
+  {
+    "analysis": {
+      "engine": "r-seminr",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "Same specification in seminr.",
+    "id": "pls-seminr"
+  },
+  {
+    "analysis": {
+      "engine": "py-plspm",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "Same specification in Python plspm.",
+    "id": "pls-plspm"
+  },
+  {
+    "analysis": {
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "method": "plsc",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "PLSc: X and Y corrected for attenuation, F stays an uncorrected Mode B composite.",
+    "id": "plsc-csem"
+  }
+]

@@ -1,0 +1,142 @@
+{
+  "dataset": "acsi-2015",
+  "source": {
+    "file": "ACSI Data 2015.txt.settings",
+    "jsonPath": "groupModel.groups"
+  },
+  "note": "'n' is the stored hit count and was re-counted from data.csv during the build. Rows with a missing value in the grouping column belong to no group.",
+  "groups": [
+    {
+      "name": "Industry: Processed Food (Nondurables)",
+      "logic": "AND",
+      "terms": [
+        {
+          "column": "INDUSTRY",
+          "operator": "EQUALS",
+          "value": 1001
+        }
+      ],
+      "n": 1968
+    },
+    {
+      "name": "Industry: Commercial Airlines (Transportation)",
+      "logic": "AND",
+      "terms": [
+        {
+          "column": "INDUSTRY",
+          "operator": "EQUALS",
+          "value": 3003
+        }
+      ],
+      "n": 1479
+    },
+    {
+      "name": "Industry: Internet Service Providers (Telecommunications)",
+      "logic": "AND",
+      "terms": [
+        {
+          "column": "INDUSTRY",
+          "operator": "EQUALS",
+          "value": 3013
+        }
+      ],
+      "n": 2287
+    },
+    {
+      "name": "Industry: Commercial Banks (Finance)",
+      "logic": "AND",
+      "terms": [
+        {
+          "column": "INDUSTRY",
+          "operator": "EQUALS",
+          "value": 5001
+        }
+      ],
+      "n": 2505
+    },
+    {
+      "name": "Education: Less than high school",
+      "logic": "AND",
+      "terms": [
+        {
+          "column": "EDUCAT",
+          "operator": "EQUALS",
+          "value": 1
+        }
+      ],
+      "n": 107
+    },
+    {
+      "name": "Education: High school",
+      "logic": "AND",
+      "terms": [
+        {
+          "column": "EDUCAT",
+          "operator": "EQUALS",
+          "value": 2
+        }
+      ],
+      "n": 1210
+    },
+    {
+      "name": "Education: Some college or associate degree",
+      "logic": "AND",
+      "terms": [
+        {
+          "column": "EDUCAT",
+          "operator": "EQUALS",
+          "value": 3
+        }
+      ],
+      "n": 2298
+    },
+    {
+      "name": "Education: College graduate",
+      "logic": "AND",
+      "terms": [
+        {
+          "column": "EDUCAT",
+          "operator": "EQUALS",
+          "value": 4
+        }
+      ],
+      "n": 2828
+    },
+    {
+      "name": "Education: Post-graduate",
+      "logic": "AND",
+      "terms": [
+        {
+          "column": "EDUCAT",
+          "operator": "EQUALS",
+          "value": 5
+        }
+      ],
+      "n": 1711
+    },
+    {
+      "name": "Gender: Male",
+      "logic": "AND",
+      "terms": [
+        {
+          "column": "GENDER",
+          "operator": "EQUALS",
+          "value": 1
+        }
+      ],
+      "n": 3290
+    },
+    {
+      "name": "Gender: Female",
+      "logic": "AND",
+      "terms": [
+        {
+          "column": "GENDER",
+          "operator": "EQUALS",
+          "value": 2
+        }
+      ],
+      "n": 4866
+    }
+  ]
+}

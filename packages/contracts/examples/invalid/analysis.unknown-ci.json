@@ -1,0 +1,27 @@
+{
+  "contract": "analysis-configuration",
+  "catchesBy": "schema",
+  "why": "only percentile and bca intervals are offered",
+  "document": {
+    "method": "pls-sem",
+    "engine": "r-csem",
+    "estimator": "pls-pm",
+    "missingData": "listwise",
+    "seed": 20261119,
+    "bootstrap": {
+      "enabled": true,
+      "repetitions": 5000,
+      "ci": "studentized",
+      "confidenceLevel": 0.95,
+      "sides": "two-sided"
+    },
+    "pls": {
+      "innerWeighting": "path",
+      "maxIterations": 300,
+      "tolerance": 1e-7
+    },
+    "ipma": {
+      "targetConstructId": "c_bi"
+    }
+  }
+}

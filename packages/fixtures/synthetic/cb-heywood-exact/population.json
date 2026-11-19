@@ -1,0 +1,72 @@
+{
+  "caseId": "cb-heywood-exact",
+  "closedForm": {
+    "lambdaSquared": {
+      "h1": 1.4449999999999998,
+      "h2": 0.5,
+      "h3": 0.5
+    },
+    "metric": "correlation",
+    "residualVariance": {
+      "h1": -0.44499999999999984,
+      "h2": 0.5,
+      "h3": 0.5
+    }
+  },
+  "correlationMatrix": {
+    "columns": [
+      "h1",
+      "h2",
+      "h3"
+    ],
+    "matrix": [
+      [
+        1.0,
+        0.85,
+        0.85
+      ],
+      [
+        0.85,
+        1.0,
+        0.5
+      ],
+      [
+        0.85,
+        0.5,
+        1.0
+      ]
+    ]
+  },
+  "impliedCovariance": {
+    "columns": [
+      "h1",
+      "h2",
+      "h3"
+    ],
+    "divisor": "N-1 sample covariance equals this exactly",
+    "matrix": [
+      [
+        1.0,
+        0.85,
+        0.85
+      ],
+      [
+        0.85,
+        1.0,
+        0.5
+      ],
+      [
+        0.85,
+        0.5,
+        1.0
+      ]
+    ]
+  },
+  "means": {
+    "h1": 0.0,
+    "h2": 0.0,
+    "h3": 0.0
+  },
+  "note": "Not generated from a factor model: the data are constructed to have this exact correlation matrix; the one-factor closed form is the analytic truth.",
+  "synthetic": true
+}

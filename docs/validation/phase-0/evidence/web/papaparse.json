@@ -1,0 +1,156 @@
+{
+  "generatedAt": "2026-11-19T12:53:52.675Z",
+  "generatedBy": "apps/web/src/tests/spike (npm run spike:evidence -w @sem-studio/web)",
+  "runtime": {
+    "node": "v26.13.1",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "packages": [
+    {
+      "name": "papaparse",
+      "version": "5.7.1",
+      "license": "MIT"
+    }
+  ],
+  "data": {
+    "rows": [
+      {
+        "name": "semicolon-12-decimals-raw",
+        "input": "a;b\n7.000000000000;1.250000000000\n",
+        "options": {},
+        "detectedDelimiter": ";",
+        "fields": [
+          "a",
+          "b"
+        ],
+        "data": [
+          {
+            "a": "7.000000000000",
+            "b": "1.250000000000"
+          }
+        ],
+        "errorCodes": []
+      },
+      {
+        "name": "semicolon-12-decimals-dynamicTyping",
+        "input": "a;b\n7.000000000000;1.250000000000\n",
+        "options": {
+          "dynamicTyping": true
+        },
+        "detectedDelimiter": ";",
+        "fields": [
+          "a",
+          "b"
+        ],
+        "data": [
+          {
+            "a": 7,
+            "b": 1.25
+          }
+        ],
+        "errorCodes": []
+      },
+      {
+        "name": "bom-quoted",
+        "input": "﻿\"x;y\";z\n\"a;b\nc\";1\n",
+        "options": {},
+        "detectedDelimiter": ";",
+        "fields": [
+          "x;y",
+          "z"
+        ],
+        "data": [
+          {
+            "x;y": "a;b\nc",
+            "z": "1"
+          }
+        ],
+        "errorCodes": []
+      },
+      {
+        "name": "decimal-comma-dynamicTyping",
+        "input": "a;b\n7,25;1,5\n",
+        "options": {
+          "dynamicTyping": true
+        },
+        "detectedDelimiter": ";",
+        "fields": [
+          "a",
+          "b"
+        ],
+        "data": [
+          {
+            "a": "7,25",
+            "b": "1,5"
+          }
+        ],
+        "errorCodes": []
+      },
+      {
+        "name": "decimal-comma-forced-delimiter",
+        "input": "a;b\n7,25;1,5\n",
+        "options": {
+          "dynamicTyping": true,
+          "delimiter": ";"
+        },
+        "detectedDelimiter": ";",
+        "fields": [
+          "a",
+          "b"
+        ],
+        "data": [
+          {
+            "a": "7,25",
+            "b": "1,5"
+          }
+        ],
+        "errorCodes": []
+      },
+      {
+        "name": "decimal-comma-comma-delimited",
+        "input": "a,b\n7,25,1\n",
+        "options": {
+          "dynamicTyping": true
+        },
+        "detectedDelimiter": ",",
+        "fields": [
+          "a",
+          "b"
+        ],
+        "data": [
+          {
+            "a": 7,
+            "b": 25,
+            "__parsed_extra": [
+              1
+            ]
+          }
+        ],
+        "errorCodes": [
+          "TooManyFields"
+        ]
+      },
+      {
+        "name": "tab",
+        "input": "a\tb\n1\t2\n",
+        "options": {
+          "dynamicTyping": true
+        },
+        "detectedDelimiter": "\t",
+        "fields": [
+          "a",
+          "b"
+        ],
+        "data": [
+          {
+            "a": 1,
+            "b": 2
+          }
+        ],
+        "errorCodes": []
+      }
+    ],
+    "dynamicTypingTreatsDecimalCommaAsNumber": false
+  }
+}

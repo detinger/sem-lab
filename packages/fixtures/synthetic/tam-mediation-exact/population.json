@@ -1,0 +1,632 @@
+{
+  "caseId": "tam-mediation-exact",
+  "constructs": [
+    {
+      "indicators": [
+        "peou1",
+        "peou2",
+        "peou3",
+        "peou4"
+      ],
+      "label": "Perceived ease of use (synthetic)",
+      "measurement": "reflective",
+      "name": "PEOU",
+      "standardizedLoadings": {
+        "peou1": 0.8,
+        "peou2": 0.78,
+        "peou3": 0.76,
+        "peou4": 0.74
+      }
+    },
+    {
+      "indicators": [
+        "pu1",
+        "pu2",
+        "pu3",
+        "pu4"
+      ],
+      "label": "Perceived usefulness (synthetic)",
+      "measurement": "reflective",
+      "name": "PU",
+      "standardizedLoadings": {
+        "pu1": 0.85,
+        "pu2": 0.82,
+        "pu3": 0.8,
+        "pu4": 0.78
+      }
+    },
+    {
+      "indicators": [
+        "bi1",
+        "bi2",
+        "bi3"
+      ],
+      "label": "Behavioural intention (synthetic)",
+      "measurement": "reflective",
+      "name": "BI",
+      "standardizedLoadings": {
+        "bi1": 0.88,
+        "bi2": 0.85,
+        "bi3": 0.82
+      }
+    }
+  ],
+  "conventions": {
+    "composite": "a composite block's indicators covary with everything outside the block only through the composite: cov(x_block, y) = (R w) cov(C, y)",
+    "sigma": "Sigma_std = L Phi L' + blockdiag(diag(1-lambda^2) for reflective, R-(Rw)(Rw)' for composite); Sigma_raw = D Sigma_std D, D = diag(sd)"
+  },
+  "derivedTruths": {
+    "classicPlsPopulationLimit": {
+      "compositeCorrelations": {
+        "matrix": [
+          [
+            1.0,
+            0.5223410700668318,
+            0.43543038341742357
+          ],
+          [
+            0.5223410700668318,
+            1.0,
+            0.5501733302558469
+          ],
+          [
+            0.43543038341742357,
+            0.5501733302558469,
+            1.0
+          ]
+        ],
+        "order": [
+          "PEOU",
+          "PU",
+          "BI"
+        ]
+      },
+      "description": "Population limit of classic PLS-SEM (Mode A for reflective, Mode B for composite blocks, no consistency correction) on standardised data; independent of the inner weighting scheme.",
+      "paths": [
+        {
+          "coefficient": 0.5223410700668318,
+          "commonFactorValue": 0.6,
+          "source": "PEOU",
+          "target": "PU"
+        },
+        {
+          "coefficient": 0.20360346658542572,
+          "commonFactorValue": 0.2,
+          "source": "PEOU",
+          "target": "BI"
+        },
+        {
+          "coefficient": 0.4438228776502992,
+          "commonFactorValue": 0.5,
+          "source": "PU",
+          "target": "BI"
+        }
+      ]
+    },
+    "constructs": {
+      "BI": {
+        "AVE": 0.7231,
+        "definitions": {
+          "AVE": "mean of squared standardised loadings",
+          "rhoA": "population rho_A = reliability of the Mode A composite, whose population weights are proportional to lambda: (l'l)^2 / ((l'l)^2 + l'Theta l)",
+          "rhoC": "(sum lambda)^2 / ((sum lambda)^2 + sum(1 - lambda^2))"
+        },
+        "rhoA": 0.8876742995456589,
+        "rhoC": 0.8867206676485027
+      },
+      "PEOU": {
+        "AVE": 0.5934,
+        "definitions": {
+          "AVE": "mean of squared standardised loadings",
+          "rhoA": "population rho_A = reliability of the Mode A composite, whose population weights are proportional to lambda: (l'l)^2 / ((l'l)^2 + l'Theta l)",
+          "rhoC": "(sum lambda)^2 / ((sum lambda)^2 + sum(1 - lambda^2))"
+        },
+        "rhoA": 0.8543657010238456,
+        "rhoC": 0.8536462457706429
+      },
+      "PU": {
+        "AVE": 0.660825,
+        "definitions": {
+          "AVE": "mean of squared standardised loadings",
+          "rhoA": "population rho_A = reliability of the Mode A composite, whose population weights are proportional to lambda: (l'l)^2 / ((l'l)^2 + l'Theta l)",
+          "rhoC": "(sum lambda)^2 / ((sum lambda)^2 + sum(1 - lambda^2))"
+        },
+        "rhoA": 0.8870784787136354,
+        "rhoC": 0.8861752466608497
+      }
+    },
+    "effects": [
+      {
+        "direct": 0.6,
+        "indirect": 0.0,
+        "source": "PEOU",
+        "target": "PU",
+        "total": 0.6
+      },
+      {
+        "direct": 0.2,
+        "indirect": 0.3,
+        "source": "PEOU",
+        "target": "BI",
+        "total": 0.5
+      },
+      {
+        "direct": 0.5,
+        "indirect": 0.0,
+        "source": "PU",
+        "target": "BI",
+        "total": 0.5
+      }
+    ]
+  },
+  "exogenousCorrelations": [],
+  "impliedCorrelation": {
+    "columns": [
+      "peou1",
+      "peou2",
+      "peou3",
+      "peou4",
+      "pu1",
+      "pu2",
+      "pu3",
+      "pu4",
+      "bi1",
+      "bi2",
+      "bi3"
+    ],
+    "matrix": [
+      [
+        1.0,
+        0.6240000000000001,
+        0.6080000000000001,
+        0.592,
+        0.408,
+        0.39359999999999995,
+        0.384,
+        0.3744,
+        0.35200000000000004,
+        0.34,
+        0.328
+      ],
+      [
+        0.6240000000000001,
+        1.0,
+        0.5928,
+        0.5772,
+        0.3978,
+        0.38375999999999993,
+        0.3744,
+        0.36504,
+        0.3432,
+        0.3315,
+        0.3198
+      ],
+      [
+        0.6080000000000001,
+        0.5928,
+        1.0,
+        0.5624,
+        0.38759999999999994,
+        0.3739199999999999,
+        0.3648,
+        0.35568,
+        0.33440000000000003,
+        0.323,
+        0.3116
+      ],
+      [
+        0.592,
+        0.5772,
+        0.5624,
+        1.0,
+        0.3774,
+        0.36407999999999996,
+        0.3552,
+        0.34632,
+        0.3256,
+        0.3145,
+        0.3034
+      ],
+      [
+        0.40800000000000003,
+        0.39780000000000004,
+        0.3876,
+        0.3774,
+        1.0,
+        0.697,
+        0.68,
+        0.663,
+        0.46376,
+        0.44795,
+        0.43213999999999997
+      ],
+      [
+        0.39359999999999995,
+        0.38376,
+        0.37392,
+        0.36407999999999996,
+        0.697,
+        1.0,
+        0.656,
+        0.6396,
+        0.44739199999999996,
+        0.43213999999999997,
+        0.4168879999999999
+      ],
+      [
+        0.384,
+        0.3744,
+        0.3648,
+        0.35519999999999996,
+        0.68,
+        0.656,
+        1.0,
+        0.6240000000000001,
+        0.43648,
+        0.4216,
+        0.40671999999999997
+      ],
+      [
+        0.3744,
+        0.36504,
+        0.35568,
+        0.34631999999999996,
+        0.663,
+        0.6396,
+        0.6240000000000001,
+        1.0,
+        0.425568,
+        0.41106000000000004,
+        0.396552
+      ],
+      [
+        0.35200000000000004,
+        0.3432,
+        0.33440000000000003,
+        0.3256,
+        0.46375999999999995,
+        0.44739199999999996,
+        0.43648,
+        0.425568,
+        1.0,
+        0.748,
+        0.7215999999999999
+      ],
+      [
+        0.34,
+        0.3315,
+        0.323,
+        0.3145,
+        0.44795,
+        0.43213999999999997,
+        0.42160000000000003,
+        0.41106000000000004,
+        0.748,
+        1.0,
+        0.697
+      ],
+      [
+        0.328,
+        0.3198,
+        0.3116,
+        0.3034,
+        0.43213999999999997,
+        0.4168879999999999,
+        0.40671999999999997,
+        0.39655199999999996,
+        0.7215999999999999,
+        0.697,
+        1.0
+      ]
+    ]
+  },
+  "impliedCovariance": {
+    "columns": [
+      "peou1",
+      "peou2",
+      "peou3",
+      "peou4",
+      "pu1",
+      "pu2",
+      "pu3",
+      "pu4",
+      "bi1",
+      "bi2",
+      "bi3"
+    ],
+    "divisor": "population (equals the N-1 sample covariance for EXACT cases)",
+    "matrix": [
+      [
+        1.44,
+        0.7488000000000001,
+        1.0214400000000001,
+        0.6393599999999999,
+        0.5385599999999999,
+        0.7557119999999999,
+        0.59904,
+        0.44928,
+        0.6336,
+        0.48960000000000004,
+        0.37392
+      ],
+      [
+        0.7488000000000001,
+        1.0,
+        0.82992,
+        0.51948,
+        0.43758,
+        0.6140159999999999,
+        0.48672000000000004,
+        0.36504,
+        0.5148,
+        0.3978,
+        0.30380999999999997
+      ],
+      [
+        1.0214400000000001,
+        0.82992,
+        1.9599999999999997,
+        0.7086239999999999,
+        0.596904,
+        0.8375807999999998,
+        0.663936,
+        0.49795199999999995,
+        0.70224,
+        0.54264,
+        0.41442799999999996
+      ],
+      [
+        0.6393599999999999,
+        0.51948,
+        0.708624,
+        0.81,
+        0.37362600000000007,
+        0.5242751999999999,
+        0.41558400000000006,
+        0.311688,
+        0.43956000000000006,
+        0.33966,
+        0.259407
+      ],
+      [
+        0.53856,
+        0.4375800000000001,
+        0.596904,
+        0.37362600000000007,
+        1.2100000000000002,
+        1.2267200000000003,
+        0.9724000000000002,
+        0.7293000000000001,
+        0.765204,
+        0.591294,
+        0.4515863
+      ],
+      [
+        0.7557119999999999,
+        0.614016,
+        0.8375808,
+        0.5242751999999999,
+        1.22672,
+        2.5600000000000005,
+        1.3644800000000001,
+        1.02336,
+        1.0737408,
+        0.8297088,
+        0.63366976
+      ],
+      [
+        0.59904,
+        0.48672000000000004,
+        0.6639360000000001,
+        0.41558399999999995,
+        0.9724000000000003,
+        1.3644800000000004,
+        1.6900000000000002,
+        0.8112000000000001,
+        0.8511360000000001,
+        0.657696,
+        0.5022992
+      ],
+      [
+        0.44928,
+        0.36504,
+        0.49795199999999995,
+        0.31168799999999997,
+        0.7293000000000001,
+        1.02336,
+        0.8112000000000001,
+        1.0,
+        0.638352,
+        0.49327200000000004,
+        0.3767244
+      ],
+      [
+        0.6336,
+        0.5148,
+        0.70224,
+        0.43956,
+        0.765204,
+        1.0737408,
+        0.851136,
+        0.638352,
+        2.25,
+        1.3463999999999998,
+        1.0282799999999999
+      ],
+      [
+        0.48960000000000004,
+        0.3978,
+        0.54264,
+        0.33966,
+        0.5912940000000001,
+        0.8297087999999999,
+        0.6576960000000001,
+        0.49327200000000004,
+        1.3464,
+        1.44,
+        0.7945799999999998
+      ],
+      [
+        0.37392,
+        0.30380999999999997,
+        0.4144279999999999,
+        0.259407,
+        0.45158629999999994,
+        0.6336697599999999,
+        0.5022992,
+        0.37672439999999996,
+        1.0282799999999999,
+        0.7945799999999998,
+        0.9025
+      ]
+    ]
+  },
+  "indicators": [
+    {
+      "column": "peou1",
+      "construct": "PEOU",
+      "mean": 4.2,
+      "residualVarianceRaw": 0.5183999999999997,
+      "residualVarianceStandardized": 0.3599999999999999,
+      "sd": 1.2,
+      "standardizedLoading": 0.8
+    },
+    {
+      "column": "peou2",
+      "construct": "PEOU",
+      "mean": 3.8,
+      "residualVarianceRaw": 0.39159999999999995,
+      "residualVarianceStandardized": 0.39159999999999995,
+      "sd": 1.0,
+      "standardizedLoading": 0.78
+    },
+    {
+      "column": "peou3",
+      "construct": "PEOU",
+      "mean": 4.6,
+      "residualVarianceRaw": 0.8279039999999999,
+      "residualVarianceStandardized": 0.4224,
+      "sd": 1.4,
+      "standardizedLoading": 0.76
+    },
+    {
+      "column": "peou4",
+      "construct": "PEOU",
+      "mean": 5.0,
+      "residualVarianceRaw": 0.36644400000000005,
+      "residualVarianceStandardized": 0.4524,
+      "sd": 0.9,
+      "standardizedLoading": 0.74
+    },
+    {
+      "column": "pu1",
+      "construct": "PU",
+      "mean": 4.4,
+      "residualVarianceRaw": 0.33577500000000016,
+      "residualVarianceStandardized": 0.2775000000000001,
+      "sd": 1.1,
+      "standardizedLoading": 0.85
+    },
+    {
+      "column": "pu2",
+      "construct": "PU",
+      "mean": 3.5,
+      "residualVarianceRaw": 0.8386560000000004,
+      "residualVarianceStandardized": 0.3276000000000001,
+      "sd": 1.6,
+      "standardizedLoading": 0.82
+    },
+    {
+      "column": "pu3",
+      "construct": "PU",
+      "mean": 5.5,
+      "residualVarianceRaw": 0.6083999999999998,
+      "residualVarianceStandardized": 0.3599999999999999,
+      "sd": 1.3,
+      "standardizedLoading": 0.8
+    },
+    {
+      "column": "pu4",
+      "construct": "PU",
+      "mean": 4.0,
+      "residualVarianceRaw": 0.39159999999999995,
+      "residualVarianceStandardized": 0.39159999999999995,
+      "sd": 1.0,
+      "standardizedLoading": 0.78
+    },
+    {
+      "column": "bi1",
+      "construct": "BI",
+      "mean": 4.8,
+      "residualVarianceRaw": 0.5076,
+      "residualVarianceStandardized": 0.22560000000000002,
+      "sd": 1.5,
+      "standardizedLoading": 0.88
+    },
+    {
+      "column": "bi2",
+      "construct": "BI",
+      "mean": 3.9,
+      "residualVarianceRaw": 0.3996000000000001,
+      "residualVarianceStandardized": 0.2775000000000001,
+      "sd": 1.2,
+      "standardizedLoading": 0.85
+    },
+    {
+      "column": "bi3",
+      "construct": "BI",
+      "mean": 5.2,
+      "residualVarianceRaw": 0.2956590000000001,
+      "residualVarianceStandardized": 0.3276000000000001,
+      "sd": 0.95,
+      "standardizedLoading": 0.82
+    }
+  ],
+  "latentCorrelation": {
+    "formula": "Phi = (I-B)^-1 Psi (I-B)^-T, every latent variance exactly 1",
+    "matrix": [
+      [
+        1.0,
+        0.6,
+        0.5
+      ],
+      [
+        0.6,
+        1.0,
+        0.62
+      ],
+      [
+        0.5,
+        0.62,
+        1.0
+      ]
+    ],
+    "order": [
+      "PEOU",
+      "PU",
+      "BI"
+    ]
+  },
+  "latentDisturbanceVariances": {
+    "BI": 0.59,
+    "PU": 0.64
+  },
+  "structuralCoefficients": [
+    {
+      "coefficient": 0.6,
+      "source": "PEOU",
+      "target": "PU"
+    },
+    {
+      "coefficient": 0.2,
+      "source": "PEOU",
+      "target": "BI"
+    },
+    {
+      "coefficient": 0.5,
+      "source": "PU",
+      "target": "BI"
+    }
+  ],
+  "synthetic": true
+}

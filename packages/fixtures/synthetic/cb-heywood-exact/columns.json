@@ -1,0 +1,32 @@
+[
+  {
+    "nMissing": 0,
+    "nUnique": 200,
+    "name": "h1",
+    "observedMax": 3.0799145005769026,
+    "observedMin": -3.154925789423383,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 200,
+    "name": "h2",
+    "observedMax": 2.3816126773426958,
+    "observedMin": -3.6570733753737548,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 200,
+    "name": "h3",
+    "observedMax": 2.6906653754839924,
+    "observedMin": -2.7024365893144413,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  }
+]

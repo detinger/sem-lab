@@ -1,0 +1,32 @@
+[
+  {
+    "analysis": {
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "Classic PLS-SEM; discriminant validity via HTMT and Fornell-Larcker.",
+    "id": "pls-csem"
+  },
+  {
+    "analysis": {
+      "engine": "r-seminr",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "Same in seminr; HTMT must agree with r-csem.",
+    "id": "pls-seminr"
+  }
+]

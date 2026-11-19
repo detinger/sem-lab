@@ -1,0 +1,370 @@
+{
+  "generated_by": "apps/api/spike/plspm_bootstrap.py",
+  "versions": {
+    "python": "3.12.15",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scipy": "1.13.1",
+    "statsmodels": "0.14.6",
+    "scikit-learn": "1.7.2",
+    "semopy": "2.3.11",
+    "plspm": "0.5.7",
+    "sympy": "1.14.0",
+    "numdifftools": "0.11.2"
+  },
+  "default_start_method": "spawn",
+  "checks": {
+    "d.families_and_columns": {
+      "ok": true,
+      "value": {
+        "weights": {
+          "columns": [
+            "original",
+            "mean",
+            "std.error",
+            "perc.025",
+            "perc.975",
+            "t stat."
+          ],
+          "rows": 22,
+          "index_head": [
+            "USEF1",
+            "USEF2",
+            "USEF3",
+            "USEF4"
+          ]
+        },
+        "loading": {
+          "columns": [
+            "original",
+            "mean",
+            "std.error",
+            "perc.025",
+            "perc.975",
+            "t stat."
+          ],
+          "rows": 22,
+          "index_head": [
+            "USEF1",
+            "USEF2",
+            "USEF3",
+            "USEF4"
+          ]
+        },
+        "paths": {
+          "columns": [
+            "original",
+            "mean",
+            "std.error",
+            "perc.025",
+            "perc.975",
+            "t stat."
+          ],
+          "rows": 6,
+          "index_head": [
+            "PEOU -> PU",
+            "PEOU -> ATU",
+            "PU -> ATU",
+            "PU -> BI"
+          ]
+        },
+        "total_effects": {
+          "columns": [
+            "original",
+            "mean",
+            "std.error",
+            "perc.025",
+            "perc.975",
+            "t stat."
+          ],
+          "rows": 10,
+          "index_head": [
+            "PEOU -> PU",
+            "PEOU -> ATU",
+            "PEOU -> BI",
+            "PEOU -> USE"
+          ]
+        },
+        "r_squared": {
+          "columns": [
+            "original",
+            "mean",
+            "std.error",
+            "perc.025",
+            "perc.975",
+            "t stat."
+          ],
+          "rows": 4,
+          "index_head": [
+            "PU",
+            "ATU",
+            "BI",
+            "USE"
+          ]
+        },
+        "seconds": 19.225368624960538
+      }
+    },
+    "d.argument_rules": {
+      "ok": true,
+      "value": {
+        "iterations=5,processes=1": {
+          "ran": true
+        },
+        "iterations=30,processes=4": {
+          "ran": false,
+          "error": "AssertionError: "
+        }
+      }
+    },
+    "d.seed.spawn.processes1": {
+      "ok": true,
+      "value": {
+        "same_seed_two_runs_maxAbsDiff_paths_mean": 0.015193415789758136,
+        "reproducible": false
+      }
+    },
+    "d.seed.fork.processes1": {
+      "ok": true,
+      "value": {
+        "same_seed_maxAbsDiff_paths_mean": 0.0,
+        "same_seed_maxAbsDiff_std_error": 0.0,
+        "different_seed_maxAbsDiff_paths_mean": 0.01583848666803203
+      }
+    },
+    "d.seed.fork.processes2_duplicates": {
+      "ok": true,
+      "value": {
+        "mean_p2x20_vs_mean_p1x10_maxAbsDiff": 1.1102230246251565e-16,
+        "se_ratio_observed": [
+          0.9733285267845754,
+          0.9733285267845752,
+          0.9733285267845753,
+          0.9733285267845753,
+          0.9733285267845753,
+          0.9733285267845753
+        ],
+        "se_ratio_if_duplicated": 0.9733285267845752
+      }
+    },
+    "d.replication.fork.B50": {
+      "ok": true,
+      "value": {
+        "B": 50,
+        "paths_mean": 5.551115123125783e-17,
+        "paths_std_error_ddof1": 0.0,
+        "paths_std_error_vs_ddof0": 0.0003683269819270765,
+        "paths_perc025_numpy_linear": 0.0,
+        "paths_perc975_numpy_linear": 0.0,
+        "paths_t_equals_original_over_se": 0.0,
+        "r2_mean": 1.6653345369377348e-16
+      }
+    },
+    "d.silent_failures.fork": {
+      "ok": true,
+      "value": {
+        "requested": 20,
+        "expected_failures_by_replay": 10,
+        "any_count_reported_by_plspm": false,
+        "paths_std_error_finite": true,
+        "note": "plspm returns summaries over the successful resamples only; the number used is not exposed"
+      }
+    },
+    "d.silent_failures.rows_used": {
+      "ok": true,
+      "value": {
+        "rows_per_family_actually_summarised": [
+          10,
+          10,
+          10,
+          10,
+          10
+        ]
+      }
+    },
+    "d.timing.spawn.p1.B100": {
+      "ok": true,
+      "value": {
+        "seconds_per_100": 56.58890758402413
+      }
+    },
+    "d.timing.spawn.p4.B100": {
+      "ok": true,
+      "value": {
+        "seconds_per_100": 33.46396508300677
+      }
+    },
+    "d.timing.fork.p1.B100": {
+      "ok": true,
+      "value": {
+        "seconds_per_100": 45.47431662498275
+      }
+    },
+    "d.timing.fork.p4.B100": {
+      "ok": true,
+      "value": {
+        "seconds_per_100": 13.29428229201585
+      }
+    }
+  },
+  "families": {
+    "weights": {
+      "columns": [
+        "original",
+        "mean",
+        "std.error",
+        "perc.025",
+        "perc.975",
+        "t stat."
+      ],
+      "rows": 22,
+      "index_head": [
+        "USEF1",
+        "USEF2",
+        "USEF3",
+        "USEF4"
+      ]
+    },
+    "loading": {
+      "columns": [
+        "original",
+        "mean",
+        "std.error",
+        "perc.025",
+        "perc.975",
+        "t stat."
+      ],
+      "rows": 22,
+      "index_head": [
+        "USEF1",
+        "USEF2",
+        "USEF3",
+        "USEF4"
+      ]
+    },
+    "paths": {
+      "columns": [
+        "original",
+        "mean",
+        "std.error",
+        "perc.025",
+        "perc.975",
+        "t stat."
+      ],
+      "rows": 6,
+      "index_head": [
+        "PEOU -> PU",
+        "PEOU -> ATU",
+        "PU -> ATU",
+        "PU -> BI"
+      ]
+    },
+    "total_effects": {
+      "columns": [
+        "original",
+        "mean",
+        "std.error",
+        "perc.025",
+        "perc.975",
+        "t stat."
+      ],
+      "rows": 10,
+      "index_head": [
+        "PEOU -> PU",
+        "PEOU -> ATU",
+        "PEOU -> BI",
+        "PEOU -> USE"
+      ]
+    },
+    "r_squared": {
+      "columns": [
+        "original",
+        "mean",
+        "std.error",
+        "perc.025",
+        "perc.975",
+        "t stat."
+      ],
+      "rows": 4,
+      "index_head": [
+        "PU",
+        "ATU",
+        "BI",
+        "USE"
+      ]
+    },
+    "seconds": 19.225368624960538
+  },
+  "argument_rules": {
+    "iterations=5,processes=1": {
+      "ran": true
+    },
+    "iterations=30,processes=4": {
+      "ran": false,
+      "error": "AssertionError: "
+    }
+  },
+  "seed_spawn": {
+    "same_seed_two_runs_maxAbsDiff_paths_mean": 0.015193415789758136,
+    "reproducible": false
+  },
+  "seed_fork": {
+    "same_seed_maxAbsDiff_paths_mean": 0.0,
+    "same_seed_maxAbsDiff_std_error": 0.0,
+    "different_seed_maxAbsDiff_paths_mean": 0.01583848666803203
+  },
+  "fork_duplicate_resamples": {
+    "mean_p2x20_vs_mean_p1x10_maxAbsDiff": 1.1102230246251565e-16,
+    "se_ratio_observed": [
+      0.9733285267845754,
+      0.9733285267845752,
+      0.9733285267845753,
+      0.9733285267845753,
+      0.9733285267845753,
+      0.9733285267845753
+    ],
+    "se_ratio_if_duplicated": 0.9733285267845752
+  },
+  "independent_replication_fork": {
+    "B": 50,
+    "paths_mean": 5.551115123125783e-17,
+    "paths_std_error_ddof1": 0.0,
+    "paths_std_error_vs_ddof0": 0.0003683269819270765,
+    "paths_perc025_numpy_linear": 0.0,
+    "paths_perc975_numpy_linear": 0.0,
+    "paths_t_equals_original_over_se": 0.0,
+    "r2_mean": 1.6653345369377348e-16
+  },
+  "silent_failures_fork": {
+    "requested": 20,
+    "expected_failures_by_replay": 10,
+    "any_count_reported_by_plspm": false,
+    "paths_std_error_finite": true,
+    "note": "plspm returns summaries over the successful resamples only; the number used is not exposed"
+  },
+  "silent_failures_rows_used": {
+    "rows_per_family_actually_summarised": [
+      10,
+      10,
+      10,
+      10,
+      10
+    ]
+  },
+  "timing": {
+    "spawn.processes1": {
+      "seconds_per_100": 56.58890758402413
+    },
+    "spawn.processes4": {
+      "seconds_per_100": 33.46396508300677
+    },
+    "fork.processes1": {
+      "seconds_per_100": 45.47431662498275
+    },
+    "fork.processes4": {
+      "seconds_per_100": 13.29428229201585
+    }
+  },
+  "cpu_count": 8,
+  "failed_checks": []
+}

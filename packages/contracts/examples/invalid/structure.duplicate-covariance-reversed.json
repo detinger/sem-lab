@@ -1,0 +1,322 @@
+{
+  "contract": "sem-model",
+  "catchesBy": "structure",
+  "expectedCodes": ["DUPLICATE_COVARIANCE"],
+  "document": {
+    "constructs": [
+      {
+        "id": "c_peou",
+        "name": "PEOU",
+        "label": "Perceived Ease of Use",
+        "measurement": "reflective",
+        "indicatorIds": ["i_eou1", "i_eou2", "i_eou3", "i_eou4", "i_eou5"]
+      },
+      {
+        "id": "c_pu",
+        "name": "PU",
+        "label": "Perceived Usefulness",
+        "measurement": "reflective",
+        "indicatorIds": ["i_usef1", "i_usef2", "i_usef3", "i_usef4", "i_usef5"]
+      },
+      {
+        "id": "c_atu",
+        "name": "ATU",
+        "label": "Attitude Toward Using",
+        "measurement": "reflective",
+        "indicatorIds": ["i_att1", "i_att2", "i_att3", "i_att4", "i_att5"]
+      },
+      {
+        "id": "c_bi",
+        "name": "BI",
+        "label": "Behavioral Intention to Use",
+        "measurement": "reflective",
+        "indicatorIds": ["i_bi1", "i_bi2", "i_bi3"]
+      },
+      {
+        "id": "c_use",
+        "name": "USE",
+        "label": "Actual System Use",
+        "measurement": "reflective",
+        "indicatorIds": ["i_use1", "i_use2", "i_use3", "i_use4"]
+      }
+    ],
+    "indicators": [
+      {
+        "id": "i_eou1",
+        "name": "EOU1",
+        "column": "EOU1",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_eou2",
+        "name": "EOU2",
+        "column": "EOU2",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_eou3",
+        "name": "EOU3",
+        "column": "EOU3",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_eou4",
+        "name": "EOU4",
+        "column": "EOU4",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_eou5",
+        "name": "EOU5",
+        "column": "EOU5",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_usef1",
+        "name": "USEF1",
+        "column": "USEF1",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_usef2",
+        "name": "USEF2",
+        "column": "USEF2",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_usef3",
+        "name": "USEF3",
+        "column": "USEF3",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_usef4",
+        "name": "USEF4",
+        "column": "USEF4",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_usef5",
+        "name": "USEF5",
+        "column": "USEF5",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_att1",
+        "name": "ATT1",
+        "column": "ATT1",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_att2",
+        "name": "ATT2",
+        "column": "ATT2",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_att3",
+        "name": "ATT3",
+        "column": "ATT3",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_att4",
+        "name": "ATT4",
+        "column": "ATT4",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_att5",
+        "name": "ATT5",
+        "column": "ATT5",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_bi1",
+        "name": "BI1",
+        "column": "BI1",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_bi2",
+        "name": "BI2",
+        "column": "BI2",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_bi3",
+        "name": "BI3",
+        "column": "BI3",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_use1",
+        "name": "USE1",
+        "column": "USE1",
+        "scale": {
+          "min": 1,
+          "max": 6
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_use2",
+        "name": "USE2",
+        "column": "USE2",
+        "scale": {
+          "min": 1,
+          "max": 6
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_use3",
+        "name": "USE3",
+        "column": "USE3",
+        "scale": {
+          "min": 1,
+          "max": 6
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_use4",
+        "name": "USE4",
+        "column": "USE4",
+        "scale": {
+          "min": 1,
+          "max": 11
+        },
+        "level": "ordinal"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "r_peou_pu",
+        "kind": "structural",
+        "sourceId": "c_peou",
+        "targetId": "c_pu",
+        "hypothesis": "H1"
+      },
+      {
+        "id": "r_peou_atu",
+        "kind": "structural",
+        "sourceId": "c_peou",
+        "targetId": "c_atu",
+        "hypothesis": "H2"
+      },
+      {
+        "id": "r_pu_atu",
+        "kind": "structural",
+        "sourceId": "c_pu",
+        "targetId": "c_atu",
+        "hypothesis": "H3"
+      },
+      {
+        "id": "r_pu_bi",
+        "kind": "structural",
+        "sourceId": "c_pu",
+        "targetId": "c_bi",
+        "hypothesis": "H4"
+      },
+      {
+        "id": "r_atu_bi",
+        "kind": "structural",
+        "sourceId": "c_atu",
+        "targetId": "c_bi",
+        "hypothesis": "H5"
+      },
+      {
+        "id": "r_bi_use",
+        "kind": "structural",
+        "sourceId": "c_bi",
+        "targetId": "c_use",
+        "hypothesis": "H6"
+      },
+      {
+        "id": "r_c1",
+        "kind": "covariance",
+        "sourceId": "c_pu",
+        "targetId": "c_peou"
+      },
+      {
+        "id": "r_c2",
+        "kind": "covariance",
+        "sourceId": "c_peou",
+        "targetId": "c_pu"
+      }
+    ]
+  }
+}

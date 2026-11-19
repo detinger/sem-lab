@@ -1,0 +1,82 @@
+[
+  {
+    "nMissing": 0,
+    "nUnique": 5,
+    "name": "v1",
+    "observedMax": 5,
+    "observedMin": 1,
+    "scaleMax": 5,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 5,
+    "name": "v2",
+    "observedMax": 5,
+    "observedMin": 1,
+    "scaleMax": 5,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 5,
+    "name": "v3",
+    "observedMax": 5,
+    "observedMin": 1,
+    "scaleMax": 5,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 5,
+    "name": "v4",
+    "observedMax": 5,
+    "observedMin": 1,
+    "scaleMax": 5,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 5,
+    "name": "v5",
+    "observedMax": 5,
+    "observedMin": 1,
+    "scaleMax": 5,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 5,
+    "name": "v6",
+    "observedMax": 5,
+    "observedMin": 1,
+    "scaleMax": 5,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 5,
+    "name": "v7",
+    "observedMax": 5,
+    "observedMin": 1,
+    "scaleMax": 5,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 5,
+    "name": "v8",
+    "observedMax": 5,
+    "observedMin": 1,
+    "scaleMax": 5,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  }
+]

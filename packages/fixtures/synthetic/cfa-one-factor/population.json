@@ -1,0 +1,212 @@
+{
+  "caseId": "cfa-one-factor",
+  "constructs": [
+    {
+      "indicators": [
+        "g1",
+        "g2",
+        "g3",
+        "g4",
+        "g5"
+      ],
+      "label": "General factor",
+      "measurement": "reflective",
+      "name": "G",
+      "standardizedLoadings": {
+        "g1": 0.8,
+        "g2": 0.75,
+        "g3": 0.7,
+        "g4": 0.65,
+        "g5": 0.6
+      }
+    }
+  ],
+  "conventions": {
+    "composite": "a composite block's indicators covary with everything outside the block only through the composite: cov(x_block, y) = (R w) cov(C, y)",
+    "sigma": "Sigma_std = L Phi L' + blockdiag(diag(1-lambda^2) for reflective, R-(Rw)(Rw)' for composite); Sigma_raw = D Sigma_std D, D = diag(sd)"
+  },
+  "derivedTruths": {
+    "classicPlsPopulationLimit": {
+      "compositeCorrelations": {
+        "matrix": [
+          [
+            1.0
+          ]
+        ],
+        "order": [
+          "G"
+        ]
+      },
+      "description": "Population limit of classic PLS-SEM (Mode A for reflective, Mode B for composite blocks, no consistency correction) on standardised data; independent of the inner weighting scheme.",
+      "paths": []
+    },
+    "constructs": {
+      "G": {
+        "AVE": 0.495,
+        "definitions": {
+          "AVE": "mean of squared standardised loadings",
+          "rhoA": "population rho_A = reliability of the Mode A composite, whose population weights are proportional to lambda: (l'l)^2 / ((l'l)^2 + l'Theta l)",
+          "rhoC": "(sum lambda)^2 / ((sum lambda)^2 + sum(1 - lambda^2))"
+        },
+        "rhoA": 0.8361015708574968,
+        "rhoC": 0.8291032148900169
+      }
+    },
+    "effects": []
+  },
+  "exogenousCorrelations": [],
+  "impliedCorrelation": {
+    "columns": [
+      "g1",
+      "g2",
+      "g3",
+      "g4",
+      "g5"
+    ],
+    "matrix": [
+      [
+        1.0,
+        0.6000000000000001,
+        0.5599999999999999,
+        0.52,
+        0.48
+      ],
+      [
+        0.6000000000000001,
+        1.0,
+        0.5249999999999999,
+        0.48750000000000004,
+        0.44999999999999996
+      ],
+      [
+        0.5599999999999999,
+        0.5249999999999999,
+        1.0,
+        0.45499999999999996,
+        0.42
+      ],
+      [
+        0.52,
+        0.48750000000000004,
+        0.45499999999999996,
+        1.0,
+        0.39
+      ],
+      [
+        0.48,
+        0.44999999999999996,
+        0.42,
+        0.39,
+        1.0
+      ]
+    ]
+  },
+  "impliedCovariance": {
+    "columns": [
+      "g1",
+      "g2",
+      "g3",
+      "g4",
+      "g5"
+    ],
+    "divisor": "population (equals the N-1 sample covariance for EXACT cases)",
+    "matrix": [
+      [
+        1.0,
+        0.7200000000000001,
+        0.44799999999999995,
+        0.78,
+        0.528
+      ],
+      [
+        0.7200000000000001,
+        1.44,
+        0.5039999999999999,
+        0.8775000000000002,
+        0.594
+      ],
+      [
+        0.44799999999999995,
+        0.5039999999999999,
+        0.6400000000000001,
+        0.546,
+        0.36960000000000004
+      ],
+      [
+        0.78,
+        0.8775000000000001,
+        0.5459999999999999,
+        2.25,
+        0.6435
+      ],
+      [
+        0.528,
+        0.594,
+        0.36960000000000004,
+        0.6435000000000001,
+        1.2100000000000002
+      ]
+    ]
+  },
+  "indicators": [
+    {
+      "column": "g1",
+      "construct": "G",
+      "mean": 3.0,
+      "residualVarianceRaw": 0.3599999999999999,
+      "residualVarianceStandardized": 0.3599999999999999,
+      "sd": 1.0,
+      "standardizedLoading": 0.8
+    },
+    {
+      "column": "g2",
+      "construct": "G",
+      "mean": 3.5,
+      "residualVarianceRaw": 0.63,
+      "residualVarianceStandardized": 0.4375,
+      "sd": 1.2,
+      "standardizedLoading": 0.75
+    },
+    {
+      "column": "g3",
+      "construct": "G",
+      "mean": 4.0,
+      "residualVarianceRaw": 0.3264000000000001,
+      "residualVarianceStandardized": 0.51,
+      "sd": 0.8,
+      "standardizedLoading": 0.7
+    },
+    {
+      "column": "g4",
+      "construct": "G",
+      "mean": 2.5,
+      "residualVarianceRaw": 1.2993749999999997,
+      "residualVarianceStandardized": 0.5774999999999999,
+      "sd": 1.5,
+      "standardizedLoading": 0.65
+    },
+    {
+      "column": "g5",
+      "construct": "G",
+      "mean": 3.2,
+      "residualVarianceRaw": 0.7744000000000001,
+      "residualVarianceStandardized": 0.64,
+      "sd": 1.1,
+      "standardizedLoading": 0.6
+    }
+  ],
+  "latentCorrelation": {
+    "formula": "Phi = (I-B)^-1 Psi (I-B)^-T, every latent variance exactly 1",
+    "matrix": [
+      [
+        1.0
+      ]
+    ],
+    "order": [
+      "G"
+    ]
+  },
+  "latentDisturbanceVariances": {},
+  "structuralCoefficients": [],
+  "synthetic": true
+}

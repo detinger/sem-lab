@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# SEM Studio R engine launcher.
+#
+# Puts the project-local package library (services/r-engine/r-lib) FIRST on R's
+# library path and then execs Rscript with the arguments unchanged. Every R
+# invocation in this repository (API runner, tests, spike scripts, CI) goes
+# through this wrapper so that the pinned packages are the ones that load.
+#
+# Works from any current directory and through symlinks.
+#
+# Environment:
+#   SEM_STUDIO_RSCRIPT   path to the Rscript binary (default: "Rscript" on PATH)
+#   R_LIBS               if already set, it is kept AFTER the project library
+set -euo pipefail
+
+src="${BASH_SOURCE[0]}"
+while [ -L "$src" ]; do
+  dir="$(cd -P "$(dirname "$src")" >/dev/null 2>&1 && pwd)"
+  src="$(readlink "$src")"
+  case "$src" in /*) ;; *) src="$dir/$src" ;; esac
+done
+bin_dir="$(cd -P "$(dirname "$src")" >/dev/null 2>&1 && pwd)"
+engine_dir="$(cd -P "$bin_dir/.." >/dev/null 2>&1 && pwd)"
+r_lib="$engine_dir/r-lib"
+
+# R silently drops library paths that do not exist, so make sure it is there.
+mkdir -p "$r_lib"
+
+export R_LIBS="${r_lib}${R_LIBS:+:${R_LIBS}}"
+export SEM_STUDIO_R_ENGINE_DIR="$engine_dir"
+export SEM_STUDIO_R_LIB="$r_lib"
+
+# One BLAS/OpenMP thread per R process unless the caller says otherwise.
+#  - SEM matrices are tiny; threaded BLAS gains nothing and bootstrap parallelism
+#    is done with worker processes, so nested threading only oversubscribes.
+#  - Single-threaded BLAS keeps floating-point summation order fixed, which the
+#    reproducibility guarantee (same seed => same numbers) relies on.
+#  - Verified on the Phase 0 machine (Homebrew R + OpenBLAS/libomp): with more
+#    than one OpenMP thread an R process whose stdout pipe was closed by the
+#    reader hangs forever at exit inside libomp (__kmp_reap_worker).
+#    OMP_NUM_THREADS=1 removes the hang; OPENBLAS_NUM_THREADS=1 alone does not.
+#    See docs/validation/phase-0/r-spike.md.
+export OMP_NUM_THREADS="${OMP_NUM_THREADS:-1}"
+
+exec "${SEM_STUDIO_RSCRIPT:-Rscript}" "$@"

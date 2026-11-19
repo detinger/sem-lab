@@ -1,0 +1,32 @@
+.ui-progress__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-2);
+  font-size: 12px;
+}
+
+.ui-progress__label {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.ui-progress__value {
+  color: var(--text-subtle);
+  font-variant-numeric: tabular-nums;
+}
+
+.ui-progress__track {
+  height: 8px;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: var(--bg-sunken);
+  border: 1px solid var(--border);
+}
+
+.ui-progress__fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--primary);
+  transition: width 250ms ease;
+}

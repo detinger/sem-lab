@@ -1,0 +1,1880 @@
+{
+  "evidence": "csem_pls_core",
+  "script": "services/r-engine/spike/csem_01_pls_core.R",
+  "generated": "2026-11-19T13:52:52+0100",
+  "r": "R version 4.6.2 (2026-10-29)",
+  "platform": "aarch64-apple-darwin27.0.0",
+  "packages": {
+    "cSEM": "0.7.1",
+    "lavaan": "0.7.3",
+    "jsonlite": "2.0.0"
+  },
+  "findings": {
+    "api": {
+      "csem_formals": {
+        ".data": "NULL",
+        ".model": "NULL",
+        ".approach_2ndorder": "c(\"2stage\", \"mixed\")",
+        ".approach_cor_robust": "c(\"none\", \"mcd\", \"spearman\")",
+        ".approach_nl": "c(\"sequential\", \"replace\")",
+        ".approach_paths": "c(\"OLS\", \"2SLS\")",
+        ".approach_weights": "c(\"PLS-PM\", \"SUMCORR\", \"MAXVAR\", \"SSQCORR\", \"MINVAR\", \"GENVAR\", \"GSCA\", \"PCA\", \"unit\", \"bartlett\", \"regression\")",
+        ".conv_criterion": "c(\"diff_absolute\", \"diff_squared\", \"diff_relative\")",
+        ".disattenuate": "TRUE",
+        ".dominant_indicators": "NULL",
+        ".estimate_structural": "TRUE",
+        ".id": "NULL",
+        ".instruments": "NULL",
+        ".iter_max": "100",
+        ".normality": "FALSE",
+        ".PLS_approach_cf": "c(\"dist_squared_euclid\", \"dist_euclid_weighted\", \"fisher_transformed\", \"mean_arithmetic\", \"mean_geometric\", \"mean_harmonic\", \"geo_of_harmonic\")",
+        ".PLS_ignore_structural_model": "FALSE",
+        ".PLS_modes": "NULL",
+        ".PLS_weight_scheme_inner": "c(\"path\", \"centroid\", \"factorial\")",
+        ".reliabilities": "NULL",
+        ".starting_values": "NULL",
+        ".resample_method": "c(\"none\", \"bootstrap\", \"jackknife\")",
+        ".resample_method2": "c(\"none\", \"bootstrap\", \"jackknife\")",
+        ".R": "499",
+        ".R2": "199",
+        ".handle_inadmissibles": "c(\"drop\", \"ignore\", \"replace\")",
+        ".user_funs": "NULL",
+        ".eval_plan": "c(\"sequential\", \"multicore\", \"multisession\")",
+        ".seed": "NULL",
+        ".sign_change_option": "c(\"none\", \"individual\", \"individual_reestimate\", \"construct_reestimate\")",
+        ".tolerance": "1e-05"
+      },
+      "inner_weight_scheme_argument": ".PLS_weight_scheme_inner",
+      "inner_weight_scheme_values": ["path", "centroid", "factorial"],
+      "approach_weights_values": ["PLS-PM", "SUMCORR", "MAXVAR", "SSQCORR", "MINVAR", "GENVAR", "GSCA", "PCA", "unit", "bartlett", "regression"],
+      "conv_criterion_values": ["diff_absolute", "diff_squared", "diff_relative"],
+      "defaults": {
+        ".tolerance": 1e-05,
+        ".iter_max": 100,
+        ".disattenuate": true
+      },
+      "result_classes": ["cSEMResults", "cSEMResults_default"],
+      "estimates_slots": ["Path_estimates", "Loading_estimates", "Weight_estimates", "Inner_weight_estimates", "Residual_correlation", "Construct_scores", "Indicator_VCV", "Proxy_VCV", "Construct_VCV", "Reliabilities", "R2", "R2adj", "VIF", "SE"],
+      "information_slots": ["Data", "Model", "Arguments", "Type_of_indicator_correlation", "Threshold_parameter_estimates", "Weight_info", "Approach_2ndorder"]
+    },
+    "interaction_matrix": {
+      "cf_default": {
+        "id": "cf_default",
+        "operator": "=~",
+        "args": [],
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.017,
+        "result": {
+          "construct_type": {
+            "PEOU": "Common factor",
+            "PU": "Common factor",
+            "ATU": "Common factor",
+            "BI": "Common factor",
+            "USE": "Common factor"
+          },
+          "modes": {
+            "PEOU": "modeA",
+            "PU": "modeA",
+            "ATU": "modeA",
+            "BI": "modeA",
+            "USE": "modeA"
+          },
+          "iterations": 7,
+          "converged": true,
+          "disattenuate_arg": true,
+          "reliabilities": {
+            "PEOU": 0.874547488632757,
+            "PU": 0.905940210545473,
+            "ATU": 0.940388533037354,
+            "BI": 0.847769443009834,
+            "USE": 0.793720332207532
+          },
+          "paths": [
+            {
+              "from": "PEOU",
+              "to": "PU",
+              "est": 0.500371573627408
+            },
+            {
+              "from": "PEOU",
+              "to": "ATU",
+              "est": 0.272755164722324
+            },
+            {
+              "from": "PU",
+              "to": "ATU",
+              "est": 0.275204403111164
+            },
+            {
+              "from": "PU",
+              "to": "BI",
+              "est": 0.460885203738072
+            },
+            {
+              "from": "ATU",
+              "to": "BI",
+              "est": 0.174587298508971
+            },
+            {
+              "from": "BI",
+              "to": "USE",
+              "est": 0.279658693188041
+            }
+          ],
+          "r2": {
+            "PU": 0.250371711694368,
+            "ATU": 0.22525204885359,
+            "BI": 0.309147849948257,
+            "USE": 0.0782089846756427
+          },
+          "loadings_PU": {
+            "USEF1": 0.810568253223027,
+            "USEF2": 0.79623658481592,
+            "USEF3": 0.816835041256786,
+            "USEF4": 0.820737128373827,
+            "USEF5": 0.811549621079521
+          },
+          "weights_PU": {
+            "USEF1": 0.23446788352337,
+            "USEF2": 0.230322253657642,
+            "USEF3": 0.236280637132857,
+            "USEF4": 0.237409368863983,
+            "USEF5": 0.234751757513445
+          }
+        }
+      },
+      "cf_disattenuate_false": {
+        "id": "cf_disattenuate_false",
+        "operator": "=~",
+        "args": {
+          ".disattenuate": false
+        },
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.01,
+        "result": {
+          "construct_type": {
+            "PEOU": "Common factor",
+            "PU": "Common factor",
+            "ATU": "Common factor",
+            "BI": "Common factor",
+            "USE": "Common factor"
+          },
+          "modes": {
+            "PEOU": "modeA",
+            "PU": "modeA",
+            "ATU": "modeA",
+            "BI": "modeA",
+            "USE": "modeA"
+          },
+          "iterations": 7,
+          "converged": true,
+          "disattenuate_arg": false,
+          "reliabilities": {
+            "PEOU": 1,
+            "PU": 1,
+            "ATU": 1,
+            "BI": 1,
+            "USE": 1
+          },
+          "paths": [
+            {
+              "from": "PEOU",
+              "to": "PU",
+              "est": 0.445383471418466
+            },
+            {
+              "from": "PEOU",
+              "to": "ATU",
+              "est": 0.253226246121735
+            },
+            {
+              "from": "PU",
+              "to": "ATU",
+              "est": 0.267202446102868
+            },
+            {
+              "from": "PU",
+              "to": "BI",
+              "est": 0.401218653048324
+            },
+            {
+              "from": "ATU",
+              "to": "BI",
+              "est": 0.172841871830849
+            },
+            {
+              "from": "BI",
+              "to": "USE",
+              "est": 0.229403984078654
+            }
+          ],
+          "r2": {
+            "PU": 0.198366436612763,
+            "ATU": 0.195792350749417,
+            "BI": 0.243552682865837,
+            "USE": 0.0526261879111591
+          },
+          "loadings_PU": {
+            "USEF1": 0.807555891244479,
+            "USEF2": 0.847326893156226,
+            "USEF3": 0.880322870465337,
+            "USEF4": 0.866304838498147,
+            "USEF5": 0.859732460393674
+          },
+          "weights_PU": {
+            "USEF1": 0.23446788352337,
+            "USEF2": 0.230322253657642,
+            "USEF3": 0.236280637132857,
+            "USEF4": 0.237409368863983,
+            "USEF5": 0.234751757513445
+          }
+        }
+      },
+      "cf_disatt_false_modeA": {
+        "id": "cf_disatt_false_modeA",
+        "operator": "=~",
+        "args": {
+          ".disattenuate": false,
+          ".PLS_modes": "modeA"
+        },
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.011,
+        "result": {
+          "construct_type": {
+            "PEOU": "Common factor",
+            "PU": "Common factor",
+            "ATU": "Common factor",
+            "BI": "Common factor",
+            "USE": "Common factor"
+          },
+          "modes": {
+            "PEOU": "modeA",
+            "PU": "modeA",
+            "ATU": "modeA",
+            "BI": "modeA",
+            "USE": "modeA"
+          },
+          "iterations": 7,
+          "converged": true,
+          "disattenuate_arg": false,
+          "reliabilities": {
+            "PEOU": 1,
+            "PU": 1,
+            "ATU": 1,
+            "BI": 1,
+            "USE": 1
+          },
+          "paths": [
+            {
+              "from": "PEOU",
+              "to": "PU",
+              "est": 0.445383471418466
+            },
+            {
+              "from": "PEOU",
+              "to": "ATU",
+              "est": 0.253226246121735
+            },
+            {
+              "from": "PU",
+              "to": "ATU",
+              "est": 0.267202446102868
+            },
+            {
+              "from": "PU",
+              "to": "BI",
+              "est": 0.401218653048324
+            },
+            {
+              "from": "ATU",
+              "to": "BI",
+              "est": 0.172841871830849
+            },
+            {
+              "from": "BI",
+              "to": "USE",
+              "est": 0.229403984078654
+            }
+          ],
+          "r2": {
+            "PU": 0.198366436612763,
+            "ATU": 0.195792350749417,
+            "BI": 0.243552682865837,
+            "USE": 0.0526261879111591
+          },
+          "loadings_PU": {
+            "USEF1": 0.807555891244479,
+            "USEF2": 0.847326893156226,
+            "USEF3": 0.880322870465337,
+            "USEF4": 0.866304838498147,
+            "USEF5": 0.859732460393674
+          },
+          "weights_PU": {
+            "USEF1": 0.23446788352337,
+            "USEF2": 0.230322253657642,
+            "USEF3": 0.236280637132857,
+            "USEF4": 0.237409368863983,
+            "USEF5": 0.234751757513445
+          }
+        }
+      },
+      "cf_modeB_default": {
+        "id": "cf_modeB_default",
+        "operator": "=~",
+        "args": {
+          ".PLS_modes": "modeB"
+        },
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.018,
+        "result": {
+          "construct_type": {
+            "PEOU": "Common factor",
+            "PU": "Common factor",
+            "ATU": "Common factor",
+            "BI": "Common factor",
+            "USE": "Common factor"
+          },
+          "modes": {
+            "PEOU": "modeB",
+            "PU": "modeB",
+            "ATU": "modeB",
+            "BI": "modeB",
+            "USE": "modeB"
+          },
+          "iterations": 14,
+          "converged": true,
+          "disattenuate_arg": true,
+          "reliabilities": {
+            "PEOU": 0.884555232414895,
+            "PU": 0.910983719814531,
+            "ATU": 1.00141836990833,
+            "BI": 0.948209130386301,
+            "USE": 0.858022915706588
+          },
+          "paths": [
+            {
+              "from": "PEOU",
+              "to": "PU",
+              "est": 0.506010990251083
+            },
+            {
+              "from": "PEOU",
+              "to": "ATU",
+              "est": 0.274233801333732
+            },
+            {
+              "from": "PU",
+              "to": "ATU",
+              "est": 0.263298785774388
+            },
+            {
+              "from": "PU",
+              "to": "BI",
+              "est": 0.463840107563388
+            },
+            {
+              "from": "ATU",
+              "to": "BI",
+              "est": 0.162758536271596
+            },
+            {
+              "from": "BI",
+              "to": "USE",
+              "est": 0.297366879464848
+            }
+          ],
+          "r2": {
+            "PU": 0.256047122254882,
+            "ATU": 0.217603907528139,
+            "BI": 0.302344790636401,
+            "USE": 0.0884270610026614
+          },
+          "loadings_PU": {
+            "USEF1": 0.806097223639075,
+            "USEF2": 0.801684357478094,
+            "USEF3": 0.820602935055396,
+            "USEF4": 0.820102518965526,
+            "USEF5": 0.807885581262778
+          },
+          "weights_PU": {
+            "USEF1": 0.331933321548975,
+            "USEF2": 0.227727674220211,
+            "USEF3": 0.173899681497291,
+            "USEF4": 0.250017773638978,
+            "USEF5": 0.193809169207802
+          }
+        }
+      },
+      "cf_modeB_disatt_false": {
+        "id": "cf_modeB_disatt_false",
+        "operator": "=~",
+        "args": {
+          ".PLS_modes": "modeB",
+          ".disattenuate": false
+        },
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.022,
+        "result": {
+          "construct_type": {
+            "PEOU": "Common factor",
+            "PU": "Common factor",
+            "ATU": "Common factor",
+            "BI": "Common factor",
+            "USE": "Common factor"
+          },
+          "modes": {
+            "PEOU": "modeB",
+            "PU": "modeB",
+            "ATU": "modeB",
+            "BI": "modeB",
+            "USE": "modeB"
+          },
+          "iterations": 14,
+          "converged": true,
+          "disattenuate_arg": false,
+          "reliabilities": {
+            "PEOU": 1,
+            "PU": 1,
+            "ATU": 1,
+            "BI": 1,
+            "USE": 1
+          },
+          "paths": [
+            {
+              "from": "PEOU",
+              "to": "PU",
+              "est": 0.45423200937092
+            },
+            {
+              "from": "PEOU",
+              "to": "ATU",
+              "est": 0.263408875701695
+            },
+            {
+              "from": "PU",
+              "to": "ATU",
+              "est": 0.26437527325025
+            },
+            {
+              "from": "PU",
+              "to": "BI",
+              "est": 0.423709561898032
+            },
+            {
+              "from": "ATU",
+              "to": "BI",
+              "est": 0.177614179126391
+            },
+            {
+              "from": "BI",
+              "to": "USE",
+              "est": 0.268221820174419
+            }
+          ],
+          "r2": {
+            "PU": 0.206326718337143,
+            "ATU": 0.202542859098994,
+            "BI": 0.268877446615294,
+            "USE": 0.0719429448176783
+          },
+          "loadings_PU": {
+            "USEF1": 0.844563128840218,
+            "USEF2": 0.839939686477712,
+            "USEF3": 0.859761033833012,
+            "USEF4": 0.859236738541837,
+            "USEF5": 0.846436824550695
+          },
+          "weights_PU": {
+            "USEF1": 0.331933321548975,
+            "USEF2": 0.227727674220211,
+            "USEF3": 0.173899681497291,
+            "USEF4": 0.250017773638978,
+            "USEF5": 0.193809169207802
+          }
+        }
+      },
+      "comp_default": {
+        "id": "comp_default",
+        "operator": "<~",
+        "args": [],
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.024,
+        "result": {
+          "construct_type": {
+            "PEOU": "Composite",
+            "PU": "Composite",
+            "ATU": "Composite",
+            "BI": "Composite",
+            "USE": "Composite"
+          },
+          "modes": {
+            "PEOU": "modeB",
+            "PU": "modeB",
+            "ATU": "modeB",
+            "BI": "modeB",
+            "USE": "modeB"
+          },
+          "iterations": 14,
+          "converged": true,
+          "disattenuate_arg": true,
+          "reliabilities": {
+            "PEOU": 1,
+            "PU": 1,
+            "ATU": 1,
+            "BI": 1,
+            "USE": 1
+          },
+          "paths": [
+            {
+              "from": "PEOU",
+              "to": "PU",
+              "est": 0.45423200937092
+            },
+            {
+              "from": "PEOU",
+              "to": "ATU",
+              "est": 0.263408875701695
+            },
+            {
+              "from": "PU",
+              "to": "ATU",
+              "est": 0.26437527325025
+            },
+            {
+              "from": "PU",
+              "to": "BI",
+              "est": 0.423709561898032
+            },
+            {
+              "from": "ATU",
+              "to": "BI",
+              "est": 0.177614179126391
+            },
+            {
+              "from": "BI",
+              "to": "USE",
+              "est": 0.268221820174419
+            }
+          ],
+          "r2": {
+            "PU": 0.206326718337143,
+            "ATU": 0.202542859098994,
+            "BI": 0.268877446615294,
+            "USE": 0.0719429448176783
+          },
+          "loadings_PU": {
+            "USEF1": 0.844563128840218,
+            "USEF2": 0.839939686477712,
+            "USEF3": 0.859761033833012,
+            "USEF4": 0.859236738541837,
+            "USEF5": 0.846436824550695
+          },
+          "weights_PU": {
+            "USEF1": 0.331933321548975,
+            "USEF2": 0.227727674220211,
+            "USEF3": 0.173899681497291,
+            "USEF4": 0.250017773638978,
+            "USEF5": 0.193809169207802
+          }
+        }
+      },
+      "comp_disattenuate_false": {
+        "id": "comp_disattenuate_false",
+        "operator": "<~",
+        "args": {
+          ".disattenuate": false
+        },
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.0149999999999999,
+        "result": {
+          "construct_type": {
+            "PEOU": "Composite",
+            "PU": "Composite",
+            "ATU": "Composite",
+            "BI": "Composite",
+            "USE": "Composite"
+          },
+          "modes": {
+            "PEOU": "modeB",
+            "PU": "modeB",
+            "ATU": "modeB",
+            "BI": "modeB",
+            "USE": "modeB"
+          },
+          "iterations": 14,
+          "converged": true,
+          "disattenuate_arg": false,
+          "reliabilities": {
+            "PEOU": 1,
+            "PU": 1,
+            "ATU": 1,
+            "BI": 1,
+            "USE": 1
+          },
+          "paths": [
+            {
+              "from": "PEOU",
+              "to": "PU",
+              "est": 0.45423200937092
+            },
+            {
+              "from": "PEOU",
+              "to": "ATU",
+              "est": 0.263408875701695
+            },
+            {
+              "from": "PU",
+              "to": "ATU",
+              "est": 0.26437527325025
+            },
+            {
+              "from": "PU",
+              "to": "BI",
+              "est": 0.423709561898032
+            },
+            {
+              "from": "ATU",
+              "to": "BI",
+              "est": 0.177614179126391
+            },
+            {
+              "from": "BI",
+              "to": "USE",
+              "est": 0.268221820174419
+            }
+          ],
+          "r2": {
+            "PU": 0.206326718337143,
+            "ATU": 0.202542859098994,
+            "BI": 0.268877446615294,
+            "USE": 0.0719429448176783
+          },
+          "loadings_PU": {
+            "USEF1": 0.844563128840218,
+            "USEF2": 0.839939686477712,
+            "USEF3": 0.859761033833012,
+            "USEF4": 0.859236738541837,
+            "USEF5": 0.846436824550695
+          },
+          "weights_PU": {
+            "USEF1": 0.331933321548975,
+            "USEF2": 0.227727674220211,
+            "USEF3": 0.173899681497291,
+            "USEF4": 0.250017773638978,
+            "USEF5": 0.193809169207802
+          }
+        }
+      },
+      "comp_modeA": {
+        "id": "comp_modeA",
+        "operator": "<~",
+        "args": {
+          ".PLS_modes": "modeA"
+        },
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.011,
+        "result": {
+          "construct_type": {
+            "PEOU": "Composite",
+            "PU": "Composite",
+            "ATU": "Composite",
+            "BI": "Composite",
+            "USE": "Composite"
+          },
+          "modes": {
+            "PEOU": "modeA",
+            "PU": "modeA",
+            "ATU": "modeA",
+            "BI": "modeA",
+            "USE": "modeA"
+          },
+          "iterations": 7,
+          "converged": true,
+          "disattenuate_arg": true,
+          "reliabilities": {
+            "PEOU": 1,
+            "PU": 1,
+            "ATU": 1,
+            "BI": 1,
+            "USE": 1
+          },
+          "paths": [
+            {
+              "from": "PEOU",
+              "to": "PU",
+              "est": 0.445383471418466
+            },
+            {
+              "from": "PEOU",
+              "to": "ATU",
+              "est": 0.253226246121735
+            },
+            {
+              "from": "PU",
+              "to": "ATU",
+              "est": 0.267202446102868
+            },
+            {
+              "from": "PU",
+              "to": "BI",
+              "est": 0.401218653048324
+            },
+            {
+              "from": "ATU",
+              "to": "BI",
+              "est": 0.172841871830849
+            },
+            {
+              "from": "BI",
+              "to": "USE",
+              "est": 0.229403984078654
+            }
+          ],
+          "r2": {
+            "PU": 0.198366436612763,
+            "ATU": 0.195792350749417,
+            "BI": 0.243552682865837,
+            "USE": 0.0526261879111591
+          },
+          "loadings_PU": {
+            "USEF1": 0.807555891244479,
+            "USEF2": 0.847326893156226,
+            "USEF3": 0.880322870465337,
+            "USEF4": 0.866304838498147,
+            "USEF5": 0.859732460393674
+          },
+          "weights_PU": {
+            "USEF1": 0.23446788352337,
+            "USEF2": 0.230322253657642,
+            "USEF3": 0.236280637132857,
+            "USEF4": 0.237409368863983,
+            "USEF5": 0.234751757513445
+          }
+        }
+      },
+      "comp_modeA_disatt_false": {
+        "id": "comp_modeA_disatt_false",
+        "operator": "<~",
+        "args": {
+          ".PLS_modes": "modeA",
+          ".disattenuate": false
+        },
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.011,
+        "result": {
+          "construct_type": {
+            "PEOU": "Composite",
+            "PU": "Composite",
+            "ATU": "Composite",
+            "BI": "Composite",
+            "USE": "Composite"
+          },
+          "modes": {
+            "PEOU": "modeA",
+            "PU": "modeA",
+            "ATU": "modeA",
+            "BI": "modeA",
+            "USE": "modeA"
+          },
+          "iterations": 7,
+          "converged": true,
+          "disattenuate_arg": false,
+          "reliabilities": {
+            "PEOU": 1,
+            "PU": 1,
+            "ATU": 1,
+            "BI": 1,
+            "USE": 1
+          },
+          "paths": [
+            {
+              "from": "PEOU",
+              "to": "PU",
+              "est": 0.445383471418466
+            },
+            {
+              "from": "PEOU",
+              "to": "ATU",
+              "est": 0.253226246121735
+            },
+            {
+              "from": "PU",
+              "to": "ATU",
+              "est": 0.267202446102868
+            },
+            {
+              "from": "PU",
+              "to": "BI",
+              "est": 0.401218653048324
+            },
+            {
+              "from": "ATU",
+              "to": "BI",
+              "est": 0.172841871830849
+            },
+            {
+              "from": "BI",
+              "to": "USE",
+              "est": 0.229403984078654
+            }
+          ],
+          "r2": {
+            "PU": 0.198366436612763,
+            "ATU": 0.195792350749417,
+            "BI": 0.243552682865837,
+            "USE": 0.0526261879111591
+          },
+          "loadings_PU": {
+            "USEF1": 0.807555891244479,
+            "USEF2": 0.847326893156226,
+            "USEF3": 0.880322870465337,
+            "USEF4": 0.866304838498147,
+            "USEF5": 0.859732460393674
+          },
+          "weights_PU": {
+            "USEF1": 0.23446788352337,
+            "USEF2": 0.230322253657642,
+            "USEF3": 0.236280637132857,
+            "USEF4": 0.237409368863983,
+            "USEF5": 0.234751757513445
+          }
+        }
+      }
+    },
+    "equivalences": {
+      "note": "max |difference| in the six path coefficients between specifications",
+      "classicA__cf_disatt_false_VS_comp_modeA": 0,
+      "classicA__cf_disatt_false_VS_cf_disatt_false_modeA": 0,
+      "classicA__comp_modeA_VS_comp_modeA_disatt_false": 0,
+      "plsc_VS_classicA": 0.0596665506897485,
+      "modeB__comp_default_VS_comp_disatt_false": 0,
+      "modeB__comp_default_VS_cf_modeB_disatt_false": 0,
+      "cf_modeB_default_VS_comp_default": 0.0517789808801636,
+      "weights_identical_plsc_vs_classicA": 0
+    },
+    "weighting_schemes": {
+      "path": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.013,
+        "result": {
+          "construct_type": {
+            "PEOU": "Common factor",
+            "PU": "Common factor",
+            "ATU": "Common factor",
+            "BI": "Common factor",
+            "USE": "Common factor"
+          },
+          "modes": {
+            "PEOU": "modeA",
+            "PU": "modeA",
+            "ATU": "modeA",
+            "BI": "modeA",
+            "USE": "modeA"
+          },
+          "iterations": 7,
+          "converged": true,
+          "disattenuate_arg": false,
+          "reliabilities": {
+            "PEOU": 1,
+            "PU": 1,
+            "ATU": 1,
+            "BI": 1,
+            "USE": 1
+          },
+          "paths": [
+            {
+              "from": "PEOU",
+              "to": "PU",
+              "est": 0.445383471418466
+            },
+            {
+              "from": "PEOU",
+              "to": "ATU",
+              "est": 0.253226246121735
+            },
+            {
+              "from": "PU",
+              "to": "ATU",
+              "est": 0.267202446102868
+            },
+            {
+              "from": "PU",
+              "to": "BI",
+              "est": 0.401218653048324
+            },
+            {
+              "from": "ATU",
+              "to": "BI",
+              "est": 0.172841871830849
+            },
+            {
+              "from": "BI",
+              "to": "USE",
+              "est": 0.229403984078654
+            }
+          ],
+          "r2": {
+            "PU": 0.198366436612763,
+            "ATU": 0.195792350749417,
+            "BI": 0.243552682865837,
+            "USE": 0.0526261879111591
+          },
+          "loadings_PU": {
+            "USEF1": 0.807555891244479,
+            "USEF2": 0.847326893156226,
+            "USEF3": 0.880322870465337,
+            "USEF4": 0.866304838498147,
+            "USEF5": 0.859732460393674
+          },
+          "weights_PU": {
+            "USEF1": 0.23446788352337,
+            "USEF2": 0.230322253657642,
+            "USEF3": 0.236280637132857,
+            "USEF4": 0.237409368863983,
+            "USEF5": 0.234751757513445
+          }
+        },
+        "options": {
+          ".disattenuate": false,
+          ".PLS_weight_scheme_inner": "path",
+          ".tolerance": 1e-10,
+          ".iter_max": 300
+        },
+        "reference_iterations": 7,
+        "max_abs_diff_vs_reference": {
+          "paths": 1.66533453693773e-16,
+          "loadings": 3.33066907387547e-16,
+          "weights": 1.11022302462516e-16,
+          "r2": 1.38777878078145e-16
+        }
+      },
+      "centroid": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.00900000000000001,
+        "result": {
+          "construct_type": {
+            "PEOU": "Common factor",
+            "PU": "Common factor",
+            "ATU": "Common factor",
+            "BI": "Common factor",
+            "USE": "Common factor"
+          },
+          "modes": {
+            "PEOU": "modeA",
+            "PU": "modeA",
+            "ATU": "modeA",
+            "BI": "modeA",
+            "USE": "modeA"
+          },
+          "iterations": 7,
+          "converged": true,
+          "disattenuate_arg": false,
+          "reliabilities": {
+            "PEOU": 1,
+            "PU": 1,
+            "ATU": 1,
+            "BI": 1,
+            "USE": 1
+          },
+          "paths": [
+            {
+              "from": "PEOU",
+              "to": "PU",
+              "est": 0.445318877797529
+            },
+            {
+              "from": "PEOU",
+              "to": "ATU",
+              "est": 0.253149417200771
+            },
+            {
+              "from": "PU",
+              "to": "ATU",
+              "est": 0.267267536989468
+            },
+            {
+              "from": "PU",
+              "to": "BI",
+              "est": 0.400748554734752
+            },
+            {
+              "from": "ATU",
+              "to": "BI",
+              "est": 0.173035400122809
+            },
+            {
+              "from": "BI",
+              "to": "USE",
+              "est": 0.228933262691969
+            }
+          ],
+          "r2": {
+            "PU": 0.198308902922851,
+            "ATU": 0.195775886312504,
+            "BI": 0.243241821089192,
+            "USE": 0.0524104387667902
+          },
+          "loadings_PU": {
+            "USEF1": 0.807500994744148,
+            "USEF2": 0.847623078220332,
+            "USEF3": 0.880285575908436,
+            "USEF4": 0.866242364581317,
+            "USEF5": 0.859596718932012
+          },
+          "weights_PU": {
+            "USEF1": 0.234391684399828,
+            "USEF2": 0.231173958432546,
+            "USEF3": 0.236097792949011,
+            "USEF4": 0.237189312848578,
+            "USEF5": 0.234392689207256
+          }
+        },
+        "options": {
+          ".disattenuate": false,
+          ".PLS_weight_scheme_inner": "centroid",
+          ".tolerance": 1e-10,
+          ".iter_max": 300
+        },
+        "reference_iterations": 7,
+        "max_abs_diff_vs_reference": {
+          "paths": 5.55111512312578e-17,
+          "loadings": 2.22044604925031e-16,
+          "weights": 8.32667268468867e-17,
+          "r2": 5.55111512312578e-17
+        }
+      },
+      "factorial": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.011,
+        "result": {
+          "construct_type": {
+            "PEOU": "Common factor",
+            "PU": "Common factor",
+            "ATU": "Common factor",
+            "BI": "Common factor",
+            "USE": "Common factor"
+          },
+          "modes": {
+            "PEOU": "modeA",
+            "PU": "modeA",
+            "ATU": "modeA",
+            "BI": "modeA",
+            "USE": "modeA"
+          },
+          "iterations": 7,
+          "converged": true,
+          "disattenuate_arg": false,
+          "reliabilities": {
+            "PEOU": 1,
+            "PU": 1,
+            "ATU": 1,
+            "BI": 1,
+            "USE": 1
+          },
+          "paths": [
+            {
+              "from": "PEOU",
+              "to": "PU",
+              "est": 0.445389142292126
+            },
+            {
+              "from": "PEOU",
+              "to": "ATU",
+              "est": 0.2530684999206
+            },
+            {
+              "from": "PU",
+              "to": "ATU",
+              "est": 0.267258587608484
+            },
+            {
+              "from": "PU",
+              "to": "BI",
+              "est": 0.400514758631808
+            },
+            {
+              "from": "ATU",
+              "to": "BI",
+              "est": 0.173161115807892
+            },
+            {
+              "from": "BI",
+              "to": "USE",
+              "est": 0.228638745207324
+            }
+          ],
+          "r2": {
+            "PU": 0.198371488071715,
+            "ATU": 0.195718366942862,
+            "BI": 0.24310175906218,
+            "USE": 0.0522756758099796
+          },
+          "loadings_PU": {
+            "USEF1": 0.807598186506269,
+            "USEF2": 0.847317787700859,
+            "USEF3": 0.880304838883814,
+            "USEF4": 0.866290217822436,
+            "USEF5": 0.859732073269951
+          },
+          "weights_PU": {
+            "USEF1": 0.234566956341865,
+            "USEF2": 0.230311931540736,
+            "USEF3": 0.236225504539018,
+            "USEF4": 0.237389539246521,
+            "USEF5": 0.234745301505499
+          }
+        },
+        "options": {
+          ".disattenuate": false,
+          ".PLS_weight_scheme_inner": "factorial",
+          ".tolerance": 1e-10,
+          ".iter_max": 300
+        },
+        "reference_iterations": 7,
+        "max_abs_diff_vs_reference": {
+          "paths": 2.22044604925031e-16,
+          "loadings": 3.33066907387547e-16,
+          "weights": 8.32667268468867e-17,
+          "r2": 8.32667268468867e-17
+        }
+      },
+      "between_scheme_path_diffs": {
+        "path_vs_centroid": 0.000470721386684247,
+        "path_vs_factorial": 0.00076523887132951
+      },
+      "invalid_value": {
+        "ok": false,
+        "error": "'arg' should be one of “path”, “centroid”, “factorial”",
+        "error_class": "simpleError",
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0
+      },
+      "partial_match": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.00900000000000001,
+        "result": "factorial"
+      }
+    },
+    "plsc": {
+      "ok": true,
+      "warnings": [],
+      "n_warnings": 0,
+      "messages": [],
+      "seconds": 0.012,
+      "result": {
+        "construct_type": {
+          "PEOU": "Common factor",
+          "PU": "Common factor",
+          "ATU": "Common factor",
+          "BI": "Common factor",
+          "USE": "Common factor"
+        },
+        "modes": {
+          "PEOU": "modeA",
+          "PU": "modeA",
+          "ATU": "modeA",
+          "BI": "modeA",
+          "USE": "modeA"
+        },
+        "iterations": 7,
+        "converged": true,
+        "disattenuate_arg": true,
+        "reliabilities": {
+          "PEOU": 0.874547488632757,
+          "PU": 0.905940210545473,
+          "ATU": 0.940388533037354,
+          "BI": 0.847769443009834,
+          "USE": 0.793720332207532
+        },
+        "paths": [
+          {
+            "from": "PEOU",
+            "to": "PU",
+            "est": 0.500371573627408
+          },
+          {
+            "from": "PEOU",
+            "to": "ATU",
+            "est": 0.272755164722324
+          },
+          {
+            "from": "PU",
+            "to": "ATU",
+            "est": 0.275204403111164
+          },
+          {
+            "from": "PU",
+            "to": "BI",
+            "est": 0.460885203738072
+          },
+          {
+            "from": "ATU",
+            "to": "BI",
+            "est": 0.174587298508971
+          },
+          {
+            "from": "BI",
+            "to": "USE",
+            "est": 0.279658693188041
+          }
+        ],
+        "r2": {
+          "PU": 0.250371711694368,
+          "ATU": 0.22525204885359,
+          "BI": 0.309147849948257,
+          "USE": 0.0782089846756427
+        },
+        "loadings_PU": {
+          "USEF1": 0.810568253223027,
+          "USEF2": 0.79623658481592,
+          "USEF3": 0.816835041256786,
+          "USEF4": 0.820737128373827,
+          "USEF5": 0.811549621079521
+        },
+        "weights_PU": {
+          "USEF1": 0.23446788352337,
+          "USEF2": 0.230322253657642,
+          "USEF3": 0.236280637132857,
+          "USEF4": 0.237409368863983,
+          "USEF5": 0.234751757513445
+        }
+      },
+      "options": {
+        ".disattenuate": true,
+        ".PLS_weight_scheme_inner": "path",
+        ".tolerance": 1e-10,
+        ".iter_max": 300
+      },
+      "how_requested": "constructs written with '=~' AND .disattenuate = TRUE (the default). No separate PLSc switch exists.",
+      "correction_factor_argument": {
+        "name": ".PLS_approach_cf",
+        "values": ["dist_squared_euclid", "dist_euclid_weighted", "fisher_transformed", "mean_arithmetic", "mean_geometric", "mean_harmonic", "geo_of_harmonic"]
+      },
+      "max_abs_diff_vs_reference": {
+        "paths": 2.22044604925031e-16,
+        "loadings": 2.22044604925031e-16,
+        "weights": 1.11022302462516e-16,
+        "r2": 1.11022302462516e-16,
+        "reliabilities_vs_rhoA": 8.88178419700125e-16,
+        "construct_cor": 2.22044604925031e-16
+      },
+      "change_vs_classic_modeA": {
+        "weights_max_abs_diff": 0,
+        "loadings_max_abs_diff": 0.240553426873621,
+        "paths": [
+          {
+            "from": "PEOU",
+            "to": "PU",
+            "classic": 0.445383471418466,
+            "plsc": 0.500371573627408
+          },
+          {
+            "from": "PEOU",
+            "to": "ATU",
+            "classic": 0.253226246121735,
+            "plsc": 0.272755164722324
+          },
+          {
+            "from": "PU",
+            "to": "ATU",
+            "classic": 0.267202446102868,
+            "plsc": 0.275204403111164
+          },
+          {
+            "from": "PU",
+            "to": "BI",
+            "classic": 0.401218653048324,
+            "plsc": 0.460885203738072
+          },
+          {
+            "from": "ATU",
+            "to": "BI",
+            "classic": 0.172841871830849,
+            "plsc": 0.174587298508971
+          },
+          {
+            "from": "BI",
+            "to": "USE",
+            "classic": 0.229403984078654,
+            "plsc": 0.279658693188041
+          }
+        ],
+        "r2": [
+          {
+            "construct": "PU",
+            "classic": 0.198366436612763,
+            "plsc": 0.250371711694368
+          },
+          {
+            "construct": "ATU",
+            "classic": 0.195792350749417,
+            "plsc": 0.22525204885359
+          },
+          {
+            "construct": "BI",
+            "classic": 0.243552682865837,
+            "plsc": 0.309147849948257
+          },
+          {
+            "construct": "USE",
+            "classic": 0.0526261879111591,
+            "plsc": 0.0782089846756427
+          }
+        ],
+        "construct_scores_identical": 0,
+        "proxy_vs_construct_vcv_differ_in_plsc": 0.0890505415615782,
+        "proxy_vs_construct_vcv_differ_in_classic": 2.22044604925031e-16
+      }
+    },
+    "modeB_all": {
+      "ok": true,
+      "warnings": [],
+      "n_warnings": 0,
+      "messages": [],
+      "seconds": 0.017,
+      "result": {
+        "construct_type": {
+          "PEOU": "Composite",
+          "PU": "Composite",
+          "ATU": "Composite",
+          "BI": "Composite",
+          "USE": "Composite"
+        },
+        "modes": {
+          "PEOU": "modeB",
+          "PU": "modeB",
+          "ATU": "modeB",
+          "BI": "modeB",
+          "USE": "modeB"
+        },
+        "iterations": 14,
+        "converged": true,
+        "disattenuate_arg": true,
+        "reliabilities": {
+          "PEOU": 1,
+          "PU": 1,
+          "ATU": 1,
+          "BI": 1,
+          "USE": 1
+        },
+        "paths": [
+          {
+            "from": "PEOU",
+            "to": "PU",
+            "est": 0.45423200937092
+          },
+          {
+            "from": "PEOU",
+            "to": "ATU",
+            "est": 0.263408875701695
+          },
+          {
+            "from": "PU",
+            "to": "ATU",
+            "est": 0.26437527325025
+          },
+          {
+            "from": "PU",
+            "to": "BI",
+            "est": 0.423709561898032
+          },
+          {
+            "from": "ATU",
+            "to": "BI",
+            "est": 0.177614179126391
+          },
+          {
+            "from": "BI",
+            "to": "USE",
+            "est": 0.268221820174419
+          }
+        ],
+        "r2": {
+          "PU": 0.206326718337143,
+          "ATU": 0.202542859098994,
+          "BI": 0.268877446615294,
+          "USE": 0.0719429448176783
+        },
+        "loadings_PU": {
+          "USEF1": 0.844563128840218,
+          "USEF2": 0.839939686477712,
+          "USEF3": 0.859761033833012,
+          "USEF4": 0.859236738541837,
+          "USEF5": 0.846436824550695
+        },
+        "weights_PU": {
+          "USEF1": 0.331933321548975,
+          "USEF2": 0.227727674220211,
+          "USEF3": 0.173899681497291,
+          "USEF4": 0.250017773638978,
+          "USEF5": 0.193809169207802
+        }
+      },
+      "options": {
+        ".model_operator": "<~",
+        ".tolerance": 1e-10,
+        ".iter_max": 300
+      },
+      "max_abs_diff_vs_reference": {
+        "paths": 1.11022302462516e-16,
+        "loadings": 4.44089209850063e-16,
+        "weights": 1.02695629777827e-15,
+        "r2": 1.11022302462516e-16
+      },
+      "reference_iterations": 14
+    },
+    "mixed": {
+      "model_operators": {
+        "PU": "<~",
+        "PEOU": "<~",
+        "ATU": "=~",
+        "BI": "=~",
+        "USE": "=~"
+      },
+      "classic_no_correction": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.016,
+        "result": {
+          "construct_type": {
+            "PEOU": "Composite",
+            "PU": "Composite",
+            "ATU": "Common factor",
+            "BI": "Common factor",
+            "USE": "Common factor"
+          },
+          "modes": {
+            "PEOU": "modeB",
+            "PU": "modeB",
+            "ATU": "modeA",
+            "BI": "modeA",
+            "USE": "modeA"
+          },
+          "iterations": 10,
+          "converged": true,
+          "disattenuate_arg": false,
+          "reliabilities": {
+            "PEOU": 1,
+            "PU": 1,
+            "ATU": 1,
+            "BI": 1,
+            "USE": 1
+          },
+          "paths": [
+            {
+              "from": "PEOU",
+              "to": "PU",
+              "est": 0.455094884129747
+            },
+            {
+              "from": "PEOU",
+              "to": "ATU",
+              "est": 0.251191873314334
+            },
+            {
+              "from": "PU",
+              "to": "ATU",
+              "est": 0.26593347437378
+            },
+            {
+              "from": "PU",
+              "to": "BI",
+              "est": 0.400040834617321
+            },
+            {
+              "from": "ATU",
+              "to": "BI",
+              "est": 0.17334782747805
+            },
+            {
+              "from": "BI",
+              "to": "USE",
+              "est": 0.229228181670111
+            }
+          ],
+          "r2": {
+            "PU": 0.207111353561067,
+            "ATU": 0.194618944714072,
+            "BI": 0.242819877069286,
+            "USE": 0.0525455592717856
+          },
+          "loadings_PU": {
+            "USEF1": 0.849232110244106,
+            "USEF2": 0.834557063229631,
+            "USEF3": 0.854611262812752,
+            "USEF4": 0.858223211758846,
+            "USEF5": 0.850112333053455
+          },
+          "weights_PU": {
+            "USEF1": 0.343357685129209,
+            "USEF2": 0.21658523665782,
+            "USEF3": 0.159784401778525,
+            "USEF4": 0.252505148683415,
+            "USEF5": 0.205146488991978
+          }
+        },
+        "options": {
+          ".disattenuate": false
+        },
+        "max_abs_diff_vs_reference": {
+          "paths": 1.11022302462516e-16,
+          "loadings": 3.33066907387547e-16,
+          "weights": 5.55111512312578e-16,
+          "r2": 1.38777878078145e-16
+        }
+      },
+      "plsc_for_factors_only": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.012,
+        "result": {
+          "construct_type": {
+            "PEOU": "Composite",
+            "PU": "Composite",
+            "ATU": "Common factor",
+            "BI": "Common factor",
+            "USE": "Common factor"
+          },
+          "modes": {
+            "PEOU": "modeB",
+            "PU": "modeB",
+            "ATU": "modeA",
+            "BI": "modeA",
+            "USE": "modeA"
+          },
+          "iterations": 10,
+          "converged": true,
+          "disattenuate_arg": true,
+          "reliabilities": {
+            "PEOU": 1,
+            "PU": 1,
+            "ATU": 0.94040827468985,
+            "BI": 0.847441171091209,
+            "USE": 0.79367890105987
+          },
+          "paths": [
+            {
+              "from": "PEOU",
+              "to": "PU",
+              "est": 0.455094884129747
+            },
+            {
+              "from": "PEOU",
+              "to": "ATU",
+              "est": 0.259028388612102
+            },
+            {
+              "from": "PU",
+              "to": "ATU",
+              "est": 0.274229888237102
+            },
+            {
+              "from": "PU",
+              "to": "BI",
+              "est": 0.429198074170381
+            },
+            {
+              "from": "ATU",
+              "to": "BI",
+              "est": 0.19628280272176
+            },
+            {
+              "from": "BI",
+              "to": "USE",
+              "est": 0.279505792104842
+            }
+          ],
+          "r2": {
+            "PU": 0.207111353561067,
+            "ATU": 0.206951544294161,
+            "BI": 0.288804314225955,
+            "USE": 0.0781234878201552
+          },
+          "loadings_PU": {
+            "USEF1": 0.849232110244106,
+            "USEF2": 0.834557063229631,
+            "USEF3": 0.854611262812752,
+            "USEF4": 0.858223211758846,
+            "USEF5": 0.850112333053455
+          },
+          "weights_PU": {
+            "USEF1": 0.343357685129209,
+            "USEF2": 0.21658523665782,
+            "USEF3": 0.159784401778525,
+            "USEF4": 0.252505148683415,
+            "USEF5": 0.205146488991978
+          }
+        },
+        "options": {
+          ".disattenuate": true
+        },
+        "max_abs_diff_vs_reference": {
+          "paths": 1.11022302462516e-16,
+          "loadings": 3.33066907387547e-16,
+          "weights": 5.55111512312578e-16,
+          "r2": 5.55111512312578e-17
+        }
+      },
+      "named_list_PLS_modes_on_common_factors": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.0189999999999999,
+        "result": {
+          "construct_type": {
+            "PEOU": "Common factor",
+            "PU": "Common factor",
+            "ATU": "Common factor",
+            "BI": "Common factor",
+            "USE": "Common factor"
+          },
+          "modes": {
+            "PEOU": "modeB",
+            "PU": "modeB",
+            "ATU": "modeA",
+            "BI": "modeA",
+            "USE": "modeA"
+          },
+          "iterations": 10,
+          "converged": true,
+          "disattenuate_arg": false,
+          "reliabilities": {
+            "PEOU": 1,
+            "PU": 1,
+            "ATU": 1,
+            "BI": 1,
+            "USE": 1
+          },
+          "paths": [
+            {
+              "from": "PEOU",
+              "to": "PU",
+              "est": 0.455094884129747
+            },
+            {
+              "from": "PEOU",
+              "to": "ATU",
+              "est": 0.251191873314334
+            },
+            {
+              "from": "PU",
+              "to": "ATU",
+              "est": 0.26593347437378
+            },
+            {
+              "from": "PU",
+              "to": "BI",
+              "est": 0.400040834617321
+            },
+            {
+              "from": "ATU",
+              "to": "BI",
+              "est": 0.17334782747805
+            },
+            {
+              "from": "BI",
+              "to": "USE",
+              "est": 0.229228181670111
+            }
+          ],
+          "r2": {
+            "PU": 0.207111353561067,
+            "ATU": 0.194618944714072,
+            "BI": 0.242819877069286,
+            "USE": 0.0525455592717856
+          },
+          "loadings_PU": {
+            "USEF1": 0.849232110244106,
+            "USEF2": 0.834557063229631,
+            "USEF3": 0.854611262812752,
+            "USEF4": 0.858223211758846,
+            "USEF5": 0.850112333053455
+          },
+          "weights_PU": {
+            "USEF1": 0.343357685129209,
+            "USEF2": 0.21658523665782,
+            "USEF3": 0.159784401778525,
+            "USEF4": 0.252505148683415,
+            "USEF5": 0.205146488991978
+          }
+        },
+        "options": {
+          ".disattenuate": false,
+          ".PLS_modes": {
+            "PU": "modeB",
+            "PEOU": "modeB"
+          }
+        },
+        "max_abs_diff_vs_mixed_operator_model": 0
+      }
+    },
+    "convergence": {
+      "where": {
+        "iterations": "res$Information$Weight_info$Number_iterations",
+        "converged": "res$Information$Weight_info$Convergence_status",
+        "modes": "res$Information$Weight_info$Modes"
+      },
+      "default_run": {
+        "tolerance": 1e-05,
+        "iter_max": 100,
+        "conv_criterion": "diff_absolute",
+        "iterations": 4,
+        "converged": true
+      },
+      "tolerance_sweep": [
+        {
+          "tolerance": 0.001,
+          "iterations": 3,
+          "converged": true,
+          "max_abs_path_diff_vs_tol_1e-10": 1.01718005046658e-07,
+          "max_abs_weight_diff_vs_tol_1e-10": 1.25878094775489e-06
+        },
+        {
+          "tolerance": 1e-05,
+          "iterations": 4,
+          "converged": true,
+          "max_abs_path_diff_vs_tol_1e-10": 2.22593410370564e-09,
+          "max_abs_weight_diff_vs_tol_1e-10": 6.53982378806539e-08
+        },
+        {
+          "tolerance": 1e-07,
+          "iterations": 5,
+          "converged": true,
+          "max_abs_path_diff_vs_tol_1e-10": 8.60654880696643e-11,
+          "max_abs_weight_diff_vs_tol_1e-10": 1.09944814363772e-09
+        },
+        {
+          "tolerance": 1e-10,
+          "iterations": 7,
+          "converged": true,
+          "max_abs_path_diff_vs_tol_1e-10": 0,
+          "max_abs_weight_diff_vs_tol_1e-10": 0
+        },
+        {
+          "tolerance": 1e-13,
+          "iterations": 9,
+          "converged": true,
+          "max_abs_path_diff_vs_tol_1e-10": 7.65776331235202e-14,
+          "max_abs_weight_diff_vs_tol_1e-10": 9.91817739048884e-13
+        }
+      ],
+      "conv_criterion_sweep_tol_1e-8": {
+        "diff_absolute": {
+          "iterations": 6,
+          "converged": true
+        },
+        "diff_squared": {
+          "iterations": 3,
+          "converged": true
+        },
+        "diff_relative": {
+          "iterations": 6,
+          "converged": true
+        }
+      },
+      "iter_max_2": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.014,
+        "result": {
+          "iterations": 2,
+          "converged": false
+        }
+      },
+      "iter_max_1_one_step_weights": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.01,
+        "result": {
+          "iterations": 1,
+          "converged": null
+        }
+      },
+      "verify": {
+        "class": "cSEMVerify",
+        "codes_converged_model": {
+          "1": false,
+          "2": false,
+          "3": false,
+          "4": false,
+          "5": false
+        },
+        "codes_iter_max_2": {
+          "1": true,
+          "2": false,
+          "3": false,
+          "4": false,
+          "5": false
+        },
+        "meaning": "named logical vector; TRUE = problem detected. sum(verify(res)) == 0 means admissible.",
+        "printed": ["________________________________________________________________________________", "", "Verify admissibility:", "", "\t admissible", "", "Details:", "", "  Code   Status    Description", "  1      ok        Convergence achieved                                   ", "  2      ok        All absolute standardized loading estimates <= 1       ", "  3      ok        Construct VCV is positive semi-definite                ", "  4      ok        All reliability estimates <= 1                         ", "  5      ok        Model-implied indicator VCV is positive semi-definite  ", "________________________________________________________________________________"]
+      }
+    },
+    "scaling": {
+      "indicator_vcv_is_pearson_correlation": 0,
+      "type_of_indicator_correlation": "Pearson",
+      "composite_variance_wSw_minus_1": 3.33066907387547e-16,
+      "construct_scores_dim": [1190, 5],
+      "construct_scores_var_minus_1": 9.54791801177635e-15,
+      "construct_scores_mean_abs_max": 1.59909433967018e-16,
+      "scores_equal_scaled_data_times_weights": 0,
+      "stored_data_is_standardised": 1.29896093881143e-14,
+      "raw_vs_prestandardised_input_path_diff": 1.49880108324396e-15,
+      "all_loadings_positive": true,
+      "loading_equals_cor_indicator_score": 1.27675647831893e-14,
+      "construct_order_in_object": ["PEOU", "PU", "ATU", "BI", "USE"],
+      "indicator_order_in_object": ["EOU1", "EOU2", "EOU3", "EOU4", "EOU5", "USEF1", "USEF2", "USEF3", "USEF4", "USEF5", "ATT1", "ATT2", "ATT3", "ATT4", "ATT5", "BI1", "BI2", "BI3", "USE1", "USE2", "USE3", "USE4"],
+      "note": "cSEM reorders constructs (exogenous first, then causal order) and indicators accordingly; never index by position."
+    }
+  }
+}

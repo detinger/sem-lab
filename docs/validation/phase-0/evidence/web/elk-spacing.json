@@ -1,0 +1,49 @@
+{
+  "generatedAt": "2026-11-19T12:53:54.201Z",
+  "generatedBy": "apps/web/src/tests/spike (npm run spike:evidence -w @sem-studio/web)",
+  "runtime": {
+    "node": "v26.13.1",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "packages": [
+    {
+      "name": "elkjs",
+      "version": "0.12.1",
+      "license": "EPL-2.0 OR GPL-3.0-or-later"
+    }
+  ],
+  "data": {
+    "rule": "gap between two same-layer nodes with an edge passing between them = 2 * elk.spacing.edgeNode + 1",
+    "defaults": {
+      "nodeNode": 24,
+      "betweenLayers": 80,
+      "edgeNode": "default (10)",
+      "layers": 6,
+      "minWithinLayer": 21,
+      "minBetweenLayers": 80,
+      "width": 1132,
+      "height": 564.381
+    },
+    "compact": {
+      "nodeNode": 24,
+      "betweenLayers": 80,
+      "edgeNode": 12,
+      "layers": 6,
+      "minWithinLayer": 24,
+      "minBetweenLayers": 80,
+      "width": 1132,
+      "height": 568.381
+    },
+    "roomy": {
+      "nodeNode": 48,
+      "betweenLayers": 160,
+      "edgeNode": 24,
+      "layers": 6,
+      "minWithinLayer": 48,
+      "minBetweenLayers": 160,
+      "width": 1532,
+      "height": 760.381
+    }
+  }
+}

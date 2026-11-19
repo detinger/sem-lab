@@ -1,0 +1,72 @@
+[
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "x1",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "x2",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "x3",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "y1",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "y2",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "y3",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "x3_rev",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  }
+]

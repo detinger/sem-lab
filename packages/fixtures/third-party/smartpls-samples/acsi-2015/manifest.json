@@ -1,0 +1,67 @@
+{
+  "dataset": "acsi-2015",
+  "title": "American Customer Satisfaction Index (ACSI) 2015 sample data",
+  "rows": 8239,
+  "columns": 29,
+  "dataFile": "data.csv",
+  "sha256": "9dd0e921ab14d054c02a7bc55f4f1ec4e8743effef7f587bc1fc9791663a1d98",
+  "format": {
+    "encoding": "UTF-8",
+    "delimiter": ",",
+    "header": true,
+    "lineTerminator": "LF",
+    "decimalSeparator": ".",
+    "missing": "empty field",
+    "numbers": "shortest exact decimal form of the source text (integers without a decimal point)"
+  },
+  "source": {
+    "folder": "TEMP/Example - ACSI",
+    "dataFile": "ACSI Data 2015.txt",
+    "dataFileSha256": "5d1adc648b8ded99dad54a76eb45e6ddaa14b1b8157bbf4343a32e2b362fc67e",
+    "dataFileBytes": 2956617,
+    "dataFileFormat": {
+      "encoding": "ASCII",
+      "byteOrderMark": false,
+      "delimiter": "SEMICOLON",
+      "lineTerminator": "CRLF",
+      "endsWithNewline": true,
+      "missing": "empty field"
+    },
+    "settingsFile": "ACSI Data 2015.txt.settings",
+    "caseCountFile": "ACSI Data 2015.txt.ok",
+    "caseCount": 8239,
+    "measurementSettingsFile": "ACSI (modified) - PLS-SEM.splsm.settings",
+    "nonFiniteNumbersInSettings": 5
+  },
+  "missing": {
+    "cells": 53925,
+    "columnsWithMissing": 26,
+    "completeRows": 0,
+    "completeRowsOnMeasurementIndicators": 7422
+  },
+  "scaleEndpoints": {
+    "source": "scaleInformation.minValue / maxValue of the data settings file",
+    "columnsWhereScaleDiffersFromObserved": [],
+    "interpretation": "The stored scale endpoints equal the observed minimum and maximum for every column: they are observed extrema, not verified theoretical endpoints."
+  },
+  "constantColumns": [
+    "YEAR"
+  ],
+  "redistribution": {
+    "status": "redistributable-with-attribution",
+    "licence": "CC BY 4.0 (Creative Commons Attribution 4.0 International, http://creativecommons.org/licenses/by/4.0) as stated in the Mendeley Data record. The Data in Brief article text itself is CC BY-NC-ND 4.0; that licence covers the article, not the deposited data files.",
+    "detail": "packages/fixtures/third-party/smartpls-samples/PROVENANCE.md",
+    "attribution": "Hult, Tomas; Morgeson, Forrest (2023), \"The American Customer Satisfaction Index (ACSI): A Sample Dataset and Description\", Mendeley Data, V2, doi: 10.17632/64xkbj2ry5.2. Licensed under CC BY 4.0. Changes made: converted to CSV; the missing-data codes 98 and 99, SPSS '#NULL!' cells and empty cells are written as empty fields."
+  },
+  "encryptedProjectFilesUsed": false,
+  "buildScript": "packages/fixtures/scripts/build_third_party.py",
+  "buildConfig": "packages/fixtures/scripts/third_party_sources.json",
+  "files": {
+    "columns.json": "d65965b8fd676b152453b09c0d3f0f1f45482036bb5555ae4ad1c26be5125f0d",
+    "data.csv": "9dd0e921ab14d054c02a7bc55f4f1ec4e8743effef7f587bc1fc9791663a1d98",
+    "groups.json": "74da933abf737b1b922a90d0c3e66c27beb0494b1563cabb94bfa996859f3c04",
+    "measurement.json": "e448b594b0be148737569556c4e95a2dfa4e4424e7f98213f86ece3c00a58be9",
+    "proposed-model.json": "d2aeb37e960b68758f819fedf2bd8f01b03127c5ea4b17b1c0f8821f2465aca2",
+    "reference-descriptives.json": "00563d25b9b9d683c7b6265352cc0d0d0b6bb6e1d58dcd41b38cc47ee7fed525"
+  }
+}

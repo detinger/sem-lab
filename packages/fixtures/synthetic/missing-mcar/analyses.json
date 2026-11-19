@@ -1,0 +1,44 @@
+[
+  {
+    "analysis": {
+      "cb": {
+        "identification": "marker",
+        "meanStructure": false
+      },
+      "engine": "r-lavaan",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "ML CFA with listwise deletion.",
+    "id": "cb-lavaan-ml-listwise"
+  },
+  {
+    "analysis": {
+      "cb": {
+        "identification": "marker",
+        "meanStructure": true
+      },
+      "engine": "r-lavaan",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "fiml"
+    },
+    "description": "ML CFA with FIML (requires the mean structure).",
+    "id": "cb-lavaan-ml-fiml"
+  },
+  {
+    "analysis": {
+      "cb": {
+        "identification": "marker",
+        "meanStructure": false
+      },
+      "engine": "py-semopy",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "ML CFA in semopy with listwise deletion; compare with lavaan listwise.",
+    "id": "cb-semopy-ml-listwise"
+  }
+]

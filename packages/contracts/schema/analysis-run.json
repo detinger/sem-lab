@@ -1,0 +1,1002 @@
+{
+  "$id": "https://sem-studio.local/schema/analysis-run.json",
+  "title": "analysis-run",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "runId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+    },
+    "schemaVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "modelHash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "dataFingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "method": {
+      "type": "string",
+      "enum": [
+        "pls-sem",
+        "plsc",
+        "cb-sem"
+      ]
+    },
+    "engine": {
+      "type": "string",
+      "enum": [
+        "r-csem",
+        "r-seminr",
+        "r-lavaan",
+        "py-semopy",
+        "py-plspm"
+      ]
+    },
+    "packageVersions": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "options": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": [
+            "pls-sem",
+            "plsc",
+            "cb-sem"
+          ]
+        },
+        "engine": {
+          "type": "string",
+          "enum": [
+            "r-csem",
+            "r-seminr",
+            "r-lavaan",
+            "py-semopy",
+            "py-plspm"
+          ]
+        },
+        "estimator": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "missingData": {
+          "type": "string",
+          "enum": [
+            "listwise",
+            "fiml"
+          ]
+        },
+        "seed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "bootstrap": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "repetitions": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100000
+            },
+            "ci": {
+              "type": "string",
+              "enum": [
+                "percentile",
+                "bca"
+              ]
+            },
+            "confidenceLevel": {
+              "type": "number",
+              "exclusiveMinimum": 0.5,
+              "exclusiveMaximum": 1
+            },
+            "sides": {
+              "type": "string",
+              "enum": [
+                "two-sided",
+                "one-sided"
+              ]
+            }
+          },
+          "required": [
+            "enabled",
+            "repetitions",
+            "ci",
+            "confidenceLevel",
+            "sides"
+          ],
+          "additionalProperties": false
+        },
+        "pls": {
+          "type": "object",
+          "properties": {
+            "innerWeighting": {
+              "type": "string",
+              "enum": [
+                "path",
+                "centroid",
+                "factorial"
+              ]
+            },
+            "maxIterations": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100000
+            },
+            "tolerance": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 0.01
+            }
+          },
+          "required": [
+            "innerWeighting",
+            "maxIterations",
+            "tolerance"
+          ],
+          "additionalProperties": false
+        },
+        "cb": {
+          "type": "object",
+          "properties": {
+            "identification": {
+              "type": "string",
+              "enum": [
+                "marker",
+                "std-lv"
+              ]
+            },
+            "meanStructure": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "identification",
+            "meanStructure"
+          ],
+          "additionalProperties": false
+        },
+        "ipma": {
+          "type": "object",
+          "properties": {
+            "targetConstructId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+            }
+          },
+          "required": [
+            "targetConstructId"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "method",
+        "engine",
+        "estimator",
+        "missingData"
+      ],
+      "additionalProperties": false
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "running",
+        "complete",
+        "failed",
+        "cancelled"
+      ]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "error",
+              "warning",
+              "recommendation",
+              "info"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "severity"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "result": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "type": "number",
+          "const": 1
+        },
+        "sample": {
+          "type": "object",
+          "properties": {
+            "nRows": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "nUsed": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "nDropped": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "missingData": {
+              "type": "string",
+              "enum": [
+                "listwise",
+                "fiml"
+              ]
+            }
+          },
+          "required": [
+            "nRows",
+            "nUsed",
+            "nDropped",
+            "missingData"
+          ],
+          "additionalProperties": false
+        },
+        "estimation": {
+          "type": "object",
+          "properties": {
+            "converged": {
+              "type": "boolean"
+            },
+            "iterations": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "admissible": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "messages": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 2000
+              }
+            }
+          },
+          "required": [
+            "converged",
+            "iterations",
+            "admissible",
+            "messages"
+          ],
+          "additionalProperties": false
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 400
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "path",
+                  "loading",
+                  "weight",
+                  "total-effect",
+                  "indirect-effect",
+                  "specific-indirect",
+                  "covariance",
+                  "variance",
+                  "residual-variance",
+                  "intercept",
+                  "threshold",
+                  "defined"
+                ]
+              },
+              "sourceId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128,
+                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+              },
+              "targetId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128,
+                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+              },
+              "viaIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128,
+                  "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+                }
+              },
+              "relationshipId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128,
+                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+              },
+              "scale": {
+                "type": "string",
+                "enum": [
+                  "standardized",
+                  "unstandardized"
+                ]
+              },
+              "est": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "se": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "statistic": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "statisticType": {
+                "type": "string",
+                "enum": [
+                  "t",
+                  "z"
+                ]
+              },
+              "pValue": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "ciLower": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "ciUpper": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "missing": {
+                "type": "object",
+                "propertyNames": {
+                  "type": "string",
+                  "enum": [
+                    "est",
+                    "se",
+                    "statistic",
+                    "pValue",
+                    "ciLower",
+                    "ciUpper"
+                  ]
+                },
+                "additionalProperties": {
+                  "type": "string",
+                  "enum": [
+                    "not-applicable",
+                    "not-requested",
+                    "not-estimated",
+                    "not-supported",
+                    "failed",
+                    "non-finite"
+                  ]
+                }
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "estimated",
+                  "fixed",
+                  "not-estimated",
+                  "failed"
+                ]
+              },
+              "inference": {
+                "type": "object",
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "enum": [
+                      "bootstrap-percentile",
+                      "bootstrap-bca",
+                      "analytic",
+                      "robust-analytic"
+                    ]
+                  },
+                  "level": {
+                    "type": "number",
+                    "exclusiveMinimum": 0.5,
+                    "exclusiveMaximum": 1
+                  },
+                  "sides": {
+                    "type": "string",
+                    "enum": [
+                      "two-sided",
+                      "one-sided"
+                    ]
+                  },
+                  "nValid": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "required": [
+                  "method",
+                  "level",
+                  "sides"
+                ],
+                "additionalProperties": false
+              },
+              "sourceMethod": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "rawPath": {
+                "type": "string",
+                "maxLength": 400
+              }
+            },
+            "required": [
+              "key",
+              "kind",
+              "scale",
+              "est",
+              "se",
+              "statistic",
+              "pValue",
+              "ciLower",
+              "ciUpper",
+              "status",
+              "sourceMethod"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "constructMetrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "constructId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128,
+                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+              },
+              "metric": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80
+              },
+              "value": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "missing": {
+                "type": "string",
+                "enum": [
+                  "not-applicable",
+                  "not-requested",
+                  "not-estimated",
+                  "not-supported",
+                  "failed",
+                  "non-finite"
+                ]
+              },
+              "definition": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              }
+            },
+            "required": [
+              "constructId",
+              "metric",
+              "value",
+              "definition"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "matrices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "rowIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128,
+                  "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+                }
+              },
+              "colIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128,
+                  "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+                }
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "symmetric": {
+                "type": "boolean"
+              },
+              "definition": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "missing": {
+                "type": "string",
+                "enum": [
+                  "not-applicable",
+                  "not-requested",
+                  "not-estimated",
+                  "not-supported",
+                  "failed",
+                  "non-finite"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "title",
+              "rowIds",
+              "colIds",
+              "values",
+              "symmetric",
+              "definition"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "fit": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80
+              },
+              "value": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "missing": {
+                "type": "string",
+                "enum": [
+                  "not-applicable",
+                  "not-requested",
+                  "not-estimated",
+                  "not-supported",
+                  "failed",
+                  "non-finite"
+                ]
+              },
+              "ciLower": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "ciUpper": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "variant": {
+                "type": "string",
+                "enum": [
+                  "standard",
+                  "scaled",
+                  "robust"
+                ]
+              },
+              "definition": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              }
+            },
+            "required": [
+              "name",
+              "value",
+              "definition"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "bootstrap": {
+          "type": "object",
+          "properties": {
+            "requested": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "completed": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "failed": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "inadmissible": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "seed": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "ciMethod": {
+              "type": "string",
+              "enum": [
+                "percentile",
+                "bca"
+              ]
+            },
+            "confidenceLevel": {
+              "type": "number",
+              "exclusiveMinimum": 0.5,
+              "exclusiveMaximum": 1
+            },
+            "chunkSize": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "draws": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "required": [
+            "requested",
+            "completed",
+            "failed",
+            "inadmissible",
+            "seed",
+            "ciMethod",
+            "confidenceLevel",
+            "chunkSize"
+          ],
+          "additionalProperties": false
+        },
+        "ipma": {
+          "type": "object",
+          "properties": {
+            "targetConstructId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+            },
+            "constructs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "constructId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+                  },
+                  "importance": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "performance": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "predecessor": {
+                    "type": "string",
+                    "enum": [
+                      "direct",
+                      "indirect"
+                    ]
+                  }
+                },
+                "required": [
+                  "constructId",
+                  "importance",
+                  "performance",
+                  "predecessor"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "indicators": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "indicatorId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+                  },
+                  "constructId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+                  },
+                  "importance": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "performance": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "indicatorId",
+                  "constructId",
+                  "importance",
+                  "performance"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "convention": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            }
+          },
+          "required": [
+            "targetConstructId",
+            "constructs",
+            "convention"
+          ],
+          "additionalProperties": false
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "pattern": "^[A-Z][A-Z0-9_]*$"
+              },
+              "severity": {
+                "type": "string",
+                "enum": [
+                  "error",
+                  "warning",
+                  "recommendation",
+                  "info"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2000
+              },
+              "elementIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128,
+                  "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+                }
+              }
+            },
+            "required": [
+              "code",
+              "severity",
+              "message"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "engine": {
+              "type": "string",
+              "enum": [
+                "r-csem",
+                "r-seminr",
+                "r-lavaan",
+                "py-semopy",
+                "py-plspm"
+              ]
+            },
+            "packageVersions": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "rVersion": {
+              "type": "string"
+            },
+            "pythonVersion": {
+              "type": "string"
+            },
+            "call": {
+              "type": "string",
+              "maxLength": 4000
+            },
+            "startedAt": {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+            },
+            "finishedAt": {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+            }
+          },
+          "required": [
+            "engine",
+            "packageVersions",
+            "call",
+            "startedAt",
+            "finishedAt"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "sample",
+        "estimation",
+        "parameters",
+        "constructMetrics",
+        "matrices",
+        "fit",
+        "warnings",
+        "provenance"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "runId",
+    "schemaVersion",
+    "modelHash",
+    "dataFingerprint",
+    "method",
+    "engine",
+    "packageVersions",
+    "options",
+    "status",
+    "createdAt",
+    "warnings"
+  ],
+  "additionalProperties": false
+}

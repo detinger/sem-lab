@@ -1,0 +1,50 @@
+{
+  "constructs": [
+    {
+      "id": "c_g",
+      "indicatorIds": [
+        "i_g1",
+        "i_g2",
+        "i_g3",
+        "i_g4",
+        "i_g5"
+      ],
+      "label": "General factor",
+      "measurement": "reflective",
+      "name": "G"
+    }
+  ],
+  "indicators": [
+    {
+      "column": "g1",
+      "id": "i_g1",
+      "level": "continuous",
+      "name": "g1"
+    },
+    {
+      "column": "g2",
+      "id": "i_g2",
+      "level": "continuous",
+      "name": "g2"
+    },
+    {
+      "column": "g3",
+      "id": "i_g3",
+      "level": "continuous",
+      "name": "g3"
+    },
+    {
+      "column": "g4",
+      "id": "i_g4",
+      "level": "continuous",
+      "name": "g4"
+    },
+    {
+      "column": "g5",
+      "id": "i_g5",
+      "level": "continuous",
+      "name": "g5"
+    }
+  ],
+  "relationships": []
+}

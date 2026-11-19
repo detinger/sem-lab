@@ -1,0 +1,112 @@
+[
+  {
+    "nMissing": 0,
+    "nUnique": 400,
+    "name": "f1",
+    "observedMax": 3.6507561570417946,
+    "observedMin": -2.2554809968397973,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 400,
+    "name": "f2",
+    "observedMax": 3.045485919847402,
+    "observedMin": -2.9953906739620817,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 400,
+    "name": "f3",
+    "observedMax": 2.9344095039852887,
+    "observedMin": -3.268290121425959,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 400,
+    "name": "f4",
+    "observedMax": 2.808416012203823,
+    "observedMin": -2.807258322719937,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 400,
+    "name": "x1",
+    "observedMax": 2.724422116894953,
+    "observedMin": -3.08487204563205,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 400,
+    "name": "x2",
+    "observedMax": 2.690899372995818,
+    "observedMin": -3.0448363444813253,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 400,
+    "name": "x3",
+    "observedMax": 2.497967569608506,
+    "observedMin": -3.207504689215812,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 400,
+    "name": "y1",
+    "observedMax": 2.9320407944328033,
+    "observedMin": -2.945764474808906,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 400,
+    "name": "y2",
+    "observedMax": 2.891033102836774,
+    "observedMin": -2.964896080340136,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 400,
+    "name": "y3",
+    "observedMax": 2.7629562320841505,
+    "observedMin": -2.430568045473286,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 400,
+    "name": "y4",
+    "observedMax": 3.128601100635143,
+    "observedMin": -2.5411586980578638,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  }
+]

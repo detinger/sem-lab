@@ -1,0 +1,86 @@
+{
+  "collection": "smartpls-samples",
+  "buildScript": "packages/fixtures/scripts/build_third_party.py",
+  "buildConfig": "packages/fixtures/scripts/third_party_sources.json",
+  "encryptedProjectFilesUsed": false,
+  "datasets": [
+    {
+      "slug": "tam",
+      "title": "Technology Acceptance Model (TAM) sample data",
+      "rows": 1190,
+      "columns": 22,
+      "sha256": "f2faa549b62f812f672936720aecfeaf166c63b612a7488c99106ca094b97d22",
+      "missingCells": 0,
+      "completeRows": 1190,
+      "hasMeasurement": true,
+      "hasGroups": false,
+      "proposedModel": "tam-v1",
+      "redistributionStatus": "terms-unverified"
+    },
+    {
+      "slug": "utaut",
+      "title": "Unified Theory of Acceptance and Use of Technology (UTAUT) sample data",
+      "rows": 722,
+      "columns": 21,
+      "sha256": "8b1bd660e511bda29c96008e1e71ee670c93d8ba5adf6da95228fb16da34676c",
+      "missingCells": 0,
+      "completeRows": 722,
+      "hasMeasurement": true,
+      "hasGroups": false,
+      "proposedModel": "utaut-v1",
+      "redistributionStatus": "terms-unverified"
+    },
+    {
+      "slug": "oi",
+      "title": "Organizational identification sample data (Bergami & Bagozzi, 2000)",
+      "rows": 305,
+      "columns": 25,
+      "sha256": "eda9295b7f5df66e73400055f41d2562c2425cbc98e2d2c080be24400f2a5dde",
+      "missingCells": 0,
+      "completeRows": 305,
+      "hasMeasurement": true,
+      "hasGroups": true,
+      "proposedModel": "oi-v1",
+      "redistributionStatus": "terms-unverified"
+    },
+    {
+      "slug": "acsi-2015",
+      "title": "American Customer Satisfaction Index (ACSI) 2015 sample data",
+      "rows": 8239,
+      "columns": 29,
+      "sha256": "9dd0e921ab14d054c02a7bc55f4f1ec4e8743effef7f587bc1fc9791663a1d98",
+      "missingCells": 53925,
+      "completeRows": 0,
+      "hasMeasurement": true,
+      "hasGroups": true,
+      "proposedModel": "acsi-v1",
+      "redistributionStatus": "redistributable-with-attribution"
+    },
+    {
+      "slug": "concise-guide",
+      "title": "Oddjob Airways regression subset (Sarstedt & Mooi, A Concise Guide to Market Research)",
+      "rows": 1065,
+      "columns": 11,
+      "sha256": "e772db7ac2c191ea4c2e6de09e38c137d8be78334e6dcd8afaf5dffa2e5e3eda",
+      "missingCells": 158,
+      "completeRows": 973,
+      "hasMeasurement": false,
+      "hasGroups": false,
+      "proposedModel": null,
+      "redistributionStatus": "terms-unverified"
+    },
+    {
+      "slug": "hbat",
+      "title": "HBAT regression data (Hair, Black, Babin & Anderson, Multivariate Data Analysis)",
+      "rows": 100,
+      "columns": 24,
+      "sha256": "4227518d162c0ec8056e6933c245dfc742bbef934d34df84f3afa19e7c6489dc",
+      "missingCells": 0,
+      "completeRows": 100,
+      "hasMeasurement": false,
+      "hasGroups": false,
+      "proposedModel": null,
+      "redistributionStatus": "terms-unverified"
+    }
+  ]
+}

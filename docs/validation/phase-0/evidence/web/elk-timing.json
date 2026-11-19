@@ -1,0 +1,100 @@
+{
+  "generatedAt": "2026-11-19T12:54:04.920Z",
+  "generatedBy": "apps/web/src/tests/spike (npm run spike:evidence -w @sem-studio/web)",
+  "runtime": {
+    "node": "v26.13.1",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "packages": [
+    {
+      "name": "elkjs",
+      "version": "0.12.1",
+      "license": "EPL-2.0 OR GPL-3.0-or-later"
+    }
+  ],
+  "data": {
+    "note": "elk.bundled.js on the calling thread, Node; firstRun includes GWT engine start-up",
+    "tam-v1 flat (27 nodes, 28 edges)": {
+      "graph": {
+        "constructs": 5,
+        "indicators": 22,
+        "structuralPaths": 6,
+        "measurementEdges": 22
+      },
+      "runs": 7,
+      "firstRunMs": 52.521,
+      "warmMedianMs": 72.213,
+      "warmMinMs": 11.807,
+      "warmMaxMs": 77.617,
+      "drawing": {
+        "width": 1132,
+        "height": 564.381
+      }
+    },
+    "synthetic 15c/60i flat (75 nodes)": {
+      "graph": {
+        "constructs": 15,
+        "indicators": 60,
+        "structuralPaths": 24,
+        "measurementEdges": 60
+      },
+      "runs": 7,
+      "firstRunMs": 243.654,
+      "warmMedianMs": 214.915,
+      "warmMinMs": 116.132,
+      "warmMaxMs": 308.359,
+      "drawing": {
+        "width": 1924,
+        "height": 1286.6
+      }
+    },
+    "synthetic 50c/300i flat (350 nodes)": {
+      "graph": {
+        "constructs": 50,
+        "indicators": 300,
+        "structuralPaths": 99,
+        "measurementEdges": 300
+      },
+      "runs": 7,
+      "firstRunMs": 611.207,
+      "warmMedianMs": 623.191,
+      "warmMinMs": 589.32,
+      "warmMaxMs": 655.994,
+      "drawing": {
+        "width": 5696,
+        "height": 4548.567
+      }
+    },
+    "synthetic 15c constructs only": {
+      "graph": {
+        "constructs": 15,
+        "structuralPaths": 24
+      },
+      "runs": 7,
+      "firstRunMs": 56.921,
+      "warmMedianMs": 63.695,
+      "warmMinMs": 36.445,
+      "warmMaxMs": 87.438,
+      "drawing": {
+        "width": 3184,
+        "height": 1059.333
+      }
+    },
+    "synthetic 50c constructs only": {
+      "graph": {
+        "constructs": 50,
+        "structuralPaths": 99
+      },
+      "runs": 7,
+      "firstRunMs": 127.712,
+      "warmMedianMs": 190.211,
+      "warmMinMs": 168.702,
+      "warmMaxMs": 262.389,
+      "drawing": {
+        "width": 10024,
+        "height": 1979
+      }
+    }
+  }
+}

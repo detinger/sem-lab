@@ -1,0 +1,45 @@
+/*
+ * Non-theme layout tokens: spacing scale (STYLE.md section 4), layer order (section 6 "Dialogs and
+ * menus"), control heights and shell dimensions (sections 5 and 6). Colors live in tokens.css only.
+ */
+:root {
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-7: 14px;
+  --space-8: 16px;
+  --space-9: 18px;
+  --space-10: 20px;
+  --space-11: 24px;
+  --space-12: 28px;
+  --space-13: 32px;
+  --space-14: 40px;
+  --space-15: 48px;
+
+  --radius-xs: 4px;
+  --radius-pill: 999px;
+
+  --control-height: 34px;
+  --control-height-sm: 28px;
+
+  --sidebar-width: 232px;
+  --sidebar-width-collapsed: 64px;
+  --header-height: 56px;
+  --page-max-width: 1080px;
+  --measure: 76ch;
+  --measure-header: 72ch;
+
+  --duration-fast: 120ms;
+  --duration-toast: 180ms;
+
+  --z-watermark: 10;
+  --z-canvas-controls: 15;
+  --z-canvas-overlay: 20;
+  --z-menu: 30;
+  --z-dialog: 50;
+  --z-toast: 60;
+  --z-skip-link: 100;
+}

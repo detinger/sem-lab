@@ -1,0 +1,307 @@
+{
+  "evidence": "csem_resampling_followup",
+  "script": "services/r-engine/spike/csem_04b_resampling_followup.R",
+  "generated": "2026-11-19T14:22:10+0100",
+  "r": "R version 4.6.2 (2026-10-29)",
+  "platform": "aarch64-apple-darwin27.0.0",
+  "packages": {
+    "cSEM": "0.7.1"
+  },
+  "findings": {
+    "dominant_indicators": {
+      "setup": "same weak-block subsample as csem_resampling.json sign_change_option (n = 40, USE3/USE4 noise)",
+      "named_list": {
+        "ok": false,
+        "error": "invalid subscript type 'list'",
+        "error_class": "simpleError",
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.0469999999999999
+      },
+      "named_character_vector": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.0530000000000002,
+        "result": {
+          "max_abs_diff_paths_vs_no_dominant": 0
+        }
+      },
+      "noise_indicator_as_dominant": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.024,
+        "result": {
+          "loadings_USE": {
+            "USE1": 0.875448580452682,
+            "USE2": 0.870727027929669,
+            "USE3": 0.171150454479593,
+            "USE4": 0.103496284180602
+          },
+          "loadings_USE_without": {
+            "USE1": 0.875448580452682,
+            "USE2": 0.870727027929669,
+            "USE3": 0.171150454479593,
+            "USE4": 0.103496284180602
+          },
+          "path_USE_BI": 0.564899391380137,
+          "path_USE_BI_without": 0.564899391380137
+        }
+      },
+      "bootstrap_without": {
+        "draws": 100,
+        "negative_dominant_loading_cells": 0,
+        "draws_with_any_weight_sign_flip": 45
+      },
+      "bootstrap_with": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 3.789,
+        "result": {
+          "draws": 100,
+          "negative_dominant_loading_cells": 0,
+          "draws_with_any_weight_sign_flip": 45,
+          "sd_USE_BI_with": 0.100924486013794,
+          "sd_USE_BI_without": 0.100924486013794
+        }
+      },
+      "reverse_coded_ATU_block": {
+        "setup": "all five ATT items reverse-coded as 8 - x on full tam-v1",
+        "without": {
+          "loadings_ATU": {
+            "ATT1": 0.901190257358788,
+            "ATT2": 0.906167213228516,
+            "ATT3": 0.897396511125109,
+            "ATT4": 0.878254900029732,
+            "ATT5": 0.876200987718437
+          },
+          "paths": [
+            {
+              "from": "PEOU",
+              "to": "PU",
+              "est": 0.44538347229434
+            },
+            {
+              "from": "PEOU",
+              "to": "ATU",
+              "est": -0.253226246009254
+            },
+            {
+              "from": "PU",
+              "to": "ATU",
+              "est": -0.267202446011147
+            },
+            {
+              "from": "PU",
+              "to": "BI",
+              "est": 0.401218651770031
+            },
+            {
+              "from": "ATU",
+              "to": "BI",
+              "est": -0.172841873142115
+            },
+            {
+              "from": "BI",
+              "to": "USE",
+              "est": 0.229403981852719
+            }
+          ]
+        },
+        "with_dominant_ATT1": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.0440000000000005,
+          "result": {
+            "loadings_ATU": {
+              "ATT1": 0.901190257358788,
+              "ATT2": 0.906167213228516,
+              "ATT3": 0.897396511125109,
+              "ATT4": 0.878254900029732,
+              "ATT5": 0.876200987718437
+            },
+            "paths": [
+              {
+                "from": "PEOU",
+                "to": "PU",
+                "est": 0.44538347229434
+              },
+              {
+                "from": "PEOU",
+                "to": "ATU",
+                "est": -0.253226246009254
+              },
+              {
+                "from": "PU",
+                "to": "ATU",
+                "est": -0.267202446011147
+              },
+              {
+                "from": "PU",
+                "to": "BI",
+                "est": 0.401218651770031
+              },
+              {
+                "from": "ATU",
+                "to": "BI",
+                "est": -0.172841873142115
+              },
+              {
+                "from": "BI",
+                "to": "USE",
+                "est": 0.229403981852719
+              }
+            ],
+            "max_abs_diff_abs_paths_vs_original_data": 3.88578058618805e-16
+          }
+        },
+        "bootstrap_without_ATU_loading_signs": [30],
+        "bootstrap_with_ATU_loading_signs": [30]
+      }
+    },
+    "CI_basic": {
+      "default_bias_corrected_TRUE_vs_textbook_basic": 0.0095113323317233,
+      "default_vs_2_theta_star_minus_q_with_theta_star_2theta_minus_mean": 0,
+      "bias_corrected_FALSE_vs_textbook_basic": 0,
+      "conclusion": "infer(.quantity = 'CI_basic') with the default .bias_corrected = TRUE is NOT the textbook basic interval; pass .bias_corrected = FALSE for 2*theta - q(1-a/2), 2*theta - q(a/2)."
+    },
+    "replication_error": {
+      "setup": "full tam-v1 with USE1 constant except row 17; ~37% of resamples have a zero-variance indicator",
+      "original_fit": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.0350000000000001,
+        "result": {
+          "verify": {
+            "1": false,
+            "2": false,
+            "3": false,
+            "4": false,
+            "5": false
+          }
+        }
+      },
+      "by_handle_inadmissibles": {
+        "drop": {
+          "ok": false,
+          "error": "NAs are not allowed in subscripted assignments",
+          "error_class": "simpleError",
+          "warnings": [
+            "the standard deviation is zero"
+          ],
+          "n_warnings": 1,
+          "messages": [
+            "Caught simpleError. Canceling all iterations ..."
+          ],
+          "seconds": 1.11
+        },
+        "ignore": {
+          "ok": false,
+          "error": "NAs are not allowed in subscripted assignments",
+          "error_class": "simpleError",
+          "warnings": [
+            "the standard deviation is zero"
+          ],
+          "n_warnings": 1,
+          "messages": [
+            "Caught simpleError. Canceling all iterations ..."
+          ],
+          "seconds": 1.079
+        },
+        "replace": {
+          "ok": false,
+          "error": "NAs are not allowed in subscripted assignments",
+          "error_class": "simpleError",
+          "warnings": [
+            "the standard deviation is zero"
+          ],
+          "n_warnings": 1,
+          "messages": [
+            "Caught simpleError. Canceling all iterations ..."
+          ],
+          "seconds": 1.095
+        }
+      },
+      "conclusion": "an error inside one replication aborts the whole resampling call (no per-replication tryCatch in resamplecSEMResultsCore); .handle_inadmissibles only governs verify() failures"
+    },
+    "replace_seed_overlap": {
+      "note": "no subsample (n in 25..80, 4 draws each) gave 15 < admissible < 38 of 40 PLSc replications without an aborting error; the seed + 1 replacement scheme is documented from source only"
+    },
+    "consecutive_chunk_seeds": {
+      "seeds": [777, 778, 779],
+      "R_per_chunk": 50,
+      "duplicated_draw_rows": 0,
+      "shifted_overlap_check": 0.145247747725856,
+      "note": "seminr's set.seed(seed + i) scheme makes seed S+1 replay seed S shifted by one (see seminr.json); this checks whether cSEM's future.seed streams do the same"
+    },
+    "sign_change_individual": {
+      "ok": true,
+      "warnings": [
+        "Element 3 must be length 5, not 0",
+        "Element 5 must be length 5, not 0",
+        "Element 6 must be length 5, not 0",
+        "Element 7 must be length 5, not 0",
+        "Element 8 must be length 5, not 0",
+        "Element 11 must be length 5, not 0",
+        "Element 14 must be length 5, not 0",
+        "Element 19 must be length 5, not 0",
+        "Element 21 must be length 5, not 0",
+        "Element 22 must be length 5, not 0",
+        "Element 27 must be length 5, not 0",
+        "Element 31 must be length 5, not 0",
+        "Element 32 must be length 5, not 0",
+        "Element 33 must be length 5, not 0",
+        "Element 38 must be length 5, not 0",
+        "Element 39 must be length 5, not 0",
+        "Element 40 must be length 5, not 0",
+        "Element 42 must be length 5, not 0",
+        "Element 54 must be length 5, not 0",
+        "Element 55 must be length 5, not 0",
+        "Element 56 must be length 5, not 0",
+        "Element 57 must be length 5, not 0",
+        "Element 61 must be length 5, not 0",
+        "Element 62 must be length 5, not 0",
+        "Element 66 must be length 5, not 0",
+        "Element 67 must be length 5, not 0",
+        "Element 68 must be length 5, not 0",
+        "Element 69 must be length 5, not 0",
+        "Element 71 must be length 5, not 0",
+        "Element 72 must be length 5, not 0",
+        "Element 73 must be length 5, not 0",
+        "Element 74 must be length 5, not 0",
+        "Element 75 must be length 5, not 0",
+        "Element 76 must be length 5, not 0",
+        "Element 79 must be length 5, not 0",
+        "Element 83 must be length 5, not 0",
+        "Element 84 must be length 5, not 0",
+        "Element 85 must be length 5, not 0",
+        "Element 87 must be length 5, not 0",
+        "Element 88 must be length 5, not 0",
+        "Element 91 must be length 5, not 0",
+        "Element 93 must be length 5, not 0",
+        "Element 98 must be length 5, not 0",
+        "Element 99 must be length 5, not 0",
+        "Element 100 must be length 5, not 0"
+      ],
+      "n_warnings": 45,
+      "messages": [],
+      "seconds": 5.30000000000001,
+      "result": {
+        "Number_of_admissibles_reported": 100,
+        "rows_in_path_draw_matrix": 55,
+        "rows_in_weight_draw_matrix": 55,
+        "conclusion": "with .sign_change_option = 'individual' every replication that needs a sign flip fails inside reverseSign() with a warning and is silently missing from the draw matrix while Number_of_admissibles still counts it"
+      }
+    }
+  }
+}

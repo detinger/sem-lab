@@ -1,0 +1,1326 @@
+{
+  "evidence": "csem_ipma",
+  "script": "services/r-engine/spike/csem_05_ipma.R",
+  "generated": "2026-11-19T14:15:13+0100",
+  "r": "R version 4.6.2 (2026-10-29)",
+  "platform": "aarch64-apple-darwin27.0.0",
+  "packages": {
+    "cSEM": "0.7.1"
+  },
+  "findings": {
+    "api": {
+      "doIPMA_formals": {
+        ".object": "<no default>"
+      },
+      "target_argument": "none - doIPMA(.object) returns the full construct x construct importance matrix; pick the row of the target construct yourself",
+      "plot_method_formals": {
+        "x": "NULL",
+        ".dependent": "NULL",
+        ".attributes": "NULL",
+        ".level": "c(\"construct\", \"indicator\")",
+        "...": "<no default>"
+      },
+      "importance_matrix_orientation": "Importance[target, predecessor] = unstandardised total effect of predecessor on target",
+      "preconditions_from_source": ["Pearson indicator correlation", ".approach_weights = 'PLS-PM'", "linear model", ".approach_paths = 'OLS'", "no second-order constructs", "warning if any construct is a common factor ('=~')", "warning if any weight is negative"]
+    },
+    "doIPMA_runs": {
+      "composite_modeA_raw_1_7": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.926,
+        "result": {
+          "class": "cSEMIPMA",
+          "names": ["Construct", "Indicator", "Construct_names", "Indicator_names"],
+          "construct_importance": {
+            "PEOU": {
+              "PEOU": 0,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "PU": {
+              "PEOU": 0.34412275878208,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "ATU": {
+              "PEOU": 0.339674277516043,
+              "PU": 0.315578919620447,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "BI": {
+              "PEOU": 0.262939399517517,
+              "PU": 0.626481316793851,
+              "ATU": 0.204923231858284,
+              "BI": 0,
+              "USE": 0
+            },
+            "USE": {
+              "PEOU": 0.0571681841425258,
+              "PU": 0.13620932939697,
+              "ATU": 0.0445543310567097,
+              "BI": 0.217419619301736,
+              "USE": 0
+            }
+          },
+          "construct_performance": {
+            "PEOU": 5.85329991967626,
+            "PU": 6.51334983566019,
+            "ATU": 6.16657236055543,
+            "BI": 5.99630934832655,
+            "USE": 4.69795211952289
+          },
+          "indicator_importance": {
+            "PEOU": {
+              "EOU1": 0.185571020694042,
+              "EOU2": 0.189064264715029,
+              "EOU3": 0.230620619265891,
+              "EOU4": 0.212622738695228,
+              "EOU5": 0.18212135662981,
+              "USEF1": 0,
+              "USEF2": 0,
+              "USEF3": 0,
+              "USEF4": 0,
+              "USEF5": 0,
+              "ATT1": 0,
+              "ATT2": 0,
+              "ATT3": 0,
+              "ATT4": 0,
+              "ATT5": 0,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "PU": {
+              "EOU1": 0.0638592115912402,
+              "EOU2": 0.0650613163608413,
+              "EOU3": 0.0793618037338103,
+              "EOU4": 0.0731683234196032,
+              "EOU5": 0.0626721036765854,
+              "USEF1": 0.20989246486332,
+              "USEF2": 0.194655881900707,
+              "USEF3": 0.19500389779644,
+              "USEF4": 0.18741358331763,
+              "USEF5": 0.213034172121904,
+              "ATT1": 0,
+              "ATT2": 0,
+              "ATT3": 0,
+              "ATT4": 0,
+              "ATT5": 0,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "ATU": {
+              "EOU1": 0.0630337023821632,
+              "EOU2": 0.0642202675211793,
+              "EOU3": 0.0783358922294439,
+              "EOU4": 0.0722224751497838,
+              "EOU5": 0.0618619402334723,
+              "USEF1": 0.066237637298039,
+              "USEF2": 0.0614292929079905,
+              "USEF3": 0.0615391193883766,
+              "USEF4": 0.0591437761455742,
+              "USEF5": 0.0672290938804667,
+              "ATT1": 0.208192588237112,
+              "ATT2": 0.214064476566852,
+              "ATT3": 0.204334440100484,
+              "ATT4": 0.195379536296032,
+              "ATT5": 0.178028958799521,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "BI": {
+              "EOU1": 0.0487939327491441,
+              "EOU2": 0.0497124442343907,
+              "EOU3": 0.0606392471461314,
+              "EOU4": 0.0559068952362932,
+              "EOU5": 0.0478868801515579,
+              "USEF1": 0.131493707772679,
+              "USEF2": 0.121948273214823,
+              "USEF3": 0.122166298671447,
+              "USEF4": 0.117411108461883,
+              "USEF5": 0.133461928673018,
+              "ATT1": 0.0426634980304901,
+              "ATT2": 0.0438667843641312,
+              "ATT3": 0.0418728738453442,
+              "ATT4": 0.0400378060167558,
+              "ATT5": 0.0364822696015631,
+              "BI1": 0.423169376293915,
+              "BI2": 0.217699719270873,
+              "BI3": 0.359130904435212,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "USE": {
+              "EOU1": 0.0106087582825534,
+              "EOU2": 0.0108084607,
+              "EOU3": 0.0131841620292558,
+              "EOU4": 0.0121552558786169,
+              "EOU5": 0.0104115472520996,
+              "USEF1": 0.0285893118845097,
+              "USEF2": 0.026513947136871,
+              "USEF3": 0.0265613501486483,
+              "USEF4": 0.0255274785035774,
+              "USEF5": 0.0290172417233631,
+              "ATT1": 0.00927588149986954,
+              "ATT2": 0.00953749955644078,
+              "ATT3": 0.00910398429052436,
+              "ATT4": 0.00870500454183982,
+              "ATT5": 0.00793196116803517,
+              "BI1": 0.0920053246939762,
+              "BI2": 0.0473321900859682,
+              "BI3": 0.078082104521792,
+              "USE1": 0.342549188125768,
+              "USE2": 0.34001787023076,
+              "USE3": 0.209119411603048,
+              "USE4": 0.108313530040425
+            }
+          },
+          "indicator_performance": {
+            "EOU1": 6.04453781512605,
+            "EOU2": 5.60756302521008,
+            "EOU3": 5.86554621848739,
+            "EOU4": 5.84873949579832,
+            "EOU5": 5.90336134453782,
+            "USEF1": 6.59411764705882,
+            "USEF2": 6.5327731092437,
+            "USEF3": 6.4781512605042,
+            "USEF4": 6.41344537815126,
+            "USEF5": 6.53613445378151,
+            "ATT1": 6.15966386554622,
+            "ATT2": 6.05798319327731,
+            "ATT3": 6.06050420168067,
+            "ATT4": 6.28991596638655,
+            "ATT5": 6.29159663865546,
+            "BI1": 6.23613445378151,
+            "BI2": 5.57394957983193,
+            "BI3": 5.96974789915966,
+            "USE1": 5.02016806722689,
+            "USE2": 5.51596638655462,
+            "USE3": 3.32521008403361,
+            "USE4": 3.76134453781513
+          },
+          "construct_names": ["PEOU", "PU", "ATU", "BI", "USE"],
+          "indicator_names": ["EOU1", "EOU2", "EOU3", "EOU4", "EOU5", "USEF1", "USEF2", "USEF3", "USEF4", "USEF5", "ATT1", "ATT2", "ATT3", "ATT4", "ATT5", "BI1", "BI2", "BI3", "USE1", "USE2", "USE3", "USE4"]
+        }
+      },
+      "composite_modeA_0_100": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.254,
+        "result": {
+          "class": "cSEMIPMA",
+          "names": ["Construct", "Indicator", "Construct_names", "Indicator_names"],
+          "construct_importance": {
+            "PEOU": {
+              "PEOU": 0,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "PU": {
+              "PEOU": 0.34412275878208,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "ATU": {
+              "PEOU": 0.339674277516041,
+              "PU": 0.315578919620445,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "BI": {
+              "PEOU": 0.262939399517516,
+              "PU": 0.626481316793847,
+              "ATU": 0.204923231858287,
+              "BI": 0,
+              "USE": 0
+            },
+            "USE": {
+              "PEOU": 0.0618974857850273,
+              "PU": 0.147477397727339,
+              "ATU": 0.0482401376676347,
+              "BI": 0.235405899224714,
+              "USE": 0
+            }
+          },
+          "construct_performance": {
+            "PEOU": 80.8883319946044,
+            "PU": 91.88916392767,
+            "ATU": 86.1095393425905,
+            "BI": 83.2718224721094,
+            "USE": 66.7311553868342
+          },
+          "indicator_importance": {
+            "PEOU": {
+              "EOU1": 0.185571020694047,
+              "EOU2": 0.189064264715028,
+              "EOU3": 0.230620619265885,
+              "EOU4": 0.21262273869523,
+              "EOU5": 0.18212135662981,
+              "USEF1": 0,
+              "USEF2": 0,
+              "USEF3": 0,
+              "USEF4": 0,
+              "USEF5": 0,
+              "ATT1": 0,
+              "ATT2": 0,
+              "ATT3": 0,
+              "ATT4": 0,
+              "ATT5": 0,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "PU": {
+              "EOU1": 0.0638592115912418,
+              "EOU2": 0.0650613163608411,
+              "EOU3": 0.0793618037338081,
+              "EOU4": 0.073168323419604,
+              "EOU5": 0.0626721036765852,
+              "USEF1": 0.209892464863321,
+              "USEF2": 0.194655881900705,
+              "USEF3": 0.195003897796444,
+              "USEF4": 0.187413583317627,
+              "USEF5": 0.213034172121903,
+              "ATT1": 0,
+              "ATT2": 0,
+              "ATT3": 0,
+              "ATT4": 0,
+              "ATT5": 0,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "ATU": {
+              "EOU1": 0.0630337023821645,
+              "EOU2": 0.0642202675211787,
+              "EOU3": 0.0783358922294413,
+              "EOU4": 0.0722224751497842,
+              "EOU5": 0.0618619402334718,
+              "USEF1": 0.0662376372980392,
+              "USEF2": 0.0614292929079895,
+              "USEF3": 0.0615391193883774,
+              "USEF4": 0.059143776145573,
+              "USEF5": 0.0672290938804661,
+              "ATT1": 0.208192588237112,
+              "ATT2": 0.214064476566853,
+              "ATT3": 0.204334440100485,
+              "ATT4": 0.195379536296031,
+              "ATT5": 0.178028958799521,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "BI": {
+              "EOU1": 0.0487939327491452,
+              "EOU2": 0.0497124442343903,
+              "EOU3": 0.0606392471461295,
+              "EOU4": 0.0559068952362936,
+              "EOU5": 0.0478868801515576,
+              "USEF1": 0.13149370777268,
+              "USEF2": 0.121948273214821,
+              "USEF3": 0.122166298671449,
+              "USEF4": 0.11741110846188,
+              "USEF5": 0.133461928673017,
+              "ATT1": 0.0426634980304905,
+              "ATT2": 0.043866784364132,
+              "ATT3": 0.041872873845345,
+              "ATT4": 0.0400378060167561,
+              "ATT5": 0.0364822696015636,
+              "BI1": 0.423169376293912,
+              "BI2": 0.217699719270877,
+              "BI3": 0.359130904435211,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "USE": {
+              "EOU1": 0.0114863796155228,
+              "EOU2": 0.0117026026376551,
+              "EOU3": 0.0142748365027443,
+              "EOU4": 0.0131608129459616,
+              "EOU5": 0.0112728540831435,
+              "USEF1": 0.0309543945206195,
+              "USEF2": 0.0287073429150361,
+              "USEF3": 0.0287586673937074,
+              "USEF4": 0.0276392675664394,
+              "USEF5": 0.0314177253315362,
+              "ATT1": 0.0100432391179395,
+              "ATT2": 0.0103264998193351,
+              "ATT3": 0.00985712152068645,
+              "ATT4": 0.00942513572835915,
+              "ATT5": 0.00858814148131454,
+              "BI1": 0.09961656755083,
+              "BI2": 0.0512477981759286,
+              "BI3": 0.0845415334979558,
+              "USE1": 0.309072459048008,
+              "USE2": 0.306788522394343,
+              "USE3": 0.188682539673963,
+              "USE4": 0.195456478883686
+            }
+          },
+          "indicator_performance": {
+            "EOU1": 84.0756302521007,
+            "EOU2": 76.7927170868347,
+            "EOU3": 81.0924369747898,
+            "EOU4": 80.8123249299718,
+            "EOU5": 81.7226890756301,
+            "USEF1": 93.235294117647,
+            "USEF2": 92.2128851540615,
+            "USEF3": 91.3025210084032,
+            "USEF4": 90.2240896358542,
+            "USEF5": 92.2689075630251,
+            "ATT1": 85.9943977591034,
+            "ATT2": 84.2997198879549,
+            "ATT3": 84.3417366946776,
+            "ATT4": 88.1652661064423,
+            "ATT5": 88.193277310924,
+            "BI1": 87.268907563025,
+            "BI2": 76.2324929971988,
+            "BI3": 82.829131652661,
+            "USE1": 80.4033613445378,
+            "USE2": 90.3193277310924,
+            "USE3": 46.5042016806723,
+            "USE4": 27.6134453781513
+          },
+          "construct_names": ["PEOU", "PU", "ATU", "BI", "USE"],
+          "indicator_names": ["EOU1", "EOU2", "EOU3", "EOU4", "EOU5", "USEF1", "USEF2", "USEF3", "USEF4", "USEF5", "ATT1", "ATT2", "ATT3", "ATT4", "ATT5", "BI1", "BI2", "BI3", "USE1", "USE2", "USE3", "USE4"]
+        }
+      },
+      "commonfactor_classic_raw": {
+        "ok": true,
+        "warnings": [
+          "At least one construct is modeled as common factor,\n IPMA's results are not trustworthy in this case."
+        ],
+        "n_warnings": 1,
+        "messages": [],
+        "seconds": 0.0920000000000001,
+        "result": {
+          "class": "cSEMIPMA",
+          "names": ["Construct", "Indicator", "Construct_names", "Indicator_names"],
+          "construct_importance": {
+            "PEOU": {
+              "PEOU": 0,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "PU": {
+              "PEOU": 0.34412275878208,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "ATU": {
+              "PEOU": 0.339674277516043,
+              "PU": 0.315578919620447,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "BI": {
+              "PEOU": 0.262939399517517,
+              "PU": 0.626481316793851,
+              "ATU": 0.204923231858284,
+              "BI": 0,
+              "USE": 0
+            },
+            "USE": {
+              "PEOU": 0.0571681841425258,
+              "PU": 0.13620932939697,
+              "ATU": 0.0445543310567097,
+              "BI": 0.217419619301736,
+              "USE": 0
+            }
+          },
+          "construct_performance": {
+            "PEOU": 5.85329991967626,
+            "PU": 6.51334983566019,
+            "ATU": 6.16657236055543,
+            "BI": 5.99630934832655,
+            "USE": 4.69795211952289
+          },
+          "indicator_importance": {
+            "PEOU": {
+              "EOU1": 0.185571020694042,
+              "EOU2": 0.189064264715029,
+              "EOU3": 0.230620619265891,
+              "EOU4": 0.212622738695228,
+              "EOU5": 0.18212135662981,
+              "USEF1": 0,
+              "USEF2": 0,
+              "USEF3": 0,
+              "USEF4": 0,
+              "USEF5": 0,
+              "ATT1": 0,
+              "ATT2": 0,
+              "ATT3": 0,
+              "ATT4": 0,
+              "ATT5": 0,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "PU": {
+              "EOU1": 0.0638592115912402,
+              "EOU2": 0.0650613163608413,
+              "EOU3": 0.0793618037338103,
+              "EOU4": 0.0731683234196032,
+              "EOU5": 0.0626721036765854,
+              "USEF1": 0.20989246486332,
+              "USEF2": 0.194655881900707,
+              "USEF3": 0.19500389779644,
+              "USEF4": 0.18741358331763,
+              "USEF5": 0.213034172121904,
+              "ATT1": 0,
+              "ATT2": 0,
+              "ATT3": 0,
+              "ATT4": 0,
+              "ATT5": 0,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "ATU": {
+              "EOU1": 0.0630337023821632,
+              "EOU2": 0.0642202675211793,
+              "EOU3": 0.0783358922294439,
+              "EOU4": 0.0722224751497838,
+              "EOU5": 0.0618619402334723,
+              "USEF1": 0.066237637298039,
+              "USEF2": 0.0614292929079905,
+              "USEF3": 0.0615391193883766,
+              "USEF4": 0.0591437761455742,
+              "USEF5": 0.0672290938804667,
+              "ATT1": 0.208192588237112,
+              "ATT2": 0.214064476566852,
+              "ATT3": 0.204334440100484,
+              "ATT4": 0.195379536296032,
+              "ATT5": 0.178028958799521,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "BI": {
+              "EOU1": 0.0487939327491441,
+              "EOU2": 0.0497124442343907,
+              "EOU3": 0.0606392471461314,
+              "EOU4": 0.0559068952362932,
+              "EOU5": 0.0478868801515579,
+              "USEF1": 0.131493707772679,
+              "USEF2": 0.121948273214823,
+              "USEF3": 0.122166298671447,
+              "USEF4": 0.117411108461883,
+              "USEF5": 0.133461928673018,
+              "ATT1": 0.0426634980304901,
+              "ATT2": 0.0438667843641312,
+              "ATT3": 0.0418728738453442,
+              "ATT4": 0.0400378060167558,
+              "ATT5": 0.0364822696015631,
+              "BI1": 0.423169376293915,
+              "BI2": 0.217699719270873,
+              "BI3": 0.359130904435212,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "USE": {
+              "EOU1": 0.0106087582825534,
+              "EOU2": 0.0108084607,
+              "EOU3": 0.0131841620292558,
+              "EOU4": 0.0121552558786169,
+              "EOU5": 0.0104115472520996,
+              "USEF1": 0.0285893118845097,
+              "USEF2": 0.026513947136871,
+              "USEF3": 0.0265613501486483,
+              "USEF4": 0.0255274785035774,
+              "USEF5": 0.0290172417233631,
+              "ATT1": 0.00927588149986954,
+              "ATT2": 0.00953749955644078,
+              "ATT3": 0.00910398429052436,
+              "ATT4": 0.00870500454183982,
+              "ATT5": 0.00793196116803517,
+              "BI1": 0.0920053246939762,
+              "BI2": 0.0473321900859682,
+              "BI3": 0.078082104521792,
+              "USE1": 0.342549188125768,
+              "USE2": 0.34001787023076,
+              "USE3": 0.209119411603048,
+              "USE4": 0.108313530040425
+            }
+          },
+          "indicator_performance": {
+            "EOU1": 6.04453781512605,
+            "EOU2": 5.60756302521008,
+            "EOU3": 5.86554621848739,
+            "EOU4": 5.84873949579832,
+            "EOU5": 5.90336134453782,
+            "USEF1": 6.59411764705882,
+            "USEF2": 6.5327731092437,
+            "USEF3": 6.4781512605042,
+            "USEF4": 6.41344537815126,
+            "USEF5": 6.53613445378151,
+            "ATT1": 6.15966386554622,
+            "ATT2": 6.05798319327731,
+            "ATT3": 6.06050420168067,
+            "ATT4": 6.28991596638655,
+            "ATT5": 6.29159663865546,
+            "BI1": 6.23613445378151,
+            "BI2": 5.57394957983193,
+            "BI3": 5.96974789915966,
+            "USE1": 5.02016806722689,
+            "USE2": 5.51596638655462,
+            "USE3": 3.32521008403361,
+            "USE4": 3.76134453781513
+          },
+          "construct_names": ["PEOU", "PU", "ATU", "BI", "USE"],
+          "indicator_names": ["EOU1", "EOU2", "EOU3", "EOU4", "EOU5", "USEF1", "USEF2", "USEF3", "USEF4", "USEF5", "ATT1", "ATT2", "ATT3", "ATT4", "ATT5", "BI1", "BI2", "BI3", "USE1", "USE2", "USE3", "USE4"]
+        }
+      },
+      "commonfactor_plsc_raw": {
+        "ok": true,
+        "warnings": [
+          "At least one construct is modeled as common factor,\n IPMA's results are not trustworthy in this case."
+        ],
+        "n_warnings": 1,
+        "messages": [],
+        "seconds": 0.114,
+        "result": {
+          "class": "cSEMIPMA",
+          "names": ["Construct", "Indicator", "Construct_names", "Indicator_names"],
+          "construct_importance": {
+            "PEOU": {
+              "PEOU": 0,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "PU": {
+              "PEOU": 0.386608972677865,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "ATU": {
+              "PEOU": 0.37455646662388,
+              "PU": 0.32502961509258,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "BI": {
+              "PEOU": 0.327032688992645,
+              "PU": 0.712639496668832,
+              "ATU": 0.206992629001834,
+              "BI": 0,
+              "USE": 0
+            },
+            "USE": {
+              "PEOU": 0.0866796729736803,
+              "PU": 0.18888435498499,
+              "ATU": 0.0548631803294892,
+              "BI": 0.265048956545227,
+              "USE": 0
+            }
+          },
+          "construct_performance": {
+            "PEOU": 5.85329991967626,
+            "PU": 6.51334983566019,
+            "ATU": 6.16657236055543,
+            "BI": 5.99630934832655,
+            "USE": 4.69795211952289
+          },
+          "indicator_importance": {
+            "PEOU": {
+              "EOU1": 0.185571020694042,
+              "EOU2": 0.189064264715029,
+              "EOU3": 0.230620619265891,
+              "EOU4": 0.212622738695228,
+              "EOU5": 0.18212135662981,
+              "USEF1": 0,
+              "USEF2": 0,
+              "USEF3": 0,
+              "USEF4": 0,
+              "USEF5": 0,
+              "ATT1": 0,
+              "ATT2": 0,
+              "ATT3": 0,
+              "ATT4": 0,
+              "ATT5": 0,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "PU": {
+              "EOU1": 0.0717434216693063,
+              "EOU2": 0.0730939411515733,
+              "EOU3": 0.0891600006927193,
+              "EOU4": 0.0822018585749162,
+              "EOU5": 0.07040975058935,
+              "USEF1": 0.20989246486332,
+              "USEF2": 0.194655881900707,
+              "USEF3": 0.19500389779644,
+              "USEF4": 0.18741358331763,
+              "USEF5": 0.213034172121904,
+              "ATT1": 0,
+              "ATT2": 0,
+              "ATT3": 0,
+              "ATT4": 0,
+              "ATT5": 0,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "ATU": {
+              "EOU1": 0.0695068258189473,
+              "EOU2": 0.0708152429565033,
+              "EOU3": 0.0863804442828434,
+              "EOU4": 0.0796392217295772,
+              "EOU5": 0.0682147318360093,
+              "USEF1": 0.0682212670653577,
+              "USEF2": 0.0632689263696936,
+              "USEF3": 0.0633820418423297,
+              "USEF4": 0.0609149648488504,
+              "USEF5": 0.0692424149663488,
+              "ATT1": 0.208192588237112,
+              "ATT2": 0.214064476566852,
+              "ATT3": 0.204334440100484,
+              "ATT4": 0.195379536296032,
+              "ATT5": 0.178028958799521,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "BI": {
+              "EOU1": 0.0606877898966823,
+              "EOU2": 0.0618301948821733,
+              "EOU3": 0.0754204812556735,
+              "EOU4": 0.069534585976481,
+              "EOU5": 0.0595596369816353,
+              "USEF1": 0.149577660514777,
+              "USEF2": 0.138719469701348,
+              "USEF3": 0.138967479574115,
+              "USEF4": 0.133558321684378,
+              "USEF5": 0.151816565194215,
+              "ATT1": 0.0430943311778961,
+              "ATT2": 0.0443097687804741,
+              "ATT3": 0.0422957229520168,
+              "ATT4": 0.0404421238710748,
+              "ATT5": 0.0368506822203719,
+              "BI1": 0.423169376293915,
+              "BI2": 0.217699719270873,
+              "BI3": 0.359130904435212,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "USE": {
+              "EOU1": 0.0160852353871516,
+              "EOU2": 0.016388028636508,
+              "EOU3": 0.0199901198589551,
+              "EOU4": 0.0184300694568706,
+              "EOU5": 0.0157862196341949,
+              "USEF1": 0.0396454028419177,
+              "USEF2": 0.0367674506968494,
+              "USEF3": 0.0368331854548394,
+              "USEF4": 0.0353994938003761,
+              "USEF5": 0.040238822191007,
+              "ATT1": 0.0114221075117158,
+              "ATT2": 0.0117442579800249,
+              "ATT3": 0.0112104372347581,
+              "ATT4": 0.0107191427325012,
+              "ATT5": 0.00976723487048931,
+              "BI1": 0.112160601628596,
+              "BI2": 0.0577010834329337,
+              "BI3": 0.0951872714836964,
+              "USE1": 0.342549188125768,
+              "USE2": 0.34001787023076,
+              "USE3": 0.209119411603048,
+              "USE4": 0.108313530040425
+            }
+          },
+          "indicator_performance": {
+            "EOU1": 6.04453781512605,
+            "EOU2": 5.60756302521008,
+            "EOU3": 5.86554621848739,
+            "EOU4": 5.84873949579832,
+            "EOU5": 5.90336134453782,
+            "USEF1": 6.59411764705882,
+            "USEF2": 6.5327731092437,
+            "USEF3": 6.4781512605042,
+            "USEF4": 6.41344537815126,
+            "USEF5": 6.53613445378151,
+            "ATT1": 6.15966386554622,
+            "ATT2": 6.05798319327731,
+            "ATT3": 6.06050420168067,
+            "ATT4": 6.28991596638655,
+            "ATT5": 6.29159663865546,
+            "BI1": 6.23613445378151,
+            "BI2": 5.57394957983193,
+            "BI3": 5.96974789915966,
+            "USE1": 5.02016806722689,
+            "USE2": 5.51596638655462,
+            "USE3": 3.32521008403361,
+            "USE4": 3.76134453781513
+          },
+          "construct_names": ["PEOU", "PU", "ATU", "BI", "USE"],
+          "indicator_names": ["EOU1", "EOU2", "EOU3", "EOU4", "EOU5", "USEF1", "USEF2", "USEF3", "USEF4", "USEF5", "ATT1", "ATT2", "ATT3", "ATT4", "ATT5", "BI1", "BI2", "BI3", "USE1", "USE2", "USE3", "USE4"]
+        }
+      }
+    },
+    "first_principles": {
+      "endpoints_used": {
+        "lo": {
+          "USEF1": 1,
+          "USEF2": 1,
+          "USEF3": 1,
+          "USEF4": 1,
+          "USEF5": 1,
+          "EOU1": 1,
+          "EOU2": 1,
+          "EOU3": 1,
+          "EOU4": 1,
+          "EOU5": 1,
+          "ATT1": 1,
+          "ATT2": 1,
+          "ATT3": 1,
+          "ATT4": 1,
+          "ATT5": 1,
+          "BI1": 1,
+          "BI2": 1,
+          "BI3": 1,
+          "USE1": 1,
+          "USE2": 1,
+          "USE3": 1,
+          "USE4": 1
+        },
+        "hi": {
+          "USEF1": 7,
+          "USEF2": 7,
+          "USEF3": 7,
+          "USEF4": 7,
+          "USEF5": 7,
+          "EOU1": 7,
+          "EOU2": 7,
+          "EOU3": 7,
+          "EOU4": 7,
+          "EOU5": 7,
+          "ATT1": 7,
+          "ATT2": 7,
+          "ATT3": 7,
+          "ATT4": 7,
+          "ATT5": 7,
+          "BI1": 7,
+          "BI2": 7,
+          "BI3": 7,
+          "USE1": 6,
+          "USE2": 6,
+          "USE3": 6,
+          "USE4": 11
+        },
+        "constructs_with_all_items_1_7": ["PU", "PEOU", "ATU", "BI"]
+      },
+      "conventions": {
+        "indicator_rescaling": "(x - lo) / (hi - lo) * 100 with the scale endpoints from Data.txt.settings (1..7 for PU, PEOU, ATU, BI; 1..6 for USE1-3; 1..11 for USE4), never the observed min/max of the analysed sample",
+        "weights": "standardised Mode A outer weights divided by sd(rescaled indicator), then divided by their per-construct sum (sum to one)",
+        "construct_score": "weighted mean of the rescaled indicators (0..100 by construction)",
+        "construct_performance": "mean of the construct score",
+        "indicator_performance": "mean of the rescaled indicator",
+        "construct_importance": "unstandardised total effect on the target (OLS on the unstandardised scores, then (I - B)^-1 - I)",
+        "indicator_importance": "normalised weight x unstandardised total effect of its construct on the target",
+        "sd": "stats::sd (n - 1 denominator); only ratios of SDs enter, so the denominator convention cancels"
+      },
+      "weight_row_sums": {
+        "PU": 1,
+        "PEOU": 1,
+        "ATU": 1,
+        "BI": 1,
+        "USE": 1
+      },
+      "score_range": [0, 100],
+      "target_BI": [
+        {
+          "construct": "PU",
+          "importance_first_principles": 0.626481316793842,
+          "importance_doIPMA_0_100_input": 0.626481316793847,
+          "importance_doIPMA_raw_input": 0.626481316793851,
+          "performance_first_principles": 91.88916392767,
+          "performance_doIPMA_0_100_input": 91.88916392767,
+          "performance_doIPMA_raw_input": 6.51334983566019,
+          "performance_doIPMA_raw_then_rescaled_1_7": 91.8891639276698
+        },
+        {
+          "construct": "PEOU",
+          "importance_first_principles": 0.262939399517516,
+          "importance_doIPMA_0_100_input": 0.262939399517516,
+          "importance_doIPMA_raw_input": 0.262939399517517,
+          "performance_first_principles": 80.8883319946044,
+          "performance_doIPMA_0_100_input": 80.8883319946044,
+          "performance_doIPMA_raw_input": 5.85329991967626,
+          "performance_doIPMA_raw_then_rescaled_1_7": 80.8883319946044
+        },
+        {
+          "construct": "ATU",
+          "importance_first_principles": 0.204923231858285,
+          "importance_doIPMA_0_100_input": 0.204923231858287,
+          "importance_doIPMA_raw_input": 0.204923231858284,
+          "performance_first_principles": 86.1095393425905,
+          "performance_doIPMA_0_100_input": 86.1095393425905,
+          "performance_doIPMA_raw_input": 6.16657236055543,
+          "performance_doIPMA_raw_then_rescaled_1_7": 86.1095393425905
+        }
+      ],
+      "target_USE": [
+        {
+          "construct": "PU",
+          "importance_first_principles": 0.147477397727337,
+          "importance_doIPMA_0_100_input": 0.147477397727339,
+          "importance_doIPMA_raw_input": 0.13620932939697,
+          "performance_first_principles": 91.88916392767,
+          "performance_doIPMA_0_100_input": 91.88916392767,
+          "performance_doIPMA_raw_input": 6.51334983566019,
+          "performance_doIPMA_raw_then_rescaled_1_7": 91.8891639276698
+        },
+        {
+          "construct": "PEOU",
+          "importance_first_principles": 0.0618974857850272,
+          "importance_doIPMA_0_100_input": 0.0618974857850273,
+          "importance_doIPMA_raw_input": 0.0571681841425258,
+          "performance_first_principles": 80.8883319946044,
+          "performance_doIPMA_0_100_input": 80.8883319946044,
+          "performance_doIPMA_raw_input": 5.85329991967626,
+          "performance_doIPMA_raw_then_rescaled_1_7": 80.8883319946044
+        },
+        {
+          "construct": "ATU",
+          "importance_first_principles": 0.0482401376676341,
+          "importance_doIPMA_0_100_input": 0.0482401376676347,
+          "importance_doIPMA_raw_input": 0.0445543310567097,
+          "performance_first_principles": 86.1095393425905,
+          "performance_doIPMA_0_100_input": 86.1095393425905,
+          "performance_doIPMA_raw_input": 6.16657236055543,
+          "performance_doIPMA_raw_then_rescaled_1_7": 86.1095393425905
+        },
+        {
+          "construct": "BI",
+          "importance_first_principles": 0.235405899224714,
+          "importance_doIPMA_0_100_input": 0.235405899224714,
+          "importance_doIPMA_raw_input": 0.217419619301736,
+          "performance_first_principles": 83.2718224721094,
+          "performance_doIPMA_0_100_input": 83.2718224721094,
+          "performance_doIPMA_raw_input": 5.99630934832655,
+          "performance_doIPMA_raw_then_rescaled_1_7": 83.2718224721091
+        }
+      ],
+      "indicator_level_target_BI": [
+        {
+          "indicator": "USEF1",
+          "importance_first_principles": 0.131493707772678,
+          "importance_doIPMA_0_100_input": 0.13149370777268,
+          "performance_first_principles": 93.235294117647,
+          "performance_doIPMA_0_100_input": 93.235294117647
+        },
+        {
+          "indicator": "USEF2",
+          "importance_first_principles": 0.121948273214821,
+          "importance_doIPMA_0_100_input": 0.121948273214821,
+          "performance_first_principles": 92.2128851540615,
+          "performance_doIPMA_0_100_input": 92.2128851540615
+        },
+        {
+          "indicator": "USEF3",
+          "importance_first_principles": 0.122166298671446,
+          "importance_doIPMA_0_100_input": 0.122166298671449,
+          "performance_first_principles": 91.3025210084032,
+          "performance_doIPMA_0_100_input": 91.3025210084032
+        },
+        {
+          "indicator": "USEF4",
+          "importance_first_principles": 0.117411108461881,
+          "importance_doIPMA_0_100_input": 0.11741110846188,
+          "performance_first_principles": 90.2240896358542,
+          "performance_doIPMA_0_100_input": 90.2240896358542
+        },
+        {
+          "indicator": "USEF5",
+          "importance_first_principles": 0.133461928673016,
+          "importance_doIPMA_0_100_input": 0.133461928673017,
+          "performance_first_principles": 92.2689075630251,
+          "performance_doIPMA_0_100_input": 92.2689075630251
+        },
+        {
+          "indicator": "EOU1",
+          "importance_first_principles": 0.0487939327491445,
+          "importance_doIPMA_0_100_input": 0.0487939327491452,
+          "performance_first_principles": 84.0756302521007,
+          "performance_doIPMA_0_100_input": 84.0756302521007
+        },
+        {
+          "indicator": "EOU2",
+          "importance_first_principles": 0.0497124442343904,
+          "importance_doIPMA_0_100_input": 0.0497124442343903,
+          "performance_first_principles": 76.7927170868347,
+          "performance_doIPMA_0_100_input": 76.7927170868347
+        },
+        {
+          "indicator": "EOU3",
+          "importance_first_principles": 0.0606392471461304,
+          "importance_doIPMA_0_100_input": 0.0606392471461295,
+          "performance_first_principles": 81.0924369747898,
+          "performance_doIPMA_0_100_input": 81.0924369747898
+        },
+        {
+          "indicator": "EOU4",
+          "importance_first_principles": 0.0559068952362932,
+          "importance_doIPMA_0_100_input": 0.0559068952362936,
+          "performance_first_principles": 80.8123249299718,
+          "performance_doIPMA_0_100_input": 80.8123249299718
+        },
+        {
+          "indicator": "EOU5",
+          "importance_first_principles": 0.0478868801515576,
+          "importance_doIPMA_0_100_input": 0.0478868801515576,
+          "performance_first_principles": 81.7226890756301,
+          "performance_doIPMA_0_100_input": 81.7226890756301
+        },
+        {
+          "indicator": "ATT1",
+          "importance_first_principles": 0.0426634980304902,
+          "importance_doIPMA_0_100_input": 0.0426634980304905,
+          "performance_first_principles": 85.9943977591034,
+          "performance_doIPMA_0_100_input": 85.9943977591034
+        },
+        {
+          "indicator": "ATT2",
+          "importance_first_principles": 0.0438667843641315,
+          "importance_doIPMA_0_100_input": 0.043866784364132,
+          "performance_first_principles": 84.2997198879549,
+          "performance_doIPMA_0_100_input": 84.2997198879549
+        },
+        {
+          "indicator": "ATT3",
+          "importance_first_principles": 0.0418728738453444,
+          "importance_doIPMA_0_100_input": 0.041872873845345,
+          "performance_first_principles": 84.3417366946776,
+          "performance_doIPMA_0_100_input": 84.3417366946776
+        },
+        {
+          "indicator": "ATT4",
+          "importance_first_principles": 0.0400378060167558,
+          "importance_doIPMA_0_100_input": 0.0400378060167561,
+          "performance_first_principles": 88.1652661064423,
+          "performance_doIPMA_0_100_input": 88.1652661064423
+        },
+        {
+          "indicator": "ATT5",
+          "importance_first_principles": 0.0364822696015631,
+          "importance_doIPMA_0_100_input": 0.0364822696015636,
+          "performance_first_principles": 88.193277310924,
+          "performance_doIPMA_0_100_input": 88.193277310924
+        },
+        {
+          "indicator": "USE1",
+          "importance_first_principles": 0,
+          "importance_doIPMA_0_100_input": 0,
+          "performance_first_principles": 80.4033613445378,
+          "performance_doIPMA_0_100_input": 80.4033613445378
+        },
+        {
+          "indicator": "USE2",
+          "importance_first_principles": 0,
+          "importance_doIPMA_0_100_input": 0,
+          "performance_first_principles": 90.3193277310924,
+          "performance_doIPMA_0_100_input": 90.3193277310924
+        },
+        {
+          "indicator": "USE3",
+          "importance_first_principles": 0,
+          "importance_doIPMA_0_100_input": 0,
+          "performance_first_principles": 46.5042016806723,
+          "performance_doIPMA_0_100_input": 46.5042016806723
+        },
+        {
+          "indicator": "USE4",
+          "importance_first_principles": 0,
+          "importance_doIPMA_0_100_input": 0,
+          "performance_first_principles": 27.6134453781513,
+          "performance_doIPMA_0_100_input": 27.6134453781513
+        }
+      ]
+    },
+    "relations_max_abs_diff": {
+      "importance__first_principles_VS_doIPMA_on_0_100_data": 4.44089209850063e-15,
+      "importance__OLS_on_unstd_scores_VS_std_effect_times_sd_ratio": 7.88258347483861e-15,
+      "performance__first_principles_VS_doIPMA_on_0_100_data": 8.5265128291212e-14,
+      "performance__first_principles_VS_rescaled_doIPMA_on_raw_data_1_7_constructs": 2.98427949019242e-13,
+      "importance__doIPMA_raw_VS_doIPMA_0_100_same_scale_everywhere": 0.017986279922978,
+      "indicator_performance__first_principles_VS_doIPMA_0_100": 0,
+      "indicator_importance_BI__first_principles_VS_doIPMA_0_100": 2.33146835171283e-15,
+      "normalised_weights__first_principles_VS_getConstructScores": 3.49720252756924e-15,
+      "doIPMA_raw_performance_range": [4.69795211952289, 6.51334983566019],
+      "doIPMA_0_100_performance_range": [66.7311553868342, 91.88916392767]
+    },
+    "observed_vs_theoretical_endpoints": {
+      "full_data_observed_min": {
+        "USEF1": 1,
+        "USEF2": 1,
+        "USEF3": 1,
+        "USEF4": 1,
+        "USEF5": 1,
+        "EOU1": 1,
+        "EOU2": 1,
+        "EOU3": 1,
+        "EOU4": 1,
+        "EOU5": 1,
+        "ATT1": 1,
+        "ATT2": 1,
+        "ATT3": 1,
+        "ATT4": 1,
+        "ATT5": 1,
+        "BI1": 1,
+        "BI2": 1,
+        "BI3": 1,
+        "USE1": 1,
+        "USE2": 1,
+        "USE3": 1,
+        "USE4": 1
+      },
+      "full_data_observed_max": {
+        "USEF1": 7,
+        "USEF2": 7,
+        "USEF3": 7,
+        "USEF4": 7,
+        "USEF5": 7,
+        "EOU1": 7,
+        "EOU2": 7,
+        "EOU3": 7,
+        "EOU4": 7,
+        "EOU5": 7,
+        "ATT1": 7,
+        "ATT2": 7,
+        "ATT3": 7,
+        "ATT4": 7,
+        "ATT5": 7,
+        "BI1": 7,
+        "BI2": 7,
+        "BI3": 7,
+        "USE1": 6,
+        "USE2": 6,
+        "USE3": 6,
+        "USE4": 11
+      },
+      "full_data_observed_equals_theoretical": false,
+      "subsample": "rows where every indicator >= 3 (so the observed minimum is 3, not the scale minimum 1)",
+      "subsample_n": 589,
+      "subsample_observed_min": {
+        "USEF1": 4,
+        "USEF2": 3,
+        "USEF3": 3,
+        "USEF4": 3,
+        "USEF5": 3,
+        "EOU1": 3,
+        "EOU2": 3,
+        "EOU3": 3,
+        "EOU4": 3,
+        "EOU5": 3,
+        "ATT1": 3,
+        "ATT2": 3,
+        "ATT3": 3,
+        "ATT4": 3,
+        "ATT5": 3,
+        "BI1": 3,
+        "BI2": 3,
+        "BI3": 3,
+        "USE1": 3,
+        "USE2": 3,
+        "USE3": 3,
+        "USE4": 3
+      },
+      "performance_theoretical_endpoints": {
+        "PU": 93.9128732260244,
+        "PEOU": 85.3094542882669,
+        "ATU": 90.6195475949738,
+        "BI": 86.7355518577205,
+        "USE": 83.7115043949221
+      },
+      "performance_observed_minmax": {
+        "PU": 90.3578579242453,
+        "PEOU": 77.9641814324004,
+        "ATU": 85.9293213924606,
+        "BI": 80.1033277865806,
+        "USE": 73.5922622793493
+      },
+      "performance_doIPMA_raw_rescaled_with_1_7": {
+        "PU": 93.9128732260243,
+        "PEOU": 85.3094542882669,
+        "ATU": 90.6195475949737,
+        "BI": 86.7355518577205
+      },
+      "max_abs_diff_theoretical_vs_observed": 10.1192421155728,
+      "max_abs_diff_doIPMA_raw_rescaled_vs_theoretical_1_7_constructs": 1.4210854715202e-13,
+      "conclusion": "doIPMA() works on the data exactly as supplied. Performance is in the units of the input data. The caller decides the 0-100 mapping; using observed min/max instead of the scale endpoints changes the answer."
+    },
+    "mixed_scale_endpoints": {
+      "setup": "PU indicators linearly mapped to a 1..5 scale, everything else 1..7",
+      "importance_on_BI_doIPMA_raw_mixed": {
+        "PEOU": 0.262939399517517,
+        "PU": 0.939721975190768,
+        "ATU": 0.204923231858285
+      },
+      "importance_on_BI_doIPMA_after_0_100_rescaling": {
+        "PEOU": 0.262939399517516,
+        "PU": 0.626481316793847,
+        "ATU": 0.204923231858287
+      },
+      "importance_on_BI_original_all_1_7": {
+        "PEOU": 0.262939399517516,
+        "PU": 0.626481316793847,
+        "ATU": 0.204923231858287
+      },
+      "max_abs_diff_rescaled_mixed_vs_original": 0,
+      "max_abs_diff_raw_mixed_vs_original": 0.313240658396921,
+      "conclusion": "Unstandardised total effects depend on the indicator units. With unequal scale endpoints the importance is only comparable after every indicator was mapped to 0-100 with its own theoretical endpoints BEFORE csem()."
+    },
+    "common_factor_objects": {
+      "classic_warning": [
+        "At least one construct is modeled as common factor,\n IPMA's results are not trustworthy in this case."
+      ],
+      "plsc_warning": [
+        "At least one construct is modeled as common factor,\n IPMA's results are not trustworthy in this case."
+      ],
+      "classic_importance_max_abs_diff_vs_composite": 0,
+      "classic_performance_max_abs_diff_vs_composite": 0,
+      "plsc_importance_max_abs_diff_vs_composite": 0.0861581798749816,
+      "conclusion": "For IPMA estimate the model as composites with Mode A weights ('<~' + .PLS_modes = 'modeA'). A '=~' model with .disattenuate = FALSE gives the same numbers plus a warning; a PLSc object mixes disattenuated effects with composite scores and must not be used."
+    },
+    "bootstrap_ipma_smoke": {
+      "ok": true,
+      "warnings": [],
+      "n_warnings": 0,
+      "messages": [],
+      "seconds": 4.452,
+      "result": {
+        "importance_draws_dim": [20, 3],
+        "performance_draws_dim": [20, 5],
+        "performance_colnames": ["PEOU", "PU", "ATU", "BI", "USE"],
+        "importance_sd": {
+          "PEOU": 0.0334116205013394,
+          "PU": 0.0574401154414088,
+          "ATU": 0.027059055354076
+        },
+        "performance_sd": {
+          "PEOU": 0.596650171335969,
+          "PU": 0.406281773857472,
+          "ATU": 0.521665543162632,
+          "BI": 0.590340014347228,
+          "USE": 2.64074093353215
+        }
+      }
+    },
+    "spec_1_7_everywhere": {
+      "rescaled_USE4_range": [0, 166.666666666667],
+      "rescaled_USE1_range": [0, 83.3333333333333],
+      "performance": {
+        "PU": 91.88916392767,
+        "PEOU": 80.8883319946044,
+        "ATU": 86.1095393425905,
+        "BI": 83.2718224721094,
+        "USE": 61.6325353253816
+      },
+      "importance_on_BI": {
+        "PEOU": 0.262939399517516,
+        "PU": 0.626481316793842,
+        "ATU": 0.204923231858285
+      },
+      "importance_on_USE": {
+        "PEOU": 0.0571681841425254,
+        "PU": 0.136209329396967,
+        "ATU": 0.0445543310567097,
+        "BI": 0.217419619301736
+      },
+      "importance_on_USE_with_settings_endpoints": {
+        "PEOU": 0.0618974857850272,
+        "PU": 0.147477397727337,
+        "ATU": 0.0482401376676341,
+        "BI": 0.235405899224714
+      },
+      "doIPMA_vs_first_principles_importance": 4.44089209850063e-15,
+      "doIPMA_vs_first_principles_performance": 2.8421709430404e-14,
+      "max_abs_diff_importance_on_BI_vs_settings_endpoints": 0,
+      "conclusion": "Targets whose predecessors and own items are all 1..7 (BI) are unaffected. Anything involving USE changes: with 1..7, USE4 maps to 0..166.7 and USE1-3 can never reach 100, so the USE performance and every importance ON USE depend on the endpoint choice."
+    }
+  }
+}

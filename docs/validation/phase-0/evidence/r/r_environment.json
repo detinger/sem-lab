@@ -1,0 +1,379 @@
+{
+  "evidence": "r_environment",
+  "script": "services/r-engine/spike/env_01_lock_licenses.R",
+  "generated": "2026-11-19T14:19:53+0100",
+  "r": "R version 4.6.2 (2026-10-29)",
+  "platform": "aarch64-apple-darwin27.0.0",
+  "packages": {
+    "renv": "1.3.1",
+    "cSEM": "0.7.1",
+    "seminr": "2.6.0",
+    "lavaan": "0.7.3"
+  },
+  "findings": {
+    "library": "services/r-engine/r-lib",
+    "n_packages_in_library": 121,
+    "renv_version": "1.3.1",
+    "renv_snapshot": {
+      "ok": true,
+      "warnings": [],
+      "n_warnings": 0,
+      "messages": [],
+      "seconds": 2.285
+    },
+    "lockfile": {
+      "written": "services/r-engine/renv.lock",
+      "r_version_in_lock": "4.6.2",
+      "repositories": [
+        {
+          "Name": "CRAN",
+          "URL": "https://cloud.r-project.org"
+        }
+      ],
+      "n_packages_locked": 121,
+      "missing_from_lock": [],
+      "extra_in_lock": [],
+      "version_mismatches": [],
+      "sources": {
+        "Repository": 121
+      }
+    },
+    "licenses_notable": {
+      "cSEM": {
+        "Version": "0.7.1",
+        "License": "GPL-3",
+        "location": "r-lib"
+      },
+      "seminr": {
+        "Version": "2.6.0",
+        "License": "GPL-3",
+        "location": "r-lib"
+      },
+      "lavaan": {
+        "Version": "0.7-3",
+        "License": "GPL (>= 2)",
+        "location": "r-lib"
+      },
+      "matrixStats": {
+        "Version": "1.5.0",
+        "License": "Artistic-2.0",
+        "location": "r-lib"
+      },
+      "future": {
+        "Version": "1.82.0",
+        "License": "Apache License (>= 2)",
+        "location": "r-lib"
+      },
+      "future.apply": {
+        "Version": "1.21.0",
+        "License": "GPL (>= 2)",
+        "location": "r-lib"
+      },
+      "parallelly": {
+        "Version": "1.50.0",
+        "License": "LGPL (>= 2.1)",
+        "location": "r-lib"
+      },
+      "mnormt": {
+        "Version": "2.1.2",
+        "License": "GPL-2 | GPL-3",
+        "location": "r-lib"
+      },
+      "pbivnorm": {
+        "Version": "0.6.0",
+        "License": "GPL (>= 2)",
+        "location": "r-lib"
+      },
+      "numDeriv": {
+        "Version": "2016.8-1.1",
+        "License": "GPL-2",
+        "location": "r-lib"
+      },
+      "quadprog": {
+        "Version": "1.5-8",
+        "License": "GPL (>= 2)",
+        "location": "r-lib"
+      },
+      "psych": {
+        "Version": "2.6.9",
+        "License": "GPL (>= 2)",
+        "location": "r-lib"
+      },
+      "MASS": {
+        "Version": "7.3-66",
+        "License": "GPL-2 | GPL-3",
+        "location": "/opt/homebrew/Cellar/r/4.6.2/lib/R/library"
+      },
+      "Matrix": {
+        "Version": "1.7-6",
+        "License": "GPL (>= 2) | file LICENCE",
+        "location": "/opt/homebrew/Cellar/r/4.6.2/lib/R/library"
+      },
+      "polycor": {
+        "location": "not installed"
+      },
+      "expm": {
+        "Version": "1.0-1",
+        "License": "GPL (>= 2)",
+        "location": "r-lib"
+      },
+      "Rcpp": {
+        "Version": "1.1.2",
+        "License": "GPL (>= 2)",
+        "location": "r-lib"
+      },
+      "RcppArmadillo": {
+        "Version": "15.6.2-1",
+        "License": "GPL (>= 2)",
+        "location": "r-lib"
+      },
+      "lavaanPlot": {
+        "location": "not installed"
+      },
+      "DiagrammeR": {
+        "Version": "1.0.12",
+        "License": "MIT + file LICENSE",
+        "location": "r-lib"
+      },
+      "igraph": {
+        "Version": "2.3.4",
+        "License": "GPL (>= 2)",
+        "location": "r-lib"
+      },
+      "V8": {
+        "Version": "8.2.1",
+        "License": "MIT + file LICENSE",
+        "location": "r-lib"
+      },
+      "jsonlite": {
+        "Version": "2.0.0",
+        "License": "MIT + file LICENSE",
+        "location": "r-lib"
+      },
+      "digest": {
+        "Version": "0.6.39",
+        "License": "GPL (>= 2)",
+        "location": "r-lib"
+      },
+      "renv": {
+        "Version": "1.3.1",
+        "License": "MIT + file LICENSE",
+        "location": "r-lib"
+      },
+      "testthat": {
+        "Version": "3.3.2",
+        "License": "MIT + file LICENSE",
+        "location": "r-lib"
+      },
+      "progressr": {
+        "Version": "1.1.0",
+        "License": "Apache License (>= 2)",
+        "location": "r-lib"
+      },
+      "dplyr": {
+        "Version": "1.2.1",
+        "License": "MIT + file LICENSE",
+        "location": "r-lib"
+      },
+      "ggplot2": {
+        "Version": "4.0.4",
+        "License": "MIT + file LICENSE",
+        "location": "r-lib"
+      },
+      "tidyr": {
+        "Version": "1.3.2",
+        "License": "MIT + file LICENSE",
+        "location": "r-lib"
+      },
+      "magrittr": {
+        "Version": "2.0.5",
+        "License": "MIT + file LICENSE",
+        "location": "r-lib"
+      },
+      "rlang": {
+        "Version": "1.3.0",
+        "License": "MIT + file LICENSE",
+        "location": "r-lib"
+      }
+    },
+    "licenses_all_r_lib": {
+      "abind": "MIT + file LICENSE",
+      "alabama": "GPL (>= 2)",
+      "base64enc": "GPL-2 | GPL-3",
+      "bit": "GPL-2 | GPL-3",
+      "bit64": "GPL-2 | GPL-3",
+      "brio": "MIT + file LICENSE",
+      "bslib": "MIT + file LICENSE",
+      "cachem": "MIT + file LICENSE",
+      "callr": "MIT + file LICENSE",
+      "cli": "MIT + file LICENSE",
+      "clipr": "GPL-3",
+      "combinat": "GPL-2",
+      "cpp11": "MIT + file LICENSE",
+      "crayon": "MIT + file LICENSE",
+      "cSEM": "GPL-3",
+      "cubature": "GPL-3",
+      "curl": "MIT + file LICENSE",
+      "desc": "MIT + file LICENSE",
+      "DiagrammeR": "MIT + file LICENSE",
+      "DiagrammeRsvg": "MIT + file LICENSE",
+      "diffobj": "GPL-2 | GPL-3",
+      "digest": "GPL (>= 2)",
+      "dplyr": "MIT + file LICENSE",
+      "evaluate": "MIT + file LICENSE",
+      "expm": "GPL (>= 2)",
+      "farver": "MIT + file LICENSE",
+      "fastmap": "MIT + file LICENSE",
+      "fontawesome": "MIT + file LICENSE",
+      "fs": "MIT + file LICENSE",
+      "future": "Apache License (>= 2)",
+      "future.apply": "GPL (>= 2)",
+      "generics": "MIT + file LICENSE",
+      "ggplot2": "MIT + file LICENSE",
+      "globals": "LGPL (>= 2.1)",
+      "glue": "MIT + file LICENSE",
+      "gmp": "GPL (>= 2)",
+      "GPArotation": "GPL (>= 2)",
+      "gtable": "MIT + file LICENSE",
+      "highr": "GPL",
+      "hms": "MIT + file LICENSE",
+      "htmltools": "GPL (>= 2)",
+      "htmlwidgets": "MIT + file LICENSE",
+      "igraph": "GPL (>= 2)",
+      "isoband": "MIT + file LICENSE",
+      "jquerylib": "MIT + file LICENSE",
+      "jsonlite": "MIT + file LICENSE",
+      "knitr": "GPL",
+      "labeling": "MIT + file LICENSE | Unlimited",
+      "lavaan": "GPL (>= 2)",
+      "lifecycle": "MIT + file LICENSE",
+      "listenv": "Apache License (>= 2)",
+      "magrittr": "MIT + file LICENSE",
+      "matrixStats": "Artistic-2.0",
+      "memoise": "MIT + file LICENSE",
+      "mime": "GPL",
+      "mnormt": "GPL-2 | GPL-3",
+      "mpoly": "GPL-2",
+      "multipol": "GPL",
+      "mvtnorm": "GPL-2",
+      "nleqslv": "GPL (>= 2)",
+      "numDeriv": "GPL-2",
+      "orthopolynom": "GPL (>= 2)",
+      "otel": "MIT + file LICENSE",
+      "parallelly": "LGPL (>= 2.1)",
+      "partitions": "GPL",
+      "pbivnorm": "GPL (>= 2)",
+      "pillar": "MIT + file LICENSE",
+      "pkgbuild": "MIT + file LICENSE",
+      "pkgconfig": "MIT + file LICENSE",
+      "pkgload": "MIT + file LICENSE",
+      "plyr": "MIT + file LICENSE",
+      "polynom": "GPL-2",
+      "praise": "MIT + file LICENSE",
+      "prettyunits": "MIT + file LICENSE",
+      "processx": "MIT + file LICENSE",
+      "progress": "MIT + file LICENSE",
+      "progressr": "Apache License (>= 2)",
+      "ps": "MIT + file LICENSE",
+      "psych": "GPL (>= 2)",
+      "purrr": "MIT + file LICENSE",
+      "qrng": "GPL-2 | GPL-3",
+      "quadprog": "GPL (>= 2)",
+      "R6": "MIT + file LICENSE",
+      "rappdirs": "MIT + file LICENSE",
+      "rbibutils": "GPL-2",
+      "RColorBrewer": "Apache License 2.0",
+      "Rcpp": "GPL (>= 2)",
+      "RcppArmadillo": "GPL (>= 2)",
+      "Rdpack": "GPL (>= 2)",
+      "readr": "MIT + file LICENSE",
+      "renv": "MIT + file LICENSE",
+      "rlang": "MIT + file LICENSE",
+      "rmarkdown": "MIT + file LICENSE",
+      "rprojroot": "MIT + file LICENSE",
+      "rstudioapi": "MIT + file LICENSE",
+      "S7": "MIT + file LICENSE",
+      "sass": "MIT + file LICENSE",
+      "scales": "MIT + file LICENSE",
+      "seminr": "GPL-3",
+      "sets": "GPL-2",
+      "spacefillr": "MIT + file LICENSE",
+      "stringi": "file LICENSE",
+      "stringr": "MIT + file LICENSE",
+      "symmoments": "GPL",
+      "testthat": "MIT + file LICENSE",
+      "tibble": "MIT + file LICENSE",
+      "tidyr": "MIT + file LICENSE",
+      "tidyselect": "MIT + file LICENSE",
+      "tinytex": "MIT + file LICENSE",
+      "TruncatedNormal": "GPL-3",
+      "tzdb": "MIT + file LICENSE",
+      "utf8": "Apache License (== 2.0) | file LICENSE",
+      "V8": "MIT + file LICENSE",
+      "vctrs": "MIT + file LICENSE",
+      "viridisLite": "MIT + file LICENSE",
+      "visNetwork": "MIT + file LICENSE",
+      "vroom": "MIT + file LICENSE",
+      "waldo": "MIT + file LICENSE",
+      "withr": "MIT + file LICENSE",
+      "xfun": "MIT + file LICENSE",
+      "yaml": "BSD_3_clause + file LICENSE"
+    },
+    "license_summary": {
+      "MIT + file LICENSE": 69,
+      "GPL (>= 2)": 17,
+      "GPL-2": 7,
+      "GPL": 6,
+      "GPL-2 | GPL-3": 6,
+      "GPL-3": 5,
+      "Apache License (>= 2)": 3,
+      "LGPL (>= 2.1)": 2,
+      "Apache License (== 2.0) | file LICENSE": 1,
+      "Apache License 2.0": 1,
+      "Artistic-2.0": 1,
+      "BSD_3_clause + file LICENSE": 1,
+      "file LICENSE": 1,
+      "MIT + file LICENSE | Unlimited": 1
+    },
+    "direct_dependencies": {
+      "cSEM": {
+        "Depends": "R (>= 4.1.0)",
+        "Imports": "alabama, cli, crayon, expm (>= 0.999-5), future.apply, future,\nlifecycle, lavaan, magrittr, MASS, Matrix, matrixStats,\npbivnorm, progressr, psych, purrr, Rdpack, rlang, stats,\nsymmoments, TruncatedNormal, utils",
+        "LinkingTo": null
+      },
+      "seminr": {
+        "Depends": "R (>= 4.1.0)",
+        "Imports": "parallel, lavaan, glue, DiagrammeR (>= 1.0.6), DiagrammeRsvg\n(>= 0.1), stats",
+        "LinkingTo": null
+      },
+      "lavaan": {
+        "Depends": "R(>= 3.4)",
+        "Imports": "methods, parallel, stats4, stats, utils, graphics, grDevices,\nMASS, mnormt, pbivnorm, numDeriv, quadprog",
+        "LinkingTo": null
+      }
+    },
+    "recommended_packages_from_R_installation": {
+      "MASS": {
+        "Version": "7.3-66",
+        "License": "GPL-2 | GPL-3",
+        "location": "/opt/homebrew/Cellar/r/4.6.2/lib/R/library"
+      },
+      "Matrix": {
+        "Version": "1.7-6",
+        "License": "GPL (>= 2) | file LICENCE",
+        "location": "/opt/homebrew/Cellar/r/4.6.2/lib/R/library"
+      },
+      "stats4": {
+        "Version": "4.6.2",
+        "License": "Part of R 4.6.2",
+        "location": "/opt/homebrew/Cellar/r/4.6.2/lib/R/library"
+      },
+      "lattice": {
+        "Version": "0.23-1",
+        "License": "GPL (>= 2)",
+        "location": "/opt/homebrew/Cellar/r/4.6.2/lib/R/library"
+      }
+    },
+    "needs_compilation": ["base64enc", "bit", "bit64", "brio", "cachem", "cli", "cubature", "curl", "diffobj", "digest", "dplyr", "expm", "farver", "fastmap", "fs", "glue", "gmp", "htmltools", "igraph", "isoband", "jsonlite", "magrittr", "matrixStats", "mime", "mnormt", "mvtnorm", "nleqslv", "parallelly", "partitions", "pbivnorm", "plyr", "processx", "ps", "purrr", "qrng", "quadprog", "rappdirs", "rbibutils", "Rcpp", "RcppArmadillo", "readr", "rlang", "S7", "sass", "sets", "spacefillr", "stringi", "testthat", "tibble", "tidyr", "tidyselect", "TruncatedNormal", "tzdb", "utf8", "V8", "vctrs", "vroom", "xfun", "yaml"]
+  }
+}

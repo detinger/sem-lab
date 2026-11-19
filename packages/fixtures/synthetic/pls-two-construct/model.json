@@ -1,0 +1,96 @@
+{
+  "constructs": [
+    {
+      "id": "c_x",
+      "indicatorIds": [
+        "i_x1",
+        "i_x2",
+        "i_x3"
+      ],
+      "label": "Exogenous construct X",
+      "measurement": "reflective",
+      "name": "X"
+    },
+    {
+      "id": "c_y",
+      "indicatorIds": [
+        "i_y1",
+        "i_y2",
+        "i_y3"
+      ],
+      "label": "Endogenous construct Y",
+      "measurement": "reflective",
+      "name": "Y"
+    }
+  ],
+  "indicators": [
+    {
+      "column": "x1",
+      "id": "i_x1",
+      "level": "ordinal",
+      "name": "x1",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "x2",
+      "id": "i_x2",
+      "level": "ordinal",
+      "name": "x2",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "x3",
+      "id": "i_x3",
+      "level": "ordinal",
+      "name": "x3",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "y1",
+      "id": "i_y1",
+      "level": "ordinal",
+      "name": "y1",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "y2",
+      "id": "i_y2",
+      "level": "ordinal",
+      "name": "y2",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "y3",
+      "id": "i_y3",
+      "level": "ordinal",
+      "name": "y3",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r_x_y",
+      "kind": "structural",
+      "sourceId": "c_x",
+      "targetId": "c_y"
+    }
+  ]
+}

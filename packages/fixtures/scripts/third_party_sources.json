@@ -1,0 +1,321 @@
+{
+  "$comment": "Hand-maintained input of build_third_party.py. Everything here is either (a) a pointer to a plain file in TEMP/, (b) provenance that was checked on the date in 'accessed' (URLs listed were actually opened), or (c) SEM Studio's own proposals. Nothing here was extracted from the encrypted SmartPLS project files.",
+  "collection": "smartpls-samples",
+  "accessed": "2026-11-19",
+  "proposalLabel": "SEM Studio specification — not extracted from the SmartPLS project file",
+  "statusVocabulary": {
+    "redistributable-with-attribution": "A licence was found at the source and it permits redistribution with attribution.",
+    "terms-unverified": "No licence or terms covering redistribution were found at the sources opened. Do not publish in a public build until the owner clears it.",
+    "restricted": "Terms were found and they forbid redistribution."
+  },
+  "datasets": [
+    {
+      "slug": "tam",
+      "title": "Technology Acceptance Model (TAM) sample data",
+      "folder": "Example - TAM",
+      "dataFile": "Data.txt",
+      "measurementSettingsFile": "TAM - PLS-SEM.splsm.settings",
+      "crossCheckSettingsFiles": [],
+      "constructCodes": {
+        "PU": { "code": "PU", "label": "Perceived Usefulness" },
+        "PEOU": { "code": "PEOU", "label": "Perceived Ease of Use" },
+        "ATU": { "code": "ATU", "label": "Attitude Toward Using" },
+        "BI": { "code": "BI", "label": "Behavioral Intention to Use" },
+        "USE": { "code": "USE", "label": "Actual System Use" }
+      },
+      "provenance": {
+        "status": "terms-unverified",
+        "origin": "Survey of 1,190 computer users in Saudi Arabia. The SmartPLS sample-project page attributes the data to Anderson, Al-Gahtani & Hubona (2011) and says Al-Gahtani, Hubona & Wang (2007), Al-Gahtani & Shih (2009) and Anderson et al. (2011) describe the data and the model.",
+        "licence": "None stated. The SmartPLS sample-project page and the SmartPLS terms and conditions say nothing about reuse or redistribution of sample data. No public deposit of the item-level data with a licence was found.",
+        "identityCheck": "Not possible: no independent public copy of the item-level data was found.",
+        "urlsOpened": [
+          "https://www.smartpls.com/documentation/sample-projects",
+          "https://www.smartpls.com/documentation/sample-projects/tam",
+          "https://www.smartpls.com/terms"
+        ],
+        "references": [
+          "Anderson, C., Al-Gahtani, S. S., & Hubona, G. S. (2011). The value of TAM antecedents in global IS development and research. Journal of Organizational and End User Computing, 23(1), 18-37.",
+          "Al-Gahtani, S. S., Hubona, G. S., & Wang, J. (2007). Information technology (IT) in Saudi Arabia: Culture and the acceptance and use of IT. Information & Management, 44(8), 681-691. https://doi.org/10.1016/j.im.2007.09.002",
+          "Al-Gahtani, S. S., & Shih, H.-P. (2009). The influence of organizational communication openness on the post-adoption of computers. Journal of Global Information Management, 17(3), 20-41. https://doi.org/10.4018/jgim.2009070102"
+        ],
+        "whatWouldUpgradeIt": "Written permission from the data owners (Al-Gahtani / Hubona) or from SmartPLS GmbH, or a public deposit of the item-level data under an open licence."
+      },
+      "proposedModel": {
+        "id": "tam-v1",
+        "summary": "Classic TAM with attitude as a mediator. Identical to the shared Phase 0 reference model tam-v1.",
+        "measurementMode": "reflective (SEM Studio's choice; the plain side files do not state the measurement mode)",
+        "constructs": ["PEOU", "PU", "ATU", "BI", "USE"],
+        "paths": [
+          { "from": "PEOU", "to": "PU" },
+          { "from": "PEOU", "to": "ATU" },
+          { "from": "PU", "to": "ATU" },
+          { "from": "PU", "to": "BI" },
+          { "from": "ATU", "to": "BI" },
+          { "from": "BI", "to": "USE" }
+        ],
+        "citations": [
+          "Davis, F. D. (1989). Perceived usefulness, perceived ease of use, and user acceptance of information technology. MIS Quarterly, 13(3), 319-340. https://doi.org/10.2307/249008",
+          "Davis, F. D., Bagozzi, R. P., & Warshaw, P. R. (1989). User acceptance of computer technology: A comparison of two theoretical models. Management Science, 35(8), 982-1003. https://doi.org/10.1287/mnsc.35.8.982"
+        ],
+        "citationBasis": "Standard literature citation; the primary articles were not opened in this session. The SmartPLS page names Davis et al. (1989) as the model source but describes the paths only in an image.",
+        "notes": [
+          "USE1-USE3 are observed on 1-6 and USE4 on 1-11 while all other items are 1-7: the USE block mixes scale ranges, which matters for unstandardised results and for IPMA rescaling.",
+          "No missing values; 1,190 complete cases."
+        ]
+      }
+    },
+    {
+      "slug": "utaut",
+      "title": "Unified Theory of Acceptance and Use of Technology (UTAUT) sample data",
+      "folder": "Example - UTAUT",
+      "dataFile": "Data.txt",
+      "measurementSettingsFile": "UTAUT - PLS-SEM.splsm.settings",
+      "crossCheckSettingsFiles": ["UTAUT - GSCA.splsge.settings"],
+      "constructCodes": {
+        "PE": { "code": "PE", "label": "Performance Expectancy" },
+        "EE": { "code": "EE", "label": "Effort Expectancy" },
+        "SI": { "code": "SI", "label": "Social Influence (items are named SN1-SN3, i.e. subjective norm)" },
+        "FC": { "code": "FC", "label": "Facilitating Conditions" },
+        "BI": { "code": "BI", "label": "Behavioral Intention" },
+        "USE": { "code": "USE", "label": "Use Behavior" }
+      },
+      "provenance": {
+        "status": "terms-unverified",
+        "origin": "Survey of 722 knowledge workers in Saudi Arabia (Al-Gahtani, Hubona & Wang, 2007), as stated on the SmartPLS sample-project page.",
+        "licence": "None stated on the SmartPLS page. A Mendeley Data deposit by N. Richter (doi:10.17632/kcf54cgk78.1, CC BY 4.0) contains latent variable scores derived from the raw indicator data 'provided by' Al-Gahtani et al.; it does not contain the raw items and is therefore not a licence for this file.",
+        "identityCheck": "Not possible: no independent public copy of the item-level data was found.",
+        "urlsOpened": [
+          "https://www.smartpls.com/documentation/sample-projects",
+          "https://www.smartpls.com/documentation/sample-projects/utaut",
+          "https://www.smartpls.com/terms",
+          "https://data.mendeley.com/public-api/datasets/kcf54cgk78"
+        ],
+        "references": [
+          "Al-Gahtani, S. S., Hubona, G. S., & Wang, J. (2007). Information technology (IT) in Saudi Arabia: Culture and the acceptance and use of IT. Information & Management, 44(8), 681-691. https://doi.org/10.1016/j.im.2007.09.002"
+        ],
+        "whatWouldUpgradeIt": "Written permission from the data owners or from SmartPLS GmbH, or a public deposit of the item-level data under an open licence."
+      },
+      "proposedModel": {
+        "id": "utaut-v1",
+        "summary": "UTAUT main effects only: three determinants of intention, and intention plus facilitating conditions as determinants of use. The moderators of the original theory (gender, age, experience, voluntariness) are not in the data file and are therefore not specified.",
+        "measurementMode": "reflective (SEM Studio's choice; the plain side files do not state the measurement mode)",
+        "constructs": ["PE", "EE", "SI", "FC", "BI", "USE"],
+        "paths": [
+          { "from": "PE", "to": "BI" },
+          { "from": "EE", "to": "BI" },
+          { "from": "SI", "to": "BI" },
+          { "from": "BI", "to": "USE" },
+          { "from": "FC", "to": "USE" }
+        ],
+        "citations": [
+          "Venkatesh, V., Morris, M. G., Davis, G. B., & Davis, F. D. (2003). User acceptance of information technology: Toward a unified view. MIS Quarterly, 27(3), 425-478. https://doi.org/10.2307/30036540"
+        ],
+        "citationBasis": "Standard literature citation; the primary article was not opened in this session. The SmartPLS page lists Venkatesh et al. (2003) as the model source but shows the paths only in an image.",
+        "notes": [
+          "The PLS-SEM settings file calls the SN1-SN3 block 'SI'; the GSCA settings file of the same folder calls it 'SN'. Same indicators.",
+          "USE1-USE3 are observed on 1-6 and USE4 on 1-11 while all other items are 1-7.",
+          "No missing values; 722 complete cases."
+        ]
+      }
+    },
+    {
+      "slug": "oi",
+      "title": "Organizational identification sample data (Bergami & Bagozzi, 2000)",
+      "folder": "Example - OI",
+      "dataFile": "Data.txt",
+      "measurementSettingsFile": "OI - PLS-SEM.splsm.settings",
+      "crossCheckSettingsFiles": ["OI - GSCA.splsge.settings"],
+      "constructCodes": {
+        "Organizational_Prestige": { "code": "OP", "label": "Organizational Prestige" },
+        "Organizational_Identification": { "code": "OI", "label": "Organizational Identification" },
+        "Affective _Commitment (Joy)": { "code": "ACJ", "label": "Affective Commitment (Joy)" },
+        "Affective _Commitment (Love)": { "code": "ACL", "label": "Affective Commitment (Love)" }
+      },
+      "provenance": {
+        "status": "terms-unverified",
+        "origin": "305 employees, organizational identification data of Bergami & Bagozzi (2000), widely reused as the GSCA demonstration data of Hwang & Takane (2004, 2014). The SmartPLS page says the data are 'taken from U.S.'; the cSEM package documentation says 'South Korean employees'. The discrepancy is unresolved because the primary article could not be opened (HTTP 403).",
+        "licence": "None stated on the SmartPLS page. The same 22 variables and 305 rows are distributed on CRAN inside cSEM 0.7.1 as BergamiBagozzi2000 (package licence GPL-3) and inside gesca 1.0.5 as gesca.rick2 (package licence GPL >= 2). Neither package documents permission from the original authors.",
+        "identityCheck": "Verified on 2026-11-19: the 22 non-derived columns are cell-for-cell identical, in the same row order, to cSEM 0.7.1 BergamiBagozzi2000; gesca 1.0.5 gesca.rick2 differs in exactly one cell (cei7/org_pre7). The three *_rev columns are 6 - ac_love* and exist only in the SmartPLS sample. See evidence oi-cran-comparison.json.",
+        "urlsOpened": [
+          "https://www.smartpls.com/documentation/sample-projects/organizational-identification",
+          "https://www.smartpls.com/documentation/sample-projects/organizational-identification-variations-pls",
+          "https://floschuberth.github.io/cSEM/reference/BergamiBagozzi2000.html",
+          "https://search.r-project.org/CRAN/refmans/cSEM/html/BergamiBagozzi2000.html",
+          "https://rdrr.io/cran/gesca/man/gesca.rick2.html",
+          "https://cran.r-project.org/web/packages/cSEM/index.html",
+          "https://cran.r-project.org/web/packages/gesca/index.html",
+          "https://cran.r-project.org/src/contrib/cSEM_0.7.1.tar.gz",
+          "https://cran.r-project.org/src/contrib/gesca_1.0.5.tar.gz"
+        ],
+        "references": [
+          "Bergami, M., & Bagozzi, R. P. (2000). Self-categorization, affective commitment and group self-esteem as distinct aspects of social identity in the organization. British Journal of Social Psychology, 39(4), 555-577. https://doi.org/10.1348/014466600164633",
+          "Hwang, H., & Takane, Y. (2004). Generalized structured component analysis. Psychometrika, 69(1), 81-99. https://doi.org/10.1007/BF02295841",
+          "Hwang, H., & Takane, Y. (2014). Generalized Structured Component Analysis: A Component-Based Approach to Structural Equation Modeling. Chapman & Hall/CRC."
+        ],
+        "whatWouldUpgradeIt": "Either (a) the owner accepts GPL-3 terms for this one data file and it is rebuilt from cSEM's BergamiBagozzi2000 with the GPL notice, or (b) the R engine loads cSEM::BergamiBagozzi2000 at run time so SEM Studio redistributes nothing, or (c) permission from the original authors."
+      },
+      "proposedModel": {
+        "id": "oi-v1",
+        "summary": "Full mediation chain used by Hwang & Takane (2004) and reproduced in the cSEM documentation example: prestige -> identification -> the two affective commitment facets.",
+        "measurementMode": "reflective for SEM Studio's default example (cSEM's Hwang example specifies composites); the plain side files do not state the measurement mode",
+        "constructs": ["OP", "OI", "ACJ", "ACL"],
+        "paths": [
+          { "from": "OP", "to": "OI" },
+          { "from": "OI", "to": "ACJ" },
+          { "from": "OI", "to": "ACL" }
+        ],
+        "variants": [
+          {
+            "id": "oi-v1-partial-mediation",
+            "summary": "Adds direct effects of prestige on both commitment facets (the structural part of the Henseler (2021) example in the cSEM documentation, without its gender covariate and with the Hwang item assignment).",
+            "additionalPaths": [
+              { "from": "OP", "to": "ACJ" },
+              { "from": "OP", "to": "ACL" }
+            ]
+          },
+          {
+            "id": "oi-v1-rev",
+            "summary": "Same structure with ACL measured by ac_love1_rev, ac_love2_rev, ac_love3_rev (6 - raw) so that a higher ACL score means more commitment. Recommended for teaching the reverse-coding step.",
+            "indicatorOverrides": { "ACL": ["ac_love1_rev", "ac_love2_rev", "ac_love3_rev"] }
+          }
+        ],
+        "citations": [
+          "Bergami, M., & Bagozzi, R. P. (2000). Self-categorization, affective commitment and group self-esteem as distinct aspects of social identity in the organization. British Journal of Social Psychology, 39(4), 555-577. https://doi.org/10.1348/014466600164633",
+          "Hwang, H., & Takane, Y. (2004). Generalized structured component analysis. Psychometrika, 69(1), 81-99. https://doi.org/10.1007/BF02295841"
+        ],
+        "citationBasis": "The three structural equations were read from the Examples section of cSEM 0.7.1 man/BergamiBagozzi2000.Rd ('Example is taken from Hwang et al. (2004)'), which was opened. The primary articles were not opened.",
+        "notes": [
+          "The plain PLS-SEM settings file assigns the RAW items ac_love1-3 to 'Affective _Commitment (Love)'. In the data the raw love items correlate negatively with the joy and identification items; the *_rev columns equal 6 - raw.",
+          "With raw love items the sign of the ACL loadings and of OI -> ACL depends on the engine's sign-orientation rule. Record the rule in any reference result.",
+          "Construct names in the PLS-SEM settings file contain spaces, underscores and parentheses ('Affective _Commitment (Joy)' has a space before the underscore). Use the short codes in generated code.",
+          "gender (1 = male, 2 = female; 157/148) is a grouping variable, not an indicator.",
+          "No missing values; 305 complete cases."
+        ]
+      }
+    },
+    {
+      "slug": "acsi-2015",
+      "title": "American Customer Satisfaction Index (ACSI) 2015 sample data",
+      "folder": "Example - ACSI",
+      "dataFile": "ACSI Data 2015.txt",
+      "measurementSettingsFile": "ACSI (modified) - PLS-SEM.splsm.settings",
+      "crossCheckSettingsFiles": ["ACSI (modified) - GSCA.splsge.settings"],
+      "constructCodes": {
+        "CUEX": { "code": "CUEX", "label": "Customer Expectations" },
+        "PERQ": { "code": "PERQ", "label": "Perceived Quality" },
+        "PERV": { "code": "PERV", "label": "Perceived Value" },
+        "CUSA": { "code": "CUSA", "label": "Customer Satisfaction (ACSI)" },
+        "CUSL": { "code": "CUSL", "label": "Customer Loyalty" }
+      },
+      "provenance": {
+        "status": "redistributable-with-attribution",
+        "origin": "Sample of 8,239 consumer responses collected by the American Customer Satisfaction Index in 2015 for four industries, deposited by the ACSI researchers on Mendeley Data and described in a Data in Brief article (Morgeson, Hult, Sharma & Fornell, 2023).",
+        "licence": "CC BY 4.0 (Creative Commons Attribution 4.0 International, http://creativecommons.org/licenses/by/4.0) as stated in the Mendeley Data record. The Data in Brief article text itself is CC BY-NC-ND 4.0; that licence covers the article, not the deposited data files.",
+        "identityCheck": "Verified on 2026-11-19: 'ACSI Data 2015.xlsx' of Mendeley Data version 2 (sha256 53cc5ad2cf7ce8c4b1ed214e21508b7ba5059867aaedd1d9cc28ba8fc3c9bf3f) has the same 29 columns and 8,239 rows in the same order; all 185,006 value cells are identical; the 53,925 empty fields of the SmartPLS text file correspond exactly to cells that are 98, 99, '#NULL!' or empty in the deposit. See evidence acsi-mendeley-comparison.json.",
+        "attribution": "Hult, Tomas; Morgeson, Forrest (2023), \"The American Customer Satisfaction Index (ACSI): A Sample Dataset and Description\", Mendeley Data, V2, doi: 10.17632/64xkbj2ry5.2. Licensed under CC BY 4.0. Changes made: converted to CSV; the missing-data codes 98 and 99, SPSS '#NULL!' cells and empty cells are written as empty fields.",
+        "urlsOpened": [
+          "https://data.mendeley.com/datasets/64xkbj2ry5/2",
+          "https://data.mendeley.com/public-api/datasets/64xkbj2ry5",
+          "https://data.mendeley.com/public-files/datasets/64xkbj2ry5/files/e4e4b8b0-0d7d-41a9-a2be-c1e586897d7e/file_downloaded",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC10148075",
+          "https://www.smartpls.com/documentation/sample-projects/acsi"
+        ],
+        "references": [
+          "Morgeson, F. V., III, Hult, G. T. M., Sharma, U., & Fornell, C. (2023). The American Customer Satisfaction Index (ACSI): A sample dataset and description. Data in Brief, 48, 109123. https://doi.org/10.1016/j.dib.2023.109123"
+        ],
+        "whatWouldUpgradeIt": "Nothing needed. Keep the attribution text and the CC BY 4.0 link wherever the file is shown or shipped."
+      },
+      "proposedModel": {
+        "id": "acsi-v1",
+        "summary": "ACSI base model without the complaints construct, matching the 'ACSI (modified)' / 'ACSI (without COMP)' naming of the sample files and the five constructs present in the measurement assignment.",
+        "measurementMode": "reflective (SEM Studio's choice; the plain side files do not state the measurement mode)",
+        "constructs": ["CUEX", "PERQ", "PERV", "CUSA", "CUSL"],
+        "paths": [
+          { "from": "CUEX", "to": "PERQ" },
+          { "from": "CUEX", "to": "PERV" },
+          { "from": "PERQ", "to": "PERV" },
+          { "from": "CUEX", "to": "CUSA" },
+          { "from": "PERQ", "to": "CUSA" },
+          { "from": "PERV", "to": "CUSA" },
+          { "from": "CUSA", "to": "CUSL" }
+        ],
+        "variants": [
+          {
+            "id": "acsi-v1-complaints",
+            "summary": "Full base model of Fig. 1 with complaints as a single-indicator construct COMPL measured by the binary item COMP: adds CUSA -> COMPL and COMPL -> CUSL. Needs an explicit decision on how a binary single indicator is treated; not recommended as a default example.",
+            "additionalConstructs": [{ "code": "COMPL", "indicators": ["COMP"] }],
+            "additionalPaths": [
+              { "from": "CUSA", "to": "COMPL" },
+              { "from": "COMPL", "to": "CUSL" }
+            ]
+          }
+        ],
+        "citations": [
+          "Fornell, C., Johnson, M. D., Anderson, E. W., Cha, J., & Bryant, B. E. (1996). The American Customer Satisfaction Index: Nature, purpose, and findings. Journal of Marketing, 60(4), 7-18. https://doi.org/10.1177/002224299606000403",
+          "Morgeson, F. V., III, Hult, G. T. M., Sharma, U., & Fornell, C. (2023). The American Customer Satisfaction Index (ACSI): A sample dataset and description. Data in Brief, 48, 109123. https://doi.org/10.1016/j.dib.2023.109123"
+        ],
+        "citationBasis": "All nine arrows of the base model were read from Fig. 1 ('The ACSI base model') of Morgeson et al. (2023), which was opened; the seven proposed paths are the seven that do not involve complaints. Fornell et al. (1996) is cited as the original model and was not opened.",
+        "notes": [
+          "CUSL is measured by the single indicator REPUR: reliability and AVE are not applicable; in CB-SEM the error variance of a single indicator must be fixed.",
+          "PERV has two indicators (PQ, QP).",
+          "HIGHPTOL and LOWPTOL (price tolerance) are in the data but are not assigned to CUSL in the sample. They contain the codes 26 and 101 although the data dictionary gives 0-25 as the valid range; do not use them as indicators without a documented recode.",
+          "COMP is binary (0/1) and HANDLE is answered only by complainers (1,371 of 8,239).",
+          "Missing data: the 12 model indicators have missing values, so this dataset is the natural listwise-versus-FIML fixture. The sample's own setting for missing values is MEAN_REPLACEMENT."
+        ]
+      }
+    },
+    {
+      "slug": "concise-guide",
+      "title": "Oddjob Airways regression subset (Sarstedt & Mooi, A Concise Guide to Market Research)",
+      "folder": "Example - Regression",
+      "dataFile": "Concise_guide_data.txt",
+      "measurementSettingsFile": null,
+      "crossCheckSettingsFiles": [],
+      "constructCodes": {},
+      "provenance": {
+        "status": "terms-unverified",
+        "origin": "Subset of the Oddjob Airways case-study data (fictitious airline) that accompanies Sarstedt & Mooi (2019), A Concise Guide to Market Research, 3rd ed., Springer. SmartPLS ships it as a regression example ('1,065 observations').",
+        "licence": "None found. The book's companion site offers Oddjob.sav for download under the footer 'Copyright © 2021, A Concise Guide to Market Research' with no licence or reuse statement; the SmartPLS page states none either.",
+        "identityCheck": "Verified on 2026-11-19 against Oddjob.sav from the companion site (sha256 21eba3e059d5cfa17559229bb5f69294b9ec267bec2ca97159116dbd1bafcceb, 1,065 x 71): age, gender, s9, s10, s19, s21, s23 and commitment are identical in the same row order with the same missing cells; category_1/2/3 are dummy variables of 'status' (Blue/Silver/Gold). See evidence textbook-data-comparison.json.",
+        "urlsOpened": [
+          "https://www.smartpls.com/documentation/sample-projects/regression",
+          "https://www.guide-market-research.com/",
+          "https://www.guide-market-research.com/spss/downloads/",
+          "https://www.guide-market-research.com/app/download/13631503227/Oddjob.sav"
+        ],
+        "references": [
+          "Sarstedt, M., & Mooi, E. A. (2019). A concise guide to market research: The process, data, and methods using IBM SPSS Statistics (3rd ed.). Springer. https://doi.org/10.1007/978-3-662-56707-4"
+        ],
+        "whatWouldUpgradeIt": "A licence or written permission from the authors or Springer."
+      },
+      "proposedModel": null
+    },
+    {
+      "slug": "hbat",
+      "title": "HBAT regression data (Hair, Black, Babin & Anderson, Multivariate Data Analysis)",
+      "folder": "Example - Regression",
+      "dataFile": "HBAT_regression_data.txt",
+      "measurementSettingsFile": null,
+      "crossCheckSettingsFiles": [],
+      "constructCodes": {},
+      "provenance": {
+        "status": "terms-unverified",
+        "origin": "HBAT, the primary 100-respondent teaching database of Hair, Black, Babin & Anderson (2018), Multivariate Data Analysis, 8th ed., Cengage. SmartPLS ships it as a regression example ('100 observations').",
+        "licence": "None found. The textbook companion site offers the datasets as a zip download under the footer '© 2021 • Multivariate Data Analysis' with no licence or reuse statement; the SmartPLS page states none either.",
+        "identityCheck": "Verified on 2026-11-19 against HBAT.sav inside Multivariate_Data_Analysis_8e_Datasets.zip from the companion site (zip sha256 a224bf9135e1fa35e35d90474064f01b81aa2151ee29ad8ae3fa94ca2b3dd502): all 24 columns identical in the same row order. See evidence textbook-data-comparison.json.",
+        "urlsOpened": [
+          "https://www.smartpls.com/documentation/sample-projects/regression",
+          "https://www.mvstats.com/",
+          "https://mvstats.com/downloads/",
+          "https://mvstats.com/wp-content/uploads/2022/01/Dataset_Documentation.pdf",
+          "https://mvstats.com/wp-content/uploads/2022/01/Multivariate_Data_Analysis_8e_Datasets.zip"
+        ],
+        "references": [
+          "Hair, J. F., Black, W. C., Babin, B. J., & Anderson, R. E. (2018). Multivariate data analysis (8th ed.). Cengage."
+        ],
+        "whatWouldUpgradeIt": "A licence or written permission from the authors or Cengage."
+      },
+      "proposedModel": null
+    }
+  ]
+}

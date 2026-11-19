@@ -1,0 +1,162 @@
+{
+  "$id": "https://sem-studio.local/schema/sem-layout.json",
+  "title": "sem-layout",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128,
+        "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          },
+          "pinned": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "x",
+          "y"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edgeLabels": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "minLength": 1
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "dx": {
+            "type": "number"
+          },
+          "dy": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "dx",
+          "dy"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "annotations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 4000
+          },
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          },
+          "width": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        },
+        "required": [
+          "id",
+          "text",
+          "x",
+          "y"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "settings": {
+      "type": "object",
+      "properties": {
+        "direction": {
+          "type": "string",
+          "enum": [
+            "LR",
+            "RL",
+            "TB",
+            "BT"
+          ]
+        },
+        "gridSize": {
+          "type": "integer",
+          "minimum": 4,
+          "maximum": 64
+        },
+        "snapToGrid": {
+          "type": "boolean"
+        },
+        "gridVisibility": {
+          "type": "string",
+          "enum": [
+            "dots",
+            "faint",
+            "hidden"
+          ]
+        },
+        "constructShape": {
+          "type": "string",
+          "enum": [
+            "ellipse",
+            "rounded"
+          ]
+        },
+        "indicatorDensity": {
+          "type": "string",
+          "enum": [
+            "default",
+            "dense"
+          ]
+        },
+        "collapsedConstructIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+          }
+        }
+      },
+      "required": [
+        "direction",
+        "gridSize",
+        "snapToGrid",
+        "gridVisibility",
+        "constructShape",
+        "indicatorDensity",
+        "collapsedConstructIds"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "nodes",
+    "settings"
+  ],
+  "additionalProperties": false
+}

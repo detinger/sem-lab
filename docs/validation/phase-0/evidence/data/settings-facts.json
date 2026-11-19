@@ -1,0 +1,1547 @@
+{
+  "dataSettings": {
+    "Example - ACSI/ACSI Data 2015.txt.settings": {
+      "topLevelKeys": [
+        "separator",
+        "missingValue",
+        "escapeSign",
+        "locale",
+        "groupModel",
+        "text",
+        "covarianceData",
+        "indicators",
+        "numberOfIndicators",
+        "numberOfCases",
+        "numberOfMissingValues",
+        "indicatorCorrelations",
+        "indicatorCovariances"
+      ],
+      "separator": "SEMICOLON",
+      "missingValue": null,
+      "escapeSign": "NONE",
+      "locale": "EN",
+      "covarianceData": false,
+      "numberOfIndicators": 29,
+      "numberOfCases": 8239,
+      "numberOfMissingValues": 53925,
+      "scaleTypes": {
+        "METRIC": 23,
+        "BINARY": 6
+      },
+      "perIndicatorKeys": [
+        "cramerVanMises",
+        "errors",
+        "highestValue",
+        "index",
+        "kurtosis",
+        "lowestValue",
+        "mean",
+        "median",
+        "name",
+        "numberOfMissingValues",
+        "numberOfRecords",
+        "numberOfStrings",
+        "scaleInformation",
+        "skewNess",
+        "standardDeviation"
+      ],
+      "hasUniqueValuesLists": false,
+      "groups": [
+        {
+          "name": "Industry: Processed Food (Nondurables)",
+          "logic": "AND",
+          "terms": [
+            "INDUSTRY EQUALS 1001"
+          ],
+          "hits": 1968
+        },
+        {
+          "name": "Industry: Commercial Airlines (Transportation)",
+          "logic": "AND",
+          "terms": [
+            "INDUSTRY EQUALS 3003"
+          ],
+          "hits": 1479
+        },
+        {
+          "name": "Industry: Internet Service Providers (Telecommunications)",
+          "logic": "AND",
+          "terms": [
+            "INDUSTRY EQUALS 3013"
+          ],
+          "hits": 2287
+        },
+        {
+          "name": "Industry: Commercial Banks (Finance)",
+          "logic": "AND",
+          "terms": [
+            "INDUSTRY EQUALS 5001"
+          ],
+          "hits": 2505
+        },
+        {
+          "name": "Education: Less than high school",
+          "logic": "AND",
+          "terms": [
+            "EDUCAT EQUALS 1"
+          ],
+          "hits": 107
+        },
+        {
+          "name": "Education: High school",
+          "logic": "AND",
+          "terms": [
+            "EDUCAT EQUALS 2"
+          ],
+          "hits": 1210
+        },
+        {
+          "name": "Education: Some college or associate degree",
+          "logic": "AND",
+          "terms": [
+            "EDUCAT EQUALS 3"
+          ],
+          "hits": 2298
+        },
+        {
+          "name": "Education: College graduate",
+          "logic": "AND",
+          "terms": [
+            "EDUCAT EQUALS 4"
+          ],
+          "hits": 2828
+        },
+        {
+          "name": "Education: Post-graduate",
+          "logic": "AND",
+          "terms": [
+            "EDUCAT EQUALS 5"
+          ],
+          "hits": 1711
+        },
+        {
+          "name": "Gender: Male",
+          "logic": "AND",
+          "terms": [
+            "GENDER EQUALS 1"
+          ],
+          "hits": 3290
+        },
+        {
+          "name": "Gender: Female",
+          "logic": "AND",
+          "terms": [
+            "GENDER EQUALS 2"
+          ],
+          "hits": 4866
+        }
+      ]
+    },
+    "Example - OI/Data.txt.settings": {
+      "topLevelKeys": [
+        "separator",
+        "missingValue",
+        "escapeSign",
+        "locale",
+        "groupModel",
+        "text",
+        "covarianceData",
+        "indicators",
+        "numberOfIndicators",
+        "numberOfCases",
+        "numberOfMissingValues",
+        "indicatorCorrelations",
+        "indicatorCovariances"
+      ],
+      "separator": "SEMICOLON",
+      "missingValue": null,
+      "escapeSign": "NONE",
+      "locale": "EN",
+      "covarianceData": false,
+      "numberOfIndicators": 25,
+      "numberOfCases": 305,
+      "numberOfMissingValues": 0,
+      "scaleTypes": {
+        "BINARY": 1,
+        "METRIC": 24
+      },
+      "perIndicatorKeys": [
+        "cramerVanMises",
+        "errors",
+        "highestValue",
+        "index",
+        "kurtosis",
+        "lowestValue",
+        "mean",
+        "median",
+        "name",
+        "numberOfMissingValues",
+        "numberOfRecords",
+        "numberOfStrings",
+        "scaleInformation",
+        "skewNess",
+        "standardDeviation"
+      ],
+      "hasUniqueValuesLists": false,
+      "groups": [
+        {
+          "name": "gender_male(1.0)",
+          "logic": "AND",
+          "terms": [
+            "gender EQUALS 1.0"
+          ],
+          "hits": 157
+        },
+        {
+          "name": "gender_female(2.0)",
+          "logic": "AND",
+          "terms": [
+            "gender EQUALS 2.0"
+          ],
+          "hits": 148
+        }
+      ]
+    },
+    "Example - Regression/Concise_guide_data.txt.settings": {
+      "topLevelKeys": [
+        "separator",
+        "missingValue",
+        "escapeSign",
+        "locale",
+        "groupModel",
+        "text",
+        "indicators",
+        "numberOfIndicators",
+        "numberOfCases",
+        "numberOfMissingValues",
+        "indicatorCorrelations"
+      ],
+      "separator": "SEMICOLON",
+      "missingValue": null,
+      "escapeSign": "NONE",
+      "locale": "EN",
+      "covarianceData": null,
+      "numberOfIndicators": 11,
+      "numberOfCases": 1065,
+      "numberOfMissingValues": 158,
+      "scaleTypes": {
+        "METRIC": 7,
+        "BINARY": 4
+      },
+      "perIndicatorKeys": [
+        "cramerVanMises",
+        "errors",
+        "highestValue",
+        "index",
+        "kurtosis",
+        "lowestValue",
+        "mean",
+        "median",
+        "name",
+        "numberOfMissingValues",
+        "numberOfRecords",
+        "numberOfStrings",
+        "scaleInformation",
+        "skewNess",
+        "standardDeviation",
+        "uniqueValues"
+      ],
+      "hasUniqueValuesLists": true,
+      "groups": []
+    },
+    "Example - Regression/HBAT_regression_data.txt.settings": {
+      "topLevelKeys": [
+        "separator",
+        "missingValue",
+        "escapeSign",
+        "locale",
+        "groupModel",
+        "text",
+        "indicators",
+        "numberOfIndicators",
+        "numberOfCases",
+        "numberOfMissingValues",
+        "indicatorCorrelations"
+      ],
+      "separator": "SEMICOLON",
+      "missingValue": null,
+      "escapeSign": "NONE",
+      "locale": "EN",
+      "covarianceData": null,
+      "numberOfIndicators": 24,
+      "numberOfCases": 100,
+      "numberOfMissingValues": 0,
+      "scaleTypes": {
+        "METRIC": 18,
+        "ORDINAL": 1,
+        "BINARY": 5
+      },
+      "perIndicatorKeys": [
+        "cramerVanMises",
+        "errors",
+        "highestValue",
+        "index",
+        "kurtosis",
+        "lowestValue",
+        "mean",
+        "median",
+        "name",
+        "numberOfMissingValues",
+        "numberOfRecords",
+        "numberOfStrings",
+        "scaleInformation",
+        "skewNess",
+        "standardDeviation",
+        "uniqueValues"
+      ],
+      "hasUniqueValuesLists": true,
+      "groups": []
+    },
+    "Example - TAM/Data.txt.settings": {
+      "topLevelKeys": [
+        "separator",
+        "missingValue",
+        "escapeSign",
+        "locale",
+        "groupModel",
+        "text",
+        "indicators",
+        "numberOfIndicators",
+        "numberOfCases",
+        "numberOfMissingValues",
+        "indicatorCorrelations"
+      ],
+      "separator": "SEMICOLON",
+      "missingValue": null,
+      "escapeSign": "NONE",
+      "locale": "EN",
+      "covarianceData": null,
+      "numberOfIndicators": 22,
+      "numberOfCases": 1190,
+      "numberOfMissingValues": 0,
+      "scaleTypes": {
+        "METRIC": 22
+      },
+      "perIndicatorKeys": [
+        "cramerVanMises",
+        "errors",
+        "highestValue",
+        "index",
+        "kurtosis",
+        "lowestValue",
+        "mean",
+        "median",
+        "name",
+        "numberOfMissingValues",
+        "numberOfRecords",
+        "numberOfStrings",
+        "scaleInformation",
+        "skewNess",
+        "standardDeviation",
+        "uniqueValues"
+      ],
+      "hasUniqueValuesLists": true,
+      "groups": []
+    },
+    "Example - UTAUT/Data.txt.settings": {
+      "topLevelKeys": [
+        "separator",
+        "missingValue",
+        "escapeSign",
+        "locale",
+        "groupModel",
+        "text",
+        "indicators",
+        "numberOfIndicators",
+        "numberOfCases",
+        "numberOfMissingValues",
+        "indicatorCorrelations"
+      ],
+      "separator": "SEMICOLON",
+      "missingValue": null,
+      "escapeSign": "NONE",
+      "locale": "EN",
+      "covarianceData": null,
+      "numberOfIndicators": 21,
+      "numberOfCases": 722,
+      "numberOfMissingValues": 0,
+      "scaleTypes": {
+        "METRIC": 21
+      },
+      "perIndicatorKeys": [
+        "cramerVanMises",
+        "errors",
+        "highestValue",
+        "index",
+        "kurtosis",
+        "lowestValue",
+        "mean",
+        "median",
+        "name",
+        "numberOfMissingValues",
+        "numberOfRecords",
+        "numberOfStrings",
+        "scaleInformation",
+        "skewNess",
+        "standardDeviation",
+        "uniqueValues"
+      ],
+      "hasUniqueValuesLists": true,
+      "groups": []
+    }
+  },
+  "modelSettings": {
+    "Example - ACSI/ACSI (modified) - CB-SEM.splscb.settings": {
+      "sections": 33,
+      "missingDataAlgorithm": "MEAN_REPLACEMENT",
+      "modelName": "ACSI (without COMP) - CB-SEM",
+      "selectedGroups": [],
+      "weightingVector": null,
+      "pls": {
+        "weightingScheme": "PATH",
+        "maxIterations": 3000,
+        "stopCriterium": "TEN_HIGH_MINUS_7",
+        "initialWeightsStrategy": "DEFAULT",
+        "standardizationOption": "STANDARDIZED"
+      },
+      "bootstrap": {
+        "samples": 5000,
+        "confidenceIntervalMethod": "PERCENTILE_BC",
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED",
+        "bootstrappingComplexity": "BASIC_BOOTSTRAPPING",
+        "seedType": "FIXED"
+      },
+      "ipma": {
+        "construct": null,
+        "depth": "ALLEXOGENOUS_LV"
+      },
+      "cbsem": {
+        "startingValueStrategy": "DEFAULT",
+        "meanStructureStrategy": "OFF",
+        "maximumIterations": 50000,
+        "epsilon": "TEN_HIGH_MINUS_9",
+        "delta": "TEN_HIGH_MINUS_9"
+      },
+      "predict": {
+        "folds": 10,
+        "repetitions": 10,
+        "predictionType": null
+      },
+      "permutation": {
+        "samples": 1000,
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED"
+      },
+      "indicatorBlocks": null,
+      "distinctStoredWeights": []
+    },
+    "Example - ACSI/ACSI (modified) - GSCA.splsge.settings": {
+      "sections": 33,
+      "missingDataAlgorithm": "MEAN_REPLACEMENT",
+      "modelName": null,
+      "selectedGroups": [],
+      "weightingVector": null,
+      "pls": {
+        "weightingScheme": "PATH",
+        "maxIterations": 3000,
+        "stopCriterium": "TEN_HIGH_MINUS_7",
+        "initialWeightsStrategy": "DEFAULT",
+        "standardizationOption": "STANDARDIZED"
+      },
+      "bootstrap": {
+        "samples": 5000,
+        "confidenceIntervalMethod": "PERCENTILE_BC",
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED",
+        "bootstrappingComplexity": "BASIC_BOOTSTRAPPING",
+        "seedType": "FIXED"
+      },
+      "ipma": {
+        "construct": null,
+        "depth": "ALLEXOGENOUS_LV"
+      },
+      "cbsem": {
+        "startingValueStrategy": "DEFAULT",
+        "meanStructureStrategy": "OFF",
+        "maximumIterations": 1000,
+        "epsilon": "TEN_HIGH_MINUS_6",
+        "delta": "TEN_HIGH_MINUS_9"
+      },
+      "predict": {
+        "folds": 10,
+        "repetitions": 10,
+        "predictionType": null
+      },
+      "permutation": {
+        "samples": 1000,
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED"
+      },
+      "indicatorBlocks": {
+        "gscaBasicAlgorithmSettings": {
+          "CUSA": [
+            "CONFIRM",
+            "IDEAL",
+            "SATIS"
+          ],
+          "PERQ": [
+            "CUSTOMQ",
+            "OVERALLQ",
+            "WRONGQ"
+          ],
+          "CUEX": [
+            "CUSTOMX",
+            "OVERALLX",
+            "WRONGX"
+          ],
+          "PERV": [
+            "PQ",
+            "QP"
+          ],
+          "CUSL": [
+            "REPUR"
+          ]
+        }
+      },
+      "distinctStoredWeights": [
+        1.0
+      ]
+    },
+    "Example - ACSI/ACSI (modified) - PLS-SEM.splsm.settings": {
+      "sections": 33,
+      "missingDataAlgorithm": "MEAN_REPLACEMENT",
+      "modelName": null,
+      "selectedGroups": [],
+      "weightingVector": null,
+      "pls": {
+        "weightingScheme": "PATH",
+        "maxIterations": 3000,
+        "stopCriterium": "TEN_HIGH_MINUS_7",
+        "initialWeightsStrategy": "DEFAULT",
+        "standardizationOption": "STANDARDIZED"
+      },
+      "bootstrap": {
+        "samples": 5000,
+        "confidenceIntervalMethod": "PERCENTILE_BC",
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED",
+        "bootstrappingComplexity": "BASIC_BOOTSTRAPPING",
+        "seedType": "FIXED"
+      },
+      "ipma": {
+        "construct": null,
+        "depth": "ALLEXOGENOUS_LV"
+      },
+      "cbsem": {
+        "startingValueStrategy": "DEFAULT",
+        "meanStructureStrategy": "OFF",
+        "maximumIterations": 1000,
+        "epsilon": "TEN_HIGH_MINUS_6",
+        "delta": "TEN_HIGH_MINUS_9"
+      },
+      "predict": {
+        "folds": 10,
+        "repetitions": 10,
+        "predictionType": null
+      },
+      "permutation": {
+        "samples": 1000,
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED"
+      },
+      "indicatorBlocks": {
+        "plsAlgorithmSettings": {
+          "CUSA": [
+            "CONFIRM",
+            "IDEAL",
+            "SATIS"
+          ],
+          "PERQ": [
+            "CUSTOMQ",
+            "OVERALLQ",
+            "WRONGQ"
+          ],
+          "CUEX": [
+            "CUSTOMX",
+            "OVERALLX",
+            "WRONGX"
+          ],
+          "PERV": [
+            "PQ",
+            "QP"
+          ],
+          "CUSL": [
+            "REPUR"
+          ]
+        }
+      },
+      "distinctStoredWeights": [
+        1.0
+      ]
+    },
+    "Example - ACSI/ACSI (modified) - Path analysis and PROCESS.splspm.settings": {
+      "sections": 33,
+      "missingDataAlgorithm": "MEAN_REPLACEMENT",
+      "modelName": null,
+      "selectedGroups": [],
+      "weightingVector": null,
+      "pls": {
+        "weightingScheme": "PATH",
+        "maxIterations": 3000,
+        "stopCriterium": "TEN_HIGH_MINUS_7",
+        "initialWeightsStrategy": "DEFAULT",
+        "standardizationOption": "STANDARDIZED"
+      },
+      "bootstrap": {
+        "samples": 5000,
+        "confidenceIntervalMethod": "PERCENTILE_BC",
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED",
+        "bootstrappingComplexity": "BASIC_BOOTSTRAPPING",
+        "seedType": "FIXED"
+      },
+      "ipma": {
+        "construct": null,
+        "depth": "ALLEXOGENOUS_LV"
+      },
+      "cbsem": {
+        "startingValueStrategy": "DEFAULT",
+        "meanStructureStrategy": "OFF",
+        "maximumIterations": 1000,
+        "epsilon": "TEN_HIGH_MINUS_6",
+        "delta": "TEN_HIGH_MINUS_9"
+      },
+      "predict": {
+        "folds": 10,
+        "repetitions": 10,
+        "predictionType": null
+      },
+      "permutation": {
+        "samples": 1000,
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED"
+      },
+      "indicatorBlocks": null,
+      "distinctStoredWeights": []
+    },
+    "Example - OI/OI - CB-SEM.splscb.settings": {
+      "sections": 37,
+      "missingDataAlgorithm": "NONE",
+      "modelName": null,
+      "selectedGroups": [],
+      "weightingVector": null,
+      "pls": {
+        "weightingScheme": "PATH",
+        "maxIterations": 3000,
+        "stopCriterium": "TEN_HIGH_MINUS_7",
+        "initialWeightsStrategy": "DEFAULT",
+        "standardizationOption": "STANDARDIZED"
+      },
+      "bootstrap": {
+        "samples": 5000,
+        "confidenceIntervalMethod": "PERCENTILE_BC",
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED",
+        "bootstrappingComplexity": "BASIC_BOOTSTRAPPING",
+        "seedType": "FIXED"
+      },
+      "ipma": {
+        "construct": null,
+        "depth": "ALLEXOGENOUS_LV"
+      },
+      "cbsem": {
+        "startingValueStrategy": "DEFAULT",
+        "meanStructureStrategy": "OFF",
+        "maximumIterations": 1000,
+        "epsilon": "TEN_HIGH_MINUS_6",
+        "delta": "TEN_HIGH_MINUS_9"
+      },
+      "predict": {
+        "folds": 10,
+        "repetitions": 10,
+        "predictionType": "EARLY"
+      },
+      "permutation": {
+        "samples": 1000,
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED"
+      },
+      "indicatorBlocks": null,
+      "distinctStoredWeights": []
+    },
+    "Example - OI/OI - GSCA.splsge.settings": {
+      "sections": 33,
+      "missingDataAlgorithm": "NONE",
+      "modelName": null,
+      "selectedGroups": [],
+      "weightingVector": null,
+      "pls": {
+        "weightingScheme": "PATH",
+        "maxIterations": 3000,
+        "stopCriterium": "TEN_HIGH_MINUS_7",
+        "initialWeightsStrategy": "DEFAULT",
+        "standardizationOption": "STANDARDIZED"
+      },
+      "bootstrap": {
+        "samples": 5000,
+        "confidenceIntervalMethod": "PERCENTILE_BC",
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED",
+        "bootstrappingComplexity": "BASIC_BOOTSTRAPPING",
+        "seedType": "FIXED"
+      },
+      "ipma": {
+        "construct": null,
+        "depth": "ALLEXOGENOUS_LV"
+      },
+      "cbsem": {
+        "startingValueStrategy": "DEFAULT",
+        "meanStructureStrategy": "OFF",
+        "maximumIterations": 1000,
+        "epsilon": "TEN_HIGH_MINUS_6",
+        "delta": "TEN_HIGH_MINUS_9"
+      },
+      "predict": {
+        "folds": 10,
+        "repetitions": 10,
+        "predictionType": null
+      },
+      "permutation": {
+        "samples": 1000,
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED"
+      },
+      "indicatorBlocks": {
+        "gscaBasicAlgorithmSettings": {
+          "ACJ": [
+            "ac_joy1",
+            "ac_joy2",
+            "ac_joy3",
+            "ac_joy4"
+          ],
+          "ACL": [
+            "ac_love1",
+            "ac_love2",
+            "ac_love3"
+          ],
+          "OI": [
+            "org_ident1",
+            "org_ident2",
+            "org_ident3",
+            "org_ident4",
+            "org_ident5",
+            "org_ident6"
+          ],
+          "OP": [
+            "org_pre1",
+            "org_pre2",
+            "org_pre3",
+            "org_pre4",
+            "org_pre5",
+            "org_pre6",
+            "org_pre7",
+            "org_pre8"
+          ]
+        }
+      },
+      "distinctStoredWeights": [
+        1.0
+      ]
+    },
+    "Example - OI/OI - PLS-SEM.splsm.settings": {
+      "sections": 34,
+      "missingDataAlgorithm": "NONE",
+      "modelName": null,
+      "selectedGroups": [],
+      "weightingVector": null,
+      "pls": {
+        "weightingScheme": "PATH",
+        "maxIterations": 3000,
+        "stopCriterium": "TEN_HIGH_MINUS_7",
+        "initialWeightsStrategy": "DEFAULT",
+        "standardizationOption": "STANDARDIZED"
+      },
+      "bootstrap": {
+        "samples": 5000,
+        "confidenceIntervalMethod": "PERCENTILE_BC",
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED",
+        "bootstrappingComplexity": "BASIC_BOOTSTRAPPING",
+        "seedType": "FIXED"
+      },
+      "ipma": {
+        "construct": null,
+        "depth": "ALLEXOGENOUS_LV"
+      },
+      "cbsem": {
+        "startingValueStrategy": "DEFAULT",
+        "meanStructureStrategy": "OFF",
+        "maximumIterations": 1000,
+        "epsilon": "TEN_HIGH_MINUS_6",
+        "delta": "TEN_HIGH_MINUS_9"
+      },
+      "predict": {
+        "folds": 10,
+        "repetitions": 10,
+        "predictionType": null
+      },
+      "permutation": {
+        "samples": 1000,
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED"
+      },
+      "indicatorBlocks": {
+        "plsAlgorithmSettings": {
+          "Affective _Commitment (Joy)": [
+            "ac_joy1",
+            "ac_joy2",
+            "ac_joy3",
+            "ac_joy4"
+          ],
+          "Affective _Commitment (Love)": [
+            "ac_love1",
+            "ac_love2",
+            "ac_love3"
+          ],
+          "Organizational_Identification": [
+            "org_ident1",
+            "org_ident2",
+            "org_ident3",
+            "org_ident4",
+            "org_ident5",
+            "org_ident6"
+          ],
+          "Organizational_Prestige": [
+            "org_pre1",
+            "org_pre2",
+            "org_pre3",
+            "org_pre4",
+            "org_pre5",
+            "org_pre6",
+            "org_pre7",
+            "org_pre8"
+          ]
+        }
+      },
+      "distinctStoredWeights": [
+        1.0
+      ]
+    },
+    "Example - OI/OI - Path analysis and PROCESS.splspm.settings": {
+      "sections": 33,
+      "missingDataAlgorithm": "NONE",
+      "modelName": null,
+      "selectedGroups": [],
+      "weightingVector": null,
+      "pls": {
+        "weightingScheme": "PATH",
+        "maxIterations": 3000,
+        "stopCriterium": "TEN_HIGH_MINUS_7",
+        "initialWeightsStrategy": "DEFAULT",
+        "standardizationOption": "STANDARDIZED"
+      },
+      "bootstrap": {
+        "samples": 5000,
+        "confidenceIntervalMethod": "PERCENTILE_BC",
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED",
+        "bootstrappingComplexity": "BASIC_BOOTSTRAPPING",
+        "seedType": "FIXED"
+      },
+      "ipma": {
+        "construct": null,
+        "depth": "ALLEXOGENOUS_LV"
+      },
+      "cbsem": {
+        "startingValueStrategy": "DEFAULT",
+        "meanStructureStrategy": "OFF",
+        "maximumIterations": 1000,
+        "epsilon": "TEN_HIGH_MINUS_6",
+        "delta": "TEN_HIGH_MINUS_9"
+      },
+      "predict": {
+        "folds": 10,
+        "repetitions": 10,
+        "predictionType": null
+      },
+      "permutation": {
+        "samples": 1000,
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED"
+      },
+      "indicatorBlocks": null,
+      "distinctStoredWeights": []
+    },
+    "Example - Regression/Concise guide book.splsrm.settings": {
+      "sections": 33,
+      "missingDataAlgorithm": "CASEWISE_DELETION",
+      "modelName": "",
+      "selectedGroups": [],
+      "weightingVector": null,
+      "pls": {
+        "weightingScheme": "PATH",
+        "maxIterations": 3000,
+        "stopCriterium": "TEN_HIGH_MINUS_7",
+        "initialWeightsStrategy": "INDIVIDUAL",
+        "standardizationOption": "STANDARDIZED"
+      },
+      "bootstrap": {
+        "samples": 1000,
+        "confidenceIntervalMethod": "PERCENTILE_BC",
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED",
+        "bootstrappingComplexity": "BASIC_BOOTSTRAPPING",
+        "seedType": "FIXED"
+      },
+      "ipma": {
+        "construct": null,
+        "depth": "ALLEXOGENOUS_LV"
+      },
+      "cbsem": {
+        "startingValueStrategy": "DEFAULT",
+        "meanStructureStrategy": "OFF",
+        "maximumIterations": 1000,
+        "epsilon": "TEN_HIGH_MINUS_6",
+        "delta": "TEN_HIGH_MINUS_9"
+      },
+      "predict": {
+        "folds": 10,
+        "repetitions": 10,
+        "predictionType": null
+      },
+      "permutation": {
+        "samples": 1000,
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED"
+      },
+      "indicatorBlocks": null,
+      "distinctStoredWeights": []
+    },
+    "Example - Regression/Multivariate data analysis (MDA) book.splsrm.settings": {
+      "sections": 33,
+      "missingDataAlgorithm": "NONE",
+      "modelName": null,
+      "selectedGroups": [],
+      "weightingVector": null,
+      "pls": {
+        "weightingScheme": "PATH",
+        "maxIterations": 3000,
+        "stopCriterium": "TEN_HIGH_MINUS_7",
+        "initialWeightsStrategy": "INDIVIDUAL",
+        "standardizationOption": "STANDARDIZED"
+      },
+      "bootstrap": {
+        "samples": 1000,
+        "confidenceIntervalMethod": "PERCENTILE_BC",
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED",
+        "bootstrappingComplexity": "BASIC_BOOTSTRAPPING",
+        "seedType": "FIXED"
+      },
+      "ipma": {
+        "construct": null,
+        "depth": "ALLEXOGENOUS_LV"
+      },
+      "cbsem": {
+        "startingValueStrategy": "DEFAULT",
+        "meanStructureStrategy": "OFF",
+        "maximumIterations": 1000,
+        "epsilon": "TEN_HIGH_MINUS_6",
+        "delta": "TEN_HIGH_MINUS_9"
+      },
+      "predict": {
+        "folds": 10,
+        "repetitions": 10,
+        "predictionType": null
+      },
+      "permutation": {
+        "samples": 1000,
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED"
+      },
+      "indicatorBlocks": null,
+      "distinctStoredWeights": []
+    },
+    "Example - TAM/TAM - CB-SEM.splscb.settings": {
+      "sections": 37,
+      "missingDataAlgorithm": "NONE",
+      "modelName": null,
+      "selectedGroups": [],
+      "weightingVector": null,
+      "pls": {
+        "weightingScheme": "PATH",
+        "maxIterations": 3000,
+        "stopCriterium": "TEN_HIGH_MINUS_7",
+        "initialWeightsStrategy": "DEFAULT",
+        "standardizationOption": "STANDARDIZED"
+      },
+      "bootstrap": {
+        "samples": 5000,
+        "confidenceIntervalMethod": "PERCENTILE_BC",
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED",
+        "bootstrappingComplexity": "BASIC_BOOTSTRAPPING",
+        "seedType": "FIXED"
+      },
+      "ipma": {
+        "construct": null,
+        "depth": "ALLEXOGENOUS_LV"
+      },
+      "cbsem": {
+        "startingValueStrategy": "DEFAULT",
+        "meanStructureStrategy": "OFF",
+        "maximumIterations": 1000,
+        "epsilon": "TEN_HIGH_MINUS_6",
+        "delta": "TEN_HIGH_MINUS_9"
+      },
+      "predict": {
+        "folds": 10,
+        "repetitions": 10,
+        "predictionType": "EARLY"
+      },
+      "permutation": {
+        "samples": 1000,
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED"
+      },
+      "indicatorBlocks": null,
+      "distinctStoredWeights": []
+    },
+    "Example - TAM/TAM - PLS-SEM.splsm.settings": {
+      "sections": 33,
+      "missingDataAlgorithm": "NONE",
+      "modelName": null,
+      "selectedGroups": [],
+      "weightingVector": null,
+      "pls": {
+        "weightingScheme": "PATH",
+        "maxIterations": 3000,
+        "stopCriterium": "TEN_HIGH_MINUS_7",
+        "initialWeightsStrategy": "DEFAULT",
+        "standardizationOption": "STANDARDIZED"
+      },
+      "bootstrap": {
+        "samples": 5000,
+        "confidenceIntervalMethod": "PERCENTILE_BC",
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED",
+        "bootstrappingComplexity": "BASIC_BOOTSTRAPPING",
+        "seedType": "FIXED"
+      },
+      "ipma": {
+        "construct": null,
+        "depth": "ALLEXOGENOUS_LV"
+      },
+      "cbsem": {
+        "startingValueStrategy": "DEFAULT",
+        "meanStructureStrategy": "OFF",
+        "maximumIterations": 1000,
+        "epsilon": "TEN_HIGH_MINUS_6",
+        "delta": "TEN_HIGH_MINUS_9"
+      },
+      "predict": {
+        "folds": 10,
+        "repetitions": 10,
+        "predictionType": null
+      },
+      "permutation": {
+        "samples": 1000,
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED"
+      },
+      "indicatorBlocks": {
+        "plsAlgorithmSettings": {
+          "ATU": [
+            "ATT1",
+            "ATT2",
+            "ATT3",
+            "ATT4",
+            "ATT5"
+          ],
+          "BI": [
+            "BI1",
+            "BI2",
+            "BI3"
+          ],
+          "PEOU": [
+            "EOU1",
+            "EOU2",
+            "EOU3",
+            "EOU4",
+            "EOU5"
+          ],
+          "USE": [
+            "USE1",
+            "USE2",
+            "USE3",
+            "USE4"
+          ],
+          "PU": [
+            "USEF1",
+            "USEF2",
+            "USEF3",
+            "USEF4",
+            "USEF5"
+          ]
+        }
+      },
+      "distinctStoredWeights": [
+        1.0
+      ]
+    },
+    "Example - TAM/TAM - Path model.splspm.settings": {
+      "sections": 37,
+      "missingDataAlgorithm": "NONE",
+      "modelName": null,
+      "selectedGroups": [],
+      "weightingVector": null,
+      "pls": {
+        "weightingScheme": "PATH",
+        "maxIterations": 3000,
+        "stopCriterium": "TEN_HIGH_MINUS_7",
+        "initialWeightsStrategy": "DEFAULT",
+        "standardizationOption": "STANDARDIZED"
+      },
+      "bootstrap": {
+        "samples": 5000,
+        "confidenceIntervalMethod": "PERCENTILE_BC",
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED",
+        "bootstrappingComplexity": "BASIC_BOOTSTRAPPING",
+        "seedType": "FIXED"
+      },
+      "ipma": {
+        "construct": null,
+        "depth": "ALLEXOGENOUS_LV"
+      },
+      "cbsem": {
+        "startingValueStrategy": "DEFAULT",
+        "meanStructureStrategy": "OFF",
+        "maximumIterations": 1000,
+        "epsilon": "TEN_HIGH_MINUS_6",
+        "delta": "TEN_HIGH_MINUS_9"
+      },
+      "predict": {
+        "folds": 10,
+        "repetitions": 10,
+        "predictionType": "EARLY"
+      },
+      "permutation": {
+        "samples": 1000,
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED"
+      },
+      "indicatorBlocks": null,
+      "distinctStoredWeights": []
+    },
+    "Example - UTAUT/UTAUT - CB-SEM.splscb.settings": {
+      "sections": 34,
+      "missingDataAlgorithm": "NONE",
+      "modelName": null,
+      "selectedGroups": [],
+      "weightingVector": null,
+      "pls": {
+        "weightingScheme": "PATH",
+        "maxIterations": 3000,
+        "stopCriterium": "TEN_HIGH_MINUS_7",
+        "initialWeightsStrategy": "DEFAULT",
+        "standardizationOption": "STANDARDIZED"
+      },
+      "bootstrap": {
+        "samples": 5000,
+        "confidenceIntervalMethod": "PERCENTILE_BC",
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED",
+        "bootstrappingComplexity": "BASIC_BOOTSTRAPPING",
+        "seedType": "FIXED"
+      },
+      "ipma": {
+        "construct": null,
+        "depth": "ALLEXOGENOUS_LV"
+      },
+      "cbsem": {
+        "startingValueStrategy": "DEFAULT",
+        "meanStructureStrategy": "OFF",
+        "maximumIterations": 1000,
+        "epsilon": "TEN_HIGH_MINUS_6",
+        "delta": "TEN_HIGH_MINUS_9"
+      },
+      "predict": {
+        "folds": 10,
+        "repetitions": 10,
+        "predictionType": null
+      },
+      "permutation": {
+        "samples": 1000,
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED"
+      },
+      "indicatorBlocks": null,
+      "distinctStoredWeights": []
+    },
+    "Example - UTAUT/UTAUT - GSCA.splsge.settings": {
+      "sections": 34,
+      "missingDataAlgorithm": "NONE",
+      "modelName": null,
+      "selectedGroups": [],
+      "weightingVector": null,
+      "pls": {
+        "weightingScheme": "PATH",
+        "maxIterations": 3000,
+        "stopCriterium": "TEN_HIGH_MINUS_7",
+        "initialWeightsStrategy": "DEFAULT",
+        "standardizationOption": "STANDARDIZED"
+      },
+      "bootstrap": {
+        "samples": 5000,
+        "confidenceIntervalMethod": "PERCENTILE_BC",
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED",
+        "bootstrappingComplexity": "BASIC_BOOTSTRAPPING",
+        "seedType": "FIXED"
+      },
+      "ipma": {
+        "construct": null,
+        "depth": "ALLEXOGENOUS_LV"
+      },
+      "cbsem": {
+        "startingValueStrategy": "DEFAULT",
+        "meanStructureStrategy": "OFF",
+        "maximumIterations": 1000,
+        "epsilon": "TEN_HIGH_MINUS_6",
+        "delta": "TEN_HIGH_MINUS_9"
+      },
+      "predict": {
+        "folds": 10,
+        "repetitions": 10,
+        "predictionType": null
+      },
+      "permutation": {
+        "samples": 1000,
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED"
+      },
+      "indicatorBlocks": {
+        "gscaBasicAlgorithmSettings": {
+          "BI": [
+            "BI1",
+            "BI2",
+            "BI3"
+          ],
+          "EE": [
+            "EE1",
+            "EE2",
+            "EE3",
+            "EE4"
+          ],
+          "FC": [
+            "FC1",
+            "FC2",
+            "FC3"
+          ],
+          "PE": [
+            "PE1",
+            "PE2",
+            "PE3",
+            "PE4"
+          ],
+          "SN": [
+            "SN1",
+            "SN2",
+            "SN3"
+          ],
+          "USE": [
+            "USE1",
+            "USE2",
+            "USE3",
+            "USE4"
+          ]
+        }
+      },
+      "distinctStoredWeights": [
+        1.0
+      ]
+    },
+    "Example - UTAUT/UTAUT - PLS-SEM.splsm.settings": {
+      "sections": 33,
+      "missingDataAlgorithm": "NONE",
+      "modelName": null,
+      "selectedGroups": [],
+      "weightingVector": null,
+      "pls": {
+        "weightingScheme": "PATH",
+        "maxIterations": 3000,
+        "stopCriterium": "TEN_HIGH_MINUS_7",
+        "initialWeightsStrategy": "DEFAULT",
+        "standardizationOption": "STANDARDIZED"
+      },
+      "bootstrap": {
+        "samples": 5000,
+        "confidenceIntervalMethod": "PERCENTILE_BC",
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED",
+        "bootstrappingComplexity": "BASIC_BOOTSTRAPPING",
+        "seedType": "FIXED"
+      },
+      "ipma": {
+        "construct": null,
+        "depth": "ALLEXOGENOUS_LV"
+      },
+      "cbsem": {
+        "startingValueStrategy": "DEFAULT",
+        "meanStructureStrategy": "OFF",
+        "maximumIterations": 1000,
+        "epsilon": "TEN_HIGH_MINUS_6",
+        "delta": "TEN_HIGH_MINUS_9"
+      },
+      "predict": {
+        "folds": 10,
+        "repetitions": 10,
+        "predictionType": null
+      },
+      "permutation": {
+        "samples": 1000,
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED"
+      },
+      "indicatorBlocks": {
+        "plsAlgorithmSettings": {
+          "BI": [
+            "BI1",
+            "BI2",
+            "BI3"
+          ],
+          "EE": [
+            "EE1",
+            "EE2",
+            "EE3",
+            "EE4"
+          ],
+          "FC": [
+            "FC1",
+            "FC2",
+            "FC3"
+          ],
+          "PE": [
+            "PE1",
+            "PE2",
+            "PE3",
+            "PE4"
+          ],
+          "SI": [
+            "SN1",
+            "SN2",
+            "SN3"
+          ],
+          "USE": [
+            "USE1",
+            "USE2",
+            "USE3",
+            "USE4"
+          ]
+        }
+      },
+      "distinctStoredWeights": [
+        1.0
+      ]
+    },
+    "Example - UTAUT/UTAUT - Path analysis and PROCESS.splspm.settings": {
+      "sections": 33,
+      "missingDataAlgorithm": "NONE",
+      "modelName": null,
+      "selectedGroups": [],
+      "weightingVector": null,
+      "pls": {
+        "weightingScheme": "PATH",
+        "maxIterations": 3000,
+        "stopCriterium": "TEN_HIGH_MINUS_7",
+        "initialWeightsStrategy": "DEFAULT",
+        "standardizationOption": "STANDARDIZED"
+      },
+      "bootstrap": {
+        "samples": 5000,
+        "confidenceIntervalMethod": "PERCENTILE_BC",
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED",
+        "bootstrappingComplexity": "BASIC_BOOTSTRAPPING",
+        "seedType": "FIXED"
+      },
+      "ipma": {
+        "construct": null,
+        "depth": "ALLEXOGENOUS_LV"
+      },
+      "cbsem": {
+        "startingValueStrategy": "DEFAULT",
+        "meanStructureStrategy": "OFF",
+        "maximumIterations": 1000,
+        "epsilon": "TEN_HIGH_MINUS_6",
+        "delta": "TEN_HIGH_MINUS_9"
+      },
+      "predict": {
+        "folds": 10,
+        "repetitions": 10,
+        "predictionType": null
+      },
+      "permutation": {
+        "samples": 1000,
+        "significanceLevel": 0.05,
+        "testType": "TWO_TAILED"
+      },
+      "indicatorBlocks": null,
+      "distinctStoredWeights": []
+    }
+  },
+  "scaleTypeByNumberOfUniqueValues": {
+    "note": "Observed association across the six data files (columns counted). Not a documented SmartPLS rule.",
+    "table": {
+      "1": {
+        "BINARY": 1
+      },
+      "2": {
+        "BINARY": 15
+      },
+      "3": {
+        "ORDINAL": 1
+      },
+      "4": {
+        "METRIC": 2
+      },
+      "5": {
+        "METRIC": 26
+      },
+      "6": {
+        "METRIC": 7
+      },
+      "7": {
+        "METRIC": 36
+      },
+      "10": {
+        "METRIC": 13
+      },
+      "11": {
+        "METRIC": 2
+      },
+      "18": {
+        "METRIC": 1
+      },
+      "19": {
+        "METRIC": 1
+      },
+      "27": {
+        "METRIC": 2
+      },
+      "29": {
+        "METRIC": 2
+      },
+      "30": {
+        "METRIC": 1
+      },
+      "31": {
+        "METRIC": 1
+      },
+      "32": {
+        "METRIC": 1
+      },
+      "34": {
+        "METRIC": 1
+      },
+      "35": {
+        "METRIC": 1
+      },
+      "37": {
+        "METRIC": 1
+      },
+      "40": {
+        "METRIC": 1
+      },
+      "41": {
+        "METRIC": 1
+      },
+      "42": {
+        "METRIC": 1
+      },
+      "43": {
+        "METRIC": 1
+      },
+      "45": {
+        "METRIC": 2
+      },
+      "50": {
+        "METRIC": 2
+      },
+      "65": {
+        "METRIC": 1
+      },
+      "72": {
+        "METRIC": 1
+      },
+      "76": {
+        "METRIC": 1
+      },
+      "88": {
+        "METRIC": 1
+      },
+      "96": {
+        "METRIC": 1
+      },
+      "99": {
+        "METRIC": 2
+      },
+      "100": {
+        "METRIC": 1
+      },
+      "5302": {
+        "METRIC": 1
+      }
+    }
+  },
+  "distinctValuesAcrossModelSettings": {
+    "samples": [
+      "1000",
+      "5000"
+    ],
+    "confidenceIntervalMethod": [
+      "\"PERCENTILE_BC\""
+    ],
+    "significanceLevel": [
+      "0.05"
+    ],
+    "testType": [
+      "\"TWO_TAILED\""
+    ],
+    "seedType": [
+      "\"FIXED\""
+    ],
+    "weightingScheme": [
+      "\"PATH\""
+    ],
+    "maxIterations": [
+      "3000"
+    ],
+    "stopCriterium": [
+      "\"TEN_HIGH_MINUS_7\""
+    ],
+    "standardizationOption": [
+      "\"STANDARDIZED\""
+    ],
+    "construct": [
+      "null"
+    ],
+    "depth": [
+      "\"ALLEXOGENOUS_LV\""
+    ],
+    "maximumIterations": [
+      "1000",
+      "50000"
+    ],
+    "meanStructureStrategy": [
+      "\"OFF\""
+    ],
+    "missingDataAlgorithm": [
+      "\"CASEWISE_DELETION\"",
+      "\"MEAN_REPLACEMENT\"",
+      "\"NONE\""
+    ]
+  }
+}

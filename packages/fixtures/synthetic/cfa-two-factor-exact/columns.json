@@ -1,0 +1,82 @@
+[
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "v1",
+    "observedMax": 6.0303177851937875,
+    "observedMin": 0.14021506783923288,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "v2",
+    "observedMax": 7.163619660601372,
+    "observedMin": -0.6168589555009376,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "v3",
+    "observedMax": 6.248887473275066,
+    "observedMin": 1.595452160657901,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "v4",
+    "observedMax": 6.7292290176607175,
+    "observedMin": -2.460419388595475,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "v5",
+    "observedMax": 7.744810223563091,
+    "observedMin": 1.2902193487241895,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "v6",
+    "observedMax": 5.234651698716494,
+    "observedMin": -0.18607065734244888,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "v7",
+    "observedMax": 7.925431924601771,
+    "observedMin": 0.21979828157483583,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "v8",
+    "observedMax": 7.021769926880343,
+    "observedMin": -1.6972321200711482,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  }
+]

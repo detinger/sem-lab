@@ -1,0 +1,24 @@
+.ui-spinner {
+  display: inline-flex;
+}
+
+.ui-spinner__ring {
+  display: block;
+  border: 2px solid var(--border-strong);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: ui-spin 1s linear infinite;
+}
+
+@keyframes ui-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-spinner__ring {
+    /* A static ring with a visible gap still reads as "working" without motion. */
+    animation: none;
+  }
+}

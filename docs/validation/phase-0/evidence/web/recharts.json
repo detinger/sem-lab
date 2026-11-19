@@ -1,0 +1,33 @@
+{
+  "generatedAt": "2026-11-19T12:53:53.168Z",
+  "generatedBy": "apps/web/src/tests/spike (npm run spike:evidence -w @sem-studio/web)",
+  "runtime": {
+    "node": "v26.13.1",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "packages": [
+    {
+      "name": "recharts",
+      "version": "3.10.1",
+      "license": "MIT"
+    },
+    {
+      "name": "react",
+      "version": "19.3.1",
+      "license": "MIT"
+    },
+    {
+      "name": "react-dom",
+      "version": "19.3.1",
+      "license": "MIT"
+    }
+  ],
+  "data": {
+    "rendered": true,
+    "symbols": 3,
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "note": "fixed width/height used; ResponsiveContainer needs ResizeObserver in jsdom"
+  }
+}

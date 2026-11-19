@@ -1,0 +1,5593 @@
+{
+  "generated_by": "apps/api/spike/compat_matrix.py",
+  "probe": "apps/api/spike/compat_probe.py",
+  "engines": {
+    "semopy": "2.3.11",
+    "plspm": "0.5.7"
+  },
+  "results": [
+    {
+      "label": "py312-latest (unpinned resolution on 2026-11-19)",
+      "requested_python": "3.12",
+      "pins": {
+        "numpy": "2.5.5",
+        "pandas": "3.1.1",
+        "scipy": "1.18.1",
+        "statsmodels": "0.15.0",
+        "scikit-learn": "1.9.1",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7"
+      },
+      "seconds": 12.370933917001821,
+      "install_ok": true,
+      "python": "3.12.15",
+      "resolved_versions": {
+        "numpy": "2.5.5",
+        "pandas": "3.1.1",
+        "scipy": "1.18.1",
+        "statsmodels": "0.15.0",
+        "scikit-learn": "1.9.1",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7",
+        "sympy": "1.14.0",
+        "numdifftools": "0.11.2"
+      },
+      "all_checks_ok": false,
+      "failed": [
+        "plspm.metric_scaled.path",
+        "plspm.metric_unscaled.path",
+        "plspm.num.path",
+        "plspm.num.centroid",
+        "plspm.num.factorial",
+        "plspm.accessors",
+        "plspm.modeB_mixed.num.path",
+        "plspm.modeB_mixed.metric.path",
+        "plspm.ord.path",
+        "plspm.missing.metric_scaled",
+        "plspm.missing.num",
+        "plspm.higher_order.num",
+        "plspm.bootstrap.num.20x1",
+        "semopy.ordinal.cfa2"
+      ],
+      "checks": {
+        "plspm.import": {
+          "ok": true,
+          "value": true
+        },
+        "plspm.metric_scaled.path": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1831"
+        },
+        "plspm.metric_unscaled.path": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1831"
+        },
+        "plspm.num.path": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1831"
+        },
+        "plspm.num.centroid": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1831"
+        },
+        "plspm.num.factorial": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1831"
+        },
+        "plspm.accessors": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1831"
+        },
+        "plspm.modeB_mixed.num.path": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1831"
+        },
+        "plspm.modeB_mixed.metric.path": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1831"
+        },
+        "plspm.ord.path": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1831"
+        },
+        "plspm.missing.metric_scaled": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1831"
+        },
+        "plspm.missing.num": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1831"
+        },
+        "plspm.higher_order.num": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1831"
+        },
+        "plspm.bootstrap.num.20x1": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1831"
+        },
+        "semopy.import": {
+          "ok": true,
+          "value": "2.3.11"
+        },
+        "semopy.sem.mlw.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.1760580600947739,
+            "n_it": 53,
+            "message": "Optimization terminated successfully"
+          }
+        },
+        "semopy.sem.inspect_std": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.5095133929195788,
+            "PEOU->ATU": 0.2823407832372386,
+            "PU->ATU": 0.26458728629500206,
+            "PU->BI": 0.4658886642767357,
+            "ATU->BI": 0.17363148166637687,
+            "BI->USE": 0.3087223030978346
+          }
+        },
+        "semopy.sem.inspect_robust": {
+          "ok": true,
+          "value": {
+            "columns": [
+              "lval",
+              "op",
+              "rval",
+              "Estimate",
+              "Std. Err",
+              "z-value",
+              "p-value"
+            ],
+            "rows": 55
+          }
+        },
+        "semopy.sem.calc_stats": {
+          "ok": true,
+          "value": {
+            "DoF": 203.0,
+            "DoF Baseline": 231.0,
+            "chi2": 1399.509091512781,
+            "chi2 p-value": 0.0,
+            "chi2 Baseline": 15916.436299427003,
+            "CFI": 0.9237184692429314,
+            "GFI": 0.9120714546155559,
+            "AGFI": 0.8999433793901154,
+            "NFI": 0.9120714546155559,
+            "TLI": 0.9131968787936806,
+            "RMSEA": 0.07040752129168454,
+            "AIC": 97.64788387981045,
+            "BIC": 351.73331318508923,
+            "LogLik": 1.1760580600947739
+          }
+        },
+        "semopy.sem.predict_factors": {
+          "ok": true,
+          "value": {
+            "shape": [
+              1190,
+              5
+            ],
+            "columns": [
+              "ATU",
+              "BI",
+              "PEOU",
+              "PU",
+              "USE"
+            ]
+          }
+        },
+        "semopy.sem.uls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 5.2419670038889965,
+            "n_it": 70
+          }
+        },
+        "semopy.sem.gls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.7581163806706352,
+            "n_it": 39
+          }
+        },
+        "semopy.sem.wls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.6523144515557048,
+            "n_it": 363
+          }
+        },
+        "semopy.sem.dwls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.5197502881440365,
+            "n_it": 58
+          }
+        },
+        "semopy.sem.fiml.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 25755.262083020574,
+            "n_it": 140
+          }
+        },
+        "semopy.modelmeans.ml.missing": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 19701.55140415277,
+            "rows": 77
+          }
+        },
+        "semopy.ordinal.cfa2": {
+          "ok": false,
+          "error": "TypeError: corrcoef() got an unexpected keyword argument 'bias'",
+          "where": "semopy/utils.py:125"
+        }
+      },
+      "warning_categories": {
+        "plspm.import": {
+          "Pandas4Warning @ plspm/weights.py:23": "The 'mode.chained_assignment' option is deprecated. It has had no effect since pandas 3.0, which removed the SettingWithCopyWarning it controlled. Chained assignment now emits a ChainedAssignmentError"
+        }
+      },
+      "max_abs_diff_vs_reference": 1.5663098603013736e-05,
+      "reference_label": "py312-pandas2.2-numpy1.26"
+    },
+    {
+      "label": "py312-pandas3.0",
+      "requested_python": "3.12",
+      "pins": {
+        "numpy": "2.4.6",
+        "pandas": "3.0.6",
+        "scipy": "1.17.1",
+        "statsmodels": "0.15.0",
+        "scikit-learn": "1.9.1",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7"
+      },
+      "seconds": 35.274047082988545,
+      "install_ok": true,
+      "python": "3.12.15",
+      "resolved_versions": {
+        "numpy": "2.4.6",
+        "pandas": "3.0.6",
+        "scipy": "1.17.1",
+        "statsmodels": "0.15.0",
+        "scikit-learn": "1.9.1",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7",
+        "sympy": "1.14.0",
+        "numdifftools": "0.11.2"
+      },
+      "all_checks_ok": false,
+      "failed": [
+        "plspm.metric_scaled.path",
+        "plspm.metric_unscaled.path",
+        "plspm.num.path",
+        "plspm.num.centroid",
+        "plspm.num.factorial",
+        "plspm.accessors",
+        "plspm.modeB_mixed.num.path",
+        "plspm.modeB_mixed.metric.path",
+        "plspm.ord.path",
+        "plspm.missing.metric_scaled",
+        "plspm.missing.num",
+        "plspm.higher_order.num",
+        "plspm.bootstrap.num.20x1",
+        "semopy.ordinal.cfa2"
+      ],
+      "checks": {
+        "plspm.import": {
+          "ok": true,
+          "value": true
+        },
+        "plspm.metric_scaled.path": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1346"
+        },
+        "plspm.metric_unscaled.path": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1346"
+        },
+        "plspm.num.path": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1346"
+        },
+        "plspm.num.centroid": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1346"
+        },
+        "plspm.num.factorial": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1346"
+        },
+        "plspm.accessors": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1346"
+        },
+        "plspm.modeB_mixed.num.path": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1346"
+        },
+        "plspm.modeB_mixed.metric.path": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1346"
+        },
+        "plspm.ord.path": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1346"
+        },
+        "plspm.missing.metric_scaled": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1346"
+        },
+        "plspm.missing.num": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1346"
+        },
+        "plspm.higher_order.num": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1346"
+        },
+        "plspm.bootstrap.num.20x1": {
+          "ok": false,
+          "error": "ValueError: zip() argument 2 is longer than argument 1",
+          "where": "pandas/core/indexing.py:1346"
+        },
+        "semopy.import": {
+          "ok": true,
+          "value": "2.3.11"
+        },
+        "semopy.sem.mlw.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.1760580600947694,
+            "n_it": 53,
+            "message": "Optimization terminated successfully"
+          }
+        },
+        "semopy.sem.inspect_std": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.5095133929195804,
+            "PEOU->ATU": 0.28234078323723183,
+            "PU->ATU": 0.2645872862949906,
+            "PU->BI": 0.46588866427673065,
+            "ATU->BI": 0.173631481666385,
+            "BI->USE": 0.30872230309783505
+          }
+        },
+        "semopy.sem.inspect_robust": {
+          "ok": true,
+          "value": {
+            "columns": [
+              "lval",
+              "op",
+              "rval",
+              "Estimate",
+              "Std. Err",
+              "z-value",
+              "p-value"
+            ],
+            "rows": 55
+          }
+        },
+        "semopy.sem.calc_stats": {
+          "ok": true,
+          "value": {
+            "DoF": 203.0,
+            "DoF Baseline": 231.0,
+            "chi2": 1399.5090915127755,
+            "chi2 p-value": 0.0,
+            "chi2 Baseline": 15916.436299427003,
+            "CFI": 0.9237184692429318,
+            "GFI": 0.9120714546155563,
+            "AGFI": 0.8999433793901157,
+            "NFI": 0.9120714546155563,
+            "TLI": 0.9131968787936809,
+            "RMSEA": 0.07040752129168439,
+            "AIC": 97.64788387981046,
+            "BIC": 351.73331318508923,
+            "LogLik": 1.1760580600947694
+          }
+        },
+        "semopy.sem.predict_factors": {
+          "ok": true,
+          "value": {
+            "shape": [
+              1190,
+              5
+            ],
+            "columns": [
+              "ATU",
+              "BI",
+              "PEOU",
+              "PU",
+              "USE"
+            ]
+          }
+        },
+        "semopy.sem.uls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 5.241967003888996,
+            "n_it": 70
+          }
+        },
+        "semopy.sem.gls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.758116380670634,
+            "n_it": 39
+          }
+        },
+        "semopy.sem.wls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.6524233064260974,
+            "n_it": 330
+          }
+        },
+        "semopy.sem.dwls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.5197502881440368,
+            "n_it": 58
+          }
+        },
+        "semopy.sem.fiml.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 25755.26208262348,
+            "n_it": 144
+          }
+        },
+        "semopy.modelmeans.ml.missing": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 19701.55140504411,
+            "rows": 77
+          }
+        },
+        "semopy.ordinal.cfa2": {
+          "ok": false,
+          "error": "TypeError: corrcoef() got an unexpected keyword argument 'bias'",
+          "where": "semopy/utils.py:125"
+        }
+      },
+      "warning_categories": {},
+      "max_abs_diff_vs_reference": 9.319177178956917e-05,
+      "reference_label": "py312-pandas2.2-numpy1.26"
+    },
+    {
+      "label": "py312-pandas2.3-numpy2.5",
+      "requested_python": "3.12",
+      "pins": {
+        "numpy": "2.5.5",
+        "pandas": "2.3.3",
+        "scipy": "1.18.1",
+        "statsmodels": "0.15.0",
+        "scikit-learn": "1.9.1",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7"
+      },
+      "seconds": 39.81931374996202,
+      "install_ok": true,
+      "python": "3.12.15",
+      "resolved_versions": {
+        "numpy": "2.5.5",
+        "pandas": "2.3.3",
+        "scipy": "1.18.1",
+        "statsmodels": "0.15.0",
+        "scikit-learn": "1.9.1",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7",
+        "sympy": "1.14.0",
+        "numdifftools": "0.11.2"
+      },
+      "all_checks_ok": false,
+      "failed": [
+        "semopy.ordinal.cfa2"
+      ],
+      "checks": {
+        "plspm.import": {
+          "ok": true,
+          "value": true
+        },
+        "plspm.metric_scaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44302053459942725,
+            "PEOU->ATU": 0.25562551401941286,
+            "PU->ATU": 0.2665525003163448,
+            "PU->BI": 0.38614744560402126,
+            "ATU->BI": 0.1716594550533533,
+            "BI->USE": 0.20369883617609857
+          }
+        },
+        "plspm.metric_unscaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4430205345994271,
+            "PEOU->ATU": 0.2556255140194127,
+            "PU->ATU": 0.26655250031634486,
+            "PU->BI": 0.3861474456040212,
+            "ATU->BI": 0.17165945505335323,
+            "BI->USE": 0.20369883617609869
+          }
+        },
+        "plspm.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453834714315049,
+            "PEOU->ATU": 0.25322624611791444,
+            "PU->ATU": 0.26720244610293703,
+            "PU->BI": 0.4012186530245403,
+            "ATU->BI": 0.1728418719041286,
+            "BI->USE": 0.22940398402175277
+          }
+        },
+        "plspm.num.centroid": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453188777980337,
+            "PEOU->ATU": 0.2531494171955243,
+            "PU->ATU": 0.26726753699298567,
+            "PU->BI": 0.4007485547213206,
+            "ATU->BI": 0.17303540030579143,
+            "BI->USE": 0.22893326260931268
+          }
+        },
+        "plspm.num.factorial": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44538914232391813,
+            "PEOU->ATU": 0.25306849990838776,
+            "PU->ATU": 0.2672585876105995,
+            "PU->BI": 0.40051475855717,
+            "ATU->BI": 0.1731611159905372,
+            "BI->USE": 0.22863874505795737
+          }
+        },
+        "plspm.accessors": {
+          "ok": true,
+          "value": {
+            "inner_model": [
+              "from",
+              "to",
+              "estimate",
+              "std error",
+              "t",
+              "p>|t|"
+            ],
+            "outer_model": [
+              "weight",
+              "loading",
+              "communality",
+              "redundancy"
+            ],
+            "inner_summary": [
+              "type",
+              "r_squared",
+              "r_squared_adj",
+              "block_communality",
+              "mean_redundancy",
+              "ave"
+            ],
+            "unidimensionality": [
+              "mode",
+              "mvs",
+              "cronbach_alpha",
+              "dillon_goldstein_rho",
+              "eig_1st",
+              "eig_2nd"
+            ],
+            "effects": [
+              "from",
+              "to",
+              "direct",
+              "indirect",
+              "total"
+            ],
+            "crossloadings_shape": [
+              22,
+              5
+            ],
+            "scores_shape": [
+              1190,
+              5
+            ],
+            "goodness_of_fit": 0.3470687787104632
+          }
+        },
+        "plspm.modeB_mixed.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.45004616089070504,
+            "PEOU->ATU": 0.25244849162848176,
+            "PU->ATU": 0.2663729681224091,
+            "PU->BI": 0.40120946045637895,
+            "ATU->BI": 0.1728520597198564,
+            "BI->USE": 0.2294037174708496
+          }
+        },
+        "plspm.modeB_mixed.metric.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44841739517341955,
+            "PEOU->ATU": 0.2544332653349882,
+            "PU->ATU": 0.2657077026649595,
+            "PU->BI": 0.38613794398804246,
+            "ATU->BI": 0.1716825190941355,
+            "BI->USE": 0.20369801438815618
+          }
+        },
+        "plspm.ord.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4970863819216229,
+            "PEOU->ATU": 0.2661437487272159,
+            "PU->ATU": 0.2839266747993197,
+            "PU->BI": 0.4695492210856159,
+            "ATU->BI": 0.1521756792155801,
+            "BI->USE": 0.23137723701502522
+          }
+        },
+        "plspm.missing.metric_scaled": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4432547304210036,
+            "PEOU->ATU": 0.2585688055398733,
+            "PU->ATU": 0.2636410104866544,
+            "PU->BI": 0.3850903182704048,
+            "ATU->BI": 0.17243476924879392,
+            "BI->USE": 0.203745171849699
+          }
+        },
+        "plspm.missing.num": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4455578792211538,
+            "PEOU->ATU": 0.252780757110358,
+            "PU->ATU": 0.2676656092304725,
+            "PU->BI": 0.40013583669401437,
+            "ATU->BI": 0.17365663522817318,
+            "BI->USE": 0.23013163947632964
+          }
+        },
+        "plspm.higher_order.num": {
+          "ok": true,
+          "value": {
+            "BELIEFS->BI": 0.6010662147071847,
+            "BI->USE": 0.2266853695654798
+          }
+        },
+        "plspm.bootstrap.num.20x1": {
+          "ok": true,
+          "value": {
+            "paths_columns": [
+              "original",
+              "mean",
+              "std.error",
+              "perc.025",
+              "perc.975",
+              "t stat."
+            ],
+            "paths_rows": 6,
+            "paths_std_error_finite": true,
+            "weights_rows": 22,
+            "loading_rows": 22
+          }
+        },
+        "semopy.import": {
+          "ok": true,
+          "value": "2.3.11"
+        },
+        "semopy.sem.mlw.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.1760580600947739,
+            "n_it": 53,
+            "message": "Optimization terminated successfully"
+          }
+        },
+        "semopy.sem.inspect_std": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.5095133929195788,
+            "PEOU->ATU": 0.2823407832372386,
+            "PU->ATU": 0.26458728629500206,
+            "PU->BI": 0.4658886642767357,
+            "ATU->BI": 0.17363148166637687,
+            "BI->USE": 0.3087223030978346
+          }
+        },
+        "semopy.sem.inspect_robust": {
+          "ok": true,
+          "value": {
+            "columns": [
+              "lval",
+              "op",
+              "rval",
+              "Estimate",
+              "Std. Err",
+              "z-value",
+              "p-value"
+            ],
+            "rows": 55
+          }
+        },
+        "semopy.sem.calc_stats": {
+          "ok": true,
+          "value": {
+            "DoF": 203.0,
+            "DoF Baseline": 231.0,
+            "chi2": 1399.509091512781,
+            "chi2 p-value": 0.0,
+            "chi2 Baseline": 15916.436299427003,
+            "CFI": 0.9237184692429314,
+            "GFI": 0.9120714546155559,
+            "AGFI": 0.8999433793901154,
+            "NFI": 0.9120714546155559,
+            "TLI": 0.9131968787936806,
+            "RMSEA": 0.07040752129168454,
+            "AIC": 97.64788387981045,
+            "BIC": 351.73331318508923,
+            "LogLik": 1.1760580600947739
+          }
+        },
+        "semopy.sem.predict_factors": {
+          "ok": true,
+          "value": {
+            "shape": [
+              1190,
+              5
+            ],
+            "columns": [
+              "ATU",
+              "BI",
+              "PEOU",
+              "PU",
+              "USE"
+            ]
+          }
+        },
+        "semopy.sem.uls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 5.2419670038889965,
+            "n_it": 70
+          }
+        },
+        "semopy.sem.gls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.7581163806706352,
+            "n_it": 39
+          }
+        },
+        "semopy.sem.wls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.6523144515557048,
+            "n_it": 363
+          }
+        },
+        "semopy.sem.dwls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.5197502881440365,
+            "n_it": 58
+          }
+        },
+        "semopy.sem.fiml.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 25755.262083020574,
+            "n_it": 140
+          }
+        },
+        "semopy.modelmeans.ml.missing": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 19701.55140415277,
+            "rows": 77
+          }
+        },
+        "semopy.ordinal.cfa2": {
+          "ok": false,
+          "error": "TypeError: corrcoef() got an unexpected keyword argument 'bias'",
+          "where": "semopy/utils.py:125"
+        }
+      },
+      "warning_categories": {},
+      "max_abs_diff_vs_reference": 1.5663098603013736e-05,
+      "reference_label": "py312-pandas2.2-numpy1.26"
+    },
+    {
+      "label": "py312-pandas2.3-numpy2.4",
+      "requested_python": "3.12",
+      "pins": {
+        "numpy": "2.4.6",
+        "pandas": "2.3.3",
+        "scipy": "1.17.1",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.8.0",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7"
+      },
+      "seconds": 39.43385070801014,
+      "install_ok": true,
+      "python": "3.12.15",
+      "resolved_versions": {
+        "numpy": "2.4.6",
+        "pandas": "2.3.3",
+        "scipy": "1.17.1",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.8.0",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7",
+        "sympy": "1.14.0",
+        "numdifftools": "0.11.2"
+      },
+      "all_checks_ok": false,
+      "failed": [
+        "semopy.ordinal.cfa2"
+      ],
+      "checks": {
+        "plspm.import": {
+          "ok": true,
+          "value": true
+        },
+        "plspm.metric_scaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44302053459942725,
+            "PEOU->ATU": 0.25562551401941286,
+            "PU->ATU": 0.2665525003163448,
+            "PU->BI": 0.38614744560402126,
+            "ATU->BI": 0.1716594550533533,
+            "BI->USE": 0.20369883617609857
+          }
+        },
+        "plspm.metric_unscaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4430205345994271,
+            "PEOU->ATU": 0.2556255140194127,
+            "PU->ATU": 0.26655250031634486,
+            "PU->BI": 0.3861474456040212,
+            "ATU->BI": 0.17165945505335323,
+            "BI->USE": 0.20369883617609869
+          }
+        },
+        "plspm.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453834714315049,
+            "PEOU->ATU": 0.25322624611791444,
+            "PU->ATU": 0.26720244610293703,
+            "PU->BI": 0.4012186530245403,
+            "ATU->BI": 0.1728418719041286,
+            "BI->USE": 0.22940398402175277
+          }
+        },
+        "plspm.num.centroid": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453188777980337,
+            "PEOU->ATU": 0.2531494171955243,
+            "PU->ATU": 0.26726753699298567,
+            "PU->BI": 0.4007485547213206,
+            "ATU->BI": 0.17303540030579143,
+            "BI->USE": 0.22893326260931268
+          }
+        },
+        "plspm.num.factorial": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44538914232391813,
+            "PEOU->ATU": 0.25306849990838776,
+            "PU->ATU": 0.2672585876105995,
+            "PU->BI": 0.40051475855717,
+            "ATU->BI": 0.1731611159905372,
+            "BI->USE": 0.22863874505795737
+          }
+        },
+        "plspm.accessors": {
+          "ok": true,
+          "value": {
+            "inner_model": [
+              "from",
+              "to",
+              "estimate",
+              "std error",
+              "t",
+              "p>|t|"
+            ],
+            "outer_model": [
+              "weight",
+              "loading",
+              "communality",
+              "redundancy"
+            ],
+            "inner_summary": [
+              "type",
+              "r_squared",
+              "r_squared_adj",
+              "block_communality",
+              "mean_redundancy",
+              "ave"
+            ],
+            "unidimensionality": [
+              "mode",
+              "mvs",
+              "cronbach_alpha",
+              "dillon_goldstein_rho",
+              "eig_1st",
+              "eig_2nd"
+            ],
+            "effects": [
+              "from",
+              "to",
+              "direct",
+              "indirect",
+              "total"
+            ],
+            "crossloadings_shape": [
+              22,
+              5
+            ],
+            "scores_shape": [
+              1190,
+              5
+            ],
+            "goodness_of_fit": 0.3470687787104632
+          }
+        },
+        "plspm.modeB_mixed.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.45004616089070504,
+            "PEOU->ATU": 0.25244849162848176,
+            "PU->ATU": 0.2663729681224091,
+            "PU->BI": 0.40120946045637895,
+            "ATU->BI": 0.1728520597198564,
+            "BI->USE": 0.2294037174708496
+          }
+        },
+        "plspm.modeB_mixed.metric.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44841739517341955,
+            "PEOU->ATU": 0.2544332653349882,
+            "PU->ATU": 0.2657077026649595,
+            "PU->BI": 0.38613794398804246,
+            "ATU->BI": 0.1716825190941355,
+            "BI->USE": 0.20369801438815618
+          }
+        },
+        "plspm.ord.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4970863819216229,
+            "PEOU->ATU": 0.2661437487272159,
+            "PU->ATU": 0.2839266747993197,
+            "PU->BI": 0.4695492210856159,
+            "ATU->BI": 0.1521756792155801,
+            "BI->USE": 0.23137723701502522
+          }
+        },
+        "plspm.missing.metric_scaled": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4432547304210036,
+            "PEOU->ATU": 0.2585688055398733,
+            "PU->ATU": 0.2636410104866544,
+            "PU->BI": 0.3850903182704048,
+            "ATU->BI": 0.17243476924879392,
+            "BI->USE": 0.203745171849699
+          }
+        },
+        "plspm.missing.num": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4455578792211538,
+            "PEOU->ATU": 0.252780757110358,
+            "PU->ATU": 0.2676656092304725,
+            "PU->BI": 0.40013583669401437,
+            "ATU->BI": 0.17365663522817318,
+            "BI->USE": 0.23013163947632964
+          }
+        },
+        "plspm.higher_order.num": {
+          "ok": true,
+          "value": {
+            "BELIEFS->BI": 0.6010662147071847,
+            "BI->USE": 0.2266853695654798
+          }
+        },
+        "plspm.bootstrap.num.20x1": {
+          "ok": true,
+          "value": {
+            "paths_columns": [
+              "original",
+              "mean",
+              "std.error",
+              "perc.025",
+              "perc.975",
+              "t stat."
+            ],
+            "paths_rows": 6,
+            "paths_std_error_finite": true,
+            "weights_rows": 22,
+            "loading_rows": 22
+          }
+        },
+        "semopy.import": {
+          "ok": true,
+          "value": "2.3.11"
+        },
+        "semopy.sem.mlw.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.1760580600947694,
+            "n_it": 53,
+            "message": "Optimization terminated successfully"
+          }
+        },
+        "semopy.sem.inspect_std": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.5095133929195804,
+            "PEOU->ATU": 0.28234078323723183,
+            "PU->ATU": 0.2645872862949906,
+            "PU->BI": 0.46588866427673065,
+            "ATU->BI": 0.173631481666385,
+            "BI->USE": 0.30872230309783505
+          }
+        },
+        "semopy.sem.inspect_robust": {
+          "ok": true,
+          "value": {
+            "columns": [
+              "lval",
+              "op",
+              "rval",
+              "Estimate",
+              "Std. Err",
+              "z-value",
+              "p-value"
+            ],
+            "rows": 55
+          }
+        },
+        "semopy.sem.calc_stats": {
+          "ok": true,
+          "value": {
+            "DoF": 203.0,
+            "DoF Baseline": 231.0,
+            "chi2": 1399.5090915127755,
+            "chi2 p-value": 0.0,
+            "chi2 Baseline": 15916.436299427003,
+            "CFI": 0.9237184692429318,
+            "GFI": 0.9120714546155563,
+            "AGFI": 0.8999433793901157,
+            "NFI": 0.9120714546155563,
+            "TLI": 0.9131968787936809,
+            "RMSEA": 0.07040752129168439,
+            "AIC": 97.64788387981046,
+            "BIC": 351.73331318508923,
+            "LogLik": 1.1760580600947694
+          }
+        },
+        "semopy.sem.predict_factors": {
+          "ok": true,
+          "value": {
+            "shape": [
+              1190,
+              5
+            ],
+            "columns": [
+              "ATU",
+              "BI",
+              "PEOU",
+              "PU",
+              "USE"
+            ]
+          }
+        },
+        "semopy.sem.uls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 5.241967003888996,
+            "n_it": 70
+          }
+        },
+        "semopy.sem.gls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.758116380670634,
+            "n_it": 39
+          }
+        },
+        "semopy.sem.wls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.6524233064260974,
+            "n_it": 330
+          }
+        },
+        "semopy.sem.dwls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.5197502881440368,
+            "n_it": 58
+          }
+        },
+        "semopy.sem.fiml.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 25755.26208262348,
+            "n_it": 144
+          }
+        },
+        "semopy.modelmeans.ml.missing": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 19701.55140504411,
+            "rows": 77
+          }
+        },
+        "semopy.ordinal.cfa2": {
+          "ok": false,
+          "error": "TypeError: corrcoef() got an unexpected keyword argument 'bias'",
+          "where": "semopy/utils.py:125"
+        }
+      },
+      "warning_categories": {},
+      "max_abs_diff_vs_reference": 9.319177178956917e-05,
+      "reference_label": "py312-pandas2.2-numpy1.26"
+    },
+    {
+      "label": "py312-pandas2.3-numpy2.3",
+      "requested_python": "3.12",
+      "pins": {
+        "numpy": "2.3.5",
+        "pandas": "2.3.3",
+        "scipy": "1.16.3",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.7.2",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7"
+      },
+      "seconds": 52.03410812502261,
+      "install_ok": true,
+      "python": "3.12.15",
+      "resolved_versions": {
+        "numpy": "2.3.5",
+        "pandas": "2.3.3",
+        "scipy": "1.16.3",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.7.2",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7",
+        "sympy": "1.14.0",
+        "numdifftools": "0.11.2"
+      },
+      "all_checks_ok": false,
+      "failed": [
+        "semopy.ordinal.cfa2"
+      ],
+      "checks": {
+        "plspm.import": {
+          "ok": true,
+          "value": true
+        },
+        "plspm.metric_scaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44302053459942725,
+            "PEOU->ATU": 0.25562551401941286,
+            "PU->ATU": 0.2665525003163448,
+            "PU->BI": 0.38614744560402126,
+            "ATU->BI": 0.1716594550533533,
+            "BI->USE": 0.20369883617609857
+          }
+        },
+        "plspm.metric_unscaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4430205345994271,
+            "PEOU->ATU": 0.2556255140194127,
+            "PU->ATU": 0.26655250031634486,
+            "PU->BI": 0.3861474456040212,
+            "ATU->BI": 0.17165945505335323,
+            "BI->USE": 0.20369883617609869
+          }
+        },
+        "plspm.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453834714315049,
+            "PEOU->ATU": 0.25322624611791444,
+            "PU->ATU": 0.26720244610293703,
+            "PU->BI": 0.4012186530245403,
+            "ATU->BI": 0.1728418719041286,
+            "BI->USE": 0.22940398402175277
+          }
+        },
+        "plspm.num.centroid": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453188777980337,
+            "PEOU->ATU": 0.2531494171955243,
+            "PU->ATU": 0.26726753699298567,
+            "PU->BI": 0.4007485547213206,
+            "ATU->BI": 0.17303540030579143,
+            "BI->USE": 0.22893326260931268
+          }
+        },
+        "plspm.num.factorial": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44538914232391813,
+            "PEOU->ATU": 0.25306849990838776,
+            "PU->ATU": 0.2672585876105995,
+            "PU->BI": 0.40051475855717,
+            "ATU->BI": 0.1731611159905372,
+            "BI->USE": 0.22863874505795737
+          }
+        },
+        "plspm.accessors": {
+          "ok": true,
+          "value": {
+            "inner_model": [
+              "from",
+              "to",
+              "estimate",
+              "std error",
+              "t",
+              "p>|t|"
+            ],
+            "outer_model": [
+              "weight",
+              "loading",
+              "communality",
+              "redundancy"
+            ],
+            "inner_summary": [
+              "type",
+              "r_squared",
+              "r_squared_adj",
+              "block_communality",
+              "mean_redundancy",
+              "ave"
+            ],
+            "unidimensionality": [
+              "mode",
+              "mvs",
+              "cronbach_alpha",
+              "dillon_goldstein_rho",
+              "eig_1st",
+              "eig_2nd"
+            ],
+            "effects": [
+              "from",
+              "to",
+              "direct",
+              "indirect",
+              "total"
+            ],
+            "crossloadings_shape": [
+              22,
+              5
+            ],
+            "scores_shape": [
+              1190,
+              5
+            ],
+            "goodness_of_fit": 0.3470687787104632
+          }
+        },
+        "plspm.modeB_mixed.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.45004616089070504,
+            "PEOU->ATU": 0.25244849162848176,
+            "PU->ATU": 0.2663729681224091,
+            "PU->BI": 0.40120946045637895,
+            "ATU->BI": 0.1728520597198564,
+            "BI->USE": 0.2294037174708496
+          }
+        },
+        "plspm.modeB_mixed.metric.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44841739517341955,
+            "PEOU->ATU": 0.2544332653349882,
+            "PU->ATU": 0.2657077026649595,
+            "PU->BI": 0.38613794398804246,
+            "ATU->BI": 0.1716825190941355,
+            "BI->USE": 0.20369801438815618
+          }
+        },
+        "plspm.ord.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4970863819216229,
+            "PEOU->ATU": 0.2661437487272159,
+            "PU->ATU": 0.2839266747993197,
+            "PU->BI": 0.4695492210856159,
+            "ATU->BI": 0.1521756792155801,
+            "BI->USE": 0.23137723701502522
+          }
+        },
+        "plspm.missing.metric_scaled": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4432547304210036,
+            "PEOU->ATU": 0.2585688055398733,
+            "PU->ATU": 0.2636410104866544,
+            "PU->BI": 0.3850903182704048,
+            "ATU->BI": 0.17243476924879392,
+            "BI->USE": 0.203745171849699
+          }
+        },
+        "plspm.missing.num": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4455578792211538,
+            "PEOU->ATU": 0.252780757110358,
+            "PU->ATU": 0.2676656092304725,
+            "PU->BI": 0.40013583669401437,
+            "ATU->BI": 0.17365663522817318,
+            "BI->USE": 0.23013163947632964
+          }
+        },
+        "plspm.higher_order.num": {
+          "ok": true,
+          "value": {
+            "BELIEFS->BI": 0.6010662147071847,
+            "BI->USE": 0.2266853695654798
+          }
+        },
+        "plspm.bootstrap.num.20x1": {
+          "ok": true,
+          "value": {
+            "paths_columns": [
+              "original",
+              "mean",
+              "std.error",
+              "perc.025",
+              "perc.975",
+              "t stat."
+            ],
+            "paths_rows": 6,
+            "paths_std_error_finite": true,
+            "weights_rows": 22,
+            "loading_rows": 22
+          }
+        },
+        "semopy.import": {
+          "ok": true,
+          "value": "2.3.11"
+        },
+        "semopy.sem.mlw.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.1760580600947694,
+            "n_it": 53,
+            "message": "Optimization terminated successfully"
+          }
+        },
+        "semopy.sem.inspect_std": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.5095133929195804,
+            "PEOU->ATU": 0.28234078323723183,
+            "PU->ATU": 0.2645872862949906,
+            "PU->BI": 0.46588866427673065,
+            "ATU->BI": 0.173631481666385,
+            "BI->USE": 0.30872230309783505
+          }
+        },
+        "semopy.sem.inspect_robust": {
+          "ok": true,
+          "value": {
+            "columns": [
+              "lval",
+              "op",
+              "rval",
+              "Estimate",
+              "Std. Err",
+              "z-value",
+              "p-value"
+            ],
+            "rows": 55
+          }
+        },
+        "semopy.sem.calc_stats": {
+          "ok": true,
+          "value": {
+            "DoF": 203.0,
+            "DoF Baseline": 231.0,
+            "chi2": 1399.5090915127755,
+            "chi2 p-value": 0.0,
+            "chi2 Baseline": 15916.436299427003,
+            "CFI": 0.9237184692429318,
+            "GFI": 0.9120714546155563,
+            "AGFI": 0.8999433793901157,
+            "NFI": 0.9120714546155563,
+            "TLI": 0.9131968787936809,
+            "RMSEA": 0.07040752129168439,
+            "AIC": 97.64788387981046,
+            "BIC": 351.73331318508923,
+            "LogLik": 1.1760580600947694
+          }
+        },
+        "semopy.sem.predict_factors": {
+          "ok": true,
+          "value": {
+            "shape": [
+              1190,
+              5
+            ],
+            "columns": [
+              "ATU",
+              "BI",
+              "PEOU",
+              "PU",
+              "USE"
+            ]
+          }
+        },
+        "semopy.sem.uls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 5.241967003888996,
+            "n_it": 70
+          }
+        },
+        "semopy.sem.gls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.758116380670634,
+            "n_it": 39
+          }
+        },
+        "semopy.sem.wls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.6524233064260974,
+            "n_it": 330
+          }
+        },
+        "semopy.sem.dwls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.5197502881440368,
+            "n_it": 58
+          }
+        },
+        "semopy.sem.fiml.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 25755.26208262348,
+            "n_it": 144
+          }
+        },
+        "semopy.modelmeans.ml.missing": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 19701.55140504411,
+            "rows": 77
+          }
+        },
+        "semopy.ordinal.cfa2": {
+          "ok": false,
+          "error": "AttributeError: `scipy.stats.mvn` has no attribute `mvnun`; furthermore, `scipy.stats.mvn` is deprecated and will be removed in SciPy 2.0.0.",
+          "where": "scipy/_lib/deprecation.py:45"
+        }
+      },
+      "warning_categories": {
+        "semopy.ordinal.cfa2": {
+          "DeprecationWarning @ semopy/utils.py:125": "bias and ddof have no effect and are deprecated"
+        }
+      },
+      "max_abs_diff_vs_reference": 9.319177178956917e-05,
+      "reference_label": "py312-pandas2.2-numpy1.26"
+    },
+    {
+      "label": "py312-pandas2.3-numpy2.2",
+      "requested_python": "3.12",
+      "pins": {
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "scipy": "1.15.3",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.7.2",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7"
+      },
+      "seconds": 52.897315665963106,
+      "install_ok": true,
+      "python": "3.12.15",
+      "resolved_versions": {
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "scipy": "1.15.3",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.7.2",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7",
+        "sympy": "1.14.0",
+        "numdifftools": "0.11.2"
+      },
+      "all_checks_ok": false,
+      "failed": [
+        "semopy.ordinal.cfa2"
+      ],
+      "checks": {
+        "plspm.import": {
+          "ok": true,
+          "value": true
+        },
+        "plspm.metric_scaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44302053459942725,
+            "PEOU->ATU": 0.25562551401941286,
+            "PU->ATU": 0.2665525003163448,
+            "PU->BI": 0.38614744560402126,
+            "ATU->BI": 0.1716594550533533,
+            "BI->USE": 0.20369883617609857
+          }
+        },
+        "plspm.metric_unscaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4430205345994271,
+            "PEOU->ATU": 0.2556255140194127,
+            "PU->ATU": 0.26655250031634486,
+            "PU->BI": 0.3861474456040212,
+            "ATU->BI": 0.17165945505335323,
+            "BI->USE": 0.20369883617609869
+          }
+        },
+        "plspm.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453834714315049,
+            "PEOU->ATU": 0.25322624611791444,
+            "PU->ATU": 0.26720244610293703,
+            "PU->BI": 0.4012186530245403,
+            "ATU->BI": 0.1728418719041286,
+            "BI->USE": 0.22940398402175277
+          }
+        },
+        "plspm.num.centroid": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453188777980337,
+            "PEOU->ATU": 0.2531494171955243,
+            "PU->ATU": 0.26726753699298567,
+            "PU->BI": 0.4007485547213206,
+            "ATU->BI": 0.17303540030579143,
+            "BI->USE": 0.22893326260931268
+          }
+        },
+        "plspm.num.factorial": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44538914232391813,
+            "PEOU->ATU": 0.25306849990838776,
+            "PU->ATU": 0.2672585876105995,
+            "PU->BI": 0.40051475855717,
+            "ATU->BI": 0.1731611159905372,
+            "BI->USE": 0.22863874505795737
+          }
+        },
+        "plspm.accessors": {
+          "ok": true,
+          "value": {
+            "inner_model": [
+              "from",
+              "to",
+              "estimate",
+              "std error",
+              "t",
+              "p>|t|"
+            ],
+            "outer_model": [
+              "weight",
+              "loading",
+              "communality",
+              "redundancy"
+            ],
+            "inner_summary": [
+              "type",
+              "r_squared",
+              "r_squared_adj",
+              "block_communality",
+              "mean_redundancy",
+              "ave"
+            ],
+            "unidimensionality": [
+              "mode",
+              "mvs",
+              "cronbach_alpha",
+              "dillon_goldstein_rho",
+              "eig_1st",
+              "eig_2nd"
+            ],
+            "effects": [
+              "from",
+              "to",
+              "direct",
+              "indirect",
+              "total"
+            ],
+            "crossloadings_shape": [
+              22,
+              5
+            ],
+            "scores_shape": [
+              1190,
+              5
+            ],
+            "goodness_of_fit": 0.3470687787104632
+          }
+        },
+        "plspm.modeB_mixed.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.45004616089070504,
+            "PEOU->ATU": 0.25244849162848176,
+            "PU->ATU": 0.2663729681224091,
+            "PU->BI": 0.40120946045637895,
+            "ATU->BI": 0.1728520597198564,
+            "BI->USE": 0.2294037174708496
+          }
+        },
+        "plspm.modeB_mixed.metric.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44841739517341955,
+            "PEOU->ATU": 0.2544332653349882,
+            "PU->ATU": 0.2657077026649595,
+            "PU->BI": 0.38613794398804246,
+            "ATU->BI": 0.1716825190941355,
+            "BI->USE": 0.20369801438815618
+          }
+        },
+        "plspm.ord.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4970863819216229,
+            "PEOU->ATU": 0.2661437487272159,
+            "PU->ATU": 0.2839266747993197,
+            "PU->BI": 0.4695492210856159,
+            "ATU->BI": 0.1521756792155801,
+            "BI->USE": 0.23137723701502522
+          }
+        },
+        "plspm.missing.metric_scaled": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4432547304210036,
+            "PEOU->ATU": 0.2585688055398733,
+            "PU->ATU": 0.2636410104866544,
+            "PU->BI": 0.3850903182704048,
+            "ATU->BI": 0.17243476924879392,
+            "BI->USE": 0.203745171849699
+          }
+        },
+        "plspm.missing.num": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4455578792211538,
+            "PEOU->ATU": 0.252780757110358,
+            "PU->ATU": 0.2676656092304725,
+            "PU->BI": 0.40013583669401437,
+            "ATU->BI": 0.17365663522817318,
+            "BI->USE": 0.23013163947632964
+          }
+        },
+        "plspm.higher_order.num": {
+          "ok": true,
+          "value": {
+            "BELIEFS->BI": 0.6010662147071847,
+            "BI->USE": 0.2266853695654798
+          }
+        },
+        "plspm.bootstrap.num.20x1": {
+          "ok": true,
+          "value": {
+            "paths_columns": [
+              "original",
+              "mean",
+              "std.error",
+              "perc.025",
+              "perc.975",
+              "t stat."
+            ],
+            "paths_rows": 6,
+            "paths_std_error_finite": true,
+            "weights_rows": 22,
+            "loading_rows": 22
+          }
+        },
+        "semopy.import": {
+          "ok": true,
+          "value": "2.3.11"
+        },
+        "semopy.sem.mlw.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.1760580600947739,
+            "n_it": 53,
+            "message": "Optimization terminated successfully"
+          }
+        },
+        "semopy.sem.inspect_std": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.5095133929195801,
+            "PEOU->ATU": 0.28234078323723466,
+            "PU->ATU": 0.2645872862949993,
+            "PU->BI": 0.4658886642767345,
+            "ATU->BI": 0.1736314816663804,
+            "BI->USE": 0.3087223030978345
+          }
+        },
+        "semopy.sem.inspect_robust": {
+          "ok": true,
+          "value": {
+            "columns": [
+              "lval",
+              "op",
+              "rval",
+              "Estimate",
+              "Std. Err",
+              "z-value",
+              "p-value"
+            ],
+            "rows": 55
+          }
+        },
+        "semopy.sem.calc_stats": {
+          "ok": true,
+          "value": {
+            "DoF": 203.0,
+            "DoF Baseline": 231.0,
+            "chi2": 1399.509091512781,
+            "chi2 p-value": 0.0,
+            "chi2 Baseline": 15916.436299427009,
+            "CFI": 0.9237184692429314,
+            "GFI": 0.9120714546155559,
+            "AGFI": 0.8999433793901154,
+            "NFI": 0.9120714546155559,
+            "TLI": 0.9131968787936806,
+            "RMSEA": 0.07040752129168454,
+            "AIC": 97.64788387981045,
+            "BIC": 351.73331318508923,
+            "LogLik": 1.1760580600947739
+          }
+        },
+        "semopy.sem.predict_factors": {
+          "ok": true,
+          "value": {
+            "shape": [
+              1190,
+              5
+            ],
+            "columns": [
+              "ATU",
+              "BI",
+              "PEOU",
+              "PU",
+              "USE"
+            ]
+          }
+        },
+        "semopy.sem.uls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 5.241967003888995,
+            "n_it": 70
+          }
+        },
+        "semopy.sem.gls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.7581163806706348,
+            "n_it": 39
+          }
+        },
+        "semopy.sem.wls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.6546242995043157,
+            "n_it": 175
+          }
+        },
+        "semopy.sem.dwls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.5197502881440373,
+            "n_it": 58
+          }
+        },
+        "semopy.sem.fiml.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 25755.262082757017,
+            "n_it": 163
+          }
+        },
+        "semopy.modelmeans.ml.missing": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 19701.551403808764,
+            "rows": 77
+          }
+        },
+        "semopy.ordinal.cfa2": {
+          "ok": false,
+          "error": "AttributeError: `scipy.stats.mvn` has no attribute `mvnun`; furthermore, `scipy.stats.mvn` is deprecated and will be removed in SciPy 2.0.0.",
+          "where": "scipy/_lib/deprecation.py:45"
+        }
+      },
+      "warning_categories": {
+        "semopy.ordinal.cfa2": {
+          "DeprecationWarning @ semopy/utils.py:125": "bias and ddof have no effect and are deprecated"
+        }
+      },
+      "max_abs_diff_vs_reference": 0.0022941848500078743,
+      "reference_label": "py312-pandas2.2-numpy1.26"
+    },
+    {
+      "label": "py312-pandas2.2-numpy2.2",
+      "requested_python": "3.12",
+      "pins": {
+        "numpy": "2.2.6",
+        "pandas": "2.2.3",
+        "scipy": "1.15.3",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.7.2",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7"
+      },
+      "seconds": 50.0600064159953,
+      "install_ok": true,
+      "python": "3.12.15",
+      "resolved_versions": {
+        "numpy": "2.2.6",
+        "pandas": "2.2.3",
+        "scipy": "1.15.3",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.7.2",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7",
+        "sympy": "1.14.0",
+        "numdifftools": "0.11.2"
+      },
+      "all_checks_ok": false,
+      "failed": [
+        "semopy.ordinal.cfa2"
+      ],
+      "checks": {
+        "plspm.import": {
+          "ok": true,
+          "value": true
+        },
+        "plspm.metric_scaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44302053459942725,
+            "PEOU->ATU": 0.25562551401941286,
+            "PU->ATU": 0.2665525003163448,
+            "PU->BI": 0.38614744560402126,
+            "ATU->BI": 0.1716594550533533,
+            "BI->USE": 0.20369883617609857
+          }
+        },
+        "plspm.metric_unscaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4430205345994271,
+            "PEOU->ATU": 0.2556255140194127,
+            "PU->ATU": 0.26655250031634486,
+            "PU->BI": 0.3861474456040212,
+            "ATU->BI": 0.17165945505335323,
+            "BI->USE": 0.20369883617609869
+          }
+        },
+        "plspm.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453834714315049,
+            "PEOU->ATU": 0.25322624611791444,
+            "PU->ATU": 0.26720244610293703,
+            "PU->BI": 0.4012186530245403,
+            "ATU->BI": 0.1728418719041286,
+            "BI->USE": 0.22940398402175277
+          }
+        },
+        "plspm.num.centroid": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453188777980337,
+            "PEOU->ATU": 0.2531494171955243,
+            "PU->ATU": 0.26726753699298567,
+            "PU->BI": 0.4007485547213206,
+            "ATU->BI": 0.17303540030579143,
+            "BI->USE": 0.22893326260931268
+          }
+        },
+        "plspm.num.factorial": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44538914232391813,
+            "PEOU->ATU": 0.25306849990838776,
+            "PU->ATU": 0.2672585876105995,
+            "PU->BI": 0.40051475855717,
+            "ATU->BI": 0.1731611159905372,
+            "BI->USE": 0.22863874505795737
+          }
+        },
+        "plspm.accessors": {
+          "ok": true,
+          "value": {
+            "inner_model": [
+              "from",
+              "to",
+              "estimate",
+              "std error",
+              "t",
+              "p>|t|"
+            ],
+            "outer_model": [
+              "weight",
+              "loading",
+              "communality",
+              "redundancy"
+            ],
+            "inner_summary": [
+              "type",
+              "r_squared",
+              "r_squared_adj",
+              "block_communality",
+              "mean_redundancy",
+              "ave"
+            ],
+            "unidimensionality": [
+              "mode",
+              "mvs",
+              "cronbach_alpha",
+              "dillon_goldstein_rho",
+              "eig_1st",
+              "eig_2nd"
+            ],
+            "effects": [
+              "from",
+              "to",
+              "direct",
+              "indirect",
+              "total"
+            ],
+            "crossloadings_shape": [
+              22,
+              5
+            ],
+            "scores_shape": [
+              1190,
+              5
+            ],
+            "goodness_of_fit": 0.3470687787104632
+          }
+        },
+        "plspm.modeB_mixed.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.45004616089070504,
+            "PEOU->ATU": 0.25244849162848176,
+            "PU->ATU": 0.2663729681224091,
+            "PU->BI": 0.40120946045637895,
+            "ATU->BI": 0.1728520597198564,
+            "BI->USE": 0.2294037174708496
+          }
+        },
+        "plspm.modeB_mixed.metric.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44841739517341955,
+            "PEOU->ATU": 0.2544332653349882,
+            "PU->ATU": 0.2657077026649595,
+            "PU->BI": 0.38613794398804246,
+            "ATU->BI": 0.1716825190941355,
+            "BI->USE": 0.20369801438815618
+          }
+        },
+        "plspm.ord.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4970863819216229,
+            "PEOU->ATU": 0.2661437487272159,
+            "PU->ATU": 0.2839266747993197,
+            "PU->BI": 0.4695492210856159,
+            "ATU->BI": 0.1521756792155801,
+            "BI->USE": 0.23137723701502522
+          }
+        },
+        "plspm.missing.metric_scaled": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4432547304210036,
+            "PEOU->ATU": 0.2585688055398733,
+            "PU->ATU": 0.2636410104866544,
+            "PU->BI": 0.3850903182704048,
+            "ATU->BI": 0.17243476924879392,
+            "BI->USE": 0.203745171849699
+          }
+        },
+        "plspm.missing.num": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4455578792211538,
+            "PEOU->ATU": 0.252780757110358,
+            "PU->ATU": 0.2676656092304725,
+            "PU->BI": 0.40013583669401437,
+            "ATU->BI": 0.17365663522817318,
+            "BI->USE": 0.23013163947632964
+          }
+        },
+        "plspm.higher_order.num": {
+          "ok": true,
+          "value": {
+            "BELIEFS->BI": 0.6010662147071847,
+            "BI->USE": 0.2266853695654798
+          }
+        },
+        "plspm.bootstrap.num.20x1": {
+          "ok": true,
+          "value": {
+            "paths_columns": [
+              "original",
+              "mean",
+              "std.error",
+              "perc.025",
+              "perc.975",
+              "t stat."
+            ],
+            "paths_rows": 6,
+            "paths_std_error_finite": true,
+            "weights_rows": 22,
+            "loading_rows": 22
+          }
+        },
+        "semopy.import": {
+          "ok": true,
+          "value": "2.3.11"
+        },
+        "semopy.sem.mlw.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.1760580600947739,
+            "n_it": 53,
+            "message": "Optimization terminated successfully"
+          }
+        },
+        "semopy.sem.inspect_std": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.5095133929195801,
+            "PEOU->ATU": 0.28234078323723466,
+            "PU->ATU": 0.2645872862949993,
+            "PU->BI": 0.4658886642767345,
+            "ATU->BI": 0.1736314816663804,
+            "BI->USE": 0.3087223030978345
+          }
+        },
+        "semopy.sem.inspect_robust": {
+          "ok": true,
+          "value": {
+            "columns": [
+              "lval",
+              "op",
+              "rval",
+              "Estimate",
+              "Std. Err",
+              "z-value",
+              "p-value"
+            ],
+            "rows": 55
+          }
+        },
+        "semopy.sem.calc_stats": {
+          "ok": true,
+          "value": {
+            "DoF": 203.0,
+            "DoF Baseline": 231.0,
+            "chi2": 1399.509091512781,
+            "chi2 p-value": 0.0,
+            "chi2 Baseline": 15916.436299427009,
+            "CFI": 0.9237184692429314,
+            "GFI": 0.9120714546155559,
+            "AGFI": 0.8999433793901154,
+            "NFI": 0.9120714546155559,
+            "TLI": 0.9131968787936806,
+            "RMSEA": 0.07040752129168454,
+            "AIC": 97.64788387981045,
+            "BIC": 351.73331318508923,
+            "LogLik": 1.1760580600947739
+          }
+        },
+        "semopy.sem.predict_factors": {
+          "ok": true,
+          "value": {
+            "shape": [
+              1190,
+              5
+            ],
+            "columns": [
+              "ATU",
+              "BI",
+              "PEOU",
+              "PU",
+              "USE"
+            ]
+          }
+        },
+        "semopy.sem.uls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 5.241967003888995,
+            "n_it": 70
+          }
+        },
+        "semopy.sem.gls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.7581163806706348,
+            "n_it": 39
+          }
+        },
+        "semopy.sem.wls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.6546242995043157,
+            "n_it": 175
+          }
+        },
+        "semopy.sem.dwls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.5197502881440373,
+            "n_it": 58
+          }
+        },
+        "semopy.sem.fiml.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 25755.262082757017,
+            "n_it": 163
+          }
+        },
+        "semopy.modelmeans.ml.missing": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 19701.551403808764,
+            "rows": 77
+          }
+        },
+        "semopy.ordinal.cfa2": {
+          "ok": false,
+          "error": "AttributeError: `scipy.stats.mvn` has no attribute `mvnun`; furthermore, `scipy.stats.mvn` is deprecated and will be removed in SciPy 2.0.0.",
+          "where": "scipy/_lib/deprecation.py:45"
+        }
+      },
+      "warning_categories": {
+        "semopy.ordinal.cfa2": {
+          "DeprecationWarning @ semopy/utils.py:125": "bias and ddof have no effect and are deprecated"
+        }
+      },
+      "max_abs_diff_vs_reference": 0.0022941848500078743,
+      "reference_label": "py312-pandas2.2-numpy1.26"
+    },
+    {
+      "label": "py312-pandas2.2-numpy2.0",
+      "requested_python": "3.12",
+      "pins": {
+        "numpy": "2.0.2",
+        "pandas": "2.2.3",
+        "scipy": "1.14.1",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.6.1",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7"
+      },
+      "seconds": 55.28781929198885,
+      "install_ok": true,
+      "python": "3.12.15",
+      "resolved_versions": {
+        "numpy": "2.0.2",
+        "pandas": "2.2.3",
+        "scipy": "1.14.1",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.6.1",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7",
+        "sympy": "1.14.0",
+        "numdifftools": "0.11.2"
+      },
+      "all_checks_ok": false,
+      "failed": [
+        "semopy.ordinal.cfa2"
+      ],
+      "checks": {
+        "plspm.import": {
+          "ok": true,
+          "value": true
+        },
+        "plspm.metric_scaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44302053459942725,
+            "PEOU->ATU": 0.25562551401941286,
+            "PU->ATU": 0.2665525003163448,
+            "PU->BI": 0.38614744560402126,
+            "ATU->BI": 0.1716594550533533,
+            "BI->USE": 0.20369883617609857
+          }
+        },
+        "plspm.metric_unscaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4430205345994271,
+            "PEOU->ATU": 0.2556255140194127,
+            "PU->ATU": 0.26655250031634486,
+            "PU->BI": 0.3861474456040212,
+            "ATU->BI": 0.17165945505335323,
+            "BI->USE": 0.20369883617609869
+          }
+        },
+        "plspm.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453834714315049,
+            "PEOU->ATU": 0.25322624611791444,
+            "PU->ATU": 0.26720244610293703,
+            "PU->BI": 0.4012186530245403,
+            "ATU->BI": 0.1728418719041286,
+            "BI->USE": 0.22940398402175277
+          }
+        },
+        "plspm.num.centroid": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453188777980337,
+            "PEOU->ATU": 0.2531494171955243,
+            "PU->ATU": 0.26726753699298567,
+            "PU->BI": 0.4007485547213206,
+            "ATU->BI": 0.17303540030579143,
+            "BI->USE": 0.22893326260931268
+          }
+        },
+        "plspm.num.factorial": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44538914232391813,
+            "PEOU->ATU": 0.25306849990838776,
+            "PU->ATU": 0.2672585876105995,
+            "PU->BI": 0.40051475855717,
+            "ATU->BI": 0.1731611159905372,
+            "BI->USE": 0.22863874505795737
+          }
+        },
+        "plspm.accessors": {
+          "ok": true,
+          "value": {
+            "inner_model": [
+              "from",
+              "to",
+              "estimate",
+              "std error",
+              "t",
+              "p>|t|"
+            ],
+            "outer_model": [
+              "weight",
+              "loading",
+              "communality",
+              "redundancy"
+            ],
+            "inner_summary": [
+              "type",
+              "r_squared",
+              "r_squared_adj",
+              "block_communality",
+              "mean_redundancy",
+              "ave"
+            ],
+            "unidimensionality": [
+              "mode",
+              "mvs",
+              "cronbach_alpha",
+              "dillon_goldstein_rho",
+              "eig_1st",
+              "eig_2nd"
+            ],
+            "effects": [
+              "from",
+              "to",
+              "direct",
+              "indirect",
+              "total"
+            ],
+            "crossloadings_shape": [
+              22,
+              5
+            ],
+            "scores_shape": [
+              1190,
+              5
+            ],
+            "goodness_of_fit": 0.3470687787104632
+          }
+        },
+        "plspm.modeB_mixed.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.45004616089070504,
+            "PEOU->ATU": 0.25244849162848176,
+            "PU->ATU": 0.2663729681224091,
+            "PU->BI": 0.40120946045637895,
+            "ATU->BI": 0.1728520597198564,
+            "BI->USE": 0.2294037174708496
+          }
+        },
+        "plspm.modeB_mixed.metric.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44841739517341955,
+            "PEOU->ATU": 0.2544332653349882,
+            "PU->ATU": 0.2657077026649595,
+            "PU->BI": 0.38613794398804246,
+            "ATU->BI": 0.1716825190941355,
+            "BI->USE": 0.20369801438815618
+          }
+        },
+        "plspm.ord.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4970863819216229,
+            "PEOU->ATU": 0.2661437487272158,
+            "PU->ATU": 0.2839266747993196,
+            "PU->BI": 0.4695492210856159,
+            "ATU->BI": 0.1521756792155801,
+            "BI->USE": 0.23137723701502516
+          }
+        },
+        "plspm.missing.metric_scaled": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4432547304210036,
+            "PEOU->ATU": 0.2585688055398733,
+            "PU->ATU": 0.2636410104866544,
+            "PU->BI": 0.3850903182704048,
+            "ATU->BI": 0.17243476924879392,
+            "BI->USE": 0.203745171849699
+          }
+        },
+        "plspm.missing.num": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4455578792211538,
+            "PEOU->ATU": 0.252780757110358,
+            "PU->ATU": 0.2676656092304725,
+            "PU->BI": 0.40013583669401437,
+            "ATU->BI": 0.17365663522817318,
+            "BI->USE": 0.23013163947632964
+          }
+        },
+        "plspm.higher_order.num": {
+          "ok": true,
+          "value": {
+            "BELIEFS->BI": 0.6010662147071847,
+            "BI->USE": 0.2266853695654798
+          }
+        },
+        "plspm.bootstrap.num.20x1": {
+          "ok": true,
+          "value": {
+            "paths_columns": [
+              "original",
+              "mean",
+              "std.error",
+              "perc.025",
+              "perc.975",
+              "t stat."
+            ],
+            "paths_rows": 6,
+            "paths_std_error_finite": true,
+            "weights_rows": 22,
+            "loading_rows": 22
+          }
+        },
+        "semopy.import": {
+          "ok": true,
+          "value": "2.3.11"
+        },
+        "semopy.sem.mlw.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.1760580600947739,
+            "n_it": 53,
+            "message": "Optimization terminated successfully"
+          }
+        },
+        "semopy.sem.inspect_std": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.5095133929195801,
+            "PEOU->ATU": 0.28234078323723466,
+            "PU->ATU": 0.2645872862949993,
+            "PU->BI": 0.4658886642767345,
+            "ATU->BI": 0.1736314816663804,
+            "BI->USE": 0.3087223030978345
+          }
+        },
+        "semopy.sem.inspect_robust": {
+          "ok": true,
+          "value": {
+            "columns": [
+              "lval",
+              "op",
+              "rval",
+              "Estimate",
+              "Std. Err",
+              "z-value",
+              "p-value"
+            ],
+            "rows": 55
+          }
+        },
+        "semopy.sem.calc_stats": {
+          "ok": true,
+          "value": {
+            "DoF": 203.0,
+            "DoF Baseline": 231.0,
+            "chi2": 1399.509091512781,
+            "chi2 p-value": 0.0,
+            "chi2 Baseline": 15916.436299427009,
+            "CFI": 0.9237184692429314,
+            "GFI": 0.9120714546155559,
+            "AGFI": 0.8999433793901154,
+            "NFI": 0.9120714546155559,
+            "TLI": 0.9131968787936806,
+            "RMSEA": 0.07040752129168454,
+            "AIC": 97.64788387981045,
+            "BIC": 351.73331318508923,
+            "LogLik": 1.1760580600947739
+          }
+        },
+        "semopy.sem.predict_factors": {
+          "ok": true,
+          "value": {
+            "shape": [
+              1190,
+              5
+            ],
+            "columns": [
+              "ATU",
+              "BI",
+              "PEOU",
+              "PU",
+              "USE"
+            ]
+          }
+        },
+        "semopy.sem.uls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 5.241967003888995,
+            "n_it": 70
+          }
+        },
+        "semopy.sem.gls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.7581163806706348,
+            "n_it": 39
+          }
+        },
+        "semopy.sem.wls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.6546242995043157,
+            "n_it": 175
+          }
+        },
+        "semopy.sem.dwls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.5197502881440373,
+            "n_it": 58
+          }
+        },
+        "semopy.sem.fiml.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 25755.262082757017,
+            "n_it": 163
+          }
+        },
+        "semopy.modelmeans.ml.missing": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 19701.551403808764,
+            "rows": 77
+          }
+        },
+        "semopy.ordinal.cfa2": {
+          "ok": false,
+          "error": "AttributeError: `scipy.stats.mvn` has no attribute `mvnun`; furthermore, `scipy.stats.mvn` is deprecated and will be removed in SciPy 2.0.0.",
+          "where": "scipy/_lib/deprecation.py:42"
+        }
+      },
+      "warning_categories": {
+        "semopy.ordinal.cfa2": {
+          "DeprecationWarning @ semopy/utils.py:125": "bias and ddof have no effect and are deprecated"
+        }
+      },
+      "max_abs_diff_vs_reference": 0.0022941848500078743,
+      "reference_label": "py312-pandas2.2-numpy1.26"
+    },
+    {
+      "label": "py312-pandas2.2-numpy1.26",
+      "requested_python": "3.12",
+      "pins": {
+        "numpy": "1.26.4",
+        "pandas": "2.2.3",
+        "scipy": "1.13.1",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.6.1",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7"
+      },
+      "seconds": 361.27727474999847,
+      "install_ok": true,
+      "python": "3.12.15",
+      "resolved_versions": {
+        "numpy": "1.26.4",
+        "pandas": "2.2.3",
+        "scipy": "1.13.1",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.6.1",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7",
+        "sympy": "1.14.0",
+        "numdifftools": "0.9.42"
+      },
+      "all_checks_ok": true,
+      "failed": [],
+      "checks": {
+        "plspm.import": {
+          "ok": true,
+          "value": true
+        },
+        "plspm.metric_scaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44302053459942725,
+            "PEOU->ATU": 0.2556255140194132,
+            "PU->ATU": 0.2665525003163454,
+            "PU->BI": 0.38614744560401804,
+            "ATU->BI": 0.17165945505335248,
+            "BI->USE": 0.20369883617609755
+          }
+        },
+        "plspm.metric_unscaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4430205345994277,
+            "PEOU->ATU": 0.2556255140194133,
+            "PU->ATU": 0.2665525003163452,
+            "PU->BI": 0.38614744560401826,
+            "ATU->BI": 0.17165945505335245,
+            "BI->USE": 0.20369883617609752
+          }
+        },
+        "plspm.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453834714315074,
+            "PEOU->ATU": 0.25322624611791594,
+            "PU->ATU": 0.2672024461029365,
+            "PU->BI": 0.4012186530245463,
+            "ATU->BI": 0.1728418719041289,
+            "BI->USE": 0.22940398402175385
+          }
+        },
+        "plspm.num.centroid": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44531887779803625,
+            "PEOU->ATU": 0.2531494171955248,
+            "PU->ATU": 0.26726753699298533,
+            "PU->BI": 0.40074855472131526,
+            "ATU->BI": 0.1730354003057914,
+            "BI->USE": 0.22893326260931496
+          }
+        },
+        "plspm.num.factorial": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453891423239199,
+            "PEOU->ATU": 0.2530684999083882,
+            "PU->ATU": 0.2672585876105986,
+            "PU->BI": 0.4005147585571704,
+            "ATU->BI": 0.17316111599053646,
+            "BI->USE": 0.2286387450579586
+          }
+        },
+        "plspm.accessors": {
+          "ok": true,
+          "value": {
+            "inner_model": [
+              "from",
+              "to",
+              "estimate",
+              "std error",
+              "t",
+              "p>|t|"
+            ],
+            "outer_model": [
+              "weight",
+              "loading",
+              "communality",
+              "redundancy"
+            ],
+            "inner_summary": [
+              "type",
+              "r_squared",
+              "r_squared_adj",
+              "block_communality",
+              "mean_redundancy",
+              "ave"
+            ],
+            "unidimensionality": [
+              "mode",
+              "mvs",
+              "cronbach_alpha",
+              "dillon_goldstein_rho",
+              "eig_1st",
+              "eig_2nd"
+            ],
+            "effects": [
+              "from",
+              "to",
+              "direct",
+              "indirect",
+              "total"
+            ],
+            "crossloadings_shape": [
+              22,
+              5
+            ],
+            "scores_shape": [
+              1190,
+              5
+            ],
+            "goodness_of_fit": 0.3470687787104631
+          }
+        },
+        "plspm.modeB_mixed.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.45004616089070404,
+            "PEOU->ATU": 0.2524484916284827,
+            "PU->ATU": 0.26637296812240896,
+            "PU->BI": 0.4012094604563757,
+            "ATU->BI": 0.17285205971985704,
+            "BI->USE": 0.22940371747084984
+          }
+        },
+        "plspm.modeB_mixed.metric.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4484173951734154,
+            "PEOU->ATU": 0.2544332653349871,
+            "PU->ATU": 0.2657077026649595,
+            "PU->BI": 0.3861379439880443,
+            "ATU->BI": 0.17168251909413654,
+            "BI->USE": 0.20369801438815632
+          }
+        },
+        "plspm.ord.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.49708638192162163,
+            "PEOU->ATU": 0.2661437487272165,
+            "PU->ATU": 0.28392667479932004,
+            "PU->BI": 0.4695492210856189,
+            "ATU->BI": 0.15217567921557962,
+            "BI->USE": 0.2313772370150246
+          }
+        },
+        "plspm.missing.metric_scaled": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4432547304210018,
+            "PEOU->ATU": 0.2585688055398715,
+            "PU->ATU": 0.2636410104866539,
+            "PU->BI": 0.3850903182704071,
+            "ATU->BI": 0.17243476924879417,
+            "BI->USE": 0.20374517184969881
+          }
+        },
+        "plspm.missing.num": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4455578792211557,
+            "PEOU->ATU": 0.25278075711035897,
+            "PU->ATU": 0.2676656092304724,
+            "PU->BI": 0.400135836694013,
+            "ATU->BI": 0.17365663522817323,
+            "BI->USE": 0.23013163947633203
+          }
+        },
+        "plspm.higher_order.num": {
+          "ok": true,
+          "value": {
+            "BELIEFS->BI": 0.601066214707183,
+            "BI->USE": 0.2266853695654814
+          }
+        },
+        "plspm.bootstrap.num.20x1": {
+          "ok": true,
+          "value": {
+            "paths_columns": [
+              "original",
+              "mean",
+              "std.error",
+              "perc.025",
+              "perc.975",
+              "t stat."
+            ],
+            "paths_rows": 6,
+            "paths_std_error_finite": true,
+            "weights_rows": 22,
+            "loading_rows": 22
+          }
+        },
+        "semopy.import": {
+          "ok": true,
+          "value": "2.3.11"
+        },
+        "semopy.sem.mlw.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.1760580600947756,
+            "n_it": 53,
+            "message": "Optimization terminated successfully"
+          }
+        },
+        "semopy.sem.inspect_std": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.5095133929195828,
+            "PEOU->ATU": 0.28234078323723344,
+            "PU->ATU": 0.2645872862950024,
+            "PU->BI": 0.4658886642767335,
+            "ATU->BI": 0.17363148166638076,
+            "BI->USE": 0.3087223030978353
+          }
+        },
+        "semopy.sem.inspect_robust": {
+          "ok": true,
+          "value": {
+            "columns": [
+              "lval",
+              "op",
+              "rval",
+              "Estimate",
+              "Std. Err",
+              "z-value",
+              "p-value"
+            ],
+            "rows": 55
+          }
+        },
+        "semopy.sem.calc_stats": {
+          "ok": true,
+          "value": {
+            "DoF": 203.0,
+            "DoF Baseline": 231.0,
+            "chi2": 1399.509091512783,
+            "chi2 p-value": 0.0,
+            "chi2 Baseline": 15916.436299427001,
+            "CFI": 0.9237184692429312,
+            "GFI": 0.9120714546155557,
+            "AGFI": 0.8999433793901152,
+            "NFI": 0.9120714546155557,
+            "TLI": 0.9131968787936804,
+            "RMSEA": 0.0704075212916846,
+            "AIC": 97.64788387981045,
+            "BIC": 351.7333131850892,
+            "LogLik": 1.1760580600947756
+          }
+        },
+        "semopy.sem.predict_factors": {
+          "ok": true,
+          "value": {
+            "shape": [
+              1190,
+              5
+            ],
+            "columns": [
+              "ATU",
+              "BI",
+              "PEOU",
+              "PU",
+              "USE"
+            ]
+          }
+        },
+        "semopy.sem.uls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 5.2419670038889965,
+            "n_it": 70
+          }
+        },
+        "semopy.sem.gls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.758116380670625,
+            "n_it": 39
+          }
+        },
+        "semopy.sem.wls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.6523301146543078,
+            "n_it": 363
+          }
+        },
+        "semopy.sem.dwls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.5197502881440386,
+            "n_it": 58
+          }
+        },
+        "semopy.sem.fiml.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 25755.262082779194,
+            "n_it": 157
+          }
+        },
+        "semopy.modelmeans.ml.missing": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 19701.551405992155,
+            "rows": 77
+          }
+        },
+        "semopy.ordinal.cfa2": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.09197883626210772
+          }
+        }
+      },
+      "warning_categories": {
+        "semopy.ordinal.cfa2": {
+          "DeprecationWarning @ semopy/utils.py:125": "bias and ddof have no effect and are deprecated",
+          "DeprecationWarning @ semopy/polycorr.py:42": "`scipy.stats.mvn.mvnun` is deprecated along with the `scipy.stats.mvn` namespace. `scipy.stats.mvn.mvnun` will be removed in SciPy 1.14.0, and the `scipy.stats.mvn` namespace will be removed in SciPy "
+        }
+      },
+      "max_abs_diff_vs_reference": 0.0,
+      "reference_label": "py312-pandas2.2-numpy1.26"
+    },
+    {
+      "label": "py312-pandas2.2-numpy2.0-scipy1.13",
+      "requested_python": "3.12",
+      "pins": {
+        "numpy": "2.0.2",
+        "pandas": "2.2.3",
+        "scipy": "1.13.1",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.6.1",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7"
+      },
+      "seconds": 1472.0299030419555,
+      "install_ok": true,
+      "python": "3.12.15",
+      "resolved_versions": {
+        "numpy": "2.0.2",
+        "pandas": "2.2.3",
+        "scipy": "1.13.1",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.6.1",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7",
+        "sympy": "1.14.0",
+        "numdifftools": "0.11.2"
+      },
+      "all_checks_ok": true,
+      "failed": [],
+      "checks": {
+        "plspm.import": {
+          "ok": true,
+          "value": true,
+          "seconds": 1.775
+        },
+        "plspm.metric_scaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44302053459942725,
+            "PEOU->ATU": 0.25562551401941286,
+            "PU->ATU": 0.2665525003163448,
+            "PU->BI": 0.38614744560402126,
+            "ATU->BI": 0.1716594550533533,
+            "BI->USE": 0.20369883617609857
+          },
+          "seconds": 0.152
+        },
+        "plspm.metric_unscaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4430205345994271,
+            "PEOU->ATU": 0.2556255140194127,
+            "PU->ATU": 0.26655250031634486,
+            "PU->BI": 0.3861474456040212,
+            "ATU->BI": 0.17165945505335323,
+            "BI->USE": 0.20369883617609869
+          },
+          "seconds": 0.128
+        },
+        "plspm.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453834714315049,
+            "PEOU->ATU": 0.25322624611791444,
+            "PU->ATU": 0.26720244610293703,
+            "PU->BI": 0.4012186530245403,
+            "ATU->BI": 0.1728418719041286,
+            "BI->USE": 0.22940398402175277
+          },
+          "seconds": 0.085
+        },
+        "plspm.num.centroid": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453188777980337,
+            "PEOU->ATU": 0.2531494171955243,
+            "PU->ATU": 0.26726753699298567,
+            "PU->BI": 0.4007485547213206,
+            "ATU->BI": 0.17303540030579143,
+            "BI->USE": 0.22893326260931268
+          },
+          "seconds": 0.066
+        },
+        "plspm.num.factorial": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44538914232391813,
+            "PEOU->ATU": 0.25306849990838776,
+            "PU->ATU": 0.2672585876105995,
+            "PU->BI": 0.40051475855717,
+            "ATU->BI": 0.1731611159905372,
+            "BI->USE": 0.22863874505795737
+          },
+          "seconds": 0.066
+        },
+        "plspm.accessors": {
+          "ok": true,
+          "value": {
+            "inner_model": [
+              "from",
+              "to",
+              "estimate",
+              "std error",
+              "t",
+              "p>|t|"
+            ],
+            "outer_model": [
+              "weight",
+              "loading",
+              "communality",
+              "redundancy"
+            ],
+            "inner_summary": [
+              "type",
+              "r_squared",
+              "r_squared_adj",
+              "block_communality",
+              "mean_redundancy",
+              "ave"
+            ],
+            "unidimensionality": [
+              "mode",
+              "mvs",
+              "cronbach_alpha",
+              "dillon_goldstein_rho",
+              "eig_1st",
+              "eig_2nd"
+            ],
+            "effects": [
+              "from",
+              "to",
+              "direct",
+              "indirect",
+              "total"
+            ],
+            "crossloadings_shape": [
+              22,
+              5
+            ],
+            "scores_shape": [
+              1190,
+              5
+            ],
+            "goodness_of_fit": 0.3470687787104632
+          },
+          "seconds": 0.117
+        },
+        "plspm.modeB_mixed.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.45004616089070515,
+            "PEOU->ATU": 0.2524484916284818,
+            "PU->ATU": 0.2663729681224088,
+            "PU->BI": 0.4012094604563792,
+            "ATU->BI": 0.17285205971985643,
+            "BI->USE": 0.2294037174708496
+          },
+          "seconds": 0.09
+        },
+        "plspm.modeB_mixed.metric.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4484173951734197,
+            "PEOU->ATU": 0.25443326533498845,
+            "PU->ATU": 0.26570770266495936,
+            "PU->BI": 0.3861379439880425,
+            "ATU->BI": 0.17168251909413557,
+            "BI->USE": 0.2036980143881562
+          },
+          "seconds": 0.123
+        },
+        "plspm.ord.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4970863819216229,
+            "PEOU->ATU": 0.2661437487272158,
+            "PU->ATU": 0.2839266747993196,
+            "PU->BI": 0.4695492210856159,
+            "ATU->BI": 0.1521756792155801,
+            "BI->USE": 0.23137723701502516
+          },
+          "seconds": 1.289
+        },
+        "plspm.missing.metric_scaled": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4432547304210036,
+            "PEOU->ATU": 0.2585688055398733,
+            "PU->ATU": 0.2636410104866544,
+            "PU->BI": 0.3850903182704048,
+            "ATU->BI": 0.17243476924879392,
+            "BI->USE": 0.203745171849699
+          },
+          "seconds": 0.121
+        },
+        "plspm.missing.num": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4455578792211538,
+            "PEOU->ATU": 0.252780757110358,
+            "PU->ATU": 0.2676656092304725,
+            "PU->BI": 0.40013583669401437,
+            "ATU->BI": 0.17365663522817318,
+            "BI->USE": 0.23013163947632964
+          },
+          "seconds": 0.239
+        },
+        "plspm.higher_order.num": {
+          "ok": true,
+          "value": {
+            "BELIEFS->BI": 0.6010662147071847,
+            "BI->USE": 0.2266853695654798
+          },
+          "seconds": 0.06
+        },
+        "plspm.bootstrap.num.20x1": {
+          "ok": true,
+          "value": {
+            "paths_columns": [
+              "original",
+              "mean",
+              "std.error",
+              "perc.025",
+              "perc.975",
+              "t stat."
+            ],
+            "paths_rows": 6,
+            "paths_std_error_finite": true,
+            "weights_rows": 22,
+            "loading_rows": 22
+          },
+          "seconds": 5.09
+        },
+        "semopy.import": {
+          "ok": true,
+          "value": "2.3.11",
+          "seconds": 0.743
+        },
+        "semopy.sem.mlw.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.1760580600947739,
+            "n_it": 53,
+            "message": "Optimization terminated successfully"
+          },
+          "seconds": 6.47
+        },
+        "semopy.sem.inspect_std": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.5095133929195811,
+            "PEOU->ATU": 0.2823407832372334,
+            "PU->ATU": 0.26458728629499856,
+            "PU->BI": 0.46588866427673375,
+            "ATU->BI": 0.17363148166638245,
+            "BI->USE": 0.3087223030978351
+          },
+          "seconds": 0.213
+        },
+        "semopy.sem.inspect_robust": {
+          "ok": true,
+          "value": {
+            "columns": [
+              "lval",
+              "op",
+              "rval",
+              "Estimate",
+              "Std. Err",
+              "z-value",
+              "p-value"
+            ],
+            "rows": 55
+          },
+          "seconds": 0.804
+        },
+        "semopy.sem.calc_stats": {
+          "ok": true,
+          "value": {
+            "DoF": 203.0,
+            "DoF Baseline": 231.0,
+            "chi2": 1399.509091512781,
+            "chi2 p-value": 0.0,
+            "chi2 Baseline": 15916.43629942701,
+            "CFI": 0.9237184692429314,
+            "GFI": 0.9120714546155559,
+            "AGFI": 0.8999433793901154,
+            "NFI": 0.9120714546155559,
+            "TLI": 0.9131968787936806,
+            "RMSEA": 0.07040752129168454,
+            "AIC": 97.64788387981045,
+            "BIC": 351.73331318508923,
+            "LogLik": 1.1760580600947739
+          },
+          "seconds": 3.209
+        },
+        "semopy.sem.predict_factors": {
+          "ok": true,
+          "value": {
+            "shape": [
+              1190,
+              5
+            ],
+            "columns": [
+              "ATU",
+              "BI",
+              "PEOU",
+              "PU",
+              "USE"
+            ]
+          },
+          "seconds": 0.001
+        },
+        "semopy.sem.uls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 5.241967003888995,
+            "n_it": 70
+          },
+          "seconds": 0.319
+        },
+        "semopy.sem.gls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.7581163806706346,
+            "n_it": 39
+          },
+          "seconds": 0.196
+        },
+        "semopy.sem.wls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.6546242995043157,
+            "n_it": 175
+          },
+          "seconds": 0.454
+        },
+        "semopy.sem.dwls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.5197502881440373,
+            "n_it": 58
+          },
+          "seconds": 0.218
+        },
+        "semopy.sem.fiml.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 25755.262082907015,
+            "n_it": 181
+          },
+          "seconds": 47.841
+        },
+        "semopy.modelmeans.ml.missing": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 19701.551404603073,
+            "rows": 77
+          },
+          "seconds": 1400.295
+        },
+        "semopy.ordinal.cfa2": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.0919788362668392
+          },
+          "seconds": 0.263
+        }
+      },
+      "warning_categories": {
+        "semopy.ordinal.cfa2": {
+          "DeprecationWarning @ semopy/utils.py:125": "bias and ddof have no effect and are deprecated",
+          "DeprecationWarning @ semopy/polycorr.py:42": "`scipy.stats.mvn.mvnun` is deprecated along with the `scipy.stats.mvn` namespace. `scipy.stats.mvn.mvnun` will be removed in SciPy 1.14.0, and the `scipy.stats.mvn` namespace will be removed in SciPy "
+        }
+      },
+      "max_abs_diff_vs_reference": 0.0022941848500078743,
+      "reference_label": "py312-pandas2.2-numpy1.26"
+    },
+    {
+      "label": "py312-pandas2.3-numpy2.2-scipy1.13",
+      "requested_python": "3.12",
+      "pins": {
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "scipy": "1.13.1",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.7.2",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7"
+      },
+      "seconds": 1465.2244904590189,
+      "install_ok": true,
+      "python": "3.12.15",
+      "resolved_versions": {
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "scipy": "1.13.1",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.7.2",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7",
+        "sympy": "1.14.0",
+        "numdifftools": "0.11.2"
+      },
+      "all_checks_ok": true,
+      "failed": [],
+      "checks": {
+        "plspm.import": {
+          "ok": true,
+          "value": true,
+          "seconds": 1.94
+        },
+        "plspm.metric_scaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44302053459942725,
+            "PEOU->ATU": 0.25562551401941286,
+            "PU->ATU": 0.2665525003163448,
+            "PU->BI": 0.38614744560402126,
+            "ATU->BI": 0.1716594550533533,
+            "BI->USE": 0.20369883617609857
+          },
+          "seconds": 0.203
+        },
+        "plspm.metric_unscaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4430205345994271,
+            "PEOU->ATU": 0.2556255140194127,
+            "PU->ATU": 0.26655250031634486,
+            "PU->BI": 0.3861474456040212,
+            "ATU->BI": 0.17165945505335323,
+            "BI->USE": 0.20369883617609869
+          },
+          "seconds": 0.12
+        },
+        "plspm.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453834714315049,
+            "PEOU->ATU": 0.25322624611791444,
+            "PU->ATU": 0.26720244610293703,
+            "PU->BI": 0.4012186530245403,
+            "ATU->BI": 0.1728418719041286,
+            "BI->USE": 0.22940398402175277
+          },
+          "seconds": 0.084
+        },
+        "plspm.num.centroid": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453188777980337,
+            "PEOU->ATU": 0.2531494171955243,
+            "PU->ATU": 0.26726753699298567,
+            "PU->BI": 0.4007485547213206,
+            "ATU->BI": 0.17303540030579143,
+            "BI->USE": 0.22893326260931268
+          },
+          "seconds": 0.066
+        },
+        "plspm.num.factorial": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44538914232391813,
+            "PEOU->ATU": 0.25306849990838776,
+            "PU->ATU": 0.2672585876105995,
+            "PU->BI": 0.40051475855717,
+            "ATU->BI": 0.1731611159905372,
+            "BI->USE": 0.22863874505795737
+          },
+          "seconds": 0.062
+        },
+        "plspm.accessors": {
+          "ok": true,
+          "value": {
+            "inner_model": [
+              "from",
+              "to",
+              "estimate",
+              "std error",
+              "t",
+              "p>|t|"
+            ],
+            "outer_model": [
+              "weight",
+              "loading",
+              "communality",
+              "redundancy"
+            ],
+            "inner_summary": [
+              "type",
+              "r_squared",
+              "r_squared_adj",
+              "block_communality",
+              "mean_redundancy",
+              "ave"
+            ],
+            "unidimensionality": [
+              "mode",
+              "mvs",
+              "cronbach_alpha",
+              "dillon_goldstein_rho",
+              "eig_1st",
+              "eig_2nd"
+            ],
+            "effects": [
+              "from",
+              "to",
+              "direct",
+              "indirect",
+              "total"
+            ],
+            "crossloadings_shape": [
+              22,
+              5
+            ],
+            "scores_shape": [
+              1190,
+              5
+            ],
+            "goodness_of_fit": 0.3470687787104632
+          },
+          "seconds": 0.098
+        },
+        "plspm.modeB_mixed.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.45004616089070515,
+            "PEOU->ATU": 0.2524484916284818,
+            "PU->ATU": 0.2663729681224088,
+            "PU->BI": 0.4012094604563792,
+            "ATU->BI": 0.17285205971985643,
+            "BI->USE": 0.2294037174708496
+          },
+          "seconds": 0.1
+        },
+        "plspm.modeB_mixed.metric.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4484173951734197,
+            "PEOU->ATU": 0.25443326533498845,
+            "PU->ATU": 0.26570770266495936,
+            "PU->BI": 0.3861379439880425,
+            "ATU->BI": 0.17168251909413557,
+            "BI->USE": 0.2036980143881562
+          },
+          "seconds": 0.13
+        },
+        "plspm.ord.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4970863819216229,
+            "PEOU->ATU": 0.2661437487272159,
+            "PU->ATU": 0.2839266747993197,
+            "PU->BI": 0.4695492210856159,
+            "ATU->BI": 0.1521756792155801,
+            "BI->USE": 0.23137723701502522
+          },
+          "seconds": 1.274
+        },
+        "plspm.missing.metric_scaled": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4432547304210036,
+            "PEOU->ATU": 0.2585688055398733,
+            "PU->ATU": 0.2636410104866544,
+            "PU->BI": 0.3850903182704048,
+            "ATU->BI": 0.17243476924879392,
+            "BI->USE": 0.203745171849699
+          },
+          "seconds": 0.118
+        },
+        "plspm.missing.num": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4455578792211538,
+            "PEOU->ATU": 0.252780757110358,
+            "PU->ATU": 0.2676656092304725,
+            "PU->BI": 0.40013583669401437,
+            "ATU->BI": 0.17365663522817318,
+            "BI->USE": 0.23013163947632964
+          },
+          "seconds": 0.16
+        },
+        "plspm.higher_order.num": {
+          "ok": true,
+          "value": {
+            "BELIEFS->BI": 0.6010662147071847,
+            "BI->USE": 0.2266853695654798
+          },
+          "seconds": 0.044
+        },
+        "plspm.bootstrap.num.20x1": {
+          "ok": true,
+          "value": {
+            "paths_columns": [
+              "original",
+              "mean",
+              "std.error",
+              "perc.025",
+              "perc.975",
+              "t stat."
+            ],
+            "paths_rows": 6,
+            "paths_std_error_finite": true,
+            "weights_rows": 22,
+            "loading_rows": 22
+          },
+          "seconds": 5.078
+        },
+        "semopy.import": {
+          "ok": true,
+          "value": "2.3.11",
+          "seconds": 0.586
+        },
+        "semopy.sem.mlw.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.1760580600947739,
+            "n_it": 53,
+            "message": "Optimization terminated successfully"
+          },
+          "seconds": 8.268
+        },
+        "semopy.sem.inspect_std": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.5095133929195811,
+            "PEOU->ATU": 0.2823407832372334,
+            "PU->ATU": 0.26458728629499856,
+            "PU->BI": 0.46588866427673375,
+            "ATU->BI": 0.17363148166638245,
+            "BI->USE": 0.3087223030978351
+          },
+          "seconds": 0.263
+        },
+        "semopy.sem.inspect_robust": {
+          "ok": true,
+          "value": {
+            "columns": [
+              "lval",
+              "op",
+              "rval",
+              "Estimate",
+              "Std. Err",
+              "z-value",
+              "p-value"
+            ],
+            "rows": 55
+          },
+          "seconds": 0.954
+        },
+        "semopy.sem.calc_stats": {
+          "ok": true,
+          "value": {
+            "DoF": 203.0,
+            "DoF Baseline": 231.0,
+            "chi2": 1399.509091512781,
+            "chi2 p-value": 0.0,
+            "chi2 Baseline": 15916.43629942701,
+            "CFI": 0.9237184692429314,
+            "GFI": 0.9120714546155559,
+            "AGFI": 0.8999433793901154,
+            "NFI": 0.9120714546155559,
+            "TLI": 0.9131968787936806,
+            "RMSEA": 0.07040752129168454,
+            "AIC": 97.64788387981045,
+            "BIC": 351.73331318508923,
+            "LogLik": 1.1760580600947739
+          },
+          "seconds": 3.452
+        },
+        "semopy.sem.predict_factors": {
+          "ok": true,
+          "value": {
+            "shape": [
+              1190,
+              5
+            ],
+            "columns": [
+              "ATU",
+              "BI",
+              "PEOU",
+              "PU",
+              "USE"
+            ]
+          },
+          "seconds": 0.001
+        },
+        "semopy.sem.uls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 5.241967003888995,
+            "n_it": 70
+          },
+          "seconds": 0.328
+        },
+        "semopy.sem.gls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.7581163806706346,
+            "n_it": 39
+          },
+          "seconds": 0.309
+        },
+        "semopy.sem.wls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.6546242995043157,
+            "n_it": 175
+          },
+          "seconds": 0.482
+        },
+        "semopy.sem.dwls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.5197502881440373,
+            "n_it": 58
+          },
+          "seconds": 0.225
+        },
+        "semopy.sem.fiml.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 25755.262082907015,
+            "n_it": 181
+          },
+          "seconds": 48.226
+        },
+        "semopy.modelmeans.ml.missing": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 19701.551404603073,
+            "rows": 77
+          },
+          "seconds": 1390.67
+        },
+        "semopy.ordinal.cfa2": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.0919788362672889
+          },
+          "seconds": 0.369
+        }
+      },
+      "warning_categories": {
+        "semopy.ordinal.cfa2": {
+          "DeprecationWarning @ semopy/utils.py:125": "bias and ddof have no effect and are deprecated",
+          "DeprecationWarning @ semopy/polycorr.py:42": "`scipy.stats.mvn.mvnun` is deprecated along with the `scipy.stats.mvn` namespace. `scipy.stats.mvn.mvnun` will be removed in SciPy 1.14.0, and the `scipy.stats.mvn` namespace will be removed in SciPy "
+        }
+      },
+      "max_abs_diff_vs_reference": 0.0022941848500078743,
+      "reference_label": "py312-pandas2.2-numpy1.26"
+    },
+    {
+      "label": "py311-pandas2.3-numpy2.2-scipy1.13",
+      "requested_python": "3.11",
+      "pins": {
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "scipy": "1.13.1",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.7.2",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7"
+      },
+      "seconds": 1468.8099275840214,
+      "install_ok": true,
+      "python": "3.11.18",
+      "resolved_versions": {
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "scipy": "1.13.1",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.7.2",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7",
+        "sympy": "1.14.0",
+        "numdifftools": "0.11.2"
+      },
+      "all_checks_ok": true,
+      "failed": [],
+      "checks": {
+        "plspm.import": {
+          "ok": true,
+          "value": true,
+          "seconds": 1.731
+        },
+        "plspm.metric_scaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44302053459942725,
+            "PEOU->ATU": 0.25562551401941286,
+            "PU->ATU": 0.2665525003163448,
+            "PU->BI": 0.38614744560402126,
+            "ATU->BI": 0.1716594550533533,
+            "BI->USE": 0.20369883617609857
+          },
+          "seconds": 0.128
+        },
+        "plspm.metric_unscaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4430205345994271,
+            "PEOU->ATU": 0.2556255140194127,
+            "PU->ATU": 0.26655250031634486,
+            "PU->BI": 0.3861474456040212,
+            "ATU->BI": 0.17165945505335323,
+            "BI->USE": 0.20369883617609869
+          },
+          "seconds": 0.121
+        },
+        "plspm.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453834714315049,
+            "PEOU->ATU": 0.25322624611791444,
+            "PU->ATU": 0.26720244610293703,
+            "PU->BI": 0.4012186530245403,
+            "ATU->BI": 0.1728418719041286,
+            "BI->USE": 0.22940398402175277
+          },
+          "seconds": 0.075
+        },
+        "plspm.num.centroid": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453188777980337,
+            "PEOU->ATU": 0.2531494171955243,
+            "PU->ATU": 0.26726753699298567,
+            "PU->BI": 0.4007485547213206,
+            "ATU->BI": 0.17303540030579143,
+            "BI->USE": 0.22893326260931268
+          },
+          "seconds": 0.058
+        },
+        "plspm.num.factorial": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44538914232391813,
+            "PEOU->ATU": 0.25306849990838776,
+            "PU->ATU": 0.2672585876105995,
+            "PU->BI": 0.40051475855717,
+            "ATU->BI": 0.1731611159905372,
+            "BI->USE": 0.22863874505795737
+          },
+          "seconds": 0.056
+        },
+        "plspm.accessors": {
+          "ok": true,
+          "value": {
+            "inner_model": [
+              "from",
+              "to",
+              "estimate",
+              "std error",
+              "t",
+              "p>|t|"
+            ],
+            "outer_model": [
+              "weight",
+              "loading",
+              "communality",
+              "redundancy"
+            ],
+            "inner_summary": [
+              "type",
+              "r_squared",
+              "r_squared_adj",
+              "block_communality",
+              "mean_redundancy",
+              "ave"
+            ],
+            "unidimensionality": [
+              "mode",
+              "mvs",
+              "cronbach_alpha",
+              "dillon_goldstein_rho",
+              "eig_1st",
+              "eig_2nd"
+            ],
+            "effects": [
+              "from",
+              "to",
+              "direct",
+              "indirect",
+              "total"
+            ],
+            "crossloadings_shape": [
+              22,
+              5
+            ],
+            "scores_shape": [
+              1190,
+              5
+            ],
+            "goodness_of_fit": 0.3470687787104632
+          },
+          "seconds": 0.105
+        },
+        "plspm.modeB_mixed.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.45004616089070515,
+            "PEOU->ATU": 0.2524484916284818,
+            "PU->ATU": 0.2663729681224088,
+            "PU->BI": 0.4012094604563792,
+            "ATU->BI": 0.17285205971985643,
+            "BI->USE": 0.2294037174708496
+          },
+          "seconds": 0.088
+        },
+        "plspm.modeB_mixed.metric.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4484173951734197,
+            "PEOU->ATU": 0.25443326533498845,
+            "PU->ATU": 0.26570770266495936,
+            "PU->BI": 0.3861379439880425,
+            "ATU->BI": 0.17168251909413557,
+            "BI->USE": 0.2036980143881562
+          },
+          "seconds": 0.114
+        },
+        "plspm.ord.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4970863819216229,
+            "PEOU->ATU": 0.2661437487272159,
+            "PU->ATU": 0.2839266747993197,
+            "PU->BI": 0.4695492210856159,
+            "ATU->BI": 0.1521756792155801,
+            "BI->USE": 0.23137723701502522
+          },
+          "seconds": 1.209
+        },
+        "plspm.missing.metric_scaled": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4432547304210036,
+            "PEOU->ATU": 0.2585688055398733,
+            "PU->ATU": 0.2636410104866544,
+            "PU->BI": 0.3850903182704048,
+            "ATU->BI": 0.17243476924879392,
+            "BI->USE": 0.203745171849699
+          },
+          "seconds": 0.111
+        },
+        "plspm.missing.num": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4455578792211538,
+            "PEOU->ATU": 0.252780757110358,
+            "PU->ATU": 0.2676656092304725,
+            "PU->BI": 0.40013583669401437,
+            "ATU->BI": 0.17365663522817318,
+            "BI->USE": 0.23013163947632964
+          },
+          "seconds": 0.15
+        },
+        "plspm.higher_order.num": {
+          "ok": true,
+          "value": {
+            "BELIEFS->BI": 0.6010662147071847,
+            "BI->USE": 0.2266853695654798
+          },
+          "seconds": 0.046
+        },
+        "plspm.bootstrap.num.20x1": {
+          "ok": true,
+          "value": {
+            "paths_columns": [
+              "original",
+              "mean",
+              "std.error",
+              "perc.025",
+              "perc.975",
+              "t stat."
+            ],
+            "paths_rows": 6,
+            "paths_std_error_finite": true,
+            "weights_rows": 22,
+            "loading_rows": 22
+          },
+          "seconds": 4.882
+        },
+        "semopy.import": {
+          "ok": true,
+          "value": "2.3.11",
+          "seconds": 0.527
+        },
+        "semopy.sem.mlw.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.1760580600947739,
+            "n_it": 53,
+            "message": "Optimization terminated successfully"
+          },
+          "seconds": 6.948
+        },
+        "semopy.sem.inspect_std": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.5095133929195811,
+            "PEOU->ATU": 0.2823407832372334,
+            "PU->ATU": 0.26458728629499856,
+            "PU->BI": 0.46588866427673375,
+            "ATU->BI": 0.17363148166638245,
+            "BI->USE": 0.3087223030978351
+          },
+          "seconds": 0.259
+        },
+        "semopy.sem.inspect_robust": {
+          "ok": true,
+          "value": {
+            "columns": [
+              "lval",
+              "op",
+              "rval",
+              "Estimate",
+              "Std. Err",
+              "z-value",
+              "p-value"
+            ],
+            "rows": 55
+          },
+          "seconds": 0.644
+        },
+        "semopy.sem.calc_stats": {
+          "ok": true,
+          "value": {
+            "DoF": 203.0,
+            "DoF Baseline": 231.0,
+            "chi2": 1399.509091512781,
+            "chi2 p-value": 0.0,
+            "chi2 Baseline": 15916.43629942701,
+            "CFI": 0.9237184692429314,
+            "GFI": 0.9120714546155559,
+            "AGFI": 0.8999433793901154,
+            "NFI": 0.9120714546155559,
+            "TLI": 0.9131968787936806,
+            "RMSEA": 0.07040752129168454,
+            "AIC": 97.64788387981045,
+            "BIC": 351.73331318508923,
+            "LogLik": 1.1760580600947739
+          },
+          "seconds": 3.746
+        },
+        "semopy.sem.predict_factors": {
+          "ok": true,
+          "value": {
+            "shape": [
+              1190,
+              5
+            ],
+            "columns": [
+              "ATU",
+              "BI",
+              "PEOU",
+              "PU",
+              "USE"
+            ]
+          },
+          "seconds": 0.001
+        },
+        "semopy.sem.uls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 5.241967003888995,
+            "n_it": 70
+          },
+          "seconds": 0.284
+        },
+        "semopy.sem.gls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.7581163806706346,
+            "n_it": 39
+          },
+          "seconds": 0.153
+        },
+        "semopy.sem.wls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.6546242995043157,
+            "n_it": 175
+          },
+          "seconds": 0.529
+        },
+        "semopy.sem.dwls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.5197502881440373,
+            "n_it": 58
+          },
+          "seconds": 0.25
+        },
+        "semopy.sem.fiml.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 25755.262082907015,
+            "n_it": 181
+          },
+          "seconds": 48.675
+        },
+        "semopy.modelmeans.ml.missing": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 19701.551404603073,
+            "rows": 77
+          },
+          "seconds": 1395.544
+        },
+        "semopy.ordinal.cfa2": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.09197883626103504
+          },
+          "seconds": 0.682
+        }
+      },
+      "warning_categories": {
+        "semopy.ordinal.cfa2": {
+          "DeprecationWarning @ semopy/utils.py:125": "bias and ddof have no effect and are deprecated",
+          "DeprecationWarning @ semopy/polycorr.py:42": "`scipy.stats.mvn.mvnun` is deprecated along with the `scipy.stats.mvn` namespace. `scipy.stats.mvn.mvnun` will be removed in SciPy 1.14.0, and the `scipy.stats.mvn` namespace will be removed in SciPy "
+        }
+      },
+      "max_abs_diff_vs_reference": 0.0022941848500078743,
+      "reference_label": "py312-pandas2.2-numpy1.26"
+    },
+    {
+      "label": "py310-pandas2.3-numpy2.2-scipy1.13",
+      "requested_python": "3.10",
+      "pins": {
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "scipy": "1.13.1",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.7.2",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7"
+      },
+      "seconds": 949.5704094999819,
+      "install_ok": true,
+      "python": "3.10.22",
+      "resolved_versions": {
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "scipy": "1.13.1",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.7.2",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7",
+        "sympy": "1.14.0",
+        "numdifftools": "0.11.2"
+      },
+      "all_checks_ok": true,
+      "failed": [],
+      "checks": {
+        "plspm.import": {
+          "ok": true,
+          "value": true,
+          "seconds": 13.991
+        },
+        "plspm.metric_scaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44302053459942725,
+            "PEOU->ATU": 0.25562551401941286,
+            "PU->ATU": 0.2665525003163448,
+            "PU->BI": 0.38614744560402126,
+            "ATU->BI": 0.1716594550533533,
+            "BI->USE": 0.20369883617609857
+          },
+          "seconds": 0.141
+        },
+        "plspm.metric_unscaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4430205345994271,
+            "PEOU->ATU": 0.2556255140194127,
+            "PU->ATU": 0.26655250031634486,
+            "PU->BI": 0.3861474456040212,
+            "ATU->BI": 0.17165945505335323,
+            "BI->USE": 0.20369883617609869
+          },
+          "seconds": 0.17
+        },
+        "plspm.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453834714315049,
+            "PEOU->ATU": 0.25322624611791444,
+            "PU->ATU": 0.26720244610293703,
+            "PU->BI": 0.4012186530245403,
+            "ATU->BI": 0.1728418719041286,
+            "BI->USE": 0.22940398402175277
+          },
+          "seconds": 0.168
+        },
+        "plspm.num.centroid": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453188777980337,
+            "PEOU->ATU": 0.2531494171955243,
+            "PU->ATU": 0.26726753699298567,
+            "PU->BI": 0.4007485547213206,
+            "ATU->BI": 0.17303540030579143,
+            "BI->USE": 0.22893326260931268
+          },
+          "seconds": 0.106
+        },
+        "plspm.num.factorial": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44538914232391813,
+            "PEOU->ATU": 0.25306849990838776,
+            "PU->ATU": 0.2672585876105995,
+            "PU->BI": 0.40051475855717,
+            "ATU->BI": 0.1731611159905372,
+            "BI->USE": 0.22863874505795737
+          },
+          "seconds": 0.115
+        },
+        "plspm.accessors": {
+          "ok": true,
+          "value": {
+            "inner_model": [
+              "from",
+              "to",
+              "estimate",
+              "std error",
+              "t",
+              "p>|t|"
+            ],
+            "outer_model": [
+              "weight",
+              "loading",
+              "communality",
+              "redundancy"
+            ],
+            "inner_summary": [
+              "type",
+              "r_squared",
+              "r_squared_adj",
+              "block_communality",
+              "mean_redundancy",
+              "ave"
+            ],
+            "unidimensionality": [
+              "mode",
+              "mvs",
+              "cronbach_alpha",
+              "dillon_goldstein_rho",
+              "eig_1st",
+              "eig_2nd"
+            ],
+            "effects": [
+              "from",
+              "to",
+              "direct",
+              "indirect",
+              "total"
+            ],
+            "crossloadings_shape": [
+              22,
+              5
+            ],
+            "scores_shape": [
+              1190,
+              5
+            ],
+            "goodness_of_fit": 0.3470687787104632
+          },
+          "seconds": 0.191
+        },
+        "plspm.modeB_mixed.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.45004616089070515,
+            "PEOU->ATU": 0.2524484916284818,
+            "PU->ATU": 0.2663729681224088,
+            "PU->BI": 0.4012094604563792,
+            "ATU->BI": 0.17285205971985643,
+            "BI->USE": 0.2294037174708496
+          },
+          "seconds": 0.15
+        },
+        "plspm.modeB_mixed.metric.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4484173951734197,
+            "PEOU->ATU": 0.25443326533498845,
+            "PU->ATU": 0.26570770266495936,
+            "PU->BI": 0.3861379439880425,
+            "ATU->BI": 0.17168251909413557,
+            "BI->USE": 0.2036980143881562
+          },
+          "seconds": 0.238
+        },
+        "plspm.ord.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4970863819216229,
+            "PEOU->ATU": 0.2661437487272159,
+            "PU->ATU": 0.2839266747993197,
+            "PU->BI": 0.4695492210856159,
+            "ATU->BI": 0.1521756792155801,
+            "BI->USE": 0.23137723701502522
+          },
+          "seconds": 2.87
+        },
+        "plspm.missing.metric_scaled": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4432547304210036,
+            "PEOU->ATU": 0.2585688055398733,
+            "PU->ATU": 0.2636410104866544,
+            "PU->BI": 0.3850903182704048,
+            "ATU->BI": 0.17243476924879392,
+            "BI->USE": 0.203745171849699
+          },
+          "seconds": 0.277
+        },
+        "plspm.missing.num": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4455578792211538,
+            "PEOU->ATU": 0.252780757110358,
+            "PU->ATU": 0.2676656092304725,
+            "PU->BI": 0.40013583669401437,
+            "ATU->BI": 0.17365663522817318,
+            "BI->USE": 0.23013163947632964
+          },
+          "seconds": 0.373
+        },
+        "plspm.higher_order.num": {
+          "ok": true,
+          "value": {
+            "BELIEFS->BI": 0.6010662147071847,
+            "BI->USE": 0.2266853695654798
+          },
+          "seconds": 0.095
+        },
+        "plspm.bootstrap.num.20x1": {
+          "ok": true,
+          "value": {
+            "paths_columns": [
+              "original",
+              "mean",
+              "std.error",
+              "perc.025",
+              "perc.975",
+              "t stat."
+            ],
+            "paths_rows": 6,
+            "paths_std_error_finite": true,
+            "weights_rows": 22,
+            "loading_rows": 22
+          },
+          "seconds": 5.858
+        },
+        "semopy.import": {
+          "ok": true,
+          "value": "2.3.11",
+          "seconds": 3.429
+        },
+        "semopy.sem.mlw.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.1760580600947739,
+            "n_it": 53,
+            "message": "Optimization terminated successfully"
+          },
+          "seconds": 4.346
+        },
+        "semopy.sem.inspect_std": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.5095133929195811,
+            "PEOU->ATU": 0.2823407832372334,
+            "PU->ATU": 0.26458728629499856,
+            "PU->BI": 0.46588866427673375,
+            "ATU->BI": 0.17363148166638245,
+            "BI->USE": 0.3087223030978351
+          },
+          "seconds": 0.2
+        },
+        "semopy.sem.inspect_robust": {
+          "ok": true,
+          "value": {
+            "columns": [
+              "lval",
+              "op",
+              "rval",
+              "Estimate",
+              "Std. Err",
+              "z-value",
+              "p-value"
+            ],
+            "rows": 55
+          },
+          "seconds": 0.563
+        },
+        "semopy.sem.calc_stats": {
+          "ok": true,
+          "value": {
+            "DoF": 203.0,
+            "DoF Baseline": 231.0,
+            "chi2": 1399.509091512781,
+            "chi2 p-value": 0.0,
+            "chi2 Baseline": 15916.43629942701,
+            "CFI": 0.9237184692429314,
+            "GFI": 0.9120714546155559,
+            "AGFI": 0.8999433793901154,
+            "NFI": 0.9120714546155559,
+            "TLI": 0.9131968787936806,
+            "RMSEA": 0.07040752129168454,
+            "AIC": 97.64788387981045,
+            "BIC": 351.73331318508923,
+            "LogLik": 1.1760580600947739
+          },
+          "seconds": 2.385
+        },
+        "semopy.sem.predict_factors": {
+          "ok": true,
+          "value": {
+            "shape": [
+              1190,
+              5
+            ],
+            "columns": [
+              "ATU",
+              "BI",
+              "PEOU",
+              "PU",
+              "USE"
+            ]
+          },
+          "seconds": 0.001
+        },
+        "semopy.sem.uls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 5.241967003888995,
+            "n_it": 70
+          },
+          "seconds": 0.164
+        },
+        "semopy.sem.gls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.7581163806706346,
+            "n_it": 39
+          },
+          "seconds": 0.134
+        },
+        "semopy.sem.wls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.6546242995043157,
+            "n_it": 175
+          },
+          "seconds": 0.371
+        },
+        "semopy.sem.dwls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.5197502881440373,
+            "n_it": 58
+          },
+          "seconds": 0.142
+        },
+        "semopy.sem.fiml.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 25755.262082907015,
+            "n_it": 181
+          },
+          "seconds": 39.68
+        },
+        "semopy.modelmeans.ml.missing": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 19701.551404603073,
+            "rows": 77
+          },
+          "seconds": 863.809
+        },
+        "semopy.ordinal.cfa2": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.09197883626058498
+          },
+          "seconds": 0.342
+        }
+      },
+      "warning_categories": {
+        "semopy.ordinal.cfa2": {
+          "DeprecationWarning @ semopy/utils.py:125": "bias and ddof have no effect and are deprecated",
+          "DeprecationWarning @ semopy/polycorr.py:42": "`scipy.stats.mvn.mvnun` is deprecated along with the `scipy.stats.mvn` namespace. `scipy.stats.mvn.mvnun` will be removed in SciPy 1.14.0, and the `scipy.stats.mvn` namespace will be removed in SciPy "
+        }
+      },
+      "max_abs_diff_vs_reference": 0.0022941848500078743,
+      "reference_label": "py312-pandas2.2-numpy1.26"
+    },
+    {
+      "label": "py311-pandas2.3-numpy2.2",
+      "requested_python": "3.11",
+      "pins": {
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "scipy": "1.15.3",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.7.2",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7"
+      },
+      "seconds": 75.03561329195509,
+      "install_ok": true,
+      "python": "3.11.18",
+      "resolved_versions": {
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "scipy": "1.15.3",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.7.2",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7",
+        "sympy": "1.14.0",
+        "numdifftools": "0.11.2"
+      },
+      "all_checks_ok": false,
+      "failed": [
+        "semopy.ordinal.cfa2"
+      ],
+      "checks": {
+        "plspm.import": {
+          "ok": true,
+          "value": true
+        },
+        "plspm.metric_scaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44302053459942725,
+            "PEOU->ATU": 0.25562551401941286,
+            "PU->ATU": 0.2665525003163448,
+            "PU->BI": 0.38614744560402126,
+            "ATU->BI": 0.1716594550533533,
+            "BI->USE": 0.20369883617609857
+          }
+        },
+        "plspm.metric_unscaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4430205345994271,
+            "PEOU->ATU": 0.2556255140194127,
+            "PU->ATU": 0.26655250031634486,
+            "PU->BI": 0.3861474456040212,
+            "ATU->BI": 0.17165945505335323,
+            "BI->USE": 0.20369883617609869
+          }
+        },
+        "plspm.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453834714315049,
+            "PEOU->ATU": 0.25322624611791444,
+            "PU->ATU": 0.26720244610293703,
+            "PU->BI": 0.4012186530245403,
+            "ATU->BI": 0.1728418719041286,
+            "BI->USE": 0.22940398402175277
+          }
+        },
+        "plspm.num.centroid": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453188777980337,
+            "PEOU->ATU": 0.2531494171955243,
+            "PU->ATU": 0.26726753699298567,
+            "PU->BI": 0.4007485547213206,
+            "ATU->BI": 0.17303540030579143,
+            "BI->USE": 0.22893326260931268
+          }
+        },
+        "plspm.num.factorial": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44538914232391813,
+            "PEOU->ATU": 0.25306849990838776,
+            "PU->ATU": 0.2672585876105995,
+            "PU->BI": 0.40051475855717,
+            "ATU->BI": 0.1731611159905372,
+            "BI->USE": 0.22863874505795737
+          }
+        },
+        "plspm.accessors": {
+          "ok": true,
+          "value": {
+            "inner_model": [
+              "from",
+              "to",
+              "estimate",
+              "std error",
+              "t",
+              "p>|t|"
+            ],
+            "outer_model": [
+              "weight",
+              "loading",
+              "communality",
+              "redundancy"
+            ],
+            "inner_summary": [
+              "type",
+              "r_squared",
+              "r_squared_adj",
+              "block_communality",
+              "mean_redundancy",
+              "ave"
+            ],
+            "unidimensionality": [
+              "mode",
+              "mvs",
+              "cronbach_alpha",
+              "dillon_goldstein_rho",
+              "eig_1st",
+              "eig_2nd"
+            ],
+            "effects": [
+              "from",
+              "to",
+              "direct",
+              "indirect",
+              "total"
+            ],
+            "crossloadings_shape": [
+              22,
+              5
+            ],
+            "scores_shape": [
+              1190,
+              5
+            ],
+            "goodness_of_fit": 0.3470687787104632
+          }
+        },
+        "plspm.modeB_mixed.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.45004616089070504,
+            "PEOU->ATU": 0.25244849162848176,
+            "PU->ATU": 0.2663729681224091,
+            "PU->BI": 0.40120946045637895,
+            "ATU->BI": 0.1728520597198564,
+            "BI->USE": 0.2294037174708496
+          }
+        },
+        "plspm.modeB_mixed.metric.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44841739517341955,
+            "PEOU->ATU": 0.2544332653349882,
+            "PU->ATU": 0.2657077026649595,
+            "PU->BI": 0.38613794398804246,
+            "ATU->BI": 0.1716825190941355,
+            "BI->USE": 0.20369801438815618
+          }
+        },
+        "plspm.ord.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4970863819216229,
+            "PEOU->ATU": 0.2661437487272159,
+            "PU->ATU": 0.2839266747993197,
+            "PU->BI": 0.4695492210856159,
+            "ATU->BI": 0.1521756792155801,
+            "BI->USE": 0.23137723701502522
+          }
+        },
+        "plspm.missing.metric_scaled": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4432547304210036,
+            "PEOU->ATU": 0.2585688055398733,
+            "PU->ATU": 0.2636410104866544,
+            "PU->BI": 0.3850903182704048,
+            "ATU->BI": 0.17243476924879392,
+            "BI->USE": 0.203745171849699
+          }
+        },
+        "plspm.missing.num": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4455578792211538,
+            "PEOU->ATU": 0.252780757110358,
+            "PU->ATU": 0.2676656092304725,
+            "PU->BI": 0.40013583669401437,
+            "ATU->BI": 0.17365663522817318,
+            "BI->USE": 0.23013163947632964
+          }
+        },
+        "plspm.higher_order.num": {
+          "ok": true,
+          "value": {
+            "BELIEFS->BI": 0.6010662147071847,
+            "BI->USE": 0.2266853695654798
+          }
+        },
+        "plspm.bootstrap.num.20x1": {
+          "ok": true,
+          "value": {
+            "paths_columns": [
+              "original",
+              "mean",
+              "std.error",
+              "perc.025",
+              "perc.975",
+              "t stat."
+            ],
+            "paths_rows": 6,
+            "paths_std_error_finite": true,
+            "weights_rows": 22,
+            "loading_rows": 22
+          }
+        },
+        "semopy.import": {
+          "ok": true,
+          "value": "2.3.11"
+        },
+        "semopy.sem.mlw.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.1760580600947739,
+            "n_it": 53,
+            "message": "Optimization terminated successfully"
+          }
+        },
+        "semopy.sem.inspect_std": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.5095133929195801,
+            "PEOU->ATU": 0.28234078323723466,
+            "PU->ATU": 0.2645872862949993,
+            "PU->BI": 0.4658886642767345,
+            "ATU->BI": 0.1736314816663804,
+            "BI->USE": 0.3087223030978345
+          }
+        },
+        "semopy.sem.inspect_robust": {
+          "ok": true,
+          "value": {
+            "columns": [
+              "lval",
+              "op",
+              "rval",
+              "Estimate",
+              "Std. Err",
+              "z-value",
+              "p-value"
+            ],
+            "rows": 55
+          }
+        },
+        "semopy.sem.calc_stats": {
+          "ok": true,
+          "value": {
+            "DoF": 203.0,
+            "DoF Baseline": 231.0,
+            "chi2": 1399.509091512781,
+            "chi2 p-value": 0.0,
+            "chi2 Baseline": 15916.436299427009,
+            "CFI": 0.9237184692429314,
+            "GFI": 0.9120714546155559,
+            "AGFI": 0.8999433793901154,
+            "NFI": 0.9120714546155559,
+            "TLI": 0.9131968787936806,
+            "RMSEA": 0.07040752129168454,
+            "AIC": 97.64788387981045,
+            "BIC": 351.73331318508923,
+            "LogLik": 1.1760580600947739
+          }
+        },
+        "semopy.sem.predict_factors": {
+          "ok": true,
+          "value": {
+            "shape": [
+              1190,
+              5
+            ],
+            "columns": [
+              "ATU",
+              "BI",
+              "PEOU",
+              "PU",
+              "USE"
+            ]
+          }
+        },
+        "semopy.sem.uls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 5.241967003888995,
+            "n_it": 70
+          }
+        },
+        "semopy.sem.gls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.7581163806706348,
+            "n_it": 39
+          }
+        },
+        "semopy.sem.wls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.6546242995043157,
+            "n_it": 175
+          }
+        },
+        "semopy.sem.dwls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.5197502881440373,
+            "n_it": 58
+          }
+        },
+        "semopy.sem.fiml.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 25755.262082757017,
+            "n_it": 163
+          }
+        },
+        "semopy.modelmeans.ml.missing": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 19701.551403808764,
+            "rows": 77
+          }
+        },
+        "semopy.ordinal.cfa2": {
+          "ok": false,
+          "error": "AttributeError: `scipy.stats.mvn` has no attribute `mvnun`; furthermore, `scipy.stats.mvn` is deprecated and will be removed in SciPy 2.0.0.",
+          "where": "scipy/_lib/deprecation.py:45"
+        }
+      },
+      "warning_categories": {
+        "semopy.ordinal.cfa2": {
+          "DeprecationWarning @ semopy/utils.py:125": "bias and ddof have no effect and are deprecated"
+        }
+      },
+      "max_abs_diff_vs_reference": 0.0022941848500078743,
+      "reference_label": "py312-pandas2.2-numpy1.26"
+    },
+    {
+      "label": "py310-pandas2.3-numpy2.2",
+      "requested_python": "3.10",
+      "pins": {
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "scipy": "1.15.3",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.7.2",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7"
+      },
+      "seconds": 81.95114758296404,
+      "install_ok": true,
+      "python": "3.10.22",
+      "resolved_versions": {
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "scipy": "1.15.3",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.7.2",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7",
+        "sympy": "1.14.0",
+        "numdifftools": "0.11.2"
+      },
+      "all_checks_ok": false,
+      "failed": [
+        "semopy.ordinal.cfa2"
+      ],
+      "checks": {
+        "plspm.import": {
+          "ok": true,
+          "value": true
+        },
+        "plspm.metric_scaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44302053459942725,
+            "PEOU->ATU": 0.25562551401941286,
+            "PU->ATU": 0.2665525003163448,
+            "PU->BI": 0.38614744560402126,
+            "ATU->BI": 0.1716594550533533,
+            "BI->USE": 0.20369883617609857
+          }
+        },
+        "plspm.metric_unscaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4430205345994271,
+            "PEOU->ATU": 0.2556255140194127,
+            "PU->ATU": 0.26655250031634486,
+            "PU->BI": 0.3861474456040212,
+            "ATU->BI": 0.17165945505335323,
+            "BI->USE": 0.20369883617609869
+          }
+        },
+        "plspm.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453834714315049,
+            "PEOU->ATU": 0.25322624611791444,
+            "PU->ATU": 0.26720244610293703,
+            "PU->BI": 0.4012186530245403,
+            "ATU->BI": 0.1728418719041286,
+            "BI->USE": 0.22940398402175277
+          }
+        },
+        "plspm.num.centroid": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453188777980337,
+            "PEOU->ATU": 0.2531494171955243,
+            "PU->ATU": 0.26726753699298567,
+            "PU->BI": 0.4007485547213206,
+            "ATU->BI": 0.17303540030579143,
+            "BI->USE": 0.22893326260931268
+          }
+        },
+        "plspm.num.factorial": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44538914232391813,
+            "PEOU->ATU": 0.25306849990838776,
+            "PU->ATU": 0.2672585876105995,
+            "PU->BI": 0.40051475855717,
+            "ATU->BI": 0.1731611159905372,
+            "BI->USE": 0.22863874505795737
+          }
+        },
+        "plspm.accessors": {
+          "ok": true,
+          "value": {
+            "inner_model": [
+              "from",
+              "to",
+              "estimate",
+              "std error",
+              "t",
+              "p>|t|"
+            ],
+            "outer_model": [
+              "weight",
+              "loading",
+              "communality",
+              "redundancy"
+            ],
+            "inner_summary": [
+              "type",
+              "r_squared",
+              "r_squared_adj",
+              "block_communality",
+              "mean_redundancy",
+              "ave"
+            ],
+            "unidimensionality": [
+              "mode",
+              "mvs",
+              "cronbach_alpha",
+              "dillon_goldstein_rho",
+              "eig_1st",
+              "eig_2nd"
+            ],
+            "effects": [
+              "from",
+              "to",
+              "direct",
+              "indirect",
+              "total"
+            ],
+            "crossloadings_shape": [
+              22,
+              5
+            ],
+            "scores_shape": [
+              1190,
+              5
+            ],
+            "goodness_of_fit": 0.3470687787104632
+          }
+        },
+        "plspm.modeB_mixed.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.45004616089070504,
+            "PEOU->ATU": 0.25244849162848176,
+            "PU->ATU": 0.2663729681224091,
+            "PU->BI": 0.40120946045637895,
+            "ATU->BI": 0.1728520597198564,
+            "BI->USE": 0.2294037174708496
+          }
+        },
+        "plspm.modeB_mixed.metric.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44841739517341955,
+            "PEOU->ATU": 0.2544332653349882,
+            "PU->ATU": 0.2657077026649595,
+            "PU->BI": 0.38613794398804246,
+            "ATU->BI": 0.1716825190941355,
+            "BI->USE": 0.20369801438815618
+          }
+        },
+        "plspm.ord.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4970863819216229,
+            "PEOU->ATU": 0.2661437487272159,
+            "PU->ATU": 0.2839266747993197,
+            "PU->BI": 0.4695492210856159,
+            "ATU->BI": 0.1521756792155801,
+            "BI->USE": 0.23137723701502522
+          }
+        },
+        "plspm.missing.metric_scaled": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4432547304210036,
+            "PEOU->ATU": 0.2585688055398733,
+            "PU->ATU": 0.2636410104866544,
+            "PU->BI": 0.3850903182704048,
+            "ATU->BI": 0.17243476924879392,
+            "BI->USE": 0.203745171849699
+          }
+        },
+        "plspm.missing.num": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4455578792211538,
+            "PEOU->ATU": 0.252780757110358,
+            "PU->ATU": 0.2676656092304725,
+            "PU->BI": 0.40013583669401437,
+            "ATU->BI": 0.17365663522817318,
+            "BI->USE": 0.23013163947632964
+          }
+        },
+        "plspm.higher_order.num": {
+          "ok": true,
+          "value": {
+            "BELIEFS->BI": 0.6010662147071847,
+            "BI->USE": 0.2266853695654798
+          }
+        },
+        "plspm.bootstrap.num.20x1": {
+          "ok": true,
+          "value": {
+            "paths_columns": [
+              "original",
+              "mean",
+              "std.error",
+              "perc.025",
+              "perc.975",
+              "t stat."
+            ],
+            "paths_rows": 6,
+            "paths_std_error_finite": true,
+            "weights_rows": 22,
+            "loading_rows": 22
+          }
+        },
+        "semopy.import": {
+          "ok": true,
+          "value": "2.3.11"
+        },
+        "semopy.sem.mlw.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.1760580600947739,
+            "n_it": 53,
+            "message": "Optimization terminated successfully"
+          }
+        },
+        "semopy.sem.inspect_std": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.5095133929195801,
+            "PEOU->ATU": 0.28234078323723466,
+            "PU->ATU": 0.2645872862949993,
+            "PU->BI": 0.4658886642767345,
+            "ATU->BI": 0.1736314816663804,
+            "BI->USE": 0.3087223030978345
+          }
+        },
+        "semopy.sem.inspect_robust": {
+          "ok": true,
+          "value": {
+            "columns": [
+              "lval",
+              "op",
+              "rval",
+              "Estimate",
+              "Std. Err",
+              "z-value",
+              "p-value"
+            ],
+            "rows": 55
+          }
+        },
+        "semopy.sem.calc_stats": {
+          "ok": true,
+          "value": {
+            "DoF": 203.0,
+            "DoF Baseline": 231.0,
+            "chi2": 1399.509091512781,
+            "chi2 p-value": 0.0,
+            "chi2 Baseline": 15916.436299427009,
+            "CFI": 0.9237184692429314,
+            "GFI": 0.9120714546155559,
+            "AGFI": 0.8999433793901154,
+            "NFI": 0.9120714546155559,
+            "TLI": 0.9131968787936806,
+            "RMSEA": 0.07040752129168454,
+            "AIC": 97.64788387981045,
+            "BIC": 351.73331318508923,
+            "LogLik": 1.1760580600947739
+          }
+        },
+        "semopy.sem.predict_factors": {
+          "ok": true,
+          "value": {
+            "shape": [
+              1190,
+              5
+            ],
+            "columns": [
+              "ATU",
+              "BI",
+              "PEOU",
+              "PU",
+              "USE"
+            ]
+          }
+        },
+        "semopy.sem.uls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 5.241967003888995,
+            "n_it": 70
+          }
+        },
+        "semopy.sem.gls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.7581163806706348,
+            "n_it": 39
+          }
+        },
+        "semopy.sem.wls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.6546242995043157,
+            "n_it": 175
+          }
+        },
+        "semopy.sem.dwls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.5197502881440373,
+            "n_it": 58
+          }
+        },
+        "semopy.sem.fiml.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 25755.262082757017,
+            "n_it": 163
+          }
+        },
+        "semopy.modelmeans.ml.missing": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 19701.551403808764,
+            "rows": 77
+          }
+        },
+        "semopy.ordinal.cfa2": {
+          "ok": false,
+          "error": "AttributeError: `scipy.stats.mvn` has no attribute `mvnun`; furthermore, `scipy.stats.mvn` is deprecated and will be removed in SciPy 2.0.0.",
+          "where": "scipy/_lib/deprecation.py:45"
+        }
+      },
+      "warning_categories": {
+        "semopy.ordinal.cfa2": {
+          "DeprecationWarning @ semopy/utils.py:125": "bias and ddof have no effect and are deprecated"
+        }
+      },
+      "max_abs_diff_vs_reference": 0.0022941848500078743,
+      "reference_label": "py312-pandas2.2-numpy1.26"
+    },
+    {
+      "label": "py313-pandas2.3-numpy2.2",
+      "requested_python": "3.13",
+      "pins": {
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "scipy": "1.15.3",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.7.2",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7"
+      },
+      "seconds": 76.65158020902891,
+      "install_ok": true,
+      "python": "3.13.18",
+      "resolved_versions": {
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "scipy": "1.15.3",
+        "statsmodels": "0.14.6",
+        "scikit-learn": "1.7.2",
+        "semopy": "2.3.11",
+        "plspm": "0.5.7",
+        "sympy": "1.14.0",
+        "numdifftools": "0.11.2"
+      },
+      "all_checks_ok": false,
+      "failed": [
+        "semopy.ordinal.cfa2"
+      ],
+      "checks": {
+        "plspm.import": {
+          "ok": true,
+          "value": true
+        },
+        "plspm.metric_scaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44302053459942725,
+            "PEOU->ATU": 0.25562551401941286,
+            "PU->ATU": 0.2665525003163448,
+            "PU->BI": 0.38614744560402126,
+            "ATU->BI": 0.1716594550533533,
+            "BI->USE": 0.20369883617609857
+          }
+        },
+        "plspm.metric_unscaled.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4430205345994271,
+            "PEOU->ATU": 0.2556255140194127,
+            "PU->ATU": 0.26655250031634486,
+            "PU->BI": 0.3861474456040212,
+            "ATU->BI": 0.17165945505335323,
+            "BI->USE": 0.20369883617609869
+          }
+        },
+        "plspm.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453834714315049,
+            "PEOU->ATU": 0.25322624611791444,
+            "PU->ATU": 0.26720244610293703,
+            "PU->BI": 0.4012186530245403,
+            "ATU->BI": 0.1728418719041286,
+            "BI->USE": 0.22940398402175277
+          }
+        },
+        "plspm.num.centroid": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4453188777980337,
+            "PEOU->ATU": 0.2531494171955243,
+            "PU->ATU": 0.26726753699298567,
+            "PU->BI": 0.4007485547213206,
+            "ATU->BI": 0.17303540030579143,
+            "BI->USE": 0.22893326260931268
+          }
+        },
+        "plspm.num.factorial": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44538914232391813,
+            "PEOU->ATU": 0.25306849990838776,
+            "PU->ATU": 0.2672585876105995,
+            "PU->BI": 0.40051475855717,
+            "ATU->BI": 0.1731611159905372,
+            "BI->USE": 0.22863874505795737
+          }
+        },
+        "plspm.accessors": {
+          "ok": true,
+          "value": {
+            "inner_model": [
+              "from",
+              "to",
+              "estimate",
+              "std error",
+              "t",
+              "p>|t|"
+            ],
+            "outer_model": [
+              "weight",
+              "loading",
+              "communality",
+              "redundancy"
+            ],
+            "inner_summary": [
+              "type",
+              "r_squared",
+              "r_squared_adj",
+              "block_communality",
+              "mean_redundancy",
+              "ave"
+            ],
+            "unidimensionality": [
+              "mode",
+              "mvs",
+              "cronbach_alpha",
+              "dillon_goldstein_rho",
+              "eig_1st",
+              "eig_2nd"
+            ],
+            "effects": [
+              "from",
+              "to",
+              "direct",
+              "indirect",
+              "total"
+            ],
+            "crossloadings_shape": [
+              22,
+              5
+            ],
+            "scores_shape": [
+              1190,
+              5
+            ],
+            "goodness_of_fit": 0.3470687787104632
+          }
+        },
+        "plspm.modeB_mixed.num.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.45004616089070504,
+            "PEOU->ATU": 0.25244849162848176,
+            "PU->ATU": 0.2663729681224091,
+            "PU->BI": 0.40120946045637895,
+            "ATU->BI": 0.1728520597198564,
+            "BI->USE": 0.2294037174708496
+          }
+        },
+        "plspm.modeB_mixed.metric.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.44841739517341955,
+            "PEOU->ATU": 0.2544332653349882,
+            "PU->ATU": 0.2657077026649595,
+            "PU->BI": 0.38613794398804246,
+            "ATU->BI": 0.1716825190941355,
+            "BI->USE": 0.20369801438815618
+          }
+        },
+        "plspm.ord.path": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4970863819216229,
+            "PEOU->ATU": 0.2661437487272159,
+            "PU->ATU": 0.2839266747993197,
+            "PU->BI": 0.4695492210856159,
+            "ATU->BI": 0.1521756792155801,
+            "BI->USE": 0.23137723701502522
+          }
+        },
+        "plspm.missing.metric_scaled": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4432547304210036,
+            "PEOU->ATU": 0.2585688055398733,
+            "PU->ATU": 0.2636410104866544,
+            "PU->BI": 0.3850903182704048,
+            "ATU->BI": 0.17243476924879392,
+            "BI->USE": 0.203745171849699
+          }
+        },
+        "plspm.missing.num": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.4455578792211538,
+            "PEOU->ATU": 0.252780757110358,
+            "PU->ATU": 0.2676656092304725,
+            "PU->BI": 0.40013583669401437,
+            "ATU->BI": 0.17365663522817318,
+            "BI->USE": 0.23013163947632964
+          }
+        },
+        "plspm.higher_order.num": {
+          "ok": true,
+          "value": {
+            "BELIEFS->BI": 0.6010662147071847,
+            "BI->USE": 0.2266853695654798
+          }
+        },
+        "plspm.bootstrap.num.20x1": {
+          "ok": true,
+          "value": {
+            "paths_columns": [
+              "original",
+              "mean",
+              "std.error",
+              "perc.025",
+              "perc.975",
+              "t stat."
+            ],
+            "paths_rows": 6,
+            "paths_std_error_finite": true,
+            "weights_rows": 22,
+            "loading_rows": 22
+          }
+        },
+        "semopy.import": {
+          "ok": true,
+          "value": "2.3.11"
+        },
+        "semopy.sem.mlw.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.1760580600947739,
+            "n_it": 53,
+            "message": "Optimization terminated successfully"
+          }
+        },
+        "semopy.sem.inspect_std": {
+          "ok": true,
+          "value": {
+            "PEOU->PU": 0.5095133929195801,
+            "PEOU->ATU": 0.28234078323723466,
+            "PU->ATU": 0.2645872862949993,
+            "PU->BI": 0.4658886642767345,
+            "ATU->BI": 0.1736314816663804,
+            "BI->USE": 0.3087223030978345
+          }
+        },
+        "semopy.sem.inspect_robust": {
+          "ok": true,
+          "value": {
+            "columns": [
+              "lval",
+              "op",
+              "rval",
+              "Estimate",
+              "Std. Err",
+              "z-value",
+              "p-value"
+            ],
+            "rows": 55
+          }
+        },
+        "semopy.sem.calc_stats": {
+          "ok": true,
+          "value": {
+            "DoF": 203.0,
+            "DoF Baseline": 231.0,
+            "chi2": 1399.509091512781,
+            "chi2 p-value": 0.0,
+            "chi2 Baseline": 15916.436299427009,
+            "CFI": 0.9237184692429314,
+            "GFI": 0.9120714546155559,
+            "AGFI": 0.8999433793901154,
+            "NFI": 0.9120714546155559,
+            "TLI": 0.9131968787936806,
+            "RMSEA": 0.07040752129168454,
+            "AIC": 97.64788387981045,
+            "BIC": 351.73331318508923,
+            "LogLik": 1.1760580600947739
+          }
+        },
+        "semopy.sem.predict_factors": {
+          "ok": true,
+          "value": {
+            "shape": [
+              1190,
+              5
+            ],
+            "columns": [
+              "ATU",
+              "BI",
+              "PEOU",
+              "PU",
+              "USE"
+            ]
+          }
+        },
+        "semopy.sem.uls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 5.241967003888995,
+            "n_it": 70
+          }
+        },
+        "semopy.sem.gls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 1.7581163806706348,
+            "n_it": 39
+          }
+        },
+        "semopy.sem.wls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.6546242995043157,
+            "n_it": 175
+          }
+        },
+        "semopy.sem.dwls.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 0.5197502881440373,
+            "n_it": 58
+          }
+        },
+        "semopy.sem.fiml.fit": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 25755.262082757017,
+            "n_it": 163
+          }
+        },
+        "semopy.modelmeans.ml.missing": {
+          "ok": true,
+          "value": {
+            "success": true,
+            "fun": 19701.551403808764,
+            "rows": 77
+          }
+        },
+        "semopy.ordinal.cfa2": {
+          "ok": false,
+          "error": "AttributeError: `scipy.stats.mvn` has no attribute `mvnun`; furthermore, `scipy.stats.mvn` is deprecated and will be removed in SciPy 2.0.0.",
+          "where": "scipy/_lib/deprecation.py:45"
+        }
+      },
+      "warning_categories": {
+        "semopy.ordinal.cfa2": {
+          "DeprecationWarning @ semopy/utils.py:125": "bias and ddof have no effect and are deprecated"
+        }
+      },
+      "max_abs_diff_vs_reference": 0.0022941848500078743,
+      "reference_label": "py312-pandas2.2-numpy1.26"
+    }
+  ]
+}

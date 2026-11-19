@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "sample": {
+    "nRows": 1190,
+    "nUsed": 1190,
+    "nDropped": 0,
+    "missingData": "listwise"
+  },
+  "estimation": {
+    "converged": true,
+    "iterations": 5,
+    "admissible": true,
+    "messages": []
+  },
+  "parameters": [
+    {
+      "key": "path:c_peou->c_pu",
+      "kind": "path",
+      "sourceId": "c_peou",
+      "targetId": "c_pu",
+      "relationshipId": "r_peou_pu",
+      "scale": "standardized",
+      "est": 0.5,
+      "se": 0.03,
+      "statistic": 16.7,
+      "statisticType": "t",
+      "pValue": 0,
+      "ciLower": 0.44,
+      "ciUpper": 0.56,
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 5000
+      },
+      "sourceMethod": "cSEM::csem"
+    },
+    {
+      "key": "loading:c_pu:i_usef1",
+      "kind": "loading",
+      "sourceId": "c_pu",
+      "targetId": "i_usef1",
+      "scale": "standardized",
+      "est": 0.8,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-requested",
+        "statistic": "not-requested",
+        "pValue": "not-requested",
+        "ciLower": "not-requested",
+        "ciUpper": "not-requested"
+      },
+      "status": "estimated",
+      "sourceMethod": "cSEM::csem"
+    }
+  ],
+  "constructMetrics": [
+    {
+      "constructId": "c_pu",
+      "metric": "ave",
+      "value": 0.6,
+      "definition": "Average variance extracted: mean of squared standardized loadings."
+    },
+    {
+      "constructId": "c_peou",
+      "metric": "r2",
+      "value": null,
+      "missing": "not-applicable",
+      "definition": "R² is defined for endogenous constructs only."
+    }
+  ],
+  "matrices": [
+    {
+      "id": "htmt",
+      "title": "Heterotrait–monotrait ratio",
+      "rowIds": ["c_pu", "c_peou"],
+      "colIds": ["c_pu", "c_peou"],
+      "values": [
+        [null, 0.7],
+        [0.7, null]
+      ],
+      "symmetric": true,
+      "definition": "HTMT (Henseler, Ringle & Sarstedt, 2015); diagonal not applicable."
+    }
+  ],
+  "fit": [
+    {
+      "name": "srmr",
+      "value": 0.05,
+      "definition": "Standardized root mean square residual of the model-implied correlation matrix."
+    }
+  ],
+  "bootstrap": {
+    "requested": 5000,
+    "completed": 4998,
+    "failed": 0,
+    "inadmissible": 2,
+    "seed": 20261119,
+    "ciMethod": "percentile",
+    "confidenceLevel": 0.95,
+    "chunkSize": 100
+  },
+  "warnings": [
+    {
+      "code": "BOOTSTRAP_INADMISSIBLE_DROPPED",
+      "severity": "info",
+      "message": "2 inadmissible bootstrap samples were excluded."
+    }
+  ],
+  "provenance": {
+    "engine": "r-csem",
+    "packageVersions": {
+      "cSEM": "0.7.1"
+    },
+    "rVersion": "4.6.2",
+    "call": "illustrative example — numbers are placeholders, not estimates",
+    "startedAt": "2026-11-19T12:00:00Z",
+    "finishedAt": "2026-11-19T12:00:05Z"
+  }
+}

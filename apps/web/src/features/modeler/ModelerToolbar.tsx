@@ -1,0 +1,312 @@
+import { useReactFlow } from '@xyflow/react';
+import {
+  AlignCenterHorizontal,
+  AlignCenterVertical,
+  AlignEndHorizontal,
+  AlignEndVertical,
+  AlignStartHorizontal,
+  AlignStartVertical,
+  ArrowRightLeft,
+  CircleDot,
+  Download,
+  FilePlus2,
+  FolderOpen,
+  Grid3x3,
+  Keyboard,
+  LayoutGrid,
+  Magnet,
+  Maximize,
+  Redo2,
+  Spline,
+  Undo2,
+  Workflow,
+} from 'lucide-react';
+import {
+  Button,
+  IconButton,
+  Menu,
+  SegmentedControl,
+  Toolbar,
+  ToolbarGroup,
+  ToolbarSeparator,
+} from '@/components/ui';
+import { addConstruct } from '@/domain/model-ops';
+import { placementFor, useModeler } from './store';
+
+export interface ModelerToolbarProps {
+  connectKind: 'path' | 'covariance';
+  onConnectKind: (k: 'path' | 'covariance') => void;
+  onExport: (kind: 'svg' | 'png2' | 'png3' | 'project') => void;
+  onOpenFile: () => void;
+  onNew: () => void;
+  onShortcuts: () => void;
+}
+
+export function ModelerToolbar({
+  connectKind,
+  onConnectKind,
+  onExport,
+  onOpenFile,
+  onNew,
+  onShortcuts,
+}: ModelerToolbarProps) {
+  const rf = useReactFlow();
+  const canUndo = useModeler((s) => s.past.length > 0);
+  const canRedo = useModeler((s) => s.future.length > 0);
+  const selectionCount = useModeler((s) => s.selection.filter((id) => s.layout.nodes[id]).length);
+  const settings = useModeler((s) => s.layout.settings);
+  const hasModel = useModeler((s) => s.model.constructs.length > 0);
+  const s = useModeler.getState;
+
+  const addConstructAtCenter = (): void => {
+    const el = document.querySelector('.sem-canvas');
+    const box = el?.getBoundingClientRect();
+    const at = box
+      ? rf.screenToFlowPosition({
+          x: box.left + box.width / 2 - 68,
+          y: box.top + box.height / 2 - 36,
+        })
+      : undefined;
+    let id = '';
+    s().edit(
+      (m) => {
+        const r = addConstruct(m, { name: `LV${m.constructs.length + 1}` });
+        id = r.id;
+        return r.model;
+      },
+      (l) => ({ ...l, nodes: { ...l.nodes, [id]: placementFor(l, at) } }),
+    );
+    s().select([id]);
+  };
+
+  const fit = (): void => void rf.fitView({ padding: 0.15, duration: 200 });
+  const arrange = (): void => void s().autoArrange({ keepPinned: true }).then(fit);
+
+  return (
+    <Toolbar aria-label="Modeler tools" className="modeler-toolbar">
+      <ToolbarGroup>
+        <Menu
+          label="File"
+          size="small"
+          icon={<FilePlus2 size={16} />}
+          items={[
+            { id: 'new', label: 'New model…', icon: <FilePlus2 size={14} />, onSelect: onNew },
+            {
+              id: 'open',
+              label: 'Open project file…',
+              icon: <FolderOpen size={14} />,
+              onSelect: onOpenFile,
+            },
+            {
+              id: 'save',
+              label: 'Download project file',
+              icon: <Download size={14} />,
+              onSelect: () => onExport('project'),
+              disabled: !hasModel,
+            },
+          ]}
+        />
+        <Button
+          size="small"
+          variant="primary"
+          icon={<CircleDot size={16} />}
+          onClick={addConstructAtCenter}
+        >
+          Add construct
+        </Button>
+      </ToolbarGroup>
+      <ToolbarSeparator />
+      <ToolbarGroup>
+        <SegmentedControl
+          aria-label="Connection type"
+          size="small"
+          value={connectKind}
+          onChange={onConnectKind}
+          options={[
+            { value: 'path', label: 'Path', icon: <Workflow size={14} /> },
+            { value: 'covariance', label: 'Covariance', icon: <Spline size={14} /> },
+          ]}
+        />
+      </ToolbarGroup>
+      <ToolbarSeparator />
+      <ToolbarGroup>
+        <IconButton
+          size="small"
+          aria-label="Undo (Ctrl/Cmd+Z)"
+          disabled={!canUndo}
+          onClick={() => s().undo()}
+        >
+          <Undo2 size={16} />
+        </IconButton>
+        <IconButton
+          size="small"
+          aria-label="Redo (Shift+Ctrl/Cmd+Z)"
+          disabled={!canRedo}
+          onClick={() => s().redo()}
+        >
+          <Redo2 size={16} />
+        </IconButton>
+      </ToolbarGroup>
+      <ToolbarSeparator />
+      <ToolbarGroup>
+        <Button
+          size="small"
+          icon={<LayoutGrid size={16} />}
+          onClick={arrange}
+          disabled={!hasModel}
+          title="Arrange model (L)"
+        >
+          Arrange
+        </Button>
+        <Menu
+          label={
+            { LR: 'Left → right', RL: 'Right → left', TB: 'Top → bottom', BT: 'Bottom → top' }[
+              settings.direction
+            ]
+          }
+          size="small"
+          icon={<ArrowRightLeft size={14} />}
+          items={(['LR', 'RL', 'TB', 'BT'] as const).map((d) => ({
+            id: d,
+            label: {
+              LR: 'Left to right',
+              RL: 'Right to left',
+              TB: 'Top to bottom',
+              BT: 'Bottom to top',
+            }[d],
+            onSelect: () => {
+              s().setLayoutSettings({ direction: d });
+              arrange();
+            },
+          }))}
+        />
+        <Menu
+          label="Align"
+          size="small"
+          icon={<AlignStartVertical size={14} />}
+          items={[
+            {
+              id: 'left',
+              label: 'Align left',
+              icon: <AlignStartVertical size={14} />,
+              disabled: selectionCount < 2,
+              onSelect: () => s().alignSelection('left'),
+            },
+            {
+              id: 'center',
+              label: 'Align centers',
+              icon: <AlignCenterVertical size={14} />,
+              disabled: selectionCount < 2,
+              onSelect: () => s().alignSelection('center'),
+            },
+            {
+              id: 'right',
+              label: 'Align right',
+              icon: <AlignEndVertical size={14} />,
+              disabled: selectionCount < 2,
+              onSelect: () => s().alignSelection('right'),
+            },
+            {
+              id: 'top',
+              label: 'Align top',
+              icon: <AlignStartHorizontal size={14} />,
+              disabled: selectionCount < 2,
+              onSelect: () => s().alignSelection('top'),
+            },
+            {
+              id: 'middle',
+              label: 'Align middles',
+              icon: <AlignCenterHorizontal size={14} />,
+              disabled: selectionCount < 2,
+              onSelect: () => s().alignSelection('middle'),
+            },
+            {
+              id: 'bottom',
+              label: 'Align bottom',
+              icon: <AlignEndHorizontal size={14} />,
+              disabled: selectionCount < 2,
+              onSelect: () => s().alignSelection('bottom'),
+            },
+            {
+              id: 'dh',
+              label: 'Distribute horizontally',
+              disabled: selectionCount < 3,
+              onSelect: () => s().distributeSelection('horizontal'),
+            },
+            {
+              id: 'dv',
+              label: 'Distribute vertically',
+              disabled: selectionCount < 3,
+              onSelect: () => s().distributeSelection('vertical'),
+            },
+          ]}
+        />
+      </ToolbarGroup>
+      <ToolbarSeparator />
+      <ToolbarGroup>
+        <IconButton
+          size="small"
+          variant={settings.snapToGrid ? 'selected' : 'ghost'}
+          aria-label={`Snap to grid: ${settings.snapToGrid ? 'on' : 'off'} (hold Alt to bypass)`}
+          aria-pressed={settings.snapToGrid}
+          onClick={() => s().setLayoutSettings({ snapToGrid: !settings.snapToGrid })}
+        >
+          <Magnet size={16} />
+        </IconButton>
+        <IconButton
+          size="small"
+          aria-label={`Grid: ${settings.gridVisibility} (G)`}
+          onClick={() => {
+            const order = ['dots', 'faint', 'hidden'] as const;
+            s().setLayoutSettings({
+              gridVisibility: order[(order.indexOf(settings.gridVisibility) + 1) % 3]!,
+            });
+          }}
+        >
+          <Grid3x3 size={16} />
+        </IconButton>
+        <IconButton size="small" aria-label="Fit diagram (F)" onClick={fit}>
+          <Maximize size={16} />
+        </IconButton>
+      </ToolbarGroup>
+      <div className="modeler-toolbar-spacer" />
+      <ToolbarGroup>
+        <Menu
+          label="Export"
+          size="small"
+          align="end"
+          icon={<Download size={14} />}
+          items={[
+            {
+              id: 'svg',
+              label: 'Diagram as SVG',
+              disabled: !hasModel,
+              onSelect: () => onExport('svg'),
+            },
+            {
+              id: 'png2',
+              label: 'Diagram as PNG (2×)',
+              disabled: !hasModel,
+              onSelect: () => onExport('png2'),
+            },
+            {
+              id: 'png3',
+              label: 'Diagram as PNG (3×, print)',
+              disabled: !hasModel,
+              onSelect: () => onExport('png3'),
+            },
+            {
+              id: 'project',
+              label: 'Project file (.semstudio.json)',
+              disabled: !hasModel,
+              onSelect: () => onExport('project'),
+            },
+          ]}
+        />
+        <IconButton size="small" aria-label="Keyboard shortcuts (?)" onClick={onShortcuts}>
+          <Keyboard size={16} />
+        </IconButton>
+      </ToolbarGroup>
+    </Toolbar>
+  );
+}

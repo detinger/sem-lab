@@ -1,0 +1,323 @@
+{
+  "model": "tam-v1",
+  "engine": "seminr",
+  "engineVersion": "2.6.0",
+  "variant": "pls-path",
+  "options": {
+    "measurement": "composite(k, items, weights = mode_A)",
+    "inner_weights": "path_weighting",
+    "stopCriterion": 12,
+    "maxIt": 300
+  },
+  "n": 1190,
+  "paths": [
+    {
+      "from": "PEOU",
+      "to": "PU",
+      "est": 0.445383471418452
+    },
+    {
+      "from": "PEOU",
+      "to": "ATU",
+      "est": 0.253226246121738
+    },
+    {
+      "from": "PU",
+      "to": "ATU",
+      "est": 0.267202446102865
+    },
+    {
+      "from": "PU",
+      "to": "BI",
+      "est": 0.401218653048349
+    },
+    {
+      "from": "ATU",
+      "to": "BI",
+      "est": 0.172841871830774
+    },
+    {
+      "from": "BI",
+      "to": "USE",
+      "est": 0.229403984078717
+    }
+  ],
+  "loadings": [
+    {
+      "construct": "PU",
+      "indicator": "USEF1",
+      "est": 0.807555891244371
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF2",
+      "est": 0.847326893156269
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF3",
+      "est": 0.880322870465401
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF4",
+      "est": 0.866304838498191
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF5",
+      "est": 0.859732460393655
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU1",
+      "est": 0.765367593378937
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU2",
+      "est": 0.827281855629075
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU3",
+      "est": 0.863101442894856
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU4",
+      "est": 0.809054892466444
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU5",
+      "est": 0.78888209208686
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT1",
+      "est": 0.901190257586382
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT2",
+      "est": 0.906167211864398
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT3",
+      "est": 0.897396510907512
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT4",
+      "est": 0.878254901280836
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT5",
+      "est": 0.87620098802843
+    },
+    {
+      "construct": "BI",
+      "indicator": "BI1",
+      "est": 0.855049002328717
+    },
+    {
+      "construct": "BI",
+      "indicator": "BI2",
+      "est": 0.831011186269593
+    },
+    {
+      "construct": "BI",
+      "indicator": "BI3",
+      "est": 0.890173723288318
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE1",
+      "est": 0.855547715268326
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE2",
+      "est": 0.787286703153364
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE3",
+      "est": 0.720204759397038
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE4",
+      "est": 0.605072531321768
+    }
+  ],
+  "weights": [
+    {
+      "construct": "PU",
+      "indicator": "USEF1",
+      "est": 0.234467883523119
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF2",
+      "est": 0.230322253657672
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF3",
+      "est": 0.236280637133019
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF4",
+      "est": 0.237409368864044
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF5",
+      "est": 0.234751757513427
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU1",
+      "est": 0.226677731450948
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU2",
+      "est": 0.253833706366635
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU3",
+      "est": 0.270258529329463
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU4",
+      "est": 0.257769567761467
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU5",
+      "est": 0.22146013427071
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT1",
+      "est": 0.2389327483728
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT2",
+      "est": 0.242174094397205
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT3",
+      "est": 0.233644307320902
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT4",
+      "est": 0.213762586974362
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT5",
+      "est": 0.191527158073754
+    },
+    {
+      "construct": "BI",
+      "indicator": "BI1",
+      "est": 0.43840771797648
+    },
+    {
+      "construct": "BI",
+      "indicator": "BI2",
+      "est": 0.295811556591898
+    },
+    {
+      "construct": "BI",
+      "indicator": "BI3",
+      "est": 0.426115931813965
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE1",
+      "est": 0.45660062930454
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE2",
+      "est": 0.335591802404882
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE3",
+      "est": 0.27389472452217
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE4",
+      "est": 0.244415535754231
+    }
+  ],
+  "r2": {
+    "PU": 0.198366436612749,
+    "ATU": 0.195792350749418,
+    "BI": 0.243552682865815,
+    "USE": 0.052626187911188
+  },
+  "extra": {
+    "r2adj": {
+      "PU": 0.197691660885992,
+      "ATU": 0.194437325224144,
+      "BI": 0.24227812967772,
+      "USE": 0.0518287352074095
+    },
+    "iterations": 8,
+    "reliability": {
+      "PEOU": {
+        "alpha": 0.869992530567709,
+        "rhoA": 0.874547488632763,
+        "rhoC": 0.905847023087941,
+        "AVE": 0.658406339322833
+      },
+      "PU": {
+        "alpha": 0.905805923382122,
+        "rhoA": 0.905940210545494,
+        "rhoC": 0.930068942594543,
+        "AVE": 0.726940342854738
+      },
+      "ATU": {
+        "alpha": 0.935915020311371,
+        "rhoA": 0.940388533037342,
+        "rhoC": 0.951100484525846,
+        "AVE": 0.795532647412298
+      },
+      "BI": {
+        "alpha": 0.825229305784041,
+        "rhoA": 0.847769443009915,
+        "rhoC": 0.894124385511394,
+        "AVE": 0.738032548573839
+      },
+      "USE": {
+        "alpha": 0.739581188055791,
+        "rhoA": 0.793720332207807,
+        "rhoC": 0.833217263060641,
+        "AVE": 0.559147477420306
+      }
+    },
+    "crossCheckMaxAbsDiff_vs_cSEM_classic_path": {
+      "paths": 5.77315972805081e-15,
+      "loadings": 3.75255382323303e-14,
+      "weights": 4.79338790881911e-14,
+      "r2": 2.22044604925031e-15,
+      "construct_scores": 1.70863323489812e-13
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "generatedAt": "2026-11-19T12:53:54.881Z",
+  "generatedBy": "apps/web/src/tests/spike (npm run spike:evidence -w @sem-studio/web)",
+  "runtime": {
+    "node": "v26.13.1",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "packages": [
+    {
+      "name": "elkjs",
+      "version": "0.12.1",
+      "license": "EPL-2.0 OR GPL-3.0-or-later"
+    }
+  ],
+  "data": {
+    "ORTHOGONAL": {
+      "edges": 28,
+      "totalBendPoints": 48,
+      "axisAlignedEdges": 28,
+      "edgesReadableAsCubicBezier": 27,
+      "sample": [
+        {
+          "id": "s:PEOU->ATU_s0",
+          "startPoint": {
+            "x": 130,
+            "y": 527.3809523809524
+          },
+          "endPoint": {
+            "x": 408,
+            "y": 344.6666666666667
+          },
+          "bendPoints": [
+            {
+              "x": 190,
+              "y": 527.3809523809524
+            },
+            {
+              "x": 190,
+              "y": 507.3809523809524
+            },
+            {
+              "x": 398,
+              "y": 507.3809523809524
+            },
+            {
+              "x": 398,
+              "y": 344.6666666666667
+            }
+          ],
+          "incomingShape": "PEOU",
+          "outgoingShape": "ATU"
+        }
+      ]
+    },
+    "POLYLINE": {
+      "edges": 28,
+      "totalBendPoints": 3,
+      "axisAlignedEdges": 1,
+      "edgesReadableAsCubicBezier": 27,
+      "sample": [
+        {
+          "id": "s:PEOU->ATU_s0",
+          "startPoint": {
+            "x": 130,
+            "y": 187.50476190476195
+          },
+          "endPoint": {
+            "x": 434.5569047619048,
+            "y": 352.1666666666667
+          },
+          "bendPoints": [
+            {
+              "x": 224.26999999999998,
+              "y": 433.5238095238095
+            },
+            {
+              "x": 342.27,
+              "y": 433.5238095238095
+            }
+          ],
+          "incomingShape": "PEOU",
+          "outgoingShape": "ATU"
+        }
+      ]
+    },
+    "SPLINES": {
+      "edges": 28,
+      "totalBendPoints": 71,
+      "axisAlignedEdges": 1,
+      "edgesReadableAsCubicBezier": 28,
+      "sample": [
+        {
+          "id": "s:PEOU->ATU_s0",
+          "startPoint": {
+            "x": 130,
+            "y": 187.50476190476195
+          },
+          "endPoint": {
+            "x": 408,
+            "y": 352.1666666666667
+          },
+          "bendPoints": [
+            {
+              "x": 170,
+              "y": 433.5238095238095
+            },
+            {
+              "x": 190,
+              "y": 433.5238095238095
+            },
+            {
+              "x": 209.83333333333331,
+              "y": 433.5238095238095
+            },
+            {
+              "x": 229.66666666666666,
+              "y": 433.5238095238095
+            },
+            {
+              "x": 249.33333333333331,
+              "y": 433.5238095238095
+            },
+            {
+              "x": 269,
+              "y": 433.5238095238095
+            },
+            {
+              "x": 288.66666666666663,
+              "y": 433.5238095238095
+            },
+            {
+              "x": 308.3333333333333,
+              "y": 433.5238095238095
+            },
+            {
+              "x": 328.16666666666663,
+              "y": 433.5238095238095
+            },
+            {
+              "x": 348,
+              "y": 433.5238095238095
+            },
+            {
+              "x": 368,
+              "y": 433.5238095238095
+            }
+          ],
+          "incomingShape": "PEOU",
+          "outgoingShape": "ATU"
+        }
+      ]
+    }
+  }
+}

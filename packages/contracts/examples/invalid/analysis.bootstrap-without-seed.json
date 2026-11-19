@@ -1,0 +1,26 @@
+{
+  "contract": "analysis-configuration",
+  "catchesBy": "refinement",
+  "why": "bootstrapping requires a seed",
+  "document": {
+    "method": "pls-sem",
+    "engine": "r-csem",
+    "estimator": "pls-pm",
+    "missingData": "listwise",
+    "bootstrap": {
+      "enabled": true,
+      "repetitions": 5000,
+      "ci": "percentile",
+      "confidenceLevel": 0.95,
+      "sides": "two-sided"
+    },
+    "pls": {
+      "innerWeighting": "path",
+      "maxIterations": 300,
+      "tolerance": 1e-7
+    },
+    "ipma": {
+      "targetConstructId": "c_bi"
+    }
+  }
+}

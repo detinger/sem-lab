@@ -1,0 +1,115 @@
+{
+  "generatedAt": "2026-11-19T12:53:52.579Z",
+  "generatedBy": "apps/web/src/tests/spike (npm run spike:evidence -w @sem-studio/web)",
+  "runtime": {
+    "node": "v26.13.1",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "packages": [
+    {
+      "name": "lucide-react",
+      "version": "1.72.0",
+      "license": "ISC"
+    }
+  ],
+  "data": {
+    "rows": [
+      {
+        "icon": "layout-dashboard",
+        "exportName": "LayoutDashboard",
+        "exists": true,
+        "kind": "object",
+        "inCanonicalIconMap": true
+      },
+      {
+        "icon": "workflow",
+        "exportName": "Workflow",
+        "exists": true,
+        "kind": "object",
+        "inCanonicalIconMap": true
+      },
+      {
+        "icon": "table",
+        "exportName": "Table",
+        "exists": true,
+        "kind": "object",
+        "inCanonicalIconMap": true
+      },
+      {
+        "icon": "flask-conical",
+        "exportName": "FlaskConical",
+        "exists": true,
+        "kind": "object",
+        "inCanonicalIconMap": true
+      },
+      {
+        "icon": "chart-column-increasing",
+        "exportName": "ChartColumnIncreasing",
+        "exists": true,
+        "kind": "object",
+        "inCanonicalIconMap": true
+      },
+      {
+        "icon": "scatter-chart",
+        "exportName": "ScatterChart",
+        "exists": true,
+        "kind": "object",
+        "inCanonicalIconMap": false
+      },
+      {
+        "icon": "chart-no-axes-combined",
+        "exportName": "ChartNoAxesCombined",
+        "exists": true,
+        "kind": "object",
+        "inCanonicalIconMap": true
+      },
+      {
+        "icon": "git-compare-arrows",
+        "exportName": "GitCompareArrows",
+        "exists": true,
+        "kind": "object",
+        "inCanonicalIconMap": true
+      },
+      {
+        "icon": "notebook-tabs",
+        "exportName": "NotebookTabs",
+        "exists": true,
+        "kind": "object",
+        "inCanonicalIconMap": true
+      },
+      {
+        "icon": "book-open",
+        "exportName": "BookOpen",
+        "exists": true,
+        "kind": "object",
+        "inCanonicalIconMap": true
+      },
+      {
+        "icon": "target",
+        "exportName": "Target",
+        "exists": true,
+        "kind": "object",
+        "inCanonicalIconMap": true
+      },
+      {
+        "icon": "library",
+        "exportName": "Library",
+        "exists": true,
+        "kind": "object",
+        "inCanonicalIconMap": true
+      },
+      {
+        "icon": "settings",
+        "exportName": "Settings",
+        "exists": true,
+        "kind": "object",
+        "inCanonicalIconMap": true
+      }
+    ],
+    "missing": [],
+    "replacements": {},
+    "scatterChartIsAliasOfChartScatter": true,
+    "totalExports": 7063
+  }
+}

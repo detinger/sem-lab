@@ -1,0 +1,154 @@
+{
+  "$id": "https://sem-studio.local/schema/analysis-configuration.json",
+  "title": "analysis-configuration",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "method": {
+      "type": "string",
+      "enum": [
+        "pls-sem",
+        "plsc",
+        "cb-sem"
+      ]
+    },
+    "engine": {
+      "type": "string",
+      "enum": [
+        "r-csem",
+        "r-seminr",
+        "r-lavaan",
+        "py-semopy",
+        "py-plspm"
+      ]
+    },
+    "estimator": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 40
+    },
+    "missingData": {
+      "type": "string",
+      "enum": [
+        "listwise",
+        "fiml"
+      ]
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "bootstrap": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "repetitions": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000
+        },
+        "ci": {
+          "type": "string",
+          "enum": [
+            "percentile",
+            "bca"
+          ]
+        },
+        "confidenceLevel": {
+          "type": "number",
+          "exclusiveMinimum": 0.5,
+          "exclusiveMaximum": 1
+        },
+        "sides": {
+          "type": "string",
+          "enum": [
+            "two-sided",
+            "one-sided"
+          ]
+        }
+      },
+      "required": [
+        "enabled",
+        "repetitions",
+        "ci",
+        "confidenceLevel",
+        "sides"
+      ],
+      "additionalProperties": false
+    },
+    "pls": {
+      "type": "object",
+      "properties": {
+        "innerWeighting": {
+          "type": "string",
+          "enum": [
+            "path",
+            "centroid",
+            "factorial"
+          ]
+        },
+        "maxIterations": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000
+        },
+        "tolerance": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 0.01
+        }
+      },
+      "required": [
+        "innerWeighting",
+        "maxIterations",
+        "tolerance"
+      ],
+      "additionalProperties": false
+    },
+    "cb": {
+      "type": "object",
+      "properties": {
+        "identification": {
+          "type": "string",
+          "enum": [
+            "marker",
+            "std-lv"
+          ]
+        },
+        "meanStructure": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "identification",
+        "meanStructure"
+      ],
+      "additionalProperties": false
+    },
+    "ipma": {
+      "type": "object",
+      "properties": {
+        "targetConstructId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]*$"
+        }
+      },
+      "required": [
+        "targetConstructId"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "method",
+    "engine",
+    "estimator",
+    "missingData"
+  ],
+  "additionalProperties": false
+}

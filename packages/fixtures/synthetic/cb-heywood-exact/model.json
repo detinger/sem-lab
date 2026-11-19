@@ -1,0 +1,36 @@
+{
+  "constructs": [
+    {
+      "id": "c_h",
+      "indicatorIds": [
+        "i_h1",
+        "i_h2",
+        "i_h3"
+      ],
+      "label": "Single factor H",
+      "measurement": "reflective",
+      "name": "H"
+    }
+  ],
+  "indicators": [
+    {
+      "column": "h1",
+      "id": "i_h1",
+      "level": "continuous",
+      "name": "h1"
+    },
+    {
+      "column": "h2",
+      "id": "i_h2",
+      "level": "continuous",
+      "name": "h2"
+    },
+    {
+      "column": "h3",
+      "id": "i_h3",
+      "level": "continuous",
+      "name": "h3"
+    }
+  ],
+  "relationships": []
+}

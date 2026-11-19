@@ -1,0 +1,92 @@
+[
+  {
+    "analysis": {
+      "bootstrap": {
+        "ci": "percentile",
+        "confidenceLevel": 0.95,
+        "enabled": true,
+        "repetitions": 5000,
+        "sides": "two-sided"
+      },
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      },
+      "seed": 20261103
+    },
+    "description": "Classic PLS-SEM with 5000 percentile bootstrap draws (seeded): direct, indirect and total effects with CIs.",
+    "id": "pls-csem-boot"
+  },
+  {
+    "analysis": {
+      "bootstrap": {
+        "ci": "percentile",
+        "confidenceLevel": 0.95,
+        "enabled": true,
+        "repetitions": 5000,
+        "sides": "two-sided"
+      },
+      "engine": "r-seminr",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      },
+      "seed": 20261103
+    },
+    "description": "Same in seminr with 5000 bootstrap draws (seeded); compare point estimates with r-csem.",
+    "id": "pls-seminr-boot"
+  },
+  {
+    "analysis": {
+      "engine": "py-plspm",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "Same specification in Python plspm (point estimates).",
+    "id": "pls-plspm"
+  },
+  {
+    "analysis": {
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "method": "plsc",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "PLSc (consistent PLS) point estimates.",
+    "id": "plsc-csem"
+  },
+  {
+    "analysis": {
+      "cb": {
+        "identification": "marker",
+        "meanStructure": false
+      },
+      "engine": "r-lavaan",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "CB-SEM ML treating the 7-point items as continuous.",
+    "id": "cb-lavaan-ml"
+  }
+]

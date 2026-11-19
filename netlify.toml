@@ -1,0 +1,30 @@
+# Netlify: static SPA build of apps/web (PLAN §3.6). No R/Python computation runs on Netlify.
+[build]
+  command = "npm ci && npm run build --workspace @sem-studio/web"
+  publish = "apps/web/dist"
+
+[build.environment]
+  NODE_VERSION = "26"
+  # VITE_API_BASE_URL is set in the Netlify UI per context (it is baked in at build time).
+  # Never put credentials in VITE_* variables: they end up in the public bundle.
+
+# Hashed assets are immutable.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# SPA fallback: deep links such as /modeler reload correctly. Netlify serves existing files
+# (including /assets/*) before applying this rule, so assets are never rewritten.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

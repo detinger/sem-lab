@@ -1,0 +1,112 @@
+[
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "peou1",
+    "observedMax": 8.006734245436178,
+    "observedMin": 0.7267355507038307,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "peou2",
+    "observedMax": 6.903210646081599,
+    "observedMin": 1.3049076751452917,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "peou3",
+    "observedMax": 9.712512403880336,
+    "observedMin": 0.8496926398056472,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "peou4",
+    "observedMax": 7.795246671579441,
+    "observedMin": 1.9873816019613546,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "pu1",
+    "observedMax": 7.730077062676312,
+    "observedMin": 0.24415905343251953,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "pu2",
+    "observedMax": 8.060720828631187,
+    "observedMin": -2.142678705784345,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "pu3",
+    "observedMax": 9.130769990444598,
+    "observedMin": 0.7404498092907259,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "pu4",
+    "observedMax": 6.575976467524597,
+    "observedMin": 1.1890439874606353,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "bi1",
+    "observedMax": 9.298763668044085,
+    "observedMin": -0.38106940783487,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "bi2",
+    "observedMax": 7.298228969422916,
+    "observedMin": 0.22342838558050815,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 500,
+    "name": "bi3",
+    "observedMax": 8.244557688562127,
+    "observedMin": 2.739679728619876,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  }
+]

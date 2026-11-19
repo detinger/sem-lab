@@ -1,0 +1,798 @@
+{
+  "caseId": "ipma-range-restricted",
+  "constructs": [
+    {
+      "indicators": [
+        "peou1",
+        "peou2",
+        "peou3",
+        "peou4"
+      ],
+      "label": "Perceived ease of use (synthetic)",
+      "measurement": "reflective",
+      "name": "PEOU",
+      "standardizedLoadings": {
+        "peou1": 0.8,
+        "peou2": 0.78,
+        "peou3": 0.76,
+        "peou4": 0.74
+      }
+    },
+    {
+      "indicators": [
+        "pu1",
+        "pu2",
+        "pu3",
+        "pu4"
+      ],
+      "label": "Perceived usefulness (synthetic)",
+      "measurement": "reflective",
+      "name": "PU",
+      "standardizedLoadings": {
+        "pu1": 0.85,
+        "pu2": 0.82,
+        "pu3": 0.8,
+        "pu4": 0.78
+      }
+    },
+    {
+      "indicators": [
+        "bi1",
+        "bi2",
+        "bi3"
+      ],
+      "label": "Behavioural intention (synthetic)",
+      "measurement": "reflective",
+      "name": "BI",
+      "standardizedLoadings": {
+        "bi1": 0.88,
+        "bi2": 0.85,
+        "bi3": 0.82
+      }
+    }
+  ],
+  "conventions": {
+    "composite": "a composite block's indicators covary with everything outside the block only through the composite: cov(x_block, y) = (R w) cov(C, y)",
+    "sigma": "Sigma_std = L Phi L' + blockdiag(diag(1-lambda^2) for reflective, R-(Rw)(Rw)' for composite); Sigma_raw = D Sigma_std D, D = diag(sd)"
+  },
+  "derivedTruths": {
+    "classicPlsPopulationLimit": {
+      "compositeCorrelations": {
+        "matrix": [
+          [
+            1.0,
+            0.5223410700668318,
+            0.43543038341742357
+          ],
+          [
+            0.5223410700668318,
+            1.0,
+            0.5501733302558469
+          ],
+          [
+            0.43543038341742357,
+            0.5501733302558469,
+            1.0
+          ]
+        ],
+        "order": [
+          "PEOU",
+          "PU",
+          "BI"
+        ]
+      },
+      "description": "Population limit of classic PLS-SEM (Mode A for reflective, Mode B for composite blocks, no consistency correction) on standardised data; independent of the inner weighting scheme.",
+      "paths": [
+        {
+          "coefficient": 0.5223410700668318,
+          "commonFactorValue": 0.6,
+          "source": "PEOU",
+          "target": "PU"
+        },
+        {
+          "coefficient": 0.20360346658542572,
+          "commonFactorValue": 0.2,
+          "source": "PEOU",
+          "target": "BI"
+        },
+        {
+          "coefficient": 0.4438228776502992,
+          "commonFactorValue": 0.5,
+          "source": "PU",
+          "target": "BI"
+        }
+      ]
+    },
+    "constructs": {
+      "BI": {
+        "AVE": 0.7231,
+        "definitions": {
+          "AVE": "mean of squared standardised loadings",
+          "rhoA": "population rho_A = reliability of the Mode A composite, whose population weights are proportional to lambda: (l'l)^2 / ((l'l)^2 + l'Theta l)",
+          "rhoC": "(sum lambda)^2 / ((sum lambda)^2 + sum(1 - lambda^2))"
+        },
+        "rhoA": 0.8876742995456589,
+        "rhoC": 0.8867206676485027
+      },
+      "PEOU": {
+        "AVE": 0.5934,
+        "definitions": {
+          "AVE": "mean of squared standardised loadings",
+          "rhoA": "population rho_A = reliability of the Mode A composite, whose population weights are proportional to lambda: (l'l)^2 / ((l'l)^2 + l'Theta l)",
+          "rhoC": "(sum lambda)^2 / ((sum lambda)^2 + sum(1 - lambda^2))"
+        },
+        "rhoA": 0.8543657010238456,
+        "rhoC": 0.8536462457706429
+      },
+      "PU": {
+        "AVE": 0.660825,
+        "definitions": {
+          "AVE": "mean of squared standardised loadings",
+          "rhoA": "population rho_A = reliability of the Mode A composite, whose population weights are proportional to lambda: (l'l)^2 / ((l'l)^2 + l'Theta l)",
+          "rhoC": "(sum lambda)^2 / ((sum lambda)^2 + sum(1 - lambda^2))"
+        },
+        "rhoA": 0.8870784787136354,
+        "rhoC": 0.8861752466608497
+      }
+    },
+    "effects": [
+      {
+        "direct": 0.6,
+        "indirect": 0.0,
+        "source": "PEOU",
+        "target": "PU",
+        "total": 0.6
+      },
+      {
+        "direct": 0.2,
+        "indirect": 0.3,
+        "source": "PEOU",
+        "target": "BI",
+        "total": 0.5
+      },
+      {
+        "direct": 0.5,
+        "indirect": 0.0,
+        "source": "PU",
+        "target": "BI",
+        "total": 0.5
+      }
+    ]
+  },
+  "exogenousCorrelations": [],
+  "impliedCorrelation": {
+    "columns": [
+      "peou1",
+      "peou2",
+      "peou3",
+      "peou4",
+      "pu1",
+      "pu2",
+      "pu3",
+      "pu4",
+      "bi1",
+      "bi2",
+      "bi3"
+    ],
+    "matrix": [
+      [
+        1.0,
+        0.6240000000000001,
+        0.6080000000000001,
+        0.592,
+        0.408,
+        0.39359999999999995,
+        0.384,
+        0.3744,
+        0.35200000000000004,
+        0.34,
+        0.328
+      ],
+      [
+        0.6240000000000001,
+        1.0,
+        0.5928,
+        0.5772,
+        0.3978,
+        0.38375999999999993,
+        0.3744,
+        0.36504,
+        0.3432,
+        0.3315,
+        0.3198
+      ],
+      [
+        0.6080000000000001,
+        0.5928,
+        1.0,
+        0.5624,
+        0.38759999999999994,
+        0.3739199999999999,
+        0.3648,
+        0.35568,
+        0.33440000000000003,
+        0.323,
+        0.3116
+      ],
+      [
+        0.592,
+        0.5772,
+        0.5624,
+        1.0,
+        0.3774,
+        0.36407999999999996,
+        0.3552,
+        0.34632,
+        0.3256,
+        0.3145,
+        0.3034
+      ],
+      [
+        0.40800000000000003,
+        0.39780000000000004,
+        0.3876,
+        0.3774,
+        1.0,
+        0.697,
+        0.68,
+        0.663,
+        0.46376,
+        0.44795,
+        0.43213999999999997
+      ],
+      [
+        0.39359999999999995,
+        0.38376,
+        0.37392,
+        0.36407999999999996,
+        0.697,
+        1.0,
+        0.656,
+        0.6396,
+        0.44739199999999996,
+        0.43213999999999997,
+        0.4168879999999999
+      ],
+      [
+        0.384,
+        0.3744,
+        0.3648,
+        0.35519999999999996,
+        0.68,
+        0.656,
+        1.0,
+        0.6240000000000001,
+        0.43648,
+        0.4216,
+        0.40671999999999997
+      ],
+      [
+        0.3744,
+        0.36504,
+        0.35568,
+        0.34631999999999996,
+        0.663,
+        0.6396,
+        0.6240000000000001,
+        1.0,
+        0.425568,
+        0.41106000000000004,
+        0.396552
+      ],
+      [
+        0.35200000000000004,
+        0.3432,
+        0.33440000000000003,
+        0.3256,
+        0.46375999999999995,
+        0.44739199999999996,
+        0.43648,
+        0.425568,
+        1.0,
+        0.748,
+        0.7215999999999999
+      ],
+      [
+        0.34,
+        0.3315,
+        0.323,
+        0.3145,
+        0.44795,
+        0.43213999999999997,
+        0.42160000000000003,
+        0.41106000000000004,
+        0.748,
+        1.0,
+        0.697
+      ],
+      [
+        0.328,
+        0.3198,
+        0.3116,
+        0.3034,
+        0.43213999999999997,
+        0.4168879999999999,
+        0.40671999999999997,
+        0.39655199999999996,
+        0.7215999999999999,
+        0.697,
+        1.0
+      ]
+    ]
+  },
+  "impliedCovariance": {
+    "columns": [
+      "peou1",
+      "peou2",
+      "peou3",
+      "peou4",
+      "pu1",
+      "pu2",
+      "pu3",
+      "pu4",
+      "bi1",
+      "bi2",
+      "bi3"
+    ],
+    "divisor": "population (equals the N-1 sample covariance for EXACT cases)",
+    "matrix": [
+      [
+        1.0,
+        0.6240000000000001,
+        0.6080000000000001,
+        0.592,
+        0.408,
+        0.39359999999999995,
+        0.384,
+        0.3744,
+        0.35200000000000004,
+        0.34,
+        0.328
+      ],
+      [
+        0.6240000000000001,
+        1.0,
+        0.5928,
+        0.5772,
+        0.3978,
+        0.38375999999999993,
+        0.3744,
+        0.36504,
+        0.3432,
+        0.3315,
+        0.3198
+      ],
+      [
+        0.6080000000000001,
+        0.5928,
+        1.0,
+        0.5624,
+        0.38759999999999994,
+        0.3739199999999999,
+        0.3648,
+        0.35568,
+        0.33440000000000003,
+        0.323,
+        0.3116
+      ],
+      [
+        0.592,
+        0.5772,
+        0.5624,
+        1.0,
+        0.3774,
+        0.36407999999999996,
+        0.3552,
+        0.34632,
+        0.3256,
+        0.3145,
+        0.3034
+      ],
+      [
+        0.40800000000000003,
+        0.39780000000000004,
+        0.3876,
+        0.3774,
+        1.0,
+        0.697,
+        0.68,
+        0.663,
+        0.46376,
+        0.44795,
+        0.43213999999999997
+      ],
+      [
+        0.39359999999999995,
+        0.38376,
+        0.37392,
+        0.36407999999999996,
+        0.697,
+        1.0,
+        0.656,
+        0.6396,
+        0.44739199999999996,
+        0.43213999999999997,
+        0.4168879999999999
+      ],
+      [
+        0.384,
+        0.3744,
+        0.3648,
+        0.35519999999999996,
+        0.68,
+        0.656,
+        1.0,
+        0.6240000000000001,
+        0.43648,
+        0.4216,
+        0.40671999999999997
+      ],
+      [
+        0.3744,
+        0.36504,
+        0.35568,
+        0.34631999999999996,
+        0.663,
+        0.6396,
+        0.6240000000000001,
+        1.0,
+        0.425568,
+        0.41106000000000004,
+        0.396552
+      ],
+      [
+        0.35200000000000004,
+        0.3432,
+        0.33440000000000003,
+        0.3256,
+        0.46375999999999995,
+        0.44739199999999996,
+        0.43648,
+        0.425568,
+        1.0,
+        0.748,
+        0.7215999999999999
+      ],
+      [
+        0.34,
+        0.3315,
+        0.323,
+        0.3145,
+        0.44795,
+        0.43213999999999997,
+        0.42160000000000003,
+        0.41106000000000004,
+        0.748,
+        1.0,
+        0.697
+      ],
+      [
+        0.328,
+        0.3198,
+        0.3116,
+        0.3034,
+        0.43213999999999997,
+        0.4168879999999999,
+        0.40671999999999997,
+        0.39655199999999996,
+        0.7215999999999999,
+        0.697,
+        1.0
+      ]
+    ]
+  },
+  "indicators": [
+    {
+      "column": "peou1",
+      "construct": "PEOU",
+      "likert": {
+        "highestCategory": 7,
+        "lowestCategory": 3,
+        "profile": "restricted-3-to-7",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 7,
+        "scaleMin": 1,
+        "thresholds": [
+          -1.2,
+          -0.4,
+          0.4,
+          1.2
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.3599999999999999,
+      "residualVarianceStandardized": 0.3599999999999999,
+      "sd": 1.0,
+      "standardizedLoading": 0.8
+    },
+    {
+      "column": "peou2",
+      "construct": "PEOU",
+      "likert": {
+        "highestCategory": 7,
+        "lowestCategory": 3,
+        "profile": "restricted-3-to-7",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 7,
+        "scaleMin": 1,
+        "thresholds": [
+          -1.2,
+          -0.4,
+          0.4,
+          1.2
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.39159999999999995,
+      "residualVarianceStandardized": 0.39159999999999995,
+      "sd": 1.0,
+      "standardizedLoading": 0.78
+    },
+    {
+      "column": "peou3",
+      "construct": "PEOU",
+      "likert": {
+        "highestCategory": 7,
+        "lowestCategory": 3,
+        "profile": "restricted-3-to-7",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 7,
+        "scaleMin": 1,
+        "thresholds": [
+          -1.2,
+          -0.4,
+          0.4,
+          1.2
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.4224,
+      "residualVarianceStandardized": 0.4224,
+      "sd": 1.0,
+      "standardizedLoading": 0.76
+    },
+    {
+      "column": "peou4",
+      "construct": "PEOU",
+      "likert": {
+        "highestCategory": 7,
+        "lowestCategory": 3,
+        "profile": "restricted-3-to-7",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 7,
+        "scaleMin": 1,
+        "thresholds": [
+          -1.2,
+          -0.4,
+          0.4,
+          1.2
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.4524,
+      "residualVarianceStandardized": 0.4524,
+      "sd": 1.0,
+      "standardizedLoading": 0.74
+    },
+    {
+      "column": "pu1",
+      "construct": "PU",
+      "likert": {
+        "highestCategory": 7,
+        "lowestCategory": 1,
+        "profile": "symmetric-7",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 7,
+        "scaleMin": 1,
+        "thresholds": [
+          -1.8,
+          -1.1,
+          -0.4,
+          0.4,
+          1.1,
+          1.8
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.2775000000000001,
+      "residualVarianceStandardized": 0.2775000000000001,
+      "sd": 1.0,
+      "standardizedLoading": 0.85
+    },
+    {
+      "column": "pu2",
+      "construct": "PU",
+      "likert": {
+        "highestCategory": 7,
+        "lowestCategory": 1,
+        "profile": "symmetric-7",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 7,
+        "scaleMin": 1,
+        "thresholds": [
+          -1.8,
+          -1.1,
+          -0.4,
+          0.4,
+          1.1,
+          1.8
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.3276000000000001,
+      "residualVarianceStandardized": 0.3276000000000001,
+      "sd": 1.0,
+      "standardizedLoading": 0.82
+    },
+    {
+      "column": "pu3",
+      "construct": "PU",
+      "likert": {
+        "highestCategory": 7,
+        "lowestCategory": 1,
+        "profile": "symmetric-7",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 7,
+        "scaleMin": 1,
+        "thresholds": [
+          -1.8,
+          -1.1,
+          -0.4,
+          0.4,
+          1.1,
+          1.8
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.3599999999999999,
+      "residualVarianceStandardized": 0.3599999999999999,
+      "sd": 1.0,
+      "standardizedLoading": 0.8
+    },
+    {
+      "column": "pu4",
+      "construct": "PU",
+      "likert": {
+        "highestCategory": 7,
+        "lowestCategory": 1,
+        "profile": "symmetric-7",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 7,
+        "scaleMin": 1,
+        "thresholds": [
+          -1.8,
+          -1.1,
+          -0.4,
+          0.4,
+          1.1,
+          1.8
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.39159999999999995,
+      "residualVarianceStandardized": 0.39159999999999995,
+      "sd": 1.0,
+      "standardizedLoading": 0.78
+    },
+    {
+      "column": "bi1",
+      "construct": "BI",
+      "likert": {
+        "highestCategory": 6,
+        "lowestCategory": 1,
+        "profile": "restricted-1-to-6",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 7,
+        "scaleMin": 1,
+        "thresholds": [
+          -1.5,
+          -0.75,
+          0.0,
+          0.75,
+          1.5
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.22560000000000002,
+      "residualVarianceStandardized": 0.22560000000000002,
+      "sd": 1.0,
+      "standardizedLoading": 0.88
+    },
+    {
+      "column": "bi2",
+      "construct": "BI",
+      "likert": {
+        "highestCategory": 6,
+        "lowestCategory": 1,
+        "profile": "restricted-1-to-6",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 7,
+        "scaleMin": 1,
+        "thresholds": [
+          -1.5,
+          -0.75,
+          0.0,
+          0.75,
+          1.5
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.2775000000000001,
+      "residualVarianceStandardized": 0.2775000000000001,
+      "sd": 1.0,
+      "standardizedLoading": 0.85
+    },
+    {
+      "column": "bi3",
+      "construct": "BI",
+      "likert": {
+        "highestCategory": 6,
+        "lowestCategory": 1,
+        "profile": "restricted-1-to-6",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 7,
+        "scaleMin": 1,
+        "thresholds": [
+          -1.5,
+          -0.75,
+          0.0,
+          0.75,
+          1.5
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.3276000000000001,
+      "residualVarianceStandardized": 0.3276000000000001,
+      "sd": 1.0,
+      "standardizedLoading": 0.82
+    }
+  ],
+  "latentCorrelation": {
+    "formula": "Phi = (I-B)^-1 Psi (I-B)^-T, every latent variance exactly 1",
+    "matrix": [
+      [
+        1.0,
+        0.6,
+        0.5
+      ],
+      [
+        0.6,
+        1.0,
+        0.62
+      ],
+      [
+        0.5,
+        0.62,
+        1.0
+      ]
+    ],
+    "order": [
+      "PEOU",
+      "PU",
+      "BI"
+    ]
+  },
+  "latentDisturbanceVariances": {
+    "BI": 0.59,
+    "PU": 0.64
+  },
+  "note": "population of tam-mediation; PEOU and BI items use range-restricted threshold sets and PU items use the symmetric 7-point profile (not tam-mediation's high-agreement profile) so that PU reliably attains both 1 and 7",
+  "structuralCoefficients": [
+    {
+      "coefficient": 0.6,
+      "source": "PEOU",
+      "target": "PU"
+    },
+    {
+      "coefficient": 0.2,
+      "source": "PEOU",
+      "target": "BI"
+    },
+    {
+      "coefficient": 0.5,
+      "source": "PU",
+      "target": "BI"
+    }
+  ],
+  "synthetic": true
+}

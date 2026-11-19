@@ -1,0 +1,263 @@
+{
+  "model": "tam-v1",
+  "engine": "lavaan",
+  "engineVersion": "0.7.3",
+  "variant": "sem-ml",
+  "options": {
+    "estimator": "ML",
+    "identification": "marker (default)",
+    "reported": "standardizedSolution type std_all",
+    "missing": "listwise (no NA in data)"
+  },
+  "n": 1190,
+  "paths": [
+    {
+      "from": "PEOU",
+      "to": "PU",
+      "est": 0.509596577539653
+    },
+    {
+      "from": "PEOU",
+      "to": "ATU",
+      "est": 0.282209048953952
+    },
+    {
+      "from": "PU",
+      "to": "ATU",
+      "est": 0.264548365536873
+    },
+    {
+      "from": "PU",
+      "to": "BI",
+      "est": 0.465941555556087
+    },
+    {
+      "from": "ATU",
+      "to": "BI",
+      "est": 0.173708022965825
+    },
+    {
+      "from": "BI",
+      "to": "USE",
+      "est": 0.308705692101875
+    }
+  ],
+  "loadings": [
+    {
+      "construct": "PU",
+      "indicator": "USEF1",
+      "est": 0.73885855550858
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF2",
+      "est": 0.80617403904422
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF3",
+      "est": 0.854921346057134
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF4",
+      "est": 0.839318610098445
+    },
+    {
+      "construct": "PU",
+      "indicator": "USEF5",
+      "est": 0.815399724239171
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU1",
+      "est": 0.690516526180003
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU2",
+      "est": 0.777967858184142
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU3",
+      "est": 0.837079343366848
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU4",
+      "est": 0.754066320794707
+    },
+    {
+      "construct": "PEOU",
+      "indicator": "EOU5",
+      "est": 0.723145391720944
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT1",
+      "est": 0.877335216954227
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT2",
+      "est": 0.884648088712958
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT3",
+      "est": 0.870197445427309
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT4",
+      "est": 0.83989119754714
+    },
+    {
+      "construct": "ATU",
+      "indicator": "ATT5",
+      "est": 0.839783467123688
+    },
+    {
+      "construct": "BI",
+      "indicator": "BI1",
+      "est": 0.71438396368453
+    },
+    {
+      "construct": "BI",
+      "indicator": "BI2",
+      "est": 0.768100368855278
+    },
+    {
+      "construct": "BI",
+      "indicator": "BI3",
+      "est": 0.86629793100885
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE1",
+      "est": 0.805322472932253
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE2",
+      "est": 0.731670811864434
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE3",
+      "est": 0.573246656151037
+    },
+    {
+      "construct": "USE",
+      "indicator": "USE4",
+      "est": 0.436673377584801
+    }
+  ],
+  "weights": [],
+  "r2": {
+    "PU": 0.259688671840127,
+    "ATU": 0.225718649131209,
+    "BI": 0.313379702459363,
+    "USE": 0.0952992043360973
+  },
+  "extra": {
+    "fit": {
+      "npar": 50,
+      "chisq": 1399.50829226067,
+      "df": 203,
+      "pvalue": 0,
+      "baseline.chisq": 15916.435471689,
+      "baseline.df": 231,
+      "cfi": 0.923718516172517,
+      "tli": 0.913196932196312,
+      "rmsea": 0.0703779085762544,
+      "rmsea.ci.lower": 0.0669167656283292,
+      "rmsea.ci.upper": 0.0738870190366177,
+      "rmsea.pvalue": 0,
+      "srmr": 0.0873446767936493,
+      "srmr_bentler": 0.0873446767936493,
+      "aic": 67920.0997808278,
+      "bic": 68174.185210133,
+      "bic2": 68015.3664816916,
+      "logl": -33910.0498904139,
+      "ntotal": 1190
+    },
+    "unstandardisedPaths": [
+      {
+        "lhs": "PU",
+        "rhs": "PEOU",
+        "est": 0.385282838754682,
+        "se": 0.0269037002191873
+      },
+      {
+        "lhs": "ATU",
+        "rhs": "PEOU",
+        "est": 0.307410937134403,
+        "se": 0.0390770712519255
+      },
+      {
+        "lhs": "ATU",
+        "rhs": "PU",
+        "est": 0.381153840297942,
+        "se": 0.0502665912398145
+      },
+      {
+        "lhs": "BI",
+        "rhs": "PU",
+        "est": 0.585044634099838,
+        "se": 0.0463104961194179
+      },
+      {
+        "lhs": "BI",
+        "rhs": "ATU",
+        "est": 0.151384780501254,
+        "se": 0.0278509878383706
+      },
+      {
+        "lhs": "USE",
+        "rhs": "BI",
+        "est": 0.424356869964127,
+        "se": 0.049572778119814
+      }
+    ],
+    "latentCorrelations": {
+      "PU": {
+        "PU": 1,
+        "PEOU": 0.509596577539653,
+        "ATU": 0.408361131034527,
+        "BI": 0.536877160284183,
+        "USE": 0.165737035339218
+      },
+      "PEOU": {
+        "PU": 0.509596577539653,
+        "PEOU": 1,
+        "ATU": 0.417021990625251,
+        "BI": 0.309882287569669,
+        "USE": 0.0956624260543068
+      },
+      "ATU": {
+        "PU": 0.408361131034527,
+        "PEOU": 0.417021990625251,
+        "ATU": 1,
+        "BI": 0.363980443588696,
+        "USE": 0.112362834749596
+      },
+      "BI": {
+        "PU": 0.536877160284183,
+        "PEOU": 0.309882287569669,
+        "ATU": 0.363980443588696,
+        "BI": 1,
+        "USE": 0.308705692101875
+      },
+      "USE": {
+        "PU": 0.165737035339218,
+        "PEOU": 0.0956624260543068,
+        "ATU": 0.112362834749596,
+        "BI": 0.308705692101874,
+        "USE": 1
+      }
+    },
+    "converged": true
+  }
+}

@@ -1,0 +1,582 @@
+{
+  "root": "TEMP",
+  "note": "Encrypted project files are listed by name and size only (os.stat) and were never opened; their being encrypted is taken from the architecture ground rules, not verified here.",
+  "folders": [
+    {
+      "folder": "Example - ACSI",
+      "files": [
+        {
+          "name": "ACSI (modified) - CB-SEM.splscb",
+          "bytes": 68588,
+          "kind": "smartpls-project (encrypted per ground rule 6)",
+          "opened": false,
+          "describes": "CB-SEM model",
+          "usableInformation": "none - not opened"
+        },
+        {
+          "name": "ACSI (modified) - CB-SEM.splscb.settings",
+          "bytes": 13616,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "sections": 33,
+          "indicatorBlocksUnder": null,
+          "usableInformation": "algorithm settings; no indicator assignment (initialWeights is null)"
+        },
+        {
+          "name": "ACSI (modified) - GSCA.splsge",
+          "bytes": 37696,
+          "kind": "smartpls-project (encrypted per ground rule 6)",
+          "opened": false,
+          "describes": "GSCA model",
+          "usableInformation": "none - not opened"
+        },
+        {
+          "name": "ACSI (modified) - GSCA.splsge.settings",
+          "bytes": 13992,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "sections": 33,
+          "indicatorBlocksUnder": [
+            "gscaBasicAlgorithmSettings"
+          ],
+          "usableInformation": "algorithm settings; indicator -> construct assignment (initialWeights)"
+        },
+        {
+          "name": "ACSI (modified) - PLS-SEM.splsm",
+          "bytes": 38208,
+          "kind": "smartpls-project (encrypted per ground rule 6)",
+          "opened": false,
+          "describes": "PLS-SEM model",
+          "usableInformation": "none - not opened"
+        },
+        {
+          "name": "ACSI (modified) - PLS-SEM.splsm.settings",
+          "bytes": 14006,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "sections": 33,
+          "indicatorBlocksUnder": [
+            "plsAlgorithmSettings"
+          ],
+          "usableInformation": "algorithm settings; indicator -> construct assignment (initialWeights)"
+        },
+        {
+          "name": "ACSI (modified) - Path analysis and PROCESS.splspm",
+          "bytes": 38552,
+          "kind": "smartpls-project (encrypted per ground rule 6)",
+          "opened": false,
+          "describes": "path analysis / PROCESS model",
+          "usableInformation": "none - not opened"
+        },
+        {
+          "name": "ACSI (modified) - Path analysis and PROCESS.splspm.settings",
+          "bytes": 13504,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "sections": 33,
+          "indicatorBlocksUnder": null,
+          "usableInformation": "algorithm settings; no indicator assignment (initialWeights is null)"
+        },
+        {
+          "name": "ACSI Data 2015.txt",
+          "bytes": 2956617,
+          "kind": "delimited text data",
+          "opened": true,
+          "usableInformation": "the data matrix (see parsing-facts.json)"
+        },
+        {
+          "name": "ACSI Data 2015.txt.ok",
+          "bytes": 37,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "usableInformation": "case count and covariance flag: {\"cases\": 8239, \"covarianceData\": false}"
+        },
+        {
+          "name": "ACSI Data 2015.txt.settings",
+          "bytes": 23695,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": false,
+          "nanTokens": 5,
+          "usableInformation": "separator, missing-value marker, locale, group definitions, per-column descriptive statistics, scale type and scale min/max, indicator correlation matrix"
+        }
+      ],
+      "counts": {
+        "smartpls-project (encrypted per ground rule 6)": 4,
+        "plain JSON": 6,
+        "delimited text data": 1
+      }
+    },
+    {
+      "folder": "Example - OI",
+      "files": [
+        {
+          "name": ".meta",
+          "bytes": 0,
+          "kind": "empty file",
+          "opened": true,
+          "usableInformation": "none (0 bytes)"
+        },
+        {
+          "name": "Data.txt",
+          "bytes": 114924,
+          "kind": "delimited text data",
+          "opened": true,
+          "usableInformation": "the data matrix (see parsing-facts.json)"
+        },
+        {
+          "name": "Data.txt.ok",
+          "bytes": 36,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "usableInformation": "case count and covariance flag: {\"cases\": 305, \"covarianceData\": false}"
+        },
+        {
+          "name": "Data.txt.settings",
+          "bytes": 23157,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "usableInformation": "separator, missing-value marker, locale, group definitions, per-column descriptive statistics, scale type and scale min/max, indicator correlation matrix"
+        },
+        {
+          "name": "OI - CB-SEM.splscb",
+          "bytes": 100312,
+          "kind": "smartpls-project (encrypted per ground rule 6)",
+          "opened": false,
+          "describes": "CB-SEM model",
+          "usableInformation": "none - not opened"
+        },
+        {
+          "name": "OI - CB-SEM.splscb.settings",
+          "bytes": 15449,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "sections": 37,
+          "indicatorBlocksUnder": null,
+          "usableInformation": "algorithm settings; no indicator assignment (initialWeights is null)"
+        },
+        {
+          "name": "OI - GSCA.splsge",
+          "bytes": 52248,
+          "kind": "smartpls-project (encrypted per ground rule 6)",
+          "opened": false,
+          "describes": "GSCA model",
+          "usableInformation": "none - not opened"
+        },
+        {
+          "name": "OI - GSCA.splsge.settings",
+          "bytes": 14380,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "sections": 33,
+          "indicatorBlocksUnder": [
+            "gscaBasicAlgorithmSettings"
+          ],
+          "usableInformation": "algorithm settings; indicator -> construct assignment (initialWeights)"
+        },
+        {
+          "name": "OI - PLS-SEM.splsm",
+          "bytes": 52416,
+          "kind": "smartpls-project (encrypted per ground rule 6)",
+          "opened": false,
+          "describes": "PLS-SEM model",
+          "usableInformation": "none - not opened"
+        },
+        {
+          "name": "OI - PLS-SEM.splsm.settings",
+          "bytes": 15186,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "sections": 34,
+          "indicatorBlocksUnder": [
+            "plsAlgorithmSettings"
+          ],
+          "usableInformation": "algorithm settings; indicator -> construct assignment (initialWeights)"
+        },
+        {
+          "name": "OI - Path analysis and PROCESS.splspm",
+          "bytes": 52800,
+          "kind": "smartpls-project (encrypted per ground rule 6)",
+          "opened": false,
+          "describes": "path analysis / PROCESS model",
+          "usableInformation": "none - not opened"
+        },
+        {
+          "name": "OI - Path analysis and PROCESS.splspm.settings",
+          "bytes": 13492,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "sections": 33,
+          "indicatorBlocksUnder": null,
+          "usableInformation": "algorithm settings; no indicator assignment (initialWeights is null)"
+        }
+      ],
+      "counts": {
+        "empty file": 1,
+        "delimited text data": 1,
+        "plain JSON": 6,
+        "smartpls-project (encrypted per ground rule 6)": 4
+      }
+    },
+    {
+      "folder": "Example - Regression",
+      "files": [
+        {
+          "name": "Concise guide book.splsrm",
+          "bytes": 23532,
+          "kind": "smartpls-project (encrypted per ground rule 6)",
+          "opened": false,
+          "describes": "regression model",
+          "usableInformation": "none - not opened"
+        },
+        {
+          "name": "Concise guide book.splsrm.978-3-662-56707-4.jpg",
+          "bytes": 33656,
+          "kind": "JPEG image",
+          "opened": true,
+          "usableInformation": "book cover; the file name carries the ISBN or edition tag"
+        },
+        {
+          "name": "Concise guide book.splsrm.settings",
+          "bytes": 13521,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "sections": 33,
+          "indicatorBlocksUnder": null,
+          "usableInformation": "algorithm settings; no indicator assignment (initialWeights is null)"
+        },
+        {
+          "name": "Concise_guide_data.txt",
+          "bytes": 179961,
+          "kind": "delimited text data",
+          "opened": true,
+          "usableInformation": "the data matrix (see parsing-facts.json)"
+        },
+        {
+          "name": "Concise_guide_data.txt.ok",
+          "bytes": 14,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "usableInformation": "case count and covariance flag: {\"cases\": 1065}"
+        },
+        {
+          "name": "Concise_guide_data.txt.settings",
+          "bytes": 16268,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "usableInformation": "separator, missing-value marker, locale, group definitions, per-column descriptive statistics, scale type and scale min/max, indicator correlation matrix"
+        },
+        {
+          "name": "HBAT_regression_data.txt",
+          "bytes": 36280,
+          "kind": "delimited text data",
+          "opened": true,
+          "usableInformation": "the data matrix (see parsing-facts.json)"
+        },
+        {
+          "name": "HBAT_regression_data.txt.ok",
+          "bytes": 13,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "usableInformation": "case count and covariance flag: {\"cases\": 100}"
+        },
+        {
+          "name": "HBAT_regression_data.txt.settings",
+          "bytes": 29904,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "usableInformation": "separator, missing-value marker, locale, group definitions, per-column descriptive statistics, scale type and scale min/max, indicator correlation matrix"
+        },
+        {
+          "name": "Multivariate data analysis (MDA) book.splsrm",
+          "bytes": 15276,
+          "kind": "smartpls-project (encrypted per ground rule 6)",
+          "opened": false,
+          "describes": "regression model",
+          "usableInformation": "none - not opened"
+        },
+        {
+          "name": "Multivariate data analysis (MDA) book.splsrm.mva8e.jpg",
+          "bytes": 68939,
+          "kind": "JPEG image",
+          "opened": true,
+          "usableInformation": "book cover; the file name carries the ISBN or edition tag"
+        },
+        {
+          "name": "Multivariate data analysis (MDA) book.splsrm.settings",
+          "bytes": 13510,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "sections": 33,
+          "indicatorBlocksUnder": null,
+          "usableInformation": "algorithm settings; no indicator assignment (initialWeights is null)"
+        }
+      ],
+      "counts": {
+        "smartpls-project (encrypted per ground rule 6)": 2,
+        "JPEG image": 2,
+        "plain JSON": 6,
+        "delimited text data": 2
+      }
+    },
+    {
+      "folder": "Example - TAM",
+      "files": [
+        {
+          "name": ".meta",
+          "bytes": 0,
+          "kind": "empty file",
+          "opened": true,
+          "usableInformation": "none (0 bytes)"
+        },
+        {
+          "name": "Data.txt",
+          "bytes": 392847,
+          "kind": "delimited text data",
+          "opened": true,
+          "usableInformation": "the data matrix (see parsing-facts.json)"
+        },
+        {
+          "name": "Data.txt.ok",
+          "bytes": 37,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "usableInformation": "case count and covariance flag: {\"cases\": 1190, \"covarianceData\": false}"
+        },
+        {
+          "name": "Data.txt.settings",
+          "bytes": 17647,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "usableInformation": "separator, missing-value marker, locale, group definitions, per-column descriptive statistics, scale type and scale min/max, indicator correlation matrix"
+        },
+        {
+          "name": "TAM - CB-SEM.splscb",
+          "bytes": 111040,
+          "kind": "smartpls-project (encrypted per ground rule 6)",
+          "opened": false,
+          "describes": "CB-SEM model",
+          "usableInformation": "none - not opened"
+        },
+        {
+          "name": "TAM - CB-SEM.splscb.settings",
+          "bytes": 15449,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "sections": 37,
+          "indicatorBlocksUnder": null,
+          "usableInformation": "algorithm settings; no indicator assignment (initialWeights is null)"
+        },
+        {
+          "name": "TAM - GSCA.splsge",
+          "bytes": 57964,
+          "kind": "smartpls-project (encrypted per ground rule 6)",
+          "opened": false,
+          "describes": "GSCA model",
+          "usableInformation": "none - not opened"
+        },
+        {
+          "name": "TAM - PLS-SEM.splsm",
+          "bytes": 59500,
+          "kind": "smartpls-project (encrypted per ground rule 6)",
+          "opened": false,
+          "describes": "PLS-SEM model",
+          "usableInformation": "none - not opened"
+        },
+        {
+          "name": "TAM - PLS-SEM.splsm.settings",
+          "bytes": 14341,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "sections": 33,
+          "indicatorBlocksUnder": [
+            "plsAlgorithmSettings"
+          ],
+          "usableInformation": "algorithm settings; indicator -> construct assignment (initialWeights)"
+        },
+        {
+          "name": "TAM - Path model.splspm",
+          "bytes": 58496,
+          "kind": "smartpls-project (encrypted per ground rule 6)",
+          "opened": false,
+          "describes": "path analysis / PROCESS model",
+          "usableInformation": "none - not opened"
+        },
+        {
+          "name": "TAM - Path model.splspm.settings",
+          "bytes": 15364,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "sections": 37,
+          "indicatorBlocksUnder": null,
+          "usableInformation": "algorithm settings; no indicator assignment (initialWeights is null)"
+        }
+      ],
+      "counts": {
+        "empty file": 1,
+        "delimited text data": 1,
+        "plain JSON": 5,
+        "smartpls-project (encrypted per ground rule 6)": 4
+      }
+    },
+    {
+      "folder": "Example - UTAUT",
+      "files": [
+        {
+          "name": "Data.txt",
+          "bytes": 227540,
+          "kind": "delimited text data",
+          "opened": true,
+          "usableInformation": "the data matrix (see parsing-facts.json)"
+        },
+        {
+          "name": "Data.txt.ok",
+          "bytes": 36,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "usableInformation": "case count and covariance flag: {\"cases\": 722, \"covarianceData\": false}"
+        },
+        {
+          "name": "Data.txt.settings",
+          "bytes": 16582,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "usableInformation": "separator, missing-value marker, locale, group definitions, per-column descriptive statistics, scale type and scale min/max, indicator correlation matrix"
+        },
+        {
+          "name": "UTAUT - CB-SEM.splscb",
+          "bytes": 96428,
+          "kind": "smartpls-project (encrypted per ground rule 6)",
+          "opened": false,
+          "describes": "CB-SEM model",
+          "usableInformation": "none - not opened"
+        },
+        {
+          "name": "UTAUT - CB-SEM.splscb.settings",
+          "bytes": 13880,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "sections": 34,
+          "indicatorBlocksUnder": null,
+          "usableInformation": "algorithm settings; no indicator assignment (initialWeights is null)"
+        },
+        {
+          "name": "UTAUT - GSCA.splsge",
+          "bytes": 53272,
+          "kind": "smartpls-project (encrypted per ground rule 6)",
+          "opened": false,
+          "describes": "GSCA model",
+          "usableInformation": "none - not opened"
+        },
+        {
+          "name": "UTAUT - GSCA.splsge.settings",
+          "bytes": 14571,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "sections": 34,
+          "indicatorBlocksUnder": [
+            "gscaBasicAlgorithmSettings"
+          ],
+          "usableInformation": "algorithm settings; indicator -> construct assignment (initialWeights)"
+        },
+        {
+          "name": "UTAUT - PLS-SEM.splsm",
+          "bytes": 53504,
+          "kind": "smartpls-project (encrypted per ground rule 6)",
+          "opened": false,
+          "describes": "PLS-SEM model",
+          "usableInformation": "none - not opened"
+        },
+        {
+          "name": "UTAUT - PLS-SEM.splsm.settings",
+          "bytes": 14270,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "sections": 33,
+          "indicatorBlocksUnder": [
+            "plsAlgorithmSettings"
+          ],
+          "usableInformation": "algorithm settings; indicator -> construct assignment (initialWeights)"
+        },
+        {
+          "name": "UTAUT - Path analysis and PROCESS.splspm",
+          "bytes": 53848,
+          "kind": "smartpls-project (encrypted per ground rule 6)",
+          "opened": false,
+          "describes": "path analysis / PROCESS model",
+          "usableInformation": "none - not opened"
+        },
+        {
+          "name": "UTAUT - Path analysis and PROCESS.splspm.settings",
+          "bytes": 13492,
+          "kind": "plain JSON",
+          "opened": true,
+          "strictJson": true,
+          "nanTokens": 0,
+          "sections": 33,
+          "indicatorBlocksUnder": null,
+          "usableInformation": "algorithm settings; no indicator assignment (initialWeights is null)"
+        }
+      ],
+      "counts": {
+        "delimited text data": 1,
+        "plain JSON": 6,
+        "smartpls-project (encrypted per ground rule 6)": 4
+      }
+    }
+  ]
+}

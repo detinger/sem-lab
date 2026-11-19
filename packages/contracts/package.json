@@ -1,0 +1,27 @@
+{
+  "name": "@sem-studio/contracts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Canonical SEM Studio contracts: model, layout, dataset, analysis configuration, normalized results. Zod is the source of truth; JSON Schema is generated.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "emit-schema": "node scripts/emit-json-schema.ts",
+    "check-schema": "node scripts/emit-json-schema.ts --check",
+    "lint": "eslint .",
+    "format": "prettier --ignore-path ../../.prettierignore --write src scripts tests examples package.json tsconfig.json",
+    "format:check": "prettier --ignore-path ../../.prettierignore --check src scripts tests examples package.json tsconfig.json"
+  },
+  "dependencies": {
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.6",
+    "ajv": "8.20.0",
+    "vitest": "5.1.0"
+  }
+}

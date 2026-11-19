@@ -1,0 +1,171 @@
+{
+  "constructs": [
+    {
+      "id": "c_f",
+      "indicatorIds": [
+        "i_f1",
+        "i_f2",
+        "i_f3",
+        "i_f4"
+      ],
+      "label": "Composite F",
+      "measurement": "composite-formative",
+      "name": "F"
+    },
+    {
+      "id": "c_x",
+      "indicatorIds": [
+        "i_x1",
+        "i_x2",
+        "i_x3"
+      ],
+      "label": "Reflective X",
+      "measurement": "reflective",
+      "name": "X"
+    },
+    {
+      "id": "c_y",
+      "indicatorIds": [
+        "i_y1",
+        "i_y2",
+        "i_y3",
+        "i_y4"
+      ],
+      "label": "Reflective Y",
+      "measurement": "reflective",
+      "name": "Y"
+    }
+  ],
+  "indicators": [
+    {
+      "column": "f1",
+      "id": "i_f1",
+      "level": "ordinal",
+      "name": "f1",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "f2",
+      "id": "i_f2",
+      "level": "ordinal",
+      "name": "f2",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "f3",
+      "id": "i_f3",
+      "level": "ordinal",
+      "name": "f3",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "f4",
+      "id": "i_f4",
+      "level": "ordinal",
+      "name": "f4",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "x1",
+      "id": "i_x1",
+      "level": "ordinal",
+      "name": "x1",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "x2",
+      "id": "i_x2",
+      "level": "ordinal",
+      "name": "x2",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "x3",
+      "id": "i_x3",
+      "level": "ordinal",
+      "name": "x3",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "y1",
+      "id": "i_y1",
+      "level": "ordinal",
+      "name": "y1",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "y2",
+      "id": "i_y2",
+      "level": "ordinal",
+      "name": "y2",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "y3",
+      "id": "i_y3",
+      "level": "ordinal",
+      "name": "y3",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    },
+    {
+      "column": "y4",
+      "id": "i_y4",
+      "level": "ordinal",
+      "name": "y4",
+      "scale": {
+        "max": 7,
+        "min": 1
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r_f_y",
+      "kind": "structural",
+      "sourceId": "c_f",
+      "targetId": "c_y"
+    },
+    {
+      "id": "r_x_y",
+      "kind": "structural",
+      "sourceId": "c_x",
+      "targetId": "c_y"
+    },
+    {
+      "id": "r_f_x",
+      "kind": "covariance",
+      "sourceId": "c_f",
+      "targetId": "c_x"
+    }
+  ]
+}

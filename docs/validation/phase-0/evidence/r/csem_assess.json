@@ -1,0 +1,6160 @@
+{
+  "evidence": "csem_assess",
+  "script": "services/r-engine/spike/csem_02_assess.R",
+  "generated": "2026-11-19T13:52:53+0100",
+  "r": "R version 4.6.2 (2026-10-29)",
+  "platform": "aarch64-apple-darwin27.0.0",
+  "packages": {
+    "cSEM": "0.7.1"
+  },
+  "findings": {
+    "api": {
+      "assess_formals": {
+        ".object": "NULL",
+        ".quality_criterion": "c(\"all\", \"aic\", \"aicc\", \"aicu\", \"bic\", \"fpe\", \"gm\", \"hq\", \"hqc\", \"mallows_cp\", \"ave\", \"rho_C\", \"rho_C_mm\", \"rho_C_weighted\", \"rho_C_weighted_mm\", \"dg\", \"dl\", \"dml\", \"df\", \"effects\", \"f2\", \"fl_criterion\", \"chi_square\", \"chi_square_df\", \"cfi\", \"cn\", \"gfi\", \"ifi\", \"nfi\", \"nnfi\", \"reliability\", \"rmsea\", \"rms_theta\", \"srmr\", \"gof\", \"htmt\", \"htmt2\", \"r2\", \"r2_adj\", \"rho_T\", \"rho_T_weighted\", \"vif\", \"vifmodeB\")",
+        ".only_common_factors": "TRUE",
+        "...": "<no default>"
+      },
+      "quality_criterion_values": ["all", "aic", "aicc", "aicu", "bic", "fpe", "gm", "hq", "hqc", "mallows_cp", "ave", "rho_C", "rho_C_mm", "rho_C_weighted", "rho_C_weighted_mm", "dg", "dl", "dml", "df", "effects", "f2", "fl_criterion", "chi_square", "chi_square_df", "cfi", "cn", "gfi", "ifi", "nfi", "nnfi", "reliability", "rmsea", "rms_theta", "srmr", "gof", "htmt", "htmt2", "r2", "r2_adj", "rho_T", "rho_T_weighted", "vif", "vifmodeB"],
+      "dotdotdot_arguments": [".absolute", ".alpha", ".ci", ".closed_form_ci", ".handle_inadmissibles", ".inference", ".null_model", ".R", ".saturated", ".seed", ".type_gfi", ".type_vcv"],
+      "calculate_functions_exported": ["calculateGFI", "calculateDf", "calculatef2", "calculateDML", "calculateCFI", "calculateAVE", "calculateCN", "calculateGoF", "calculateChiSquare", "calculateNFI", "calculateFLCriterion", "calculateRMSTheta", "calculateModelSelectionCriteria", "calculateRhoT", "calculateIFI", "calculateVIFModeB", "calculateRhoC", "calculateNNFI", "calculateSRMR", "calculateRelativeGoF", "calculateDG", "calculateDL", "calculateHTMT", "calculateRMSEA", "calculateChiSquareDf"]
+    },
+    "per_criterion": {
+      "aic": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00900000000000001,
+          "result": {
+            "returned": "AIC",
+            "values": {
+              "AIC": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00700000000000001,
+          "result": {
+            "returned": "AIC",
+            "values": {
+              "AIC": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.018,
+          "result": {
+            "returned": "AIC",
+            "values": {
+              "AIC": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.016,
+          "result": {
+            "returned": "AIC",
+            "values": {
+              "AIC": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "aicc": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.01,
+          "result": {
+            "returned": "AICc",
+            "values": {
+              "AICc": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00700000000000001,
+          "result": {
+            "returned": "AICc",
+            "values": {
+              "AICc": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.0109999999999999,
+          "result": {
+            "returned": "AICc",
+            "values": {
+              "AICc": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.01,
+          "result": {
+            "returned": "AICc",
+            "values": {
+              "AICc": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "aicu": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00700000000000001,
+          "result": {
+            "returned": "AICu",
+            "values": {
+              "AICu": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.011,
+          "result": {
+            "returned": "AICu",
+            "values": {
+              "AICu": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.014,
+          "result": {
+            "returned": "AICu",
+            "values": {
+              "AICu": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.011,
+          "result": {
+            "returned": "AICu",
+            "values": {
+              "AICu": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "bic": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00900000000000001,
+          "result": {
+            "returned": "BIC",
+            "values": {
+              "BIC": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00800000000000001,
+          "result": {
+            "returned": "BIC",
+            "values": {
+              "BIC": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.016,
+          "result": {
+            "returned": "BIC",
+            "values": {
+              "BIC": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.015,
+          "result": {
+            "returned": "BIC",
+            "values": {
+              "BIC": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "fpe": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00700000000000001,
+          "result": {
+            "returned": "FPE",
+            "values": {
+              "FPE": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00900000000000001,
+          "result": {
+            "returned": "FPE",
+            "values": {
+              "FPE": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.0099999999999999,
+          "result": {
+            "returned": "FPE",
+            "values": {
+              "FPE": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.01,
+          "result": {
+            "returned": "FPE",
+            "values": {
+              "FPE": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "gm": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00900000000000001,
+          "result": {
+            "returned": "GM",
+            "values": {
+              "GM": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00700000000000001,
+          "result": {
+            "returned": "GM",
+            "values": {
+              "GM": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.01,
+          "result": {
+            "returned": "GM",
+            "values": {
+              "GM": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00800000000000001,
+          "result": {
+            "returned": "GM",
+            "values": {
+              "GM": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "hq": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00700000000000001,
+          "result": {
+            "returned": "HQ",
+            "values": {
+              "HQ": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00800000000000001,
+          "result": {
+            "returned": "HQ",
+            "values": {
+              "HQ": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.01,
+          "result": {
+            "returned": "HQ",
+            "values": {
+              "HQ": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00800000000000001,
+          "result": {
+            "returned": "HQ",
+            "values": {
+              "HQ": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "hqc": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00700000000000001,
+          "result": {
+            "returned": "HQc",
+            "values": {
+              "HQc": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00600000000000001,
+          "result": {
+            "returned": "HQc",
+            "values": {
+              "HQc": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.013,
+          "result": {
+            "returned": "HQc",
+            "values": {
+              "HQc": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00900000000000001,
+          "result": {
+            "returned": "HQc",
+            "values": {
+              "HQc": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "mallows_cp": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00700000000000001,
+          "result": {
+            "returned": "Mallows_Cp",
+            "values": {
+              "Mallows_Cp": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.0099999999999999,
+          "result": {
+            "returned": "Mallows_Cp",
+            "values": {
+              "Mallows_Cp": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.014,
+          "result": {
+            "returned": "Mallows_Cp",
+            "values": {
+              "Mallows_Cp": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00900000000000001,
+          "result": {
+            "returned": "Mallows_Cp",
+            "values": {
+              "Mallows_Cp": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "ave": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.001,
+          "result": {
+            "returned": "AVE",
+            "values": {
+              "AVE": {
+                "kind": "numeric",
+                "length": 5,
+                "names": ["PEOU", "PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "AVE",
+            "values": {
+              "AVE": {
+                "kind": "numeric",
+                "length": 5,
+                "names": ["PEOU", "PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "AVE",
+            "values": {
+              "AVE": {
+                "kind": "numeric",
+                "length": 0,
+                "names": [],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "AVE",
+            "values": {
+              "AVE": {
+                "kind": "numeric",
+                "length": 3,
+                "names": ["ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "rho_C": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.003,
+          "result": {
+            "returned": "RhoC",
+            "values": {
+              "RhoC": {
+                "kind": "numeric",
+                "length": 5,
+                "names": ["PEOU", "PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.001,
+          "result": {
+            "returned": "RhoC",
+            "values": {
+              "RhoC": {
+                "kind": "numeric",
+                "length": 5,
+                "names": ["PEOU", "PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.001,
+          "result": {
+            "returned": "RhoC",
+            "values": {
+              "RhoC": {
+                "kind": "numeric",
+                "length": 0,
+                "names": [],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.001,
+          "result": {
+            "returned": "RhoC",
+            "values": {
+              "RhoC": {
+                "kind": "numeric",
+                "length": 3,
+                "names": ["ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "rho_C_mm": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RhoC_mm",
+            "values": {
+              "RhoC_mm": {
+                "kind": "numeric",
+                "length": 5,
+                "names": ["PEOU", "PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RhoC_mm",
+            "values": {
+              "RhoC_mm": {
+                "kind": "numeric",
+                "length": 5,
+                "names": ["PEOU", "PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RhoC_mm",
+            "values": {
+              "RhoC_mm": {
+                "kind": "numeric",
+                "length": 0,
+                "names": [],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RhoC_mm",
+            "values": {
+              "RhoC_mm": {
+                "kind": "numeric",
+                "length": 3,
+                "names": ["ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "rho_C_weighted": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RhoC_weighted",
+            "values": {
+              "RhoC_weighted": {
+                "kind": "numeric",
+                "length": 5,
+                "names": ["PEOU", "PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RhoC_weighted",
+            "values": {
+              "RhoC_weighted": {
+                "kind": "numeric",
+                "length": 5,
+                "names": ["PEOU", "PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RhoC_weighted",
+            "values": {
+              "RhoC_weighted": {
+                "kind": "numeric",
+                "length": 0,
+                "names": [],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RhoC_weighted",
+            "values": {
+              "RhoC_weighted": {
+                "kind": "numeric",
+                "length": 3,
+                "names": ["ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "rho_C_weighted_mm": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.001,
+          "result": {
+            "returned": "RhoC_weighted_mm",
+            "values": {
+              "RhoC_weighted_mm": {
+                "kind": "numeric",
+                "length": 5,
+                "names": ["PEOU", "PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.001,
+          "result": {
+            "returned": "RhoC_weighted_mm",
+            "values": {
+              "RhoC_weighted_mm": {
+                "kind": "numeric",
+                "length": 5,
+                "names": ["PEOU", "PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.001,
+          "result": {
+            "returned": "RhoC_weighted_mm",
+            "values": {
+              "RhoC_weighted_mm": {
+                "kind": "numeric",
+                "length": 0,
+                "names": [],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RhoC_weighted_mm",
+            "values": {
+              "RhoC_weighted_mm": {
+                "kind": "numeric",
+                "length": 3,
+                "names": ["ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "dg": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00300000000000011,
+          "result": {
+            "returned": "DG",
+            "values": {
+              "DG": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "DG",
+            "values": {
+              "DG": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "DG",
+            "values": {
+              "DG": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "DG",
+            "values": {
+              "DG": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "dl": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "DL",
+            "values": {
+              "DL": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "DL",
+            "values": {
+              "DL": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "DL",
+            "values": {
+              "DL": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "DL",
+            "values": {
+              "DL": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "dml": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "DML",
+            "values": {
+              "DML": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "DML",
+            "values": {
+              "DML": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "DML",
+            "values": {
+              "DML": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "DML",
+            "values": {
+              "DML": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "df": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "Df",
+            "values": {
+              "Df": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "Df",
+            "values": {
+              "Df": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "Df",
+            "values": {
+              "Df": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "Df",
+            "values": {
+              "Df": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "effects": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00600000000000001,
+          "result": {
+            "returned": "Effects",
+            "values": {
+              "Effects": {
+                "kind": "list",
+                "names": ["Direct_effect", "Indirect_effect", "Total_effect", "Variance_accounted_for"]
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.004,
+          "result": {
+            "returned": "Effects",
+            "values": {
+              "Effects": {
+                "kind": "list",
+                "names": ["Direct_effect", "Indirect_effect", "Total_effect", "Variance_accounted_for"]
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00300000000000011,
+          "result": {
+            "returned": "Effects",
+            "values": {
+              "Effects": {
+                "kind": "list",
+                "names": ["Direct_effect", "Indirect_effect", "Total_effect", "Variance_accounted_for"]
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00299999999999989,
+          "result": {
+            "returned": "Effects",
+            "values": {
+              "Effects": {
+                "kind": "list",
+                "names": ["Direct_effect", "Indirect_effect", "Total_effect", "Variance_accounted_for"]
+              }
+            }
+          }
+        }
+      },
+      "f2": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "F2",
+            "values": {
+              "F2": {
+                "kind": "matrix",
+                "dim": [4, 5],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "F2",
+            "values": {
+              "F2": {
+                "kind": "matrix",
+                "dim": [4, 5],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "F2",
+            "values": {
+              "F2": {
+                "kind": "matrix",
+                "dim": [4, 5],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "F2",
+            "values": {
+              "F2": {
+                "kind": "matrix",
+                "dim": [4, 5],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "fl_criterion": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "Fornell-Larcker",
+            "values": {
+              "Fornell-Larcker": {
+                "kind": "matrix",
+                "dim": [5, 5],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "Fornell-Larcker",
+            "values": {
+              "Fornell-Larcker": {
+                "kind": "matrix",
+                "dim": [5, 5],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": [],
+            "values": {}
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "Fornell-Larcker",
+            "values": {
+              "Fornell-Larcker": {
+                "kind": "matrix",
+                "dim": [3, 3],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "chi_square": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "Chi_square",
+            "values": {
+              "Chi_square": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "Chi_square",
+            "values": {
+              "Chi_square": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "Chi_square",
+            "values": {
+              "Chi_square": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "Chi_square",
+            "values": {
+              "Chi_square": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "chi_square_df": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "Chi_square_df",
+            "values": {
+              "Chi_square_df": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "Chi_square_df",
+            "values": {
+              "Chi_square_df": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "Chi_square_df",
+            "values": {
+              "Chi_square_df": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "Chi_square_df",
+            "values": {
+              "Chi_square_df": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "cfi": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "CFI",
+            "values": {
+              "CFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "CFI",
+            "values": {
+              "CFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "CFI",
+            "values": {
+              "CFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "CFI",
+            "values": {
+              "CFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "cn": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.002,
+          "result": {
+            "returned": "CN",
+            "values": {
+              "CN": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "CN",
+            "values": {
+              "CN": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "CN",
+            "values": {
+              "CN": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "CN",
+            "values": {
+              "CN": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "gfi": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.002,
+          "result": {
+            "returned": "GFI",
+            "values": {
+              "GFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.002,
+          "result": {
+            "returned": "GFI",
+            "values": {
+              "GFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.002,
+          "result": {
+            "returned": "GFI",
+            "values": {
+              "GFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "GFI",
+            "values": {
+              "GFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "ifi": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "IFI",
+            "values": {
+              "IFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "IFI",
+            "values": {
+              "IFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "IFI",
+            "values": {
+              "IFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "IFI",
+            "values": {
+              "IFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "nfi": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "NFI",
+            "values": {
+              "NFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "NFI",
+            "values": {
+              "NFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "NFI",
+            "values": {
+              "NFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "NFI",
+            "values": {
+              "NFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "nnfi": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "NNFI",
+            "values": {
+              "NNFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "NNFI",
+            "values": {
+              "NNFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "NNFI",
+            "values": {
+              "NNFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "NNFI",
+            "values": {
+              "NNFI": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "reliability": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "Reliability",
+            "values": {
+              "Reliability": {
+                "kind": "list",
+                "names": ["Cronbachs_alpha", "Joereskogs_rho", "Dijkstra-Henselers_rho_A"]
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00600000000000001,
+          "result": {
+            "returned": "Reliability",
+            "values": {
+              "Reliability": {
+                "kind": "list",
+                "names": ["Cronbachs_alpha", "Joereskogs_rho", "Dijkstra-Henselers_rho_A"]
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.002,
+          "result": {
+            "returned": "Reliability",
+            "values": {
+              "Reliability": {
+                "kind": "list",
+                "names": ["Cronbachs_alpha", "Joereskogs_rho", "Dijkstra-Henselers_rho_A"]
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "Reliability",
+            "values": {
+              "Reliability": {
+                "kind": "list",
+                "names": ["Cronbachs_alpha", "Joereskogs_rho", "Dijkstra-Henselers_rho_A"]
+              }
+            }
+          }
+        }
+      },
+      "rmsea": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "RMSEA",
+            "values": {
+              "RMSEA": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RMSEA",
+            "values": {
+              "RMSEA": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "RMSEA",
+            "values": {
+              "RMSEA": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RMSEA",
+            "values": {
+              "RMSEA": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "rms_theta": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "RMS_theta",
+            "values": {
+              "RMS_theta": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RMS_theta",
+            "values": {
+              "RMS_theta": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RMS_theta",
+            "values": {
+              "RMS_theta": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RMS_theta",
+            "values": {
+              "RMS_theta": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "srmr": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "SRMR",
+            "values": {
+              "SRMR": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "SRMR",
+            "values": {
+              "SRMR": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "SRMR",
+            "values": {
+              "SRMR": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "SRMR",
+            "values": {
+              "SRMR": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "gof": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "GoF",
+            "values": {
+              "GoF": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "GoF",
+            "values": {
+              "GoF": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "GoF",
+            "values": {
+              "GoF": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "GoF",
+            "values": {
+              "GoF": {
+                "kind": "numeric",
+                "length": 1,
+                "names": null,
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "htmt": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.002,
+          "result": {
+            "returned": "HTMT",
+            "values": {
+              "HTMT": {
+                "kind": "list",
+                "names": ["htmts", "quantiles", "nr_admissibles", "inference", "absolute", "ci"]
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "HTMT",
+            "values": {
+              "HTMT": {
+                "kind": "list",
+                "names": ["htmts", "quantiles", "nr_admissibles", "inference", "absolute", "ci"]
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "HTMT",
+            "values": {
+              "HTMT": {
+                "kind": "list",
+                "names": ["htmts", "quantiles", "nr_admissibles"]
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "HTMT",
+            "values": {
+              "HTMT": {
+                "kind": "list",
+                "names": ["htmts", "quantiles", "nr_admissibles", "inference", "absolute", "ci"]
+              }
+            }
+          }
+        }
+      },
+      "htmt2": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "HTMT2",
+            "values": {
+              "HTMT2": {
+                "kind": "list",
+                "names": ["htmts", "quantiles", "nr_admissibles", "inference", "absolute", "ci"]
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "HTMT2",
+            "values": {
+              "HTMT2": {
+                "kind": "list",
+                "names": ["htmts", "quantiles", "nr_admissibles", "inference", "absolute", "ci"]
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "HTMT2",
+            "values": {
+              "HTMT2": {
+                "kind": "list",
+                "names": ["htmts", "quantiles", "nr_admissibles"]
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "HTMT2",
+            "values": {
+              "HTMT2": {
+                "kind": "list",
+                "names": ["htmts", "quantiles", "nr_admissibles", "inference", "absolute", "ci"]
+              }
+            }
+          }
+        }
+      },
+      "r2": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "R2",
+            "values": {
+              "R2": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "R2",
+            "values": {
+              "R2": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "R2",
+            "values": {
+              "R2": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "R2",
+            "values": {
+              "R2": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "r2_adj": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "R2_adj",
+            "values": {
+              "R2_adj": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "R2_adj",
+            "values": {
+              "R2_adj": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "R2_adj",
+            "values": {
+              "R2_adj": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "R2_adj",
+            "values": {
+              "R2_adj": {
+                "kind": "numeric",
+                "length": 4,
+                "names": ["PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "rho_T": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.002,
+          "result": {
+            "returned": "RhoT",
+            "values": {
+              "RhoT": {
+                "kind": "numeric",
+                "length": 5,
+                "names": ["PEOU", "PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RhoT",
+            "values": {
+              "RhoT": {
+                "kind": "numeric",
+                "length": 5,
+                "names": ["PEOU", "PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": "RhoT",
+            "values": {
+              "RhoT": {
+                "kind": "numeric",
+                "length": 0,
+                "names": [],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RhoT",
+            "values": {
+              "RhoT": {
+                "kind": "numeric",
+                "length": 3,
+                "names": ["ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "rho_T_weighted": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "RhoT_weighted",
+            "values": {
+              "RhoT_weighted": {
+                "kind": "numeric",
+                "length": 5,
+                "names": ["PEOU", "PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RhoT_weighted",
+            "values": {
+              "RhoT_weighted": {
+                "kind": "numeric",
+                "length": 5,
+                "names": ["PEOU", "PU", "ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RhoT_weighted",
+            "values": {
+              "RhoT_weighted": {
+                "kind": "numeric",
+                "length": 0,
+                "names": [],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "RhoT_weighted",
+            "values": {
+              "RhoT_weighted": {
+                "kind": "numeric",
+                "length": 3,
+                "names": ["ATU", "BI", "USE"],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "vif": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "VIF",
+            "values": {
+              "VIF": {
+                "kind": "matrix",
+                "dim": [2, 4],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00100000000000011,
+          "result": {
+            "returned": "VIF",
+            "values": {
+              "VIF": {
+                "kind": "matrix",
+                "dim": [2, 4],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "VIF",
+            "values": {
+              "VIF": {
+                "kind": "matrix",
+                "dim": [2, 4],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": "VIF",
+            "values": {
+              "VIF": {
+                "kind": "matrix",
+                "dim": [2, 4],
+                "all_na": false
+              }
+            }
+          }
+        }
+      },
+      "vifmodeB": {
+        "plsc": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0,
+          "result": {
+            "returned": [],
+            "values": {}
+          }
+        },
+        "classicA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.00099999999999989,
+          "result": {
+            "returned": [],
+            "values": {}
+          }
+        },
+        "compositeB": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.004,
+          "result": {
+            "returned": "VIF_modeB",
+            "values": {
+              "VIF_modeB": {
+                "kind": "matrix",
+                "dim": [5, 22],
+                "all_na": false
+              }
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.002,
+          "result": {
+            "returned": "VIF_modeB",
+            "values": {
+              "VIF_modeB": {
+                "kind": "matrix",
+                "dim": [2, 10],
+                "all_na": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "all": {
+      "plsc": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.089,
+        "result": {
+          "AVE": {
+            "PEOU": 0.574710316851811,
+            "PU": 0.658091059624591,
+            "ATU": 0.744261170146141,
+            "BI": 0.61262021320465,
+            "USE": 0.435284212438203
+          },
+          "AIC": {
+            "PU": -339.932015377311,
+            "ATU": -298.709277358559,
+            "BI": -435.09745793195,
+            "USE": -93.9101476973893
+          },
+          "AICc": {
+            "PU": 852.088220710379,
+            "ATU": 893.324477915702,
+            "BI": 756.936297342312,
+            "USE": 1098.1100883903
+          },
+          "AICu": {
+            "PU": -337.930332819559,
+            "ATU": -295.70548947843,
+            "BI": -432.09367005182,
+            "USE": -91.9084651396373
+          },
+          "BIC": {
+            "PU": -329.7685982051,
+            "ATU": -283.464151600243,
+            "BI": -419.852332173633,
+            "USE": -83.7467305251782
+          },
+          "FPE": {
+            "PU": 0.751520228529067,
+            "ATU": 0.778009776428328,
+            "BI": 0.693760759239766,
+            "USE": 0.924117466349085
+          },
+          "GM": {
+            "PU": 1202.34038004533,
+            "ATU": 1210.23314920193,
+            "BI": 1593.45322028417,
+            "USE": 1419.97173695225
+          },
+          "HQ": {
+            "PU": -336.101954560061,
+            "ATU": -292.964186132685,
+            "BI": -429.352366706075,
+            "USE": -90.0800868801397
+          },
+          "HQc": {
+            "PU": -336.075546260509,
+            "ATU": -292.91462878574,
+            "BI": -429.302809359131,
+            "USE": -90.0536785805875
+          },
+          "Mallows_Cp": {
+            "PU": 2.1769628731156,
+            "ATU": 4.98802344361411,
+            "BI": 388.208094525854,
+            "USE": 219.808319780035
+          },
+          "RhoC": {
+            "PEOU": 0.870424895391685,
+            "PU": 0.905862519203167,
+            "ATU": 0.935263460744795,
+            "BI": 0.821934060928089,
+            "USE": 0.743847023540327
+          },
+          "RhoC_mm": {
+            "PEOU": 0.868513760305502,
+            "PU": 0.905948593063355,
+            "ATU": 0.928364055988033,
+            "BI": 0.80437401589009,
+            "USE": 0.730265203470656
+          },
+          "RhoC_weighted": {
+            "PEOU": 0.874547488632757,
+            "PU": 0.905940210545473,
+            "ATU": 0.940388533037354,
+            "BI": 0.847769443009834,
+            "USE": 0.793720332207532
+          },
+          "RhoC_weighted_mm": {
+            "PEOU": 0.874547488632756,
+            "PU": 0.905940210545473,
+            "ATU": 0.940388533037354,
+            "BI": 0.847769443009834,
+            "USE": 0.793720332207532
+          },
+          "DG": 0.337159227533091,
+          "DL": 2.06740673573007,
+          "DML": 1.66413626122971,
+          "Df": 203,
+          "Effects": {
+            "Direct_effect": [
+              {
+                "Name": "PU ~ PEOU",
+                "Estimate": 0.500371573627408
+              },
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.272755164722324
+              },
+              {
+                "Name": "ATU ~ PU",
+                "Estimate": 0.275204403111164
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.460885203738072
+              },
+              {
+                "Name": "BI ~ ATU",
+                "Estimate": 0.174587298508971
+              },
+              {
+                "Name": "USE ~ BI",
+                "Estimate": 0.279658693188041
+              }
+            ],
+            "Indirect_effect": [
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.137704460253924
+              },
+              {
+                "Name": "BI ~ PEOU",
+                "Estimate": 0.302274891727616
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.0480471932769519
+              },
+              {
+                "Name": "USE ~ PEOU",
+                "Estimate": 0.0845338012041017
+              },
+              {
+                "Name": "USE ~ PU",
+                "Estimate": 0.142327369070279
+              },
+              {
+                "Name": "USE ~ ATU",
+                "Estimate": 0.0488248557482492
+              }
+            ],
+            "Total_effect": [
+              {
+                "Name": "PU ~ PEOU",
+                "Estimate": 0.500371573627408
+              },
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.410459624976249
+              },
+              {
+                "Name": "ATU ~ PU",
+                "Estimate": 0.275204403111164
+              },
+              {
+                "Name": "BI ~ PEOU",
+                "Estimate": 0.302274891727616
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.508932397015024
+              },
+              {
+                "Name": "BI ~ ATU",
+                "Estimate": 0.174587298508971
+              },
+              {
+                "Name": "USE ~ PEOU",
+                "Estimate": 0.0845338012041017
+              },
+              {
+                "Name": "USE ~ PU",
+                "Estimate": 0.142327369070279
+              },
+              {
+                "Name": "USE ~ ATU",
+                "Estimate": 0.0488248557482492
+              },
+              {
+                "Name": "USE ~ BI",
+                "Estimate": 0.279658693188041
+              }
+            ],
+            "Variance_accounted_for": [
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.335488442406224
+              },
+              {
+                "Name": "BI ~ PEOU",
+                "Estimate": 1
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.0944078104651167
+              },
+              {
+                "Name": "USE ~ PEOU",
+                "Estimate": 1
+              },
+              {
+                "Name": "USE ~ PU",
+                "Estimate": 1
+              },
+              {
+                "Name": "USE ~ ATU",
+                "Estimate": 1
+              }
+            ]
+          },
+          "F2": {
+            "PU": {
+              "PEOU": 0.33399448179881,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "ATU": {
+              "PEOU": 0.0719832575185195,
+              "PU": 0.0732818267333734,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "BI": {
+              "PEOU": 0,
+              "PU": 0.255357640539118,
+              "ATU": 0.0366427968843824,
+              "BI": 0,
+              "USE": 0
+            },
+            "USE": {
+              "PEOU": 0,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0.0848445942469104,
+              "USE": 0
+            }
+          },
+          "Chi_square": 1978.65801460212,
+          "Chi_square_df": 9.747083815774,
+          "CFI": 0.886699133437579,
+          "GFI": 0.837897285145169,
+          "CN": 143.560668680978,
+          "IFI": 0.886901197901022,
+          "NFI": 0.875580047154037,
+          "NNFI": 0.871071427704831,
+          "RMSEA": 0.0857710480253831,
+          "RMS_theta": 0.0520808228620179,
+          "SRMR": 0.0903967262981094,
+          "Fornell-Larcker": {
+            "PEOU": {
+              "PEOU": 0.574710316851811,
+              "PU": 0.250371711694368,
+              "ATU": 0.168477103735643,
+              "BI": 0.410755492033017,
+              "USE": 0.152223327624746
+            },
+            "PU": {
+              "PEOU": 0.250371711694368,
+              "PU": 0.658091059624591,
+              "ATU": 0.169483167574273,
+              "BI": 0.283833094936772,
+              "USE": 0.0694537018862412
+            },
+            "ATU": {
+              "PEOU": 0.168477103735643,
+              "PU": 0.169483167574273,
+              "ATU": 0.744261170146141,
+              "BI": 0.132733474949667,
+              "USE": 0.128181871818133
+            },
+            "BI": {
+              "PEOU": 0.410755492033017,
+              "PU": 0.283833094936772,
+              "ATU": 0.132733474949667,
+              "BI": 0.61262021320465,
+              "USE": 0.0782089846756427
+            },
+            "USE": {
+              "PEOU": 0.152223327624746,
+              "PU": 0.0694537018862412,
+              "ATU": 0.128181871818133,
+              "BI": 0.0782089846756427,
+              "USE": 0.435284212438203
+            }
+          },
+          "GoF": 0.363371811356274,
+          "HTMT": {
+            "htmts": {
+              "PEOU": {
+                "PEOU": 1,
+                "PU": 0,
+                "ATU": 0,
+                "BI": 0,
+                "USE": 0
+              },
+              "PU": {
+                "PEOU": 0.499628179077438,
+                "PU": 1,
+                "ATU": 0,
+                "BI": 0,
+                "USE": 0
+              },
+              "ATU": {
+                "PEOU": 0.408683251320828,
+                "PU": 0.411810914584388,
+                "ATU": 1,
+                "BI": 0,
+                "USE": 0
+              },
+              "BI": {
+                "PEOU": 0.647022370280424,
+                "PU": 0.52582339165305,
+                "ATU": 0.36156868983314,
+                "BI": 1,
+                "USE": 0
+              },
+              "USE": {
+                "PEOU": 0.404777320104655,
+                "PU": 0.274833105902087,
+                "ATU": 0.378684036174411,
+                "BI": 0.270621852079921,
+                "USE": 1
+              }
+            },
+            "inference": "none",
+            "absolute": true,
+            "ci": "CI_percentile"
+          },
+          "HTMT2": {
+            "htmts": {
+              "PEOU": {
+                "PEOU": 1,
+                "PU": 0,
+                "ATU": 0,
+                "BI": 0,
+                "USE": 0
+              },
+              "PU": {
+                "PEOU": 0.49886849692265,
+                "PU": 1,
+                "ATU": 0,
+                "BI": 0,
+                "USE": 0
+              },
+              "ATU": {
+                "PEOU": 0.406916020205384,
+                "PU": 0.412099563152653,
+                "ATU": 1,
+                "BI": 0,
+                "USE": 0
+              },
+              "BI": {
+                "PEOU": 0.647427916938339,
+                "PU": 0.518878734290415,
+                "ATU": 0.356243157161824,
+                "BI": 1,
+                "USE": 0
+              },
+              "USE": {
+                "PEOU": 0.402558668513471,
+                "PU": 0.276143054488749,
+                "ATU": 0.386057783418196,
+                "BI": 0.257347582157821,
+                "USE": 1
+              }
+            },
+            "inference": "none",
+            "absolute": true,
+            "ci": "CI_percentile"
+          },
+          "R2": {
+            "PU": 0.250371711694368,
+            "ATU": 0.22525204885359,
+            "BI": 0.309147849948257,
+            "USE": 0.0782089846756427
+          },
+          "R2_adj": {
+            "PU": 0.249740711451687,
+            "ATU": 0.223946660561852,
+            "BI": 0.307983819366872,
+            "USE": 0.077433066312575
+          },
+          "Reliability": {
+            "Cronbachs_alpha": {
+              "PEOU": 0.869992530567709,
+              "PU": 0.905805923382122,
+              "ATU": 0.935915020311371,
+              "BI": 0.825229305784041,
+              "USE": 0.739581188055791
+            },
+            "Joereskogs_rho": {
+              "PEOU": 0.870424895391685,
+              "PU": 0.905862519203167,
+              "ATU": 0.935263460744795,
+              "BI": 0.821934060928089,
+              "USE": 0.743847023540327
+            },
+            "Dijkstra-Henselers_rho_A": {
+              "PEOU": 0.874547488632757,
+              "PU": 0.905940210545473,
+              "ATU": 0.940388533037354,
+              "BI": 0.847769443009834,
+              "USE": 0.793720332207532
+            }
+          },
+          "RhoT": {
+            "PEOU": 0.869992530567709,
+            "PU": 0.905805923382122,
+            "ATU": 0.935915020311371,
+            "BI": 0.825229305784041,
+            "USE": 0.739581188055791
+          },
+          "RhoT_weighted": {
+            "PEOU": 0.865911263169245,
+            "PU": 0.905606433647532,
+            "ATU": 0.934538113544531,
+            "BI": 0.823294801815341,
+            "USE": 0.713075055218209
+          },
+          "VIF": {
+            "ATU": {
+              "PEOU": 1.33399448179881,
+              "PU": 1.33399448179881,
+              "PU.1": 0,
+              "ATU": 0
+            },
+            "BI": {
+              "PEOU": 0,
+              "PU": 1.20406951545974,
+              "PU.1": 0,
+              "ATU": 1.20406951545974
+            }
+          }
+        }
+      },
+      "classicA": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.0940000000000001,
+        "result": {
+          "AVE": {
+            "PEOU": 0.658406339322835,
+            "PU": 0.726940342854728,
+            "ATU": 0.795532647412302,
+            "BI": 0.738032548573834,
+            "USE": 0.559147477420345
+          },
+          "AIC": {
+            "PU": -260.11379845528,
+            "ATU": -254.298770198649,
+            "BI": -327.156062660073,
+            "USE": -61.3336419940165
+          },
+          "AICc": {
+            "PU": 931.90643763241,
+            "ATU": 937.734985075613,
+            "BI": 864.877692614189,
+            "USE": 1130.68659409367
+          },
+          "AICu": {
+            "PU": -258.112115897528,
+            "ATU": -251.294982318519,
+            "BI": -324.152274779944,
+            "USE": -59.3319594362646
+          },
+          "BIC": {
+            "PU": -249.950381283069,
+            "ATU": -239.053644440332,
+            "BI": -311.910936901756,
+            "USE": -51.1702248218053
+          },
+          "FPE": {
+            "PU": 0.803656756490656,
+            "ATU": 0.807593505048402,
+            "BI": 0.75963209352475,
+            "USE": 0.949764829943531
+          },
+          "GM": {
+            "PU": 1202.49832719152,
+            "ATU": 1209.8823368342,
+            "BI": 1443.48347751907,
+            "USE": 1344.86431680664
+          },
+          "HQ": {
+            "PU": -256.28373763803,
+            "ATU": -248.553678972774,
+            "BI": -321.410971434199,
+            "USE": -57.5035811767669
+          },
+          "HQc": {
+            "PU": -256.257329338478,
+            "ATU": -248.50412162583,
+            "BI": -321.361414087254,
+            "USE": -57.4771728772147
+          },
+          "Mallows_Cp": {
+            "PU": 2.3349100193102,
+            "ATU": 4.63721107587889,
+            "BI": 238.238351760754,
+            "USE": 144.700899634433
+          },
+          "RhoC": {
+            "PEOU": 0.905847023087942,
+            "PU": 0.93006894259454,
+            "ATU": 0.951100484525848,
+            "BI": 0.894124385511393,
+            "USE": 0.833217263060682
+          },
+          "RhoC_mm": {
+            "PEOU": 0.999108670797873,
+            "PU": 0.999990713625982,
+            "ATU": 0.999270291020846,
+            "BI": 0.995208975719747,
+            "USE": 0.980769492281251
+          },
+          "RhoC_weighted": {
+            "PEOU": 1,
+            "PU": 1,
+            "ATU": 1,
+            "BI": 1,
+            "USE": 1
+          },
+          "RhoC_weighted_mm": {
+            "PEOU": 0.907669925183917,
+            "PU": 0.930157108729543,
+            "ATU": 0.951645838006442,
+            "BI": 0.895696049801259,
+            "USE": 0.852752867151745
+          },
+          "DG": 0.326035344127482,
+          "DL": 2.46958914853713,
+          "DML": 1.8828113166974,
+          "Df": 203,
+          "Effects": {
+            "Direct_effect": [
+              {
+                "Name": "PU ~ PEOU",
+                "Estimate": 0.445383471418466
+              },
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.253226246121735
+              },
+              {
+                "Name": "ATU ~ PU",
+                "Estimate": 0.267202446102868
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.401218653048324
+              },
+              {
+                "Name": "BI ~ ATU",
+                "Estimate": 0.172841871830849
+              },
+              {
+                "Name": "USE ~ BI",
+                "Estimate": 0.229403984078654
+              }
+            ],
+            "Indirect_effect": [
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.119007553016801
+              },
+              {
+                "Name": "BI ~ PEOU",
+                "Estimate": 0.243033743094316
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.0461837709422012
+              },
+              {
+                "Name": "USE ~ PEOU",
+                "Estimate": 0.0557529089313841
+              },
+              {
+                "Name": "USE ~ PU",
+                "Estimate": 0.102635898549873
+              },
+              {
+                "Name": "USE ~ ATU",
+                "Estimate": 0.0396506140136087
+              }
+            ],
+            "Total_effect": [
+              {
+                "Name": "PU ~ PEOU",
+                "Estimate": 0.445383471418466
+              },
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.372233799138535
+              },
+              {
+                "Name": "ATU ~ PU",
+                "Estimate": 0.267202446102868
+              },
+              {
+                "Name": "BI ~ PEOU",
+                "Estimate": 0.243033743094316
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.447402423990525
+              },
+              {
+                "Name": "BI ~ ATU",
+                "Estimate": 0.172841871830849
+              },
+              {
+                "Name": "USE ~ PEOU",
+                "Estimate": 0.0557529089313841
+              },
+              {
+                "Name": "USE ~ PU",
+                "Estimate": 0.102635898549873
+              },
+              {
+                "Name": "USE ~ ATU",
+                "Estimate": 0.0396506140136087
+              },
+              {
+                "Name": "USE ~ BI",
+                "Estimate": 0.229403984078654
+              }
+            ],
+            "Variance_accounted_for": [
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.319711840494392
+              },
+              {
+                "Name": "BI ~ PEOU",
+                "Estimate": 1
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.10322646562858
+              },
+              {
+                "Name": "USE ~ PEOU",
+                "Estimate": 1
+              },
+              {
+                "Name": "USE ~ PU",
+                "Estimate": 1
+              },
+              {
+                "Name": "USE ~ ATU",
+                "Estimate": 1
+              }
+            ]
+          },
+          "F2": {
+            "PU": {
+              "PEOU": 0.247452758557891,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "ATU": {
+              "PEOU": 0.0639182868771664,
+              "PU": 0.071168621165994,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "BI": {
+              "PEOU": 0,
+              "PU": 0.182079066262113,
+              "ATU": 0.0337905848232316,
+              "BI": 0,
+              "USE": 0
+            },
+            "USE": {
+              "PEOU": 0,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0.0555495489105034,
+              "USE": 0
+            }
+          },
+          "Chi_square": 2238.66265555321,
+          "Chi_square_df": 11.0278948549419,
+          "CFI": 0.870108804169355,
+          "GFI": 0.813282374384036,
+          "CN": 127.00326759949,
+          "IFI": 0.870340456367506,
+          "NFI": 0.85923070081519,
+          "NNFI": 0.852192777158232,
+          "RMSEA": 0.0918362112751877,
+          "RMS_theta": 0.0433277182993975,
+          "SRMR": 0.0987988964056624,
+          "Fornell-Larcker": {
+            "PEOU": {
+              "PEOU": 0.658406339322835,
+              "PU": 0.198366436612763,
+              "ATU": 0.138558001221108,
+              "BI": 0.304540134154435,
+              "USE": 0.105665232732669
+            },
+            "PU": {
+              "PEOU": 0.198366436612763,
+              "PU": 0.726940342854728,
+              "ATU": 0.144388775515807,
+              "BI": 0.217991885631909,
+              "USE": 0.0499415986905577
+            },
+            "ATU": {
+              "PEOU": 0.138558001221108,
+              "PU": 0.144388775515807,
+              "ATU": 0.795532647412302,
+              "BI": 0.105819461685569,
+              "USE": 0.0956756539774995
+            },
+            "BI": {
+              "PEOU": 0.304540134154435,
+              "PU": 0.217991885631909,
+              "ATU": 0.105819461685569,
+              "BI": 0.738032548573834,
+              "USE": 0.0526261879111591
+            },
+            "USE": {
+              "PEOU": 0.105665232732669,
+              "PU": 0.0499415986905577,
+              "ATU": 0.0956756539774995,
+              "BI": 0.0526261879111591,
+              "USE": 0.559147477420345
+            }
+          },
+          "GoF": 0.347068778706889,
+          "HTMT": {
+            "htmts": {
+              "PEOU": {
+                "PEOU": 1,
+                "PU": 0,
+                "ATU": 0,
+                "BI": 0,
+                "USE": 0
+              },
+              "PU": {
+                "PEOU": 0.499628179077438,
+                "PU": 1,
+                "ATU": 0,
+                "BI": 0,
+                "USE": 0
+              },
+              "ATU": {
+                "PEOU": 0.408683251320828,
+                "PU": 0.411810914584388,
+                "ATU": 1,
+                "BI": 0,
+                "USE": 0
+              },
+              "BI": {
+                "PEOU": 0.647022370280424,
+                "PU": 0.52582339165305,
+                "ATU": 0.36156868983314,
+                "BI": 1,
+                "USE": 0
+              },
+              "USE": {
+                "PEOU": 0.404777320104655,
+                "PU": 0.274833105902087,
+                "ATU": 0.378684036174411,
+                "BI": 0.270621852079921,
+                "USE": 1
+              }
+            },
+            "inference": "none",
+            "absolute": true,
+            "ci": "CI_percentile"
+          },
+          "HTMT2": {
+            "htmts": {
+              "PEOU": {
+                "PEOU": 1,
+                "PU": 0,
+                "ATU": 0,
+                "BI": 0,
+                "USE": 0
+              },
+              "PU": {
+                "PEOU": 0.49886849692265,
+                "PU": 1,
+                "ATU": 0,
+                "BI": 0,
+                "USE": 0
+              },
+              "ATU": {
+                "PEOU": 0.406916020205384,
+                "PU": 0.412099563152653,
+                "ATU": 1,
+                "BI": 0,
+                "USE": 0
+              },
+              "BI": {
+                "PEOU": 0.647427916938339,
+                "PU": 0.518878734290415,
+                "ATU": 0.356243157161824,
+                "BI": 1,
+                "USE": 0
+              },
+              "USE": {
+                "PEOU": 0.402558668513471,
+                "PU": 0.276143054488749,
+                "ATU": 0.386057783418196,
+                "BI": 0.257347582157821,
+                "USE": 1
+              }
+            },
+            "inference": "none",
+            "absolute": true,
+            "ci": "CI_percentile"
+          },
+          "R2": {
+            "PU": 0.198366436612763,
+            "ATU": 0.195792350749417,
+            "BI": 0.243552682865837,
+            "USE": 0.0526261879111591
+          },
+          "R2_adj": {
+            "PU": 0.197691660886006,
+            "ATU": 0.194437325224142,
+            "BI": 0.242278129677743,
+            "USE": 0.0518287352073806
+          },
+          "Reliability": {
+            "Cronbachs_alpha": {
+              "PEOU": 0.869992530567709,
+              "PU": 0.905805923382122,
+              "ATU": 0.935915020311371,
+              "BI": 0.825229305784041,
+              "USE": 0.739581188055791
+            },
+            "Joereskogs_rho": {
+              "PEOU": 0.905847023087942,
+              "PU": 0.93006894259454,
+              "ATU": 0.951100484525848,
+              "BI": 0.894124385511393,
+              "USE": 0.833217263060682
+            },
+            "Dijkstra-Henselers_rho_A": {
+              "PEOU": 1,
+              "PU": 1,
+              "ATU": 1,
+              "BI": 1,
+              "USE": 1
+            }
+          },
+          "RhoT": {
+            "PEOU": 0.869992530567709,
+            "PU": 0.905805923382122,
+            "ATU": 0.935915020311371,
+            "BI": 0.825229305784041,
+            "USE": 0.739581188055791
+          },
+          "RhoT_weighted": {
+            "PEOU": 0.865911263169245,
+            "PU": 0.905606433647532,
+            "ATU": 0.934538113544531,
+            "BI": 0.823294801815341,
+            "USE": 0.713075055218209
+          },
+          "VIF": {
+            "ATU": {
+              "PEOU": 1.24745275855789,
+              "PU": 1.24745275855789,
+              "PU.1": 0,
+              "ATU": 0
+            },
+            "BI": {
+              "PEOU": 0,
+              "PU": 1.1687551207651,
+              "PU.1": 0,
+              "ATU": 1.1687551207651
+            }
+          }
+        }
+      },
+      "compositeB": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.105,
+        "result": {
+          "AVE": {},
+          "AIC": {
+            "PU": -271.989650302443,
+            "ATU": -264.329773628804,
+            "BI": -367.677696501974,
+            "USE": -85.8482791915617
+          },
+          "AICc": {
+            "PU": 920.030585785247,
+            "ATU": 927.703981645458,
+            "BI": 824.356058772288,
+            "USE": 1106.17195689613
+          },
+          "AICu": {
+            "PU": -269.987967744691,
+            "ATU": -261.325985748674,
+            "BI": -364.673908621845,
+            "USE": -83.8465966338098
+          },
+          "BIC": {
+            "PU": -261.826233130232,
+            "ATU": -249.084647870487,
+            "BI": -352.432570743657,
+            "USE": -75.6848620193505
+          },
+          "FPE": {
+            "PU": 0.795676384306218,
+            "ATU": 0.800814575870131,
+            "BI": 0.734200708061051,
+            "USE": 0.930399320675411
+          },
+          "GM": {
+            "PU": 1200.5346675287,
+            "ATU": 1211.05929335946,
+            "BI": 1421.77911937284,
+            "USE": 1323.54201673221
+          },
+          "HQ": {
+            "PU": -268.159589485193,
+            "ATU": -258.584682402929,
+            "BI": -361.932605276099,
+            "USE": -82.0182183743121
+          },
+          "HQc": {
+            "PU": -268.133181185641,
+            "ATU": -258.535125055985,
+            "BI": -361.883047929155,
+            "USE": -81.9918100747599
+          },
+          "Mallows_Cp": {
+            "PU": 0.371250356484325,
+            "ATU": 5.81416760114371,
+            "BI": 216.533993614523,
+            "USE": 123.378599559997
+          },
+          "RhoC": {},
+          "RhoC_mm": {},
+          "RhoC_weighted": {},
+          "RhoC_weighted_mm": {},
+          "DG": 0.111049595220188,
+          "DL": 1.90584875791165,
+          "DML": 0.539907431312688,
+          "Df": 169,
+          "Effects": {
+            "Direct_effect": [
+              {
+                "Name": "PU ~ PEOU",
+                "Estimate": 0.45423200937092
+              },
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.263408875701695
+              },
+              {
+                "Name": "ATU ~ PU",
+                "Estimate": 0.26437527325025
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.423709561898032
+              },
+              {
+                "Name": "BI ~ ATU",
+                "Estimate": 0.177614179126391
+              },
+              {
+                "Name": "USE ~ BI",
+                "Estimate": 0.268221820174419
+              }
+            ],
+            "Indirect_effect": [
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.120087711596447
+              },
+              {
+                "Name": "BI ~ PEOU",
+                "Estimate": 0.260576877241347
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.0469567971396586
+              },
+              {
+                "Name": "USE ~ PEOU",
+                "Estimate": 0.0698924043090402
+              },
+              {
+                "Name": "USE ~ PU",
+                "Estimate": 0.126242987515956
+              },
+              {
+                "Name": "USE ~ ATU",
+                "Estimate": 0.0476399984140659
+              }
+            ],
+            "Total_effect": [
+              {
+                "Name": "PU ~ PEOU",
+                "Estimate": 0.45423200937092
+              },
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.383496587298142
+              },
+              {
+                "Name": "ATU ~ PU",
+                "Estimate": 0.26437527325025
+              },
+              {
+                "Name": "BI ~ PEOU",
+                "Estimate": 0.260576877241347
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.470666359037691
+              },
+              {
+                "Name": "BI ~ ATU",
+                "Estimate": 0.177614179126391
+              },
+              {
+                "Name": "USE ~ PEOU",
+                "Estimate": 0.0698924043090402
+              },
+              {
+                "Name": "USE ~ PU",
+                "Estimate": 0.126242987515956
+              },
+              {
+                "Name": "USE ~ ATU",
+                "Estimate": 0.0476399984140659
+              },
+              {
+                "Name": "USE ~ BI",
+                "Estimate": 0.268221820174419
+              }
+            ],
+            "Variance_accounted_for": [
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.313138931541749
+              },
+              {
+                "Name": "BI ~ PEOU",
+                "Estimate": 1
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.0997666313684813
+              },
+              {
+                "Name": "USE ~ PEOU",
+                "Estimate": 1
+              },
+              {
+                "Name": "USE ~ PU",
+                "Estimate": 1
+              },
+              {
+                "Name": "USE ~ ATU",
+                "Estimate": 1
+              }
+            ]
+          },
+          "F2": {
+            "PU": {
+              "PEOU": 0.259964299043631,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "ATU": {
+              "PEOU": 0.0690550141159826,
+              "PU": 0.069562643287634,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "BI": {
+              "PEOU": 0,
+              "PU": 0.209340739905716,
+              "ATU": 0.0367851465925897,
+              "BI": 0,
+              "USE": 0
+            },
+            "USE": {
+              "PEOU": 0,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0.07751995894643,
+              "USE": 0
+            }
+          },
+          "Chi_square": 641.949935830786,
+          "Chi_square_df": 3.79852033035968,
+          "CFI": 0.969822095735999,
+          "GFI": 0.930026746071009,
+          "CN": 372.052327147677,
+          "IFI": 0.969941011643705,
+          "NFI": 0.959633559636835,
+          "NNFI": 0.95875091192317,
+          "RMSEA": 0.0485146950447995,
+          "RMS_theta": 0.0113647067286224,
+          "SRMR": 0.0867928513365533,
+          "GoF": 0.351967493247598,
+          "HTMT": {
+            "htmts": null,
+            "inference": null,
+            "absolute": null,
+            "ci": null
+          },
+          "HTMT2": {
+            "htmts": null,
+            "inference": null,
+            "absolute": null,
+            "ci": null
+          },
+          "R2": {
+            "PU": 0.206326718337143,
+            "ATU": 0.202542859098994,
+            "BI": 0.268877446615294,
+            "USE": 0.0719429448176783
+          },
+          "R2_adj": {
+            "PU": 0.205658643184228,
+            "ATU": 0.20119920764002,
+            "BI": 0.267645563627283,
+            "USE": 0.0711617520102859
+          },
+          "Reliability": {
+            "Cronbachs_alpha": {},
+            "Joereskogs_rho": {},
+            "Dijkstra-Henselers_rho_A": {}
+          },
+          "RhoT": {},
+          "RhoT_weighted": {},
+          "VIF": {
+            "ATU": {
+              "PEOU": 1.25996429904363,
+              "PU": 1.25996429904363,
+              "PU.1": 0,
+              "ATU": 0
+            },
+            "BI": {
+              "PEOU": 0,
+              "PU": 1.17298536578559,
+              "PU.1": 0,
+              "ATU": 1.17298536578559
+            }
+          },
+          "VIF_modeB": {
+            "PEOU": {
+              "EOU1": 1.74839111721932,
+              "EOU2": 2.06244122838257,
+              "EOU3": 2.41896488661991,
+              "EOU4": 1.95830041227315,
+              "EOU5": 1.87146436730849,
+              "USEF1": 0,
+              "USEF2": 0,
+              "USEF3": 0,
+              "USEF4": 0,
+              "USEF5": 0,
+              "ATT1": 0,
+              "ATT2": 0,
+              "ATT3": 0,
+              "ATT4": 0,
+              "ATT5": 0,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "PU": {
+              "EOU1": 0,
+              "EOU2": 0,
+              "EOU3": 0,
+              "EOU4": 0,
+              "EOU5": 0,
+              "USEF1": 2.00540321941868,
+              "USEF2": 2.40658425734806,
+              "USEF3": 2.89817300300689,
+              "USEF4": 2.73957178377506,
+              "USEF5": 2.52517127066642,
+              "ATT1": 0,
+              "ATT2": 0,
+              "ATT3": 0,
+              "ATT4": 0,
+              "ATT5": 0,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "ATU": {
+              "EOU1": 0,
+              "EOU2": 0,
+              "EOU3": 0,
+              "EOU4": 0,
+              "EOU5": 0,
+              "USEF1": 0,
+              "USEF2": 0,
+              "USEF3": 0,
+              "USEF4": 0,
+              "USEF5": 0,
+              "ATT1": 3.64092209332664,
+              "ATT2": 3.90081286675246,
+              "ATT3": 3.35553394601243,
+              "ATT4": 3.83353292440818,
+              "ATT5": 3.86604888181029,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "BI": {
+              "EOU1": 0,
+              "EOU2": 0,
+              "EOU3": 0,
+              "EOU4": 0,
+              "EOU5": 0,
+              "USEF1": 0,
+              "USEF2": 0,
+              "USEF3": 0,
+              "USEF4": 0,
+              "USEF5": 0,
+              "ATT1": 0,
+              "ATT2": 0,
+              "ATT3": 0,
+              "ATT4": 0,
+              "ATT5": 0,
+              "BI1": 1.64564205845916,
+              "BI2": 2.01980743858728,
+              "BI3": 2.17081240654776,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "USE": {
+              "EOU1": 0,
+              "EOU2": 0,
+              "EOU3": 0,
+              "EOU4": 0,
+              "EOU5": 0,
+              "USEF1": 0,
+              "USEF2": 0,
+              "USEF3": 0,
+              "USEF4": 0,
+              "USEF5": 0,
+              "ATT1": 0,
+              "ATT2": 0,
+              "ATT3": 0,
+              "ATT4": 0,
+              "ATT5": 0,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 1.77144940615438,
+              "USE2": 1.66992904566145,
+              "USE3": 1.537584565365,
+              "USE4": 1.35182437607614
+            }
+          }
+        }
+      },
+      "mixed": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.087,
+        "result": {
+          "AVE": {
+            "ATU": 0.744262986622815,
+            "BI": 0.6125056659818,
+            "USE": 0.435267080360561
+          },
+          "AIC": {
+            "PU": -273.166680932076,
+            "ATU": -270.926856757454,
+            "BI": -400.561536901766,
+            "USE": -93.7997793619002
+          },
+          "AICc": {
+            "PU": 918.853555155614,
+            "ATU": 921.106898516808,
+            "BI": 791.472218372496,
+            "USE": 1098.22045672579
+          },
+          "AICu": {
+            "PU": -271.164998374324,
+            "ATU": -267.923068877325,
+            "BI": -397.557749021636,
+            "USE": -91.7980968041483
+          },
+          "BIC": {
+            "PU": -263.003263759865,
+            "ATU": -255.681730999137,
+            "BI": -385.316411143449,
+            "USE": -83.6363621896891
+          },
+          "FPE": {
+            "PU": 0.794889768790243,
+            "ATU": 0.796387329334068,
+            "BI": 0.714189944829285,
+            "USE": 0.924203178984769
+          },
+          "GM": {
+            "PU": 1200.09708583451,
+            "ATU": 1210.49024481686,
+            "BI": 1525.78509837917,
+            "USE": 1408.77865774643
+          },
+          "HQ": {
+            "PU": -269.336620114826,
+            "ATU": -265.18176553158,
+            "BI": -394.816445675891,
+            "USE": -89.9697185446507
+          },
+          "HQc": {
+            "PU": -269.310211815274,
+            "ATU": -265.132208184635,
+            "BI": -394.766888328947,
+            "USE": -89.9433102450984
+          },
+          "Mallows_Cp": {
+            "PU": -0.0663313377037866,
+            "ATU": 5.24511905854547,
+            "BI": 320.53997262085,
+            "USE": 208.615240574218
+          },
+          "RhoC": {
+            "ATU": 0.935262527374199,
+            "BI": 0.821929609888658,
+            "USE": 0.743845416840824
+          },
+          "RhoC_mm": {
+            "ATU": 0.928343150631407,
+            "BI": 0.804587398084327,
+            "USE": 0.730281199864851
+          },
+          "RhoC_weighted": {
+            "ATU": 0.94040827468985,
+            "BI": 0.847441171091209,
+            "USE": 0.79367890105987
+          },
+          "RhoC_weighted_mm": {
+            "ATU": 0.94040827468985,
+            "BI": 0.847441171091209,
+            "USE": 0.79367890105987
+          },
+          "DG": 0.311205517657942,
+          "DL": 2.09559046558437,
+          "DML": 1.5223600652523,
+          "Df": 185,
+          "Effects": {
+            "Direct_effect": [
+              {
+                "Name": "PU ~ PEOU",
+                "Estimate": 0.455094884129747
+              },
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.259028388612102
+              },
+              {
+                "Name": "ATU ~ PU",
+                "Estimate": 0.274229888237102
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.429198074170381
+              },
+              {
+                "Name": "BI ~ ATU",
+                "Estimate": 0.19628280272176
+              },
+              {
+                "Name": "USE ~ BI",
+                "Estimate": 0.279505792104842
+              }
+            ],
+            "Indirect_effect": [
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.124800619212177
+              },
+              {
+                "Name": "BI ~ PEOU",
+                "Estimate": 0.270664881254941
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.0538266110532533
+              },
+              {
+                "Name": "USE ~ PEOU",
+                "Estimate": 0.0756524020301255
+              },
+              {
+                "Name": "USE ~ PU",
+                "Estimate": 0.135008197249624
+              },
+              {
+                "Name": "USE ~ ATU",
+                "Estimate": 0.0548621802513039
+              }
+            ],
+            "Total_effect": [
+              {
+                "Name": "PU ~ PEOU",
+                "Estimate": 0.455094884129747
+              },
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.383829007824279
+              },
+              {
+                "Name": "ATU ~ PU",
+                "Estimate": 0.274229888237102
+              },
+              {
+                "Name": "BI ~ PEOU",
+                "Estimate": 0.270664881254941
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.483024685223634
+              },
+              {
+                "Name": "BI ~ ATU",
+                "Estimate": 0.19628280272176
+              },
+              {
+                "Name": "USE ~ PEOU",
+                "Estimate": 0.0756524020301255
+              },
+              {
+                "Name": "USE ~ PU",
+                "Estimate": 0.135008197249624
+              },
+              {
+                "Name": "USE ~ ATU",
+                "Estimate": 0.0548621802513039
+              },
+              {
+                "Name": "USE ~ BI",
+                "Estimate": 0.279505792104842
+              }
+            ],
+            "Variance_accounted_for": [
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.325146397661826
+              },
+              {
+                "Name": "BI ~ PEOU",
+                "Estimate": 1
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.111436563595776
+              },
+              {
+                "Name": "USE ~ PEOU",
+                "Estimate": 1
+              },
+              {
+                "Name": "USE ~ PU",
+                "Estimate": 1
+              },
+              {
+                "Name": "USE ~ ATU",
+                "Estimate": 1
+              }
+            ]
+          },
+          "F2": {
+            "PU": {
+              "PEOU": 0.261211147985607,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "ATU": {
+              "PEOU": 0.0670821854758928,
+              "PU": 0.075186877444608,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "BI": {
+              "PEOU": 0,
+              "PU": 0.219191651612291,
+              "ATU": 0.0458429947986733,
+              "BI": 0,
+              "USE": 0
+            },
+            "USE": {
+              "PEOU": 0,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0.0847439833730295,
+              "USE": 0
+            }
+          },
+          "Chi_square": 1810.08611758498,
+          "Chi_square_df": 9.78424928424314,
+          "CFI": 0.896306797904327,
+          "GFI": 0.850283013072987,
+          "CN": 144.024627235846,
+          "IFI": 0.896610263293857,
+          "NFI": 0.886180013051754,
+          "NNFI": 0.870523623329187,
+          "RMSEA": 0.0859530711056943,
+          "RMS_theta": 0.042182841472449,
+          "SRMR": 0.0910108030243217,
+          "Fornell-Larcker": {
+            "ATU": {
+              "ATU": 0.744262986622815,
+              "BI": 0.132916157241606,
+              "USE": 0.128191108358066
+            },
+            "BI": {
+              "ATU": 0.132916157241606,
+              "BI": 0.6125056659818,
+              "USE": 0.0781234878201552
+            },
+            "USE": {
+              "ATU": 0.128191108358066,
+              "BI": 0.0781234878201552,
+              "USE": 0.435267080360561
+            }
+          },
+          "GoF": 0.354399105602415,
+          "HTMT": {
+            "htmts": {
+              "ATU": {
+                "ATU": 1,
+                "BI": 0,
+                "USE": 0
+              },
+              "BI": {
+                "ATU": 0.36156868983314,
+                "BI": 1,
+                "USE": 0
+              },
+              "USE": {
+                "ATU": 0.378684036174411,
+                "BI": 0.270621852079921,
+                "USE": 1
+              }
+            },
+            "inference": "none",
+            "absolute": true,
+            "ci": "CI_percentile"
+          },
+          "HTMT2": {
+            "htmts": {
+              "ATU": {
+                "ATU": 1,
+                "BI": 0,
+                "USE": 0
+              },
+              "BI": {
+                "ATU": 0.356243157161824,
+                "BI": 1,
+                "USE": 0
+              },
+              "USE": {
+                "ATU": 0.386057783418196,
+                "BI": 0.257347582157821,
+                "USE": 1
+              }
+            },
+            "inference": "none",
+            "absolute": true,
+            "ci": "CI_percentile"
+          },
+          "R2": {
+            "PU": 0.207111353561067,
+            "ATU": 0.206951544294161,
+            "BI": 0.288804314225955,
+            "USE": 0.0781234878201552
+          },
+          "R2_adj": {
+            "PU": 0.206443938875513,
+            "ATU": 0.205615321116898,
+            "BI": 0.287606006415047,
+            "USE": 0.0773474974900376
+          },
+          "Reliability": {
+            "Cronbachs_alpha": {
+              "ATU": 0.935915020311371,
+              "BI": 0.825229305784041,
+              "USE": 0.739581188055791
+            },
+            "Joereskogs_rho": {
+              "ATU": 0.935262527374199,
+              "BI": 0.821929609888658,
+              "USE": 0.743845416840824
+            },
+            "Dijkstra-Henselers_rho_A": {
+              "ATU": 0.94040827468985,
+              "BI": 0.847441171091209,
+              "USE": 0.79367890105987
+            }
+          },
+          "RhoT": {
+            "ATU": 0.935915020311371,
+            "BI": 0.825229305784041,
+            "USE": 0.739581188055791
+          },
+          "RhoT_weighted": {
+            "ATU": 0.934532125823527,
+            "BI": 0.823502250563038,
+            "USE": 0.713109585236101
+          },
+          "VIF": {
+            "ATU": {
+              "PEOU": 1.26121114798561,
+              "PU": 1.26121114798561,
+              "PU.1": 0,
+              "ATU": 0
+            },
+            "BI": {
+              "PEOU": 0,
+              "PU": 1.18168686085665,
+              "PU.1": 0,
+              "ATU": 1.18168686085665
+            }
+          },
+          "VIF_modeB": {
+            "PEOU": {
+              "EOU1": 1.74839111721932,
+              "EOU2": 2.06244122838257,
+              "EOU3": 2.41896488661991,
+              "EOU4": 1.95830041227315,
+              "EOU5": 1.87146436730849,
+              "USEF1": 0,
+              "USEF2": 0,
+              "USEF3": 0,
+              "USEF4": 0,
+              "USEF5": 0
+            },
+            "PU": {
+              "EOU1": 0,
+              "EOU2": 0,
+              "EOU3": 0,
+              "EOU4": 0,
+              "EOU5": 0,
+              "USEF1": 2.00540321941868,
+              "USEF2": 2.40658425734806,
+              "USEF3": 2.89817300300689,
+              "USEF4": 2.73957178377506,
+              "USEF5": 2.52517127066642
+            }
+          }
+        }
+      }
+    },
+    "all_only_common_factors_false": {
+      "compositeB": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.102,
+        "result": {
+          "AVE": {
+            "PEOU": 0.649712537533225,
+            "PU": 0.722543532325949,
+            "ATU": 0.743167617211531,
+            "BI": 0.646052085494729,
+            "USE": 0.506530167011224
+          },
+          "AIC": {
+            "PU": -271.989650302443,
+            "ATU": -264.329773628804,
+            "BI": -367.677696501974,
+            "USE": -85.8482791915617
+          },
+          "AICc": {
+            "PU": 920.030585785247,
+            "ATU": 927.703981645458,
+            "BI": 824.356058772288,
+            "USE": 1106.17195689613
+          },
+          "AICu": {
+            "PU": -269.987967744691,
+            "ATU": -261.325985748674,
+            "BI": -364.673908621845,
+            "USE": -83.8465966338098
+          },
+          "BIC": {
+            "PU": -261.826233130232,
+            "ATU": -249.084647870487,
+            "BI": -352.432570743657,
+            "USE": -75.6848620193505
+          },
+          "FPE": {
+            "PU": 0.795676384306218,
+            "ATU": 0.800814575870131,
+            "BI": 0.734200708061051,
+            "USE": 0.930399320675411
+          },
+          "GM": {
+            "PU": 1200.5346675287,
+            "ATU": 1211.05929335946,
+            "BI": 1421.77911937284,
+            "USE": 1323.54201673221
+          },
+          "HQ": {
+            "PU": -268.159589485193,
+            "ATU": -258.584682402929,
+            "BI": -361.932605276099,
+            "USE": -82.0182183743121
+          },
+          "HQc": {
+            "PU": -268.133181185641,
+            "ATU": -258.535125055985,
+            "BI": -361.883047929155,
+            "USE": -81.9918100747599
+          },
+          "Mallows_Cp": {
+            "PU": 0.371250356484325,
+            "ATU": 5.81416760114371,
+            "BI": 216.533993614523,
+            "USE": 123.378599559997
+          },
+          "RhoC": {
+            "PEOU": 0.902185963223942,
+            "PU": 0.928671680724697,
+            "ATU": 0.934924503293787,
+            "BI": 0.841898271130897,
+            "USE": 0.79504598042541
+          },
+          "RhoC_mm": {
+            "PEOU": 0.982203769839426,
+            "PU": 0.994691584065706,
+            "ATU": 0.92714142617462,
+            "BI": 0.847866175392976,
+            "USE": 0.852438133704316
+          },
+          "RhoC_weighted": {
+            "PEOU": 1,
+            "PU": 1,
+            "ATU": 1,
+            "BI": 1,
+            "USE": 1
+          },
+          "RhoC_weighted_mm": {
+            "PEOU": 0.909349548917612,
+            "PU": 0.924419604449592,
+            "ATU": 0.890673252164279,
+            "BI": 0.847332171348279,
+            "USE": 0.912142370050429
+          },
+          "DG": 0.111049595220188,
+          "DL": 1.90584875791165,
+          "DML": 0.539907431312688,
+          "Df": 169,
+          "Effects": {
+            "Direct_effect": [
+              {
+                "Name": "PU ~ PEOU",
+                "Estimate": 0.45423200937092
+              },
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.263408875701695
+              },
+              {
+                "Name": "ATU ~ PU",
+                "Estimate": 0.26437527325025
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.423709561898032
+              },
+              {
+                "Name": "BI ~ ATU",
+                "Estimate": 0.177614179126391
+              },
+              {
+                "Name": "USE ~ BI",
+                "Estimate": 0.268221820174419
+              }
+            ],
+            "Indirect_effect": [
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.120087711596447
+              },
+              {
+                "Name": "BI ~ PEOU",
+                "Estimate": 0.260576877241347
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.0469567971396586
+              },
+              {
+                "Name": "USE ~ PEOU",
+                "Estimate": 0.0698924043090402
+              },
+              {
+                "Name": "USE ~ PU",
+                "Estimate": 0.126242987515956
+              },
+              {
+                "Name": "USE ~ ATU",
+                "Estimate": 0.0476399984140659
+              }
+            ],
+            "Total_effect": [
+              {
+                "Name": "PU ~ PEOU",
+                "Estimate": 0.45423200937092
+              },
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.383496587298142
+              },
+              {
+                "Name": "ATU ~ PU",
+                "Estimate": 0.26437527325025
+              },
+              {
+                "Name": "BI ~ PEOU",
+                "Estimate": 0.260576877241347
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.470666359037691
+              },
+              {
+                "Name": "BI ~ ATU",
+                "Estimate": 0.177614179126391
+              },
+              {
+                "Name": "USE ~ PEOU",
+                "Estimate": 0.0698924043090402
+              },
+              {
+                "Name": "USE ~ PU",
+                "Estimate": 0.126242987515956
+              },
+              {
+                "Name": "USE ~ ATU",
+                "Estimate": 0.0476399984140659
+              },
+              {
+                "Name": "USE ~ BI",
+                "Estimate": 0.268221820174419
+              }
+            ],
+            "Variance_accounted_for": [
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.313138931541749
+              },
+              {
+                "Name": "BI ~ PEOU",
+                "Estimate": 1
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.0997666313684813
+              },
+              {
+                "Name": "USE ~ PEOU",
+                "Estimate": 1
+              },
+              {
+                "Name": "USE ~ PU",
+                "Estimate": 1
+              },
+              {
+                "Name": "USE ~ ATU",
+                "Estimate": 1
+              }
+            ]
+          },
+          "F2": {
+            "PU": {
+              "PEOU": 0.259964299043631,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "ATU": {
+              "PEOU": 0.0690550141159826,
+              "PU": 0.069562643287634,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "BI": {
+              "PEOU": 0,
+              "PU": 0.209340739905716,
+              "ATU": 0.0367851465925897,
+              "BI": 0,
+              "USE": 0
+            },
+            "USE": {
+              "PEOU": 0,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0.07751995894643,
+              "USE": 0
+            }
+          },
+          "Chi_square": 641.949935830786,
+          "Chi_square_df": 3.79852033035968,
+          "CFI": 0.969822095735999,
+          "GFI": 0.930026746071009,
+          "CN": 372.052327147677,
+          "IFI": 0.969941011643705,
+          "NFI": 0.959633559636835,
+          "NNFI": 0.95875091192317,
+          "RMSEA": 0.0485146950447995,
+          "RMS_theta": 0.0113647067286224,
+          "SRMR": 0.0867928513365533,
+          "Fornell-Larcker": {
+            "PEOU": {
+              "PEOU": 0.649712537533225,
+              "PU": 0.206326718337143,
+              "ATU": 0.147069632469321,
+              "BI": 0.278270067203464,
+              "USE": 0.0962582582528124
+            },
+            "PU": {
+              "PEOU": 0.206326718337143,
+              "PU": 0.722543532325949,
+              "ATU": 0.147474444977184,
+              "BI": 0.24198299631189,
+              "USE": 0.0429457340238018
+            },
+            "ATU": {
+              "PEOU": 0.147069632469321,
+              "PU": 0.147474444977184,
+              "ATU": 0.743167617211531,
+              "BI": 0.115823710327984,
+              "USE": 0.0788566508464325
+            },
+            "BI": {
+              "PEOU": 0.278270067203464,
+              "PU": 0.24198299631189,
+              "ATU": 0.115823710327984,
+              "BI": 0.646052085494729,
+              "USE": 0.0719429448176783
+            },
+            "USE": {
+              "PEOU": 0.0962582582528124,
+              "PU": 0.0429457340238018,
+              "ATU": 0.0788566508464325,
+              "BI": 0.0719429448176783,
+              "USE": 0.506530167011224
+            }
+          },
+          "GoF": 0.351967493247598,
+          "HTMT": {
+            "htmts": {
+              "PEOU": {
+                "PEOU": 1,
+                "PU": 0,
+                "ATU": 0,
+                "BI": 0,
+                "USE": 0
+              },
+              "PU": {
+                "PEOU": 0.499628179077438,
+                "PU": 1,
+                "ATU": 0,
+                "BI": 0,
+                "USE": 0
+              },
+              "ATU": {
+                "PEOU": 0.408683251320828,
+                "PU": 0.411810914584388,
+                "ATU": 1,
+                "BI": 0,
+                "USE": 0
+              },
+              "BI": {
+                "PEOU": 0.647022370280424,
+                "PU": 0.52582339165305,
+                "ATU": 0.36156868983314,
+                "BI": 1,
+                "USE": 0
+              },
+              "USE": {
+                "PEOU": 0.404777320104655,
+                "PU": 0.274833105902087,
+                "ATU": 0.378684036174411,
+                "BI": 0.270621852079921,
+                "USE": 1
+              }
+            },
+            "inference": "none",
+            "absolute": true,
+            "ci": "CI_percentile"
+          },
+          "HTMT2": {
+            "htmts": {
+              "PEOU": {
+                "PEOU": 1,
+                "PU": 0,
+                "ATU": 0,
+                "BI": 0,
+                "USE": 0
+              },
+              "PU": {
+                "PEOU": 0.49886849692265,
+                "PU": 1,
+                "ATU": 0,
+                "BI": 0,
+                "USE": 0
+              },
+              "ATU": {
+                "PEOU": 0.406916020205384,
+                "PU": 0.412099563152653,
+                "ATU": 1,
+                "BI": 0,
+                "USE": 0
+              },
+              "BI": {
+                "PEOU": 0.647427916938339,
+                "PU": 0.518878734290415,
+                "ATU": 0.356243157161824,
+                "BI": 1,
+                "USE": 0
+              },
+              "USE": {
+                "PEOU": 0.402558668513471,
+                "PU": 0.276143054488749,
+                "ATU": 0.386057783418196,
+                "BI": 0.257347582157821,
+                "USE": 1
+              }
+            },
+            "inference": "none",
+            "absolute": true,
+            "ci": "CI_percentile"
+          },
+          "R2": {
+            "PU": 0.206326718337143,
+            "ATU": 0.202542859098994,
+            "BI": 0.268877446615294,
+            "USE": 0.0719429448176783
+          },
+          "R2_adj": {
+            "PU": 0.205658643184228,
+            "ATU": 0.20119920764002,
+            "BI": 0.267645563627283,
+            "USE": 0.0711617520102859
+          },
+          "Reliability": {
+            "Cronbachs_alpha": {
+              "PEOU": 0.869992530567709,
+              "PU": 0.905805923382122,
+              "ATU": 0.935915020311371,
+              "BI": 0.825229305784041,
+              "USE": 0.739581188055791
+            },
+            "Joereskogs_rho": {
+              "PEOU": 0.902185963223942,
+              "PU": 0.928671680724697,
+              "ATU": 0.934924503293787,
+              "BI": 0.841898271130897,
+              "USE": 0.79504598042541
+            },
+            "Dijkstra-Henselers_rho_A": {
+              "PEOU": 1,
+              "PU": 1,
+              "ATU": 1,
+              "BI": 1,
+              "USE": 1
+            }
+          },
+          "RhoT": {
+            "PEOU": 0.869992530567709,
+            "PU": 0.905805923382122,
+            "ATU": 0.935915020311371,
+            "BI": 0.825229305784041,
+            "USE": 0.739581188055791
+          },
+          "RhoT_weighted": {
+            "PEOU": 0.844794105669632,
+            "PU": 0.912033315694975,
+            "ATU": 0.862994206825321,
+            "BI": 0.708105529860345,
+            "USE": 0.608750205812564
+          },
+          "VIF": {
+            "ATU": {
+              "PEOU": 1.25996429904363,
+              "PU": 1.25996429904363,
+              "PU.1": 0,
+              "ATU": 0
+            },
+            "BI": {
+              "PEOU": 0,
+              "PU": 1.17298536578559,
+              "PU.1": 0,
+              "ATU": 1.17298536578559
+            }
+          },
+          "VIF_modeB": {
+            "PEOU": {
+              "EOU1": 1.74839111721932,
+              "EOU2": 2.06244122838257,
+              "EOU3": 2.41896488661991,
+              "EOU4": 1.95830041227315,
+              "EOU5": 1.87146436730849,
+              "USEF1": 0,
+              "USEF2": 0,
+              "USEF3": 0,
+              "USEF4": 0,
+              "USEF5": 0,
+              "ATT1": 0,
+              "ATT2": 0,
+              "ATT3": 0,
+              "ATT4": 0,
+              "ATT5": 0,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "PU": {
+              "EOU1": 0,
+              "EOU2": 0,
+              "EOU3": 0,
+              "EOU4": 0,
+              "EOU5": 0,
+              "USEF1": 2.00540321941868,
+              "USEF2": 2.40658425734806,
+              "USEF3": 2.89817300300689,
+              "USEF4": 2.73957178377506,
+              "USEF5": 2.52517127066642,
+              "ATT1": 0,
+              "ATT2": 0,
+              "ATT3": 0,
+              "ATT4": 0,
+              "ATT5": 0,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "ATU": {
+              "EOU1": 0,
+              "EOU2": 0,
+              "EOU3": 0,
+              "EOU4": 0,
+              "EOU5": 0,
+              "USEF1": 0,
+              "USEF2": 0,
+              "USEF3": 0,
+              "USEF4": 0,
+              "USEF5": 0,
+              "ATT1": 3.64092209332664,
+              "ATT2": 3.90081286675246,
+              "ATT3": 3.35553394601243,
+              "ATT4": 3.83353292440818,
+              "ATT5": 3.86604888181029,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "BI": {
+              "EOU1": 0,
+              "EOU2": 0,
+              "EOU3": 0,
+              "EOU4": 0,
+              "EOU5": 0,
+              "USEF1": 0,
+              "USEF2": 0,
+              "USEF3": 0,
+              "USEF4": 0,
+              "USEF5": 0,
+              "ATT1": 0,
+              "ATT2": 0,
+              "ATT3": 0,
+              "ATT4": 0,
+              "ATT5": 0,
+              "BI1": 1.64564205845916,
+              "BI2": 2.01980743858728,
+              "BI3": 2.17081240654776,
+              "USE1": 0,
+              "USE2": 0,
+              "USE3": 0,
+              "USE4": 0
+            },
+            "USE": {
+              "EOU1": 0,
+              "EOU2": 0,
+              "EOU3": 0,
+              "EOU4": 0,
+              "EOU5": 0,
+              "USEF1": 0,
+              "USEF2": 0,
+              "USEF3": 0,
+              "USEF4": 0,
+              "USEF5": 0,
+              "ATT1": 0,
+              "ATT2": 0,
+              "ATT3": 0,
+              "ATT4": 0,
+              "ATT5": 0,
+              "BI1": 0,
+              "BI2": 0,
+              "BI3": 0,
+              "USE1": 1.77144940615438,
+              "USE2": 1.66992904566145,
+              "USE3": 1.537584565365,
+              "USE4": 1.35182437607614
+            }
+          }
+        }
+      },
+      "mixed": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.0790000000000002,
+        "result": {
+          "AVE": {
+            "PEOU": 0.648991652692374,
+            "PU": 0.721455827878758,
+            "ATU": 0.744262986622815,
+            "BI": 0.6125056659818,
+            "USE": 0.435267080360561
+          },
+          "AIC": {
+            "PU": -273.166680932076,
+            "ATU": -270.926856757454,
+            "BI": -400.561536901766,
+            "USE": -93.7997793619002
+          },
+          "AICc": {
+            "PU": 918.853555155614,
+            "ATU": 921.106898516808,
+            "BI": 791.472218372496,
+            "USE": 1098.22045672579
+          },
+          "AICu": {
+            "PU": -271.164998374324,
+            "ATU": -267.923068877325,
+            "BI": -397.557749021636,
+            "USE": -91.7980968041483
+          },
+          "BIC": {
+            "PU": -263.003263759865,
+            "ATU": -255.681730999137,
+            "BI": -385.316411143449,
+            "USE": -83.6363621896891
+          },
+          "FPE": {
+            "PU": 0.794889768790243,
+            "ATU": 0.796387329334068,
+            "BI": 0.714189944829285,
+            "USE": 0.924203178984769
+          },
+          "GM": {
+            "PU": 1200.09708583451,
+            "ATU": 1210.49024481686,
+            "BI": 1525.78509837917,
+            "USE": 1408.77865774643
+          },
+          "HQ": {
+            "PU": -269.336620114826,
+            "ATU": -265.18176553158,
+            "BI": -394.816445675891,
+            "USE": -89.9697185446507
+          },
+          "HQc": {
+            "PU": -269.310211815274,
+            "ATU": -265.132208184635,
+            "BI": -394.766888328947,
+            "USE": -89.9433102450984
+          },
+          "Mallows_Cp": {
+            "PU": -0.0663313377037866,
+            "ATU": 5.24511905854547,
+            "BI": 320.53997262085,
+            "USE": 208.615240574218
+          },
+          "RhoC": {
+            "PEOU": 0.901881847888003,
+            "PU": 0.928311838003267,
+            "ATU": 0.935262527374199,
+            "BI": 0.821929609888658,
+            "USE": 0.743845416840824
+          },
+          "RhoC_mm": {
+            "PEOU": 0.980843797922656,
+            "PU": 0.993193568021112,
+            "ATU": 0.928343150631407,
+            "BI": 0.804587398084327,
+            "USE": 0.730281199864851
+          },
+          "RhoC_weighted": {
+            "PEOU": 1,
+            "PU": 1,
+            "ATU": 0.94040827468985,
+            "BI": 0.847441171091209,
+            "USE": 0.79367890105987
+          },
+          "RhoC_weighted_mm": {
+            "PEOU": 0.909306740181427,
+            "PU": 0.923822195890771,
+            "ATU": 0.94040827468985,
+            "BI": 0.847441171091209,
+            "USE": 0.79367890105987
+          },
+          "DG": 0.311205517657942,
+          "DL": 2.09559046558437,
+          "DML": 1.5223600652523,
+          "Df": 185,
+          "Effects": {
+            "Direct_effect": [
+              {
+                "Name": "PU ~ PEOU",
+                "Estimate": 0.455094884129747
+              },
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.259028388612102
+              },
+              {
+                "Name": "ATU ~ PU",
+                "Estimate": 0.274229888237102
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.429198074170381
+              },
+              {
+                "Name": "BI ~ ATU",
+                "Estimate": 0.19628280272176
+              },
+              {
+                "Name": "USE ~ BI",
+                "Estimate": 0.279505792104842
+              }
+            ],
+            "Indirect_effect": [
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.124800619212177
+              },
+              {
+                "Name": "BI ~ PEOU",
+                "Estimate": 0.270664881254941
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.0538266110532533
+              },
+              {
+                "Name": "USE ~ PEOU",
+                "Estimate": 0.0756524020301255
+              },
+              {
+                "Name": "USE ~ PU",
+                "Estimate": 0.135008197249624
+              },
+              {
+                "Name": "USE ~ ATU",
+                "Estimate": 0.0548621802513039
+              }
+            ],
+            "Total_effect": [
+              {
+                "Name": "PU ~ PEOU",
+                "Estimate": 0.455094884129747
+              },
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.383829007824279
+              },
+              {
+                "Name": "ATU ~ PU",
+                "Estimate": 0.274229888237102
+              },
+              {
+                "Name": "BI ~ PEOU",
+                "Estimate": 0.270664881254941
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.483024685223634
+              },
+              {
+                "Name": "BI ~ ATU",
+                "Estimate": 0.19628280272176
+              },
+              {
+                "Name": "USE ~ PEOU",
+                "Estimate": 0.0756524020301255
+              },
+              {
+                "Name": "USE ~ PU",
+                "Estimate": 0.135008197249624
+              },
+              {
+                "Name": "USE ~ ATU",
+                "Estimate": 0.0548621802513039
+              },
+              {
+                "Name": "USE ~ BI",
+                "Estimate": 0.279505792104842
+              }
+            ],
+            "Variance_accounted_for": [
+              {
+                "Name": "ATU ~ PEOU",
+                "Estimate": 0.325146397661826
+              },
+              {
+                "Name": "BI ~ PEOU",
+                "Estimate": 1
+              },
+              {
+                "Name": "BI ~ PU",
+                "Estimate": 0.111436563595776
+              },
+              {
+                "Name": "USE ~ PEOU",
+                "Estimate": 1
+              },
+              {
+                "Name": "USE ~ PU",
+                "Estimate": 1
+              },
+              {
+                "Name": "USE ~ ATU",
+                "Estimate": 1
+              }
+            ]
+          },
+          "F2": {
+            "PU": {
+              "PEOU": 0.261211147985607,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "ATU": {
+              "PEOU": 0.0670821854758928,
+              "PU": 0.075186877444608,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "BI": {
+              "PEOU": 0,
+              "PU": 0.219191651612291,
+              "ATU": 0.0458429947986733,
+              "BI": 0,
+              "USE": 0
+            },
+            "USE": {
+              "PEOU": 0,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0.0847439833730295,
+              "USE": 0
+            }
+          },
+          "Chi_square": 1810.08611758498,
+          "Chi_square_df": 9.78424928424314,
+          "CFI": 0.896306797904327,
+          "GFI": 0.850283013072987,
+          "CN": 144.024627235846,
+          "IFI": 0.896610263293857,
+          "NFI": 0.886180013051754,
+          "NNFI": 0.870523623329187,
+          "RMSEA": 0.0859530711056943,
+          "RMS_theta": 0.042182841472449,
+          "SRMR": 0.0910108030243217,
+          "Fornell-Larcker": {
+            "PEOU": {
+              "PEOU": 0.648991652692374,
+              "PU": 0.207111353561067,
+              "ATU": 0.147324707247371,
+              "BI": 0.356369351348561,
+              "USE": 0.134459361550776
+            },
+            "PU": {
+              "PEOU": 0.207111353561067,
+              "PU": 0.721455827878758,
+              "ATU": 0.153752120697132,
+              "BI": 0.256200974102176,
+              "USE": 0.0625783979242223
+            },
+            "ATU": {
+              "PEOU": 0.147324707247371,
+              "PU": 0.153752120697132,
+              "ATU": 0.744262986622815,
+              "BI": 0.132916157241606,
+              "USE": 0.128191108358066
+            },
+            "BI": {
+              "PEOU": 0.356369351348561,
+              "PU": 0.256200974102176,
+              "ATU": 0.132916157241606,
+              "BI": 0.6125056659818,
+              "USE": 0.0781234878201552
+            },
+            "USE": {
+              "PEOU": 0.134459361550776,
+              "PU": 0.0625783979242223,
+              "ATU": 0.128191108358066,
+              "BI": 0.0781234878201552,
+              "USE": 0.435267080360561
+            }
+          },
+          "GoF": 0.354399105602415,
+          "HTMT": {
+            "htmts": {
+              "PEOU": {
+                "PEOU": 1,
+                "PU": 0,
+                "ATU": 0,
+                "BI": 0,
+                "USE": 0
+              },
+              "PU": {
+                "PEOU": 0.499628179077438,
+                "PU": 1,
+                "ATU": 0,
+                "BI": 0,
+                "USE": 0
+              },
+              "ATU": {
+                "PEOU": 0.408683251320828,
+                "PU": 0.411810914584388,
+                "ATU": 1,
+                "BI": 0,
+                "USE": 0
+              },
+              "BI": {
+                "PEOU": 0.647022370280424,
+                "PU": 0.52582339165305,
+                "ATU": 0.36156868983314,
+                "BI": 1,
+                "USE": 0
+              },
+              "USE": {
+                "PEOU": 0.404777320104655,
+                "PU": 0.274833105902087,
+                "ATU": 0.378684036174411,
+                "BI": 0.270621852079921,
+                "USE": 1
+              }
+            },
+            "inference": "none",
+            "absolute": true,
+            "ci": "CI_percentile"
+          },
+          "HTMT2": {
+            "htmts": {
+              "PEOU": {
+                "PEOU": 1,
+                "PU": 0,
+                "ATU": 0,
+                "BI": 0,
+                "USE": 0
+              },
+              "PU": {
+                "PEOU": 0.49886849692265,
+                "PU": 1,
+                "ATU": 0,
+                "BI": 0,
+                "USE": 0
+              },
+              "ATU": {
+                "PEOU": 0.406916020205384,
+                "PU": 0.412099563152653,
+                "ATU": 1,
+                "BI": 0,
+                "USE": 0
+              },
+              "BI": {
+                "PEOU": 0.647427916938339,
+                "PU": 0.518878734290415,
+                "ATU": 0.356243157161824,
+                "BI": 1,
+                "USE": 0
+              },
+              "USE": {
+                "PEOU": 0.402558668513471,
+                "PU": 0.276143054488749,
+                "ATU": 0.386057783418196,
+                "BI": 0.257347582157821,
+                "USE": 1
+              }
+            },
+            "inference": "none",
+            "absolute": true,
+            "ci": "CI_percentile"
+          },
+          "R2": {
+            "PU": 0.207111353561067,
+            "ATU": 0.206951544294161,
+            "BI": 0.288804314225955,
+            "USE": 0.0781234878201552
+          },
+          "R2_adj": {
+            "PU": 0.206443938875513,
+            "ATU": 0.205615321116898,
+            "BI": 0.287606006415047,
+            "USE": 0.0773474974900376
+          },
+          "Reliability": {
+            "Cronbachs_alpha": {
+              "PEOU": 0.869992530567709,
+              "PU": 0.905805923382122,
+              "ATU": 0.935915020311371,
+              "BI": 0.825229305784041,
+              "USE": 0.739581188055791
+            },
+            "Joereskogs_rho": {
+              "PEOU": 0.901881847888003,
+              "PU": 0.928311838003267,
+              "ATU": 0.935262527374199,
+              "BI": 0.821929609888658,
+              "USE": 0.743845416840824
+            },
+            "Dijkstra-Henselers_rho_A": {
+              "PEOU": 1,
+              "PU": 1,
+              "ATU": 0.94040827468985,
+              "BI": 0.847441171091209,
+              "USE": 0.79367890105987
+            }
+          },
+          "RhoT": {
+            "PEOU": 0.869992530567709,
+            "PU": 0.905805923382122,
+            "ATU": 0.935915020311371,
+            "BI": 0.825229305784041,
+            "USE": 0.739581188055791
+          },
+          "RhoT_weighted": {
+            "PEOU": 0.844040621456092,
+            "PU": 0.912019900994754,
+            "ATU": 0.934532125823527,
+            "BI": 0.823502250563038,
+            "USE": 0.713109585236101
+          },
+          "VIF": {
+            "ATU": {
+              "PEOU": 1.26121114798561,
+              "PU": 1.26121114798561,
+              "PU.1": 0,
+              "ATU": 0
+            },
+            "BI": {
+              "PEOU": 0,
+              "PU": 1.18168686085665,
+              "PU.1": 0,
+              "ATU": 1.18168686085665
+            }
+          },
+          "VIF_modeB": {
+            "PEOU": {
+              "EOU1": 1.74839111721932,
+              "EOU2": 2.06244122838257,
+              "EOU3": 2.41896488661991,
+              "EOU4": 1.95830041227315,
+              "EOU5": 1.87146436730849,
+              "USEF1": 0,
+              "USEF2": 0,
+              "USEF3": 0,
+              "USEF4": 0,
+              "USEF5": 0
+            },
+            "PU": {
+              "EOU1": 0,
+              "EOU2": 0,
+              "EOU3": 0,
+              "EOU4": 0,
+              "EOU5": 0,
+              "USEF1": 2.00540321941868,
+              "USEF2": 2.40658425734806,
+              "USEF3": 2.89817300300689,
+              "USEF4": 2.73957178377506,
+              "USEF5": 2.52517127066642
+            }
+          }
+        }
+      }
+    },
+    "first_principles_max_abs_diff": {
+      "plsc": {
+        "common_factor_constructs": ["PEOU", "PU", "ATU", "BI", "USE"],
+        "AVE_vs_mean_squared_loading": 1.11022302462516e-16,
+        "RhoC_vs_joereskog_formula_on_object_loadings": 5.55111512312578e-16,
+        "RhoC_mm_vs_joereskog_formula": 0.0175600450379991,
+        "RhoC_weighted_vs_dijkstra_henseler_rhoA_formula": 3.33066907387547e-16,
+        "RhoC_weighted_mm_vs_rhoA_formula": 3.33066907387547e-16,
+        "Reliability_rhoA_vs_rhoA_formula": 3.33066907387547e-16,
+        "Reliability_joereskog_vs_formula": 5.55111512312578e-16,
+        "Reliability_alpha_vs_standardised_alpha": 2.22044604925031e-16,
+        "RhoT_vs_standardised_alpha": 2.22044604925031e-16,
+        "RhoT_vs_raw_covariance_alpha": 0.0567853440186517,
+        "Estimates_Reliabilities_vs_rhoA_formula": 3.33066907387547e-16,
+        "HTMT_vs_formula": 0,
+        "HTMT2_vs_formula": 2.22044604925031e-16,
+        "FL_offdiag_vs_squared_construct_cor": 0,
+        "FL_diag_vs_AVE": 1.11022302462516e-16,
+        "R2_vs_formula": 5.55111512312578e-17,
+        "R2_adj_vs_formula": 2.22044604925031e-16,
+        "F2_vs_formula": 8.32667268468867e-17,
+        "Estimates_VIF_structure": {
+          "class": "list",
+          "names": ["ATU", "BI"],
+          "element": {
+            "ATU": {
+              "PEOU": 1.33399448179881,
+              "PU": 1.33399448179881
+            },
+            "BI": {
+              "PU": 1.20406951545974,
+              "ATU": 1.20406951545974
+            }
+          }
+        },
+        "structural_VIF_vs_formula": 0,
+        "assess_VIF_colnames": [
+          ["PEOU", "PU"],
+          ["PU", "ATU"]
+        ],
+        "SRMR_vs_lower_triangle_incl_diag": 1.38777878078145e-17,
+        "SRMR_vs_lower_triangle_excl_diag": 0.00420672347402197,
+        "DL_vs_half_sum_squared_all_elements": 4.44089209850063e-16,
+        "DL_vs_sum_squared_lower_triangle": 1.33226762955019e-15,
+        "DG_vs_log10_formula": 6.10622663543836e-16,
+        "DG_vs_natural_log_formula": 1.45042464385496,
+        "DG_natural_log_value": 1.78758387138805,
+        "DML_vs_formula": 0,
+        "Chi_square_vs_n_minus_1_times_DML": 0,
+        "Chi_square_df_vs_ratio": 0,
+        "RMSEA_vs_formula": 0,
+        "GoF_vs_formula": 0,
+        "Df": 203,
+        "model_implied_matrix_diag_minus_1": 0,
+        "srmr_saturated": 0.0441979942373469,
+        "srmr_estimated": 0.0903967262981094
+      },
+      "classicA": {
+        "common_factor_constructs": ["PEOU", "PU", "ATU", "BI", "USE"],
+        "AVE_vs_mean_squared_loading": 1.11022302462516e-16,
+        "RhoC_vs_joereskog_formula_on_object_loadings": 3.33066907387547e-16,
+        "RhoC_mm_vs_joereskog_formula": 0.147552229220569,
+        "RhoC_weighted_vs_dijkstra_henseler_rhoA_formula": 0.206279667792468,
+        "RhoC_weighted_mm_vs_rhoA_formula": 0.0590325349442128,
+        "Reliability_rhoA_vs_rhoA_formula": 0.206279667792468,
+        "Reliability_joereskog_vs_formula": 3.33066907387547e-16,
+        "Reliability_alpha_vs_standardised_alpha": 2.22044604925031e-16,
+        "RhoT_vs_standardised_alpha": 2.22044604925031e-16,
+        "RhoT_vs_raw_covariance_alpha": 0.0567853440186517,
+        "Estimates_Reliabilities_vs_rhoA_formula": 0.206279667792468,
+        "HTMT_vs_formula": 0,
+        "HTMT2_vs_formula": 2.22044604925031e-16,
+        "FL_offdiag_vs_squared_construct_cor": 0,
+        "FL_diag_vs_AVE": 1.11022302462516e-16,
+        "R2_vs_formula": 5.55111512312578e-17,
+        "R2_adj_vs_formula": 1.11022302462516e-16,
+        "F2_vs_formula": 1.11022302462516e-16,
+        "Estimates_VIF_structure": {
+          "class": "list",
+          "names": ["ATU", "BI"],
+          "element": {
+            "ATU": {
+              "PEOU": 1.24745275855789,
+              "PU": 1.24745275855789
+            },
+            "BI": {
+              "PU": 1.1687551207651,
+              "ATU": 1.1687551207651
+            }
+          }
+        },
+        "structural_VIF_vs_formula": 0,
+        "assess_VIF_colnames": [
+          ["PEOU", "PU"],
+          ["PU", "ATU"]
+        ],
+        "SRMR_vs_lower_triangle_incl_diag": 1.38777878078145e-17,
+        "SRMR_vs_lower_triangle_excl_diag": 0.00459772885299564,
+        "DL_vs_half_sum_squared_all_elements": 4.44089209850063e-16,
+        "DL_vs_sum_squared_lower_triangle": 0,
+        "DG_vs_log10_formula": 3.33066907387547e-16,
+        "DG_vs_natural_log_formula": 1.40257083085119,
+        "DG_natural_log_value": 1.72860617497867,
+        "DML_vs_formula": 0,
+        "Chi_square_vs_n_minus_1_times_DML": 0,
+        "Chi_square_df_vs_ratio": 0,
+        "RMSEA_vs_formula": 0,
+        "GoF_vs_formula": 0,
+        "Df": 203,
+        "model_implied_matrix_diag_minus_1": 0,
+        "srmr_saturated": 0.0495462091961104,
+        "srmr_estimated": 0.0987988964056624
+      },
+      "compositeB": {
+        "common_factor_constructs": [],
+        "R2_vs_formula": 0,
+        "R2_adj_vs_formula": 0,
+        "F2_vs_formula": 0,
+        "Estimates_VIF_structure": {
+          "class": "list",
+          "names": ["ATU", "BI"],
+          "element": {
+            "ATU": {
+              "PEOU": 1.25996429904363,
+              "PU": 1.25996429904363
+            },
+            "BI": {
+              "PU": 1.17298536578559,
+              "ATU": 1.17298536578559
+            }
+          }
+        },
+        "structural_VIF_vs_formula": 0,
+        "assess_VIF_colnames": [
+          ["PEOU", "PU"],
+          ["PU", "ATU"]
+        ],
+        "VIF_modeB_rows": ["PEOU", "PU", "ATU", "BI", "USE"],
+        "VIF_modeB_vs_within_block_indicator_vif": 4.18332035678759e-13,
+        "SRMR_vs_lower_triangle_incl_diag": 1.38777878078145e-17,
+        "SRMR_vs_lower_triangle_excl_diag": 0.00403901269489243,
+        "DL_vs_half_sum_squared_all_elements": 2.22044604925031e-16,
+        "DL_vs_sum_squared_lower_triangle": 4.44089209850063e-16,
+        "DG_vs_log10_formula": 2.4980018054066e-16,
+        "DG_vs_natural_log_formula": 0.477724043847116,
+        "DG_natural_log_value": 0.588773639067304,
+        "DML_vs_formula": 3.5527136788005e-15,
+        "Chi_square_vs_n_minus_1_times_DML": 0,
+        "Chi_square_df_vs_ratio": 0,
+        "RMSEA_vs_formula": 0,
+        "GoF_vs_formula": 0,
+        "Df": 169,
+        "model_implied_matrix_diag_minus_1": 0,
+        "srmr_saturated": 0.033940291459512,
+        "srmr_estimated": 0.0867928513365533
+      },
+      "mixed": {
+        "common_factor_constructs": ["ATU", "BI", "USE"],
+        "AVE_vs_mean_squared_loading": 5.55111512312578e-17,
+        "RhoC_vs_joereskog_formula_on_object_loadings": 1.11022302462516e-16,
+        "RhoC_mm_vs_joereskog_formula": 0.017342211804332,
+        "RhoC_weighted_vs_dijkstra_henseler_rhoA_formula": 2.22044604925031e-16,
+        "RhoC_weighted_mm_vs_rhoA_formula": 1.11022302462516e-16,
+        "Reliability_rhoA_vs_rhoA_formula": 2.22044604925031e-16,
+        "Reliability_joereskog_vs_formula": 1.11022302462516e-16,
+        "Reliability_alpha_vs_standardised_alpha": 2.22044604925031e-16,
+        "RhoT_vs_standardised_alpha": 2.22044604925031e-16,
+        "RhoT_vs_raw_covariance_alpha": 0.0567853440186517,
+        "Estimates_Reliabilities_vs_rhoA_formula": 3.33066907387547e-16,
+        "HTMT_vs_formula": 0,
+        "HTMT2_vs_formula": 5.55111512312578e-17,
+        "FL_offdiag_vs_squared_construct_cor": 0,
+        "FL_diag_vs_AVE": 5.55111512312578e-17,
+        "R2_vs_formula": 0,
+        "R2_adj_vs_formula": 0,
+        "F2_vs_formula": 0,
+        "Estimates_VIF_structure": {
+          "class": "list",
+          "names": ["ATU", "BI"],
+          "element": {
+            "ATU": {
+              "PEOU": 1.26121114798561,
+              "PU": 1.26121114798561
+            },
+            "BI": {
+              "PU": 1.18168686085665,
+              "ATU": 1.18168686085665
+            }
+          }
+        },
+        "structural_VIF_vs_formula": 0,
+        "assess_VIF_colnames": [
+          ["PEOU", "PU"],
+          ["PU", "ATU"]
+        ],
+        "VIF_modeB_rows": ["PEOU", "PU"],
+        "VIF_modeB_vs_within_block_indicator_vif": 8.34887714518118e-14,
+        "SRMR_vs_lower_triangle_incl_diag": 0,
+        "SRMR_vs_lower_triangle_excl_diag": 0.00423530029405517,
+        "DL_vs_half_sum_squared_all_elements": 0,
+        "DL_vs_sum_squared_lower_triangle": 8.88178419700125e-16,
+        "DG_vs_log10_formula": 1.66533453693773e-16,
+        "DG_vs_natural_log_formula": 1.33877442838315,
+        "DG_natural_log_value": 1.64997994604109,
+        "DML_vs_formula": 3.5527136788005e-15,
+        "Chi_square_vs_n_minus_1_times_DML": 0,
+        "Chi_square_df_vs_ratio": 0,
+        "RMSEA_vs_formula": 0,
+        "GoF_vs_formula": 0,
+        "Df": 185,
+        "model_implied_matrix_diag_minus_1": 0,
+        "srmr_saturated": 0.0423735905624507,
+        "srmr_estimated": 0.0910108030243217
+      }
+    },
+    "rhoA_for_classic_modeA": {
+      "problem": "On a '=~' model estimated with .disattenuate = FALSE, Estimates$Reliabilities are all 1, RhoC_weighted is all 1 and Reliability$'Dijkstra-Henselers_rho_A' is not Dijkstra-Henseler's rho_A.",
+      "classic_assess_RhoC_weighted": {
+        "PEOU": 1,
+        "PU": 1,
+        "ATU": 1,
+        "BI": 1,
+        "USE": 1
+      },
+      "classic_assess_Reliability_rhoA": {
+        "PEOU": 1,
+        "PU": 1,
+        "ATU": 1,
+        "BI": 1,
+        "USE": 1
+      },
+      "classic_assess_Reliability_joereskog": {
+        "PEOU": 0.905847023087942,
+        "PU": 0.93006894259454,
+        "ATU": 0.951100484525848,
+        "BI": 0.894124385511393,
+        "USE": 0.833217263060682
+      },
+      "classic_assess_RhoC": {
+        "PEOU": 0.905847023087942,
+        "PU": 0.93006894259454,
+        "ATU": 0.951100484525848,
+        "BI": 0.894124385511393,
+        "USE": 0.833217263060682
+      },
+      "plsc_Estimates_Reliabilities": {
+        "PEOU": 0.874547488632757,
+        "PU": 0.905940210545473,
+        "ATU": 0.940388533037354,
+        "BI": 0.847769443009834,
+        "USE": 0.793720332207532
+      },
+      "weights_identical_between_runs": 0,
+      "recipe": "rho_A (and Cronbach's alpha) are functions of the Mode A weights and S only, and the weights are identical in the PLSc and the classic run. Take rho_A from csem(.disattenuate = TRUE)$Estimates$Reliabilities; take rho_C and AVE for classic PLS from assess(<classic object>)$RhoC and $AVE (classic loadings)."
+    },
+    "htmt_inference_smoke": {
+      "ok": true,
+      "warnings": [
+        "For resampling the HTMT/HTMT2, it is recommended to set .absolute to FALSE.",
+        "The following warning occured in the calculateHTMT() function:\nIntra-block and inter-block correlations between indicators must be either all-positive or all-negative."
+      ],
+      "n_warnings": 3,
+      "messages": [],
+      "seconds": 0.915,
+      "result": {
+        "names": ["htmts", "quantiles", "nr_admissibles", "inference", "absolute", "ci"],
+        "inference": "bootstrap",
+        "ci": "CI_percentile",
+        "nr_admissibles": 60,
+        "quantiles_dim": [2, 25],
+        "quantiles_dimnames": [
+          ["90%L", "90%U"],
+          null
+        ],
+        "quantiles": {
+          "90%L": {
+            "1": 1,
+            "2": 0.422880861324857,
+            "3": 0.353390930326079,
+            "4": 0.593115343824675,
+            "5": 0.351707044546844,
+            "6": 0,
+            "7": 1,
+            "8": 0.355996779273028,
+            "9": 0.462527093013301,
+            "10": 0.219662423910861,
+            "11": 0,
+            "12": 0,
+            "13": 1,
+            "14": 0.307330779742153,
+            "15": 0.335665784021791,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 1,
+            "20": 0.218263384038627,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 1
+          },
+          "90%U": {
+            "1": 1,
+            "2": 0.581537130755582,
+            "3": 0.483472809253259,
+            "4": 0.705772183657749,
+            "5": 0.452445906379752,
+            "6": 0,
+            "7": 1,
+            "8": 0.462911749864693,
+            "9": 0.582513307347967,
+            "10": 0.335593407742787,
+            "11": 0,
+            "12": 0,
+            "13": 1,
+            "14": 0.426668248994543,
+            "15": 0.434332240835803,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 1,
+            "20": 0.312354507117619,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 1
+          }
+        }
+      }
+    },
+    "htmt_absolute_false": {
+      "ok": true,
+      "warnings": [],
+      "n_warnings": 0,
+      "messages": [],
+      "seconds": 0.00099999999999989,
+      "result": {
+        "max_abs_diff_vs_absolute_true": 0
+      }
+    }
+  }
+}

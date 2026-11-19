@@ -1,0 +1,33 @@
+{
+  "nodes": {
+    "c_peou": {
+      "x": 160,
+      "y": 160
+    },
+    "c_pu": {
+      "x": 400,
+      "y": 160
+    },
+    "c_atu": {
+      "x": 640,
+      "y": 160
+    },
+    "c_bi": {
+      "x": 880,
+      "y": 160
+    },
+    "c_use": {
+      "x": 1120,
+      "y": 160
+    }
+  },
+  "settings": {
+    "direction": "LR",
+    "gridSize": 16,
+    "snapToGrid": true,
+    "gridVisibility": "dots",
+    "constructShape": "ellipse",
+    "indicatorDensity": "default",
+    "collapsedConstructIds": []
+  }
+}

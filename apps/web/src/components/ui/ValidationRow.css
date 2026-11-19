@@ -1,0 +1,73 @@
+.ui-vrow {
+  --vrow-color: var(--info);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  box-shadow: inset 3px 0 0 var(--vrow-color);
+}
+
+.ui-vrow--error {
+  --vrow-color: var(--error);
+}
+.ui-vrow--warning {
+  --vrow-color: var(--warning);
+}
+.ui-vrow--recommendation {
+  --vrow-color: var(--recommendation);
+}
+.ui-vrow--success {
+  --vrow-color: var(--success);
+}
+
+.ui-vrow__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  padding: var(--space-4) var(--space-6) var(--space-4) var(--space-7);
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.ui-vrow__head--button {
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+}
+
+.ui-vrow__head--button:hover {
+  background: var(--bg-hover);
+}
+
+.ui-vrow__icon {
+  flex: none;
+  color: var(--vrow-color);
+}
+
+.ui-vrow__title {
+  flex: 1;
+  min-width: 0;
+}
+
+.ui-vrow__chevron {
+  flex: none;
+  color: var(--text-subtle);
+  transition: transform var(--duration-fast);
+}
+
+.ui-vrow__head[aria-expanded='true'] .ui-vrow__chevron {
+  transform: rotate(90deg);
+}
+
+.ui-vrow__body {
+  padding: 0 var(--space-6) var(--space-6) 38px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.ui-vrow__body[hidden] {
+  display: none;
+}

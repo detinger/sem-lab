@@ -1,0 +1,451 @@
+{
+  "evidence": "seminr",
+  "script": "services/r-engine/spike/seminr_01.R",
+  "generated": "2026-11-19T14:16:51+0100",
+  "r": "R version 4.6.2 (2026-10-29)",
+  "platform": "aarch64-apple-darwin27.0.0",
+  "packages": {
+    "seminr": "2.6.0",
+    "cSEM": "0.7.1",
+    "lavaan": "0.7.3"
+  },
+  "findings": {
+    "api": {
+      "versions": {
+        "seminr": "2.6.0",
+        "cSEM": "0.7.1",
+        "lavaan": "0.7.3"
+      },
+      "estimate_pls": {
+        "data": "<no default>",
+        "measurement_model": "NULL",
+        "structural_model": "NULL",
+        "model": "NULL",
+        "inner_weights": "path_weighting",
+        "missing": "mean_replacement",
+        "missing_value": "NA",
+        "maxIt": "300",
+        "stopCriterion": "7",
+        "assess_syntax": "FALSE"
+      },
+      "bootstrap_model": {
+        "seminr_model": "<no default>",
+        "nboot": "500",
+        "cores": "NULL",
+        "seed": "NULL",
+        "...": "<no default>"
+      },
+      "PLSc": {
+        "seminr_model": "<no default>"
+      },
+      "predict_pls": {
+        "model": "<no default>",
+        "technique": "predict_DA",
+        "noFolds": "NULL",
+        "reps": "NULL",
+        "cores": "NULL"
+      },
+      "estimate_cbsem": {
+        "data": "<no default>",
+        "measurement_model": "NULL",
+        "structural_model": "NULL",
+        "item_associations": "NULL",
+        "model": "NULL",
+        "lavaan_model": "NULL",
+        "estimator": "\"MLR\"",
+        "...": "<no default>"
+      },
+      "estimate_cfa": {
+        "data": "<no default>",
+        "measurement_model": "NULL",
+        "item_associations": "NULL",
+        "model": "NULL",
+        "lavaan_model": "NULL",
+        "estimator": "\"MLR\"",
+        "...": "<no default>"
+      },
+      "composite": {
+        "construct_name": "<no default>",
+        "item_names": "<no default>",
+        "weights": "correlation_weights"
+      },
+      "reflective": {
+        "construct_name": "<no default>",
+        "item_names": "<no default>"
+      },
+      "inner_weight_functions_exported": ["path_weighting", "path_factorial"],
+      "centroid_scheme_available": false,
+      "stopCriterion_meaning": "convergence when the weight change is below 10^-stopCriterion (default 7)"
+    },
+    "pls_classic": {
+      "model": "composite(k, items, weights = mode_A) for every construct; relationships(paths(...))",
+      "path_weighting": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.1,
+        "result": {
+          "iterations": 8,
+          "max_abs_diff_vs_cSEM_classic_path": {
+            "paths": 5.77315972805081e-15,
+            "loadings": 3.75255382323303e-14,
+            "weights": 4.79338790881911e-14,
+            "r2": 2.22044604925031e-15,
+            "construct_scores": 1.70863323489812e-13
+          }
+        }
+      },
+      "factorial": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.1,
+        "result": {
+          "iterations": 8,
+          "max_abs_diff_vs_cSEM_classic_factorial": {
+            "paths": 5.27355936696949e-15,
+            "loadings": 1.52100554373646e-14,
+            "weights": 1.94566585065559e-14,
+            "r2": 2.83106871279415e-15,
+            "construct_scores": 7.061018436616e-14
+          }
+        }
+      },
+      "default_stopCriterion_7_vs_cSEM_tol_1e-12": {
+        "paths": 2.06262784629985e-12,
+        "loadings": 4.37185843082943e-11,
+        "weights": 5.61038715485296e-11,
+        "r2": 9.46118183797751e-13,
+        "construct_scores": 1.95846727724103e-10
+      },
+      "weight_scaling_seminr": "outer weights scaled so each construct score has unit variance (sd with n - 1)",
+      "composite_variance_check": 6.88338275267597e-15
+    },
+    "plsc": {
+      "how": "reflective(k, items) constructs are estimated with PLSc automatically by estimate_pls() (mmMatrix type 'C'); PLSc() is applied inside estimate_pls via model_consistent()",
+      "reflective_mmMatrix_types": "C",
+      "reflective_estimate_pls": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.177,
+        "result": {
+          "max_abs_diff_vs_cSEM_PLSc": {
+            "paths": 8.1601392309949e-15,
+            "loadings": 9.34807786734382e-14,
+            "weights": 4.79338790881911e-14,
+            "r2": 5.6621374255883e-15
+          }
+        }
+      },
+      "PLSc_function_on_composite_model": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.056,
+        "result": {
+          "changes_anything_beyond_1e12": false,
+          "max_abs_diff_paths_vs_classic": 2.55351295663786e-15
+        }
+      },
+      "PLSc_function_on_reflective_model_again": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.048,
+        "result": {
+          "max_abs_diff_paths_vs_reflective": 0
+        }
+      }
+    },
+    "summary": {
+      "names": ["meta", "iterations", "paths", "total_effects", "total_indirect_effects", "loadings", "weights", "validity", "reliability", "composite_scores", "vif_antecedents", "fSquare", "descriptives", "it_criteria", "missing_data"],
+      "reliability_columns": ["alpha", "rhoA", "rhoC", "AVE"],
+      "validity_names": ["vif_items", "htmt", "fl_criteria", "cross_loadings"],
+      "composite_model": {
+        "reliability": {
+          "alpha_vs_cSEM_RhoT": 2.22044604925031e-16,
+          "rhoC_vs_cSEM_RhoC": 3.10862446895044e-15,
+          "AVE_vs_cSEM_AVE": 7.88258347483861e-15,
+          "rhoA_vs_cSEM_PLSc_reliabilities": 1.34336985979644e-14
+        },
+        "reliability_table": {
+          "PEOU": {
+            "alpha": 0.869992530567709,
+            "rhoA": 0.874547488632763,
+            "rhoC": 0.905847023087941,
+            "AVE": 0.658406339322833
+          },
+          "PU": {
+            "alpha": 0.905805923382122,
+            "rhoA": 0.905940210545494,
+            "rhoC": 0.930068942594543,
+            "AVE": 0.726940342854738
+          },
+          "ATU": {
+            "alpha": 0.935915020311371,
+            "rhoA": 0.940388533037342,
+            "rhoC": 0.951100484525846,
+            "AVE": 0.795532647412298
+          },
+          "BI": {
+            "alpha": 0.825229305784041,
+            "rhoA": 0.847769443009915,
+            "rhoC": 0.894124385511394,
+            "AVE": 0.738032548573839
+          },
+          "USE": {
+            "alpha": 0.739581188055791,
+            "rhoA": 0.793720332207807,
+            "rhoC": 0.833217263060641,
+            "AVE": 0.559147477420306
+          }
+        },
+        "htmt_vs_cSEM": 2.22044604925031e-16,
+        "fl_comment": "FL Criteria table reports square root of AVE on the diagonal and construct correlations on the lower triangle.",
+        "fl_lower_vs_cSEM_construct_cor": 3.7470027081099e-15,
+        "fl_diag_vs_sqrt_cSEM_AVE": 4.66293670342566e-15,
+        "cross_loadings_vs_cor_indicator_score": 0,
+        "f2_vs_cSEM": 0.00112493605141565,
+        "f2_vs_cSEM_reestimated_without_predictor": 5.96744875736022e-15,
+        "f2_convention": "seminr fSquared() re-estimates the whole PLS model without the predictor (weights change); cSEM assess()/calculatef2() drop the predictor from the regression on the SAME construct correlations",
+        "vif_antecedents_vs_cSEM": 1.11022302462516e-15,
+        "vif_items_vs_within_block_formula": 3.25073301610246e-13,
+        "it_criteria_rows": ["AIC", "BIC"],
+        "total_effects_vs_cSEM": 1.77635683940025e-15
+      },
+      "reflective_plsc_model": {
+        "reliability": {
+          "alpha_vs_cSEM_RhoT": 2.22044604925031e-16,
+          "rhoC_vs_cSEM_RhoC": 1.99840144432528e-15,
+          "AVE_vs_cSEM_AVE": 4.44089209850063e-15,
+          "rhoA_vs_cSEM_PLSc_reliabilities": 1.34336985979644e-14
+        },
+        "htmt_vs_cSEM": 2.22044604925031e-16,
+        "fl_lower_vs_cSEM_plsc_construct_cor": 0.0890505415615354,
+        "fl_lower_vs_cSEM_plsc_PROXY_cor": 3.7470027081099e-15,
+        "fl_note": "seminr's Fornell-Larcker table for a PLSc model shows correlations of the (non-disattenuated) construct scores, not the PLSc construct correlations",
+        "f2_vs_cSEM_plsc": 0.0017126930034394,
+        "f2_vs_cSEM_plsc_reestimated_without_predictor": 9.93649607039515e-15
+      },
+      "rhoA_note": "seminr reports rhoA on the composite (classic) model; cSEM returns rhoA only via a PLSc run (Estimates$Reliabilities) - see csem_assess.json"
+    },
+    "bootstrap": {
+      "where_raw_draws_live": "boot$boot_paths: array [from, to, replication]; also boot_loadings, boot_weights, boot_HTMT, boot_total_paths",
+      "bookkeeping": {
+        "boots": 100,
+        "boots_requested": 100,
+        "boots_dropped": 0,
+        "seed": 123
+      },
+      "same_seed_identical": true,
+      "different_seed_identical": false,
+      "cores_2_vs_cores_1_same_seed": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 6.027,
+        "result": {
+          "identical": true,
+          "seconds": 6.026
+        }
+      },
+      "seed_scheme_from_source": "replication i calls set.seed(seed + i) then sample.int(n, replace = TRUE) (Mersenne-Twister); identical for any core count",
+      "first_draw_vs_own_set_seed_plus_1_refit": 0,
+      "OVERLAP_seed_S_plus_1": {
+        "note": "draw i of seed 124 must equal draw i + 1 of seed 123 if the scheme is seed + i",
+        "max_abs_diff_seed124_draws_1_to_99_vs_seed123_draws_2_to_100": 0
+      },
+      "summary_bootstrapped_paths_columns": ["Original Est.", "Bootstrap Mean", "Bootstrap SD", "T Stat.", "2.5% CI", "97.5% CI", "Bootstrap P Val"],
+      "percentile_ci_vs_quantile_types": [
+        {
+          "type": 1,
+          "max_abs_diff": 0.00656194702591339
+        },
+        {
+          "type": 2,
+          "max_abs_diff": 0.00656194702591339
+        },
+        {
+          "type": 3,
+          "max_abs_diff": 0.00976713635837084
+        },
+        {
+          "type": 4,
+          "max_abs_diff": 0.00588252332162498
+        },
+        {
+          "type": 5,
+          "max_abs_diff": 0.00656194702591339
+        },
+        {
+          "type": 6,
+          "max_abs_diff": 0.0115635437541441
+        },
+        {
+          "type": 7,
+          "max_abs_diff": 0
+        },
+        {
+          "type": 8,
+          "max_abs_diff": 0.00752335793464692
+        },
+        {
+          "type": 9,
+          "max_abs_diff": 0.00712561368820186
+        }
+      ],
+      "boot_sd_vs_sd_of_draws": 0,
+      "t_stat_is_estimate_over_sd": 0,
+      "summary_alpha_argument": ["object", "alpha", "..."],
+      "seconds_per_100_cores_1": 9.753,
+      "cpu_seconds_per_100_cores_1": 1.981,
+      "failure_policy_from_source": "a replication that raises an error OR A WARNING returns NA and is dropped; counted in boots_dropped. No 'replace' option.",
+      "specific_effect_significance": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0,
+        "result": [
+          0.0205694882254231,
+          0.021932472139377,
+          0.00506438880191656,
+          4.06159341826971,
+          0.0129383188919938,
+          0.03264597897171,
+          0
+        ]
+      },
+      "plsc_model_30": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 4.232,
+        "result": {
+          "boots": 30,
+          "dropped": 0,
+          "seconds": 4.232
+        }
+      }
+    },
+    "predict_pls": {
+      "status": "smoke-only",
+      "call": "predict_pls(model, technique = predict_DA, noFolds = 10, reps = 1)",
+      "seed_argument": "none - fold assignment uses the global RNG; set.seed() before the call",
+      "run": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 3.889,
+        "result": {
+          "class": "predict_pls_model",
+          "names": ["composites", "items", "model"],
+          "summary_names": ["PLS_in_sample", "PLS_out_of_sample", "LM_in_sample", "LM_out_of_sample", "construct_error", "prediction_error"],
+          "printed": ["", "PLS in-sample metrics:", "     USEF1 USEF2 USEF3 USEF4 USEF5  ATT1  ATT2  ATT3  ATT4  ATT5   BI1   BI2", "RMSE 0.810 0.871 0.891 0.925 0.807 0.977 0.960 0.979 0.942 0.943 1.011 1.426", "MAE  0.531 0.584 0.619 0.643 0.558 0.717 0.741 0.730 0.689 0.687 0.755 1.077", "       BI3  USE1  USE2  USE3  USE4", "RMSE 1.179 1.362 1.021 1.362 2.351", "MAE  0.889 1.093 0.704 1.164 1.874", "", "PLS out-of-sample metrics:", "     USEF1 USEF2 USEF3 USEF4 USEF5  ATT1  ATT2  ATT3  ATT4  ATT5   BI1   BI2", "RMSE 0.813 0.873 0.893 0.927 0.808 0.980 0.963 0.982 0.945 0.946 1.014 1.430", "MAE  0.533 0.585 0.619 0.644 0.558 0.720 0.743 0.732 0.692 0.689 0.757 1.079", "       BI3  USE1  USE2  USE3  USE4", "RMSE 1.182 1.364 1.024 1.364 2.352", "MAE  0.891 1.095 0.705 1.166 1.875", "", "LM in-sample metrics:", "     USEF1 USEF2 USEF3 USEF4 USEF5  ATT1  ATT2  ATT3  ATT4  ATT5   BI1   BI2", "RMSE 0.806 0.867 0.888 0.923 0.804 0.974 0.954 0.977 0.937 0.940 0.999 1.407", "MAE  0.519 0.582 0.619 0.642 0.555 0.713 0.736 0.728 0.687 0.691 0.736 1.075", "       BI3  USE1  USE2  USE3  USE4", "RMSE 1.167 1.347 1.014 1.356 2.344", "MAE  0.878 1.074 0.698 1.159 1.867", "", "LM out-of-sample metrics:", "     USEF1 USEF2 USEF3 USEF4 USEF5  ATT1  ATT2  ATT3  ATT4  ATT5   BI1   BI2", "RMSE 0.815 0.876 0.897 0.930 0.810 0.986 0.966 0.989 0.951 0.955 1.024 1.426", "MAE  0.523 0.585 0.623 0.645 0.558 0.723 0.743 0.737 0.696 0.700 0.752 1.089", "       BI3  USE1  USE2  USE3  USE4"]
+        }
+      },
+      "reproducible_with_set_seed": true
+    },
+    "missing": {
+      "default": "missing = mean_replacement: NA replaced by the column mean BEFORE estimation; warning only if > 5% missing in a column",
+      "run_with_3_NA": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [
+          "Generating the seminr model",
+          "All 1190 observations are valid."
+        ],
+        "seconds": 0.0489999999999995,
+        "result": {
+          "n_rows_used": 1190,
+          "any_na_left": false,
+          "max_abs_path_diff_vs_complete": 7.02239499904556e-05
+        }
+      },
+      "messages_printed": [
+        "Generating the seminr model",
+        "All 1190 observations are valid."
+      ]
+    },
+    "cbsem": {
+      "estimate_cbsem_default_estimator": "\"MLR\"",
+      "default_MLR": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 1.79,
+        "result": {
+          "class": ["cbsem_model", "seminr_model"],
+          "names": ["data", "rawdata", "measurement_model", "factor_loadings", "associations", "mmMatrix", "smMatrix", "constructs", "construct_scores", "item_weights", "path_coef", "lavaan_model", "lavaan_output"],
+          "lavaan_object_slot": true,
+          "vs_lavaan_sem_MLR": {
+            "n_params_seminr": 55,
+            "n_matched": 55,
+            "est": 0,
+            "se": 0
+          },
+          "lavaan_syntax_generated": "# Latent Variable Definitions\nPU =~ USEF1 + USEF2 + USEF3 + USEF4 + USEF5\nPEOU =~ EOU1 + EOU2 + EOU3 + EOU4 + EOU5\nATU =~ ATT1 + ATT2 + ATT3 + ATT4 + ATT5\nBI =~ BI1 + BI2 + BI3\nUSE =~ USE1 + USE2 + USE3 + USE4\n\n# Regressions\nPU ~ PEOU\nATU ~ PEOU + PU\nBI ~ PU + ATU\nUSE ~ BI\n\n"
+        }
+      },
+      "ML": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.965999999999994,
+        "result": {
+          "vs_lavaan_sem_ML_std_lv": {
+            "n_params_seminr": 55,
+            "n_matched": 55,
+            "est": 0,
+            "se": 0
+          },
+          "vs_lavaan_sem_ML_marker_default": {
+            "n_params_seminr": 55,
+            "n_matched": 55,
+            "est": 0.684510329917512,
+            "se": 0.0855139630960192
+          },
+          "std_all_vs_lavaan_marker": 4.42504369263519e-06,
+          "lavaan_options": {
+            "std.lv": true,
+            "estimator": "ML",
+            "se": "standard",
+            "test": ["standard", "browne.residual.nt.model"],
+            "missing": "listwise"
+          },
+          "seminr_path_coef_vs_lavaan_std_all": 4.42504369263519e-06
+        }
+      },
+      "estimate_cfa_default": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 1.08900000000001,
+        "result": {
+          "vs_lavaan_cfa_MLR": {
+            "n_params_seminr": 59,
+            "n_matched": 59,
+            "est": 0,
+            "se": 0
+          }
+        }
+      },
+      "summary_names": ["meta", "model", "descriptives", "loadings", "quality", "paths"],
+      "summary_quality_names": ["fit", "reliability", "antecedent_vifs"],
+      "note": "seminr CB-SEM is a wrapper around lavaan; the comparison checks that the generated lavaan model is the same model"
+    }
+  }
+}

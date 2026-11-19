@@ -1,0 +1,743 @@
+{
+  "what": "Recomputation of the descriptive statistics stored by SmartPLS in *.txt.settings, from the built data.csv fixtures.",
+  "script": "packages/fixtures/scripts/verify_descriptives.py",
+  "python": "3.12.15",
+  "platform": "Darwin arm64",
+  "tolerance": 1e-09,
+  "documentedConventions": {
+    "mean": "mean",
+    "min": "min",
+    "max": "max",
+    "median": "median.upper",
+    "standardDeviation": "sd.population",
+    "skewness": "skewness.G1",
+    "kurtosis": "kurtosis.G2",
+    "cramerVonMisesP": "cvmP.population-sd"
+  },
+  "datasets": {
+    "tam": {
+      "rows": 1190,
+      "columns": 22,
+      "dataSha256": "f2faa549b62f812f672936720aecfeaf166c63b612a7488c99106ca094b97d22",
+      "nMismatches": 0,
+      "nMissingMismatches": 0,
+      "storedNulls": [],
+      "statistics": {
+        "mean": {
+          "documented": "mean",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 22,
+          "alternatives": {}
+        },
+        "min": {
+          "documented": "min",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 22,
+          "alternatives": {}
+        },
+        "max": {
+          "documented": "max",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 22,
+          "alternatives": {}
+        },
+        "median": {
+          "documented": "median.upper",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 22,
+          "alternatives": {
+            "median.average": {
+              "maxAbsDeviation": 0.0,
+              "columnsCompared": 22
+            },
+            "median.lower": {
+              "maxAbsDeviation": 0.0,
+              "columnsCompared": 22
+            }
+          }
+        },
+        "standardDeviation": {
+          "documented": "sd.population",
+          "maxAbsDeviation": 1.5543122344752192e-15,
+          "columnsCompared": 22,
+          "alternatives": {
+            "sd.sample": {
+              "maxAbsDeviation": 0.0009958381563226482,
+              "columnsCompared": 22
+            }
+          }
+        },
+        "skewness": {
+          "documented": "skewness.G1",
+          "maxAbsDeviation": 2.1405099914773018e-13,
+          "columnsCompared": 22,
+          "alternatives": {
+            "skewness.g1": {
+              "maxAbsDeviation": 0.003707591011137268,
+              "columnsCompared": 22
+            },
+            "skewness.b1": {
+              "maxAbsDeviation": 0.007408432342716598,
+              "columnsCompared": 22
+            }
+          }
+        },
+        "kurtosis": {
+          "documented": "kurtosis.G2",
+          "maxAbsDeviation": 6.252776074688882e-13,
+          "columnsCompared": 22,
+          "alternatives": {
+            "kurtosis.g2": {
+              "maxAbsDeviation": 0.04998102290920414,
+              "columnsCompared": 22
+            },
+            "kurtosis.b2": {
+              "maxAbsDeviation": 0.07292785019496151,
+              "columnsCompared": 22
+            }
+          }
+        },
+        "cramerVonMisesP": {
+          "documented": "cvmP.population-sd",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 22,
+          "alternatives": {
+            "cvmP.sample-sd(nortest)": {
+              "maxAbsDeviation": 0.0,
+              "columnsCompared": 22
+            },
+            "cvmP.population-sd-no-modification": {
+              "maxAbsDeviation": 0.0,
+              "columnsCompared": 22
+            }
+          }
+        }
+      }
+    },
+    "utaut": {
+      "rows": 722,
+      "columns": 21,
+      "dataSha256": "8b1bd660e511bda29c96008e1e71ee670c93d8ba5adf6da95228fb16da34676c",
+      "nMismatches": 0,
+      "nMissingMismatches": 0,
+      "storedNulls": [],
+      "statistics": {
+        "mean": {
+          "documented": "mean",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 21,
+          "alternatives": {}
+        },
+        "min": {
+          "documented": "min",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 21,
+          "alternatives": {}
+        },
+        "max": {
+          "documented": "max",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 21,
+          "alternatives": {}
+        },
+        "median": {
+          "documented": "median.upper",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 21,
+          "alternatives": {
+            "median.average": {
+              "maxAbsDeviation": 0.0,
+              "columnsCompared": 21
+            },
+            "median.lower": {
+              "maxAbsDeviation": 0.0,
+              "columnsCompared": 21
+            }
+          }
+        },
+        "standardDeviation": {
+          "documented": "sd.population",
+          "maxAbsDeviation": 4.440892098500626e-16,
+          "columnsCompared": 21,
+          "alternatives": {
+            "sd.sample": {
+              "maxAbsDeviation": 0.0016264411054529582,
+              "columnsCompared": 21
+            }
+          }
+        },
+        "skewness": {
+          "documented": "skewness.G1",
+          "maxAbsDeviation": 1.0436096431476471e-13,
+          "columnsCompared": 21,
+          "alternatives": {
+            "skewness.g1": {
+              "maxAbsDeviation": 0.005523325385149658,
+              "columnsCompared": 21
+            },
+            "skewness.b1": {
+              "maxAbsDeviation": 0.01103007907934872,
+              "columnsCompared": 21
+            }
+          }
+        },
+        "kurtosis": {
+          "documented": "kurtosis.G2",
+          "maxAbsDeviation": 5.151434834260726e-13,
+          "columnsCompared": 21,
+          "alternatives": {
+            "kurtosis.g2": {
+              "maxAbsDeviation": 0.06705430399737011,
+              "columnsCompared": 21
+            },
+            "kurtosis.b2": {
+              "maxAbsDeviation": 0.09870470861886638,
+              "columnsCompared": 21
+            }
+          }
+        },
+        "cramerVonMisesP": {
+          "documented": "cvmP.population-sd",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 21,
+          "alternatives": {
+            "cvmP.sample-sd(nortest)": {
+              "maxAbsDeviation": 0.0,
+              "columnsCompared": 21
+            },
+            "cvmP.population-sd-no-modification": {
+              "maxAbsDeviation": 0.0,
+              "columnsCompared": 21
+            }
+          }
+        }
+      }
+    },
+    "oi": {
+      "rows": 305,
+      "columns": 25,
+      "dataSha256": "eda9295b7f5df66e73400055f41d2562c2425cbc98e2d2c080be24400f2a5dde",
+      "nMismatches": 0,
+      "nMissingMismatches": 0,
+      "storedNulls": [],
+      "statistics": {
+        "mean": {
+          "documented": "mean",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 25,
+          "alternatives": {}
+        },
+        "min": {
+          "documented": "min",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 25,
+          "alternatives": {}
+        },
+        "max": {
+          "documented": "max",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 25,
+          "alternatives": {}
+        },
+        "median": {
+          "documented": "median.upper",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 25,
+          "alternatives": {
+            "median.average": {
+              "maxAbsDeviation": 0.0,
+              "columnsCompared": 25
+            },
+            "median.lower": {
+              "maxAbsDeviation": 0.0,
+              "columnsCompared": 25
+            }
+          }
+        },
+        "standardDeviation": {
+          "documented": "sd.population",
+          "maxAbsDeviation": 5.551115123125783e-16,
+          "columnsCompared": 25,
+          "alternatives": {
+            "sd.sample": {
+              "maxAbsDeviation": 0.0015558050973589754,
+              "columnsCompared": 25
+            }
+          }
+        },
+        "skewness": {
+          "documented": "skewness.G1",
+          "maxAbsDeviation": 2.5979218776228663e-14,
+          "columnsCompared": 25,
+          "alternatives": {
+            "skewness.g1": {
+              "maxAbsDeviation": 0.008559546835662069,
+              "columnsCompared": 25
+            },
+            "skewness.b1": {
+              "maxAbsDeviation": 0.017058317549579094,
+              "columnsCompared": 25
+            }
+          }
+        },
+        "kurtosis": {
+          "documented": "kurtosis.G2",
+          "maxAbsDeviation": 1.0480505352461478e-13,
+          "columnsCompared": 25,
+          "alternatives": {
+            "kurtosis.g2": {
+              "maxAbsDeviation": 0.0903890260930238,
+              "columnsCompared": 25
+            },
+            "kurtosis.b2": {
+              "maxAbsDeviation": 0.13783326276705665,
+              "columnsCompared": 25
+            }
+          }
+        },
+        "cramerVonMisesP": {
+          "documented": "cvmP.population-sd",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 25,
+          "alternatives": {
+            "cvmP.sample-sd(nortest)": {
+              "maxAbsDeviation": 0.0,
+              "columnsCompared": 25
+            },
+            "cvmP.population-sd-no-modification": {
+              "maxAbsDeviation": 0.0,
+              "columnsCompared": 25
+            }
+          }
+        }
+      }
+    },
+    "acsi-2015": {
+      "rows": 8239,
+      "columns": 29,
+      "dataSha256": "9dd0e921ab14d054c02a7bc55f4f1ec4e8743effef7f587bc1fc9791663a1d98",
+      "nMismatches": 0,
+      "nMissingMismatches": 0,
+      "storedNulls": [
+        {
+          "column": "YEAR",
+          "statistic": "skewness",
+          "reason": "zero-variance-column",
+          "recomputedIsUndefined": true
+        },
+        {
+          "column": "YEAR",
+          "statistic": "kurtosis",
+          "reason": "zero-variance-column",
+          "recomputedIsUndefined": true
+        }
+      ],
+      "statistics": {
+        "mean": {
+          "documented": "mean",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 29,
+          "alternatives": {}
+        },
+        "min": {
+          "documented": "min",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 29,
+          "alternatives": {}
+        },
+        "max": {
+          "documented": "max",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 29,
+          "alternatives": {}
+        },
+        "median": {
+          "documented": "median.upper",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 29,
+          "alternatives": {
+            "median.average": {
+              "maxAbsDeviation": 0.5,
+              "columnsCompared": 29
+            },
+            "median.lower": {
+              "maxAbsDeviation": 1.0,
+              "columnsCompared": 29
+            }
+          }
+        },
+        "standardDeviation": {
+          "documented": "sd.population",
+          "maxAbsDeviation": 3.637978807091713e-12,
+          "columnsCompared": 29,
+          "alternatives": {
+            "sd.sample": {
+              "maxAbsDeviation": 1.8693161596238497,
+              "columnsCompared": 29
+            }
+          }
+        },
+        "skewness": {
+          "documented": "skewness.G1",
+          "maxAbsDeviation": 3.248512570053208e-13,
+          "columnsCompared": 28,
+          "alternatives": {
+            "skewness.g1": {
+              "maxAbsDeviation": 0.08549060408258158,
+              "columnsCompared": 28
+            },
+            "skewness.b1": {
+              "maxAbsDeviation": 0.14508467418103096,
+              "columnsCompared": 28
+            }
+          }
+        },
+        "kurtosis": {
+          "documented": "kurtosis.G2",
+          "maxAbsDeviation": 2.0525803279269894e-12,
+          "columnsCompared": 28,
+          "alternatives": {
+            "kurtosis.g2": {
+              "maxAbsDeviation": 3.9999999999999982,
+              "columnsCompared": 28
+            },
+            "kurtosis.b2": {
+              "maxAbsDeviation": 3.5624999999999982,
+              "columnsCompared": 28
+            }
+          }
+        },
+        "cramerVonMisesP": {
+          "documented": "cvmP.population-sd",
+          "maxAbsDeviation": 5.551115123125783e-17,
+          "columnsCompared": 29,
+          "alternatives": {
+            "cvmP.sample-sd(nortest)": {
+              "maxAbsDeviation": 0.04443115386485038,
+              "columnsCompared": 28
+            },
+            "cvmP.population-sd-no-modification": {
+              "maxAbsDeviation": 0.02422951947800902,
+              "columnsCompared": 28
+            }
+          }
+        }
+      }
+    },
+    "concise-guide": {
+      "rows": 1065,
+      "columns": 11,
+      "dataSha256": "e772db7ac2c191ea4c2e6de09e38c137d8be78334e6dcd8afaf5dffa2e5e3eda",
+      "nMismatches": 0,
+      "nMissingMismatches": 0,
+      "storedNulls": [],
+      "statistics": {
+        "mean": {
+          "documented": "mean",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 11,
+          "alternatives": {}
+        },
+        "min": {
+          "documented": "min",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 11,
+          "alternatives": {}
+        },
+        "max": {
+          "documented": "max",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 11,
+          "alternatives": {}
+        },
+        "median": {
+          "documented": "median.upper",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 11,
+          "alternatives": {
+            "median.average": {
+              "maxAbsDeviation": 0.0,
+              "columnsCompared": 11
+            },
+            "median.lower": {
+              "maxAbsDeviation": 0.0,
+              "columnsCompared": 11
+            }
+          }
+        },
+        "standardDeviation": {
+          "documented": "sd.population",
+          "maxAbsDeviation": 1.554312234475219e-14,
+          "columnsCompared": 11,
+          "alternatives": {
+            "sd.sample": {
+              "maxAbsDeviation": 0.011035608635872052,
+              "columnsCompared": 11
+            }
+          }
+        },
+        "skewness": {
+          "documented": "skewness.G1",
+          "maxAbsDeviation": 6.150635556423367e-14,
+          "columnsCompared": 11,
+          "alternatives": {
+            "skewness.g1": {
+              "maxAbsDeviation": 0.0030271084005981663,
+              "columnsCompared": 11
+            },
+            "skewness.b1": {
+              "maxAbsDeviation": 0.006048059217327761,
+              "columnsCompared": 11
+            }
+          }
+        },
+        "kurtosis": {
+          "documented": "kurtosis.G2",
+          "maxAbsDeviation": 1.0058620603103918e-13,
+          "columnsCompared": 11,
+          "alternatives": {
+            "kurtosis.g2": {
+              "maxAbsDeviation": 0.01791548014336275,
+              "columnsCompared": 11
+            },
+            "kurtosis.b2": {
+              "maxAbsDeviation": 0.028431949081004326,
+              "columnsCompared": 11
+            }
+          }
+        },
+        "cramerVonMisesP": {
+          "documented": "cvmP.population-sd",
+          "maxAbsDeviation": 6.522560269672795e-16,
+          "columnsCompared": 11,
+          "alternatives": {
+            "cvmP.sample-sd(nortest)": {
+              "maxAbsDeviation": 0.0001593681232907665,
+              "columnsCompared": 11
+            },
+            "cvmP.population-sd-no-modification": {
+              "maxAbsDeviation": 3.558932860895335e-05,
+              "columnsCompared": 11
+            }
+          }
+        }
+      }
+    },
+    "hbat": {
+      "rows": 100,
+      "columns": 24,
+      "dataSha256": "4227518d162c0ec8056e6933c245dfc742bbef934d34df84f3afa19e7c6489dc",
+      "nMismatches": 0,
+      "nMissingMismatches": 0,
+      "storedNulls": [],
+      "statistics": {
+        "mean": {
+          "documented": "mean",
+          "maxAbsDeviation": 4.973799150320701e-14,
+          "columnsCompared": 24,
+          "alternatives": {}
+        },
+        "min": {
+          "documented": "min",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 24,
+          "alternatives": {}
+        },
+        "max": {
+          "documented": "max",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 24,
+          "alternatives": {}
+        },
+        "median": {
+          "documented": "median.upper",
+          "maxAbsDeviation": 0.0,
+          "columnsCompared": 24,
+          "alternatives": {
+            "median.average": {
+              "maxAbsDeviation": 0.5,
+              "columnsCompared": 24
+            },
+            "median.lower": {
+              "maxAbsDeviation": 1.0,
+              "columnsCompared": 24
+            }
+          }
+        },
+        "standardDeviation": {
+          "documented": "sd.population",
+          "maxAbsDeviation": 4.218847493575595e-15,
+          "columnsCompared": 24,
+          "alternatives": {
+            "sd.sample": {
+              "maxAbsDeviation": 0.14542192815989807,
+              "columnsCompared": 24
+            }
+          }
+        },
+        "skewness": {
+          "documented": "skewness.G1",
+          "maxAbsDeviation": 2.1135870831301418e-14,
+          "columnsCompared": 24,
+          "alternatives": {
+            "skewness.g1": {
+              "maxAbsDeviation": 0.009947420392065531,
+              "columnsCompared": 24
+            },
+            "skewness.b1": {
+              "maxAbsDeviation": 0.01967963140657225,
+              "columnsCompared": 24
+            }
+          }
+        },
+        "kurtosis": {
+          "documented": "kurtosis.G2",
+          "maxAbsDeviation": 5.10702591327572e-14,
+          "columnsCompared": 24,
+          "alternatives": {
+            "kurtosis.g2": {
+              "maxAbsDeviation": 0.09566217161118562,
+              "columnsCompared": 24
+            },
+            "kurtosis.b2": {
+              "maxAbsDeviation": 0.1680918990075062,
+              "columnsCompared": 24
+            }
+          }
+        },
+        "cramerVonMisesP": {
+          "documented": "cvmP.population-sd",
+          "maxAbsDeviation": 1.1962653090336062e-14,
+          "columnsCompared": 24,
+          "alternatives": {
+            "cvmP.sample-sd(nortest)": {
+              "maxAbsDeviation": 0.0408349187279452,
+              "columnsCompared": 24
+            },
+            "cvmP.population-sd-no-modification": {
+              "maxAbsDeviation": 0.0038316279321422564,
+              "columnsCompared": 24
+            }
+          }
+        }
+      }
+    }
+  },
+  "overall": {
+    "columns": 132,
+    "nMismatches": 0,
+    "nMissingMismatches": 0,
+    "columnsWhereUpperMedianDiffersFromAverageMedian": 7,
+    "statistics": {
+      "mean": {
+        "documented": "mean",
+        "maxAbsDeviation": 4.973799150320701e-14,
+        "columnsCompared": 132,
+        "alternatives": {}
+      },
+      "min": {
+        "documented": "min",
+        "maxAbsDeviation": 0.0,
+        "columnsCompared": 132,
+        "alternatives": {}
+      },
+      "max": {
+        "documented": "max",
+        "maxAbsDeviation": 0.0,
+        "columnsCompared": 132,
+        "alternatives": {}
+      },
+      "median": {
+        "documented": "median.upper",
+        "maxAbsDeviation": 0.0,
+        "columnsCompared": 132,
+        "alternatives": {
+          "median.average": {
+            "maxAbsDeviation": 0.5,
+            "columnsCompared": 132
+          },
+          "median.lower": {
+            "maxAbsDeviation": 1.0,
+            "columnsCompared": 132
+          }
+        }
+      },
+      "standardDeviation": {
+        "documented": "sd.population",
+        "maxAbsDeviation": 3.637978807091713e-12,
+        "columnsCompared": 132,
+        "alternatives": {
+          "sd.sample": {
+            "maxAbsDeviation": 1.8693161596238497,
+            "columnsCompared": 132
+          }
+        }
+      },
+      "skewness": {
+        "documented": "skewness.G1",
+        "maxAbsDeviation": 3.248512570053208e-13,
+        "columnsCompared": 131,
+        "alternatives": {
+          "skewness.g1": {
+            "maxAbsDeviation": 0.08549060408258158,
+            "columnsCompared": 131
+          },
+          "skewness.b1": {
+            "maxAbsDeviation": 0.14508467418103096,
+            "columnsCompared": 131
+          }
+        }
+      },
+      "kurtosis": {
+        "documented": "kurtosis.G2",
+        "maxAbsDeviation": 2.0525803279269894e-12,
+        "columnsCompared": 131,
+        "alternatives": {
+          "kurtosis.g2": {
+            "maxAbsDeviation": 3.9999999999999982,
+            "columnsCompared": 131
+          },
+          "kurtosis.b2": {
+            "maxAbsDeviation": 3.5624999999999982,
+            "columnsCompared": 131
+          }
+        }
+      },
+      "cramerVonMisesP": {
+        "documented": "cvmP.population-sd",
+        "maxAbsDeviation": 1.1962653090336062e-14,
+        "columnsCompared": 132,
+        "alternatives": {
+          "cvmP.sample-sd(nortest)": {
+            "maxAbsDeviation": 0.04443115386485038,
+            "columnsCompared": 131
+          },
+          "cvmP.population-sd-no-modification": {
+            "maxAbsDeviation": 0.02422951947800902,
+            "columnsCompared": 131
+          }
+        }
+      }
+    }
+  },
+  "libraryCrossCheck": {
+    "ran": true,
+    "versions": {
+      "numpy": "2.5.5",
+      "pandas": "3.1.1",
+      "scipy": "1.18.1"
+    },
+    "columnsCompared": 131,
+    "maxAbsDeviationBetweenThisScriptAndLibrary": {
+      "sd.population vs numpy.std(ddof=0)": 3.552713678800501e-15,
+      "skewness.G1 vs pandas.Series.skew": 8.881784197001252e-15,
+      "skewness.G1 vs scipy.stats.skew(bias=False)": 9.880984919163893e-15,
+      "kurtosis.G2 vs pandas.Series.kurt": 3.197442310920451e-14,
+      "kurtosis.G2 vs scipy.stats.kurtosis(bias=False)": 7.105427357601002e-15,
+      "cvmW vs scipy.stats.cramervonmises(norm, mean, population sd)": 1.7053025658242404e-13
+    },
+    "note": "scipy has no p-value for the composite (estimated-parameter) normality case, so only the W statistic is cross-checked; the p-value formula is checked against the stored values."
+  },
+  "failures": [],
+  "passed": true
+}

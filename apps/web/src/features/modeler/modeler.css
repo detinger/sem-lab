@@ -1,0 +1,265 @@
+/* SEM diagram canvas (STYLE.md §8–§9). Uses only theme tokens; both themes are complete. */
+
+.sem-canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  background: var(--canvas-bg);
+  color: var(--sem-label);
+  outline: none;
+
+  /* React Flow theme variables → SEM Studio tokens (no default white islands in dark mode) */
+  --xy-background-color: var(--canvas-bg);
+  --xy-node-background-color: transparent;
+  --xy-node-border: none;
+  --xy-node-boxshadow-hover: none;
+  --xy-node-boxshadow-selected: none;
+  --xy-edge-stroke: var(--sem-edge);
+  --xy-edge-stroke-selected: var(--sem-selection);
+  --xy-selection-background-color: color-mix(in srgb, var(--sem-selection) 8%, transparent);
+  --xy-selection-border: 1px dashed var(--sem-selection);
+  --xy-handle-background-color: var(--sem-selection);
+  --xy-handle-border-color: var(--bg-elevated);
+  --xy-controls-button-background-color: var(--bg-elevated);
+  --xy-controls-button-background-color-hover: var(--bg-hover);
+  --xy-controls-button-color: var(--text-muted);
+  --xy-controls-button-color-hover: var(--text);
+  --xy-controls-button-border-color: var(--border);
+  --xy-controls-box-shadow: var(--shadow-sm);
+  --xy-minimap-background-color: var(--bg-elevated);
+  --xy-minimap-mask-background-color: color-mix(in srgb, var(--bg-sunken) 70%, transparent);
+  --xy-minimap-node-background-color: var(--border-strong);
+  --xy-attribution-background-color: transparent;
+}
+.sem-canvas:focus-visible {
+  box-shadow: inset var(--focus-ring);
+}
+.sem-canvas .react-flow__attribution {
+  font-size: 10px;
+  color: var(--text-subtle);
+}
+.sem-canvas .react-flow__attribution a {
+  color: var(--text-subtle);
+}
+.sem-canvas .react-flow__controls,
+.sem-canvas .react-flow__minimap {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  z-index: 15;
+}
+
+/* grid: faint 16px dots, never a gradient */
+.sem-canvas .sem-grid {
+  --xy-background-pattern-color: var(--sem-grid-dot);
+}
+.sem-canvas[data-grid='faint'] .sem-grid {
+  opacity: 0.45;
+}
+
+/* ---------------------------------------------------------------- constructs */
+.sem-construct {
+  position: relative;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-sans);
+  color: var(--sem-label);
+  transition: filter 120ms ease;
+}
+.sem-construct-shape {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+.sem-construct-shape ellipse,
+.sem-construct-shape rect {
+  fill: var(--sem-node-bg);
+  stroke: var(--sem-node-stroke);
+  stroke-width: 1.75px;
+  transition:
+    stroke 120ms ease,
+    fill 120ms ease;
+}
+.sem-construct[data-selected] .sem-construct-shape :is(ellipse, rect) {
+  fill: var(--sem-selected-fill);
+  stroke: var(--sem-selection);
+  stroke-width: 2px;
+}
+.sem-construct[data-focused] .sem-construct-shape :is(ellipse, rect) {
+  stroke: var(--sem-focus);
+  stroke-width: 2.5px;
+}
+.sem-construct-label {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  padding: 0 10px;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 18px;
+  text-align: center;
+  pointer-events: none;
+}
+.sem-construct-tag {
+  margin-top: 1px;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 13px;
+  color: var(--text-subtle);
+  letter-spacing: 0.02em;
+}
+
+/* ---------------------------------------------------------------- indicators */
+.sem-indicator {
+  position: relative;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  padding: 0 9px;
+  border: 1px solid var(--sem-node-stroke);
+  border-radius: 6px;
+  background: var(--sem-node-bg);
+  color: var(--sem-label);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition:
+    background 120ms ease,
+    border-color 120ms ease;
+}
+.sem-indicator[data-selected] {
+  background: var(--sem-selected-fill);
+  border-color: var(--sem-selection);
+  box-shadow: 0 0 0 1px var(--sem-selection);
+}
+.sem-indicator[data-focused] {
+  border-color: var(--sem-focus);
+  box-shadow: 0 0 0 1px var(--sem-focus);
+}
+.sem-indicator[data-unmapped] {
+  border-style: dashed;
+}
+.sem-indicator-unmapped {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--warning);
+  box-shadow: 0 0 0 2px var(--canvas-bg);
+}
+
+/* ---------------------------------------------------------------- handles */
+.sem-canvas .sem-handle {
+  width: 9px;
+  height: 9px;
+  min-width: 0;
+  min-height: 0;
+  border: 2px solid var(--bg-elevated);
+  background: var(--sem-selection);
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+.sem-canvas .react-flow__node:hover .sem-handle,
+.sem-canvas .react-flow__node.selected .sem-handle,
+.sem-canvas .react-flow__node:focus-visible .sem-handle {
+  opacity: 1;
+}
+/* the whole node is a drop target while a connection is being drawn */
+.sem-canvas .sem-handle-target {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  opacity: 0;
+  pointer-events: none;
+}
+.sem-canvas .react-flow__pane.connecting ~ * .sem-handle-target,
+.sem-canvas.react-flow-connecting .sem-handle-target {
+  pointer-events: all;
+}
+.sem-canvas .react-flow__node.connectingto .sem-construct-shape :is(ellipse, rect),
+.sem-canvas .react-flow__node.connectingto .sem-indicator {
+  stroke: var(--sem-guide);
+  border-color: var(--sem-guide);
+}
+.sem-canvas .react-flow__node.connectingfrom.invalid,
+.sem-canvas .react-flow__node.connectingto.invalid {
+  cursor: not-allowed;
+}
+
+/* ---------------------------------------------------------------- edges */
+.sem-canvas .react-flow__edge-path.sem-edge {
+  fill: none;
+}
+.sem-canvas .sem-edge-structural {
+  stroke: var(--sem-edge);
+  stroke-width: 1.8px;
+}
+.sem-canvas .sem-edge-measurement {
+  stroke: var(--sem-measurement-edge);
+  stroke-width: 1.25px;
+}
+.sem-canvas .sem-edge-covariance {
+  stroke: var(--sem-edge);
+  stroke-width: 1.4px;
+}
+/* .sem-edge-unclear (a route that could not avoid every node) is deliberately NOT dashed:
+   STYLE §8 reserves dashed lines for unsupported relationships. */
+.sem-canvas .react-flow__edge.selected .sem-edge {
+  stroke: var(--sem-selection);
+  stroke-width: 2.4px;
+}
+.sem-canvas .react-flow__edge:focus-visible .sem-edge {
+  stroke: var(--sem-selection);
+}
+.sem-arrow-fill {
+  fill: var(--sem-edge);
+}
+.sem-arrow-fill-measurement {
+  fill: var(--sem-measurement-edge);
+}
+.sem-arrow-fill-selected {
+  fill: var(--sem-selection);
+}
+.sem-markers {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.sem-edge-hypothesis {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-style: italic;
+  fill: var(--text-muted);
+  paint-order: stroke;
+  stroke: var(--canvas-bg);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------- guides */
+.sem-guides line {
+  stroke: var(--sem-guide);
+  stroke-width: 1px;
+  stroke-dasharray: 3 3;
+  vector-effect: non-scaling-stroke;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sem-canvas *,
+  .ipma-chart * {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+  }
+}

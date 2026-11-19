@@ -1,0 +1,28 @@
+# Prettier only reads ignore files from the directory it is started in, so workspace
+# scripts pass this file explicitly: --ignore-path ../../.prettierignore
+# Patterns are resolved relative to THIS file (the repository root).
+
+# build output and dependency trees
+node_modules/
+dist/
+coverage/
+.vite/
+playwright-report/
+test-results/
+package-lock.json
+
+# frozen specifications: never reformatted by tooling
+PLAN.md
+STYLE.md
+
+# source material and generated evidence
+TEMP/
+docs/validation/**/evidence/
+
+# non-JavaScript toolchains own their formatting
+apps/api/
+services/
+notebooks/
+
+# verbatim copy of STYLE.md section 16, guarded by apps/web/src/styles/tokens.test.ts
+apps/web/src/styles/tokens.css

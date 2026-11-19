@@ -1,0 +1,1179 @@
+{
+  "evidence": "csem_smoke",
+  "script": "services/r-engine/spike/csem_06_smoke.R",
+  "generated": "2026-11-19T14:16:24+0100",
+  "r": "R version 4.6.2 (2026-10-29)",
+  "platform": "aarch64-apple-darwin27.0.0",
+  "packages": {
+    "cSEM": "0.7.1"
+  },
+  "findings": {
+    "predict": {
+      "formals": {
+        ".object": "NULL",
+        ".benchmark": "c(\"lm\", \"unit\", \"PLS-PM\", \"GSCA\", \"PCA\", \"MAXVAR\", \"NA\")",
+        ".approach_predict": "c(\"earliest\", \"direct\")",
+        ".cv_folds": "10",
+        ".handle_inadmissibles": "c(\"stop\", \"ignore\", \"set_NA\")",
+        ".r": "1",
+        ".test_data": "NULL",
+        ".approach_score_target": "c(\"mean\", \"median\", \"mode\")",
+        ".sim_points": "100",
+        ".disattenuate": "TRUE",
+        ".treat_as_continuous": "TRUE",
+        ".approach_score_benchmark": "c(\"mean\", \"median\", \"mode\", \"round\")",
+        ".seed": "NULL"
+      },
+      "call": "predict(<classic Mode A object>, .benchmark = 'lm', .cv_folds = 10, .r = 1, .seed = 42)",
+      "run": {
+        "ok": true,
+        "warnings": [
+          "The following warning occured in the `predict()` function:\nDisattenuation is not applicable to benchmark `lm` and ignored."
+        ],
+        "n_warnings": 1,
+        "messages": [],
+        "seconds": 1.681,
+        "result": {
+          "class": "cSEMPredict",
+          "names": ["Actual", "Predictions_target", "Residuals_target", "Residuals_benchmark", "Prediction_metrics", "Information"],
+          "prediction_metrics": [
+            {
+              "Name": "USEF1",
+              "MAE_target": 0.532896886727132,
+              "MAE_benchmark": 0.835946194661476,
+              "RMSE_target": 0.812517570599934,
+              "RMSE_benchmark": 1.12130634353687,
+              "Q2_predict": 0.155039469580729,
+              "MER_target": 1,
+              "MER_benchmark": 1,
+              "MAPE_target": 0.114683379430201,
+              "MAPE_benchmark": 0.143260822700845,
+              "MSE2_target": 0.660740046269265,
+              "MSE2_benchmark": 1.25837058125945,
+              "U1_target": 0.122178494168147,
+              "U1_benchmark": 0.168610156622746,
+              "U2_target": 0.122127147877159,
+              "U2_benchmark": 0.16854028834307,
+              "UM_target": 1.28489468292438e-09,
+              "UM_benchmark": 0.0139855376697467,
+              "UR_target": 0.00147362890713749,
+              "UR_benchmark": 0.463304006140408,
+              "UD_target": 0.780142877846873,
+              "UD_benchmark": 0.408390656373976
+            },
+            {
+              "Name": "USEF2",
+              "MAE_target": 0.585227333943038,
+              "MAE_benchmark": 0.851699858938068,
+              "RMSE_target": 0.872767289109137,
+              "RMSE_benchmark": 1.17053599754558,
+              "Q2_predict": 0.131720592184193,
+              "MER_target": 1,
+              "MER_benchmark": 1,
+              "MAPE_target": 0.129090715623662,
+              "MAPE_benchmark": 0.156391029122506,
+              "MSE2_target": 0.762363382401553,
+              "MSE2_benchmark": 1.37129200690243,
+              "U1_target": 0.132303785283157,
+              "U1_benchmark": 0.177441919935758,
+              "U2_target": 0.132248183777017,
+              "U2_benchmark": 0.177368310720069,
+              "UM_target": 5.49057431352164e-08,
+              "UM_benchmark": 0.0128961865433302,
+              "UR_target": 0.000265585113330105,
+              "UR_benchmark": 0.430885568378475,
+              "UD_target": 0.876320431377368,
+              "UD_benchmark": 0.487554926566878
+            },
+            {
+              "Name": "USEF3",
+              "MAE_target": 0.619837629555829,
+              "MAE_benchmark": 0.852482148742184,
+              "RMSE_target": 0.892944719957383,
+              "RMSE_benchmark": 1.17530891382621,
+              "Q2_predict": 0.132864031188186,
+              "MER_target": 1,
+              "MER_benchmark": 1,
+              "MAPE_target": 0.132002683227833,
+              "MAPE_benchmark": 0.155088183394888,
+              "MSE2_target": 0.798020878679345,
+              "MSE2_benchmark": 1.38249835663054,
+              "U1_target": 0.136412779495702,
+              "U1_benchmark": 0.179547864011178,
+              "U2_target": 0.136355451155567,
+              "U2_benchmark": 0.17947334656907,
+              "UM_target": 1.23264175400187e-09,
+              "UM_benchmark": 0.0124376569679933,
+              "UR_target": 0.00085133058073657,
+              "UR_benchmark": 0.40937180596765,
+              "UD_target": 0.918420088350647,
+              "UD_benchmark": 0.531474265084012
+            },
+            {
+              "Name": "USEF4",
+              "MAE_target": 0.645558582258446,
+              "MAE_benchmark": 0.837674732761989,
+              "RMSE_target": 0.928884014182799,
+              "RMSE_benchmark": 1.17488988868412,
+              "Q2_predict": 0.142048406718326,
+              "MER_target": 1,
+              "MER_benchmark": 1,
+              "MAPE_target": 0.144330345436811,
+              "MAPE_benchmark": 0.160586660653456,
+              "MSE2_target": 0.863551185068962,
+              "MSE2_benchmark": 1.38151457338935,
+              "U1_target": 0.143158354111389,
+              "U1_benchmark": 0.181071621078236,
+              "U2_target": 0.143098190900461,
+              "U2_benchmark": 0.180996351547563,
+              "UM_target": 2.05975236803846e-10,
+              "UM_benchmark": 0.0108651574536282,
+              "UR_target": 0.000115583931398865,
+              "UR_benchmark": 0.364886302428623,
+              "UD_target": 1.00458099149489,
+              "UD_benchmark": 0.62718070951201
+            },
+            {
+              "Name": "USEF5",
+              "MAE_target": 0.559361255315575,
+              "MAE_benchmark": 0.831837085388947,
+              "RMSE_target": 0.810598993943383,
+              "RMSE_benchmark": 1.128151467044,
+              "Q2_predict": 0.13694835914548,
+              "MER_target": 1,
+              "MER_benchmark": 1,
+              "MAPE_target": 0.112787317098837,
+              "MAPE_benchmark": 0.141528757133174,
+              "MSE2_target": 0.657623353560351,
+              "MSE2_benchmark": 1.27378075872874,
+              "U1_target": 0.122981699021308,
+              "U1_benchmark": 0.171158793719764,
+              "U2_target": 0.122930015186575,
+              "U2_benchmark": 0.171087896743877,
+              "UM_target": 1.60203079615141e-07,
+              "UM_benchmark": 0.0143664109485522,
+              "UR_target": 0.000208122172010069,
+              "UR_benchmark": 0.473006645724934,
+              "UD_target": 0.760099194635889,
+              "UD_benchmark": 0.389728500348835
+            },
+            {
+              "Name": "ATT1",
+              "MAE_target": 0.737415946041622,
+              "MAE_benchmark": 0.860911537810067,
+              "RMSE_target": 1.00669863220428,
+              "RMSE_benchmark": 1.22158940425981,
+              "Q2_predict": 0.119253189811676,
+              "MER_target": 1,
+              "MER_benchmark": 1,
+              "MAPE_target": 0.164998292881746,
+              "MAPE_benchmark": 0.180519563454712,
+              "MSE2_target": 1.0142944843774,
+              "MSE2_benchmark": 1.49352408016161,
+              "U1_target": 0.161081251610973,
+              "U1_benchmark": 0.195465033419208,
+              "U2_target": 0.161013556188957,
+              "U2_benchmark": 0.19538365096607,
+              "UM_target": 1.26420463718157e-08,
+              "UM_benchmark": 0.00928614532682094,
+              "UR_target": 7.44661497489956e-05,
+              "UR_benchmark": 0.309450654351992,
+              "UD_target": 1.15017830411602,
+              "UD_benchmark": 0.783632516405113
+            },
+            {
+              "Name": "ATT2",
+              "MAE_target": 0.757698518551264,
+              "MAE_benchmark": 0.856795255958621,
+              "RMSE_target": 0.986184974138697,
+              "RMSE_benchmark": 1.19001899863979,
+              "Q2_predict": 0.129477545239534,
+              "MER_target": 1,
+              "MER_benchmark": 1,
+              "MAPE_target": 0.153280140320382,
+              "MAPE_benchmark": 0.166810108080134,
+              "MSE2_target": 0.973378768512222,
+              "MSE2_benchmark": 1.41732541064726,
+              "U1_target": 0.160436556837259,
+              "U1_benchmark": 0.193596358960254,
+              "U2_target": 0.160369132356126,
+              "U2_benchmark": 0.193515739241357,
+              "UM_target": 6.89654941824097e-08,
+              "UM_benchmark": 0.00909820528892448,
+              "UR_target": 0.000543775859351725,
+              "UR_benchmark": 0.301770623573332,
+              "UD_target": 1.11713741829158,
+              "UD_benchmark": 0.770273126442606
+            },
+            {
+              "Name": "ATT3",
+              "MAE_target": 0.747976611088646,
+              "MAE_benchmark": 0.839637468774482,
+              "RMSE_target": 1.00356058090727,
+              "RMSE_benchmark": 1.20830356534734,
+              "Q2_predict": 0.11801162453214,
+              "MER_target": 1,
+              "MER_benchmark": 1,
+              "MAPE_target": 0.163039331871263,
+              "MAPE_benchmark": 0.174011612943422,
+              "MSE2_target": 1.00798088229553,
+              "MSE2_benchmark": 1.4612144262129,
+              "U1_target": 0.163145508588804,
+              "U1_benchmark": 0.196429155785622,
+              "U2_target": 0.163076945649881,
+              "U2_benchmark": 0.196347344249578,
+              "UM_target": 1.60907857737621e-08,
+              "UM_benchmark": 0.00895105442768248,
+              "UR_target": 7.94537001750032e-05,
+              "UR_benchmark": 0.299709011541554,
+              "UD_target": 1.14174584173102,
+              "UD_benchmark": 0.789397228134924
+            },
+            {
+              "Name": "ATT4",
+              "MAE_target": 0.714678787285515,
+              "MAE_benchmark": 0.887990308179113,
+              "RMSE_target": 0.973496187482763,
+              "RMSE_benchmark": 1.24309278589797,
+              "Q2_predict": 0.094195897174411,
+              "MER_target": 1,
+              "MER_benchmark": 1,
+              "MAPE_target": 0.150720053940852,
+              "MAPE_benchmark": 0.172364308873891,
+              "MSE2_target": 0.94849187903769,
+              "MSE2_benchmark": 1.54656466671145,
+              "U1_target": 0.152831665143296,
+              "U1_benchmark": 0.195155402528434,
+              "U2_target": 0.152767436662129,
+              "U2_benchmark": 0.195074311411394,
+              "UM_target": 6.24490280593593e-09,
+              "UM_benchmark": 0.0112661040565171,
+              "UR_target": 0.000520872928098373,
+              "UR_benchmark": 0.372981565198101,
+              "UD_target": 1.04485412088095,
+              "UD_benchmark": 0.643706653610753
+            },
+            {
+              "Name": "ATT5",
+              "MAE_target": 0.709433746416796,
+              "MAE_benchmark": 0.888753867427717,
+              "RMSE_target": 0.966922049228951,
+              "RMSE_benchmark": 1.25723052614674,
+              "Q2_predict": 0.0753490117804899,
+              "MER_target": 1,
+              "MER_benchmark": 1,
+              "MAPE_target": 0.148118468310941,
+              "MAPE_benchmark": 0.172848148715315,
+              "MSE2_target": 0.935724572404576,
+              "MSE2_benchmark": 1.58194207176909,
+              "U1_target": 0.151824711363303,
+              "U1_benchmark": 0.19740753934186,
+              "U2_target": 0.151760906064589,
+              "U2_benchmark": 0.197325569245459,
+              "UM_target": 6.43789717114094e-08,
+              "UM_benchmark": 0.0119509799955247,
+              "UR_target": 0.00263537330906684,
+              "UR_benchmark": 0.395646278994253,
+              "UD_target": 1.0081149329644,
+              "UD_benchmark": 0.598788118315605
+            },
+            {
+              "Name": "BI1",
+              "MAE_target": 0.78576900897133,
+              "MAE_benchmark": 0.763760455864746,
+              "RMSE_target": 1.04987961781093,
+              "RMSE_benchmark": 1.09826555753136,
+              "Q2_predict": 0.165736494574949,
+              "MER_target": 1,
+              "MER_benchmark": 1,
+              "MAPE_target": 0.187293654971754,
+              "MAPE_benchmark": 0.160382557386655,
+              "MSE2_target": 1.10317424902578,
+              "MSE2_benchmark": 1.20719617012734,
+              "U1_target": 0.165644591078843,
+              "U1_benchmark": 0.173278278930263,
+              "U2_target": 0.165574977887456,
+              "U2_benchmark": 0.173205853621551,
+              "UM_target": 5.72685290677286e-08,
+              "UM_benchmark": 0.00543673162753009,
+              "UR_target": 0.100690686714488,
+              "UR_benchmark": 0.186238988407752,
+              "UD_target": 1.18494486559272,
+              "UD_benchmark": 1.06506154459067
+            },
+            {
+              "Name": "BI2",
+              "MAE_target": 1.09238227057158,
+              "MAE_benchmark": 0.999896328534999,
+              "RMSE_target": 1.39869255634965,
+              "RMSE_benchmark": 1.38628873815989,
+              "Q2_predict": 0.137547863015971,
+              "MER_target": 1,
+              "MER_benchmark": 1,
+              "MAPE_target": 0.342065277814961,
+              "MAPE_benchmark": 0.310808121102493,
+              "MSE2_target": 1.95798623376446,
+              "MSE2_benchmark": 1.92341063641316,
+              "U1_target": 0.242361493243269,
+              "U1_benchmark": 0.240212060902511,
+              "U2_target": 0.242259639281094,
+              "U2_benchmark": 0.240111243976694,
+              "UM_target": 3.92214592808725e-09,
+              "UM_benchmark": 0.00132437033463949,
+              "UR_target": 0.0648068580088732,
+              "UR_benchmark": 0.0461564579037138,
+              "UD_target": 2.11971272851699,
+              "UD_benchmark": 2.15898398988326
+            },
+            {
+              "Name": "BI3",
+              "MAE_target": 0.920111002031149,
+              "MAE_benchmark": 0.837945412806172,
+              "RMSE_target": 1.21014686364251,
+              "RMSE_benchmark": 1.2363267319794,
+              "Q2_predict": 0.152637321021628,
+              "MER_target": 1,
+              "MER_benchmark": 1,
+              "MAPE_target": 0.239491330189746,
+              "MAPE_benchmark": 0.208567942205246,
+              "MSE2_target": 1.46568710141589,
+              "MSE2_benchmark": 1.52978527732666,
+              "U1_target": 0.198056841525158,
+              "U1_benchmark": 0.202341262046172,
+              "U2_target": 0.197973606874978,
+              "U2_benchmark": 0.202256494446628,
+              "UM_target": 8.5183550008077e-10,
+              "UM_benchmark": 0.00314634011293797,
+              "UR_target": 0.0704824529416292,
+              "UR_benchmark": 0.109894323314507,
+              "UD_target": 1.60645564347615,
+              "UD_benchmark": 1.53290364187944
+            },
+            {
+              "Name": "USE1",
+              "MAE_target": 1.10569577426038,
+              "MAE_benchmark": 1.06267960963334,
+              "RMSE_target": 1.38389590982116,
+              "RMSE_benchmark": 1.42844372583426,
+              "Q2_predict": 0.0235661144890366,
+              "MER_target": 1,
+              "MER_benchmark": 1,
+              "MAPE_target": 0.375528756616189,
+              "MAPE_benchmark": 0.340510107201802,
+              "MSE2_target": 1.91677862754949,
+              "MSE2_benchmark": 2.04216176157369,
+              "U1_target": 0.265658541375837,
+              "U1_benchmark": 0.274209738524194,
+              "U2_target": 0.265546896681149,
+              "U2_benchmark": 0.274094890943037,
+              "UM_target": 7.89828401036112e-09,
+              "UM_benchmark": 0.00339060331121474,
+              "UR_target": 0.0409442681060566,
+              "UR_benchmark": 0.112972183395559,
+              "UD_target": 1.87900388704992,
+              "UD_benchmark": 1.7312422177123
+            },
+            {
+              "Name": "USE2",
+              "MAE_target": 0.719648731144628,
+              "MAE_benchmark": 0.881692163813626,
+              "RMSE_target": 1.02806969107146,
+              "RMSE_benchmark": 1.22950169908304,
+              "Q2_predict": 0.017361003684182,
+              "MER_target": 1,
+              "MER_benchmark": 1,
+              "MAPE_target": 0.226849259557828,
+              "MAPE_benchmark": 0.233363324101852,
+              "MSE2_target": 1.05781621087368,
+              "MSE2_benchmark": 1.51293358288124,
+              "U1_target": 0.183254912348607,
+              "U1_benchmark": 0.219159574029573,
+              "U2_target": 0.183177898304467,
+              "U2_benchmark": 0.219068356119982,
+              "UM_target": 1.3153652963908e-08,
+              "UM_benchmark": 0.00961002623290276,
+              "UR_target": 0.0227725584059847,
+              "UR_benchmark": 0.320863968893307,
+              "UD_target": 1.04971537998819,
+              "UD_benchmark": 0.71918953987992
+            },
+            {
+              "Name": "USE3",
+              "MAE_target": 1.16893399194043,
+              "MAE_benchmark": 1.11071309528491,
+              "RMSE_target": 1.36090047831613,
+              "RMSE_benchmark": 1.33182009678951,
+              "Q2_predict": 0.021148471118123,
+              "MER_target": 1,
+              "MER_benchmark": 1,
+              "MAPE_target": 0.544384147118674,
+              "MAPE_benchmark": 0.505821890316461,
+              "MSE2_target": 1.85360776545156,
+              "MSE2_benchmark": 1.77523576074094,
+              "U1_target": 0.378375806378643,
+              "U1_benchmark": 0.370290404671651,
+              "U2_target": 0.37821679153531,
+              "U2_benchmark": 0.3701348716794,
+              "UM_target": 8.93507831119968e-09,
+              "UM_benchmark": 0.000539101234911707,
+              "UR_target": 0.053741504686528,
+              "UR_benchmark": 0.0205565980697786,
+              "UD_target": 1.78996746074343,
+              "UD_benchmark": 1.85172114242548
+            },
+            {
+              "Name": "USE4",
+              "MAE_target": 1.89209245145122,
+              "MAE_benchmark": 1.85128933683655,
+              "RMSE_target": 2.35436253845545,
+              "RMSE_benchmark": 2.32457725677659,
+              "Q2_predict": 0.0129285328326911,
+              "MER_target": 1,
+              "MER_benchmark": 1,
+              "MAPE_target": 0.84554030169509,
+              "MAPE_benchmark": 0.813953022214425,
+              "MSE2_target": 5.54768488252966,
+              "MSE2_benchmark": 5.40820336691317,
+              "U1_target": 0.529888612418402,
+              "U1_benchmark": 0.523184900285883,
+              "U2_target": 0.529665923352082,
+              "U2_benchmark": 0.522965065491387,
+              "UM_target": 4.73676173375615e-09,
+              "UM_benchmark": 0.000168222333334953,
+              "UR_target": 0.0258135776941998,
+              "UR_benchmark": 0.00657777186670148,
+              "UD_target": 5.47004595939407,
+              "UD_benchmark": 5.57711025640842
+            }
+          ],
+          "information_names": ["Estimator_target", "Estimator_benchmark", "Disattenuation_target", "Disattenuation_benchmark", "Handle_inadmissibles", "Number_of_observations_training", "Number_of_observations_test", "Number_of_folds", "Number_of_repetitions", "Approach_to_predict"]
+        }
+      },
+      "same_seed_reproducible": true,
+      "on_plsc_object": {
+        "ok": true,
+        "warnings": [
+          "The following warning occured in the `predict()` function:\nDisattenuation is not applicable to benchmark `lm` and ignored."
+        ],
+        "n_warnings": 1,
+        "messages": [],
+        "seconds": 0.874,
+        "result": {
+          "metric_cols": ["Name", "MAE_target", "MAE_benchmark", "RMSE_target", "RMSE_benchmark", "Q2_predict", "MER_target", "MER_benchmark", "MAPE_target", "MAPE_benchmark", "MSE2_target", "MSE2_benchmark", "U1_target", "U1_benchmark", "U2_target", "U2_benchmark", "UM_target", "UM_benchmark", "UR_target", "UR_benchmark", "UD_target", "UD_benchmark"]
+        }
+      }
+    },
+    "testCVPAT": {
+      "formals": {
+        ".object1": "NULL",
+        ".object2": "NULL",
+        ".approach_predict": "c(\"earliest\", \"direct\")",
+        ".seed": "NULL",
+        ".cv_folds": "10",
+        ".handle_inadmissibles": "c(\"stop\", \"ignore\")",
+        ".testtype": "c(\"twosided\", \"onesided\")"
+      },
+      "call": "testCVPAT(.object1 = tam-v1 classic, .object2 = tam-v1 without BI ~ ATU, .seed = 3, .cv_folds = 10)",
+      "run": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 2.211,
+        "result": {
+          "class": "cSEMTestCVPAT",
+          "shape": {
+            "Information": {
+              "class": "list",
+              "length": 5
+            },
+            "test_statistic": {
+              "class": "numeric",
+              "length": 1
+            },
+            "p_value": {
+              "class": "numeric",
+              "length": 1
+            },
+            "degrees of freedom": {
+              "class": "numeric",
+              "length": 1
+            },
+            "Testtype": {
+              "class": "character",
+              "length": 1
+            }
+          },
+          "printed": ["________________________________________________________________________________", "------- Cross validated predictive ability test (Liengaard et al., 2020) -------", "", "Null hypothesis:", "", "┌────────────────────────────────────────────────────────────────────────────────────────┐", "│                                                                                        │", "│   H0: Both models perform equally in predicting indicators of endogenous constructs.   │", "│                                                                                        │", "└────────────────────────────────────────────────────────────────────────────────────────┘", "", "Test statistic and p-value: ", "\t", "\tTest statistic                     = 9.867262", "\tP value                            = 0", "\tDegrees of freedom                 = 1189", "\tTesttype                           = twosided", "", "Information:", "\t", "\tSeed                               : 3", "\tSample Size                        : 1190"]
+        }
+      }
+    },
+    "multigroup_estimation": {
+      "grouping": "FABRICATED: row parity (odd / even row number). No substantive meaning.",
+      "call": "csem(data_with_grp, model, .id = 'grp', .disattenuate = FALSE)",
+      "run": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.102,
+        "result": {
+          "class": ["cSEMResults", "cSEMResults_multi"],
+          "groups": ["even", "odd"],
+          "paths_by_group": {
+            "even": [0.42708170768204, 0.240587756830108, 0.253408011380353, 0.415202321921449, 0.135442753924864, 0.234131055160871],
+            "odd": [0.466243538921748, 0.26866498603561, 0.27230704169153, 0.395815156918971, 0.205906551769487, 0.232815330496837]
+          }
+        }
+      },
+      "check": {
+        "max_abs_diff_group_odd_vs_separate_fit_on_odd_rows": 0
+      }
+    },
+    "testMICOM": {
+      "formals": {
+        ".object": "NULL",
+        ".approach_p_adjust": "\"none\"",
+        ".handle_inadmissibles": "c(\"drop\", \"ignore\", \"replace\")",
+        ".R": "499",
+        ".seed": "NULL",
+        ".verbose": "TRUE"
+      },
+      "call": "testMICOM(<multi-group composite Mode A object>, .R = 30, .seed = 5)",
+      "run": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 2.644,
+        "result": {
+          "class": "cSEMTestMICOM",
+          "names": ["Step2", "Step3", "Information"],
+          "shape": {
+            "Step2": {
+              "Test_statistic": {
+                "class": "list",
+                "length": 1
+              },
+              "P_value": {
+                "class": "list",
+                "length": 1
+              },
+              "Bootstrap_values": {
+                "class": "list",
+                "length": 30
+              }
+            },
+            "Step3": {
+              "Mean": {
+                "class": "list",
+                "length": 2
+              },
+              "Var": {
+                "class": "list",
+                "length": 2
+              }
+            },
+            "Information": {
+              "Group_names": {
+                "class": "character",
+                "length": 2
+              },
+              "Number_admissibles": {
+                "class": "integer",
+                "length": 1
+              },
+              "Number_of_observations": {
+                "class": "integer",
+                "length": 2
+              },
+              "Total_runs": {
+                "class": "numeric",
+                "length": 1
+              },
+              "Seed": {
+                "class": "numeric",
+                "length": 1
+              }
+            }
+          },
+          "printed": ["________________________________________________________________________________", "-------- Test for measurement invariance based on Henseler et al (2016) --------", "======================== Step 1 - Configural invariance ========================", "", "\tConfigural invariance is a precondition for step 2 and 3.", "\tDo not proceed to interpret results unless", "\tconfigural invariance has been established.", "", "======================= Step 2 - Compositional invariance ======================", "", "Null hypothesis:", "", "       ┌─────────────────────────────────────────────────────────────────┐", "       │                                                                 │", "       │   H0: Compositional measurement invariance of the constructs.   │", "       │                                                                 │", "       └─────────────────────────────────────────────────────────────────┘", "", "Test statistic and p-value: ", "", "  Compared groups: even_odd", "\t         \t              \t p-value by adjustment", "\tConstruct\tTest statistic\t    none", "\tPEOU     \t    0.9998    \t  0.8667", "\tPU       \t    0.9998    \t  0.5000", "\tATU      \t    1.0000    \t  0.9333", "\tBI       \t    0.9998    \t  0.7333", "\tUSE      \t    0.9899    \t  0.3000", "\t", "", "================= Step 3 - Equality of the means and variances =================", "", "Null hypothesis:", "", "          ┌────────────────────────────────────────────────────────────┐", "          │                                                            │", "          │   1. H0: Difference between group means is zero            │", "          │   2. H0: Log of the ratio of the group variances is zero   │", "          │                                                            │", "          └────────────────────────────────────────────────────────────┘", "", "Test statistic and critical values: ", "", "  Compared groups: even_odd", "", "\tMean", "\t         \t              \t p-value by adjustment", "\tConstruct\tTest statistic\t    none", "\tPEOU     \t    -0.0026   \t  0.8667", "\tPU       \t    0.1321    \t  0.0000", "\tATU      \t    0.0623    \t  0.2667", "\tBI       \t    -0.0246   \t  0.6000", "\tUSE      \t    0.0050    \t  0.8667", "\t", "\tVar", "\t         \t              \t p-value by adjustment", "\tConstruct\tTest statistic\t    none", "\tPEOU     \t    0.0066    \t  1.0000", "\tPU       \t    -0.3152   \t  0.0667", "\tATU      \t    -0.2215   \t  0.0667"]
+        }
+      }
+    },
+    "testMGD": {
+      "formals": {
+        ".object": "NULL",
+        ".alpha": "0.05",
+        ".approach_p_adjust": "\"none\"",
+        ".approach_mgd": "c(\"all\", \"Klesel\", \"Chin\", \"Sarstedt\", \"Keil\", \"Nitzl\", \"Henseler\", \"CI_para\", \"CI_overlap\")",
+        ".output_type": "c(\"complete\", \"structured\")",
+        ".parameters_to_compare": "NULL",
+        ".eval_plan": "c(\"sequential\", \"multicore\", \"multisession\")",
+        ".handle_inadmissibles": "c(\"replace\", \"drop\", \"ignore\")",
+        ".R_permutation": "499",
+        ".R_bootstrap": "499",
+        ".saturated": "FALSE",
+        ".seed": "NULL",
+        ".type_ci": "\"CI_percentile\"",
+        ".type_vcv": "c(\"indicator\", \"construct\")",
+        ".verbose": "TRUE"
+      },
+      "approach_mgd_values": ["all", "Klesel", "Chin", "Sarstedt", "Keil", "Nitzl", "Henseler", "CI_para", "CI_overlap"],
+      "call": "testMGD(<multi-group classic object>, .approach_mgd = c('Klesel','Chin','Sarstedt','Henseler'), .R_permutation = 30, .R_bootstrap = 30, .seed = 5)",
+      "run": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 14.97,
+        "result": {
+          "class": "cSEMTestMGD",
+          "names": ["Information", "Klesel", "Chin", "Sarstedt", "Henseler"],
+          "printed": ["________________________________________________________________________________", "----------------------------------- Overview -----------------------------------", "", "\tTotal permutation runs               = 30", "\tAdmissible permutation results      = 30", "\tPermutation seed                    = 5", "", "\tTotal bootstrap runs                 = 30", "\tAdmissible bootstrap results:", "", "\tGroup        Admissibles ", "\teven             30      ", "\todd              30      ", "", "\tBootstrap seed:", "", "\tGroup           Seed     ", "\teven                    5", "\todd                     5", "", "\tNumber of observations per group:", "", "\tGroup       No. Obs. ", "\teven           595   ", "\todd            595   ", "", "\tOverall decision (based on alpha = 5%):", "", "\t             p_adjust = 'none'", "\tSarstedt                reject", "\tChin                    reject", "________________________________________________________________________________", "--------- Test for multigroup differences based on Klesel et al. (2019) --------", "", "Null hypothesis:", "", "  ┌───────────────────────────────────────────────────────────────────────────┐", "  │                                                                           │", "  │   H0: Model-implied indicator covariance matrix is equal across groups.   │", "  │                                                                           │", "  └───────────────────────────────────────────────────────────────────────────┘", "", "Test statistic and p-value: ", "", "\tDistance measure    Test statistic         p-value        Decision", "\tdG                          0.0551          0.5484   Do not reject", "\tdL                          0.3314          0.6452   Do not reject", "________________________________________________________________________________", "-------- Test for multigroup differences based on Sarstedt et al. (2011) -------", "", "\t!WARNING: the test is unreliable. Usage is discouraged!", "", "Null hypothesis:", "", "               ┌─────────────────────────────────────────────────┐", "               │                                                 │", "               │   H0: Parameter k is equal across all groups.   │", "               │                                                 │", "               └─────────────────────────────────────────────────┘", "", "Test statistic and p-value: ", "", "", "\tMultiple testing adjustment: 'none'", "", "\tParameter       Test statistic         p-value        Decision", "\tPU ~ PEOU               8.3192          0.0323          reject", "\tATU ~ PEOU              2.1040          0.2581   Do not reject", "\tATU ~ PU                5.1208          0.0645   Do not reject", "\tBI ~ PU                 2.3260          0.1613   Do not reject", "\tBI ~ ATU               39.3527          0.0323          reject", "\tUSE ~ BI                0.0014          1.0000   Do not reject", "\tPEOU =~ EOU1            0.4636          0.4516   Do not reject", "\tPEOU =~ EOU2            6.9079          0.0645   Do not reject", "\tPEOU =~ EOU3            5.7393          0.0968   Do not reject", "\tPEOU =~ EOU4           23.5410          0.0323          reject", "\tPEOU =~ EOU5            7.7314          0.0323          reject", "\tPU =~ USEF1             4.2225          0.0968   Do not reject", "\tPU =~ USEF2             8.5282          0.0323          reject", "\tPU =~ USEF3            15.5992          0.0323          reject"]
+        }
+      }
+    },
+    "testOMF": {
+      "formals": {
+        ".object": "NULL",
+        ".alpha": "0.05",
+        ".fit_measures": "FALSE",
+        ".handle_inadmissibles": "c(\"drop\", \"ignore\", \"replace\")",
+        ".R": "499",
+        ".saturated": "FALSE",
+        ".seed": "NULL",
+        "...": "<no default>"
+      },
+      "call": "testOMF(<classic>, .R = 30, .seed = 5)",
+      "run": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 5.408,
+        "result": {
+          "class": "cSEMTestOMF",
+          "names": ["Test_statistic", "Critical_value", "Decision", "Information"],
+          "printed": ["________________________________________________________________________________", "--------- Test for overall model fit based on Beran & Srivastava (1985) --------", "", "Null hypothesis:", "", "       ┌──────────────────────────────────────────────────────────────────┐", "       │                                                                  │", "       │   H0: The model-implied indicator covariance matrix equals the   │", "       │   population indicator covariance matrix.                        │", "       │                                                                  │", "       └──────────────────────────────────────────────────────────────────┘", "", "Test statistic and critical value: ", "", "\t                                  \tCritical value", "\tDistance measure    Test statistic\t  95% \t", "\tdG                      0.3260    \t0.1681\t", "\tSRMR                    0.0988    \t0.0399\t", "\tdL                      2.4696    \t0.4019\t", "\tdML                     1.8828    \t1.0096\t", "\t", "", "Decision: ", "", "\t                    \tSignificance level", "\tDistance measure    \t  95% \t", "\tdG                  \treject\t", "\tSRMR                \treject\t", "\tdL                  \treject\t", "\tdML                 \treject\t", "\t", "Additional information:", "", "\tOut of 30 bootstrap replications 30 are admissible.", "\tSee ?verify() for what constitutes an inadmissible result.", "", "\tThe seed used was: 5", "________________________________________________________________________________"]
+        }
+      }
+    },
+    "testHausman": {
+      "formals": {
+        ".object": "NULL",
+        ".eval_plan": "c(\"sequential\", \"multicore\", \"multisession\")",
+        ".handle_inadmissibles": "c(\"drop\", \"ignore\", \"replace\")",
+        ".R": "499",
+        ".resample_method": "c(\"bootstrap\", \"jackknife\")",
+        ".seed": "NULL"
+      },
+      "on_plsc": {
+        "ok": false,
+        "error": "The following error occured in the testHausman() function:\nInstruments required.",
+        "error_class": "simpleError",
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.0570000000000022
+      },
+      "on_classic": {
+        "ok": false,
+        "error": "The following error occured in the testHausman() function:\nInstruments required.",
+        "error_class": "simpleError",
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.00999999999999801
+      }
+    },
+    "doRedundancyAnalysis": {
+      "formals": {
+        ".object": "NULL"
+      },
+      "note": "No argument for the global/criterion item: from the help, the redundancy analysis needs the formative construct to be linked to a reflectively measured construct in the model specification by the user.",
+      "on_mixed": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.116,
+        "result": {
+          "class": "cSEMRedundancyAnalysis",
+          "value": {
+            "PEOU": 0.993763128942268,
+            "PU": 0.99658080473548
+          }
+        }
+      },
+      "on_all_common_factor": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0,
+        "result": {
+          "class": "cSEMRedundancyAnalysis",
+          "value": {
+            "class": "cSEMRedundancyAnalysis",
+            "length": 1
+          }
+        }
+      },
+      "single_item_global": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.0589999999999975,
+        "result": {
+          "value": {
+            "PU": 0.996421906267583
+          },
+          "check_vs_path_PU_G_on_PU": 0.219255735123462,
+          "check_vs_cor_score_USEF5": 0.219255735123469,
+          "check_vs_cor_modeB_score_with_modeA_reestimate": 8.54871728961371e-15,
+          "conclusion_from_source": "cSEM's doRedundancyAnalysis() is NOT the textbook (Chin 1998) redundancy analysis against a global single item: for every Mode B block it re-estimates the model with that block in Mode A and returns the OLS slope of the Mode A score on the Mode B score."
+        }
+      }
+    },
+    "calculatef2": {
+      "formals": {
+        ".object": "NULL"
+      },
+      "run": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.0579999999999998,
+        "result": {
+          "f2": {
+            "PU": {
+              "PEOU": 0.247452759771989,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "ATU": {
+              "PEOU": 0.0639182867553983,
+              "PU": 0.0711686210447791,
+              "ATU": 0,
+              "BI": 0,
+              "USE": 0
+            },
+            "BI": {
+              "PEOU": 0,
+              "PU": 0.182079065009659,
+              "ATU": 0.033790585318819,
+              "BI": 0,
+              "USE": 0
+            },
+            "USE": {
+              "PEOU": 0,
+              "PU": 0,
+              "ATU": 0,
+              "BI": 0.0555495477726128,
+              "USE": 0
+            }
+          }
+        }
+      },
+      "check_vs_assess_F2": 0,
+      "note": "assess()$F2 was verified against the f2 formula in csem_assess.json"
+    },
+    "second_order": {
+      "model": "PU =~ USEF1 + USEF2 + USEF3 + USEF4 + USEF5\nPEOU =~ EOU1 + EOU2 + EOU3 + EOU4 + EOU5\nATU =~ ATT1 + ATT2 + ATT3 + ATT4 + ATT5\nBI =~ BI1 + BI2 + BI3\nCOG <~ PU + PEOU\nATU ~ COG\nBI ~ ATU",
+      "approach_2ndorder_values": ["2stage", "mixed"],
+      "by_approach": {
+        "2stage": {
+          "ok": true,
+          "warnings": [
+            "`.disattenuate = FALSE` is set to `TRUE`."
+          ],
+          "n_warnings": 2,
+          "messages": [],
+          "seconds": 0.244,
+          "result": {
+            "class": ["cSEMResults", "cSEMResults_2ndorder"],
+            "names": ["First_stage", "Second_stage"],
+            "paths_second_stage": {
+              "COG": {
+                "COG": 0,
+                "ATU_temp": 0,
+                "BI_temp": 0
+              },
+              "ATU_temp": {
+                "COG": 0.442349725834088,
+                "ATU_temp": 0,
+                "BI_temp": 0
+              },
+              "BI_temp": {
+                "COG": 0,
+                "ATU_temp": 0.32440229262344,
+                "BI_temp": 0
+              }
+            },
+            "verify": {
+              "First_stage.1": false,
+              "First_stage.2": false,
+              "First_stage.3": false,
+              "First_stage.4": false,
+              "First_stage.5": false,
+              "Second_stage.1": false,
+              "Second_stage.2": false,
+              "Second_stage.3": false,
+              "Second_stage.4": true,
+              "Second_stage.5": false
+            }
+          }
+        },
+        "mixed": {
+          "ok": true,
+          "warnings": [
+            "`.disattenuate = FALSE` is set to `TRUE`."
+          ],
+          "n_warnings": 2,
+          "messages": [],
+          "seconds": 0.204999999999998,
+          "result": {
+            "class": ["cSEMResults", "cSEMResults_2ndorder"],
+            "names": ["First_stage", "Second_stage"],
+            "paths_second_stage": {
+              "COG": {
+                "COG": 0,
+                "ATU_temp": 0,
+                "BI_temp": 0
+              },
+              "ATU_temp": {
+                "COG": 0.442509603854106,
+                "ATU_temp": 0,
+                "BI_temp": 0
+              },
+              "BI_temp": {
+                "COG": 0,
+                "ATU_temp": 0.326727080959568,
+                "BI_temp": 0
+              }
+            },
+            "verify": {
+              "First_stage.1": false,
+              "First_stage.2": false,
+              "First_stage.3": false,
+              "First_stage.4": false,
+              "First_stage.5": false,
+              "Second_stage.1": false,
+              "Second_stage.2": false,
+              "Second_stage.3": false,
+              "Second_stage.4": false,
+              "Second_stage.5": false
+            }
+          }
+        }
+      },
+      "doIPMA_on_2ndorder": {
+        "ok": false,
+        "error": "Currently, `doIPMA()` is not implemented for models containing higher-order constructs.",
+        "error_class": "simpleError",
+        "warnings": [
+          "`.disattenuate = FALSE` is set to `TRUE`."
+        ],
+        "n_warnings": 2,
+        "messages": [],
+        "seconds": 0.146999999999998
+      },
+      "syntax_note": "a construct whose 'indicators' are other constructs is a second-order construct; '<~' gives a composite of the first-order construct scores"
+    },
+    "interaction": {
+      "model_line": "ATU ~ PEOU + PU + PEOU.PU   (cSEM: product of construct scores, written with '.')",
+      "approach_nl_values": ["sequential", "replace"],
+      "run": {
+        "ok": true,
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.440000000000005,
+        "result": {
+          "model_type": "Nonlinear",
+          "ATU_paths": {
+            "PEOU": 0.2449995191209,
+            "PU": 0.228931589095674,
+            "PEOU.PU": -0.0387468041276926
+          },
+          "verify": {
+            "1": false,
+            "2": false,
+            "3": false,
+            "4": false,
+            "5": false
+          }
+        }
+      },
+      "check": {
+        "note": "OLS of ATU score on PEOU, PU and their (unstandardised) product; cSEM standardises the product term, so only the main-effect slopes and the t-value of the product are comparable",
+        "ols_coef": {
+          "(Intercept)": 0.0172001514099076,
+          "sc[, \"PEOU\"]": 0.245169511056991,
+          "sc[, \"PU\"]": 0.229151385606853,
+          "prod_term": -0.0386512265179791
+        }
+      },
+      "floodlight_smoke": {
+        "ok": false,
+        "error": "Package `rootSolve` required. Use `install.packages(\"rootSolve\")` and rerun.",
+        "error_class": "simpleError",
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0.0429999999999993
+      },
+      "doIPMA_on_nonlinear": {
+        "ok": false,
+        "error": "Currently, IPMA can only applied to linear models, i.e., models without higher-order terms.",
+        "error_class": "simpleError",
+        "warnings": [],
+        "n_warnings": 0,
+        "messages": [],
+        "seconds": 0
+      }
+    },
+    "approach_weights": {
+      "values": ["PLS-PM", "SUMCORR", "MAXVAR", "SSQCORR", "MINVAR", "GENVAR", "GSCA", "PCA", "unit", "bartlett", "regression"],
+      "composite_model": {
+        "PLS-PM": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.116999999999997,
+          "result": {
+            "paths": [0.454232036608709, 0.263408911934981, 0.264375215226943, 0.423709514426884, 0.17761427771778, 0.268221775095412],
+            "r2": {
+              "PU": 0.206326743081695,
+              "ATU": 0.202542846118607,
+              "BI": 0.268877461842279,
+              "USE": 0.071942920635334
+            },
+            "verify_problems": 0
+          }
+        },
+        "SUMCORR": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 3.063,
+          "result": {
+            "paths": [0.45067479487027, 0.260819777469977, 0.269310075471795, 0.41401572798091, 0.186814469667381, 0.244360173977732],
+            "r2": {
+              "PU": 0.20310777073136,
+              "ATU": 0.203866924694234,
+              "BI": 0.266150591036471,
+              "USE": 0.0597118946264274
+            },
+            "verify_problems": 0
+          }
+        },
+        "MAXVAR": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.163999999999994,
+          "result": {
+            "paths": [0.452015652933469, 0.261386197754111, 0.267947360912745, 0.413203787102404, 0.188809423787444, 0.242854472450524],
+            "r2": {
+              "PU": 0.20431815049687,
+              "ATU": 0.20343484383666,
+              "BI": 0.266630607249282,
+              "USE": 0.0589782947892221
+            },
+            "verify_problems": 0
+          }
+        },
+        "SSQCORR": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 2.91999999999999,
+          "result": {
+            "paths": [-0.436359318345922, 0.252953881767969, -0.265980152078581, 0.105743111078685, -0.167749715826286, 0.0178190889696672],
+            "r2": {
+              "PU": 0.190409454707317,
+              "ATU": 0.193448238802482,
+              "BI": 0.052673565945904,
+              "USE": 0.000317519931708914
+            },
+            "verify_problems": 0
+          }
+        },
+        "MINVAR": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.105000000000004,
+          "result": {
+            "paths": [0.35035765728023, -0.00780827279857976, -0.0802199823362602, -0.408636070823318, -0.032902937018396, 0.134489128911065],
+            "r2": {
+              "PU": 0.122750488014891,
+              "ATU": 0.00693512840269307,
+              "BI": 0.165835309425867,
+              "USE": 0.018087325795257
+            },
+            "verify_problems": 0
+          }
+        },
+        "GENVAR": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 2.787,
+          "result": {
+            "paths": [0.450673068287352, 0.260820164152939, 0.269310490168773, 0.414018194876822, 0.186811348024044, 0.244360363798972],
+            "r2": {
+              "PU": 0.203106214479536,
+              "ATU": 0.20386729856749,
+              "BI": 0.266150845438466,
+              "USE": 0.0597119873959659
+            },
+            "verify_problems": 0
+          }
+        },
+        "GSCA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.0890000000000057,
+          "result": {
+            "paths": [0.454585201861874, 0.263504492463612, 0.263521649028099, 0.424397432805116, 0.177375058463399, 0.268183021952273],
+            "r2": {
+              "PU": 0.206647705751801,
+              "ATU": 0.202010286530462,
+              "BI": 0.269283876365286,
+              "USE": 0.0719221332634534
+            },
+            "verify_problems": 0
+          }
+        },
+        "PCA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.185000000000002,
+          "result": {
+            "paths": [0.443151745566703, 0.250633954782382, 0.267863945036452, 0.38934417732635, 0.16893900968876, 0.213284324935432],
+            "r2": {
+              "PU": 0.196383469598816,
+              "ATU": 0.194071166161202,
+              "BI": 0.229978207941244,
+              "USE": 0.0454902032631628
+            },
+            "verify_problems": 0
+          }
+        },
+        "unit": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.0640000000000001,
+          "result": {
+            "paths": [0.443529248672733, 0.249729643412149, 0.268407311779109, 0.390236025502344, 0.169792209977711, 0.211418560305791],
+            "r2": {
+              "PU": 0.196718194428199,
+              "ATU": 0.193866256473609,
+              "BI": 0.231360390379442,
+              "USE": 0.0446978076417736
+            },
+            "verify_problems": 0
+          }
+        },
+        "bartlett": {
+          "ok": false,
+          "error": "The following error occured in the `calculateReliabilities()` function:\nUnable to obtain `bartlett` or `regression` weights  for models containing constructs modeled as composites.",
+          "error_class": "simpleError",
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.0730000000000004
+        },
+        "regression": {
+          "ok": false,
+          "error": "The following error occured in the `calculateReliabilities()` function:\nUnable to obtain `bartlett` or `regression` weights  for models containing constructs modeled as composites.",
+          "error_class": "simpleError",
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 0.054000000000002
+        }
+      },
+      "common_factor_model": {
+        "GSCA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 1.135,
+          "result": {
+            "paths": [0.49618417976286, 0.270889341053719, 0.275224973940111, 0.44425498835082, 0.169879207984824, 0.267332067407105],
+            "construct_type": {
+              "PEOU": "Common factor",
+              "PU": "Common factor",
+              "ATU": "Common factor",
+              "BI": "Common factor",
+              "USE": "Common factor"
+            },
+            "disattenuated": true
+          }
+        },
+        "PCA": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 1.773,
+          "result": {
+            "paths": [0.498555684777969, 0.271558790296398, 0.276266643665172, 0.450834446804888, 0.173530668562145, 0.272622905261067],
+            "construct_type": {
+              "PEOU": "Common factor",
+              "PU": "Common factor",
+              "ATU": "Common factor",
+              "BI": "Common factor",
+              "USE": "Common factor"
+            },
+            "disattenuated": true
+          }
+        },
+        "unit": {
+          "ok": true,
+          "warnings": [],
+          "n_warnings": 0,
+          "messages": [],
+          "seconds": 1.23,
+          "result": {
+            "paths": [0.499902124475591, 0.270739767084973, 0.276895726496639, 0.453172522542999, 0.174479175511617, 0.273401553633722],
+            "construct_type": {
+              "PEOU": "Common factor",
+              "PU": "Common factor",
+              "ATU": "Common factor",
+              "BI": "Common factor",
+              "USE": "Common factor"
+            },
+            "disattenuated": true
+          }
+        }
+      },
+      "check": {
+        "unit_paths_vs_hand_computation": 6.27276008913213e-15,
+        "PCA_paths_vs_first_principal_component": 3.66373598126302e-15
+      },
+      "GSCA_note": "GSCA is a different estimator family (generalized structured component analysis); with '=~' cSEM runs GSCA_m. Numbers NOT verified."
+    }
+  }
+}

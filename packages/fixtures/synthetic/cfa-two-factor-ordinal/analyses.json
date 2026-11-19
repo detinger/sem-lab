@@ -1,0 +1,30 @@
+[
+  {
+    "analysis": {
+      "cb": {
+        "identification": "std-lv",
+        "meanStructure": false
+      },
+      "engine": "r-lavaan",
+      "estimator": "WLSMV",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "Ordinal CFA with WLSMV (DWLS on polychoric correlations, mean-and-variance adjusted test).",
+    "id": "cb-lavaan-wlsmv"
+  },
+  {
+    "analysis": {
+      "cb": {
+        "identification": "marker",
+        "meanStructure": false
+      },
+      "engine": "r-lavaan",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "Contrast: ML treating the 5-point items as continuous (attenuated loadings expected).",
+    "id": "cb-lavaan-ml-continuous"
+  }
+]

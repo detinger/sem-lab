@@ -1,0 +1,1084 @@
+{
+  "generated_by": "apps/api/spike/semopy_probe.py",
+  "versions": {
+    "python": "3.12.15",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scipy": "1.13.1",
+    "statsmodels": "0.14.6",
+    "scikit-learn": "1.7.2",
+    "semopy": "2.3.11",
+    "plspm": "0.5.7",
+    "sympy": "1.14.0",
+    "numdifftools": "0.11.2"
+  },
+  "feature_timeout_s": 150,
+  "subset_rows_for_retry": 200,
+  "features": {
+    "api": {
+      "ok": true,
+      "value": {
+        "Model.__init__": "(self, description: str, mimic_lavaan=False, baseline=False, cov_diag=False)",
+        "Model.fit": "(self, data=None, cov=None, obj='MLW', solver='SLSQP', groups=None, clean_slate=False, regularization=None, n_samples=None, **kwargs)",
+        "Model.inspect": "(self, mode='list', what='est', information='expected', std_est=False, se_robust=False)",
+        "ModelMeans.fit": "(self, data=None, cov=None, obj='ML', solver='SLSQP', groups=None, clean_slate=False, **kwargs)",
+        "Model.predict_factors": "(self, x: pandas.core.frame.DataFrame, center=True)",
+        "calc_stats": "(model)",
+        "bias_correction": "(model, n=100, resample_mean=False, extra_data=None, max_rel_fun=1000, clean_slate=False, **kwargs)",
+        "semplot": "(mod: semopy.model.Model, filename: str, inspection=None, plot_covs=False, plot_exos=True, images=None, engine='dot', latshape='circle', plot_ests=True, std_ests=False, show=False)",
+        "Model.objectives_keys": [
+          "MLW",
+          "ULS",
+          "GLS",
+          "WLS",
+          "DWLS",
+          "FIML"
+        ],
+        "ModelMeans.objectives_keys": [
+          "FIML",
+          "REML",
+          "GLS"
+        ],
+        "SolverResult_fields": [
+          "fun",
+          "success",
+          "n_it",
+          "x",
+          "message",
+          "name_method",
+          "name_obj"
+        ],
+        "top_level_names": [
+          "Model",
+          "ModelEffects",
+          "ModelGeneralizedEffects",
+          "ModelMeans",
+          "Optimizer",
+          "bias_correction",
+          "calc_stats",
+          "constraints",
+          "create_regularization",
+          "efa",
+          "effects",
+          "estimate_means",
+          "examples",
+          "gather_statistics",
+          "means",
+          "model",
+          "model_base",
+          "model_effects",
+          "model_generalized_effects",
+          "model_generation",
+          "model_means",
+          "multigroup",
+          "name",
+          "optimizer",
+          "parser",
+          "plot",
+          "polycorr",
+          "regularization",
+          "report",
+          "semplot",
+          "solver",
+          "startingvalues",
+          "stats",
+          "unbias",
+          "utils"
+        ],
+        "descriptions": {
+          "cfa": "PU =~ USEF1 + USEF2 + USEF3 + USEF4 + USEF5\nPEOU =~ EOU1 + EOU2 + EOU3 + EOU4 + EOU5\nATU =~ ATT1 + ATT2 + ATT3 + ATT4 + ATT5\nBI =~ BI1 + BI2 + BI3\nUSE =~ USE1 + USE2 + USE3 + USE4",
+          "sem": "PU =~ USEF1 + USEF2 + USEF3 + USEF4 + USEF5\nPEOU =~ EOU1 + EOU2 + EOU3 + EOU4 + EOU5\nATU =~ ATT1 + ATT2 + ATT3 + ATT4 + ATT5\nBI =~ BI1 + BI2 + BI3\nUSE =~ USE1 + USE2 + USE3 + USE4\nPU ~ PEOU\nATU ~ PEOU + PU\nBI ~ PU + ATU\nUSE ~ BI"
+        }
+      },
+      "seconds_wall": 0.0008045830181799829,
+      "n": 1190
+    },
+    "objective.cfa.MLW": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 0.9329795990915155,
+        "n_it": 62,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "MLW",
+        "n_params": 54,
+        "seconds": 0.0959820420248434
+      },
+      "seconds_wall": 0.09600754204438999,
+      "n": 1190
+    },
+    "objective.cfa.ULS": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 1.4681709471720477,
+        "n_it": 50,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "ULS",
+        "n_params": 54,
+        "seconds": 0.03483229101402685
+      },
+      "seconds_wall": 0.0348604170139879,
+      "n": 1190
+    },
+    "objective.cfa.GLS": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 1.378842142899979,
+        "n_it": 43,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "GLS",
+        "n_params": 54,
+        "seconds": 0.036945374973583966
+      },
+      "seconds_wall": 0.03697637503501028,
+      "n": 1190
+    },
+    "objective.cfa.WLS": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 0.5017820097278983,
+        "n_it": 58,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "WLS",
+        "n_params": 54,
+        "seconds": 0.09256012499099597
+      },
+      "seconds_wall": 0.09258599998429418,
+      "n": 1190
+    },
+    "objective.cfa.DWLS": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 0.13644372775886715,
+        "n_it": 45,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "DWLS",
+        "n_params": 54,
+        "seconds": 0.04039191600168124
+      },
+      "seconds_wall": 0.0404223749646917,
+      "n": 1190
+    },
+    "objective.cfa.FIML": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 25262.079605099563,
+        "n_it": 1085,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "FIML",
+        "n_params": 54,
+        "seconds": 3.8570040829945356
+      },
+      "seconds_wall": 3.8570461670169607,
+      "n": 1190
+    },
+    "objective.cfa.ML": {
+      "ok": false,
+      "error": "KeyError: 'ML is unknown objective function.'",
+      "where": "semopy/model.py:1154",
+      "seconds_wall": 0.017834291036706418,
+      "n": 1190
+    },
+    "objective.cfa.REML": {
+      "ok": false,
+      "error": "KeyError: 'REML is unknown objective function.'",
+      "where": "semopy/model.py:1154",
+      "seconds_wall": 0.026050042011775076,
+      "n": 1190
+    },
+    "objective.sem.MLW": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 1.1760580600947739,
+        "n_it": 53,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "MLW",
+        "n_params": 50,
+        "seconds": 0.44803420902462676
+      },
+      "seconds_wall": 0.44806054199580103,
+      "n": 1190
+    },
+    "objective.sem.ULS": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 5.241967003888995,
+        "n_it": 70,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "ULS",
+        "n_params": 50,
+        "seconds": 0.07973520801169798
+      },
+      "seconds_wall": 0.07978591695427895,
+      "n": 1190
+    },
+    "objective.sem.GLS": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 1.7581163806706346,
+        "n_it": 39,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "GLS",
+        "n_params": 50,
+        "seconds": 0.05248741596005857
+      },
+      "seconds_wall": 0.052534707996528596,
+      "n": 1190
+    },
+    "objective.sem.WLS": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 0.6546242995043157,
+        "n_it": 175,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "WLS",
+        "n_params": 50,
+        "seconds": 0.16789433296071365
+      },
+      "seconds_wall": 0.16798241599462926,
+      "n": 1190
+    },
+    "objective.sem.DWLS": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 0.5197502881440373,
+        "n_it": 58,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "DWLS",
+        "n_params": 50,
+        "seconds": 0.04167891596443951
+      },
+      "seconds_wall": 0.04170699999667704,
+      "n": 1190
+    },
+    "objective.sem.FIML": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 25755.262082907015,
+        "n_it": 181,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "FIML",
+        "n_params": 50,
+        "seconds": 4.1442388339783065
+      },
+      "seconds_wall": 4.144273583020549,
+      "n": 1190
+    },
+    "objective.sem.ML": {
+      "ok": false,
+      "error": "KeyError: 'ML is unknown objective function.'",
+      "where": "semopy/model.py:1154",
+      "seconds_wall": 0.01381224999204278,
+      "n": 1190
+    },
+    "objective.sem.REML": {
+      "ok": false,
+      "error": "KeyError: 'REML is unknown objective function.'",
+      "where": "semopy/model.py:1154",
+      "seconds_wall": 0.035405084025114775,
+      "n": 1190
+    },
+    "mlw_definition.cfa": {
+      "ok": true,
+      "value": {
+        "sample_cov_vs_ddof0_N": 8.881784197001252e-16,
+        "sample_cov_vs_ddof1_N-1": 0.004718478100190104,
+        "sigma_semopy_vs_hand": 0.0,
+        "fun_vs_hand_FML": 1.7763568394002505e-15,
+        "max_abs_cov_residual": 0.7164138449052759,
+        "max_abs_corr_residual": 0.22000722843366385,
+        "srmr_hand_lavaan_style": 0.03970238622138697
+      },
+      "seconds_wall": 1.7976878339541145,
+      "n": 1190
+    },
+    "mlw_definition.sem": {
+      "ok": true,
+      "value": {
+        "sample_cov_vs_ddof0_N": 8.881784197001252e-16,
+        "sample_cov_vs_ddof1_N-1": 0.004718478100190104,
+        "sigma_semopy_vs_hand": 2.220446049250313e-16,
+        "fun_vs_hand_FML": 7.993605777301127e-15,
+        "max_abs_cov_residual": 0.815537091275819,
+        "max_abs_corr_residual": 0.26730430383967446,
+        "srmr_hand_lavaan_style": 0.08736272784527144
+      },
+      "seconds_wall": 0.0801116669899784,
+      "n": 1190
+    },
+    "fiml_identity.Model.raw": {
+      "ok": true,
+      "value": {
+        "maxAbsDiff_params_vs_MLW": 43.48143304717383,
+        "success": true,
+        "fun": 25262.07960545558,
+        "n_it": 1200,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "FIML",
+        "n_params": 54
+      },
+      "seconds_wall": 4.9848735419800505,
+      "n": 1190
+    },
+    "fiml_identity.Model.centred": {
+      "ok": true,
+      "value": {
+        "maxAbsDiff_params_vs_MLW": 0.001162265732351786,
+        "success": true,
+        "fun": 19415.21476022767,
+        "n_it": 93,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "FIML",
+        "n_params": 54
+      },
+      "seconds_wall": 1.721971457998734,
+      "n": 1190
+    },
+    "fiml_identity.ModelMeans.ML.raw": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 19415.214760054376,
+        "n_it": 522,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "FIML",
+        "n_params": 76,
+        "maxAbsDiff_loadings_vs_Model_MLW": 0.0011738987296479042,
+        "intercepts_vs_sample_means_maxAbsDiff": 1.7211381515558344e-06
+      },
+      "seconds_wall": 13.61987695802236,
+      "n": 1190
+    },
+    "fiml_identity.ModelMeans.raw": {
+      "ok": false,
+      "error": "NotImplementedError: Unknown method FIML.",
+      "where": "semopy/model_means.py:427",
+      "seconds_wall": 0.00176995899528265,
+      "n": 1190
+    },
+    "solver.SLSQP": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 1.1760580600947739,
+        "n_it": 53,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "MLW",
+        "n_params": 50,
+        "seconds": 0.27511666697682813,
+        "maxAbsDiff_params_vs_SLSQP": 0.0
+      },
+      "seconds_wall": 0.5178542080102488,
+      "n": 1190
+    },
+    "solver.L-BFGS-B": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 1.1760574198821363,
+        "n_it": 65,
+        "message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH",
+        "name_method": "L-BFGS-B",
+        "name_obj": "MLW",
+        "n_params": 50,
+        "seconds": 1.0287406250135973,
+        "maxAbsDiff_params_vs_SLSQP": 0.0010275347682124902
+      },
+      "seconds_wall": 1.388786249968689,
+      "n": 1190
+    },
+    "solver.trust-constr": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 1.1760573883621266,
+        "n_it": 212,
+        "message": "`gtol` termination condition is satisfied.",
+        "name_method": "trust-constr",
+        "name_obj": "MLW",
+        "n_params": 50,
+        "seconds": 4.207297249988187,
+        "maxAbsDiff_params_vs_SLSQP": 0.0008774387604002509
+      },
+      "seconds_wall": 5.140730249986518,
+      "n": 1190
+    },
+    "inspect.expected.cfa": {
+      "ok": true,
+      "value": {
+        "columns": [
+          "lval",
+          "op",
+          "rval",
+          "Estimate",
+          "Std. Err",
+          "z-value",
+          "p-value"
+        ],
+        "rows": 59,
+        "ops": [
+          "~",
+          "~~"
+        ],
+        "seconds": 0.06187729100929573,
+        "fixed_marker_se_cell": "-",
+        "se_dtype": "object",
+        "param_vals_vs_inspect_estimate": 0.0,
+        "z_vs_est_over_se": 1.8410872826279956e-09,
+        "p_vs_two_sided_normal": 4.5497949102719653e-17,
+        "se_expected_vs_hand_fisher_N_rel": 1.4060153041839385e-10,
+        "se_expected_vs_hand_fisher_N-1_rel": 0.0004202565031821148,
+        "confidence_interval_columns": []
+      },
+      "seconds_wall": 0.8115399589878507,
+      "n": 1190
+    },
+    "inspect.observed.cfa": {
+      "ok": true,
+      "value": {
+        "seconds_semopy_observed": 13.113167291041464,
+        "se_observed_vs_hand_fd_hessian_rel": 7.677112773163408e-06,
+        "se_observed_vs_expected_rel_max": 0.12866128148535694
+      },
+      "seconds_wall": 16.172642792051192,
+      "n": 1190
+    },
+    "inspect.robust.cfa": {
+      "ok": true,
+      "value": {
+        "seconds": 0.2734612909844145,
+        "se_robust_vs_expected_rel_max": 1.9987398405599621,
+        "se_robust_vs_expected_rel_median": 0.5351987379896894,
+        "estimates_unchanged": 0.0
+      },
+      "seconds_wall": 0.9434625830035657,
+      "n": 1190
+    },
+    "inspect.std.cfa": {
+      "ok": true,
+      "value": {
+        "std_est_vs_hand": 0.0,
+        "columns": [
+          "lval",
+          "op",
+          "rval",
+          "Estimate",
+          "Est. Std",
+          "Std. Err",
+          "z-value",
+          "p-value"
+        ]
+      },
+      "seconds_wall": 1.0866946669993922,
+      "n": 1190
+    },
+    "inspect.expected.sem": {
+      "ok": true,
+      "value": {
+        "columns": [
+          "lval",
+          "op",
+          "rval",
+          "Estimate",
+          "Std. Err",
+          "z-value",
+          "p-value"
+        ],
+        "rows": 55,
+        "ops": [
+          "~",
+          "~~"
+        ],
+        "seconds": 0.004669042013119906,
+        "fixed_marker_se_cell": "0.02688688815104021",
+        "se_dtype": "object",
+        "param_vals_vs_inspect_estimate": 0.0,
+        "z_vs_est_over_se": 1.8498909071240632e-09,
+        "p_vs_two_sided_normal": 4.572313093051716e-17,
+        "se_expected_vs_hand_fisher_N_rel": 1.5001844211326443e-10,
+        "se_expected_vs_hand_fisher_N-1_rel": 0.00042025649908072893,
+        "confidence_interval_columns": []
+      },
+      "seconds_wall": 0.5871211659978144,
+      "n": 1190
+    },
+    "inspect.observed.sem": {
+      "ok": true,
+      "value": {
+        "seconds_semopy_observed": 1.4264577500289306,
+        "se_observed_vs_hand_fd_hessian_rel": 5.943741512637324e-06,
+        "se_observed_vs_expected_rel_max": 0.09463056145757898
+      },
+      "seconds_wall": 2.312807790993247,
+      "n": 1190
+    },
+    "inspect.robust.sem": {
+      "ok": true,
+      "value": {
+        "seconds": 0.1502453749999404,
+        "se_robust_vs_expected_rel_max": 1.9957477976823998,
+        "se_robust_vs_expected_rel_median": 0.4730804036597588,
+        "estimates_unchanged": 0.0
+      },
+      "seconds_wall": 0.2987864169990644,
+      "n": 1190
+    },
+    "inspect.std.sem": {
+      "ok": true,
+      "value": {
+        "std_est_vs_hand": 1.1102230246251565e-16,
+        "columns": [
+          "lval",
+          "op",
+          "rval",
+          "Estimate",
+          "Est. Std",
+          "Std. Err",
+          "z-value",
+          "p-value"
+        ]
+      },
+      "seconds_wall": 0.09607074997620657,
+      "n": 1190
+    },
+    "calc_stats.cfa": {
+      "ok": true,
+      "value": {
+        "seconds": 0.008645333000458777,
+        "names": [
+          "DoF",
+          "DoF Baseline",
+          "chi2",
+          "chi2 p-value",
+          "chi2 Baseline",
+          "CFI",
+          "GFI",
+          "AGFI",
+          "NFI",
+          "TLI",
+          "RMSEA",
+          "AIC",
+          "BIC",
+          "LogLik"
+        ],
+        "values": {
+          "DoF": 199.0,
+          "DoF Baseline": 231.0,
+          "chi2": 1110.2457229189035,
+          "chi2 p-value": 0.0,
+          "chi2 Baseline": 15916.43629942701,
+          "CFI": 0.941904980803614,
+          "GFI": 0.9302453324329346,
+          "AGFI": 0.9190285014673764,
+          "NFI": 0.9302453324329346,
+          "TLI": 0.9325630681690191,
+          "RMSEA": 0.06205835878848302,
+          "AIC": 106.13404080181697,
+          "BIC": 380.546304451518,
+          "LogLik": 0.9329795990915155
+        },
+        "hand": {
+          "DoF": 199.0,
+          "chi2": 1110.2457229189056,
+          "chi2 Baseline": 15916.435471689301,
+          "DoF Baseline": 231.0,
+          "chi2 p-value": 2.2311144592117992e-126,
+          "CFI": 0.9419049777378756,
+          "TLI": 0.9325630646102978,
+          "NFI": 0.9302453288053277,
+          "RMSEA": 0.06205835878848309
+        },
+        "diff_vs_hand": {
+          "DoF": 0.0,
+          "chi2": 2.0463630789890885e-12,
+          "chi2 Baseline": 0.000827737709187204,
+          "DoF Baseline": 0.0,
+          "chi2 p-value": 2.2311144592117992e-126,
+          "CFI": 3.065738329866008e-09,
+          "TLI": 3.5587213176313526e-09,
+          "NFI": 3.62760688155106e-09,
+          "RMSEA": 6.938893903907228e-17
+        },
+        "RMSEA_if_divisor_N": 0.06203227836758409,
+        "GFI_equals_NFI": 0.0,
+        "GFI_textbook_hand": 0.9196005443806305,
+        "LogLik_equals_fun_FML": 0.0,
+        "AIC_equals_2k_minus_2fun": 0.0,
+        "BIC_equals_lnN_k_minus_2fun": 0.0,
+        "true_loglik_hand": -33765.41860574279,
+        "AIC_textbook_hand": 67638.83721148557,
+        "has_SRMR": false,
+        "has_RMSEA_CI": false,
+        "srmr_hand": 0.0397023862213869,
+        "chi2_sb_function_exists": true
+      },
+      "seconds_wall": 0.1316211670055054,
+      "n": 1190
+    },
+    "calc_stats.sem": {
+      "ok": true,
+      "value": {
+        "seconds": 0.006396209006197751,
+        "names": [
+          "DoF",
+          "DoF Baseline",
+          "chi2",
+          "chi2 p-value",
+          "chi2 Baseline",
+          "CFI",
+          "GFI",
+          "AGFI",
+          "NFI",
+          "TLI",
+          "RMSEA",
+          "AIC",
+          "BIC",
+          "LogLik"
+        ],
+        "values": {
+          "DoF": 203.0,
+          "DoF Baseline": 231.0,
+          "chi2": 1399.509091512781,
+          "chi2 p-value": 0.0,
+          "chi2 Baseline": 15916.43629942701,
+          "CFI": 0.9237184692429314,
+          "GFI": 0.9120714546155559,
+          "AGFI": 0.8999433793901154,
+          "NFI": 0.9120714546155559,
+          "TLI": 0.9131968787936806,
+          "RMSEA": 0.07040752129168454,
+          "AIC": 97.64788387981045,
+          "BIC": 351.73331318508923,
+          "LogLik": 1.1760580600947739
+        },
+        "hand": {
+          "DoF": 203.0,
+          "chi2": 1399.5090915127905,
+          "chi2 Baseline": 15916.435471689301,
+          "DoF Baseline": 231.0,
+          "chi2 p-value": 1.2974609125170786e-177,
+          "CFI": 0.9237184652174705,
+          "TLI": 0.9131968742129836,
+          "NFI": 0.9120714500428121,
+          "RMSEA": 0.07040752129168483
+        },
+        "diff_vs_hand": {
+          "DoF": 0.0,
+          "chi2": 9.549694368615746e-12,
+          "chi2 Baseline": 0.000827737709187204,
+          "DoF Baseline": 0.0,
+          "chi2 p-value": 1.2974609125170786e-177,
+          "CFI": 4.02546096456291e-09,
+          "TLI": 4.5806970438988515e-09,
+          "NFI": 4.572743850239647e-09,
+          "RMSEA": 2.914335439641036e-16
+        },
+        "RMSEA_if_divisor_N": 0.07037793208201847,
+        "GFI_equals_NFI": 0.0,
+        "GFI_textbook_hand": 0.9046623647092522,
+        "LogLik_equals_fun_FML": 0.0,
+        "AIC_equals_2k_minus_2fun": 0.0,
+        "BIC_equals_lnN_k_minus_2fun": 0.0,
+        "true_loglik_hand": -33910.050290039726,
+        "AIC_textbook_hand": 67920.10058007945,
+        "has_SRMR": false,
+        "has_RMSEA_CI": false,
+        "srmr_hand": 0.08736272784527144,
+        "chi2_sb_function_exists": true
+      },
+      "seconds_wall": 0.26108045800356194,
+      "n": 1190
+    },
+    "missing.Model.MLW": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 0.9311103156300984,
+        "n_it": 62,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "MLW",
+        "n_params": 54,
+        "seconds": 0.06671075004851446,
+        "n_missing_cells": 30,
+        "n_samples": 1190,
+        "maxAbsDiff_loadings_vs_complete_MLW": 0.0070097840298837255
+      },
+      "seconds_wall": 0.16069504100596532,
+      "n": 1190
+    },
+    "missing.Model.FIML": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 25254.030462485556,
+        "n_it": 565,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "FIML",
+        "n_params": 54,
+        "seconds": 52.133018082997296,
+        "n_missing_cells": 30,
+        "n_samples": 1190,
+        "maxAbsDiff_loadings_vs_complete_MLW": 0.5031777628071875
+      },
+      "seconds_wall": 52.2858916670084,
+      "n": 1190
+    },
+    "missing.ModelMeans.ML": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 19412.535408520806,
+        "n_it": 490,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "FIML",
+        "n_params": 76,
+        "seconds": 30.197443708020728,
+        "n_missing_cells": 30,
+        "n_samples": 1190,
+        "maxAbsDiff_loadings_vs_complete_MLW": 0.0052435870950207075
+      },
+      "seconds_wall": 30.323311166954227,
+      "n": 1190
+    },
+    "missing.ModelMeans.FIML": {
+      "ok": false,
+      "error": "NotImplementedError: Unknown method FIML.",
+      "where": "semopy/model_means.py:427",
+      "seconds_wall": 0.0019076670287176967,
+      "n": 1190
+    },
+    "missing.Model.MLW.sample_cov": {
+      "ok": true,
+      "value": {
+        "sample_cov_vs_hand_pairwise": 3.774758283725532e-14,
+        "n_samples": 1190
+      },
+      "seconds_wall": 0.04416554101044312,
+      "n": 1190
+    },
+    "ordinal.cfa2_6items.DWLS": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 0.00531438500181648,
+        "n_it": 26,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "DWLS",
+        "n_params": 13,
+        "seconds_total": 0.1679574580048211,
+        "seconds_polychoric_load": 0.09720570803619921,
+        "input_matrix_is_correlation": true,
+        "mean_input_minus_pearson_offdiag": 0.0649765718918002,
+        "se_available": true
+      },
+      "warnings": [
+        "DeprecationWarning @ semopy/polycorr.py:42: `scipy.stats.mvn.mvnun` is deprecated along with the `scipy.stats.mvn` namespace. `scipy.stats.mvn.mvnun` will be removed in SciPy 1.14.0, and the `scipy.stats.",
+        "DeprecationWarning @ semopy/utils.py:125: bias and ddof have no effect and are deprecated"
+      ],
+      "seconds_wall": 0.19508037500781938,
+      "n": 1190
+    },
+    "ordinal.cfa2_6items.MLW": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 0.06188756494000369,
+        "n_it": 24,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "MLW",
+        "n_params": 13,
+        "seconds_total": 0.16693229199154302,
+        "seconds_polychoric_load": 0.09364974999334663,
+        "input_matrix_is_correlation": true,
+        "mean_input_minus_pearson_offdiag": 0.06497657189176687,
+        "se_available": true
+      },
+      "warnings": [
+        "DeprecationWarning @ semopy/polycorr.py:42: `scipy.stats.mvn.mvnun` is deprecated along with the `scipy.stats.mvn` namespace. `scipy.stats.mvn.mvnun` will be removed in SciPy 1.14.0, and the `scipy.stats.",
+        "DeprecationWarning @ semopy/utils.py:125: bias and ddof have no effect and are deprecated"
+      ],
+      "seconds_wall": 0.19582466699648649,
+      "n": 1190
+    },
+    "ordinal.tam_cfa_22items.DWLS": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 0.0683818764406808,
+        "n_it": 42,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "DWLS",
+        "n_params": 54,
+        "seconds_total": 2.7832900829962455,
+        "seconds_polychoric_load": 1.3781167910201475,
+        "input_matrix_is_correlation": true,
+        "mean_input_minus_pearson_offdiag": 0.06856672242568843,
+        "se_available": true
+      },
+      "warnings": [
+        "DeprecationWarning @ semopy/polycorr.py:42: `scipy.stats.mvn.mvnun` is deprecated along with the `scipy.stats.mvn` namespace. `scipy.stats.mvn.mvnun` will be removed in SciPy 1.14.0, and the `scipy.stats.",
+        "DeprecationWarning @ semopy/utils.py:125: bias and ddof have no effect and are deprecated",
+        "RuntimeWarning @ semopy/polycorr.py:217: divide by zero encountered in log",
+        "RuntimeWarning @ semopy/polycorr.py:217: invalid value encountered in scalar multiply"
+      ],
+      "seconds_wall": 3.0569205419742502,
+      "n": 1190
+    },
+    "ordinal.tam_cfa_22items.MLW": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 1.5379980959758157,
+        "n_it": 71,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "MLW",
+        "n_params": 54,
+        "seconds_total": 2.66000587499002,
+        "seconds_polychoric_load": 1.2418440409819596,
+        "input_matrix_is_correlation": true,
+        "mean_input_minus_pearson_offdiag": 0.06856672242772188,
+        "se_available": true
+      },
+      "warnings": [
+        "DeprecationWarning @ semopy/polycorr.py:42: `scipy.stats.mvn.mvnun` is deprecated along with the `scipy.stats.mvn` namespace. `scipy.stats.mvn.mvnun` will be removed in SciPy 1.14.0, and the `scipy.stats.",
+        "DeprecationWarning @ semopy/utils.py:125: bias and ddof have no effect and are deprecated",
+        "RuntimeWarning @ semopy/polycorr.py:217: divide by zero encountered in log",
+        "RuntimeWarning @ semopy/polycorr.py:217: invalid value encountered in scalar multiply"
+      ],
+      "seconds_wall": 2.890691542008426,
+      "n": 1190
+    },
+    "bias_correction.seed": {
+      "ok": true,
+      "value": {
+        "seconds_per_call_n5": 0.2729208329983521,
+        "same_np_seed_maxAbsDiff": 0.0,
+        "different_seed_maxAbsDiff": 0.07330065599478619,
+        "changes_params_vs_mle": 0.04603691548244082,
+        "returns": "None (modifies model.param_vals in place)"
+      },
+      "seconds_wall": 0.7323560829972848,
+      "n": 1190
+    },
+    "predict_factors": {
+      "ok": true,
+      "value": {
+        "columns": [
+          "ATU",
+          "BI",
+          "PEOU",
+          "PU",
+          "USE"
+        ],
+        "shape": [
+          1190,
+          5
+        ],
+        "maxAbsDiff_vs_regression_scores": 6.217248937900877e-15,
+        "maxAbsDiff_vs_bartlett_scores": 1.2564196784696557,
+        "corr_with_regression_scores_min": 0.9999999999999998
+      },
+      "seconds_wall": 0.060195666970685124,
+      "n": 1190
+    },
+    "semplot": {
+      "ok": true,
+      "value": {
+        "graphviz_python_package_importable": false,
+        "semplot_call": "ModuleNotFoundError: No graphviz module is installed."
+      },
+      "seconds_wall": 0.7885140409925953,
+      "n": 1190
+    },
+    "absence_search": {
+      "ok": true,
+      "value": {
+        "modification indices": {
+          "pattern": "modification|mod_?ind|score.?test|lagrange",
+          "hits": [],
+          "n_hits": 0
+        },
+        "SRMR": {
+          "pattern": "srmr",
+          "hits": [],
+          "n_hits": 0
+        },
+        "RMSEA CI": {
+          "pattern": "rmsea.*(ci|interval|lower|upper)",
+          "hits": [],
+          "n_hits": 0
+        },
+        "parameter CIs": {
+          "pattern": "conf(idence)?_?int|\\bci\\b",
+          "hits": [],
+          "n_hits": 0
+        },
+        "nonparametric bootstrap": {
+          "pattern": "bootstrap",
+          "hits": [
+            "report/report.py:12: __css = os.path.join(os.path.join(__folder, 'css'), 'bootstrap.min.css')",
+            "report/report.py:13: __js = os.path.join(os.path.join(__folder, 'js'), 'bootstrap.min.js')",
+            "unbias.py:12: Parametric Bootstrap bias correction.",
+            "unbias.py:22: Number of bootstrap iterations. The default is 100.",
+            "unbias.py:29: Bootstrap iteration is skipped if optimizer failed or if the resulting"
+          ],
+          "n_hits": 5
+        },
+        "Heywood / admissibility check": {
+          "pattern": "heywood|improper|negative variance|admissib",
+          "hits": [],
+          "n_hits": 0
+        },
+        "random seed argument": {
+          "pattern": "random_state|default_rng|RandomState|\\bseed\\b",
+          "hits": [
+            "model_generation/parameters.py:22: random.seed(123)"
+          ],
+          "n_hits": 1
+        }
+      },
+      "seconds_wall": 0.07629704102873802,
+      "n": 1190
+    },
+    "nonconvergence.maxiter3": {
+      "ok": true,
+      "value": {
+        "success": false,
+        "fun": 4.674365378158463,
+        "n_it": 3,
+        "message": "Iteration limit reached",
+        "name_method": "SLSQP",
+        "name_obj": "MLW",
+        "n_params": 50,
+        "raised": false
+      },
+      "seconds_wall": 0.00786666601197794,
+      "n": 1190
+    },
+    "heywood": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 0.0030162493683221214,
+        "n_it": 49,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "MLW",
+        "n_params": 13,
+        "variances": {
+          "F": 1.316089416490886,
+          "G": 1.454812609012066,
+          "BI1": 0.0003900634258040216,
+          "BI1c": 0.0020822162723127735,
+          "BI2": 1.5738191972772695,
+          "USE1": 0.5023799122465546,
+          "USE2": 0.5163318650564823,
+          "USE3": 1.401312500282604
+        },
+        "min_variance": 0.0003900634258040216,
+        "se_of_boundary_estimates": {}
+      },
+      "seconds_wall": 0.02680799999507144,
+      "n": 1190
+    },
+    "heywood.just_identified_cov": {
+      "ok": true,
+      "value": {
+        "success": true,
+        "fun": 1.7204402796356986,
+        "n_it": 25,
+        "message": "Optimization terminated successfully",
+        "name_method": "SLSQP",
+        "name_obj": "MLW",
+        "n_params": 6,
+        "unconstrained_theta_x1_hand": -0.6200000000000001,
+        "variances": {
+          "F": 0.9991951775491296,
+          "x1": 3.290922376795559e-11,
+          "x2": 0.25912820377373386,
+          "x3": 0.2593360047941358
+        },
+        "se_cells": {
+          "F": "0.06510343575218812",
+          "x1": "0.01564906818716275",
+          "x2": "0.02007466901271057",
+          "x3": "0.02008539553904079"
+        },
+        "fit_not_exact_max_abs_residual": 0.24022814632116773
+      },
+      "seconds_wall": 0.00908579200040549,
+      "n": 1190
+    },
+    "bad_input": {
+      "ok": true,
+      "value": {
+        "string_column": {
+          "error": "TypeError: ufunc 'isnan' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''"
+        },
+        "missing_column": {
+          "error": "KeyError: 'Variables USEF1 are missing from data.'"
+        }
+      },
+      "seconds_wall": 0.0028059579781256616,
+      "n": 1190
+    },
+    "parity.sem": {
+      "ok": true,
+      "value": {
+        "written": "parity_semopy_sem-mlw.json"
+      },
+      "seconds_wall": 0.17754600004991516,
+      "n": 1190
+    },
+    "parity.cfa": {
+      "ok": true,
+      "value": {
+        "written": "parity_semopy_cfa-mlw.json"
+      },
+      "seconds_wall": 0.24229933397145942,
+      "n": 1190
+    }
+  },
+  "failed": [
+    "objective.cfa.ML",
+    "objective.cfa.REML",
+    "objective.sem.ML",
+    "objective.sem.REML",
+    "fiml_identity.ModelMeans.raw",
+    "missing.ModelMeans.FIML"
+  ]
+}

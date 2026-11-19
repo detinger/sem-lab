@@ -1,0 +1,89 @@
+{
+  "dataset": "acsi-2015",
+  "source": {
+    "file": "ACSI (modified) - PLS-SEM.splsm.settings",
+    "jsonPath": "plsAlgorithmSettings.initialWeights",
+    "note": "Plain-JSON side file. It lists indicator -> construct assignments (every stored weight is 1.0). The encrypted project file was not opened."
+  },
+  "notAvailableInPlainForm": [
+    "structural paths between constructs",
+    "measurement mode (reflective / formative, Mode A / Mode B)",
+    "construct positions and any other diagram information"
+  ],
+  "naming": "'name' is the construct name exactly as stored. 'code' is SEM Studio's suggested short identifier and 'label' SEM Studio's reading of the abbreviation; neither is taken from the project file unless listed under alternateNames.",
+  "constructs": [
+    {
+      "name": "CUSA",
+      "code": "CUSA",
+      "label": "Customer Satisfaction (ACSI)",
+      "indicators": [
+        "CONFIRM",
+        "IDEAL",
+        "SATIS"
+      ]
+    },
+    {
+      "name": "PERQ",
+      "code": "PERQ",
+      "label": "Perceived Quality",
+      "indicators": [
+        "CUSTOMQ",
+        "OVERALLQ",
+        "WRONGQ"
+      ]
+    },
+    {
+      "name": "CUEX",
+      "code": "CUEX",
+      "label": "Customer Expectations",
+      "indicators": [
+        "CUSTOMX",
+        "OVERALLX",
+        "WRONGX"
+      ]
+    },
+    {
+      "name": "PERV",
+      "code": "PERV",
+      "label": "Perceived Value",
+      "indicators": [
+        "PQ",
+        "QP"
+      ]
+    },
+    {
+      "name": "CUSL",
+      "code": "CUSL",
+      "label": "Customer Loyalty",
+      "indicators": [
+        "REPUR"
+      ]
+    }
+  ],
+  "unassignedColumns": [
+    "INDUSTRY",
+    "YEAR",
+    "COMP",
+    "HANDLE",
+    "HIGHPTOL",
+    "LOWPTOL",
+    "AGE",
+    "EDUCAT",
+    "HISPANIC",
+    "RACE_1",
+    "RACE_2",
+    "RACE_3",
+    "RACE_4",
+    "RACE_5",
+    "INCOME",
+    "GENDER",
+    "ZIPCODE"
+  ],
+  "crossChecks": [
+    {
+      "file": "ACSI (modified) - GSCA.splsge.settings",
+      "jsonPath": "gscaBasicAlgorithmSettings.initialWeights",
+      "sameIndicatorBlocks": true
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+.ui-callout {
+  display: flex;
+  gap: var(--space-5);
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+}
+
+.ui-callout__icon {
+  flex: none;
+  margin-top: 1px;
+}
+
+.ui-callout__body {
+  min-width: 0;
+}
+
+.ui-callout__title {
+  margin: 0;
+  font-weight: 650;
+  color: var(--text);
+}
+
+.ui-callout__text {
+  color: var(--text-muted);
+}
+
+.ui-callout__title + .ui-callout__text {
+  margin-top: var(--space-1);
+}
+
+/* Informational callouts use the blue recommendation palette (STYLE.md section 2). */
+.ui-callout--info,
+.ui-callout--recommendation {
+  background: var(--recommendation-soft);
+  border-color: color-mix(in srgb, var(--recommendation) 30%, transparent);
+}
+
+.ui-callout--info .ui-callout__icon,
+.ui-callout--recommendation .ui-callout__icon {
+  color: var(--recommendation);
+}
+
+.ui-callout--warning {
+  background: var(--warning-soft);
+  border-color: color-mix(in srgb, var(--warning) 35%, transparent);
+}
+
+.ui-callout--warning .ui-callout__icon {
+  color: var(--warning);
+}
+
+.ui-callout--error {
+  background: var(--error-soft);
+  border-color: color-mix(in srgb, var(--error) 35%, transparent);
+}
+
+.ui-callout--error .ui-callout__icon {
+  color: var(--error);
+}
+
+.ui-callout--success {
+  background: var(--success-soft);
+  border-color: color-mix(in srgb, var(--success) 35%, transparent);
+}
+
+.ui-callout--success .ui-callout__icon {
+  color: var(--success);
+}
