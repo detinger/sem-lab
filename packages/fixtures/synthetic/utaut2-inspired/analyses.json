@@ -1,0 +1,40 @@
+[
+  {
+    "analysis": {
+      "bootstrap": {
+        "ci": "percentile",
+        "confidenceLevel": 0.95,
+        "enabled": true,
+        "repetitions": 5000,
+        "sides": "two-sided"
+      },
+      "engine": "browser",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      },
+      "seed": 20261404
+    },
+    "description": "Classic PLS-SEM (Mode A, path weighting) in SEM Studio's engine with 5000 percentile bootstrap draws (seeded): hypothesis tests of all nine paths, indirect effects on USE.",
+    "id": "pls-browser-boot"
+  },
+  {
+    "analysis": {
+      "engine": "browser",
+      "estimator": "pls-pm",
+      "method": "plsc",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "PLSc (consistent PLS) point estimates for comparison.",
+    "id": "plsc-browser"
+  }
+]

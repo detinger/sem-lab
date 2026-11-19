@@ -6,7 +6,8 @@ plus IPMA (classic, path scheme) when every indicator has scale endpoints and th
 construct with predecessors. Output: packages/fixtures/reference-results/pls/<case>__<method>__<scheme>[__ipma-<target>].json
 holding {request, result} with the engine's 17-digit numbers.
 
-Run:  python3 packages/fixtures/scripts/make_pls_references.py   (needs services/r-engine/bin/run-job)
+Run:  python3 packages/fixtures/scripts/make_pls_references.py [case ...]   (needs services/r-engine/bin/run-job)
+      With case names, only those cases are (re)generated; without, every case in CASES.
 """
 
 import json
@@ -21,7 +22,8 @@ SYN = ROOT / "packages" / "fixtures" / "synthetic"
 OUT = ROOT / "packages" / "fixtures" / "reference-results" / "pls"
 RUN_JOB = ROOT / "services" / "r-engine" / "bin" / "run-job"
 CASES = ["pls-two-construct", "pls-mixed-composite", "pls-mixed-composite-exact", "tam-mediation",
-         "tam-mediation-exact", "poor-discriminant", "ipma-range-restricted", "delone-mclean", "service-quality"]
+         "tam-mediation-exact", "poor-discriminant", "ipma-range-restricted", "delone-mclean", "service-quality",
+         "acsi-inspired", "utaut2-inspired"]
 
 
 def run(model, analysis, data_csv: Path):
@@ -36,10 +38,15 @@ def run(model, analysis, data_csv: Path):
     return req, res
 
 
-def main() -> int:
+def main(argv=None) -> int:
+    selected = list(sys.argv[1:] if argv is None else argv) or CASES
+    unknown = [c for c in selected if c not in CASES]
+    if unknown:
+        print("unknown case(s): " + ", ".join(unknown), file=sys.stderr)
+        return 2
     OUT.mkdir(parents=True, exist_ok=True)
     n = 0
-    for case in CASES:
+    for case in selected:
         model = json.loads((SYN / case / "model.json").read_text())
         data = SYN / case / "data.csv"
         # PLS ignores covariances between constructs; the engine accepts exogenous ones only.

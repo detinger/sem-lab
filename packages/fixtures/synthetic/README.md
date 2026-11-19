@@ -28,6 +28,8 @@ uv run --python 3.12 --with numpy python packages/fixtures/scripts/generate_synt
 | `cb-singular` | degenerate | 300 | CB Heywood / singular covariance: actionable diagnostic, no fake fit numbers |
 | `delone-mclean` | sampled | 400 | Reference/teaching project (SYNTHETIC; inspired by the DeLone & McLean (2003) updated IS success model; does not reproduce any published dataset): PLS-SEM with bootstrap, total/specific indirect effects and IPMA |
 | `service-quality` | sampled | 450 | Reference/teaching project for CB-SEM (SYNTHETIC; inspired by the service quality -> satisfaction -> loyalty chain, e.g. Cronin & Taylor 1992; Zeithaml, Berry & Parasuraman 1996; does not reproduce any published dataset): ML/MLR SEM, mediation, PLS vs CB estimands |
+| `acsi-inspired` | sampled | 500 | Reference/teaching project (SYNTHETIC; inspired by the ACSI model structure of Fornell et al. 1996; NOT ACSI data): PLS-SEM on 10-point items with bootstrap, mediation and IPMA of loyalty/satisfaction |
+| `utaut2-inspired` | sampled | 450 | Reference/teaching project (SYNTHETIC; inspired by UTAUT2, Venkatesh, Thong & Xu 2012; does not reproduce any published dataset): eight-construct PLS-SEM, hypothesis tests incl. a near-zero path, indirect effects |
 | `broken-mapping` | model-only | — | Broken CSV mapping: cannot run; precisely names missing columns |
 
 ## Kinds
@@ -67,7 +69,8 @@ uv run --python 3.12 --with numpy python packages/fixtures/scripts/generate_synt
 - Raw metric: Σ_raw = DΣ_stdD with D = diag(SD); means added afterwards.
 - Likert: category = lowest category + number of thresholds exceeded. 7-point symmetric
   thresholds (−1.8, −1.1, −0.4, 0.4, 1.1, 1.8); high-agreement profile shifts them by −0.6;
-  5-point thresholds (−1.5, −0.5, 0.5, 1.5). The profile of every item is in population.json.
+  5-point thresholds (−1.5, −0.5, 0.5, 1.5); 10-point thresholds −2.0 to 2.0 in steps of 0.5
+  (shifted per construct in `acsi-inspired`). The profile of every item is in population.json.
 
 ## Determinism
 

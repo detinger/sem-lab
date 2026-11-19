@@ -1,0 +1,61 @@
+[
+  {
+    "analysis": {
+      "bootstrap": {
+        "ci": "percentile",
+        "confidenceLevel": 0.95,
+        "enabled": true,
+        "repetitions": 5000,
+        "sides": "two-sided"
+      },
+      "engine": "browser",
+      "estimator": "pls-pm",
+      "ipma": {
+        "targetConstructId": "c_loy"
+      },
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      },
+      "seed": 20261403
+    },
+    "description": "Classic PLS-SEM (Mode A, path weighting) in SEM Studio's engine with 5000 percentile bootstrap draws (seeded) and IPMA with target LOY (importance = unstandardised total effect on 0-100 rescaled scores; performance from the endpoints 1 and 10).",
+    "id": "pls-browser-boot-ipma"
+  },
+  {
+    "analysis": {
+      "engine": "browser",
+      "estimator": "pls-pm",
+      "ipma": {
+        "targetConstructId": "c_sat"
+      },
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "Classic PLS-SEM point estimates with IPMA on SAT instead of LOY.",
+    "id": "pls-browser-ipma-sat"
+  },
+  {
+    "analysis": {
+      "engine": "browser",
+      "estimator": "pls-pm",
+      "method": "plsc",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "PLSc (consistent PLS) point estimates: the common-factor estimand, for comparison with classic PLS.",
+    "id": "plsc-browser"
+  }
+]

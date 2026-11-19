@@ -110,9 +110,9 @@ supported versions.
 | Check | Tolerance | Measured max \|Δ\| |
 |---|---|---|
 | R RNG: `runif`, `sample.int` (n up to 10⁶, incl. 65536/65537), bootstrap indices (`r-mersenne-twister.json`) | bit-exact | 0 |
-| 61 R/cSEM PLS reference runs: classic PLS / PLSc estimates | 1e-10 abs | 1.0e-15 / 4.3e-15 |
+| 75 R/cSEM PLS reference runs: classic PLS / PLSc estimates | 1e-10 abs | 1.0e-15 / 4.3e-15 |
 | … Mode B weights · effects · construct metrics | 1e-10 abs | 2.8e-16 · 4.3e-15 · 2.8e-15 |
-| … matrices (HTMT, FL, cross-loadings, f², VIF) · fit (SRMR, d_ULS, d_G) · IPMA | 1e-10 abs | 3.9e-13 · 1.0e-15 · 7.1e-14 |
+| … matrices (HTMT, FL, cross-loadings, f², VIF) · fit (SRMR, d_ULS, d_G) · IPMA | 1e-10 abs | 3.9e-13 · 2.1e-15 · 1.4e-13 |
 | … keys, ids, statuses, missing reasons, warnings, iterations, admissibility | identical | identical |
 | 7 R bootstrap references: every draw's index sum, status, failure reason / verify checks | identical | identical |
 | … every draw's estimates (valid / inadmissible) | 1e-10 abs | 8.3e-13 / 1.1e-12 |

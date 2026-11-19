@@ -184,7 +184,7 @@
   "analysis": {
     "bootstrap": {
       "enabled": true,
-      "repetitions": 1000,
+      "repetitions": 5000,
       "ci": "percentile",
       "confidenceLevel": 0.95,
       "sides": "two-sided"

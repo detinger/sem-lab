@@ -82,6 +82,13 @@ export const BUNDLED_DATASETS: readonly BundledDatasetInfo[] = [
   synthetic('cb-singular', 'Singular covariance (s7 = s1 + s2)', 300, 7),
   synthetic('delone-mclean', 'IS success model inspired by DeLone & McLean (SYNTHETIC)', 400, 23),
   synthetic('service-quality', 'Service quality -> satisfaction -> loyalty (SYNTHETIC)', 450, 13),
+  synthetic(
+    'acsi-inspired',
+    'Customer satisfaction model inspired by the ACSI (SYNTHETIC)',
+    500,
+    14,
+  ),
+  synthetic('utaut2-inspired', 'Technology adoption model inspired by UTAUT2 (SYNTHETIC)', 450, 27),
   {
     id: 'acsi-2015',
     title: 'American Customer Satisfaction Index (ACSI) 2015 sample data',

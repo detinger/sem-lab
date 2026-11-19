@@ -13,8 +13,8 @@ FILES = sorted(f for f in os.listdir(DIR) if f.endswith(".json"))
 TOL = 1e-10
 
 
-def test_has_the_61_reference_runs():
-    assert len(FILES) == 61
+def test_has_the_75_reference_runs():
+    assert len(FILES) == 75
 
 
 @pytest.mark.parametrize("file", FILES)

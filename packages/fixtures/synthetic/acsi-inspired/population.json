@@ -1,0 +1,1277 @@
+{
+  "caseId": "acsi-inspired",
+  "constructs": [
+    {
+      "indicators": [
+        "ce1",
+        "ce2",
+        "ce3"
+      ],
+      "label": "Customer expectations (synthetic)",
+      "measurement": "reflective",
+      "name": "CE",
+      "standardizedLoadings": {
+        "ce1": 0.78,
+        "ce2": 0.74,
+        "ce3": 0.7
+      }
+    },
+    {
+      "indicators": [
+        "pq1",
+        "pq2",
+        "pq3"
+      ],
+      "label": "Perceived quality (synthetic)",
+      "measurement": "reflective",
+      "name": "PQ",
+      "standardizedLoadings": {
+        "pq1": 0.86,
+        "pq2": 0.83,
+        "pq3": 0.8
+      }
+    },
+    {
+      "indicators": [
+        "pv1",
+        "pv2"
+      ],
+      "label": "Perceived value (synthetic)",
+      "measurement": "reflective",
+      "name": "PV",
+      "standardizedLoadings": {
+        "pv1": 0.88,
+        "pv2": 0.84
+      }
+    },
+    {
+      "indicators": [
+        "sat1",
+        "sat2",
+        "sat3"
+      ],
+      "label": "Customer satisfaction (synthetic)",
+      "measurement": "reflective",
+      "name": "SAT",
+      "standardizedLoadings": {
+        "sat1": 0.9,
+        "sat2": 0.87,
+        "sat3": 0.84
+      }
+    },
+    {
+      "indicators": [
+        "loy1",
+        "loy2",
+        "loy3"
+      ],
+      "label": "Customer loyalty (synthetic)",
+      "measurement": "reflective",
+      "name": "LOY",
+      "standardizedLoadings": {
+        "loy1": 0.86,
+        "loy2": 0.81,
+        "loy3": 0.72
+      }
+    }
+  ],
+  "conventions": {
+    "composite": "a composite block's indicators covary with everything outside the block only through the composite: cov(x_block, y) = (R w) cov(C, y)",
+    "sigma": "Sigma_std = L Phi L' + blockdiag(diag(1-lambda^2) for reflective, R-(Rw)(Rw)' for composite); Sigma_raw = D Sigma_std D, D = diag(sd)"
+  },
+  "derivedTruths": {
+    "classicPlsPopulationLimit": {
+      "compositeCorrelations": {
+        "matrix": [
+          [
+            1.0,
+            0.37229284936933926,
+            0.32524876619461374,
+            0.37244865192810245,
+            0.2341137045239006
+          ],
+          [
+            0.37229284936933926,
+            1.0,
+            0.5315478969192537,
+            0.6309364538201815,
+            0.3965939190767423
+          ],
+          [
+            0.32524876619461374,
+            0.5315478969192537,
+            1.0,
+            0.5858394433338036,
+            0.36824684859262835
+          ],
+          [
+            0.37244865192810245,
+            0.6309364538201815,
+            0.5858394433338036,
+            1.0,
+            0.5685133657202105
+          ],
+          [
+            0.2341137045239006,
+            0.3965939190767423,
+            0.36824684859262835,
+            0.5685133657202105,
+            1.0
+          ]
+        ],
+        "order": [
+          "CE",
+          "PQ",
+          "PV",
+          "SAT",
+          "LOY"
+        ]
+      },
+      "description": "Population limit of classic PLS-SEM (Mode A for reflective, Mode B for composite blocks, no consistency correction) on standardised data; independent of the inner weighting scheme.",
+      "paths": [
+        {
+          "coefficient": 0.37229284936933926,
+          "commonFactorValue": 0.45,
+          "source": "CE",
+          "target": "PQ"
+        },
+        {
+          "coefficient": 0.14784951903971896,
+          "commonFactorValue": 0.15,
+          "source": "CE",
+          "target": "PV"
+        },
+        {
+          "coefficient": 0.47650457819807035,
+          "commonFactorValue": 0.55,
+          "source": "PQ",
+          "target": "PV"
+        },
+        {
+          "coefficient": 0.1109868007464485,
+          "commonFactorValue": 0.1,
+          "source": "CE",
+          "target": "SAT"
+        },
+        {
+          "coefficient": 0.41452406580810763,
+          "commonFactorValue": 0.45,
+          "source": "PQ",
+          "target": "SAT"
+        },
+        {
+          "coefficient": 0.3294017279244158,
+          "commonFactorValue": 0.35,
+          "source": "PV",
+          "target": "SAT"
+        },
+        {
+          "coefficient": 0.5685133657202105,
+          "commonFactorValue": 0.65,
+          "source": "SAT",
+          "target": "LOY"
+        }
+      ]
+    },
+    "constructs": {
+      "CE": {
+        "AVE": 0.5486666666666666,
+        "definitions": {
+          "AVE": "mean of squared standardised loadings",
+          "rhoA": "population rho_A = reliability of the Mode A composite, whose population weights are proportional to lambda: (l'l)^2 / ((l'l)^2 + l'Theta l)",
+          "rhoC": "(sum lambda)^2 / ((sum lambda)^2 + sum(1 - lambda^2))"
+        },
+        "rhoA": 0.7864031846188956,
+        "rhoC": 0.7844772698331848
+      },
+      "LOY": {
+        "AVE": 0.6380333333333333,
+        "definitions": {
+          "AVE": "mean of squared standardised loadings",
+          "rhoA": "population rho_A = reliability of the Mode A composite, whose population weights are proportional to lambda: (l'l)^2 / ((l'l)^2 + l'Theta l)",
+          "rhoC": "(sum lambda)^2 / ((sum lambda)^2 + sum(1 - lambda^2))"
+        },
+        "rhoA": 0.8458130791502966,
+        "rhoC": 0.8402618417181524
+      },
+      "PQ": {
+        "AVE": 0.6895000000000001,
+        "definitions": {
+          "AVE": "mean of squared standardised loadings",
+          "rhoA": "population rho_A = reliability of the Mode A composite, whose population weights are proportional to lambda: (l'l)^2 / ((l'l)^2 + l'Theta l)",
+          "rhoC": "(sum lambda)^2 / ((sum lambda)^2 + sum(1 - lambda^2))"
+        },
+        "rhoA": 0.8703603507084808,
+        "rhoC": 0.8693841494194852
+      },
+      "PV": {
+        "AVE": 0.74,
+        "definitions": {
+          "AVE": "mean of squared standardised loadings",
+          "rhoA": "population rho_A = reliability of the Mode A composite, whose population weights are proportional to lambda: (l'l)^2 / ((l'l)^2 + l'Theta l)",
+          "rhoC": "(sum lambda)^2 / ((sum lambda)^2 + sum(1 - lambda^2))"
+        },
+        "rhoA": 0.8513571466239739,
+        "rhoC": 0.8505059797608095
+      },
+      "SAT": {
+        "AVE": 0.7575,
+        "definitions": {
+          "AVE": "mean of squared standardised loadings",
+          "rhoA": "population rho_A = reliability of the Mode A composite, whose population weights are proportional to lambda: (l'l)^2 / ((l'l)^2 + l'Theta l)",
+          "rhoC": "(sum lambda)^2 / ((sum lambda)^2 + sum(1 - lambda^2))"
+        },
+        "rhoA": 0.9044410155151084,
+        "rhoC": 0.9035094699984084
+      }
+    },
+    "effects": [
+      {
+        "direct": 0.45,
+        "indirect": 0.0,
+        "source": "CE",
+        "target": "PQ",
+        "total": 0.45
+      },
+      {
+        "direct": 0.15,
+        "indirect": 0.24750000000000003,
+        "source": "CE",
+        "target": "PV",
+        "total": 0.3975
+      },
+      {
+        "direct": 0.55,
+        "indirect": 0.0,
+        "source": "PQ",
+        "target": "PV",
+        "total": 0.55
+      },
+      {
+        "direct": 0.1,
+        "indirect": 0.34162499999999996,
+        "source": "CE",
+        "target": "SAT",
+        "total": 0.441625
+      },
+      {
+        "direct": 0.45,
+        "indirect": 0.19250000000000006,
+        "source": "PQ",
+        "target": "SAT",
+        "total": 0.6425000000000001
+      },
+      {
+        "direct": 0.35,
+        "indirect": 0.0,
+        "source": "PV",
+        "target": "SAT",
+        "total": 0.35
+      },
+      {
+        "direct": 0.0,
+        "indirect": 0.28705625,
+        "source": "CE",
+        "target": "LOY",
+        "total": 0.28705625
+      },
+      {
+        "direct": 0.0,
+        "indirect": 0.4176250000000001,
+        "source": "PQ",
+        "target": "LOY",
+        "total": 0.4176250000000001
+      },
+      {
+        "direct": 0.0,
+        "indirect": 0.22749999999999998,
+        "source": "PV",
+        "target": "LOY",
+        "total": 0.22749999999999998
+      },
+      {
+        "direct": 0.65,
+        "indirect": 0.0,
+        "source": "SAT",
+        "target": "LOY",
+        "total": 0.65
+      }
+    ]
+  },
+  "exogenousCorrelations": [],
+  "impliedCorrelation": {
+    "columns": [
+      "ce1",
+      "ce2",
+      "ce3",
+      "pq1",
+      "pq2",
+      "pq3",
+      "pv1",
+      "pv2",
+      "sat1",
+      "sat2",
+      "sat3",
+      "loy1",
+      "loy2",
+      "loy3"
+    ],
+    "matrix": [
+      [
+        1.0,
+        0.5772,
+        0.5459999999999999,
+        0.30186,
+        0.29133000000000003,
+        0.28080000000000005,
+        0.27284400000000003,
+        0.260442,
+        0.31002075,
+        0.299686725,
+        0.28935269999999996,
+        0.1925573325,
+        0.18136213875000004,
+        0.16121079000000002
+      ],
+      [
+        0.5772,
+        1.0,
+        0.518,
+        0.28638,
+        0.27639,
+        0.2664,
+        0.258852,
+        0.247086,
+        0.29412225000000003,
+        0.284318175,
+        0.2745141,
+        0.1826825975,
+        0.17206151625000002,
+        0.15294357
+      ],
+      [
+        0.5459999999999999,
+        0.518,
+        1.0,
+        0.2709,
+        0.26145,
+        0.252,
+        0.24486,
+        0.23373,
+        0.27822375,
+        0.26894962499999997,
+        0.25967549999999995,
+        0.1728078625,
+        0.16276089375000002,
+        0.14467635
+      ],
+      [
+        0.30186,
+        0.28638,
+        0.2709,
+        1.0,
+        0.7138,
+        0.6880000000000001,
+        0.467324,
+        0.446082,
+        0.5504107500000001,
+        0.532063725,
+        0.5137167,
+        0.34186623250000003,
+        0.3219902887500001,
+        0.28621359
+      ],
+      [
+        0.29133000000000003,
+        0.27638999999999997,
+        0.26144999999999996,
+        0.7138,
+        1.0,
+        0.664,
+        0.45102200000000003,
+        0.430521,
+        0.5312103750000001,
+        0.5135033625000001,
+        0.49579635000000005,
+        0.32994066625,
+        0.31075806937500006,
+        0.27622939500000004
+      ],
+      [
+        0.28080000000000005,
+        0.2664,
+        0.252,
+        0.6880000000000001,
+        0.664,
+        1.0,
+        0.43472000000000005,
+        0.41496000000000005,
+        0.5120100000000001,
+        0.4949430000000001,
+        0.477876,
+        0.31801510000000005,
+        0.2995258500000001,
+        0.26624520000000007
+      ],
+      [
+        0.27284400000000003,
+        0.25885199999999997,
+        0.24486,
+        0.46732399999999996,
+        0.451022,
+        0.43472,
+        1.0,
+        0.7392,
+        0.528759,
+        0.5111337,
+        0.49350839999999996,
+        0.32841809000000005,
+        0.30932401500000006,
+        0.27495468
+      ],
+      [
+        0.260442,
+        0.24708600000000003,
+        0.23373,
+        0.44608200000000003,
+        0.43052100000000004,
+        0.41496000000000005,
+        0.7392,
+        1.0,
+        0.5047245,
+        0.48790035,
+        0.4710762,
+        0.313489995,
+        0.29526383250000005,
+        0.26245674
+      ],
+      [
+        0.31002075,
+        0.29412225,
+        0.27822375,
+        0.5504107500000001,
+        0.531210375,
+        0.5120100000000001,
+        0.5287590000000001,
+        0.5047245,
+        1.0,
+        0.783,
+        0.756,
+        0.5031000000000001,
+        0.4738500000000001,
+        0.4212
+      ],
+      [
+        0.299686725,
+        0.28431817499999995,
+        0.26894962499999997,
+        0.532063725,
+        0.5135033625000001,
+        0.4949430000000001,
+        0.5111337,
+        0.48790035000000004,
+        0.783,
+        1.0,
+        0.7308,
+        0.48633,
+        0.45805500000000005,
+        0.40715999999999997
+      ],
+      [
+        0.2893527,
+        0.2745141,
+        0.2596755,
+        0.5137167000000001,
+        0.4957963500000001,
+        0.47787600000000013,
+        0.4935084,
+        0.4710762,
+        0.756,
+        0.7308,
+        1.0,
+        0.46956000000000003,
+        0.44226000000000004,
+        0.39312
+      ],
+      [
+        0.1925573325,
+        0.1826825975,
+        0.1728078625,
+        0.34186623250000003,
+        0.32994066625,
+        0.31801510000000005,
+        0.32841809000000005,
+        0.313489995,
+        0.5031000000000001,
+        0.48633000000000004,
+        0.46956000000000003,
+        1.0,
+        0.6966,
+        0.6192
+      ],
+      [
+        0.18136213875,
+        0.17206151625000002,
+        0.16276089375,
+        0.3219902887500001,
+        0.31075806937500006,
+        0.2995258500000001,
+        0.30932401500000006,
+        0.29526383250000005,
+        0.4738500000000001,
+        0.45805500000000005,
+        0.44226000000000004,
+        0.6966,
+        1.0,
+        0.5832
+      ],
+      [
+        0.16121079,
+        0.15294357,
+        0.14467634999999998,
+        0.2862135900000001,
+        0.27622939500000004,
+        0.26624520000000007,
+        0.27495468,
+        0.26245674,
+        0.42119999999999996,
+        0.40715999999999997,
+        0.39311999999999997,
+        0.6192,
+        0.5832,
+        1.0
+      ]
+    ]
+  },
+  "impliedCovariance": {
+    "columns": [
+      "ce1",
+      "ce2",
+      "ce3",
+      "pq1",
+      "pq2",
+      "pq3",
+      "pv1",
+      "pv2",
+      "sat1",
+      "sat2",
+      "sat3",
+      "loy1",
+      "loy2",
+      "loy3"
+    ],
+    "divisor": "population (equals the N-1 sample covariance for EXACT cases)",
+    "matrix": [
+      [
+        1.0,
+        0.5772,
+        0.5459999999999999,
+        0.30186,
+        0.29133000000000003,
+        0.28080000000000005,
+        0.27284400000000003,
+        0.260442,
+        0.31002075,
+        0.299686725,
+        0.28935269999999996,
+        0.1925573325,
+        0.18136213875000004,
+        0.16121079000000002
+      ],
+      [
+        0.5772,
+        1.0,
+        0.518,
+        0.28638,
+        0.27639,
+        0.2664,
+        0.258852,
+        0.247086,
+        0.29412225000000003,
+        0.284318175,
+        0.2745141,
+        0.1826825975,
+        0.17206151625000002,
+        0.15294357
+      ],
+      [
+        0.5459999999999999,
+        0.518,
+        1.0,
+        0.2709,
+        0.26145,
+        0.252,
+        0.24486,
+        0.23373,
+        0.27822375,
+        0.26894962499999997,
+        0.25967549999999995,
+        0.1728078625,
+        0.16276089375000002,
+        0.14467635
+      ],
+      [
+        0.30186,
+        0.28638,
+        0.2709,
+        1.0,
+        0.7138,
+        0.6880000000000001,
+        0.467324,
+        0.446082,
+        0.5504107500000001,
+        0.532063725,
+        0.5137167,
+        0.34186623250000003,
+        0.3219902887500001,
+        0.28621359
+      ],
+      [
+        0.29133000000000003,
+        0.27638999999999997,
+        0.26144999999999996,
+        0.7138,
+        1.0,
+        0.664,
+        0.45102200000000003,
+        0.430521,
+        0.5312103750000001,
+        0.5135033625000001,
+        0.49579635000000005,
+        0.32994066625,
+        0.31075806937500006,
+        0.27622939500000004
+      ],
+      [
+        0.28080000000000005,
+        0.2664,
+        0.252,
+        0.6880000000000001,
+        0.664,
+        1.0,
+        0.43472000000000005,
+        0.41496000000000005,
+        0.5120100000000001,
+        0.4949430000000001,
+        0.477876,
+        0.31801510000000005,
+        0.2995258500000001,
+        0.26624520000000007
+      ],
+      [
+        0.27284400000000003,
+        0.25885199999999997,
+        0.24486,
+        0.46732399999999996,
+        0.451022,
+        0.43472,
+        1.0,
+        0.7392,
+        0.528759,
+        0.5111337,
+        0.49350839999999996,
+        0.32841809000000005,
+        0.30932401500000006,
+        0.27495468
+      ],
+      [
+        0.260442,
+        0.24708600000000003,
+        0.23373,
+        0.44608200000000003,
+        0.43052100000000004,
+        0.41496000000000005,
+        0.7392,
+        1.0,
+        0.5047245,
+        0.48790035,
+        0.4710762,
+        0.313489995,
+        0.29526383250000005,
+        0.26245674
+      ],
+      [
+        0.31002075,
+        0.29412225,
+        0.27822375,
+        0.5504107500000001,
+        0.531210375,
+        0.5120100000000001,
+        0.5287590000000001,
+        0.5047245,
+        1.0,
+        0.783,
+        0.756,
+        0.5031000000000001,
+        0.4738500000000001,
+        0.4212
+      ],
+      [
+        0.299686725,
+        0.28431817499999995,
+        0.26894962499999997,
+        0.532063725,
+        0.5135033625000001,
+        0.4949430000000001,
+        0.5111337,
+        0.48790035000000004,
+        0.783,
+        1.0,
+        0.7308,
+        0.48633,
+        0.45805500000000005,
+        0.40715999999999997
+      ],
+      [
+        0.2893527,
+        0.2745141,
+        0.2596755,
+        0.5137167000000001,
+        0.4957963500000001,
+        0.47787600000000013,
+        0.4935084,
+        0.4710762,
+        0.756,
+        0.7308,
+        1.0,
+        0.46956000000000003,
+        0.44226000000000004,
+        0.39312
+      ],
+      [
+        0.1925573325,
+        0.1826825975,
+        0.1728078625,
+        0.34186623250000003,
+        0.32994066625,
+        0.31801510000000005,
+        0.32841809000000005,
+        0.313489995,
+        0.5031000000000001,
+        0.48633000000000004,
+        0.46956000000000003,
+        1.0,
+        0.6966,
+        0.6192
+      ],
+      [
+        0.18136213875,
+        0.17206151625000002,
+        0.16276089375,
+        0.3219902887500001,
+        0.31075806937500006,
+        0.2995258500000001,
+        0.30932401500000006,
+        0.29526383250000005,
+        0.4738500000000001,
+        0.45805500000000005,
+        0.44226000000000004,
+        0.6966,
+        1.0,
+        0.5832
+      ],
+      [
+        0.16121079,
+        0.15294357,
+        0.14467634999999998,
+        0.2862135900000001,
+        0.27622939500000004,
+        0.26624520000000007,
+        0.27495468,
+        0.26245674,
+        0.42119999999999996,
+        0.40715999999999997,
+        0.39311999999999997,
+        0.6192,
+        0.5832,
+        1.0
+      ]
+    ]
+  },
+  "indicators": [
+    {
+      "column": "ce1",
+      "construct": "CE",
+      "likert": {
+        "highestCategory": 10,
+        "lowestCategory": 1,
+        "profile": "10-point-shift-0.6",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 10,
+        "scaleMin": 1,
+        "thresholds": [
+          -2.6,
+          -2.1,
+          -1.6,
+          -1.1,
+          -0.6,
+          -0.1,
+          0.4,
+          0.9,
+          1.4
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.39159999999999995,
+      "residualVarianceStandardized": 0.39159999999999995,
+      "sd": 1.0,
+      "standardizedLoading": 0.78
+    },
+    {
+      "column": "ce2",
+      "construct": "CE",
+      "likert": {
+        "highestCategory": 10,
+        "lowestCategory": 1,
+        "profile": "10-point-shift-0.6",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 10,
+        "scaleMin": 1,
+        "thresholds": [
+          -2.6,
+          -2.1,
+          -1.6,
+          -1.1,
+          -0.6,
+          -0.1,
+          0.4,
+          0.9,
+          1.4
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.4524,
+      "residualVarianceStandardized": 0.4524,
+      "sd": 1.0,
+      "standardizedLoading": 0.74
+    },
+    {
+      "column": "ce3",
+      "construct": "CE",
+      "likert": {
+        "highestCategory": 10,
+        "lowestCategory": 1,
+        "profile": "10-point-shift-0.6",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 10,
+        "scaleMin": 1,
+        "thresholds": [
+          -2.6,
+          -2.1,
+          -1.6,
+          -1.1,
+          -0.6,
+          -0.1,
+          0.4,
+          0.9,
+          1.4
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.51,
+      "residualVarianceStandardized": 0.51,
+      "sd": 1.0,
+      "standardizedLoading": 0.7
+    },
+    {
+      "column": "pq1",
+      "construct": "PQ",
+      "likert": {
+        "highestCategory": 10,
+        "lowestCategory": 1,
+        "profile": "10-point-shift-1.0",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 10,
+        "scaleMin": 1,
+        "thresholds": [
+          -3.0,
+          -2.5,
+          -2.0,
+          -1.5,
+          -1.0,
+          -0.5,
+          0.0,
+          0.5,
+          1.0
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.2604000000000001,
+      "residualVarianceStandardized": 0.2604000000000001,
+      "sd": 1.0,
+      "standardizedLoading": 0.86
+    },
+    {
+      "column": "pq2",
+      "construct": "PQ",
+      "likert": {
+        "highestCategory": 10,
+        "lowestCategory": 1,
+        "profile": "10-point-shift-1.0",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 10,
+        "scaleMin": 1,
+        "thresholds": [
+          -3.0,
+          -2.5,
+          -2.0,
+          -1.5,
+          -1.0,
+          -0.5,
+          0.0,
+          0.5,
+          1.0
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.31110000000000004,
+      "residualVarianceStandardized": 0.31110000000000004,
+      "sd": 1.0,
+      "standardizedLoading": 0.83
+    },
+    {
+      "column": "pq3",
+      "construct": "PQ",
+      "likert": {
+        "highestCategory": 10,
+        "lowestCategory": 1,
+        "profile": "10-point-shift-1.0",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 10,
+        "scaleMin": 1,
+        "thresholds": [
+          -3.0,
+          -2.5,
+          -2.0,
+          -1.5,
+          -1.0,
+          -0.5,
+          0.0,
+          0.5,
+          1.0
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.3599999999999999,
+      "residualVarianceStandardized": 0.3599999999999999,
+      "sd": 1.0,
+      "standardizedLoading": 0.8
+    },
+    {
+      "column": "pv1",
+      "construct": "PV",
+      "likert": {
+        "highestCategory": 10,
+        "lowestCategory": 1,
+        "profile": "10-point-shift-0.2",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 10,
+        "scaleMin": 1,
+        "thresholds": [
+          -2.2,
+          -1.7,
+          -1.2,
+          -0.7,
+          -0.2,
+          0.3,
+          0.8,
+          1.3,
+          1.8
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.22560000000000002,
+      "residualVarianceStandardized": 0.22560000000000002,
+      "sd": 1.0,
+      "standardizedLoading": 0.88
+    },
+    {
+      "column": "pv2",
+      "construct": "PV",
+      "likert": {
+        "highestCategory": 10,
+        "lowestCategory": 1,
+        "profile": "10-point-shift-0.2",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 10,
+        "scaleMin": 1,
+        "thresholds": [
+          -2.2,
+          -1.7,
+          -1.2,
+          -0.7,
+          -0.2,
+          0.3,
+          0.8,
+          1.3,
+          1.8
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.2944000000000001,
+      "residualVarianceStandardized": 0.2944000000000001,
+      "sd": 1.0,
+      "standardizedLoading": 0.84
+    },
+    {
+      "column": "sat1",
+      "construct": "SAT",
+      "likert": {
+        "highestCategory": 10,
+        "lowestCategory": 1,
+        "profile": "10-point-shift-0.8",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 10,
+        "scaleMin": 1,
+        "thresholds": [
+          -2.8,
+          -2.3,
+          -1.8,
+          -1.3,
+          -0.8,
+          -0.3,
+          0.2,
+          0.7,
+          1.2
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.18999999999999995,
+      "residualVarianceStandardized": 0.18999999999999995,
+      "sd": 1.0,
+      "standardizedLoading": 0.9
+    },
+    {
+      "column": "sat2",
+      "construct": "SAT",
+      "likert": {
+        "highestCategory": 10,
+        "lowestCategory": 1,
+        "profile": "10-point-shift-0.8",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 10,
+        "scaleMin": 1,
+        "thresholds": [
+          -2.8,
+          -2.3,
+          -1.8,
+          -1.3,
+          -0.8,
+          -0.3,
+          0.2,
+          0.7,
+          1.2
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.24309999999999998,
+      "residualVarianceStandardized": 0.24309999999999998,
+      "sd": 1.0,
+      "standardizedLoading": 0.87
+    },
+    {
+      "column": "sat3",
+      "construct": "SAT",
+      "likert": {
+        "highestCategory": 10,
+        "lowestCategory": 1,
+        "profile": "10-point-shift-0.8",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 10,
+        "scaleMin": 1,
+        "thresholds": [
+          -2.8,
+          -2.3,
+          -1.8,
+          -1.3,
+          -0.8,
+          -0.3,
+          0.2,
+          0.7,
+          1.2
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.2944000000000001,
+      "residualVarianceStandardized": 0.2944000000000001,
+      "sd": 1.0,
+      "standardizedLoading": 0.84
+    },
+    {
+      "column": "loy1",
+      "construct": "LOY",
+      "likert": {
+        "highestCategory": 10,
+        "lowestCategory": 1,
+        "profile": "10-point-shift-0.5",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 10,
+        "scaleMin": 1,
+        "thresholds": [
+          -2.5,
+          -2.0,
+          -1.5,
+          -1.0,
+          -0.5,
+          0.0,
+          0.5,
+          1.0,
+          1.5
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.2604000000000001,
+      "residualVarianceStandardized": 0.2604000000000001,
+      "sd": 1.0,
+      "standardizedLoading": 0.86
+    },
+    {
+      "column": "loy2",
+      "construct": "LOY",
+      "likert": {
+        "highestCategory": 10,
+        "lowestCategory": 1,
+        "profile": "10-point-shift-0.5",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 10,
+        "scaleMin": 1,
+        "thresholds": [
+          -2.5,
+          -2.0,
+          -1.5,
+          -1.0,
+          -0.5,
+          0.0,
+          0.5,
+          1.0,
+          1.5
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.3438999999999999,
+      "residualVarianceStandardized": 0.3438999999999999,
+      "sd": 1.0,
+      "standardizedLoading": 0.81
+    },
+    {
+      "column": "loy3",
+      "construct": "LOY",
+      "likert": {
+        "highestCategory": 10,
+        "lowestCategory": 1,
+        "profile": "10-point-shift-0.5",
+        "rule": "category = lowestCategory + number of thresholds strictly exceeded by the standardised continuous response",
+        "scaleMax": 10,
+        "scaleMin": 1,
+        "thresholds": [
+          -2.5,
+          -2.0,
+          -1.5,
+          -1.0,
+          -0.5,
+          0.0,
+          0.5,
+          1.0,
+          1.5
+        ]
+      },
+      "mean": 0.0,
+      "residualVarianceRaw": 0.48160000000000003,
+      "residualVarianceStandardized": 0.48160000000000003,
+      "sd": 1.0,
+      "standardizedLoading": 0.72
+    }
+  ],
+  "latentCorrelation": {
+    "formula": "Phi = (I-B)^-1 Psi (I-B)^-T, every latent variance exactly 1",
+    "matrix": [
+      [
+        1.0,
+        0.45,
+        0.3975,
+        0.441625,
+        0.28705625
+      ],
+      [
+        0.45,
+        1.0,
+        0.6175,
+        0.7111250000000001,
+        0.4622312500000001
+      ],
+      [
+        0.3975,
+        0.6175,
+        1.0,
+        0.667625,
+        0.43395625000000004
+      ],
+      [
+        0.441625,
+        0.7111250000000001,
+        0.667625,
+        1.0,
+        0.65
+      ],
+      [
+        0.28705625,
+        0.4622312500000001,
+        0.43395625000000004,
+        0.65,
+        1.0
+      ]
+    ],
+    "order": [
+      "CE",
+      "PQ",
+      "PV",
+      "SAT",
+      "LOY"
+    ]
+  },
+  "latentDisturbanceVariances": {
+    "LOY": 0.5774999999999999,
+    "PQ": 0.7975,
+    "PV": 0.6007499999999999,
+    "SAT": 0.4021625
+  },
+  "note": "SYNTHETIC teaching data generated by this repository from a stated population model. The model is inspired by the structure of the American Customer Satisfaction Index (Fornell et al. 1996); these are NOT ACSI data, they do not reproduce any ACSI or other published dataset, and they are not affiliated with or endorsed by the ACSI.",
+  "structuralCoefficients": [
+    {
+      "coefficient": 0.45,
+      "source": "CE",
+      "target": "PQ"
+    },
+    {
+      "coefficient": 0.15,
+      "source": "CE",
+      "target": "PV"
+    },
+    {
+      "coefficient": 0.55,
+      "source": "PQ",
+      "target": "PV"
+    },
+    {
+      "coefficient": 0.1,
+      "source": "CE",
+      "target": "SAT"
+    },
+    {
+      "coefficient": 0.45,
+      "source": "PQ",
+      "target": "SAT"
+    },
+    {
+      "coefficient": 0.35,
+      "source": "PV",
+      "target": "SAT"
+    },
+    {
+      "coefficient": 0.65,
+      "source": "SAT",
+      "target": "LOY"
+    }
+  ],
+  "synthetic": true
+}

@@ -120,11 +120,13 @@ export function ExamplesPage() {
       <section aria-labelledby="ex-colab" className="ex-section">
         <h2 id="ex-colab">Python notebooks (Google Colab)</h2>
         <Card>
-          <CardHeader title="Notebooks arrive in Phase 6" icon={<NotebookText size={18} />} />
+          <CardHeader title="Five notebooks, same numbers" icon={<NotebookText size={18} />} />
           <p className="ex-summary">
-            {' '}
-            The five Python notebooks that reproduce these analyses are planned for Phase 6. There
-            are no notebook links yet.
+            TAM, ACSI-inspired, IS success, UTAUT2-inspired and service quality (CB-SEM). Each
+            notebook regenerates its synthetic data and runs SEM Studio’s engine in Python, so it
+            reproduces the matching example above exactly, bootstrap intervals included. They are in
+            the repository’s <code>notebooks/colab</code> folder; Open in Colab links will be added
+            once the repository is public.
           </p>
         </Card>
       </section>

@@ -14,7 +14,7 @@ for (const theme of ['light', 'dark'] as const) {
     await setup(page, theme);
     await page.goto('/examples');
     await expect(page.getByRole('heading', { level: 1, name: 'Examples & Colab' })).toBeVisible();
-    await expect(page.getByRole('button', { name: /^Open example/ })).toHaveCount(4);
+    await expect(page.getByRole('button', { name: /^Open example/ })).toHaveCount(6);
     await expandLayout(page);
     await page.screenshot({ path: `${OUT}/gallery-${theme}.png`, fullPage: true });
 
@@ -31,7 +31,7 @@ for (const theme of ['light', 'dark'] as const) {
     await expect(page).toHaveURL(/\/modeler$/);
     await page.getByRole('link', { name: 'Analysis', exact: true }).click();
     await expect(page.getByRole('heading', { level: 1, name: 'Analysis' })).toBeVisible();
-    await expect(page.getByLabel('Bootstrap samples (B)')).toHaveValue('1000');
+    await expect(page.getByLabel('Bootstrap samples (B)')).toHaveValue('5000');
     await expect(page.getByLabel('Target construct')).not.toHaveValue('');
     await page.getByLabel('Bootstrap samples (B)').fill('100');
     await expect(page.getByRole('button', { name: 'Run analysis' })).toBeEnabled();

@@ -59,8 +59,8 @@ afterAll(() => {
 });
 
 describe('browser PLS engine reproduces the R engine reference results', () => {
-  it('has the 61 reference runs', () => {
-    expect(files.length).toBe(61);
+  it('has the 75 reference runs', () => {
+    expect(files.length).toBe(75);
   });
 
   for (const file of files) {

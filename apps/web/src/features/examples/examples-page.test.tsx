@@ -33,12 +33,12 @@ afterEach(async () => {
 const card = (title: string) => screen.getByRole('group', { name: title });
 
 describe('Examples page', () => {
-  it('renders four cards with their badges, sizes and attribution', async () => {
+  it('renders six cards with their badges, sizes and attribution', async () => {
     renderApp();
     expect(
       await screen.findByRole('heading', { level: 1, name: 'Examples & Colab' }),
     ).toBeVisible();
-    expect(screen.getAllByRole('button', { name: /^Open example/ })).toHaveLength(4);
+    expect(screen.getAllByRole('button', { name: /^Open example/ })).toHaveLength(6);
 
     const acsi = within(card(EXAMPLES.find((e) => e.id === 'acsi-2015')!.title));
     expect(acsi.getByText('PLS-SEM')).toBeVisible();
@@ -59,7 +59,11 @@ describe('Examples page', () => {
     expect(sq.queryByText('IPMA')).toBeNull();
 
     expect(screen.getByRole('heading', { name: /Python notebooks/ })).toBeVisible();
-    expect(screen.getByText(/planned for Phase 6/)).toBeVisible();
+    expect(screen.getByText(/reproduces the matching example above exactly/)).toBeVisible();
+    // no invented links: the notebooks section has none until the repository is public
+    expect(
+      within(screen.getByRole('region', { name: /Python notebooks/ })).queryAllByRole('link'),
+    ).toHaveLength(0);
   });
 
   it('opens an example on an empty project: model, dataset, analysis settings, navigation', async () => {
@@ -80,7 +84,7 @@ describe('Examples page', () => {
     const cfg = useAnalysisConfig.getState().config;
     expect(cfg).toMatchObject({
       method: 'pls-sem',
-      repetitions: '1000',
+      repetitions: String(dm.analysis.bootstrap?.repetitions),
       seed: String(dm.analysis.seed),
       ipmaTarget: dm.analysis.ipma?.targetConstructId,
       bootstrap: true,

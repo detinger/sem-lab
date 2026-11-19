@@ -43,6 +43,21 @@ jobs:
         # Also the first run on Linux: the generator was only verified on macOS arm64.
         run: uv run --python 3.12 --with numpy python packages/fixtures/scripts/generate_synthetic.py --check
 
+  notebooks:
+    name: Colab notebooks (current build; headless execution)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      # Python 3.12 with current numpy / scipy / pandas / matplotlib, close to a Colab runtime
+      # (versions pinned in notebooks/uv.lock).
+      - name: Notebooks are built from the current sources, engine bundle and fixtures
+        working-directory: notebooks
+        run: uv run --frozen --python 3.12 python build_notebooks.py --check
+      - name: Execute every notebook headless; compare with the Python engine on the fixtures
+        working-directory: notebooks
+        run: uv run --frozen --python 3.12 pytest -q -rs
+
   python-engine:
     name: Python engine (semstudio, Python ${{ matrix.python }})
     runs-on: ubuntu-latest

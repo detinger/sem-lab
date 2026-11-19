@@ -15,7 +15,8 @@ claims a feature beyond what the phase records in `docs/validation/` demonstrate
 | 2 | Data Lab (CSV import, mapping) and model validator | **Done** | `docs/validation/phase-2.md` |
 | 3 | First PLS-SEM vertical slice (R/cSEM backend, bootstrap, Word tables, R export) | **Done** | `docs/validation/phase-3.md` |
 | 4 | In-browser engine (PLS, PLSc, Mode B, bootstrap, IPMA, CB-SEM ML/MLR/FIML), R and Python export bundles, Python engine, examples | **Done** | `docs/validation/phase-4.md` |
-| 5–8 | Remaining CB features, notebooks + learning, advanced methods, hardening | Planned | — |
+| 6 | Five Colab notebooks (done: `notebooks/`); Learn levels and challenges | In progress | `notebooks/README.md` |
+| 5, 7, 8 | Remaining CB features, advanced methods, hardening | Planned | — |
 
 **Architecture:** everything runs in the browser — modeling, data, estimation and reporting.
 There is no backend; data never leave the user's machine. R and Python are provided as
@@ -24,8 +25,8 @@ exported scripts and notebooks that reproduce the app's results locally. The R e
 (`docs/architecture/overview.md` §3).
 
 What each engine can and cannot do — verified by execution, with evidence files — is in
-`packages/method-registry/registry.json`. The browser engine is being verified against the R
-reference results now; until a capability reproduces them it stays `planned`.
+`packages/method-registry/registry.json`. A capability is `supported` only once the browser
+engine reproduces the committed R reference results for it.
 
 ## Repository
 
@@ -38,6 +39,8 @@ services/python-spike/     Phase 0 verification of plspm/semopy (evidence only)
 packages/contracts/        Zod contracts (model, layout, analysis, results) → generated JSON Schema
 packages/method-registry/  capability registry with evidence
 packages/fixtures/         synthetic benchmark datasets + converted sample datasets with provenance
+notebooks/                 five Google Colab notebooks (built by notebooks/build_notebooks.py) + execution tests
+content/examples/          example projects shown on the Examples page
 docs/                      architecture, validation evidence per phase, licensing, research notes
 ```
 
@@ -75,6 +78,12 @@ Python engine:
 
 ```bash
 cd packages/python-engine && uv run pytest
+```
+
+Notebooks (regenerate from `notebooks/src`, then execute all five headless):
+
+```bash
+cd notebooks && uv run python build_notebooks.py && uv run pytest
 ```
 
 ## Deployment

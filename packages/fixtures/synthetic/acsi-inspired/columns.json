@@ -1,0 +1,142 @@
+[
+  {
+    "nMissing": 0,
+    "nUnique": 10,
+    "name": "ce1",
+    "observedMax": 10,
+    "observedMin": 1,
+    "scaleMax": 10,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 10,
+    "name": "ce2",
+    "observedMax": 10,
+    "observedMin": 1,
+    "scaleMax": 10,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 10,
+    "name": "ce3",
+    "observedMax": 10,
+    "observedMin": 1,
+    "scaleMax": 10,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 9,
+    "name": "pq1",
+    "observedMax": 10,
+    "observedMin": 2,
+    "scaleMax": 10,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 9,
+    "name": "pq2",
+    "observedMax": 10,
+    "observedMin": 2,
+    "scaleMax": 10,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 10,
+    "name": "pq3",
+    "observedMax": 10,
+    "observedMin": 1,
+    "scaleMax": 10,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 10,
+    "name": "pv1",
+    "observedMax": 10,
+    "observedMin": 1,
+    "scaleMax": 10,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 10,
+    "name": "pv2",
+    "observedMax": 10,
+    "observedMin": 1,
+    "scaleMax": 10,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 10,
+    "name": "sat1",
+    "observedMax": 10,
+    "observedMin": 1,
+    "scaleMax": 10,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 10,
+    "name": "sat2",
+    "observedMax": 10,
+    "observedMin": 1,
+    "scaleMax": 10,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 9,
+    "name": "sat3",
+    "observedMax": 10,
+    "observedMin": 2,
+    "scaleMax": 10,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 10,
+    "name": "loy1",
+    "observedMax": 10,
+    "observedMin": 1,
+    "scaleMax": 10,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 10,
+    "name": "loy2",
+    "observedMax": 10,
+    "observedMin": 1,
+    "scaleMax": 10,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 10,
+    "name": "loy3",
+    "observedMax": 10,
+    "observedMin": 1,
+    "scaleMax": 10,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  }
+]

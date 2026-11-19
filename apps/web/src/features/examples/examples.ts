@@ -33,7 +33,14 @@ export function parseExample(raw: unknown): Example {
   return ExampleFile.parse(raw);
 }
 
-const ORDER = ['acsi-2015', 'tam-mediation', 'delone-mclean', 'service-quality'];
+const ORDER = [
+  'acsi-2015',
+  'acsi-inspired',
+  'tam-mediation',
+  'delone-mclean',
+  'utaut2-inspired',
+  'service-quality',
+];
 
 export const EXAMPLES: readonly Example[] = Object.values(files)
   .map(parseExample)
