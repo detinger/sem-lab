@@ -1,7 +1,6 @@
 # SEM Studio
 
-An interactive workspace for structural equation modeling (PLS-SEM and CB-SEM): draw a
-model, map survey data, estimate it with validated engines, and report the results.
+An interactive workspace for structural equation modeling (PLS-SEM and CB-SEM): draw a model, map survey data, estimate it with validated engines, and report the results.
 
 `PLAN.md` (product) and `STYLE.md` (design) are the specifications. Nothing in this README
 claims a feature beyond what the phase records in `docs/validation/` demonstrate.
@@ -97,9 +96,9 @@ cd notebooks && uv run python build_notebooks.py && uv run pytest
 
 Models, data and results stay in the browser (IndexedDB). Nothing is sent to a server.
 Sample data: `packages/fixtures/third-party/smartpls-samples/PROVENANCE.md` — only the ACSI
-2015 dataset (CC BY 4.0) may be redistributed; the others are local test fixtures.
+2015 dataset (CC BY 4.0) may be redistributed; the others are kept on the owner's machine only (git-ignored).
 
-## Licences
+## Licence
 
-See `docs/licensing.md`. The R and Python statistics packages are GPL- or MIT-licensed and
-are run as separate processes; elkjs is used under EPL-2.0.
+MIT — see `LICENSE`. Third-party components keep their own licences (`THIRD_PARTY_NOTICES.md`);
+the ACSI 2015 sample data are CC BY 4.0. Details: `docs/licensing.md`.

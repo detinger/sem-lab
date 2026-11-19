@@ -27,6 +27,8 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm run lint
+      - name: Third-party notices are current and all licences are permitted
+        run: node scripts/third-party-notices.mjs --check
       - run: npm run format:check
       - run: npm run test
       - name: JSON Schema is up to date with the Zod contracts

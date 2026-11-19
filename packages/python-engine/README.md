@@ -171,8 +171,8 @@ while the committed bundle is stale.
 
 ## Licence and provenance
 
-SEM Studio's own code, distributed under the same terms as the SEM Studio repository. See
-`docs/licensing.md`. It is a port of `packages/engine/src` (TypeScript). The algorithms are
+MIT (the repository's `LICENSE`; the full notice is also embedded in
+`dist/semstudio_bundle.py`, which travels alone in exports and notebooks). See `docs/licensing.md`. It is a port of `packages/engine/src` (TypeScript). The algorithms are
 re-implemented from their documented definitions: R's RNG.c algorithms, cSEM's and lavaan's
 documented estimators, and Brent's zeroin as in R's `uniroot`. It contains no code from cSEM,
 lavaan, plspm or semopy, which are GPL or MIT licensed and serve only as verification oracles.

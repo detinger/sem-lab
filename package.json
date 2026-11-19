@@ -2,6 +2,7 @@
   "name": "sem-studio",
   "version": "0.0.0",
   "private": true,
+  "license": "MIT",
   "description": "SEM Studio monorepo: visual PLS-SEM / CB-SEM modeling, estimation and reporting workspace.",
   "type": "module",
   "workspaces": [

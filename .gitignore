@@ -29,14 +29,35 @@ apps/api/.data/
 .env.local
 .env.*.local
 
-# OS / editor
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+Icon[
+]
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+*.icloud
+
+# editors
 .idea/
 .vscode/*
 !.vscode/extensions.json
 
 # Source material supplied by the project owner (encrypted SmartPLS project files + raw data).
-# Cleaned copies with provenance live in packages/fixtures/third-party/.
+# Never committed. Cleaned copies with provenance live in packages/fixtures/third-party/.
+/TEMP/
 TEMP/
 
 # Raw sample data whose redistribution terms are unverified (see
@@ -47,3 +68,12 @@ packages/fixtures/third-party/smartpls-samples/utaut/data.csv
 packages/fixtures/third-party/smartpls-samples/oi/data.csv
 packages/fixtures/third-party/smartpls-samples/concise-guide/data.csv
 packages/fixtures/third-party/smartpls-samples/hbat/data.csv
+
+# Sample datasets whose redistribution terms are unverified (see
+# packages/fixtures/third-party/smartpls-samples/PROVENANCE.md): kept on the owner's machine
+# only, never published. ACSI 2015 (CC BY 4.0) is the only third-party dataset in the repository.
+packages/fixtures/third-party/smartpls-samples/tam/
+packages/fixtures/third-party/smartpls-samples/utaut/
+packages/fixtures/third-party/smartpls-samples/oi/
+packages/fixtures/third-party/smartpls-samples/concise-guide/
+packages/fixtures/third-party/smartpls-samples/hbat/

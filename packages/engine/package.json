@@ -2,6 +2,7 @@
   "name": "@sem-studio/engine",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "description": "In-browser SEM estimation (PLS-PM, PLSc, CB-SEM ML) verified against R reference results. Pure TypeScript: runs in Web Workers and Node.",
   "type": "module",
   "exports": {

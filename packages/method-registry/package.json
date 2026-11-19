@@ -2,6 +2,7 @@
   "name": "@sem-studio/method-registry",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "description": "Capability registry: which methods and options each engine supports, with evidence. Read by the web app, the API validator and the code exporter.",
   "type": "module",
   "exports": {

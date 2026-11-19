@@ -12,8 +12,8 @@ with this package; the tested tolerances are in README.md.
 Provenance: a line-by-line port of packages/engine/src (TypeScript) of the SEM Studio
 repository, verified against it and against the committed R (cSEM 0.7.1, lavaan 0.7-3)
 reference results; algorithms re-implemented from their documented definitions (no code from
-cSEM, lavaan, plspm or semopy). Licence: SEM Studio's own code, under the same terms as the
-SEM Studio repository (docs/licensing.md). Runtime dependencies: numpy, scipy (BSD-3-Clause).
+cSEM, lavaan, plspm or semopy). Licence: MIT (see the LICENSE file of the SEM Studio
+repository). Runtime dependencies: numpy, scipy (BSD-3-Clause).
 
     from semstudio import estimate, build_analysis_data, read_csv, results_tables
     columns, rows = read_csv("data.csv")
