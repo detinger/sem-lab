@@ -1,13 +1,13 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { NormalizedSemResult, SemModel, modelHash } from '@sem-studio/contracts';
+import { NormalizedSemResult, SemModel, modelHash } from '@sem-lab/contracts';
 import { useDataLab } from '@/features/data-lab/store';
 import { useModeler } from '@/features/modeler/store';
 import { buildAnalysisData } from '@/domain/dataset/analysis-data';
 import { createDataset, isDatasetError } from '@/domain/dataset/transform';
 import type { AnalysisData, Dataset } from '@/domain/dataset/types';
 import { type StoredRun, finishRun, makeRun, saveRun } from './runs';
-import type { AnalysisConfiguration } from '@sem-studio/contracts';
+import type { AnalysisConfiguration } from '@sem-lab/contracts';
 
 const ROOT = join(__dirname, '..', '..', '..', '..', '..');
 export const TAM_CSV = readFileSync(

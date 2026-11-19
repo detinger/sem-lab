@@ -22,16 +22,16 @@
         "Method and estimand: classic PLS (composites), PLSc (common factors via PLS) or CB-SEM; for CB-SEM the estimator (ML, MLR), the identification (marker or std-lv) and the missing-data method.",
         "PLS settings: weighting scheme, iteration limit, tolerance, convergence.",
         "Inference: bootstrap draws, seed, interval type (percentile), confidence level, one- or two-sided.",
-        "Software and versions: SEM Studio and its engine version, or the R/Python packages of an export."
+        "Software and versions: SEM Lab and its engine version, or the R/Python packages of an export."
       ]
     },
     {
       "kind": "p",
-      "text": "SEM Studio writes a method statement with every run that contains most of these items. Check and edit it; it does not know why you chose reflective measurement or which hypotheses were directional."
+      "text": "SEM Lab writes a method statement with every run that contains most of these items. Check and edit it; it does not know why you chose reflective measurement or which hypotheses were directional."
     }
   ],
   "mistake": {
-    "title": "\"We used SmartPLS/SEM Studio\" as the whole method section",
+    "title": "\"We used SmartPLS/SEM Lab\" as the whole method section",
     "text": "The software name tells readers nothing about the estimand, the settings or the inference. Two analyses in the same program can differ in every one of them."
   },
   "tryIt": {

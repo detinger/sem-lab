@@ -1,5 +1,5 @@
 {
-  "name": "@sem-studio/engine",
+  "name": "@sem-lab/engine",
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
@@ -16,8 +16,8 @@
     "format:check": "prettier --ignore-path ../../.prettierignore --check src tests package.json tsconfig.json"
   },
   "dependencies": {
-    "@sem-studio/contracts": "1.0.0",
-    "@sem-studio/method-registry": "1.0.0",
+    "@sem-lab/contracts": "1.0.0",
+    "@sem-lab/method-registry": "1.0.0",
     "ml-matrix": "6.15.1"
   },
   "devDependencies": {

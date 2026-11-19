@@ -110,7 +110,7 @@
     {
       "kind": "callout",
       "variant": "info",
-      "text": "SEM Studio's CB engine estimates reflective (common-factor) constructs only; composite-formative blocks are rejected with an explanation rather than silently treated as factors."
+      "text": "SEM Lab's CB engine estimates reflective (common-factor) constructs only; composite-formative blocks are rejected with an explanation rather than silently treated as factors."
     }
   ],
   "mistake": {

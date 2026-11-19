@@ -11,7 +11,7 @@ import type {
   ParameterEstimate,
   ResultMatrix,
   ResultWarning,
-} from '@sem-studio/contracts';
+} from '@sem-lab/contracts';
 import { type Mat, NumericalError } from '../linalg/index.ts';
 import {
   ave,
@@ -32,8 +32,8 @@ import { VERIFY_CHECKS, type VerifyCheck } from './core.ts';
 import { type EffectsSpec, type EffectValues, MAX_SPECIFIC_INDIRECT } from './effects.ts';
 import type { BootstrapSpec, PlsSpec } from './spec.ts';
 
-export const SOURCE_PLS = '@sem-studio/engine pls-pm (cSEM 0.7.1 semantics)';
-export const SOURCE_EFFECTS = '@sem-studio/engine effects from the path estimates';
+export const SOURCE_PLS = '@sem-lab/engine pls-pm (cSEM 0.7.1 semantics)';
+export const SOURCE_EFFECTS = '@sem-lab/engine effects from the path estimates';
 export const INFERENCE_NOTE =
   'se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)';
 

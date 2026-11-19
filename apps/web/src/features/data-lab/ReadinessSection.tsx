@@ -1,4 +1,4 @@
-import type { SemMethod } from '@sem-studio/contracts';
+import type { SemMethod } from '@sem-lab/contracts';
 import { useState } from 'react';
 import { Callout, Card, CardHeader, SegmentedControl } from '@/components/ui';
 import { useModeler } from '@/features/modeler/store';
@@ -55,7 +55,7 @@ export function ReadinessSection() {
         }
       />
       <p className="dl-muted">
-        The method only selects which rules apply; no analysis runs in this version of SEM Studio.
+        The method only selects which rules apply; no analysis runs in this version of SEM Lab.
       </p>
       {empty ? (
         <p className="dl-muted">There is no model to check yet. Build one in the Modeler.</p>

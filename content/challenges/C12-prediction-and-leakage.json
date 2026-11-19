@@ -18,7 +18,7 @@
     {
       "kind": "callout",
       "variant": "warning",
-      "text": "SEM Studio does not compute PLSpredict or CVPAT yet. This is a concept challenge: the output below is illustrative, as a dedicated R package would report it for a TAM model (10 folds, 10 repetitions); it was not computed by SEM Studio.",
+      "text": "SEM Lab does not compute PLSpredict or CVPAT yet. This is a concept challenge: the output below is illustrative, as a dedicated R package would report it for a TAM model (10 folds, 10 repetitions); it was not computed by SEM Lab.",
       "title": "Concept challenge"
     },
     {

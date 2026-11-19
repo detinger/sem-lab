@@ -6,9 +6,9 @@
  */
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { type NormalizedSemResult, SemModel } from '@sem-studio/contracts';
-import { estimate } from '@sem-studio/engine';
-import { registry } from '@sem-studio/method-registry';
+import { type NormalizedSemResult, SemModel } from '@sem-lab/contracts';
+import { estimate } from '@sem-lab/engine';
+import { registry } from '@sem-lab/method-registry';
 import { describe, expect, it } from 'vitest';
 import { buildAnalysisData } from '@/domain/dataset/analysis-data';
 import { bundledDatasetInfo } from '@/domain/dataset/bundled';

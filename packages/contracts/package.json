@@ -1,9 +1,9 @@
 {
-  "name": "@sem-studio/contracts",
+  "name": "@sem-lab/contracts",
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
-  "description": "Canonical SEM Studio contracts: model, layout, dataset, analysis configuration, normalized results. Zod is the source of truth; JSON Schema is generated.",
+  "description": "Canonical SEM Lab contracts: model, layout, dataset, analysis configuration, normalized results. Zod is the source of truth; JSON Schema is generated.",
   "type": "module",
   "exports": {
     ".": "./src/index.ts"

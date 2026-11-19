@@ -5,7 +5,7 @@
  * stored separately (Phase 2) and are never embedded in an exported project unless the user
  * explicitly opts in; the project file carries only the dataset fingerprint and schema.
  */
-import { SCHEMA_VERSION, SemProject } from '@sem-studio/contracts';
+import { SCHEMA_VERSION, SemProject } from '@sem-lab/contracts';
 import Dexie, { type EntityTable } from 'dexie';
 import type { StoredRun } from '@/features/analysis/runs';
 import type { StoredDataset } from './datasets';
@@ -20,9 +20,9 @@ export interface StoredProject {
   project: SemProject;
 }
 
-export const DB_NAME = 'sem-studio';
+export const DB_NAME = 'sem-lab';
 
-export class SemStudioDb extends Dexie {
+export class SemLabDb extends Dexie {
   projects!: EntityTable<StoredProject, 'id'>;
   /** Phase 2: original tables + parse options + transformation log (see datasets.ts). */
   datasets!: EntityTable<StoredDataset, 'id'>;
@@ -56,9 +56,9 @@ export class SemStudioDb extends Dexie {
   }
 }
 
-let db: SemStudioDb | null = null;
-/** The one shared connection to the 'sem-studio' IndexedDB database. */
-export const getDb = (): SemStudioDb => (db ??= new SemStudioDb());
+let db: SemLabDb | null = null;
+/** The one shared connection to the 'sem-lab' IndexedDB database. */
+export const getDb = (): SemLabDb => (db ??= new SemLabDb());
 
 /** For tests: close and forget the connection so a fresh fake IndexedDB can be used. */
 export function resetDbForTests(): void {
@@ -94,10 +94,10 @@ export async function deleteProject(id: string): Promise<void> {
 
 // ---------------------------------------------------------------- file format
 
-export const PROJECT_FILE_EXTENSION = '.semstudio.json';
+export const PROJECT_FILE_EXTENSION = '.semlab.json';
 
 export interface ProjectFile {
-  format: 'sem-studio-project';
+  format: 'sem-lab-project';
   formatVersion: 1;
   exportedAt: string;
   /** Always false in schema v1: data are never bundled implicitly. */
@@ -107,7 +107,7 @@ export interface ProjectFile {
 
 export function toProjectFile(project: SemProject, now: string): string {
   const file: ProjectFile = {
-    format: 'sem-studio-project',
+    format: 'sem-lab-project',
     formatVersion: 1,
     exportedAt: now,
     includesData: false,
@@ -129,9 +129,9 @@ export function parseProjectFile(text: string): ImportResult {
   if (
     typeof raw !== 'object' ||
     raw === null ||
-    (raw as { format?: unknown }).format !== 'sem-studio-project'
+    (raw as { format?: unknown }).format !== 'sem-lab-project'
   ) {
-    return { ok: false, error: 'This is not a SEM Studio project file.' };
+    return { ok: false, error: 'This is not a SEM Lab project file.' };
   }
   const file = raw as Partial<ProjectFile>;
   if (file.formatVersion !== 1) {

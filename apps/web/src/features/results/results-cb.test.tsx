@@ -45,7 +45,7 @@ describe('Results page for a CB-SEM run', () => {
     renderPage();
     const prov = await screen.findByLabelText('Run provenance');
     expect(prov).toHaveTextContent(
-      /CB-SEM, ML, marker, listwise.*SEM Studio engine \(in browser\), @sem-studio\/engine 0\.1\.0.*analytic standard errors/,
+      /CB-SEM, ML, marker, listwise.*SEM Lab engine \(in browser\), @sem-lab\/engine 0\.1\.0.*analytic standard errors/,
     );
     expect(prov).toHaveTextContent(/120 ms on this device/);
     const tabs = screen.getAllByRole('tab').map((t) => t.textContent);

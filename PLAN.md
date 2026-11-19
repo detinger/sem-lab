@@ -1,4 +1,4 @@
-# SEM Studio — PLAN.md
+# SEM Lab — PLAN.md
 
 > **Implementation blueprint for Codex / Claude Code and other development agents**  
 > **New application** — not a retrofit of BPMN Studio. Reuse BPMN Studio's architectural discipline and its visual language through `STYLE.md`, not its BPMN-specific dependencies.  
@@ -9,17 +9,17 @@
 
 ## 1.1 Identity and purpose
 
-**Working name:** SEM Studio  
+**Working name:** SEM Lab  
 **Full name:** Interactive Structural Equation Modeling, Statistical Analysis and Learning Environment  
 **Priority:** P1  
 **Application type:** Research-capable, interactive educational web application  
 **Primary users:** Undergraduate and graduate students, doctoral researchers, lecturers, and applied researchers in information systems, business, management, marketing, education, and social sciences.
 
-**Positioning:** A polished, accessible visual workspace for **PLS-SEM** and **CB-SEM**, inspired by the usability of tools such as SmartPLS while independently designed and implemented. SEM Studio must not reproduce proprietary SmartPLS code, artwork, interface assets, or restricted datasets.
+**Positioning:** A polished, accessible visual workspace for **PLS-SEM** and **CB-SEM**, inspired by the usability of tools such as SmartPLS while independently designed and implemented. SEM Lab must not reproduce proprietary SmartPLS code, artwork, interface assets, or restricted datasets.
 
 ### Vision
 
-SEM Studio is **not merely a path-diagram editor**. A student should be able to start with a theoretical model, assign survey indicators, import or generate suitable data, select an appropriate estimator, inspect measurement and structural quality, estimate bootstrap confidence intervals, visualize the results, prepare Word-ready tables, export reproducible R/Python scripts, and explain the findings.
+SEM Lab is **not merely a path-diagram editor**. A student should be able to start with a theoretical model, assign survey indicators, import or generate suitable data, select an appropriate estimator, inspect measurement and structural quality, estimate bootstrap confidence intervals, visualize the results, prepare Word-ready tables, export reproducible R/Python scripts, and explain the findings.
 
 ### Core learning and research cycle
 
@@ -535,7 +535,7 @@ Documenting sample/data, estimator choices, model specification, reporting stand
 - Autosave drafts; snapshots/version history; restore or branch model variants.
 - Run records immutable and associated with exact model/data fingerprint.
 - Compare model revisions and selected result metrics only when inference is meaningfully comparable.
-- Export/import `.semstudio.json` + optional data bundle with manifest.
+- Export/import `.semlab.json` + optional data bundle with manifest.
 - Example gallery with TAM, ACSI-inspired, D&M, UTAUT2, customer satisfaction, simple CFA and measurement invariance teaching cases.
 - Sharing initially via user-downloaded files; server accounts and collaboration are explicitly **out of MVP**.
 
@@ -705,7 +705,7 @@ Do not use in-memory global process state as the only job store in production. R
 ## 3.5 Suggested repository
 
 ```text
-sem-studio/
+sem-lab/
 ├── PLAN.md
 ├── STYLE.md
 ├── README.md
@@ -1011,7 +1011,7 @@ Own CI, Playwright, Pytest, testthat, Railway/Netlify/Docker, observability, quo
 
 ## 6.3 Master agent prompt (copy into Codex or Claude Code)
 
-> Build **SEM Studio**, an independent, polished and research-conscious PLS-SEM/CB-SEM web application using `PLAN.md` and `STYLE.md` as the product and design specifications.
+> Build **SEM Lab**, an independent, polished and research-conscious PLS-SEM/CB-SEM web application using `PLAN.md` and `STYLE.md` as the product and design specifications.
 >
 > Start with **Phase 0**. Verify actual installed library APIs and licenses, create canonical model/result schemas and a capability registry, and establish R/Python numerical fixtures. Do not invent support for advanced algorithms.
 >
@@ -1027,7 +1027,7 @@ Own CI, Playwright, Pytest, testthat, Railway/Netlify/Docker, observability, quo
 
 # 7. References and Verification Sources
 
-These references inform **proposed** methods and dependencies; they are not evidence that SEM Studio already implements them. Check published versions and APIs again when development begins.
+These references inform **proposed** methods and dependencies; they are not evidence that SEM Lab already implements them. Check published versions and APIs again when development begins.
 
 - SmartPLS method overview (competitor/feature benchmark only): https://smartpls.com/documentation/algorithms-and-techniques/
 - SmartPLS IPMA explanation and original indicator scale requirement: https://smartpls.com/documentation/algorithms-and-techniques/prediction-and-segmentation/ipma/

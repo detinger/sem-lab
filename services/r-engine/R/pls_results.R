@@ -3,7 +3,7 @@
 # every null carries a missing reason.
 
 SOURCE_CSEM <- "cSEM::csem"
-SOURCE_EFFECTS <- "SEM Studio from cSEM::csem path estimates"
+SOURCE_EFFECTS <- "SEM Lab from cSEM::csem path estimates"
 
 # ---- the estimated parameter vector theta ------------------------------------------
 

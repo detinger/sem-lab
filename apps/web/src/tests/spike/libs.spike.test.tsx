@@ -210,7 +210,7 @@ describe('dexie with fake-indexeddb', () => {
     class TestDb extends Dexie {
       models!: EntityTable<ModelRow, 'id'>;
       constructor() {
-        super('sem-studio-spike');
+        super('sem-lab-spike');
         this.version(1).stores({ models: 'id, title' });
       }
     }
@@ -220,7 +220,7 @@ describe('dexie with fake-indexeddb', () => {
     expect(await db.models.get('m1')).toEqual({ id: 'm1', title: 'TAM' });
     expect(await db.models.where('title').equals('TAM').count()).toBe(1);
     db.close();
-    await Dexie.delete('sem-studio-spike');
+    await Dexie.delete('sem-lab-spike');
     writeEvidence('dexie.json', ['dexie', 'fake-indexeddb'], {
       roundTrip: true,
       schema: "this.version(1).stores({ models: 'id, title' })",

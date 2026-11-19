@@ -2,7 +2,7 @@ import { bin, extent } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
 import { useMemo, useState } from 'react';
 import { Field, Select, Table, Td, Th } from '@/components/ui';
-import type { NormalizedSemResult, SemModel } from '@sem-studio/contracts';
+import type { NormalizedSemResult, SemModel } from '@sem-lab/contracts';
 import { type NumberStyle, formatNumber } from '../reports/format';
 
 const W = 640;

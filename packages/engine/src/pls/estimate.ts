@@ -2,14 +2,14 @@
  * estimatePls(): the browser engine's PLS-SEM / PLSc job, the counterpart of
  * services/r-engine/R/run_job.R for methods `pls-sem` and `plsc`. Stages and error codes follow
  * docs/architecture/engine-protocol.md; numbers follow cSEM 0.7.1 (see core.ts) and the
- * normalisation of pls_results.R; the bootstrap is SEM Studio's definition (bootstrap.ts).
+ * normalisation of pls_results.R; the bootstrap is SEM Lab's definition (bootstrap.ts).
  */
 import type {
   AnalysisConfiguration,
   NormalizedSemResult,
   ParameterEstimate,
   SemModel,
-} from '@sem-studio/contracts';
+} from '@sem-lab/contracts';
 import { correlation, NumericalError } from '../linalg/index.ts';
 import { EngineError, type EngineErrorInfo } from '../shared/errors.ts';
 import {
@@ -342,7 +342,7 @@ async function run(input: EstimateInput, hooks: EstimateHooks): Promise<Normaliz
     warnings,
     provenance: {
       engine: 'browser',
-      packageVersions: { '@sem-studio/engine': ENGINE_VERSION },
+      packageVersions: { '@sem-lab/engine': ENGINE_VERSION },
       call,
       startedAt,
       finishedAt: new Date().toISOString(),

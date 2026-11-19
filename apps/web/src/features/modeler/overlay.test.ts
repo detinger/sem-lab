@@ -1,4 +1,4 @@
-import { DEFAULT_LAYOUT_SETTINGS, type NormalizedSemResult } from '@sem-studio/contracts';
+import { DEFAULT_LAYOUT_SETTINGS, type NormalizedSemResult } from '@sem-lab/contracts';
 import { describe, expect, it } from 'vitest';
 import { FIXTURE_RESULT, TAM_MODEL, cbFixture } from '../analysis/test-support';
 import { hasBothScales, overlayLegend } from './overlay';

@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-export const SIDEBAR_STORAGE_KEY = 'sem-studio:sidebar-collapsed';
+export const SIDEBAR_STORAGE_KEY = 'sem-lab:sidebar-collapsed';
 
 function read(): boolean {
   try {

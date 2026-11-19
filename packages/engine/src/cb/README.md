@@ -84,7 +84,7 @@ computed (`null`, `not-supported`).
 | `intercept:<indicatorId>` / `intercept:<constructId>` | intercept         | `x ~1` / latent mean (fixed 0)                                                                                                                                       |
 
 `rawPath` = matrix position, e.g. `lambda[2,1]` (1-based), `std.all:lambda[2,1]`.
-`sourceMethod` = `sem-studio:cb-sem:<ML|MLR>` (`…:std.all` for standardized).
+`sourceMethod` = `sem-lab:cb-sem:<ML|MLR>` (`…:std.all` for standardized).
 
 ## Fit indices (`fit[].name` + `variant`)
 

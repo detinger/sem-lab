@@ -88,7 +88,7 @@ All estimates are on the standardized scale (`scale: "standardized"`). Keys use 
 | `weight` | `weight:<c>:<i>` | `Estimates$Weight_estimates[c, i]`, every block; scaled so the composite has unit variance (w′Sw = 1) |
 | `total-effect` | `total:<src>-><tgt>` | element of (I − B)⁻¹ − I, B the path matrix; one per pair joined by at least one directed path |
 | `indirect-effect` | `indirect:<src>-><tgt>` | (I − B)⁻¹ − I − B; one per pair joined by at least one path of length ≥ 2 (pairs with only a direct path have no indirect effect entry) |
-| `specific-indirect` | `specific-indirect:<src>-><v1>…-><tgt>` | product of the path coefficients along one directed chain of length ≥ 2; `viaIds` lists the mediators. Computed by SEM Studio (cSEM does not report them, r-spike.md R-13). At most 500 chains are enumerated (warning `SPECIFIC_INDIRECT_TRUNCATED` otherwise); totals are exact regardless |
+| `specific-indirect` | `specific-indirect:<src>-><v1>…-><tgt>` | product of the path coefficients along one directed chain of length ≥ 2; `viaIds` lists the mediators. Computed by SEM Lab (cSEM does not report them, r-spike.md R-13). At most 500 chains are enumerated (warning `SPECIFIC_INDIRECT_TRUNCATED` otherwise); totals are exact regardless |
 
 Single-indicator blocks: loading and weight are 1 by construction; they are reported with
 `status: "fixed"` and inference null (`not-applicable`).
@@ -178,7 +178,7 @@ Inference per parameter, from the B_valid = `completed` valid draws:
 - `statistic` = est / se, `statisticType: "t"`.
 - `pValue`: two-sided 2·P(T ≤ −|t|), T ~ t with df = B_valid − 1. For
   `sides: "one-sided"`: P(T ≤ −|t|), in the direction of the sign of the point estimate.
-  (cSEM's own `summarize()` uses the normal distribution; the t reference is SEM Studio's
+  (cSEM's own `summarize()` uses the normal distribution; the t reference is SEM Lab's
   choice and is stated in each parameter's `rawPath`.)
 - Interval: percentile, `quantile(draws, type = 7)` (equals cSEM `infer()` CI_percentile,
   r-spike.md §6). Two-sided: quantiles (1 − L)/2 and 1 − (1 − L)/2. One-sided: for

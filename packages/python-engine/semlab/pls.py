@@ -48,8 +48,8 @@ ENGINE_VERSION = "0.1.0"
 #: Draws stored in result.bootstrap.draws are rounded to this many significant digits.
 DRAW_SIGNIF = 6
 
-SOURCE_PLS = "@sem-studio/engine pls-pm (cSEM 0.7.1 semantics)"
-SOURCE_EFFECTS = "@sem-studio/engine effects from the path estimates"
+SOURCE_PLS = "@sem-lab/engine pls-pm (cSEM 0.7.1 semantics)"
+SOURCE_EFFECTS = "@sem-lab/engine effects from the path estimates"
 INFERENCE_NOTE = "se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
 _INF_FIELDS = ("se", "statistic", "pValue", "ciLower", "ciUpper")
 
@@ -948,7 +948,7 @@ def _run(model, analysis, data, on_progress, is_cancelled, execute_draws, batch_
     if ipma is not None:
         result["ipma"] = ipma
     result["warnings"] = warnings
-    result["provenance"] = provenance(call, started_at, {"@sem-studio/engine": ENGINE_VERSION})
+    result["provenance"] = provenance(call, started_at, {"@sem-lab/engine": ENGINE_VERSION})
     return result
 
 

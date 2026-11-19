@@ -1,9 +1,9 @@
 {
-  "name": "sem-studio",
+  "name": "sem-lab",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
-  "description": "SEM Studio monorepo: visual PLS-SEM / CB-SEM modeling, estimation and reporting workspace.",
+  "description": "SEM Lab monorepo: visual PLS-SEM / CB-SEM modeling, estimation and reporting workspace.",
   "type": "module",
   "workspaces": [
     "apps/web",
@@ -13,7 +13,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "dev": "npm run dev --workspace @sem-studio/web",
+    "dev": "npm run dev --workspace @sem-lab/web",
     "build": "npm run build --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",

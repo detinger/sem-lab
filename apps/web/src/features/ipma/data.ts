@@ -3,7 +3,7 @@
  * table rows and path decompositions the page shows. Nothing here computes importance or
  * performance; both come from the engine. Importance keeps its sign (never abs()).
  */
-import type { IpmaResult, NormalizedSemResult, SemModel } from '@sem-studio/contracts';
+import type { IpmaResult, NormalizedSemResult, SemModel } from '@sem-lab/contracts';
 import { directedPaths, predecessors } from '@/domain/graph';
 
 export type Level = 'constructs' | 'indicators';

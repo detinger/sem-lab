@@ -1,6 +1,6 @@
 /**
  * Evidence files for docs/validation/phase-0. Tests always assert; they only WRITE the
- * measurement files when SEM_WRITE_EVIDENCE=1 (npm run spike:evidence -w @sem-studio/web), so an
+ * measurement files when SEM_WRITE_EVIDENCE=1 (npm run spike:evidence -w @sem-lab/web), so an
  * ordinary test run never dirties the working tree with new timings.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -37,7 +37,7 @@ export function writeEvidence(fileName: string, packages: string[], data: unknow
   mkdirSync(evidenceDir, { recursive: true });
   const document = {
     generatedAt: new Date().toISOString(),
-    generatedBy: 'apps/web/src/tests/spike (npm run spike:evidence -w @sem-studio/web)',
+    generatedBy: 'apps/web/src/tests/spike (npm run spike:evidence -w @sem-lab/web)',
     runtime: { node: process.version, platform: process.platform, arch: process.arch },
     packages: packages.map(installedPackage),
     data,

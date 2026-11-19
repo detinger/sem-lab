@@ -1,9 +1,9 @@
 /**
- * Starter models. Each is SEM Studio's own specification of a published theory; the citation
+ * Starter models. Each is SEM Lab's own specification of a published theory; the citation
  * is shown with the template. Templates contain no data and no scale endpoints: endpoints are
  * properties of the instrument and are confirmed in the Data Lab when a dataset is mapped.
  */
-import { type SemModel } from '@sem-studio/contracts';
+import { type SemModel } from '@sem-lab/contracts';
 import { EMPTY_MODEL, addConstruct, addIndicators, connect } from '@/domain/model-ops';
 
 export interface ModelTemplate {

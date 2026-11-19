@@ -1,5 +1,5 @@
 [project]
-name = "sem-studio-python-spike"
+name = "sem-lab-python-spike"
 version = "0.0.0"
 description = "Phase 0 verification spike for semopy and plspm (evidence in docs/validation/phase-0). Not part of the application."
 requires-python = "==3.12.*"

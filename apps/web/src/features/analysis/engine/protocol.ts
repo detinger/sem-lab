@@ -2,13 +2,8 @@
  * Messages between the page, the estimate worker and the draw workers. Everything here is
  * structured-clone safe (plain objects, arrays, typed arrays); no functions, no class instances.
  */
-import type {
-  BootstrapProblem,
-  DrawResult,
-  EstimateInput,
-  ProgressEvent,
-} from '@sem-studio/engine';
-import type { EstimateResult } from '@sem-studio/engine';
+import type { BootstrapProblem, DrawResult, EstimateInput, ProgressEvent } from '@sem-lab/engine';
+import type { EstimateResult } from '@sem-lab/engine';
 
 export interface RunOptionsMsg {
   /** number of draw workers; 1 = draws run in the estimate worker itself */

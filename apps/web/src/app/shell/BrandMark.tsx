@@ -1,4 +1,4 @@
-/** SEM Studio product mark: one latent circle linked to three indicator rectangles (STYLE.md section 7). */
+/** SEM Lab product mark: one latent circle linked to three indicator rectangles (STYLE.md section 7). */
 export function BrandMark() {
   return (
     <span className="brand-mark" aria-hidden="true">

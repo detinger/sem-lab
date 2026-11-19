@@ -1,5 +1,5 @@
-import { type EstimateInput, estimate } from '@sem-studio/engine';
-import type { AnalysisConfiguration } from '@sem-studio/contracts';
+import { type EstimateInput, estimate } from '@sem-lab/engine';
+import type { AnalysisConfiguration } from '@sem-lab/contracts';
 import { describe, expect, it } from 'vitest';
 import { TAM_ANALYSIS, loadFixtureCase } from '../test-support';
 import { createDrawHandler } from './draw-core';

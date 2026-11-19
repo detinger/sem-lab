@@ -34,7 +34,7 @@
     {
       "kind": "callout",
       "variant": "warning",
-      "text": "In the ipma-range-restricted data the PEOU items were answered only from 3 to 7. With the correct endpoints 1–7, item peou1 has performance 65.9; rescaling with the observed 3–7 would give 48.9 and make PEOU look far worse than respondents rated it. SEM Studio requires declared endpoints for IPMA and never uses observed extrema.",
+      "text": "In the ipma-range-restricted data the PEOU items were answered only from 3 to 7. With the correct endpoints 1–7, item peou1 has performance 65.9; rescaling with the observed 3–7 would give 48.9 and make PEOU look far worse than respondents rated it. SEM Lab requires declared endpoints for IPMA and never uses observed extrema.",
       "title": "Try a wrong model: invalid scale"
     },
     {

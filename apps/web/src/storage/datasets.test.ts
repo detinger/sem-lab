@@ -1,7 +1,7 @@
 import 'fake-indexeddb/auto';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { DatasetRef, SemProject } from '@sem-studio/contracts';
+import { DatasetRef, SemProject } from '@sem-lab/contracts';
 import Dexie from 'dexie';
 import { afterEach, describe, expect, it } from 'vitest';
 import { ACSI_ATTRIBUTION } from '../domain/dataset/bundled';

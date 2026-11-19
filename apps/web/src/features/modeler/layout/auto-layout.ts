@@ -11,7 +11,7 @@
  * so every list is sorted by id before layout, and a fixed random seed is always passed.
  * Layout never reads or changes the scientific model's meaning: it only returns coordinates.
  */
-import { type LayoutDirection, type SemLayout, type SemModel } from '@sem-studio/contracts';
+import { type LayoutDirection, type SemLayout, type SemModel } from '@sem-lab/contracts';
 import type { ElkNode, LayoutOptions } from 'elkjs/lib/elk-api';
 import type ELKType from 'elkjs/lib/elk.bundled.js';
 import { longestPathLayers, structuralGraph } from '@/domain/graph';

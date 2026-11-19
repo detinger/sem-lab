@@ -1,4 +1,4 @@
-import type { SemModel } from '@sem-studio/contracts';
+import type { SemModel } from '@sem-lab/contracts';
 import { buildSpec, sampleMoments } from './spec.ts';
 
 /**

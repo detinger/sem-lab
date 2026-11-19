@@ -1,8 +1,8 @@
 /**
- * @sem-studio/engine — in-browser SEM estimation (pure TypeScript; Web Workers and Node).
+ * @sem-lab/engine — in-browser SEM estimation (pure TypeScript; Web Workers and Node).
  *
  * PLS-SEM / PLSc: `estimatePls` reproduces the R engine (cSEM 0.7.1) reference results in
- * packages/fixtures/reference-results/pls; the bootstrap follows SEM Studio's own definition
+ * packages/fixtures/reference-results/pls; the bootstrap follows SEM Lab's own definition
  * (see src/pls/bootstrap.ts), reproduced by packages/fixtures/scripts/make_bootstrap_references.R.
  */
 
@@ -71,7 +71,7 @@ export {
 } from './cb/index.ts';
 
 // ---- one entry point for the app ------------------------------------------------------------
-import type { NormalizedSemResult } from '@sem-studio/contracts';
+import type { NormalizedSemResult } from '@sem-lab/contracts';
 import { estimateCb as runCb } from './cb/index.ts';
 import { type EstimateHooks, type EstimateInput, estimatePls as runPls } from './pls/estimate.ts';
 

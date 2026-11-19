@@ -1,4 +1,4 @@
-import { NormalizedSemResult, SemModel } from '@sem-studio/contracts';
+import { NormalizedSemResult, SemModel } from '@sem-lab/contracts';
 import { describe, expect, it } from 'vitest';
 import request from './__fixtures__/ipma-request.json';
 import resultJson from './__fixtures__/ipma-result.json';

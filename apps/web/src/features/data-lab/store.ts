@@ -23,7 +23,7 @@ import type {
   Transformation,
 } from '@/domain/dataset/types';
 import { listDatasets, loadDataset, saveDataset, toDatasetRef } from '@/storage/datasets';
-import type { DatasetRef, SemModel } from '@sem-studio/contracts';
+import type { DatasetRef, SemModel } from '@sem-lab/contracts';
 
 /** The text of the latest import attempt, kept in memory only so options can be overridden. */
 export interface ImportDraft {

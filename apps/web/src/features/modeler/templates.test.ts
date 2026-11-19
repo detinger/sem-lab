@@ -1,4 +1,4 @@
-import { SemModel, validateModelStructure } from '@sem-studio/contracts';
+import { SemModel, validateModelStructure } from '@sem-lab/contracts';
 import { describe, expect, it } from 'vitest';
 import { TEMPLATES } from './templates';
 

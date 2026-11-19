@@ -1,5 +1,5 @@
 #!/usr/bin/env Rscript
-# SEM Studio R engine - package installation.
+# SEM Lab R engine - package installation.
 #
 # Installs the R engine's packages FROM SOURCE into services/r-engine/r-lib.
 #

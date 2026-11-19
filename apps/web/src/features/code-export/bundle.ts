@@ -9,12 +9,12 @@
  *   analysis-data.csv     the exact matrix the app analysed (contains the user's data)
  *   browser-result.json   the result the app showed, for comparison
  *   R:      <project>-cSEM.R | <project>-lavaan.R
- *   Python: run_analysis.py, semstudio_bundle.py, requirements.txt
+ *   Python: run_analysis.py, semlab_bundle.py, requirements.txt
  *
  * The manifest lists every other file with its SHA-256 so a reader can confirm nothing changed.
  */
-import type { AnalysisConfiguration, NormalizedSemResult, SemModel } from '@sem-studio/contracts';
-import { capability, registry, requiredCapabilities } from '@sem-studio/method-registry';
+import type { AnalysisConfiguration, NormalizedSemResult, SemModel } from '@sem-lab/contracts';
+import { capability, registry, requiredCapabilities } from '@sem-lab/method-registry';
 import type { AnalysisData, Transformation } from '@/domain/dataset/types';
 import { analysisCsv } from './analysis-csv';
 import { PYTHON_TESTED, exportPythonScript, pythonTolerance } from './python-script';
@@ -38,7 +38,7 @@ export interface BundleInput {
   transformations: Transformation[];
   generatedAt: string;
   appVersion: string;
-  /** contents of packages/python-engine/dist/semstudio_bundle.py (Python only) */
+  /** contents of packages/python-engine/dist/semlab_bundle.py (Python only) */
   pythonEngineSource?: string;
 }
 
@@ -50,7 +50,7 @@ export interface ManifestFile {
 
 export interface ExportManifest {
   manifestVersion: 1;
-  generator: { app: 'SEM Studio'; version: string };
+  generator: { app: 'SEM Lab'; version: string };
   generatedAt: string;
   project: string;
   run: {
@@ -186,7 +186,7 @@ export async function buildExportBundle(input: BundleInput): Promise<ExportBundl
     if (!input.pythonEngineSource) throw new Error('The Python engine source is missing.');
     files.push(
       { path: 'run_analysis.py', content: exportPythonScript(header) },
-      { path: 'semstudio_bundle.py', content: input.pythonEngineSource },
+      { path: 'semlab_bundle.py', content: input.pythonEngineSource },
       {
         path: 'requirements.txt',
         content: `# Tested: Python ${PYTHON_TESTED.python}; supported numpy ${PYTHON_TESTED.numpy}, scipy ${PYTHON_TESTED.scipy}\nnumpy==${PYTHON_TESTED.pinned.numpy}\nscipy==${PYTHON_TESTED.pinned.scipy}\n# optional: pandas (DataFrames), matplotlib (IPMA plot)\n`,
@@ -246,7 +246,7 @@ export async function buildExportBundle(input: BundleInput): Promise<ExportBundl
 
   const manifest: ExportManifest = {
     manifestVersion: 1,
-    generator: { app: 'SEM Studio', version: input.appVersion },
+    generator: { app: 'SEM Lab', version: input.appVersion },
     generatedAt: input.generatedAt,
     project: input.projectName,
     run: {
@@ -320,7 +320,7 @@ function readme(m: ExportManifest, input: BundleInput, filePaths: string[]): str
   L.push(
     `# ${m.project.replace(/[\r\n]+/g, ' ')} — reproducible analysis`,
     '',
-    `Exported by SEM Studio ${m.generator.version} on ${m.generatedAt}. Method: ${methodLine(m.analysis)}.`,
+    `Exported by SEM Lab ${m.generator.version} on ${m.generatedAt}. Method: ${methodLine(m.analysis)}.`,
     '',
     '> **This folder contains your data** (`analysis-data.csv`). Share it only as your ethics approval and consent allow.',
     '',
@@ -331,10 +331,10 @@ function readme(m: ExportManifest, input: BundleInput, filePaths: string[]): str
   );
   const what: Record<string, string> = {
     'run_analysis.py': 'Runs the analysis and checks the numbers against the app',
-    'semstudio_bundle.py':
-      "SEM Studio's estimation engine for Python (the verified port of the app's engine)",
+    'semlab_bundle.py':
+      "SEM Lab's estimation engine for Python (the verified port of the app's engine)",
     'requirements.txt': 'Python packages',
-    'model.json': 'The model (constructs, indicators, paths) as SEM Studio stores it',
+    'model.json': 'The model (constructs, indicators, paths) as SEM Lab stores it',
     'analysis.json': 'The analysis settings',
     'analysis-data.csv': `The data the app analysed: ${m.data.used} of ${m.data.rows} rows${m.data.reverseScoredColumns.length ? '; reverse-scored columns already reversed' : ''}`,
     'browser-result.json': 'The result the app showed, for comparison',
@@ -362,7 +362,7 @@ function readme(m: ExportManifest, input: BundleInput, filePaths: string[]): str
       '1. Python 3.10 or newer. In this folder: `python -m pip install -r requirements.txt`.',
       '2. Run `python run_analysis.py`.',
       '',
-      'Also works in Google Colab or Jupyter: upload the folder and run `!python run_analysis.py`, or `import semstudio_bundle as semstudio` in a notebook.',
+      'Also works in Google Colab or Jupyter: upload the folder and run `!python run_analysis.py`, or `import semlab_bundle as semlab` in a notebook.',
       '',
       m.script.expectedAgreement,
     );

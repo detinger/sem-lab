@@ -138,7 +138,7 @@
     {
       "kind": "callout",
       "variant": "info",
-      "text": "SEM Studio offers two families of estimators for the same diagram: PLS-SEM, which builds constructs as weighted composites (Level 2), and CB-SEM, which models them as common factors (Level 5). They answer related but different questions.",
+      "text": "SEM Lab offers two families of estimators for the same diagram: PLS-SEM, which builds constructs as weighted composites (Level 2), and CB-SEM, which models them as common factors (Level 5). They answer related but different questions.",
       "title": "Two families of SEM"
     }
   ],

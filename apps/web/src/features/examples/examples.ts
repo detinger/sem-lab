@@ -2,7 +2,7 @@
  * The bundled example projects (content/examples/*.json): model, analysis settings and the id
  * of the bundled dataset they run on. Loaded eagerly; the files are small.
  */
-import { AnalysisConfiguration, SemLayout, SemModel } from '@sem-studio/contracts';
+import { AnalysisConfiguration, SemLayout, SemModel } from '@sem-lab/contracts';
 import { z } from 'zod';
 
 const ExampleFile = z.object({

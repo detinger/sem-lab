@@ -4,7 +4,7 @@ import type {
   SemIndicator,
   SemModel,
   SemRelationship,
-} from '@sem-studio/contracts';
+} from '@sem-lab/contracts';
 import {
   ArrowDown,
   ArrowLeftRight,

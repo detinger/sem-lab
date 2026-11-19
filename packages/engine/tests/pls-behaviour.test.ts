@@ -1,7 +1,7 @@
 /** Bootstrap determinism, counting, cancellation, executor hook, and error codes. */
 import { describe, expect, it } from 'vitest';
-import type { AnalysisConfiguration, SemModel } from '@sem-studio/contracts';
-import { NormalizedSemResult } from '@sem-studio/contracts';
+import type { AnalysisConfiguration, SemModel } from '@sem-lab/contracts';
+import { NormalizedSemResult } from '@sem-lab/contracts';
 import {
   type DrawResult,
   estimatePls,

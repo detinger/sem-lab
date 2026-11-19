@@ -30,7 +30,7 @@
     {
       "kind": "callout",
       "variant": "info",
-      "text": "SEM Studio reports the number of iterations, the tolerance and the convergence criterion with every PLS result. A solution that did not converge within the iteration limit must not be interpreted."
+      "text": "SEM Lab reports the number of iterations, the tolerance and the convergence criterion with every PLS result. A solution that did not converge within the iteration limit must not be interpreted."
     }
   ],
   "mistake": {

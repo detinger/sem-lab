@@ -16,7 +16,7 @@ async function prepare(page: Page, theme: 'light' | 'dark', size: keyof typeof S
   page.on('pageerror', (e) => errors.push(e.message));
   await page.setViewportSize(SIZES[size]);
   await page.addInitScript((value) => {
-    window.localStorage.setItem('sem-studio:theme', value);
+    window.localStorage.setItem('sem-lab:theme', value);
   }, theme);
 
   // Build the model: the "two constructs" template matches the bundled pls-two-construct data.

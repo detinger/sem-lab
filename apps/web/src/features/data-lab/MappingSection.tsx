@@ -15,7 +15,7 @@ import { analysisIndicators } from '@/domain/dataset/analysis-data';
 import { applyMapping, suggestMapping } from '@/domain/dataset/mapping';
 import type { ColumnProfile } from '@/domain/dataset/types';
 import { updateIndicator } from '@/domain/model-ops';
-import type { SemConstruct, SemIndicator, SemModel } from '@sem-studio/contracts';
+import type { SemConstruct, SemIndicator, SemModel } from '@sem-lab/contracts';
 import { useModeler } from '@/features/modeler/store';
 import { fmt, plural } from './format';
 import { editModel, useDataLab } from './store';

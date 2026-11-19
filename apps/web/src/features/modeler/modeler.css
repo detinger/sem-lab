@@ -9,7 +9,7 @@
   color: var(--sem-label);
   outline: none;
 
-  /* React Flow theme variables → SEM Studio tokens (no default white islands in dark mode) */
+  /* React Flow theme variables → SEM Lab tokens (no default white islands in dark mode) */
   --xy-background-color: var(--canvas-bg);
   --xy-node-background-color: transparent;
   --xy-node-border: none;

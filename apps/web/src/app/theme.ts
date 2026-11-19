@@ -9,7 +9,7 @@
 export type Theme = 'light' | 'dark';
 export type ThemePreference = Theme | 'system';
 
-export const THEME_STORAGE_KEY = 'sem-studio:theme';
+export const THEME_STORAGE_KEY = 'sem-lab:theme';
 
 export const THEME_PREFERENCES: readonly ThemePreference[] = ['light', 'dark', 'system'];
 

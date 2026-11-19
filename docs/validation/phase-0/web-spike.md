@@ -3,7 +3,7 @@
 Rule: a behaviour is "verified" only if a Vitest test in this repository asserts it and passes.
 Tests live in `apps/web/src/tests/spike/` (`elk.spike.test.ts`, `reactflow.spike.test.tsx`,
 `libs.spike.test.tsx`) and stay as regression tests. Measurements are written to
-`docs/validation/phase-0/evidence/web/*.json` by `npm run spike:evidence -w @sem-studio/web`
+`docs/validation/phase-0/evidence/web/*.json` by `npm run spike:evidence -w @sem-lab/web`
 (sets `SEM_WRITE_EVIDENCE=1`; ordinary test runs never write). Environment: macOS arm64, Node 26.13.1,
 npm 11, jsdom 31, Vitest 5.1.0.
 
@@ -204,5 +204,5 @@ tables). Not verified in a real browser; jsdom has no Clipboard API.
   not handle decimal commas (sections 2, 3, 6).
 - `apps/web/scripts/collect-licenses.mjs` was referenced by `spike:evidence` but missing; created.
 - Root-level scripts also run every workspace; `packages/contracts` (owned by another step, in progress
-  when this was written) was not in a green state, so green status is stated per `-w @sem-studio/web`.
+  when this was written) was not in a green state, so green status is stated per `-w @sem-lab/web`.
 - No `--force` or `--legacy-peer-deps` was used.

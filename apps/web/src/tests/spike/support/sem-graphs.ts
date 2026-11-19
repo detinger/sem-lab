@@ -19,7 +19,7 @@ export interface SpikeModel {
 export const CONSTRUCT_SIZE = { width: 118, height: 64 } as const;
 export const INDICATOR_SIZE = { width: 118, height: 34 } as const;
 
-/** tam-v1: SEM Studio's own specification of the Technology Acceptance Model (all reflective). */
+/** tam-v1: SEM Lab's own specification of the Technology Acceptance Model (all reflective). */
 export const tamV1: SpikeModel = {
   id: 'tam-v1',
   blocks: [

@@ -8,7 +8,7 @@ Sources (edit these, never the .ipynb files):
 
 Embedded verbatim at build time (so a notebook needs no local files):
 
-    packages/python-engine/dist/semstudio_bundle.py       SEM Studio's engine (%%writefile cell)
+    packages/python-engine/dist/semlab_bundle.py       SEM Lab's engine (%%writefile cell)
     packages/fixtures/scripts/generate_synthetic.py       the case's data function and every
                                                           function/constant it depends on,
                                                           extracted with ast (not hand-copied)
@@ -21,7 +21,7 @@ Cell kinds:
     %% code                     a code cell
     %% form <title>             a collapsed Colab form cell (first line "#@title <title>")
     %% include <name>           the cells of src/shared/<name>.md
-    %% engine                   the engine bundle cell (%%writefile semstudio_bundle.py)
+    %% engine                   the engine bundle cell (%%writefile semlab_bundle.py)
     %% helpers                  sem_helpers.py as a form cell
     %% generator <fn> [extra]   two cells: the generator's shared functions (form cell) and the
                                 case-specific spec / data function (visible); extra roots are
@@ -49,7 +49,7 @@ ROOT = Path(__file__).resolve().parents[1]
 NB_DIR = ROOT / "notebooks"
 SRC = NB_DIR / "src"
 OUT = NB_DIR / "colab"
-BUNDLE = ROOT / "packages" / "python-engine" / "dist" / "semstudio_bundle.py"
+BUNDLE = ROOT / "packages" / "python-engine" / "dist" / "semlab_bundle.py"
 GENERATOR = ROOT / "packages" / "fixtures" / "scripts" / "generate_synthetic.py"
 FIXTURES = ROOT / "packages" / "fixtures" / "synthetic"
 GENERATOR_REL = "packages/fixtures/scripts/generate_synthetic.py"
@@ -226,8 +226,8 @@ def expand(path, ctx, depth=0):
         elif kind == "engine":
             bundle = BUNDLE.read_text(encoding="utf-8")
             out.append(code_cell(
-                "%%writefile semstudio_bundle.py\n"
-                "#@title SEM Studio engine: writes semstudio_bundle.py (about 5,600 lines; click to expand)\n"
+                "%%writefile semlab_bundle.py\n"
+                "#@title SEM Lab engine: writes semlab_bundle.py (about 5,600 lines; click to expand)\n"
                 + bundle, form=True))
         elif kind == "helpers":
             helpers = (SRC / "sem_helpers.py").read_text(encoding="utf-8")

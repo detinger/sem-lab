@@ -3,7 +3,7 @@
   "title": "Information systems success (inspired by DeLone & McLean)",
   "summary": "System, information and service quality drive use and user satisfaction, which drive net benefits. Synthetic 7-point data (N = 400), with IPMA on net benefits.",
   "theory": "DeLone, W. H., & McLean, E. R. (2003). The DeLone and McLean model of information systems success: a ten-year update. Journal of Management Information Systems, 19(4), 9–30.",
-  "modelNote": "SEM Studio's teaching specification inspired by the updated D&M model; it does not reproduce a published study.",
+  "modelNote": "SEM Lab's teaching specification inspired by the updated D&M model; it does not reproduce a published study.",
   "scaleSource": "All items are generated on a 1–7 scale.",
   "dataset": {
     "bundledId": "delone-mclean",

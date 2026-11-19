@@ -30,7 +30,7 @@
     },
     {
       "kind": "p",
-      "text": "Henseler et al. (2015) suggest flagging HTMT above .85 for conceptually distinct constructs, or above .90 for conceptually similar ones; a stronger version tests whether HTMT is significantly below the threshold. SEM Studio currently reports point values of HTMT and HTMT2. The [[fornell-larcker]] criterion (AVE greater than the squared construct correlation) performs poorly at detecting problems (Henseler et al. 2015). In the poor-discriminant data HTMT(A, B) is .973, yet Fornell–Larcker passes by a hair: AVE(A) = .719 against a squared correlation of .716."
+      "text": "Henseler et al. (2015) suggest flagging HTMT above .85 for conceptually distinct constructs, or above .90 for conceptually similar ones; a stronger version tests whether HTMT is significantly below the threshold. SEM Lab currently reports point values of HTMT and HTMT2. The [[fornell-larcker]] criterion (AVE greater than the squared construct correlation) performs poorly at detecting problems (Henseler et al. 2015). In the poor-discriminant data HTMT(A, B) is .973, yet Fornell–Larcker passes by a hair: AVE(A) = .719 against a squared correlation of .716."
     }
   ],
   "mistake": {

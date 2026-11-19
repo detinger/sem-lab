@@ -63,11 +63,11 @@ describe('Examples page', () => {
     // links point at the public repository's main branch (checked to resolve on GitHub)
     expect(
       within(screen.getByRole('region', { name: /Python notebooks/ })).getByRole('link'),
-    ).toHaveAttribute('href', 'https://github.com/detinger/sem-studio/tree/main/notebooks');
+    ).toHaveAttribute('href', 'https://github.com/detinger/sem-lab/tree/main/notebooks');
     const tam = within(card(EXAMPLES.find((e) => e.id === 'tam-mediation')!.title));
     expect(tam.getByRole('link', { name: /Open in Colab/ })).toHaveAttribute(
       'href',
-      'https://colab.research.google.com/github/detinger/sem-studio/blob/main/notebooks/colab/01_tam_pls_sem.ipynb',
+      'https://colab.research.google.com/github/detinger/sem-lab/blob/main/notebooks/colab/01_tam_pls_sem.ipynb',
     );
     expect(
       within(card(EXAMPLES.find((e) => e.id === 'acsi-2015')!.title)).queryByRole('link', {

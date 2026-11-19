@@ -317,7 +317,7 @@
       "prompt": "Run PLS-SEM with the corrected model and enter the outer weight of f1.",
       "answer": 0.423,
       "tolerance": 0.004,
-      "feedbackCorrect": "Correct. With F composite-formative, SEM Studio estimates its weights with Mode B (regression weights).",
+      "feedbackCorrect": "Correct. With F composite-formative, SEM Lab estimates its weights with Mode B (regression weights).",
       "feedbackWrong": "Not the expected value. Make sure F is composite-formative (so Mode B weights are estimated) and that you read the outer weight, not the loading.",
       "derivation": {
         "source": {
@@ -342,7 +342,7 @@
     "Ask of each construct: does it cause its items, or do the items make it up?",
     "Could a store have long opening hours but poor parking? What does that imply for how f1–f4 should correlate?",
     "Friendliness, courtesy and pleasantness are three ways of saying the same thing. What does that suggest?",
-    "In SEM Studio the weighting mode follows the measurement kind; weights and loadings are listed separately in the results."
+    "In SEM Lab the weighting mode follows the measurement kind; weights and loadings are listed separately in the results."
   ],
   "solution": [
     {

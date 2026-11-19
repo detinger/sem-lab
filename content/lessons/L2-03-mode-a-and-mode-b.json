@@ -24,7 +24,7 @@
     },
     {
       "kind": "p",
-      "text": "Mode is an estimation choice, not a theory of measurement. Mode B consistently estimates the weights of a composite model, while Mode A combined with the consistency correction of PLSc matches the reflective common-factor model (Dijkstra 2017). Composites can also be built with Mode A or fixed weights, and a formative construct with causal indicators and its own error term is not a composite at all (Bollen & Bauldry 2011). SEM Studio ties the mode to the declared measurement: reflective blocks use Mode A, composite-formative blocks Mode B; some other programs let you choose."
+      "text": "Mode is an estimation choice, not a theory of measurement. Mode B consistently estimates the weights of a composite model, while Mode A combined with the consistency correction of PLSc matches the reflective common-factor model (Dijkstra 2017). Composites can also be built with Mode A or fixed weights, and a formative construct with causal indicators and its own error term is not a composite at all (Bollen & Bauldry 2011). SEM Lab ties the mode to the declared measurement: reflective blocks use Mode A, composite-formative blocks Mode B; some other programs let you choose."
     }
   ],
   "mistake": {

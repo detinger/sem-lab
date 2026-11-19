@@ -1,6 +1,6 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { SemModel } from '@sem-studio/contracts';
+import { SemModel } from '@sem-lab/contracts';
 import { describe, expect, it } from 'vitest';
 import { type Rect, center, rectsOverlap } from '../geometry';
 import {

@@ -1511,7 +1511,7 @@ def _estimate_cb(model, analysis, inp, on_progress, is_cancelled):
 
     # --- parameters
     std = _standardized(spec, st)
-    source_method = f"sem-studio:cb-sem:{estimator}"
+    source_method = f"sem-lab:cb-sem:{estimator}"
     parameters = []
     inference_method = "robust-analytic" if robust else "analytic"
     for k, e in enumerate(spec.entries):
@@ -1633,7 +1633,7 @@ def _estimate_cb(model, analysis, inp, on_progress, is_cancelled):
         "provenance": provenance(
             f"estimateCb(estimator={estimator}, missing={'fiml' if fiml else 'listwise'}, identification={identification}, meanStructure={'true' if mean_structure else 'false'})",
             started_at,
-            {"@sem-studio/engine/cb": CB_ENGINE_VERSION},
+            {"@sem-lab/engine/cb": CB_ENGINE_VERSION},
         ),
     }
     return {"ok": True, "result": result}

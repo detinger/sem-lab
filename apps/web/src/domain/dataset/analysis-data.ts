@@ -12,7 +12,7 @@
  *    rows with no observed value in any analysis column, which carry no information.
  * Errors name columns and indicators, never cell values.
  */
-import type { SemIndicator, SemModel } from '@sem-studio/contracts';
+import type { SemIndicator, SemModel } from '@sem-lab/contracts';
 import type { AnalysisData, Dataset, DatasetColumn } from './types';
 
 export type AnalysisDataErrorCode =

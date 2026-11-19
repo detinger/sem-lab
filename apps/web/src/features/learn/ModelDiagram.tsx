@@ -1,4 +1,4 @@
-import type { SemLayout, SemModel } from '@sem-studio/contracts';
+import type { SemLayout, SemModel } from '@sem-lab/contracts';
 import { useEffect, useState } from 'react';
 import { describeModel, modelSvg } from './diagram';
 import './diagram.css';

@@ -20,7 +20,7 @@ for (const theme of THEMES) {
           viewport: { width: viewport.width, height: viewport.height },
         });
         await context.addInitScript((value) => {
-          window.localStorage.setItem('sem-studio:theme', value);
+          window.localStorage.setItem('sem-lab:theme', value);
         }, theme);
         const tab = await context.newPage();
         await tab.goto(page.path);

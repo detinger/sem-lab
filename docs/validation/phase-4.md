@@ -8,12 +8,12 @@ Date: 2026-11-19. Everything runs in the browser; there is no backend. The R eng
 The product owner moved estimation into the browser ("no backend needed"). The phase therefore
 also delivered work PLAN placed in Phase 5:
 
-- SEM Studio's own TypeScript engine (`packages/engine`) for PLS-SEM, PLSc, Mode B, bootstrap,
+- SEM Lab's own TypeScript engine (`packages/engine`) for PLS-SEM, PLSc, Mode B, bootstrap,
   IPMA **and CB-SEM** (ML, MLR, FIML), run in Web Workers; R-identical random numbers, so the
   bootstrap draws the same rows as R.
 - The FastAPI service, Docker image and Railway deployment were removed (they remain in git
   history). Netlify serves the static app. See `docs/architecture/overview.md` §3.
-- A Python port of the engine (`packages/python-engine`, single file `semstudio_bundle.py`) for
+- A Python port of the engine (`packages/python-engine`, single file `semlab_bundle.py`) for
   exported scripts and the Colab notebooks.
 - The lavaan R export and the Python export.
 
@@ -84,7 +84,7 @@ citations and the SHA-256 of every file).
 | R / lavaan (ML, MLR, listwise, FIML) | `code-export/r-lavaan.test.ts` | about 1e-6 (lavaan's default tolerance) |
 | Python (the app's engine) | `code-export/bundle.test.ts` runs the bundle; `e2e/browser-engine.spec.ts` downloads it from Chrome, unzips and runs it; the script itself compares every number with `browser-result.json` | observed 7.1e-14 (PLS, 203 numbers) |
 
-**Decision — Python export uses SEM Studio's engine, not semopy / plspm.** PLAN §2.9 names
+**Decision — Python export uses SEM Lab's engine, not semopy / plspm.** PLAN §2.9 names
 semopy and plspm but also allows "a tested optional app-owned implementation". The port
 reproduces the app (whole-result JSON: PLS 2.7e-13 relative, CB 1.4e-9) including bootstrap
 draws; semopy and plspm use different estimator definitions and could not match the app's

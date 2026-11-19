@@ -13,7 +13,7 @@
  *                                                with packages/method-registry citations; both
  *                                                sets are resolvable from content)
  */
-import { AnalysisConfiguration, SemModel } from '@sem-studio/contracts';
+import { AnalysisConfiguration, SemModel } from '@sem-lab/contracts';
 import { z } from 'zod';
 
 const Slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);

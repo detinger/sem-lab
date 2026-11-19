@@ -16,7 +16,7 @@
     {
       "kind": "formula",
       "display": "RMSEA = √( max(χ² − df, 0) / (df · N) )",
-      "explanation": "χ² is the model test statistic, df its degrees of freedom and N the sample size (SEM Studio follows lavaan in using N). Values near 0 mean little misfit per degree of freedom."
+      "explanation": "χ² is the model test statistic, df its degrees of freedom and N the sample size (SEM Lab follows lavaan in using N). Values near 0 mean little misfit per degree of freedom."
     },
     {
       "kind": "demo",

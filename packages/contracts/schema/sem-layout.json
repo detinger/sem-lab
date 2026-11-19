@@ -1,5 +1,5 @@
 {
-  "$id": "https://sem-studio.local/schema/sem-layout.json",
+  "$id": "https://sem-lab.local/schema/sem-layout.json",
   "title": "sem-layout",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",

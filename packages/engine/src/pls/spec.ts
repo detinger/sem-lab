@@ -8,7 +8,7 @@
  * The capability registry is not consulted here: the application gates options by the
  * registry before it calls the engine; the engine refuses only what it cannot compute.
  */
-import type { AnalysisConfiguration, ResultWarning, SemModel } from '@sem-studio/contracts';
+import type { AnalysisConfiguration, ResultWarning, SemModel } from '@sem-lab/contracts';
 import { correlation, qrRank } from '../linalg/index.ts';
 import { EngineError, invalid } from '../shared/errors.ts';
 import type { CoreModel, InnerScheme } from './core.ts';

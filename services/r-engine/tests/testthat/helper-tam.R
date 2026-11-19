@@ -1,4 +1,4 @@
-# tam-v1 (TEMP/Example - TAM/Data.txt, git-ignored): SEM Studio's own specification of the
+# tam-v1 (TEMP/Example - TAM/Data.txt, git-ignored): SEM Lab's own specification of the
 # TAM model, as in services/r-engine/spike/_common.R. Used by the parity and IPMA tests.
 
 tam_blocks <- list(PU = paste0("USEF", 1:5), PEOU = paste0("EOU", 1:5), ATU = paste0("ATT", 1:5),

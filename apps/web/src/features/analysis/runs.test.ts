@@ -1,5 +1,5 @@
 import 'fake-indexeddb/auto';
-import { modelHash } from '@sem-studio/contracts';
+import { modelHash } from '@sem-lab/contracts';
 import Dexie from 'dexie';
 import { afterEach, describe, expect, it } from 'vitest';
 import { DB_NAME, resetDbForTests } from '@/storage/projects';

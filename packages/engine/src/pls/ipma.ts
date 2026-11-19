@@ -12,7 +12,7 @@
  *   6. indicator importance = normalised weight × construct importance; indicator performance =
  *      mean rescaled indicator.
  */
-import type { IpmaResult, ResultWarning } from '@sem-studio/contracts';
+import type { IpmaResult, ResultWarning } from '@sem-lab/contracts';
 import { correlation, identity, inverseR, mean, sd, solveR, zeros } from '../linalg/index.ts';
 import { EngineError } from '../shared/errors.ts';
 import { fitWeights } from './core.ts';

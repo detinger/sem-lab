@@ -3,7 +3,7 @@
  * formulas are unit-tested against hand-computed values (math.test.ts) and, for RMSEA / CFI,
  * against the CB engine's own functions.
  */
-import { RMersenneTwister, bootstrapIndices, quantile7 } from '@sem-studio/engine';
+import { RMersenneTwister, bootstrapIndices, quantile7 } from '@sem-lab/engine';
 
 const mean = (x: readonly number[]): number => x.reduce((s, v) => s + v, 0) / x.length;
 

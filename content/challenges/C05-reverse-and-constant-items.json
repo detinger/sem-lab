@@ -276,7 +276,7 @@
         },
         {
           "id": "c",
-          "text": "It loads negatively and SEM Studio warns about a negative loading when it is not reversed.",
+          "text": "It loads negatively and SEM Lab warns about a negative loading when it is not reversed.",
           "correct": true,
           "feedback": "Correct. The warning points to item coding."
         },
@@ -328,7 +328,7 @@
   "solution": [
     {
       "kind": "p",
-      "text": "loy4 has the value 4 for every respondent (zero variance): SEM Studio refuses to estimate while it is in the model. Remove it from LOY; reverse scoring cannot help."
+      "text": "loy4 has the value 4 for every respondent (zero variance): SEM Lab refuses to estimate while it is in the model. Remove it from LOY; reverse scoring cannot help."
     },
     {
       "kind": "p",

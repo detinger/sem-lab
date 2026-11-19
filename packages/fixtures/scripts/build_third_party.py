@@ -386,7 +386,7 @@ def build_dataset(cfg: dict, temp: Path, label: str):
                 "measurement mode (reflective / formative, Mode A / Mode B)",
                 "construct positions and any other diagram information",
             ],
-            "naming": "'name' is the construct name exactly as stored. 'code' is SEM Studio's suggested short identifier and 'label' SEM Studio's reading of the abbreviation; neither is taken from the project file unless listed under alternateNames.",
+            "naming": "'name' is the construct name exactly as stored. 'code' is SEM Lab's suggested short identifier and 'label' SEM Lab's reading of the abbreviation; neither is taken from the project file unless listed under alternateNames.",
             "constructs": constructs,
             "unassignedColumns": [name for name in header if name not in assigned],
             "crossChecks": cross_checks,
@@ -422,7 +422,7 @@ def build_dataset(cfg: dict, temp: Path, label: str):
             }
         )
 
-    # ---- proposed structural model (SEM Studio's own specification)
+    # ---- proposed structural model (SEM Lab's own specification)
     proposal = cfg.get("proposedModel")
     if proposal:
         if measurement is None:
@@ -566,7 +566,7 @@ def build_provenance_md(config: dict, manifests: dict) -> bytes:
     w("`*.splspm`, `*.splsge` and `*.splsrm` were never opened, decoded, decrypted or")
     w("reverse-engineered. Only the delimited `*.txt` data files and the plain-JSON `*.settings` /")
     w("`*.ok` side files were read. Structural paths are therefore **not** taken from SmartPLS: the")
-    w("`proposed-model.json` files are SEM Studio's own specifications from the published theory.")
+    w("`proposed-model.json` files are SEM Lab's own specifications from the published theory.")
     w("")
     w("## Status vocabulary")
     w("")

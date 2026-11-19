@@ -4,7 +4,7 @@
  * Assertions are generous upper bounds; the numbers are printed for the record.
  */
 import { describe, expect, it } from 'vitest';
-import type { AnalysisConfiguration, SemModel } from '@sem-studio/contracts';
+import type { AnalysisConfiguration, SemModel } from '@sem-lab/contracts';
 import { estimatePls } from '../src/index.ts';
 import { analysisData, FIXTURES, loadCase, readCsv, readJson } from './helpers.ts';
 

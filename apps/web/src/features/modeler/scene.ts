@@ -7,7 +7,7 @@
  * composite/formative = indicator → construct, structural = source → target,
  * covariance = double-headed curve.
  */
-import { type SemLayout, type SemModel, measurementEdges } from '@sem-studio/contracts';
+import { type SemLayout, type SemModel, measurementEdges } from '@sem-lab/contracts';
 import {
   type NodeShape,
   type Point,

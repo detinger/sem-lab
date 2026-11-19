@@ -29,7 +29,7 @@
   ],
   "mistake": {
     "title": "Celebrating perfect fit with df = 0",
-    "text": "A just-identified model has χ² = 0 and \"perfect\" fit indices by construction. SEM Studio warns about this; the model may still be wrong, and you cannot tell from its fit."
+    "text": "A just-identified model has χ² = 0 and \"perfect\" fit indices by construction. SEM Lab warns about this; the model may still be wrong, and you cannot tell from its fit."
   },
   "tryIt": {
     "task": "Run CB-SEM on this one-factor model with five indicators and check df = 5. Then switch the identification between marker and std-lv on the Analysis page and compare χ² and the standardised loadings.",

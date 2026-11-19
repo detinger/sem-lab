@@ -7,11 +7,11 @@ Read on 2026-11-19. Everything below is what the source does at that commit, not
 documentation says.
 
 **Licence note.** `jaspSem`'s DESCRIPTION says GPL (≥ 2); its QML files carry AGPL-3 headers.
-These notes describe behaviour only. No JASP code, text or UI was copied into SEM Studio.
+These notes describe behaviour only. No JASP code, text or UI was copied into SEM Lab.
 
 ## Why it matters
 
-JASP uses the same engines SEM Studio has chosen: **cSEM** for PLS-SEM and **lavaan** for
+JASP uses the same engines SEM Lab has chosen: **cSEM** for PLS-SEM and **lavaan** for
 CB-SEM. With equivalent settings, its numbers should match ours, so JASP can serve as an
 independent manual cross-check during user testing. Its choices are also a useful contrast
 when we set our own defaults.
@@ -51,29 +51,29 @@ when we set our own defaults.
 | Test statistic | standard, Satorra–Bentler, Yuan–Bentler (and Mplus variant), mean-and-variance adjusted, scaled-shifted, Bollen–Stine bootstrap, Browne residual (ADF/NT) |
 | Output | Fit indices (AIC/BIC footnoted as ML-only), R², AVE, reliability (α and ω), **HTMT**, Mardia's coefficients, modification indices with a threshold, group equality constraints |
 
-## Decisions for SEM Studio
+## Decisions for SEM Lab
 
 1. **No hidden method default.** JASP defaults to PLSc and SmartPLS defaults to classic PLS,
-   so the same "PLS-SEM" click gives different estimands in different tools. SEM Studio's
+   so the same "PLS-SEM" click gives different estimands in different tools. SEM Lab's
    method cards make the choice explicit (`pls-sem` vs `plsc`), and the run provenance line
    always names it.
 2. **Every UI option must reach the engine.** JASP's tolerance field is a real example of an
-   option that is shown but ignored. SEM Studio adds a round-trip test: each
+   option that is shown but ignored. SEM Lab adds a round-trip test: each
    `AnalysisConfiguration` field must appear in the engine call recorded in
    `result.provenance.call`, and the R adapter must reject arguments it does not map.
 3. **Inadmissible bootstrap draws.** JASP's default "replace" redraws until admissible, which
-   conditions the bootstrap distribution on admissibility without reporting it. SEM Studio
+   conditions the bootstrap distribution on admissibility without reporting it. SEM Lab
    counts and excludes (drop) by default, reports requested / completed / failed /
    inadmissible counts as the engine protocol already requires, and offers "replace" only as
    an explicit, disclosed option.
-4. **Seeds are mandatory** for SEM Studio bootstrap runs (JASP: optional).
-5. **CB bootstrap CIs.** JASP defaults to `bca.simple`. SEM Studio's baseline is percentile,
+4. **Seeds are mandatory** for SEM Lab bootstrap runs (JASP: optional).
+5. **CB bootstrap CIs.** JASP defaults to `bca.simple`. SEM Lab's baseline is percentile,
    and BCa is offered only where the R spike verified it.
 6. **Thresholds are context, not verdicts.** JASP's help text states 0.70 as "acceptable".
-   SEM Studio's interpretation cards present cutoffs with their source and caveats (PLAN
+   SEM Lab's interpretation cards present cutoffs with their source and caveats (PLAN
    §2.7), not as pass/fail.
-7. **What SEM Studio adds beyond JASP:** visual modeler, IPMA, HTMT for PLS, Word-ready
-   tables, and R/Python code export. These are the parts of SEM Studio where we have no
+7. **What SEM Lab adds beyond JASP:** visual modeler, IPMA, HTMT for PLS, Word-ready
+   tables, and R/Python code export. These are the parts of SEM Lab where we have no
    external GUI reference and must rely on our own reference tests.
 8. **Cross-check opportunity.** For Phase 3/5 acceptance, run the TAM fixtures in JASP desktop
    with matched settings (classic PLS: PLSc unchecked; CB: marker, ML, listwise) and record

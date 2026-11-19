@@ -3,7 +3,7 @@
 Purpose: a self-consistency yardstick for the Phase 0 spike. It is written from the textbook
 description of Wold/Lohmoeller's algorithm (standardised indicators, Mode A / Mode B outer
 estimation, centroid / factorial / path inner weighting) and shares no code with plspm.
-It is NOT the SEM Studio production estimator and makes no claim beyond what the spike
+It is NOT the SEM Lab production estimator and makes no claim beyond what the spike
 scripts check with it.
 
 Conventions (stated explicitly because every one of them matters for cross-package parity):

@@ -72,7 +72,7 @@ export function parseCsv(text: string, options: ParseCsvOptions = {}): ParseCsvR
     return failed({
       code: 'TOO_LARGE',
       severity: 'error',
-      message: `The file is larger than ${formatBytes(maxBytes)}; SEM Studio refuses to import it in the browser.`,
+      message: `The file is larger than ${formatBytes(maxBytes)}; SEM Lab refuses to import it in the browser.`,
     });
   }
 
@@ -159,7 +159,7 @@ export function parseCsv(text: string, options: ParseCsvOptions = {}): ParseCsvR
       code: 'NO_HEADER',
       severity: 'warning',
       message:
-        'Every cell of the first row is a number, so the file may have no header row. SEM Studio reads the first row as column names.',
+        'Every cell of the first row is a number, so the file may have no header row. SEM Lab reads the first row as column names.',
     });
   }
 

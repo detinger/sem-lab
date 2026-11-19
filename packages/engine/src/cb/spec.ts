@@ -18,7 +18,7 @@
  *   `parameterLabel` shared by several free parameters is an equality constraint;
  * - mean structure (optional): indicator intercepts free, latent means fixed to 0.
  */
-import type { SemModel } from '@sem-studio/contracts';
+import type { SemModel } from '@sem-lab/contracts';
 
 export type MatName = 'lambda' | 'beta' | 'psi' | 'theta' | 'nu' | 'alpha';
 export type EntryKind =

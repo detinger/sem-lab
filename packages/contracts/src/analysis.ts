@@ -6,7 +6,7 @@ import { Id } from './common.ts';
 export const SemMethod = z.enum(['pls-sem', 'plsc', 'cb-sem']);
 export type SemMethod = z.infer<typeof SemMethod>;
 
-/** 'browser' = SEM Studio's own TypeScript engine (packages/engine), verified against the R engines. */
+/** 'browser' = SEM Lab's own TypeScript engine (packages/engine), verified against the R engines. */
 export const EngineId = z.enum([
   'browser',
   'r-csem',

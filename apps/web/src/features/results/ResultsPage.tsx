@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FlaskConical } from 'lucide-react';
 import { useMemo } from 'react';
-import type { NormalizedSemResult } from '@sem-studio/contracts';
+import type { NormalizedSemResult } from '@sem-lab/contracts';
 import {
   Callout,
   EmptyState,
@@ -50,12 +50,12 @@ import './results.css';
 const METHOD_TEXT = { 'pls-sem': 'PLS-SEM', plsc: 'PLSc', 'cb-sem': 'CB-SEM' } as const;
 const short = (h: string): string => h.slice(0, 8);
 
-/** "SEM Studio engine (in browser), @sem-studio/engine 0.1.0"; earlier R-engine runs keep their own wording. */
+/** "SEM Lab engine (in browser), @sem-lab/engine 0.1.0"; earlier R-engine runs keep their own wording. */
 export function engineText(r: NormalizedSemResult): string {
   const v = r.provenance.packageVersions;
   if (r.provenance.engine === 'browser') {
-    const key = Object.keys(v).find((k) => k.startsWith('@sem-studio/engine'));
-    return `SEM Studio engine (in browser)${key ? `, @sem-studio/engine ${v[key]}` : ''}`;
+    const key = Object.keys(v).find((k) => k.startsWith('@sem-lab/engine'));
+    return `SEM Lab engine (in browser)${key ? `, @sem-lab/engine ${v[key]}` : ''}`;
   }
   const cs = v['cSEM'];
   return `${r.provenance.engine}${cs ? ` (cSEM ${cs})` : ''}`;
@@ -340,7 +340,7 @@ function PlsBody({ run }: { run: RunView }) {
                 <p className="rs-prose">
                   {METHOD_TEXT[run.record.method]} was estimated with{' '}
                   {result.provenance.engine === 'browser'
-                    ? 'SEM Studio’s own engine, running in this browser, which follows the semantics of the R package cSEM 0.7.1 (reference-tested)'
+                    ? 'SEM Lab’s own engine, running in this browser, which follows the semantics of the R package cSEM 0.7.1 (reference-tested)'
                     : `the R package cSEM (${result.provenance.packageVersions['cSEM'] ?? 'version not reported'})`}
                   . Constructs are composites: Mode A weights for reflective blocks and Mode B for
                   composite blocks
@@ -353,7 +353,7 @@ function PlsBody({ run }: { run: RunView }) {
                     : 'No bootstrap was run.'}
                 </p>
                 <p className="rs-note-small">
-                  Full method statement: <code>docs/estimators/pls-csem.md</code> in the SEM Studio
+                  Full method statement: <code>docs/estimators/pls-csem.md</code> in the SEM Lab
                   repository (exact cSEM call, bootstrap procedure, definitions).
                 </p>
                 <ExportRButton run={run} projectName={projectName} />
@@ -578,9 +578,8 @@ function CbBody({ run }: { run: RunView }) {
                 <h3 className="rs-h3">Method statement</h3>
                 <p className="rs-prose">
                   CB-SEM was estimated by {run.record.options.estimator === 'MLR' ? 'robust ' : ''}
-                  maximum likelihood ({run.record.options.estimator}) with SEM Studio’s own engine
-                  in this browser, following the conventions of lavaan’s <code>sem()</code> defaults
-                  (
+                  maximum likelihood ({run.record.options.estimator}) with SEM Lab’s own engine in
+                  this browser, following the conventions of lavaan’s <code>sem()</code> defaults (
                   {run.record.options.cb?.identification === 'std-lv'
                     ? 'factor variances fixed to 1'
                     : 'the first indicator of each factor as marker'}

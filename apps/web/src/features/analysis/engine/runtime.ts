@@ -3,13 +3,13 @@
  * pool of draw workers for the PLS bootstrap) and falls back to the main thread where Workers are
  * unavailable (tests, very old browsers). Results are identical on every path; only speed differs.
  */
-import type { AnalysisConfiguration, SemModel } from '@sem-studio/contracts';
+import type { AnalysisConfiguration, SemModel } from '@sem-lab/contracts';
 import type {
   AnalysisDataInput,
   EstimateInput,
   EstimateResult,
   ProgressEvent,
-} from '@sem-studio/engine';
+} from '@sem-lab/engine';
 import type { AnalysisData } from '@/domain/dataset/types';
 import type { FromEstimateWorker, ToEstimateWorker } from './protocol';
 import { CANCELLED_OUTCOME, runCore } from './run-core';

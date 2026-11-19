@@ -6,7 +6,7 @@
  * clamped, imputed or coerced; a transformation that cannot be applied exactly returns a
  * typed error instead. Error messages name columns and row numbers, never cell values.
  */
-import { type DataCell, dataFingerprint } from '@sem-studio/contracts';
+import { type DataCell, dataFingerprint } from '@sem-lab/contracts';
 import { hasParseErrors, parseCsv, type ParseCsvOptions } from './parse';
 import { mean, moments, presentValues, sdSample } from './stats';
 import { typeColumns } from './typing';

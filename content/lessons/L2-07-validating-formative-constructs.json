@@ -18,7 +18,7 @@
       "ordered": true,
       "items": [
         "**Content validity:** the indicators cover the construct's domain as defined before data collection (Diamantopoulos & Winklhofer 2001).",
-        "**Convergent validity:** [[redundancy-analysis]], the correlation of the formative construct with an alternative measure of the same concept, often a global single item; Hair et al. (2022) suggest about .70 or more. SEM Studio does not run redundancy analysis automatically yet; you can build the two-construct model yourself.",
+        "**Convergent validity:** [[redundancy-analysis]], the correlation of the formative construct with an alternative measure of the same concept, often a global single item; Hair et al. (2022) suggest about .70 or more. SEM Lab does not run redundancy analysis automatically yet; you can build the two-construct model yourself.",
         "**Collinearity:** indicator [[vif]] values; ideally below 3, with 5 as a commonly used upper heuristic (Hair et al. 2022).",
         "**Weights:** significance (bootstrap) and size. A non-significant weight whose loading is sizeable (about .50 or more) can be kept because the indicator still matters absolutely (Cenfetelli & Bassellier 2009; Hair et al. 2022)."
       ]
@@ -26,7 +26,7 @@
     {
       "kind": "callout",
       "variant": "info",
-      "text": "For composite-formative blocks SEM Studio shows α, ρA, ρC, AVE and HTMT as not applicable instead of displaying numbers that would look like passing or failing scores."
+      "text": "For composite-formative blocks SEM Lab shows α, ρA, ρC, AVE and HTMT as not applicable instead of displaying numbers that would look like passing or failing scores."
     },
     {
       "kind": "p",

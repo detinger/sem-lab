@@ -5,7 +5,7 @@
  */
 import { create } from 'zustand';
 
-export const ACTIVE_CHALLENGE_KEY = 'sem-studio:active-challenge';
+export const ACTIVE_CHALLENGE_KEY = 'sem-lab:active-challenge';
 
 function read(): { id: string | null; open: boolean } {
   try {

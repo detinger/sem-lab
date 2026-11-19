@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import type { AnalysisConfiguration, NormalizedSemResult, SemModel } from '@sem-studio/contracts';
+import type { AnalysisConfiguration, NormalizedSemResult, SemModel } from '@sem-lab/contracts';
 import type { CbDataInput } from '../../src/cb/index.ts';
 
 const FIXTURES = new URL('../../../fixtures/', import.meta.url);

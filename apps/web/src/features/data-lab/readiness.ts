@@ -1,4 +1,4 @@
-import type { SemMethod, SemModel } from '@sem-studio/contracts';
+import type { SemMethod, SemModel } from '@sem-lab/contracts';
 import { useMemo } from 'react';
 import { analysisIndicators } from '@/domain/dataset/analysis-data';
 import { missingness } from '@/domain/dataset/stats';

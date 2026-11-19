@@ -12,7 +12,7 @@
  *   refit can, and is held to the full tolerances.
  */
 import { readdirSync } from 'node:fs';
-import { NormalizedSemResult } from '@sem-studio/contracts';
+import { NormalizedSemResult } from '@sem-lab/contracts';
 import { describe, expect, it } from 'vitest';
 import { estimateCb } from '../../src/cb/index.ts';
 import {

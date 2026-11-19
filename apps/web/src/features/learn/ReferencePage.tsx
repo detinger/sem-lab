@@ -3,7 +3,7 @@ import {
   type Capability,
   type CapabilityStatus,
   type Verification,
-} from '@sem-studio/method-registry';
+} from '@sem-lab/method-registry';
 import { Library, Search } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';

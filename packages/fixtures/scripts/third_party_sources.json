@@ -1,8 +1,8 @@
 {
-  "$comment": "Hand-maintained input of build_third_party.py. Everything here is either (a) a pointer to a plain file in TEMP/, (b) provenance that was checked on the date in 'accessed' (URLs listed were actually opened), or (c) SEM Studio's own proposals. Nothing here was extracted from the encrypted SmartPLS project files.",
+  "$comment": "Hand-maintained input of build_third_party.py. Everything here is either (a) a pointer to a plain file in TEMP/, (b) provenance that was checked on the date in 'accessed' (URLs listed were actually opened), or (c) SEM Lab's own proposals. Nothing here was extracted from the encrypted SmartPLS project files.",
   "collection": "smartpls-samples",
   "accessed": "2026-11-19",
-  "proposalLabel": "SEM Studio specification — not extracted from the SmartPLS project file",
+  "proposalLabel": "SEM Lab specification — not extracted from the SmartPLS project file",
   "statusVocabulary": {
     "redistributable-with-attribution": "A licence was found at the source and it permits redistribution with attribution.",
     "terms-unverified": "No licence or terms covering redistribution were found at the sources opened. Do not publish in a public build until the owner clears it.",
@@ -43,7 +43,7 @@
       "proposedModel": {
         "id": "tam-v1",
         "summary": "Classic TAM with attitude as a mediator. Identical to the shared Phase 0 reference model tam-v1.",
-        "measurementMode": "reflective (SEM Studio's choice; the plain side files do not state the measurement mode)",
+        "measurementMode": "reflective (SEM Lab's choice; the plain side files do not state the measurement mode)",
         "constructs": ["PEOU", "PU", "ATU", "BI", "USE"],
         "paths": [
           { "from": "PEOU", "to": "PU" },
@@ -98,7 +98,7 @@
       "proposedModel": {
         "id": "utaut-v1",
         "summary": "UTAUT main effects only: three determinants of intention, and intention plus facilitating conditions as determinants of use. The moderators of the original theory (gender, age, experience, voluntariness) are not in the data file and are therefore not specified.",
-        "measurementMode": "reflective (SEM Studio's choice; the plain side files do not state the measurement mode)",
+        "measurementMode": "reflective (SEM Lab's choice; the plain side files do not state the measurement mode)",
         "constructs": ["PE", "EE", "SI", "FC", "BI", "USE"],
         "paths": [
           { "from": "PE", "to": "BI" },
@@ -152,12 +152,12 @@
           "Hwang, H., & Takane, Y. (2004). Generalized structured component analysis. Psychometrika, 69(1), 81-99. https://doi.org/10.1007/BF02295841",
           "Hwang, H., & Takane, Y. (2014). Generalized Structured Component Analysis: A Component-Based Approach to Structural Equation Modeling. Chapman & Hall/CRC."
         ],
-        "whatWouldUpgradeIt": "Either (a) the owner accepts GPL-3 terms for this one data file and it is rebuilt from cSEM's BergamiBagozzi2000 with the GPL notice, or (b) the R engine loads cSEM::BergamiBagozzi2000 at run time so SEM Studio redistributes nothing, or (c) permission from the original authors."
+        "whatWouldUpgradeIt": "Either (a) the owner accepts GPL-3 terms for this one data file and it is rebuilt from cSEM's BergamiBagozzi2000 with the GPL notice, or (b) the R engine loads cSEM::BergamiBagozzi2000 at run time so SEM Lab redistributes nothing, or (c) permission from the original authors."
       },
       "proposedModel": {
         "id": "oi-v1",
         "summary": "Full mediation chain used by Hwang & Takane (2004) and reproduced in the cSEM documentation example: prestige -> identification -> the two affective commitment facets.",
-        "measurementMode": "reflective for SEM Studio's default example (cSEM's Hwang example specifies composites); the plain side files do not state the measurement mode",
+        "measurementMode": "reflective for SEM Lab's default example (cSEM's Hwang example specifies composites); the plain side files do not state the measurement mode",
         "constructs": ["OP", "OI", "ACJ", "ACL"],
         "paths": [
           { "from": "OP", "to": "OI" },
@@ -228,7 +228,7 @@
       "proposedModel": {
         "id": "acsi-v1",
         "summary": "ACSI base model without the complaints construct, matching the 'ACSI (modified)' / 'ACSI (without COMP)' naming of the sample files and the five constructs present in the measurement assignment.",
-        "measurementMode": "reflective (SEM Studio's choice; the plain side files do not state the measurement mode)",
+        "measurementMode": "reflective (SEM Lab's choice; the plain side files do not state the measurement mode)",
         "constructs": ["CUEX", "PERQ", "PERV", "CUSA", "CUSL"],
         "paths": [
           { "from": "CUEX", "to": "PERQ" },

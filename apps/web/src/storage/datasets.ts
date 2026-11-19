@@ -1,7 +1,7 @@
 /**
  * Local-first dataset storage (PLAN §2.2 "Data privacy and storage").
  *
- * Datasets live only in this browser's IndexedDB ('sem-studio' database, `datasets` table,
+ * Datasets live only in this browser's IndexedDB ('sem-lab' database, `datasets` table,
  * schema version 2 — declared in projects.ts, which owns the connection). What is stored is
  * the immutable ORIGINAL table, the resolved parse options and the transformation log; typed
  * columns and the fingerprint are recomputed on load, so a stored dataset can never disagree
@@ -10,7 +10,7 @@
  * A project file may contain only `toDatasetRef(dataset)`: fingerprint and column schema,
  * no row-level values.
  */
-import { DatasetRef } from '@sem-studio/contracts';
+import { DatasetRef } from '@sem-lab/contracts';
 import { bundledDatasetInfo } from '../domain/dataset/bundled';
 import { profileColumn } from '../domain/dataset/stats';
 import { buildDataset } from '../domain/dataset/transform';

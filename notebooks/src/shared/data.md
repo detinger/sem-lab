@@ -1,6 +1,6 @@
 %% code
 # Generate the data with the fixture's seed and N, and prove they are byte-identical to the
-# dataset bundled with SEM Studio (packages/fixtures/synthetic/{{CASE_ID}}/data.csv).
+# dataset bundled with SEM Lab (packages/fixtures/synthetic/{{CASE_ID}}/data.csv).
 import pandas as pd
 
 SEED, N = {{SEED}}, {{N}}
@@ -15,7 +15,7 @@ with open("data.csv", "wb") as f:
 
 df = pd.read_csv("data.csv")
 print(f"data.csv written: {len(df)} rows x {df.shape[1]} columns, SYNTHETIC")
-print(f"sha256 {data_sha} == fixture {{CASE_ID}}: the SEM Studio example uses exactly these bytes")
+print(f"sha256 {data_sha} == fixture {{CASE_ID}}: the SEM Lab example uses exactly these bytes")
 df.head()
 
 %% markdown

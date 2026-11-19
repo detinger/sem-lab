@@ -25,7 +25,7 @@ dir.create(EVIDENCE_DIR, recursive = TRUE, showWarnings = FALSE)
 # would not describe the pinned environment.
 stopifnot(identical(normalizePath(.libPaths()[1]), normalizePath(file.path(ENGINE_DIR, "r-lib"))))
 
-# ---- tam-v1: SEM Studio's own specification of the Technology Acceptance Model
+# ---- tam-v1: SEM Lab's own specification of the Technology Acceptance Model
 TAM_BLOCKS <- list(
   PU   = paste0("USEF", 1:5),
   PEOU = paste0("EOU", 1:5),

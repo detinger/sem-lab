@@ -1,11 +1,11 @@
-# SEM Studio — STYLE.md
+# SEM Lab — STYLE.md
 
 > **Visual specification for a new application.** This carries forward BPMN Studio's actual design tokens and component geometry; SEM-specific treatments below are **implementation targets**, not existing features. Pair with `PLAN.md`.
 
 
-This guide applies BPMN Studio's visual design language to SEM Studio: a sophisticated visual modeling, quantitative research and learning workspace for PLS-SEM and CB-SEM. Preserve typography, color roles, density, surface hierarchy and interaction patterns while giving SEM diagrams, figures and analytical results their own coherent notation.
+This guide applies BPMN Studio's visual design language to SEM Lab: a sophisticated visual modeling, quantitative research and learning workspace for PLS-SEM and CB-SEM. Preserve typography, color roles, density, surface hierarchy and interaction patterns while giving SEM diagrams, figures and analytical results their own coherent notation.
 
-Core dimensions and colors below were extracted from BPMN Studio’s provided STYLE document. All SEM Studio features are proposed unless marked as inherited **design tokens**. Implement and test the design for its own interactive components; do not copy BPMN source selectors or dependencies.
+Core dimensions and colors below were extracted from BPMN Studio’s provided STYLE document. All SEM Lab features are proposed unless marked as inherited **design tokens**. Implement and test the design for its own interactive components; do not copy BPMN source selectors or dependencies.
 
 ## 1. Character and principles
 
@@ -75,7 +75,7 @@ Pair semantic colors with readable labels or recognizable icons. Improvement and
   SFMono-Regular, Menlo, monospace;
 ```
 
-The BPMN Studio reference declares these stacks without bundling sans or monospace font files. For SEM Studio, either rely on the fallback stacks or legally self-host Inter and a monospace font if consistent typography across machines is important; include the weights used below.
+The BPMN Studio reference declares these stacks without bundling sans or monospace font files. For SEM Lab, either rely on the fallback stacks or legally self-host Inter and a monospace font if consistent typography across machines is important; include the weights used below.
 
 | Element | Size | Weight | Other properties |
 | --- | --- | --- | --- |
@@ -101,7 +101,7 @@ Use monospace for code, identifiers, traces, and keyboard shortcuts. Inline `cod
 
 ## 4. Spacing, shape, and elevation
 
-The BPMN Studio reference expressed most spacing as literal CSS values rather than a named token system. These recurring values form the practical scale to adopt for SEM Studio:
+The BPMN Studio reference expressed most spacing as literal CSS values rather than a named token system. These recurring values form the practical scale to adopt for SEM Lab:
 
 | Spacing | Typical use |
 | --- | --- |
@@ -115,7 +115,7 @@ The BPMN Studio reference expressed most spacing as literal CSS values rather th
 | 28–32px | Desktop page inset and hero spacing |
 | 40–48px | Page bottom breathing room |
 
-**Implementation recommendation:** expose these values as spacing tokens in SEM Studio while keeping the original proportions. Do not force every dimension onto a new scale if visual fidelity is the goal.
+**Implementation recommendation:** expose these values as spacing tokens in SEM Lab while keeping the original proportions. Do not force every dimension onto a new scale if visual fidelity is the goal.
 
 | Token / shape | Value | Use |
 | --- | --- | --- |
@@ -171,7 +171,7 @@ Use `minmax(0, 1fr)`, `min-width: 0`, and `min-height: 0` in flexible workspaces
 | 900px | Two- and three-column utility grids become one column; reference index moves above content |
 | 820px | Sidebar becomes a horizontal, scrollable navigation row; labels and group headings are hidden; page padding becomes `18px 16px 40px`; inspector moves below the canvas |
 
-At the smallest modeler breakpoint, canvas and inspector rows should be defined as `minmax(320px, 1fr)` and `minmax(280px, 45vh)`. This is a dense research-workspace layout. **Transfer recommendation:** check SEM Studio's smallest supported screen and scrolling behavior instead of assuming these minimum heights fit every phone.
+At the smallest modeler breakpoint, canvas and inspector rows should be defined as `minmax(320px, 1fr)` and `minmax(280px, 45vh)`. This is a dense research-workspace layout. **Transfer recommendation:** check SEM Lab's smallest supported screen and scrolling behavior instead of assuming these minimum heights fit every phone.
 
 ## 6. Component recipes
 
@@ -241,7 +241,7 @@ Disabled buttons use 50% opacity and a not-allowed cursor. Focused inputs use a 
 
 ### Product mark
 
-Use the BPMN Studio brand's proportions: **30px primary square**, **8px radius**, **20px white/contrast mark**, 15px wordmark and 11px subtitle. For SEM Studio, design a simple **latent circle connected to three indicator rectangles** with clean 2px strokes (independent artwork; do not reuse SmartPLS assets). The brand may include the line "Structural Equation Modeling" in subtle text.
+Use the BPMN Studio brand's proportions: **30px primary square**, **8px radius**, **20px white/contrast mark**, 15px wordmark and 11px subtitle. For SEM Lab, design a simple **latent circle connected to three indicator rectangles** with clean 2px strokes (independent artwork; do not reuse SmartPLS assets). The brand may include the line "Structural Equation Modeling" in subtle text.
 
 Use Lucide outline icons, generally `18px` navigation, `16px` buttons and `13–14px` compact row actions. Domain symbols (factor ellipse, indicator rectangle, covariance arrow) are **scientific notation**, not random icon replacements.
 
@@ -634,7 +634,7 @@ Every learning module has a standard recipe:
 - Each card clearly states **synthetic teaching data** unless a real licensed dataset is provided.
 - For features that aren't available in the Python library, show "R implementation required" or "Not implemented in this notebook" rather than a false toggle.
 - Keep the notebook link disabled until there is a valid hosted `.ipynb` URL; the user can download the notebook file locally once implemented.
-- Use one consistent figure style in notebook-generated diagrams so Colab examples feel part of SEM Studio.
+- Use one consistent figure style in notebook-generated diagrams so Colab examples feel part of SEM Lab.
 
 ---
 
@@ -894,5 +894,5 @@ Paths are **recommended**, not guaranteed to match the project's eventual reposi
 
 ### One-paragraph visual brief for agents
 
-> **Design SEM Studio as a compact academic research workspace using BPMN Studio's cool-neutral surfaces, thin borders, Inter-style 14px body typography, 6px controls, 10px cards, blue primary actions, subtle orange emphasis, Lucide outline icons and complete light/dark themes. Give the React Flow path-model editor exceptional precision: clean elliptical constructs, compact rectangular indicators, correct arrows, 16px grid snapping, smart guides, deterministic automatic layout and publication-ready SVG export. Keep quantitative results calm and precise, tables genuinely editable when pasted into Word, and the IPMA view a spacious, highly legible importance–performance scatter plot with clear target, axis definitions, supporting data and uncertainty.**
+> **Design SEM Lab as a compact academic research workspace using BPMN Studio's cool-neutral surfaces, thin borders, Inter-style 14px body typography, 6px controls, 10px cards, blue primary actions, subtle orange emphasis, Lucide outline icons and complete light/dark themes. Give the React Flow path-model editor exceptional precision: clean elliptical constructs, compact rectangular indicators, correct arrows, 16px grid snapping, smart guides, deterministic automatic layout and publication-ready SVG export. Keep quantitative results calm and precise, tables genuinely editable when pasted into Word, and the IPMA view a spacious, highly legible importance–performance scatter plot with clear target, axis definitions, supporting data and uncertainty.**
 

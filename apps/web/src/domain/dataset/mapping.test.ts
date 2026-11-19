@@ -1,4 +1,4 @@
-import type { SemModel } from '@sem-studio/contracts';
+import type { SemModel } from '@sem-lab/contracts';
 import { describe, expect, it } from 'vitest';
 import { applyMapping, normalizeName, suggestMapping } from './mapping';
 

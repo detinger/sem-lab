@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { SemModel } from '@sem-studio/contracts';
+import { SemModel } from '@sem-lab/contracts';
 import { describe, expect, it } from 'vitest';
 import { buildAnalysisData } from './analysis-data';
 import { createDataset, isDatasetError } from './transform';

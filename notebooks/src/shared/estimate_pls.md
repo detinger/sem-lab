@@ -1,10 +1,10 @@
 %% code
 import time
 
-columns, data_rows = semstudio.read_csv("data.csv")
-data = semstudio.build_analysis_data(model, columns, data_rows, analysis["missingData"])
+columns, data_rows = semlab.read_csv("data.csv")
+data = semlab.build_analysis_data(model, columns, data_rows, analysis["missingData"])
 t0 = time.perf_counter()
-out = semstudio.estimate(model, analysis, data)
+out = semlab.estimate(model, analysis, data)
 elapsed = time.perf_counter() - t0
 if not out["ok"]:
     raise RuntimeError(f"{out['error']['code']}: {out['error']['message']}")
@@ -20,4 +20,4 @@ print(f"estimation incl. bootstrap took {elapsed:.1f} s")
 for w in result["warnings"]:
     print(f"warning [{w['code']}]: {w['message']}")
 assert est["converged"] and est["admissible"]
-rep = pls_report(result, model, semstudio)
+rep = pls_report(result, model, semlab)

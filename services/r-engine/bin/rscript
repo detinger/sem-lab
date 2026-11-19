@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# SEM Studio R engine launcher.
+# SEM Lab R engine launcher.
 #
 # Puts the project-local package library (services/r-engine/r-lib) FIRST on R's
 # library path and then execs Rscript with the arguments unchanged. Every R
@@ -9,7 +9,7 @@
 # Works from any current directory and through symlinks.
 #
 # Environment:
-#   SEM_STUDIO_RSCRIPT   path to the Rscript binary (default: "Rscript" on PATH)
+#   SEM_LAB_RSCRIPT   path to the Rscript binary (default: "Rscript" on PATH)
 #   R_LIBS               if already set, it is kept AFTER the project library
 set -euo pipefail
 
@@ -27,8 +27,8 @@ r_lib="$engine_dir/r-lib"
 mkdir -p "$r_lib"
 
 export R_LIBS="${r_lib}${R_LIBS:+:${R_LIBS}}"
-export SEM_STUDIO_R_ENGINE_DIR="$engine_dir"
-export SEM_STUDIO_R_LIB="$r_lib"
+export SEM_LAB_R_ENGINE_DIR="$engine_dir"
+export SEM_LAB_R_LIB="$r_lib"
 
 # One BLAS/OpenMP thread per R process unless the caller says otherwise.
 #  - SEM matrices are tiny; threaded BLAS gains nothing and bootstrap parallelism
@@ -42,4 +42,4 @@ export SEM_STUDIO_R_LIB="$r_lib"
 #    See docs/validation/phase-0/r-spike.md.
 export OMP_NUM_THREADS="${OMP_NUM_THREADS:-1}"
 
-exec "${SEM_STUDIO_RSCRIPT:-Rscript}" "$@"
+exec "${SEM_LAB_RSCRIPT:-Rscript}" "$@"

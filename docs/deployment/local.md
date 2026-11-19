@@ -1,6 +1,6 @@
 # Local development
 
-SEM Studio is a static web application: modeling, data, estimation and reporting run in the
+SEM Lab is a static web application: modeling, data, estimation and reporting run in the
 browser. There is no server to start.
 
 ```bash
@@ -12,7 +12,7 @@ Quality gates (CI runs the same commands):
 
 ```bash
 npm run typecheck && npm run lint && npm run format:check && npm run test && npm run build
-npm run e2e --workspace @sem-studio/web        # browser tests in the installed Google Chrome
+npm run e2e --workspace @sem-lab/web        # browser tests in the installed Google Chrome
 ```
 
 ## Verification oracle (optional, for developers)

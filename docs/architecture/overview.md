@@ -1,4 +1,4 @@
-# SEM Studio — architecture and ownership map
+# SEM Lab — architecture and ownership map
 
 Status: living document. `PLAN.md` and `STYLE.md` are the frozen product and design
 specifications; this file records the concrete engineering decisions made while
@@ -26,12 +26,12 @@ file is stale — fix one of them, do not leave the disagreement.
    reverse-engineered. Only the plain-JSON `*.settings` side files (indicator → construct
    assignment, scale endpoints, descriptive statistics) and the delimited data files are
    used. Structural paths for the bundled examples are specified by us from the published
-   theory and are labelled as SEM Studio's own specification.
+   theory and are labelled as SEM Lab's own specification.
 
 ## 2. Repository layout
 
 ```text
-sem-studio/
+sem-lab/
 ├── PLAN.md, STYLE.md            frozen specifications
 ├── package.json                 npm workspaces root (apps/web, packages/*)
 ├── apps/
@@ -48,8 +48,8 @@ sem-studio/
 │   └── python-spike/            Phase 0 evidence on plspm / semopy
 ├── packages/
 │   ├── contracts/               Zod schemas (source of truth) → emitted JSON Schema + shared examples
-│   ├── engine/                  SEM Studio's estimation engine (TypeScript): PLS, PLSc, IPMA, CB-SEM
-│   ├── python-engine/           the same engine in Python; dist/semstudio_bundle.py ships with exports
+│   ├── engine/                  SEM Lab's estimation engine (TypeScript): PLS, PLSc, IPMA, CB-SEM
+│   ├── python-engine/           the same engine in Python; dist/semlab_bundle.py ships with exports
 │   ├── fixtures/                numerical benchmark cases (model + data + expected results + provenance)
 │   └── method-registry/         capability registry: supported / beta / planned / unsupported per engine
 ├── notebooks/colab/             five Python notebooks
@@ -70,7 +70,7 @@ Browser (React SPA, static hosting on Netlify)
   ├─ canonical model + layout  ── IndexedDB (private, local-first)
   ├─ Data Lab (CSV parsed client-side)
   ├─ validator + capability registry (pure TS)
-  ├─ @sem-studio/engine (packages/engine, pure TypeScript)
+  ├─ @sem-lab/engine (packages/engine, pure TypeScript)
   │     ├─ PLS-PM / PLSc / Mode B / assessment / effects / IPMA
   │     ├─ CB-SEM ML (CFA/SEM), FIML, MLR where verified
   │     └─ R-compatible RNG (MT19937, set.seed, sample.int "Rejection")
@@ -98,7 +98,7 @@ Decisions and their reasons:
   browser implements R's generator bit-exactly, so an exported R script draws the same rows
   and reproduces the app's intervals.
 - **Privacy is structural.** Row-level data never leave the browser; there is no upload path.
-- **Licensing.** The browser engine is SEM Studio's own code (no GPL code is bundled). GPL R
+- **Licensing.** The browser engine is SEM Lab's own code (no GPL code is bundled). GPL R
   packages are used only by the verification oracle and by scripts users run themselves.
 - **Performance.** Bootstrap draws run in a Web Worker pool sized to the device's cores;
   cancellation stops between draws; progress counts real completed draws.

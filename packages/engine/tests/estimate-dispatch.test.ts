@@ -1,4 +1,4 @@
-import { NormalizedSemResult, SemModel } from '@sem-studio/contracts';
+import { NormalizedSemResult, SemModel } from '@sem-lab/contracts';
 import { describe, expect, it } from 'vitest';
 import { estimate } from '../src/index.ts';
 import { FIXTURES, analysisData, readCsv, readJson } from './helpers.ts';

@@ -6,7 +6,7 @@ import {
   type BootstrapProblem,
   type DrawResult,
   estimate,
-} from '@sem-studio/engine';
+} from '@sem-lab/engine';
 
 export interface CoreOptions {
   onProgress?: (e: ProgressEvent) => void;

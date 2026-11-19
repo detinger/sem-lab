@@ -1,10 +1,10 @@
 {
-  "label": "SEM Studio specification — not extracted from the SmartPLS project file",
+  "label": "SEM Lab specification — not extracted from the SmartPLS project file",
   "status": "proposal-awaiting-architect-approval",
   "dataset": "acsi-2015",
   "id": "acsi-v1",
   "summary": "ACSI base model without the complaints construct, matching the 'ACSI (modified)' / 'ACSI (without COMP)' naming of the sample files and the five constructs present in the measurement assignment.",
-  "measurementMode": "reflective (SEM Studio's choice; the plain side files do not state the measurement mode)",
+  "measurementMode": "reflective (SEM Lab's choice; the plain side files do not state the measurement mode)",
   "constructs": [
     {
       "code": "CUEX",

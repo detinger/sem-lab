@@ -47,8 +47,7 @@ export function cbExportBlock(run: RunView): string | null {
 
 /** The verified single-file Python engine, loaded only when a Python export is requested. */
 async function pythonEngineSource(): Promise<string> {
-  return (await import('../../../../../packages/python-engine/dist/semstudio_bundle.py?raw'))
-    .default;
+  return (await import('../../../../../packages/python-engine/dist/semlab_bundle.py?raw')).default;
 }
 
 function ExportButton({
@@ -153,7 +152,7 @@ export function ExportRButton({ run, projectName }: { run: RunView; projectName:
         {isCb
           ? `The R script reproduces these numbers with R ${LAVAAN_TESTED.R} and lavaan ${LAVAAN_TESTED.lavaan} to about 1e-6.`
           : 'The R script reproduces these numbers exactly with R 4.6.2 and cSEM 0.7.1.'}{' '}
-        The Python script runs SEM Studio’s own engine and checks every number against this result.
+        The Python script runs SEM Lab’s own engine and checks every number against this result.
         Both are verified by automated tests.
       </p>
     </div>

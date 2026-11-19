@@ -17,7 +17,7 @@ uv, Node 26 / npm 11. No Docker, Linux or Colab run yet — see "Open items".
 
 **Exit criterion met.** Every claim is recorded in `packages/method-registry/registry.json`
 with its evidence file; the registry test fails if any `supported`/`beta` claim lacks
-evidence. Nothing is `supported` yet: that status requires SEM Studio's own adapter plus a
+evidence. Nothing is `supported` yet: that status requires SEM Lab's own adapter plus a
 reference test, which arrives with Phase 3.
 
 ## Checklist
@@ -71,7 +71,7 @@ columns of the six datasets (population SD, G1, G2, upper median) — `phase-0/d
    equals cSEM's percentile CI exactly. seminr is excluded (seed S+1 replays seed S), plspm is
    excluded (unseedable), `"replace"` and `.sign_change_option = "individual"` are excluded
    (defects). Inadmissible draws are counted and excluded, never silently replaced.
-3. **IPMA is computed by SEM Studio** from a classic PLS fit on endpoint-rescaled data;
+3. **IPMA is computed by SEM Lab** from a classic PLS fit on endpoint-rescaled data;
    `cSEM::doIPMA()` never rescales and must not be given a PLSc fit.
 4. **The app validates data before any engine call:** cSEM errors on NA and silently treats
    text columns as ordinal; seminr mean-imputes silently; semopy silently uses pairwise
@@ -85,7 +85,7 @@ columns of the six datasets (population SD, G1, G2, upper median) — `phase-0/d
 
 ```bash
 npm ci && npm run typecheck && npm run lint && npm run format:check && npm run test && npm run build
-npm run check-schema --workspace @sem-studio/contracts
+npm run check-schema --workspace @sem-lab/contracts
 uv run --python 3.12 --with numpy python packages/fixtures/scripts/generate_synthetic.py --check
 services/r-engine/bin/rscript services/r-engine/spike/csem_01_pls_core.R      # and the other spike scripts
 cd services/python-spike && uv run python spike/plspm_probe.py                # and the other spike scripts (moved from apps/api in Phase 4)

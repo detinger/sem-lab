@@ -1,5 +1,5 @@
 """Cross-language parity: the same request run by the TypeScript engine (packages/engine/src,
-via node) and by semstudio must give the same NormalizedSemResult JSON: identical structure,
+via node) and by semlab must give the same NormalizedSemResult JSON: identical structure,
 keys, ids, strings (messages, warnings, missing reasons) and numbers within 1e-10 (PLS) /
 1e-7 (CB), relative to max(1, |value|). Only `provenance` (timestamps, versions) is excluded.
 Skips with a reason when node or the repository's node_modules are unavailable."""
@@ -34,8 +34,8 @@ SKIP = _node_problem()
 
 
 def test_node_available_when_required():
-    """CI sets SEMSTUDIO_REQUIRE_NODE=1 so that the cross-language tests cannot skip silently."""
-    if os.environ.get("SEMSTUDIO_REQUIRE_NODE") == "1":
+    """CI sets SEMLAB_REQUIRE_NODE=1 so that the cross-language tests cannot skip silently."""
+    if os.environ.get("SEMLAB_REQUIRE_NODE") == "1":
         assert SKIP is None, SKIP
     elif SKIP is not None:
         pytest.skip(SKIP)

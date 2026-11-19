@@ -31,8 +31,8 @@
     {
       "kind": "callout",
       "variant": "warning",
-      "text": "SEM Studio does not run multigroup CFA or invariance tests yet. Export the lavaan script and add the grouping variable (lavaan's `group` and `group.equal` arguments) to test invariance in R.",
-      "title": "Not available in SEM Studio"
+      "text": "SEM Lab does not run multigroup CFA or invariance tests yet. Export the lavaan script and add the grouping variable (lavaan's `group` and `group.equal` arguments) to test invariance in R.",
+      "title": "Not available in SEM Lab"
     }
   ],
   "mistake": {

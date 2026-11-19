@@ -1,7 +1,7 @@
 %% markdown
 ## 3. Indicators: mapping, dictionary and descriptives
 
-The model below is SEM Studio's canonical model file for this example
+The model below is SEM Lab's canonical model file for this example
 (`packages/fixtures/synthetic/{{CASE_ID}}/model.json`), embedded unchanged. Each indicator
 is bound to a CSV column and declares its scale endpoints, which IPMA needs to rescale
 scores to 0–100.

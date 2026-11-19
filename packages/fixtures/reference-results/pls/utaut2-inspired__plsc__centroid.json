@@ -1939,7 +1939,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
     },
     {
@@ -1962,7 +1962,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
     },
     {
@@ -1985,7 +1985,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
     },
     {
@@ -2008,7 +2008,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
     },
     {
@@ -2031,7 +2031,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
     },
     {
@@ -2054,7 +2054,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
     },
     {
@@ -2077,7 +2077,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
     },
     {
@@ -2100,7 +2100,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
     },
     {
@@ -2123,7 +2123,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
     },
     {
@@ -2146,7 +2146,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
     },
     {
@@ -2169,7 +2169,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
     },
     {
@@ -2192,7 +2192,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
     },
     {
@@ -2215,7 +2215,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
     },
     {
@@ -2238,7 +2238,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I - B, B = Estimates$Path_estimates"
     },
     {
@@ -2261,7 +2261,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I - B, B = Estimates$Path_estimates"
     },
     {
@@ -2284,7 +2284,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I - B, B = Estimates$Path_estimates"
     },
     {
@@ -2307,7 +2307,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I - B, B = Estimates$Path_estimates"
     },
     {
@@ -2330,7 +2330,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I - B, B = Estimates$Path_estimates"
     },
     {
@@ -2353,7 +2353,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I - B, B = Estimates$Path_estimates"
     },
     {
@@ -2379,7 +2379,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "product of Estimates$Path_estimates along the chain"
     },
     {
@@ -2405,7 +2405,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "product of Estimates$Path_estimates along the chain"
     },
     {
@@ -2431,7 +2431,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "product of Estimates$Path_estimates along the chain"
     },
     {
@@ -2457,7 +2457,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "product of Estimates$Path_estimates along the chain"
     },
     {
@@ -2483,7 +2483,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "product of Estimates$Path_estimates along the chain"
     },
     {
@@ -2509,7 +2509,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "product of Estimates$Path_estimates along the chain"
     }
    ],

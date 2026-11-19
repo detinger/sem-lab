@@ -1,6 +1,6 @@
 """The Colab notebooks run top to bottom without errors, reproduce the fixture data byte for byte,
-ship the committed engine, and report exactly the numbers of SEM Studio's Python engine
-(package `semstudio`) on the fixture data. The statements made in the notebooks' interpretation
+ship the committed engine, and report exactly the numbers of SEM Lab's Python engine
+(package `semlab`) on the fixture data. The statements made in the notebooks' interpretation
 cells are checked against the results, so a change of data or engine cannot silently turn the
 text wrong."""
 
@@ -13,7 +13,7 @@ import json
 import math
 
 import pytest
-import semstudio
+import semlab
 from conftest import BUNDLE, COLAB, EXAMPLES, FIXTURES, NOTEBOOKS, build_notebooks, execute, stream_text
 
 
@@ -48,7 +48,7 @@ def test_structure(name):
         assert not stripped.startswith("!pip"), line
         if stripped.startswith("%pip"):
             assert not any(p in stripped for p in ("numpy", "scipy", "pandas", "matplotlib")), line
-    engine = [c for c in nb["cells"] if c["cell_type"] == "code" and "".join(c["source"]).startswith("%%writefile semstudio_bundle.py")]
+    engine = [c for c in nb["cells"] if c["cell_type"] == "code" and "".join(c["source"]).startswith("%%writefile semlab_bundle.py")]
     assert len(engine) == 1 and engine[0]["metadata"].get("cellView") == "form"
     src = "".join(engine[0]["source"])
     body = src.split("\n", 2)[2]  # drop the magic and the #@title line
@@ -92,7 +92,7 @@ def test_data_and_engine_are_the_fixture_and_committed_bundle(executed):
     manifest = json.loads((FIXTURES / case / "manifest.json").read_text())
     data = (run["dir"] / "data.csv").read_bytes()
     assert sha256(data) == manifest["sha256"] == sha256((FIXTURES / case / "data.csv").read_bytes())
-    assert (run["dir"] / "semstudio_bundle.py").read_bytes() == BUNDLE.read_bytes()
+    assert (run["dir"] / "semlab_bundle.py").read_bytes() == BUNDLE.read_bytes()
     assert (run["dir"] / "model.json").read_bytes() == (FIXTURES / case / "model.json").read_bytes()
     text = stream_text(run["nb"])
     assert f"== fixture {case}" in text and "verified" in text
@@ -114,14 +114,14 @@ def _close(a, b, path, tol=1e-12):
 
 
 def test_results_equal_the_python_engine_on_the_fixture(executed):
-    """The notebook's exported result.json equals semstudio (the package) on the fixture files."""
+    """The notebook's exported result.json equals semlab (the package) on the fixture files."""
     name, run = executed
     case = case_of(name)
     exp = run["dir"] / "exports"
     analysis = json.loads((exp / "analysis.json").read_text())
     model = json.loads((FIXTURES / case / "model.json").read_text())
-    columns, rows = semstudio.read_csv(str(FIXTURES / case / "data.csv"))
-    out = semstudio.estimate(model, analysis, semstudio.build_analysis_data(model, columns, rows, analysis["missingData"]))
+    columns, rows = semlab.read_csv(str(FIXTURES / case / "data.csv"))
+    out = semlab.estimate(model, analysis, semlab.build_analysis_data(model, columns, rows, analysis["missingData"]))
     assert out["ok"], out.get("error")
     mine = json.loads((exp / "result.json").read_text())
     ref = json.loads(json.dumps(out["result"]))
@@ -131,7 +131,7 @@ def test_results_equal_the_python_engine_on_the_fixture(executed):
 
 
 def test_analysis_matches_the_app_example_or_fixture(executed):
-    """Same configuration as the SEM Studio example (content/examples/<case>.json), bootstrap draws
+    """Same configuration as the SEM Lab example (content/examples/<case>.json), bootstrap draws
     included, or, for cases without an example yet, as the fixture's first
     browser analysis."""
     name, run = executed
@@ -171,7 +171,7 @@ def _tables(name):
     exp = run["dir"] / "exports"
     result = json.loads((exp / "result.json").read_text())
     model = json.loads((exp / "model.json").read_text())
-    return run, exp, result, model, semstudio.results_tables(result, model)
+    return run, exp, result, model, semlab.results_tables(result, model)
 
 
 def _sig(r):

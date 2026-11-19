@@ -3,7 +3,7 @@
   "title": "American Customer Satisfaction Index (ACSI) 2015 — real survey data",
   "summary": "Expectations, perceived quality and perceived value drive satisfaction, which drives loyalty. Real 2015 ACSI sample (8,239 respondents, four industries).",
   "theory": "Fornell, C., Johnson, M. D., Anderson, E. W., Cha, J., & Bryant, B. E. (1996). The American Customer Satisfaction Index: Nature, purpose, and findings. Journal of Marketing, 60(4), 7–18.",
-  "modelNote": "SEM Studio's specification of the ACSI model for the constructs present in this sample; complaint behaviour (COMP/HANDLE) and price tolerance are omitted (see PROVENANCE.md notes). Loyalty is a single-indicator construct (REPUR), so its reliability is not applicable.",
+  "modelNote": "SEM Lab's specification of the ACSI model for the constructs present in this sample; complaint behaviour (COMP/HANDLE) and price tolerance are omitted (see PROVENANCE.md notes). Loyalty is a single-indicator construct (REPUR), so its reliability is not applicable.",
   "scaleSource": "All model items use the survey's 10-point scale (Morgeson, Hult, Sharma & Fornell 2023, Data in Brief 48:109123, Table 1: range 1–10).",
   "dataset": {
     "bundledId": "acsi-2015",

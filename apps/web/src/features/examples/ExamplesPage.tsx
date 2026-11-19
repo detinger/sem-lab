@@ -161,7 +161,7 @@ export function ExamplesPage() {
           <CardHeader title="Five notebooks, same numbers" icon={<NotebookText size={18} />} />
           <p className="ex-summary">
             TAM, ACSI-inspired, IS success, UTAUT2-inspired and service quality (CB-SEM). Each
-            notebook regenerates its synthetic data and runs SEM Studio’s engine in Python, so it
+            notebook regenerates its synthetic data and runs SEM Lab’s engine in Python, so it
             reproduces the matching example above exactly, bootstrap intervals included. Open them
             in Google Colab from the example cards above, or download them; the sources are in{' '}
             <a

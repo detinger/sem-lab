@@ -19,7 +19,7 @@
       },
       "seed": 20261404
     },
-    "description": "Classic PLS-SEM (Mode A, path weighting) in SEM Studio's engine with 5000 percentile bootstrap draws (seeded): hypothesis tests of all nine paths, indirect effects on USE.",
+    "description": "Classic PLS-SEM (Mode A, path weighting) in SEM Lab's engine with 5000 percentile bootstrap draws (seeded): hypothesis tests of all nine paths, indirect effects on USE.",
     "id": "pls-browser-boot"
   },
   {

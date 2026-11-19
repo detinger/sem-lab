@@ -3,7 +3,7 @@
  * divisor-N sample moments (lavaan likelihood = "normal"), and the saturated (h1) moments for
  * incomplete data by EM.
  */
-import type { SemModel } from '@sem-studio/contracts';
+import type { SemModel } from '@sem-lab/contracts';
 import { Mat, spdInverse } from './matrix.ts';
 import type { Pattern, SampleData } from './objective.ts';
 

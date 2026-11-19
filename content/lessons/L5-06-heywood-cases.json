@@ -20,7 +20,7 @@
     },
     {
       "kind": "p",
-      "text": "The starter reproduces exactly that case. SEM Studio flags the solution as inadmissible, names the indicator and also notes that the model is just identified (df = 0), so its \"perfect\" fit carries no information."
+      "text": "The starter reproduces exactly that case. SEM Lab flags the solution as inadmissible, names the indicator and also notes that the model is just identified (df = 0), so its \"perfect\" fit carries no information."
     },
     {
       "kind": "p",

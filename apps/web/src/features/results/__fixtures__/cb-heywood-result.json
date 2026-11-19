@@ -35,7 +35,7 @@
         "ciUpper": "not-applicable"
       },
       "status": "fixed",
-      "sourceMethod": "sem-studio:cb-sem:ML",
+      "sourceMethod": "sem-lab:cb-sem:ML",
       "rawPath": "lambda[1,1]"
     },
     {
@@ -58,7 +58,7 @@
         "ciUpper": "not-supported"
       },
       "status": "estimated",
-      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "sourceMethod": "sem-lab:cb-sem:ML:std.all",
       "rawPath": "std.all:lambda[1,1]"
     },
     {
@@ -80,7 +80,7 @@
         "level": 0.95,
         "sides": "two-sided"
       },
-      "sourceMethod": "sem-studio:cb-sem:ML",
+      "sourceMethod": "sem-lab:cb-sem:ML",
       "rawPath": "lambda[2,1]"
     },
     {
@@ -103,7 +103,7 @@
         "ciUpper": "not-supported"
       },
       "status": "estimated",
-      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "sourceMethod": "sem-lab:cb-sem:ML:std.all",
       "rawPath": "std.all:lambda[2,1]"
     },
     {
@@ -125,7 +125,7 @@
         "level": 0.95,
         "sides": "two-sided"
       },
-      "sourceMethod": "sem-studio:cb-sem:ML",
+      "sourceMethod": "sem-lab:cb-sem:ML",
       "rawPath": "lambda[3,1]"
     },
     {
@@ -148,7 +148,7 @@
         "ciUpper": "not-supported"
       },
       "status": "estimated",
-      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "sourceMethod": "sem-lab:cb-sem:ML:std.all",
       "rawPath": "std.all:lambda[3,1]"
     },
     {
@@ -170,7 +170,7 @@
         "level": 0.95,
         "sides": "two-sided"
       },
-      "sourceMethod": "sem-studio:cb-sem:ML",
+      "sourceMethod": "sem-lab:cb-sem:ML",
       "rawPath": "theta[1,1]"
     },
     {
@@ -193,7 +193,7 @@
         "ciUpper": "not-supported"
       },
       "status": "estimated",
-      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "sourceMethod": "sem-lab:cb-sem:ML:std.all",
       "rawPath": "std.all:theta[1,1]"
     },
     {
@@ -215,7 +215,7 @@
         "level": 0.95,
         "sides": "two-sided"
       },
-      "sourceMethod": "sem-studio:cb-sem:ML",
+      "sourceMethod": "sem-lab:cb-sem:ML",
       "rawPath": "theta[2,2]"
     },
     {
@@ -238,7 +238,7 @@
         "ciUpper": "not-supported"
       },
       "status": "estimated",
-      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "sourceMethod": "sem-lab:cb-sem:ML:std.all",
       "rawPath": "std.all:theta[2,2]"
     },
     {
@@ -260,7 +260,7 @@
         "level": 0.95,
         "sides": "two-sided"
       },
-      "sourceMethod": "sem-studio:cb-sem:ML",
+      "sourceMethod": "sem-lab:cb-sem:ML",
       "rawPath": "theta[3,3]"
     },
     {
@@ -283,7 +283,7 @@
         "ciUpper": "not-supported"
       },
       "status": "estimated",
-      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "sourceMethod": "sem-lab:cb-sem:ML:std.all",
       "rawPath": "std.all:theta[3,3]"
     },
     {
@@ -305,7 +305,7 @@
         "level": 0.95,
         "sides": "two-sided"
       },
-      "sourceMethod": "sem-studio:cb-sem:ML",
+      "sourceMethod": "sem-lab:cb-sem:ML",
       "rawPath": "psi[1,1]"
     },
     {
@@ -328,7 +328,7 @@
         "ciUpper": "not-supported"
       },
       "status": "estimated",
-      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "sourceMethod": "sem-lab:cb-sem:ML:std.all",
       "rawPath": "std.all:psi[1,1]"
     }
   ],
@@ -475,7 +475,7 @@
   "provenance": {
     "engine": "browser",
     "packageVersions": {
-      "@sem-studio/engine/cb": "0.1.0",
+      "@sem-lab/engine/cb": "0.1.0",
       "ml-matrix": "6.15.1"
     },
     "call": "estimateCb(estimator=ML, missing=listwise, identification=marker, meanStructure=false)",

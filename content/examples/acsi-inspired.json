@@ -3,7 +3,7 @@
   "title": "Customer satisfaction inspired by the ACSI (SYNTHETIC)",
   "summary": "Customer expectations, perceived quality and perceived value drive satisfaction, which drives loyalty. Synthetic 10-point data (N = 500), with IPMA on loyalty. Not ACSI data.",
   "theory": "Fornell, C., Johnson, M. D., Anderson, E. W., Cha, J., & Bryant, B. E. (1996). The American Customer Satisfaction Index: Nature, purpose, and findings. Journal of Marketing, 60(4), 7–18.",
-  "modelNote": "SEM Studio's teaching model inspired by the ACSI structure (complaint behaviour omitted). Compare it with the real ACSI 2015 example.",
+  "modelNote": "SEM Lab's teaching model inspired by the ACSI structure (complaint behaviour omitted). Compare it with the real ACSI 2015 example.",
   "scaleSource": "All items are generated on a 1–10 scale.",
   "dataset": {
     "bundledId": "acsi-inspired",

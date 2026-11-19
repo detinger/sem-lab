@@ -81,7 +81,7 @@ test_that("capabilities the registry does not offer for r-csem -> CAPABILITY_UNS
   expect_equal(e$details$capabilityId, "resampling.bootstrap-bca")
   expect_equal(e$details$status, "planned")
   # IPMA when the registry does not offer it (override: planned)
-  withr::with_envvar(c(SEM_STUDIO_REGISTRY = registry_override(list("ipma.construct" = "planned"))), {
+  withr::with_envvar(c(SEM_LAB_REGISTRY = registry_override(list("ipma.construct" = "planned"))), {
     a2 <- pls_analysis()
     a2$ipma <- list(targetConstructId = "c_bi")
     e2 <- run_err(make_job(tam()$model, a2, tam()$data), "CAPABILITY_UNSUPPORTED")
@@ -115,9 +115,9 @@ test_that("a registry capability marked unsupported is refused (registry overrid
   }
   f <- tempfile(fileext = ".json")
   writeLines(jsonlite::toJSON(reg, auto_unbox = TRUE, null = "null", digits = NA), f)
-  old <- Sys.getenv("SEM_STUDIO_REGISTRY")
-  Sys.setenv(SEM_STUDIO_REGISTRY = f)
-  on.exit(Sys.setenv(SEM_STUDIO_REGISTRY = old))
+  old <- Sys.getenv("SEM_LAB_REGISTRY")
+  Sys.setenv(SEM_LAB_REGISTRY = f)
+  on.exit(Sys.setenv(SEM_LAB_REGISTRY = old))
   e <- run_err(make_job(tam()$model, pls_analysis(scheme = "centroid"), tam()$data), "CAPABILITY_UNSUPPORTED")
   expect_equal(e$details$capabilityId, "pls.inner-weighting.centroid")
 })

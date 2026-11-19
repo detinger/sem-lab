@@ -1,6 +1,6 @@
 """Phase 0 compatibility probe (standalone: imports nothing from this repository).
 
-Exercises the code paths of plspm and semopy that SEM Studio intends to use and prints ONE
+Exercises the code paths of plspm and semopy that SEM Lab intends to use and prints ONE
 JSON object to stdout: per check either {"ok": true, "value": ...} or
 {"ok": false, "error": "<ExceptionType>: <message>"}.
 

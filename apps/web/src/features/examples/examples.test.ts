@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { type AnalysisConfiguration } from '@sem-studio/contracts';
-import { estimate } from '@sem-studio/engine';
+import { type AnalysisConfiguration } from '@sem-lab/contracts';
+import { estimate } from '@sem-lab/engine';
 import { describe, expect, it } from 'vitest';
 import { buildAnalysisData } from '@/domain/dataset/analysis-data';
 import { loadBundledCsv, bundledDatasetInfo } from '@/domain/dataset/bundled';

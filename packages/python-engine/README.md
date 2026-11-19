@@ -1,15 +1,15 @@
-# semstudio — SEM Studio's estimation engine in Python
+# semlab — SEM Lab's estimation engine in Python
 
-`semstudio` is SEM Studio's own estimation engine, written in Python. Python scripts and Colab
-notebooks exported from SEM Studio use it, so the numbers you get on your machine are the
-numbers the app shows. It mirrors **@sem-studio/engine 0.1.0**, the TypeScript engine that runs
+`semlab` is SEM Lab's own estimation engine, written in Python. Python scripts and Colab
+notebooks exported from SEM Lab use it, so the numbers you get on your machine are the
+numbers the app shows. It mirrors **@sem-lab/engine 0.1.0**, the TypeScript engine that runs
 in the browser (`packages/engine`), and it is tested against that engine and against the same
 R reference results.
 
 Why this package exists: the public Python SEM libraries cannot reproduce the app. plspm has no
 PLSc and no assessment and cannot seed its bootstrap; semopy clips Heywood cases, mislabels fit
 indices and has a broken FIML (see `docs/validation/phase-0/python-spike.md`). So Python exports
-ship this package, which SEM Studio owns and has verified (PLAN §2.9).
+ship this package, which SEM Lab owns and has verified (PLAN §2.9).
 
 ## What it estimates
 
@@ -17,7 +17,7 @@ ship this package, which SEM Studio owns and has verified (PLAN §2.9).
   inner weighting; Mode A and Mode B; R², adjusted R², Cronbach's α, ρA, ρC, AVE, HTMT and HTMT2,
   Fornell–Larcker, cross-loadings, f², structural and Mode B VIF, SRMR, d_ULS and d_G; total,
   total-indirect and specific indirect effects; IPMA; cSEM::verify admissibility.
-- **SEM Studio's bootstrap**: `set.seed(seed, "Mersenne-Twister", "Inversion", "Rejection")`,
+- **SEM Lab's bootstrap**: `set.seed(seed, "Mersenne-Twister", "Inversion", "Rejection")`,
   then `sample.int(n, n, replace = TRUE)` for each draw, bit-exact with R. Failed and
   inadmissible draws are counted and excluded. SE uses the divisor B − 1, p values come from
   t(B_valid − 1), and CIs are type-7 percentile intervals, two-sided or one-sided.
@@ -36,14 +36,14 @@ numpy and scipy:
 
 ```sh
 pip install "numpy>=1.22.4" "scipy>=1.12"
-# put semstudio_bundle.py next to your script (exports already include it)
+# put semlab_bundle.py next to your script (exports already include it)
 ```
 
 ```python
-import semstudio_bundle as semstudio
+import semlab_bundle as semlab
 ```
 
-On Colab, upload `semstudio_bundle.py` or `!wget` it into the working directory. numpy and scipy
+On Colab, upload `semlab_bundle.py` or `!wget` it into the working directory. numpy and scipy
 are already installed there.
 
 Option 2 is the package, installed from a checkout of this repository:
@@ -60,24 +60,24 @@ pandas is optional and only needed for `to_dataframe`.
 
 ```python
 import json
-import semstudio_bundle as semstudio  # or: import semstudio
+import semlab_bundle as semlab  # or: import semlab
 
 project = json.load(open("analysis.json"))           # written by the export
 model, analysis = project["model"], project["analysis"]  # analysis["engine"] == "browser"
 
-columns, rows = semstudio.read_csv("data.csv")
-data = semstudio.build_analysis_data(model, columns, rows, analysis["missingData"])
-out = semstudio.estimate(model, analysis, data)
+columns, rows = semlab.read_csv("data.csv")
+data = semlab.build_analysis_data(model, columns, rows, analysis["missingData"])
+out = semlab.estimate(model, analysis, data)
 if not out["ok"]:
     raise SystemExit(f"{out['error']['code']}: {out['error']['message']}")
 
 result = out["result"]                                # NormalizedSemResult, as in the app
-tables = semstudio.results_tables(result, model)      # plain lists of row dicts
+tables = semlab.results_tables(result, model)      # plain lists of row dicts
 for row in tables["paths"]:
     print(row["from"], "->", row["to"], row["est"], row["pValue"])
 
-if semstudio.pandas_available():
-    frames = semstudio.to_dataframes(result, model)   # optional pandas DataFrames
+if semlab.pandas_available():
+    frames = semlab.to_dataframes(result, model)   # optional pandas DataFrames
 ```
 
 - `estimate(model, analysis, data, on_progress=None, is_cancelled=None)` returns
@@ -85,7 +85,7 @@ if semstudio.pandas_available():
   never raises for bad input. `analysis["method"]` selects the engine: `pls-sem` or `plsc` runs
   the PLS engine, `cb-sem` runs the CB engine. The result is the app's `NormalizedSemResult` JSON
   with the same parameter keys, kinds, ids, missing reasons, warnings and error codes.
-  `provenance` adds `pythonVersion` and the `semstudio`, `numpy` and `scipy` versions.
+  `provenance` adds `pythonVersion` and the `semlab`, `numpy` and `scipy` versions.
 - `build_analysis_data(model, columns, rows, "listwise" | "fiml")` builds the analysis matrix
   the way the app does:
   - one column per indicator column, in model order;
@@ -103,7 +103,7 @@ if semstudio.pandas_available():
 ## Reproducibility guarantee and tested tolerances
 
 `cd packages/python-engine && uv run pytest` runs every check twice: once against the
-`semstudio` package and once against `dist/semstudio_bundle.py`. The suite runs in CI on
+`semlab` package and once against `dist/semlab_bundle.py`. The suite runs in CI on
 Python 3.10 and 3.12. It has also passed on numpy 1.22.4 with scipy 1.12.0, the lowest
 supported versions.
 
@@ -158,21 +158,21 @@ TypeScript hooks map to Python as follows:
 ## Layout
 
 ```
-semstudio/          meta, errors, jsnum (JS number formatting), linalg, stats, rng, effects,
+semlab/          meta, errors, jsnum (JS number formatting), linalg, stats, rng, effects,
                     pls_core (validation + PLS-PM core), assess, bootstrap, ipma, pls (results +
                     estimate), distributions, cb, api
-scripts/bundle.py   builds dist/semstudio_bundle.py (deterministic; --check verifies it is current)
+scripts/bundle.py   builds dist/semlab_bundle.py (deterministic; --check verifies it is current)
 dist/               the single-file bundle shipped with exports (committed)
 tests/              pytest suite (package + bundle), incl. cross-language tests via node
 ```
 
-After changing `semstudio/`, run `python scripts/bundle.py`. The `test_bundle` test fails
+After changing `semlab/`, run `python scripts/bundle.py`. The `test_bundle` test fails
 while the committed bundle is stale.
 
 ## Licence and provenance
 
 MIT (the repository's `LICENSE`; the full notice is also embedded in
-`dist/semstudio_bundle.py`, which travels alone in exports and notebooks). See `docs/licensing.md`. It is a port of `packages/engine/src` (TypeScript). The algorithms are
+`dist/semlab_bundle.py`, which travels alone in exports and notebooks). See `docs/licensing.md`. It is a port of `packages/engine/src` (TypeScript). The algorithms are
 re-implemented from their documented definitions: R's RNG.c algorithms, cSEM's and lavaan's
 documented estimators, and Brent's zeroin as in R's `uniroot`. It contains no code from cSEM,
 lavaan, plspm or semopy, which are GPL or MIT licensed and serve only as verification oracles.

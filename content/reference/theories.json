@@ -85,7 +85,7 @@
         "davis1989b",
         "venkatesh2000"
       ],
-      "caveats": "TAM is parsimonious by design and explains intention better than actual use. Most TAM studies are cross-sectional self-reports, so the PEOU → PU → BI ordering is a theoretical assumption rather than an established causal sequence, and common method variance is a concern. The original 1989 formulation also included attitude toward using; the three-construct core shown here is the commonly tested version. The SEM Studio example uses synthetic data."
+      "caveats": "TAM is parsimonious by design and explains intention better than actual use. Most TAM studies are cross-sectional self-reports, so the PEOU → PU → BI ordering is a theoretical assumption rather than an established causal sequence, and common method variance is a concern. The original 1989 formulation also included attitude toward using; the three-construct core shown here is the commonly tested version. The SEM Lab example uses synthetic data."
     },
     {
       "id": "utaut2",
@@ -284,7 +284,7 @@
         "venkatesh2012",
         "venkatesh2003"
       ],
-      "caveats": "The SEM Studio example is inspired by UTAUT2 but simplified: it omits price value and the age, gender and experience moderators (SEM Studio does not estimate interaction effects yet), and its data are synthetic. With many correlated predictors of BI, check structural VIFs; a non-significant path in one sample is not evidence that the construct is irrelevant."
+      "caveats": "The SEM Lab example is inspired by UTAUT2 but simplified: it omits price value and the age, gender and experience moderators (SEM Lab does not estimate interaction effects yet), and its data are synthetic. With many correlated predictors of BI, check structural VIFs; a non-significant path in one sample is not evidence that the construct is irrelevant."
     },
     {
       "id": "delone-mclean",
@@ -602,7 +602,7 @@
         "fornell1996",
         "ringle2016"
       ],
-      "caveats": "Both SEM Studio examples omit the complaints construct. acsi-2015 uses the published ACSI sample data (CC BY 4.0), with loyalty measured by a single item; acsi-inspired is synthetic and not ACSI data. Satisfaction and loyalty items are typically skewed towards the top of the scale. IPMA on this model is descriptive and does not show that raising satisfaction would raise loyalty."
+      "caveats": "Both SEM Lab examples omit the complaints construct. acsi-2015 uses the published ACSI sample data (CC BY 4.0), with loyalty measured by a single item; acsi-inspired is synthetic and not ACSI data. Satisfaction and loyalty items are typically skewed towards the top of the scale. IPMA on this model is descriptive and does not show that raising satisfaction would raise loyalty."
     },
     {
       "id": "service-quality-chain",
@@ -688,7 +688,7 @@
         "zeithaml1996",
         "parasuraman1988"
       ],
-      "caveats": "The order of quality and satisfaction was debated in the literature; the chain shown here follows Cronin and Taylor (1992). The SEM Studio example measures service quality with a single reflective construct rather than SERVQUAL's five dimensions, uses synthetic data, and is analysed with CB-SEM; with PLS-SEM it targets a different estimand."
+      "caveats": "The order of quality and satisfaction was debated in the literature; the chain shown here follows Cronin and Taylor (1992). The SEM Lab example measures service quality with a single reflective construct rather than SERVQUAL's five dimensions, uses synthetic data, and is analysed with CB-SEM; with PLS-SEM it targets a different estimand."
     }
   ]
 }

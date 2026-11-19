@@ -268,7 +268,7 @@ wheels = [
 ]
 
 [[package]]
-name = "sem-studio-python-spike"
+name = "sem-lab-python-spike"
 version = "0.0.0"
 source = { virtual = "." }
 dependencies = [

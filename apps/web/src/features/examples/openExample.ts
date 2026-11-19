@@ -1,4 +1,4 @@
-import type { AnalysisConfiguration, SemLayout, SemModel } from '@sem-studio/contracts';
+import type { AnalysisConfiguration, SemLayout, SemModel } from '@sem-lab/contracts';
 import { configFromAnalysis, useAnalysisConfig } from '@/features/analysis/config';
 import { useDataLab } from '@/features/data-lab/store';
 import { useModeler } from '@/features/modeler/store';

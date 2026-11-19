@@ -42,7 +42,7 @@ for (const [name, schema] of Object.entries(contracts)) {
     unrepresentable: 'any',
     io: 'input',
   });
-  const text = `${JSON.stringify({ $id: `https://sem-studio.local/schema/${name}.json`, title: name, ...json }, null, 2)}\n`;
+  const text = `${JSON.stringify({ $id: `https://sem-lab.local/schema/${name}.json`, title: name, ...json }, null, 2)}\n`;
   const file = join(outDir, `${name}.json`);
   if (check) {
     let current = '';
@@ -62,7 +62,7 @@ for (const [name, schema] of Object.entries(contracts)) {
 }
 if (stale > 0) {
   console.error(
-    `${stale} schema file(s) out of date — run: npm run emit-schema --workspace @sem-studio/contracts`,
+    `${stale} schema file(s) out of date — run: npm run emit-schema --workspace @sem-lab/contracts`,
   );
   process.exit(1);
 }

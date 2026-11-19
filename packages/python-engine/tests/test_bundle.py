@@ -1,4 +1,4 @@
-"""dist/semstudio_bundle.py is the deterministic concatenation of the package (and committed
+"""dist/semlab_bundle.py is the deterministic concatenation of the package (and committed
 up to date); it exposes the same API. (Every engine test also runs against the bundle.)"""
 
 import ast
@@ -27,7 +27,7 @@ def test_bundle_is_self_contained():
     for node in ast.walk(tree):
         if isinstance(node, ast.ImportFrom):
             assert node.level == 0, "relative import left in the bundle"
-            assert not (node.module or "").startswith("semstudio")
+            assert not (node.module or "").startswith("semlab")
         if isinstance(node, ast.Import):
             for a in node.names:
                 assert a.name.split(".")[0] in {"math", "platform", "re", "warnings", "numpy", "scipy", "pandas", "datetime", "decimal"}, a.name
@@ -40,4 +40,4 @@ def test_same_public_api():
     assert pkg.__version__ == bun.__version__ == "0.1.0"
     for name in pkg.__all__:
         assert hasattr(bun, name), name
-    assert sys.modules["semstudio_bundle"].__file__ == str(BUNDLE)
+    assert sys.modules["semlab_bundle"].__file__ == str(BUNDLE)

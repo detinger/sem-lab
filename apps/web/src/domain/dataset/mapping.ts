@@ -10,7 +10,7 @@
  * columns, or a column claimed by several indicators, is ambiguous and gets no suggestion —
  * a suggestion never maps two indicators to one column.
  */
-import type { SemModel } from '@sem-studio/contracts';
+import type { SemModel } from '@sem-lab/contracts';
 import type { MappingSuggestion } from './types';
 
 type Tier = Exclude<MappingSuggestion['match'], 'none'>;

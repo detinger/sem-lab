@@ -1,4 +1,4 @@
-import type { SemModel } from '@sem-studio/contracts';
+import type { SemModel } from '@sem-lab/contracts';
 import { useMemo, useState } from 'react';
 import { SegmentedControl } from '@/components/ui';
 import { ModelDiagram } from '../ModelDiagram';

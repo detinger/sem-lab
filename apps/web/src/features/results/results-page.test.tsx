@@ -163,7 +163,7 @@ describe('Results page', () => {
     await waitFor(() => expect(names).toHaveLength(2), { timeout: 5000 });
     expect(names[1]).toBe('TAM-test-Python-export.zip');
     const py = await text(blobs[1]!);
-    for (const f of ['run_analysis.py', 'semstudio_bundle.py', 'requirements.txt', 'analysis.json'])
+    for (const f of ['run_analysis.py', 'semlab_bundle.py', 'requirements.txt', 'analysis.json'])
       expect(py).toContain(`TAM-test/${f}`);
   });
 });

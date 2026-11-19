@@ -1,6 +1,6 @@
 # Bootstrap reference results for the browser PLS engine (packages/engine/src/pls/bootstrap.ts).
 #
-# Implements SEM Studio's bootstrap definition with cSEM::csem() per draw — the definition the
+# Implements SEM Lab's bootstrap definition with cSEM::csem() per draw — the definition the
 # exported R/Python scripts reproduce (it replaces cSEM's resampler and the R engine's chunked
 # seeds):
 #
@@ -143,7 +143,7 @@ make_reference <- function(case, method, B, seed, level = 0.95, sides = "two-sid
   status <- vapply(draws, `[[`, "", "status")
   out <- list(
     description = paste(
-      "SEM Studio bootstrap reference: set.seed(seed, kind = 'Mersenne-Twister', normal.kind = 'Inversion',",
+      "SEM Lab bootstrap reference: set.seed(seed, kind = 'Mersenne-Twister', normal.kind = 'Inversion',",
       "sample.kind = 'Rejection'); for b in 1..B: idx = sample.int(n, n, replace = TRUE), cSEM::csem() on data[idx, ]",
       "with the main fit's options; failed = error / no convergence / non-finite estimate; inadmissible = cSEM::verify();",
       "se = sd(valid), t = est/se, p from t(df = B_valid - 1), CI = quantile(type = 7)."),

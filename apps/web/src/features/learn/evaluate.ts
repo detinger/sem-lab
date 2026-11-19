@@ -5,7 +5,7 @@
  *
  * Every finding carries a status AND a sentence, so feedback is never conveyed by colour alone.
  */
-import type { AnalysisConfiguration, SemModel } from '@sem-studio/contracts';
+import type { AnalysisConfiguration, SemModel } from '@sem-lab/contracts';
 import type { ModelCheck, Task } from './schema';
 
 export type FindingStatus = 'ok' | 'missing' | 'wrong' | 'extra' | 'note';

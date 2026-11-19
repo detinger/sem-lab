@@ -1,5 +1,5 @@
 {
-  "$id": "https://sem-studio.local/schema/dataset-ref.json",
+  "$id": "https://sem-lab.local/schema/dataset-ref.json",
   "title": "dataset-ref",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",

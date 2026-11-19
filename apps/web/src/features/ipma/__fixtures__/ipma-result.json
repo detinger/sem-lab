@@ -614,7 +614,7 @@
         "sides": "two-sided",
         "nValid": 200
       },
-      "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+      "sourceMethod": "SEM Lab from cSEM::csem path estimates",
       "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates; per draw; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
     },
     {
@@ -637,7 +637,7 @@
         "sides": "two-sided",
         "nValid": 200
       },
-      "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+      "sourceMethod": "SEM Lab from cSEM::csem path estimates",
       "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates; per draw; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
     },
     {
@@ -660,7 +660,7 @@
         "sides": "two-sided",
         "nValid": 200
       },
-      "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+      "sourceMethod": "SEM Lab from cSEM::csem path estimates",
       "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates; per draw; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
     },
     {
@@ -683,7 +683,7 @@
         "sides": "two-sided",
         "nValid": 200
       },
-      "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+      "sourceMethod": "SEM Lab from cSEM::csem path estimates",
       "rawPath": "(I - B)^-1 - I - B, B = Estimates$Path_estimates; per draw; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
     },
     {
@@ -707,7 +707,7 @@
         "sides": "two-sided",
         "nValid": 200
       },
-      "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+      "sourceMethod": "SEM Lab from cSEM::csem path estimates",
       "rawPath": "product of Estimates$Path_estimates along the chain; per draw; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
     }
   ],

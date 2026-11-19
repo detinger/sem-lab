@@ -20,8 +20,8 @@
     {
       "kind": "callout",
       "variant": "warning",
-      "text": "SEM Studio does not compute PLSpredict or CVPAT yet (they are planned). The Q² from blindfolding is not an out-of-sample measure either: it omits data points within the estimation sample (Shmueli et al. 2016). To assess prediction now, use dedicated R packages.",
-      "title": "Not available in SEM Studio"
+      "text": "SEM Lab does not compute PLSpredict or CVPAT yet (they are planned). The Q² from blindfolding is not an out-of-sample measure either: it omits data points within the estimation sample (Shmueli et al. 2016). To assess prediction now, use dedicated R packages.",
+      "title": "Not available in SEM Lab"
     },
     {
       "kind": "p",

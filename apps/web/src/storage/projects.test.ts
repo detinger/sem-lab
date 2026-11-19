@@ -1,7 +1,7 @@
 import 'fake-indexeddb/auto';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { SemProject } from '@sem-studio/contracts';
+import { SemProject } from '@sem-lab/contracts';
 import { afterEach, describe, expect, it } from 'vitest';
 import {
   deleteProject,
@@ -70,7 +70,7 @@ describe('project files', () => {
   it('round-trips through the file format without data', () => {
     const text = toProjectFile(example, '2026-11-19T12:00:00Z');
     expect(JSON.parse(text)).toMatchObject({
-      format: 'sem-studio-project',
+      format: 'sem-lab-project',
       formatVersion: 1,
       includesData: false,
     });
@@ -79,16 +79,16 @@ describe('project files', () => {
   });
   it.each([
     ['not json', '{', /not valid JSON/],
-    ['foreign json', '{"hello":1}', /not a SEM Studio project/],
+    ['foreign json', '{"hello":1}', /not a SEM Lab project/],
     [
       'future format',
-      JSON.stringify({ format: 'sem-studio-project', formatVersion: 9 }),
+      JSON.stringify({ format: 'sem-lab-project', formatVersion: 9 }),
       /Unsupported project file version/,
     ],
     [
       'invalid model',
       JSON.stringify({
-        format: 'sem-studio-project',
+        format: 'sem-lab-project',
         formatVersion: 1,
         project: {
           ...example,

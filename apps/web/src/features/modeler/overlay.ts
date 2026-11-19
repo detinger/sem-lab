@@ -4,7 +4,7 @@
  * `capsule`. One mode at a time — estimate, t, p, CI or hypothesis — never several at once.
  * Values that were not estimated are "—", never 0.
  */
-import type { NormalizedSemResult, ParameterEstimate, SemModel } from '@sem-studio/contracts';
+import type { NormalizedSemResult, ParameterEstimate, SemModel } from '@sem-lab/contracts';
 import { formatNumber, formatP } from '../reports/format';
 import type { Scene } from './scene';
 

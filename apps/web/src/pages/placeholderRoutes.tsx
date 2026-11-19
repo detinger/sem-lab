@@ -62,7 +62,7 @@ export const PLACEHOLDER_SPECS: readonly Spec[] = [
     path: '/reference',
     phase: 'Phase 6',
     description: 'A statistical glossary and method reference.',
-    willContain: 'Definitions of the measures and methods used in SEM Studio, with citations.',
+    willContain: 'Definitions of the measures and methods used in SEM Lab, with citations.',
   },
 ];
 

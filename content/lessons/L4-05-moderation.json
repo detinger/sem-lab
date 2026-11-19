@@ -25,8 +25,8 @@
     {
       "kind": "callout",
       "variant": "warning",
-      "text": "SEM Studio does not estimate interaction effects yet; the feature is planned. Use R packages such as cSEM or seminr for moderation analysis, and report which approach you used.",
-      "title": "Not available in SEM Studio"
+      "text": "SEM Lab does not estimate interaction effects yet; the feature is planned. Use R packages such as cSEM or seminr for moderation analysis, and report which approach you used.",
+      "title": "Not available in SEM Lab"
     }
   ],
   "mistake": {

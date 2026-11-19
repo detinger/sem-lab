@@ -18,7 +18,7 @@ Date: 2026-11-19. Runs in the browser only; no backend is needed or contacted.
 | Mobile width: inspector below the canvas, no horizontal overflow | `mobile layout stacks…` |
 
 Screenshots reviewed by the architect: `apps/web/test-results/phase1-modeler/` (git-ignored;
-regenerate with `npm run e2e --workspace @sem-studio/web`). The exported SVG of the TAM
+regenerate with `npm run e2e --workspace @sem-lab/web`). The exported SVG of the TAM
 template was rendered at 1:1 and inspected (classic TAM arrangement: PU stacked above PEOU,
 then ATU → BI → USE; no path crosses a node; reflective arrows point to the indicators).
 

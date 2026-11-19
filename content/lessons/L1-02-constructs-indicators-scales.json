@@ -15,7 +15,7 @@
     },
     {
       "kind": "p",
-      "text": "Every indicator has a [[measurement-scale]]. On a 7-point [[likert-item]] (1 = strongly disagree … 7 = strongly agree) the permissible values are 1 to 7. These [[scale-endpoints]] describe the instrument: if nobody in your sample answered 1, the scale still starts at 1. SEM Studio stores endpoints with each indicator because reverse scoring and the 0–100 rescaling in IPMA depend on them."
+      "text": "Every indicator has a [[measurement-scale]]. On a 7-point [[likert-item]] (1 = strongly disagree … 7 = strongly agree) the permissible values are 1 to 7. These [[scale-endpoints]] describe the instrument: if nobody in your sample answered 1, the scale still starts at 1. SEM Lab stores endpoints with each indicator because reverse scoring and the 0–100 rescaling in IPMA depend on them."
     },
     {
       "kind": "p",

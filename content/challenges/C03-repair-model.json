@@ -301,7 +301,7 @@
           "id": "a",
           "text": "It closes a feedback loop; PLS path estimation by OLS requires a recursive (acyclic) structural model, and the loop also contradicts H3's direction.",
           "correct": true,
-          "feedback": "Correct. SEM Studio flags structural cycles before estimation."
+          "feedback": "Correct. SEM Lab flags structural cycles before estimation."
         },
         {
           "id": "b",

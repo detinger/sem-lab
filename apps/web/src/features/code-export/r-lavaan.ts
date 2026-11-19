@@ -11,7 +11,7 @@
  * Safety as in r-csem.ts: user text never becomes R code (identifiers are sanitized, column
  * names are escaped string literals, comments are stripped of control characters).
  */
-import type { AnalysisConfiguration, SemModel } from '@sem-studio/contracts';
+import type { AnalysisConfiguration, SemModel } from '@sem-lab/contracts';
 import type { Transformation } from '@/domain/dataset/types';
 import { structuralGraph } from '@/domain/graph';
 import { identifiers, rComment, rString } from './r-csem';
@@ -53,17 +53,17 @@ export function exportLavaanScript(input: LavaanExportInput): string {
 
   push(
     '# =============================================================================',
-    '# SEM Studio — reproducible R script (lavaan, CB-SEM)',
+    '# SEM Lab — reproducible R script (lavaan, CB-SEM)',
     `# Project: ${rComment(input.projectName)}`,
     `# Estimator: ${a.estimator}${fiml ? ' with FIML (missing = "ml")' : ', listwise complete data'}; identification: ${stdLv ? 'factor variances fixed to 1 (std.lv)' : 'first loading fixed to 1 (marker)'}`,
-    `# Generated ${rComment(input.generatedAt)} by SEM Studio ${rComment(input.appVersion)}`,
+    `# Generated ${rComment(input.generatedAt)} by SEM Lab ${rComment(input.appVersion)}`,
     `# Model hash:       ${input.modelHash}`,
     `# Data fingerprint: ${input.dataFingerprint}`,
     `# Tested with R ${LAVAAN_TESTED.R} and lavaan ${LAVAAN_TESTED.lavaan}.`,
     '#',
-    "# Reproduces SEM Studio's CB-SEM estimates, standard errors and fit indices on the analysis",
+    "# Reproduces SEM Lab's CB-SEM estimates, standard errors and fit indices on the analysis",
     `# data file exported with it (${rComment(file)}). lavaan stops its optimiser at a slightly looser`,
-    '# tolerance than SEM Studio, so the last digits (about 1e-6) may differ.',
+    '# tolerance than SEM Lab, so the last digits (about 1e-6) may differ.',
     '# =============================================================================',
     '',
   );
@@ -120,7 +120,7 @@ export function exportLavaanScript(input: LavaanExportInput): string {
   push(
     '"',
     '',
-    '# ---- Estimation (the same settings as the SEM Studio browser engine) ------------',
+    '# ---- Estimation (the same settings as the SEM Lab browser engine) ------------',
     'fit <- sem(model, data = data,',
     `           estimator = ${rString(a.estimator)},`,
     `           std.lv = ${stdLv ? 'TRUE' : 'FALSE'},`,

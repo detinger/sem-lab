@@ -1,6 +1,6 @@
-# SEM Studio notebook helpers: model figure, charts, tables and export.
+# SEM Lab notebook helpers: model figure, charts, tables and export.
 # Source: notebooks/src/sem_helpers.py (embedded into every notebook by notebooks/build_notebooks.py).
-# Pure matplotlib / pandas; nothing here estimates anything (estimation is semstudio_bundle.py).
+# Pure matplotlib / pandas; nothing here estimates anything (estimation is semlab_bundle.py).
 import html as _html
 import json as _json
 import math as _math
@@ -611,7 +611,7 @@ def offer_download(path):
 
 
 # ---------------------------------------------------------------------------------------------
-# PLS result tables (readable pandas views of semstudio.results_tables)
+# PLS result tables (readable pandas views of semlab.results_tables)
 # ---------------------------------------------------------------------------------------------
 
 def _matrix(frames, key):
@@ -620,9 +620,9 @@ def _matrix(frames, key):
     return m.astype(float)
 
 
-def pls_report(result, model, semstudio):
+def pls_report(result, model, semlab):
     """Readable tables from a NormalizedSemResult of a PLS run."""
-    t = semstudio.to_dataframes(result, model)
+    t = semlab.to_dataframes(result, model)
     rep = {}
     load = t["loadings"].rename(columns={"from": "construct", "to": "indicator", "est": "loading"})
     load["loading²"] = load["loading"] ** 2

@@ -1,14 +1,14 @@
 %% markdown
 # 01 · Technology Acceptance Model (TAM) with PLS-SEM
 
-*SEM Studio Colab collection, notebook 1 of 5. Data: **SYNTHETIC** (generated in this
-notebook). Estimation: SEM Studio's own engine (Python), no R required.*
+*SEM Lab Colab collection, notebook 1 of 5. Data: **SYNTHETIC** (generated in this
+notebook). Estimation: SEM Lab's own engine (Python), no R required.*
 
 **Attribution.** The model follows the core of the Technology Acceptance Model: Davis, F. D.
 (1989). Perceived usefulness, perceived ease of use, and user acceptance of information
 technology. *MIS Quarterly, 13*(3), 319–340. The data are **synthetic teaching data** generated
-by SEM Studio from a stated population model; they do not reproduce any published study.
-This notebook is the Python companion of SEM Studio's example *"Technology acceptance (TAM) —
+by SEM Lab from a stated population model; they do not reproduce any published study.
+This notebook is the Python companion of SEM Lab's example *"Technology acceptance (TAM) —
 mediation"* and uses byte-identical data.
 
 ### Learning objectives
@@ -48,7 +48,7 @@ The data are generated from a population model with three standardised common fa
 (PEOU, PU, BI). Each respondent's continuous item responses are drawn from the
 model-implied multivariate normal distribution and then cut into seven categories (1–7) by
 fixed thresholds; the PU items use a "high-agreement" profile, so their answers lean
-towards 7. The generator is the one that produced SEM Studio's bundled dataset
+towards 7. The generator is the one that produced SEM Lab's bundled dataset
 (`{{GENERATOR_PATH}}`): the collapsed cell holds its general functions, the visible cell the
 population model of this case. With seed {{SEED}} and N = {{N}} the notebook reproduces the
 bundled CSV byte for byte, which the cell after them checks with a SHA-256 hash.
@@ -76,22 +76,22 @@ FIGURES["model.png"] = draw_model(model, title="TAM: measurement and structural 
 plt.show()
 
 %% markdown
-## 5. Estimation with SEM Studio's engine
+## 5. Estimation with SEM Lab's engine
 
-The analysis settings below are those of the SEM Studio example: classic PLS-SEM (Mode A
+The analysis settings below are those of the SEM Lab example: classic PLS-SEM (Mode A
 weights for reflective blocks), path weighting scheme, at most 300 iterations, tolerance 1e-7,
 and a **percentile bootstrap** with a fixed seed so that every run gives identical intervals.
 
 **Bootstrap size.** This notebook uses B = 5,000 draws, a common choice for reporting final
 results. The estimation cell took about 4 s on an Apple M-series laptop; a free Colab CPU can be a few times slower (the cell prints its own time). The app's example opens with B = 1,000 for speed; the point
 estimates are identical, and setting 5,000 draws with seed 20261103 in the app gives exactly the
-intervals shown here, because SEM Studio's bootstrap draws the same resamples in the browser,
+intervals shown here, because SEM Lab's bootstrap draws the same resamples in the browser,
 in Python and in R.
 
 %% code
 analysis = {
     "method": "pls-sem",
-    "engine": "browser",          # SEM Studio's engine (here its Python port)
+    "engine": "browser",          # SEM Lab's engine (here its Python port)
     "estimator": "pls-pm",
     "missingData": "listwise",
     "seed": 20261103,
@@ -261,7 +261,7 @@ EXPORT_TABLES = {
 WORD_TABLES = [
     ("Table 1. Reliability and convergent validity",
      rep["quality"][["alpha", "rho_A", "rho_C", "AVE"]].rename_axis("Construct").reset_index(),
-     "SYNTHETIC data (N = 500). Classic PLS-SEM, SEM Studio engine.", 3),
+     "SYNTHETIC data (N = 500). Classic PLS-SEM, SEM Lab engine.", 3),
     ("Table 2. Structural paths with 95% percentile bootstrap intervals",
      paths[["path", "est", "se", "ciLower", "ciUpper"]].rename(
          columns={"path": "Path", "est": "β", "se": "SE", "ciLower": "2.5%", "ciUpper": "97.5%"}),

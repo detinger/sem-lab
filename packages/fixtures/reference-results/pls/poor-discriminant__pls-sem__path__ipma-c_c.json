@@ -786,7 +786,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
     },
     {
@@ -809,7 +809,7 @@
       "ciUpper": "not-requested"
      },
      "status": "estimated",
-     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "sourceMethod": "SEM Lab from cSEM::csem path estimates",
      "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
     }
    ],

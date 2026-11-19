@@ -1,5 +1,5 @@
 /**
- * SEM Studio's bootstrap definition (the one the exported R/Python scripts reproduce; it
+ * SEM Lab's bootstrap definition (the one the exported R/Python scripts reproduce; it
  * replaces cSEM's resampler and the R engine's chunked seeds):
  *
  *   set.seed(seed, kind = "Mersenne-Twister", normal.kind = "Inversion", sample.kind = "Rejection")

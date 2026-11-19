@@ -71,7 +71,7 @@
           "id": "a",
           "text": "No. AVE assumes a common factor behind the indicators, which an index does not posit.",
           "correct": true,
-          "feedback": "Correct. SEM Studio shows AVE as not applicable for such blocks."
+          "feedback": "Correct. SEM Lab shows AVE as not applicable for such blocks."
         },
         {
           "id": "b",

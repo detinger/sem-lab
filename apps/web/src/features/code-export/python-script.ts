@@ -1,6 +1,6 @@
 /**
- * Python export (PLAN §2.9): a driver script that runs SEM Studio's verified Python engine
- * (packages/python-engine, shipped as the single file `semstudio_bundle.py`) on the exact
+ * Python export (PLAN §2.9): a driver script that runs SEM Lab's verified Python engine
+ * (packages/python-engine, shipped as the single file `semlab_bundle.py`) on the exact
  * analysis matrix the app analysed, then checks its numbers against the app's own result.
  *
  * Why the app's own engine and not semopy / plspm: the Python port reproduces the browser
@@ -15,7 +15,7 @@
  * Safety: user text appears only in comment lines stripped of line breaks; everything else
  * the script needs is read from the JSON files next to it.
  */
-import type { AnalysisConfiguration } from '@sem-studio/contracts';
+import type { AnalysisConfiguration } from '@sem-lab/contracts';
 import { rComment } from './r-csem';
 
 /** Versions the exported bundle was tested with (packages/python-engine CI matrix). */
@@ -51,14 +51,14 @@ export function exportPythonScript(input: PythonExportInput): string {
         ? 'PLSc (consistent PLS)'
         : 'PLS-SEM (classic PLS path modeling)';
   return `# =============================================================================
-# SEM Studio — reproducible Python analysis
+# SEM Lab — reproducible Python analysis
 # Project: ${comment(input.projectName)}
 # Method:  ${comment(method)}
-# Generated ${comment(input.generatedAt)} by SEM Studio ${comment(input.appVersion)}
+# Generated ${comment(input.generatedAt)} by SEM Lab ${comment(input.appVersion)}
 # Model hash:       ${input.modelHash}
 # Data fingerprint: ${input.dataFingerprint}
 #
-# Runs SEM Studio's own estimation engine (semstudio_bundle.py, the verified Python port of
+# Runs SEM Lab's own estimation engine (semlab_bundle.py, the verified Python port of
 # the engine in the app) on analysis-data.csv — the exact rows and columns the app analysed —
 # and checks the numbers against browser-result.json, the result the app showed.
 # Requirements: Python ${PYTHON_TESTED.python}, numpy ${PYTHON_TESTED.numpy}, scipy ${PYTHON_TESTED.scipy}
@@ -73,7 +73,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-import semstudio_bundle as semstudio  # noqa: E402
+import semlab_bundle as semlab  # noqa: E402
 
 TOLERANCE = ${pythonTolerance(a)}  # largest absolute difference accepted by the check below
 
@@ -104,7 +104,7 @@ def progress(event):
             print(f"  bootstrap {done}/{event['total']}", flush=True)
 
 
-out = semstudio.estimate(model, analysis, data, on_progress=progress)
+out = semlab.estimate(model, analysis, data, on_progress=progress)
 if not out["ok"]:
     raise SystemExit(f"{out['error']['code']}: {out['error']['message']}")
 result = out["result"]
@@ -112,7 +112,7 @@ for w in result["warnings"]:
     print(f"[{w['severity']}] {w['message']}")
 
 # ---- Tables ----------------------------------------------------------------------------------
-tables = semstudio.results_tables(result, model)
+tables = semlab.results_tables(result, model)
 
 
 def show(name, rows, fields):
@@ -137,8 +137,8 @@ show("Fit", tables.get("fit"), ["name", "variant", "value"])
 show("IPMA (construct, importance, performance)", tables.get("ipmaConstructs"),
      ["construct", "importance", "performance"])
 
-if semstudio.pandas_available():
-    frames = semstudio.to_dataframes(result, model)  # every table as a pandas DataFrame
+if semlab.pandas_available():
+    frames = semlab.to_dataframes(result, model)  # every table as a pandas DataFrame
 (HERE / "python-result.json").write_text(json.dumps(result, indent=1), encoding="utf-8")
 
 # ---- Check against the app's result ----------------------------------------------------------

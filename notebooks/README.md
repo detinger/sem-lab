@@ -1,8 +1,8 @@
-# SEM Studio Colab notebooks
+# SEM Lab Colab notebooks
 
 Five self-contained teaching notebooks (PLAN §2.10). Each one generates its own **synthetic**
-data, draws the model from SEM Studio's canonical model file, estimates it with SEM Studio's own
-engine (the Python port, `semstudio_bundle.py`, embedded in the notebook), interprets every
+data, draws the model from SEM Lab's canonical model file, estimates it with SEM Lab's own
+engine (the Python port, `semlab_bundle.py`, embedded in the notebook), interprets every
 result, and exports CSV tables, PNG figures and Word-ready tables.
 
 | Notebook | Model | Method | Fixture / app example |
@@ -20,11 +20,11 @@ represents a real study, and the ACSI-inspired notebook does not use ACSI data.
 
 **Google Colab.** Open a notebook straight from GitHub and choose *Runtime → Run all*:
 
-- [01_tam_pls_sem.ipynb](https://colab.research.google.com/github/detinger/sem-studio/blob/main/notebooks/colab/01_tam_pls_sem.ipynb)
-- [02_acsi_pls_sem.ipynb](https://colab.research.google.com/github/detinger/sem-studio/blob/main/notebooks/colab/02_acsi_pls_sem.ipynb)
-- [03_delone_mclean_is_success_pls_sem.ipynb](https://colab.research.google.com/github/detinger/sem-studio/blob/main/notebooks/colab/03_delone_mclean_is_success_pls_sem.ipynb)
-- [04_utaut2_pls_sem.ipynb](https://colab.research.google.com/github/detinger/sem-studio/blob/main/notebooks/colab/04_utaut2_pls_sem.ipynb)
-- [05_service_quality_cb_sem.ipynb](https://colab.research.google.com/github/detinger/sem-studio/blob/main/notebooks/colab/05_service_quality_cb_sem.ipynb)
+- [01_tam_pls_sem.ipynb](https://colab.research.google.com/github/detinger/sem-lab/blob/main/notebooks/colab/01_tam_pls_sem.ipynb)
+- [02_acsi_pls_sem.ipynb](https://colab.research.google.com/github/detinger/sem-lab/blob/main/notebooks/colab/02_acsi_pls_sem.ipynb)
+- [03_delone_mclean_is_success_pls_sem.ipynb](https://colab.research.google.com/github/detinger/sem-lab/blob/main/notebooks/colab/03_delone_mclean_is_success_pls_sem.ipynb)
+- [04_utaut2_pls_sem.ipynb](https://colab.research.google.com/github/detinger/sem-lab/blob/main/notebooks/colab/04_utaut2_pls_sem.ipynb)
+- [05_service_quality_cb_sem.ipynb](https://colab.research.google.com/github/detinger/sem-lab/blob/main/notebooks/colab/05_service_quality_cb_sem.ipynb)
 
 Nothing else is needed: the notebook writes the engine file and generates its data itself,
 needs no Google Drive, no uploads and no tokens, and installs nothing that Colab does not
@@ -45,11 +45,11 @@ uv run --with jupyterlab jupyter lab colab/
 2. Dependencies: a version check against the engine's minimums (numpy ≥ 1.22.4, scipy ≥ 1.12)
    instead of reinstalling Colab's preinstalled packages, which would force a runtime restart.
    The exact tested versions are listed and can be installed outside Colab.
-3. The engine as a collapsed form cell (`%%writefile semstudio_bundle.py`) followed by a SHA-256
-   check against `packages/python-engine/dist/semstudio_bundle.py`.
+3. The engine as a collapsed form cell (`%%writefile semlab_bundle.py`) followed by a SHA-256
+   check against `packages/python-engine/dist/semlab_bundle.py`.
 4. The generator code, extracted from `packages/fixtures/scripts/generate_synthetic.py`, run with
    the fixture's seed and N; the CSV's SHA-256 must equal the fixture manifest's, so the notebook
-   and the SEM Studio app example use byte-identical data. The population model is shown.
+   and the SEM Lab app example use byte-identical data. The population model is shown.
 5. Indicator dictionary, descriptives and response distributions.
 6. The model figure, drawn from the canonical `model.json` (layered left to right; reflective
    arrows construct → indicator, composite arrows indicator → construct).
@@ -61,7 +61,7 @@ uv run --with jupyterlab jupyter lab colab/
 
 **Bootstrap.** The PLS notebooks use B = 5,000 draws with the app example's seed. The app's
 TAM and D&M examples open with B = 1,000 for speed: point estimates are identical, and the same
-seed with 5,000 draws in the app gives exactly the notebook's intervals (SEM Studio's bootstrap
+seed with 5,000 draws in the app gives exactly the notebook's intervals (SEM Lab's bootstrap
 draws the same resamples in the browser, in Python and in R).
 
 **Runtimes** (whole notebook, headless, Apple M-series laptop; the PLS estimation cell with
@@ -95,7 +95,7 @@ semopy pinned for 05's optional cross-check) and checks that
 
 - no cell raises; the data SHA-256, the engine file and `model.json` equal the fixture and the
   committed bundle;
-- the exported `result.json` equals the `semstudio` package's result on the fixture files
+- the exported `result.json` equals the `semlab` package's result on the fixture files
   (1e-12 relative) and the analysis equals the app example's (except the number of bootstrap
   draws) or the fixture's browser analysis;
 - the statements in the interpretation cells hold (e.g. which paths are significant, the IPMA

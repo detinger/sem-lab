@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-11-19T12:53:54.701Z",
-  "generatedBy": "apps/web/src/tests/spike (npm run spike:evidence -w @sem-studio/web)",
+  "generatedBy": "apps/web/src/tests/spike (npm run spike:evidence -w @sem-lab/web)",
   "runtime": {
     "node": "v26.13.1",
     "platform": "darwin",

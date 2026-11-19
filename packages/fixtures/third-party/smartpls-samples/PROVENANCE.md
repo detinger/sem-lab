@@ -12,7 +12,7 @@ project owner supplied in `TEMP/` (five SmartPLS 4 sample-project folders).
 `*.splspm`, `*.splsge` and `*.splsrm` were never opened, decoded, decrypted or
 reverse-engineered. Only the delimited `*.txt` data files and the plain-JSON `*.settings` /
 `*.ok` side files were read. Structural paths are therefore **not** taken from SmartPLS: the
-`proposed-model.json` files are SEM Studio's own specifications from the published theory.
+`proposed-model.json` files are SEM Lab's own specifications from the published theory.
 
 ## Status vocabulary
 
@@ -78,7 +78,7 @@ A status is only ever raised when a source that was actually opened supports it.
 - **Origin:** 305 employees, organizational identification data of Bergami & Bagozzi (2000), widely reused as the GSCA demonstration data of Hwang & Takane (2004, 2014). The SmartPLS page says the data are 'taken from U.S.'; the cSEM package documentation says 'South Korean employees'. The discrepancy is unresolved because the primary article could not be opened (HTTP 403).
 - **Licence / terms:** None stated on the SmartPLS page. The same 22 variables and 305 rows are distributed on CRAN inside cSEM 0.7.1 as BergamiBagozzi2000 (package licence GPL-3) and inside gesca 1.0.5 as gesca.rick2 (package licence GPL >= 2). Neither package documents permission from the original authors.
 - **Identity check against an independent copy:** Verified on 2026-11-19: the 22 non-derived columns are cell-for-cell identical, in the same row order, to cSEM 0.7.1 BergamiBagozzi2000; gesca 1.0.5 gesca.rick2 differs in exactly one cell (cei7/org_pre7). The three *_rev columns are 6 - ac_love* and exist only in the SmartPLS sample. See evidence oi-cran-comparison.json.
-- **What would change the status:** Either (a) the owner accepts GPL-3 terms for this one data file and it is rebuilt from cSEM's BergamiBagozzi2000 with the GPL notice, or (b) the R engine loads cSEM::BergamiBagozzi2000 at run time so SEM Studio redistributes nothing, or (c) permission from the original authors.
+- **What would change the status:** Either (a) the owner accepts GPL-3 terms for this one data file and it is rebuilt from cSEM's BergamiBagozzi2000 with the GPL notice, or (b) the R engine loads cSEM::BergamiBagozzi2000 at run time so SEM Lab redistributes nothing, or (c) permission from the original authors.
 - **URLs opened:**
   - <https://www.smartpls.com/documentation/sample-projects/organizational-identification>
   - <https://www.smartpls.com/documentation/sample-projects/organizational-identification-variations-pls>

@@ -11,15 +11,15 @@
   "body": [
     {
       "kind": "p",
-      "text": "[[maximum-likelihood]] (ML) is the default CB-SEM estimator. Its estimates are consistent under fairly general conditions, but its standard errors and χ² test assume multivariate normality. [[mlr]] keeps the ML estimates and replaces the standard errors with robust (sandwich) ones and the test with a scaled statistic (Yuan & Bentler 2000). In SEM Studio, ML and MLR give identical point estimates; only SEs, p values and the scaled fit indices differ."
+      "text": "[[maximum-likelihood]] (ML) is the default CB-SEM estimator. Its estimates are consistent under fairly general conditions, but its standard errors and χ² test assume multivariate normality. [[mlr]] keeps the ML estimates and replaces the standard errors with robust (sandwich) ones and the test with a scaled statistic (Yuan & Bentler 2000). In SEM Lab, ML and MLR give identical point estimates; only SEs, p values and the scaled fit indices differ."
     },
     {
       "kind": "p",
-      "text": "Rating items are ordinal. With five or more roughly symmetric categories, ML or MLR on the raw items usually performs acceptably; with fewer categories or strong skew, diagonally weighted least squares on polychoric correlations ([[wlsmv]]) is preferable (Flora & Curran 2004; Rhemtulla et al. 2012). SEM Studio's browser engine offers ML and MLR; WLSMV and MLM are not available in it."
+      "text": "Rating items are ordinal. With five or more roughly symmetric categories, ML or MLR on the raw items usually performs acceptably; with fewer categories or strong skew, diagonally weighted least squares on polychoric correlations ([[wlsmv]]) is preferable (Flora & Curran 2004; Rhemtulla et al. 2012). SEM Lab's browser engine offers ML and MLR; WLSMV and MLM are not available in it."
     },
     {
       "kind": "p",
-      "text": "Missing data: [[listwise-deletion]] drops every case with any missing value; it is unbiased only if data are missing completely at random and wastes information. [[fiml]] uses every observed value and is unbiased under missing at random (Enders & Bandalos 2001; Schafer & Graham 2002). In the missing-mcar data listwise deletion keeps 258 of 500 cases; FIML uses all 500. SEM Studio supports FIML for CB-SEM with a mean structure; it is not defined for PLS-SEM."
+      "text": "Missing data: [[listwise-deletion]] drops every case with any missing value; it is unbiased only if data are missing completely at random and wastes information. [[fiml]] uses every observed value and is unbiased under missing at random (Enders & Bandalos 2001; Schafer & Graham 2002). In the missing-mcar data listwise deletion keeps 258 of 500 cases; FIML uses all 500. SEM Lab supports FIML for CB-SEM with a mean structure; it is not defined for PLS-SEM."
     },
     {
       "kind": "callout",

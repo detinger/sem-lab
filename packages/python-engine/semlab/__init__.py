@@ -1,21 +1,21 @@
-"""semstudio — SEM Studio's verified estimation engine in Python.
+"""semlab — SEM Lab's verified estimation engine in Python.
 
-Mirrors @sem-studio/engine 0.1.0 (the TypeScript engine that runs in the SEM Studio app,
+Mirrors @sem-lab/engine 0.1.0 (the TypeScript engine that runs in the SEM Lab app,
 packages/engine): PLS-SEM and consistent PLS (cSEM 0.7.1 semantics: path / centroid /
 factorial inner weighting, Mode A / Mode B, all quality criteria, effects incl. specific
-indirect effects, IPMA, cSEM::verify admissibility), SEM Studio's seeded bootstrap (R's
+indirect effects, IPMA, cSEM::verify admissibility), SEM Lab's seeded bootstrap (R's
 Mersenne-Twister and sample.int(), bit-exact), and CB-SEM by ML / MLR, complete data or FIML
 (lavaan 0.7 sem() defaults; Yuan-Bentler scaled and robust fit indices; RMSEA CI with R's
 uniroot). Python scripts and notebooks exported from the app reproduce the app's numbers
 with this package; the tested tolerances are in README.md.
 
-Provenance: a line-by-line port of packages/engine/src (TypeScript) of the SEM Studio
+Provenance: a line-by-line port of packages/engine/src (TypeScript) of the SEM Lab
 repository, verified against it and against the committed R (cSEM 0.7.1, lavaan 0.7-3)
 reference results; algorithms re-implemented from their documented definitions (no code from
-cSEM, lavaan, plspm or semopy). Licence: MIT (see the LICENSE file of the SEM Studio
+cSEM, lavaan, plspm or semopy). Licence: MIT (see the LICENSE file of the SEM Lab
 repository). Runtime dependencies: numpy, scipy (BSD-3-Clause).
 
-    from semstudio import estimate, build_analysis_data, read_csv, results_tables
+    from semlab import estimate, build_analysis_data, read_csv, results_tables
     columns, rows = read_csv("data.csv")
     data = build_analysis_data(model, columns, rows, analysis["missingData"])
     out = estimate(model, analysis, data)          # {'ok': True, 'result': {...}}

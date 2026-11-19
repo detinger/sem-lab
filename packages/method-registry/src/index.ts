@@ -1,4 +1,4 @@
-import { EngineId, type SemMethod } from '@sem-studio/contracts';
+import { EngineId, type SemMethod } from '@sem-lab/contracts';
 import { z } from 'zod';
 import registryJson from '../registry.json' with { type: 'json' };
 

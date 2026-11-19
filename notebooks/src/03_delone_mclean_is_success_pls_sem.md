@@ -1,14 +1,14 @@
 %% markdown
 # 03 · Information systems success (inspired by DeLone & McLean) with PLS-SEM
 
-*SEM Studio Colab collection, notebook 3 of 5. Data: **SYNTHETIC** (generated in this
-notebook). Estimation: SEM Studio's own engine (Python), no R required.*
+*SEM Lab Colab collection, notebook 3 of 5. Data: **SYNTHETIC** (generated in this
+notebook). Estimation: SEM Lab's own engine (Python), no R required.*
 
 **Attribution.** The model is inspired by the updated IS success model: DeLone, W. H., &
 McLean, E. R. (2003). The DeLone and McLean model of information systems success: a ten-year
-update. *Journal of Management Information Systems, 19*(4), 9–30. It is SEM Studio's teaching
+update. *Journal of Management Information Systems, 19*(4), 9–30. It is SEM Lab's teaching
 specification, not a replication: the data are **synthetic** and do not reproduce any published
-study. This notebook is the Python companion of SEM Studio's example *"Information systems
+study. This notebook is the Python companion of SEM Lab's example *"Information systems
 success (inspired by DeLone & McLean)"* and uses byte-identical data.
 
 ### Learning objectives
@@ -47,7 +47,7 @@ demonstrated causal effects.
 Six standardised common factors, 23 items on a 1–7 scale. The three quality dimensions are
 correlated (0.35–0.45). Thresholds differ by construct (information quality items lean towards
 agreement, service quality items towards disagreement), which matters later for IPMA. The code
-is extracted unchanged from SEM Studio's generator (`{{GENERATOR_PATH}}`); seed {{SEED}} and
+is extracted unchanged from SEM Lab's generator (`{{GENERATOR_PATH}}`); seed {{SEED}} and
 N = {{N}} reproduce the bundled dataset byte for byte.
 
 %% generator
@@ -71,9 +71,9 @@ FIGURES["model.png"] = draw_model(model, title="IS success model (inspired by De
 plt.show()
 
 %% markdown
-## 5. Estimation with SEM Studio's engine
+## 5. Estimation with SEM Lab's engine
 
-The settings of the SEM Studio example: classic PLS-SEM, path weighting, percentile bootstrap
+The settings of the SEM Lab example: classic PLS-SEM, path weighting, percentile bootstrap
 (seed 20261401) and IPMA with net benefits (NB) as the target. We use B = 5,000 draws (the app
 example opens with 1,000 for speed; point estimates are identical, and 5,000 draws with the same
 seed in the app give exactly these intervals). The estimation cell took about 7 s on an Apple
@@ -114,7 +114,7 @@ Three common criteria, from the most to the least recommended:
   0.85 (or 0.90 for conceptually close constructs) support discriminant validity. **HTMT2** uses
   geometric instead of arithmetic means and is robust to unequal loadings.
 - **Fornell–Larcker**: each construct's AVE should exceed its squared correlations with all
-  other constructs (equivalently, √AVE should exceed the correlations). SEM Studio reports the
+  other constructs (equivalently, √AVE should exceed the correlations). SEM Lab reports the
   matrix as cSEM does: AVE on the diagonal, squared construct correlations off the diagonal. Simulation studies show that it often fails to
   detect problems when loadings are similar and high.
 - **Cross-loadings**: each item should load highest on its own construct (a weak criterion).
@@ -122,7 +122,7 @@ Three common criteria, from the most to the least recommended:
 %% code
 FIGURES["htmt.png"] = heatmap_table(rep["htmt"], "HTMT (cells above 0.85 are outlined)", threshold=0.85)
 plt.show()
-frames = semstudio.to_dataframes(result, model)
+frames = semlab.to_dataframes(result, model)
 htmt2 = frames["matrix:htmt2"].set_index("")
 htmt2.index.name = None
 print("HTMT2:")
@@ -174,7 +174,7 @@ VIFs are below 1.3, so the correlated quality dimensions do not create a colline
 
 There is no direct path from the quality dimensions to NB, so each of their effects on NB is
 indirect, and it runs through up to three routes (e.g. SYSQ → USE → NB, SYSQ → SAT → NB and
-SYSQ → USE → SAT → NB). SEM Studio reports the **specific indirect effect** of every route with
+SYSQ → USE → SAT → NB). SEM Lab reports the **specific indirect effect** of every route with
 its own bootstrap interval; for each construct they add up to its total indirect effect.
 
 %% code
@@ -216,7 +216,7 @@ Importance = unstandardised total effect on NB after rescaling every indicator t
 its declared endpoints 1 and 7; performance = mean 0–100 construct score.
 
 %% code
-ipma_c = pd.DataFrame(semstudio.results_tables(result, model)["ipmaConstructs"])
+ipma_c = pd.DataFrame(semlab.results_tables(result, model)["ipmaConstructs"])
 ipma_c = ipma_c[["construct", "importance", "performance", "predecessor"]]
 show(ipma_c)
 FIGURES["ipma_nb.png"] = ipma_plot(ipma_c, "NB")
@@ -244,7 +244,7 @@ EXPORT_TABLES = {
 WORD_TABLES = [
     ("Table 1. Reliability and convergent validity",
      rep["quality"][["alpha", "rho_A", "rho_C", "AVE"]].rename_axis("Construct").reset_index(),
-     "SYNTHETIC data (N = 400). Classic PLS-SEM, SEM Studio engine.", 3),
+     "SYNTHETIC data (N = 400). Classic PLS-SEM, SEM Lab engine.", 3),
     ("Table 2. Discriminant validity (HTMT)", rep["htmt"].rename_axis("").reset_index(),
      "Values below 0.85 support discriminant validity.", 3),
     ("Table 3. Structural paths with 95% percentile bootstrap intervals",

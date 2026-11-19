@@ -3,7 +3,7 @@
 # against a registry copy with ipma.construct / ipma.indicator = "beta" so the computation
 # is tested independently of the release gate (the gate itself is tested at the end).
 
-ipma_env <- function() c(SEM_STUDIO_REGISTRY = registry_override(list("ipma.construct" = "beta", "ipma.indicator" = "beta")))
+ipma_env <- function() c(SEM_LAB_REGISTRY = registry_override(list("ipma.construct" = "beta", "ipma.indicator" = "beta")))
 
 ipma_run <- function(model, analysis, data) {
   withr::with_envvar(ipma_env(), run_ok(make_job(model, analysis, data)))

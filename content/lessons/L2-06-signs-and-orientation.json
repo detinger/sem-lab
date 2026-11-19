@@ -11,7 +11,7 @@
   "body": [
     {
       "kind": "p",
-      "text": "Multiplying all weights of a block by −1 gives an equally valid solution: [[sign-indeterminacy]]. Software therefore orients each block, typically so that most loadings are positive, and SEM Studio warns when a loading is negative."
+      "text": "Multiplying all weights of a block by −1 gives an equally valid solution: [[sign-indeterminacy]]. Software therefore orients each block, typically so that most loadings are positive, and SEM Lab warns when a loading is negative."
     },
     {
       "kind": "p",
@@ -29,7 +29,7 @@
     {
       "kind": "callout",
       "variant": "tip",
-      "text": "In SEM Studio, mark the indicator as reverse scored and enter its endpoints, or create a reversed column in Data Lab. Do one or the other, not both."
+      "text": "In SEM Lab, mark the indicator as reverse scored and enter its endpoints, or create a reversed column in Data Lab. Do one or the other, not both."
     }
   ],
   "mistake": {

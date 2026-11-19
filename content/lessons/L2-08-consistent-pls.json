@@ -25,7 +25,7 @@
     },
     {
       "kind": "p",
-      "text": "Use PLSc when your constructs are conceived as common factors and you want factor-model estimates, for example to compare with CB-SEM. Composite-formative constructs are not corrected; SEM Studio leaves them unchanged and says so. In small samples PLSc can produce inadmissible values such as correlations above 1; inspect the warnings."
+      "text": "Use PLSc when your constructs are conceived as common factors and you want factor-model estimates, for example to compare with CB-SEM. Composite-formative constructs are not corrected; SEM Lab leaves them unchanged and says so. In small samples PLSc can produce inadmissible values such as correlations above 1; inspect the warnings."
     }
   ],
   "mistake": {

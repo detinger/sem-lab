@@ -10,7 +10,7 @@ async function openWithTam(page: Page, theme: 'light' | 'dark'): Promise<string[
   page.on('console', (m) => m.type() === 'error' && errors.push(m.text()));
   page.on('pageerror', (e) => errors.push(e.message));
   await page.addInitScript((value) => {
-    window.localStorage.setItem('sem-studio:theme', value);
+    window.localStorage.setItem('sem-lab:theme', value);
   }, theme);
   await page.goto('/modeler');
   await page.getByRole('button', { name: 'Use template' }).first().click();

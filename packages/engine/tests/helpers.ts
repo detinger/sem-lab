@@ -6,7 +6,7 @@
  */
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import type { AnalysisConfiguration, NormalizedSemResult, SemModel } from '@sem-studio/contracts';
+import type { AnalysisConfiguration, NormalizedSemResult, SemModel } from '@sem-lab/contracts';
 import type { AnalysisDataInput } from '../src/pls/spec.ts';
 
 export const FIXTURES = fileURLToPath(new URL('../../fixtures/', import.meta.url));

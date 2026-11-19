@@ -37,7 +37,7 @@ function ShellFrame() {
   const group = NAV_GROUPS.find((g) => g.items.some((item) => item.label === title))?.label;
 
   useEffect(() => {
-    document.title = `${title} · SEM Studio`;
+    document.title = `${title} · SEM Lab`;
   }, [title]);
 
   return (

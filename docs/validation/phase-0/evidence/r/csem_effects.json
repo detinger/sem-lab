@@ -442,7 +442,7 @@
       "indirect_draws_dim": [40, 6],
       "indirect_draw_colnames": ["ATU ~ PEOU", "BI ~ PEOU", "BI ~ PU", "USE ~ PEOU", "USE ~ PU", "USE ~ ATU"],
       "total_draws_vs_recomputed_from_path_draws": 0,
-      "conclusion": "Per-draw total (and hence specific indirect) effects can be recomputed from the raw path draws alone; SEM Studio only needs to store the path draw matrix."
+      "conclusion": "Per-draw total (and hence specific indirect) effects can be recomputed from the raw path draws alone; SEM Lab only needs to store the path draw matrix."
     }
   }
 }

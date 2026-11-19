@@ -1,4 +1,4 @@
-import type { NormalizedSemResult, SemLayout, SemModel } from '@sem-studio/contracts';
+import type { NormalizedSemResult, SemLayout, SemModel } from '@sem-lab/contracts';
 import { useEffect, useMemo, useState } from 'react';
 import { sceneToSvg } from '@/features/modeler/export/svg-export';
 import { computeAutoLayout } from '@/features/modeler/layout/auto-layout';

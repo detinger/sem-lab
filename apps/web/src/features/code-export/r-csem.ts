@@ -4,7 +4,7 @@
  * The script is derived from the same canonical model and analysis configuration as the job
  * the app sends to the R engine, and reproduces the engine's numbers EXACTLY:
  *  - csem() gets the same options as services/r-engine/R/pls_estimate.R csem_options();
- *  - the bootstrap follows SEM Studio's definition (the browser engine implements the same):
+ *  - the bootstrap follows SEM Lab's definition (the browser engine implements the same):
  *    set.seed(seed, "Mersenne-Twister", "Inversion", "Rejection"), then for b = 1..B in order
  *    rows = sample.int(n, n, replace = TRUE) and a full re-estimation; failed = error or
  *    non-convergence, inadmissible = verify() flags; percentile CI = quantile(type = 7);
@@ -15,7 +15,7 @@
  * appear only inside fully escaped string literals; comment text is stripped of control
  * characters so a label cannot end a comment line.
  */
-import type { AnalysisConfiguration, SemModel } from '@sem-studio/contracts';
+import type { AnalysisConfiguration, SemModel } from '@sem-lab/contracts';
 import type { Transformation } from '@/domain/dataset/types';
 import { directedPaths, structuralGraph } from '@/domain/graph';
 
@@ -125,15 +125,15 @@ export function exportCsemScript(input: RExportInput): string {
 
   push(
     '# =============================================================================',
-    `# SEM Studio — reproducible R script (cSEM)`,
+    `# SEM Lab — reproducible R script (cSEM)`,
     `# Project: ${rComment(input.projectName)}`,
     `# Method:  ${a.method === 'plsc' ? 'PLSc (consistent PLS)' : 'PLS-SEM (classic PLS path modeling, no consistency correction)'}`,
-    `# Generated ${rComment(input.generatedAt)} by SEM Studio ${rComment(input.appVersion)}`,
+    `# Generated ${rComment(input.generatedAt)} by SEM Lab ${rComment(input.appVersion)}`,
     `# Model hash:       ${input.modelHash}`,
     `# Data fingerprint: ${input.dataFingerprint}`,
     `# Tested with R ${TESTED_VERSIONS.R} and cSEM ${TESTED_VERSIONS.cSEM}. Other versions may differ numerically.`,
     '#',
-    "# This script reproduces SEM Studio's estimates exactly when run on the analysis data",
+    "# This script reproduces SEM Lab's estimates exactly when run on the analysis data",
     `# file exported with it (${rComment(input.dataFileName ?? 'analysis-data.csv')}): the same rows and columns the app analysed.`,
     '# =============================================================================',
     '',
@@ -179,8 +179,8 @@ export function exportCsemScript(input: RExportInput): string {
     'if (length(missing_cols)) stop("The data file lacks columns: ", paste(missing_cols, collapse = ", "))',
     'data <- raw[, unname(columns), drop = FALSE]',
     'names(data) <- names(columns)',
-    `if (anyNA(data)) stop("cSEM needs complete data; SEM Studio exported the listwise-complete analysis matrix.")`,
-    `stopifnot(nrow(data) == ${input.nUsed}L)  # rows analysed by SEM Studio (${input.nRows - input.nUsed} of ${input.nRows} removed by listwise deletion)`,
+    `if (anyNA(data)) stop("cSEM needs complete data; SEM Lab exported the listwise-complete analysis matrix.")`,
+    `stopifnot(nrow(data) == ${input.nUsed}L)  # rows analysed by SEM Lab (${input.nRows - input.nUsed} of ${input.nRows} removed by listwise deletion)`,
     '',
     '# ---- Model ----------------------------------------------------------------------',
     'model <- "',
@@ -200,7 +200,7 @@ export function exportCsemScript(input: RExportInput): string {
   push(
     '"',
     '',
-    '# ---- Estimation (identical options to the SEM Studio R engine) ------------------',
+    '# ---- Estimation (identical options to the SEM Lab R engine) ------------------',
     'options <- list(',
     '  .approach_weights = "PLS-PM",',
     '  .approach_paths = "OLS",',
@@ -221,7 +221,7 @@ export function exportCsemScript(input: RExportInput): string {
   if (a.bootstrap?.enabled) {
     const b = a.bootstrap;
     push(
-      "# ---- Bootstrap (SEM Studio's definition — the app draws exactly these rows) ------",
+      "# ---- Bootstrap (SEM Lab's definition — the app draws exactly these rows) ------",
       '# One random stream: set.seed(), then for each draw b = 1..B, in order,',
       '# rows = sample.int(n, n, replace = TRUE) and a full re-estimation. A draw that errors or',
       '# does not converge is "failed"; one that verify() flags is "inadmissible"; both are',
@@ -277,7 +277,7 @@ export function exportCsemScript(input: RExportInput): string {
   if (indirect) {
     push(
       '# Specific indirect effects are products of the path coefficients along each route;',
-      '# SEM Studio computes them inside every bootstrap draw (see its Results > Structural tab).',
+      '# SEM Lab computes them inside every bootstrap draw (see its Results > Structural tab).',
       '',
     );
   }
@@ -317,7 +317,7 @@ function pushIpma(
     `c(${inds.map((i) => `${id(i.id)} = ${pick(i)}`).join(', ')})`;
   push(
     '# ---- IPMA (importance-performance map) -----------------------------------------',
-    '# SEM Studio convention: every indicator (already reverse scored where flagged) is rescaled',
+    '# SEM Lab convention: every indicator (already reverse scored where flagged) is rescaled',
     '# to 0-100 with its DECLARED scale endpoints (never the observed min/max); classic PLS is',
     '# re-estimated on the rescaled data with the same options; unstandardized weights =',
     '# standardized weight / sd(rescaled indicator), normalized to sum to 1 per block; construct',

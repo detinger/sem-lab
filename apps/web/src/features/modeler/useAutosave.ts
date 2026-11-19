@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { saveProject } from '@/storage/projects';
 import { useModeler } from './store';
 
-export const LAST_PROJECT_KEY = 'sem-studio.lastProjectId';
+export const LAST_PROJECT_KEY = 'sem-lab.lastProjectId';
 
 export type SaveState =
   | { status: 'idle' }

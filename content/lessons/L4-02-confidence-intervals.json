@@ -11,7 +11,7 @@
   "body": [
     {
       "kind": "p",
-      "text": "A 95% [[percentile-interval]] consists of the 2.5th and 97.5th percentiles of the bootstrap estimates. If it excludes zero, the effect is significant at the 5% level in a two-sided test. SEM Studio also reports a [[p-value]] from the bootstrap t statistic (estimate / SE)."
+      "text": "A 95% [[percentile-interval]] consists of the 2.5th and 97.5th percentiles of the bootstrap estimates. If it excludes zero, the effect is significant at the 5% level in a two-sided test. SEM Lab also reports a [[p-value]] from the bootstrap t statistic (estimate / SE)."
     },
     {
       "kind": "formula",
@@ -25,7 +25,7 @@
     {
       "kind": "callout",
       "variant": "info",
-      "text": "Bias-corrected and accelerated ([[bca-interval]]) intervals adjust for bias and skewness of the bootstrap distribution. SEM Studio does not compute them yet; it offers percentile intervals. One-sided tests are appropriate only for a directional hypothesis stated before seeing the data."
+      "text": "Bias-corrected and accelerated ([[bca-interval]]) intervals adjust for bias and skewness of the bootstrap distribution. SEM Lab does not compute them yet; it offers percentile intervals. One-sided tests are appropriate only for a directional hypothesis stated before seeing the data."
     }
   ],
   "mistake": {

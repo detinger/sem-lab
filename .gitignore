@@ -21,7 +21,7 @@ services/r-engine/r-lib/
 .Rproj.user/
 
 # local runtime data (job store, uploaded datasets) — never commit
-.sem-studio-data/
+.sem-lab-data/
 apps/api/.data/
 
 # env / secrets

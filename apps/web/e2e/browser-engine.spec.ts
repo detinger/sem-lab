@@ -154,8 +154,8 @@ test('ACSI 2015, PLS B = 1,000: single worker vs worker pool give identical resu
   const runOnce = async (workers: number | null) => {
     await page.evaluate((w) => {
       (
-        window as unknown as { __semStudioTest: { setWorkers: (n: number | null) => void } }
-      ).__semStudioTest.setWorkers(w);
+        window as unknown as { __semLabTest: { setWorkers: (n: number | null) => void } }
+      ).__semLabTest.setWorkers(w);
     }, workers);
     await expect(page.getByRole('button', { name: 'Run analysis' })).toBeEnabled();
     await page.getByRole('button', { name: 'Run analysis' }).click();

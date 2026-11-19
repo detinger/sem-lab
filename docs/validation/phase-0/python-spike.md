@@ -202,7 +202,7 @@ AIC, BIC, LogLik. CFA DoF 199, SEM DoF 203 (22 indicators, 253 moments). Also pr
 - Timing on tam-v1 (B=100, NUM route, tol 1e-10, 8-core M-series): spawn P=1 56.6 s; spawn P=4 33.5 s;
   fork P=1 45.5 s; fork P=4 13.3 s (with fork P=4 the resamples are duplicates, see above). About 0.45 s per
   resample single-process, so a 5000-resample run would take roughly 38 minutes.
-- Consequence for SEM Studio: plspm's bootstrap is not usable as the app's resampling engine, and exported
+- Consequence for SEM Lab: plspm's bootstrap is not usable as the app's resampling engine, and exported
   Colab code should not rely on it for reproducible numbers. A tested app-owned loop (own
   `np.random.default_rng(seed)`, refitting `Plspm` per chunk, counting failures) is straightforward; the replay
   in `plspm_bootstrap.py` is a working prototype of that loop.

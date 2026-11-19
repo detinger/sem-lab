@@ -3,13 +3,13 @@
  * Gating comes from the capability registry (isOffered / unavailableReason), never from
  * hard-coded lists; the only fixed text here is the CB-SEM card (PLAN Phase 3 scope).
  */
-import { AnalysisConfiguration, type EngineId, type SemMethod } from '@sem-studio/contracts';
-import { METHOD_CAPABILITY, isOffered, unavailableReason } from '@sem-studio/method-registry';
+import { AnalysisConfiguration, type EngineId, type SemMethod } from '@sem-lab/contracts';
+import { METHOD_CAPABILITY, isOffered, unavailableReason } from '@sem-lab/method-registry';
 import { create } from 'zustand';
 import { poolSize } from './engine';
 
 export const ENGINE: EngineId = 'browser';
-export const ENGINE_LABEL = 'SEM Studio engine (runs in this browser)';
+export const ENGINE_LABEL = 'SEM Lab engine (runs in this browser)';
 export const PRIVACY_LINE = 'Your data stay on this device; nothing is uploaded.';
 export const BOOTSTRAP_PRESETS = [500, 2000, 5000, 10000] as const;
 export const DEFAULT_MAX_ITERATIONS = 300;

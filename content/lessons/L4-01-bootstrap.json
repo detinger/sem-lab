@@ -24,7 +24,7 @@
     },
     {
       "kind": "p",
-      "text": "The [[standard-error]] is the standard deviation of the bootstrap estimates, and percentile confidence intervals are read off their quantiles (next lesson). Because the draws are random, results depend slightly on B and on the [[random-seed]]. SEM Studio requires a seed so that every result can be reproduced exactly, and the exported R and Python scripts draw the same resamples."
+      "text": "The [[standard-error]] is the standard deviation of the bootstrap estimates, and percentile confidence intervals are read off their quantiles (next lesson). Because the draws are random, results depend slightly on B and on the [[random-seed]]. SEM Lab requires a seed so that every result can be reproduced exactly, and the exported R and Python scripts draw the same resamples."
     },
     {
       "kind": "p",

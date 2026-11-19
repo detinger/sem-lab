@@ -9,7 +9,7 @@ import type {
   ParameterEstimate,
   ResultWarning,
   SemModel,
-} from '@sem-studio/contracts';
+} from '@sem-lab/contracts';
 import { type CbDataInput, emSaturated, prepareData } from './data.ts';
 import {
   Z_975,
@@ -235,7 +235,7 @@ export function estimateCbSync(input: CbInput, hooks?: CbHooks): CbOutcome {
 
   // --- parameters
   const std = standardized(spec, st);
-  const sourceMethod = `sem-studio:cb-sem:${estimator}`;
+  const sourceMethod = `sem-lab:cb-sem:${estimator}`;
   const parameters: ParameterEstimate[] = [];
   const inferenceMethod = robust ? 'robust-analytic' : 'analytic';
   spec.entries.forEach((e, k) => {
@@ -413,7 +413,7 @@ export function estimateCbSync(input: CbInput, hooks?: CbHooks): CbOutcome {
     warnings,
     provenance: {
       engine: 'browser',
-      packageVersions: { '@sem-studio/engine/cb': CB_ENGINE_VERSION, 'ml-matrix': '6.15.1' },
+      packageVersions: { '@sem-lab/engine/cb': CB_ENGINE_VERSION, 'ml-matrix': '6.15.1' },
       call: `estimateCb(estimator=${estimator}, missing=${fiml ? 'fiml' : 'listwise'}, identification=${identification}, meanStructure=${meanStructure})`,
       startedAt,
       finishedAt: new Date().toISOString(),

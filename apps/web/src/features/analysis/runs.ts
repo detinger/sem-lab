@@ -3,7 +3,7 @@
  *
  * A run binds a result to the exact model, data and configuration it was computed from.
  * `record` (the contracts AnalysisRun) is immutable once its status is terminal.
- * Runs are computed in this browser by the SEM Studio engine (engine 'browser'); nothing is uploaded.
+ * Runs are computed in this browser by the SEM Lab engine (engine 'browser'); nothing is uploaded.
  * The record holds the model AS SUBMITTED, so a historical run still reads with the names it
  * was computed with, but never any row-level data.
  *
@@ -18,7 +18,7 @@ import {
   SCHEMA_VERSION,
   type SemModel,
   modelHash as hashModel,
-} from '@sem-studio/contracts';
+} from '@sem-lab/contracts';
 import { useEffect, useMemo, useState } from 'react';
 import { create } from 'zustand';
 import { useModeler } from '@/features/modeler/store';

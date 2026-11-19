@@ -235,7 +235,7 @@ export function ImportSection() {
       <div className="dl-provenance">
         <p>
           <Badge variant="accent">SYNTHETIC</Badge> Sample datasets labelled SYNTHETIC are generated
-          by SEM Studio from a stated population model; they represent no real study.
+          by SEM Lab from a stated population model; they represent no real study.
         </p>
         <p className="dl-muted">
           <strong>ACSI 2015 sample data.</strong> {ACSI_ATTRIBUTION}{' '}

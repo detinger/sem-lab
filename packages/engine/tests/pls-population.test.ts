@@ -3,7 +3,7 @@
  * estimator must return the generating parameters (packages/fixtures/synthetic/<case>/population.json).
  */
 import { describe, expect, it } from 'vitest';
-import type { AnalysisConfiguration, NormalizedSemResult } from '@sem-studio/contracts';
+import type { AnalysisConfiguration, NormalizedSemResult } from '@sem-lab/contracts';
 import { estimatePls } from '../src/index.ts';
 import { analysisData, FIXTURES, loadCase, readJson } from './helpers.ts';
 

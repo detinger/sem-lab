@@ -11,7 +11,7 @@ import {
   type SemIndicator,
   type SemModel,
   type SemRelationship,
-} from '@sem-studio/contracts';
+} from '@sem-lab/contracts';
 
 export const EMPTY_MODEL: SemModel = { constructs: [], indicators: [], relationships: [] };
 

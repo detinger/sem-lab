@@ -1,4 +1,4 @@
-# SEM Studio R engine (`r-csem`)
+# SEM Lab R engine (`r-csem`)
 
 PLS-SEM (classic) and PLSc estimation with cSEM, run as a separate process on a job
 directory. Method statement: `docs/estimators/pls-csem.md`. Protocol:
@@ -73,7 +73,7 @@ node services/r-engine/tests/validate-result.mjs /tmp/job1/result.json   # schem
   is returned with `estimation.admissible = false` and a warning.
 - stderr (the API's `engine.log`) and error messages contain ids, column names and counts,
   never data values.
-- Environment: `SEM_STUDIO_REGISTRY` overrides the registry path (default
+- Environment: `SEM_LAB_REGISTRY` overrides the registry path (default
   `packages/method-registry/registry.json` relative to the repository).
 
 ## Tests

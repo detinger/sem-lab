@@ -1312,7 +1312,7 @@ def case_acsi_inspired():
     spec = pop["spec"]
     paths = [(s, t) for s, t, _ in spec["paths"]]
     model = build_model(spec["constructs"], paths, likert_cols={c: (1, 10) for c in header})
-    an = [analysis("pls-browser-boot-ipma", "Classic PLS-SEM (Mode A, path weighting) in SEM Studio's engine with 5000 percentile bootstrap draws (seeded) and IPMA with target LOY (importance = unstandardised total effect on 0-100 rescaled scores; performance from the endpoints 1 and 10).",
+    an = [analysis("pls-browser-boot-ipma", "Classic PLS-SEM (Mode A, path weighting) in SEM Lab's engine with 5000 percentile bootstrap draws (seeded) and IPMA with target LOY (importance = unstandardised total effect on 0-100 rescaled scores; performance from the endpoints 1 and 10).",
                    pls("pls-sem", "browser", seed=20261403, boot=5000, ipma="LOY")),
           analysis("pls-browser-ipma-sat", "Classic PLS-SEM point estimates with IPMA on SAT instead of LOY.", pls("pls-sem", "browser", ipma="SAT")),
           analysis("plsc-browser", "PLSc (consistent PLS) point estimates: the common-factor estimand, for comparison with classic PLS.", pls("plsc", "browser"))]
@@ -1398,7 +1398,7 @@ def case_utaut2_inspired():
     paths = [(s, t) for s, t, _ in spec["paths"]]
     # PLS does not use construct covariances, so the 15 exogenous correlations are not drawn as model arrows.
     model = build_model(spec["constructs"], paths, likert_cols={c: (1, 7) for c in header})
-    an = [analysis("pls-browser-boot", "Classic PLS-SEM (Mode A, path weighting) in SEM Studio's engine with 5000 percentile bootstrap draws (seeded): hypothesis tests of all nine paths, indirect effects on USE.",
+    an = [analysis("pls-browser-boot", "Classic PLS-SEM (Mode A, path weighting) in SEM Lab's engine with 5000 percentile bootstrap draws (seeded): hypothesis tests of all nine paths, indirect effects on USE.",
                    pls("pls-sem", "browser", seed=20261404, boot=5000)),
           analysis("plsc-browser", "PLSc (consistent PLS) point estimates for comparison.", pls("plsc", "browser"))]
     t = derived_truths(pop)

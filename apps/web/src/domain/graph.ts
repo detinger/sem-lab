@@ -2,7 +2,7 @@
  * Structural-model graph algebra: roles, cycles, layering and effect paths.
  * Pure functions over SemModel; used by the validator, auto layout, IPMA and result tables.
  */
-import { type SemModel } from '@sem-studio/contracts';
+import { type SemModel } from '@sem-lab/contracts';
 
 export interface StructuralGraph {
   nodes: string[];

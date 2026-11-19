@@ -28,7 +28,7 @@ const tam = {
 
 async function withFixtures(page: Page, theme: 'light' | 'dark') {
   await setup(page, theme);
-  await page.addInitScript(() => window.localStorage.setItem('sem-studio:learn-fixtures', '1'));
+  await page.addInitScript(() => window.localStorage.setItem('sem-lab:learn-fixtures', '1'));
 }
 
 for (const theme of ['light', 'dark'] as const) {
@@ -101,13 +101,13 @@ for (const theme of ['light', 'dark'] as const) {
 
     // load the correct model through the test hook; the dock reads the real project
     await page.waitForFunction(() =>
-      Boolean((window as unknown as Record<string, unknown>).__semStudioTest),
+      Boolean((window as unknown as Record<string, unknown>).__semLabTest),
     );
     await page.evaluate(
       (m) =>
         (
-          window as unknown as { __semStudioTest: { loadModel: (m: unknown) => Promise<void> } }
-        ).__semStudioTest.loadModel(m),
+          window as unknown as { __semLabTest: { loadModel: (m: unknown) => Promise<void> } }
+        ).__semLabTest.loadModel(m),
       tam,
     );
     await expect(page.locator('.react-flow__node-construct')).toHaveCount(3);

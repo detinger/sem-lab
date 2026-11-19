@@ -3,7 +3,7 @@
  * One place decides decimals, p-value notation and missing-value display, so every table and
  * every export says the same thing.
  */
-import type { MissingReason } from '@sem-studio/contracts';
+import type { MissingReason } from '@sem-lab/contracts';
 
 export interface NumberStyle {
   decimals: number;

@@ -115,7 +115,7 @@
     },
     {
       "kind": "p",
-      "text": "In larger models, such as the DeLone & McLean example, a construct can reach the outcome along several routes. SEM Studio lists every specific indirect effect separately, so you can say which route carries the effect, and bootstraps each one."
+      "text": "In larger models, such as the DeLone & McLean example, a construct can reach the outcome along several routes. SEM Lab lists every specific indirect effect separately, so you can say which route carries the effect, and bootstraps each one."
     }
   ],
   "mistake": {

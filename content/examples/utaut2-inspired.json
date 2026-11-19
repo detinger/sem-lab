@@ -3,7 +3,7 @@
   "title": "Technology adoption inspired by UTAUT2 (SYNTHETIC)",
   "summary": "Six antecedents of behavioural intention and use, with one deliberately near-zero path for practising hypothesis tests. Synthetic 7-point data (N = 450).",
   "theory": "Venkatesh, V., Thong, J. Y. L., & Xu, X. (2012). Consumer acceptance and use of information technology: Extending the unified theory of acceptance and use of technology. MIS Quarterly, 36(1), 157–178. Venkatesh, V., Morris, M. G., Davis, G. B., & Davis, F. D. (2003). User acceptance of information technology: Toward a unified view. MIS Quarterly, 27(3), 425–478.",
-  "modelNote": "SEM Studio's teaching model inspired by UTAUT2 without moderators (interactions are not offered yet).",
+  "modelNote": "SEM Lab's teaching model inspired by UTAUT2 without moderators (interactions are not offered yet).",
   "scaleSource": "All items are generated on a 1–7 scale.",
   "dataset": {
     "bundledId": "utaut2-inspired",

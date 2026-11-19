@@ -17,7 +17,7 @@
   "brief": [
     {
       "kind": "p",
-      "text": "Run the TAM example (5,000 bootstrap draws, seed 20261103) and produce the structural results table for H1–H3 in Word, using SEM Studio's copy-to-Word action and your own edits."
+      "text": "Run the TAM example (5,000 bootstrap draws, seed 20261103) and produce the structural results table for H1–H3 in Word, using SEM Lab's copy-to-Word action and your own edits."
     }
   ],
   "starter": {

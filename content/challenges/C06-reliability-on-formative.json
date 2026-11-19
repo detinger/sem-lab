@@ -282,7 +282,7 @@
           "id": "d",
           "text": "HTMT between F and Y",
           "correct": false,
-          "feedback": "HTMT assumes reflective measurement; SEM Studio does not compute it for composite-formative blocks."
+          "feedback": "HTMT assumes reflective measurement; SEM Lab does not compute it for composite-formative blocks."
         },
         {
           "id": "e",

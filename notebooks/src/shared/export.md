@@ -4,7 +4,7 @@
 The next cell writes everything to the folder `exports/` and zips it:
 
 - `data.csv` (the synthetic data), `model.json`, `analysis.json` and `result.json` (the full
-  result in SEM Studio's result format, the same JSON the app produces);
+  result in SEM Lab's result format, the same JSON the app produces);
 - one CSV per results table (unrounded numbers);
 - every figure as PNG (200 dpi);
 - `tables_word.html`: the main tables as APA-style tables with inline styles. Open the file

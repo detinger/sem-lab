@@ -48,7 +48,7 @@ describe('IPMA config', () => {
 describe('IPMA config while the registry does not offer it', () => {
   it('is disabled with the registry reason and no ipma is sent', async () => {
     vi.resetModules();
-    vi.doMock('@sem-studio/method-registry', async (orig) => ({
+    vi.doMock('@sem-lab/method-registry', async (orig) => ({
       ...(await orig<Record<string, unknown>>()),
       isOffered: (id: string) => (id === 'ipma.construct' ? false : true),
       unavailableReason: (id: string) =>
@@ -69,6 +69,6 @@ describe('IPMA config while the registry does not offer it', () => {
     expect(screen.getByText('Planned for a later release.')).toBeInTheDocument();
     const r = cfg.toConfiguration({ ...cfg.defaultConfig(1), ipmaTarget: 'c_bi' });
     expect(r.ok && r.analysis.ipma).toBeUndefined();
-    vi.doUnmock('@sem-studio/method-registry');
+    vi.doUnmock('@sem-lab/method-registry');
   });
 });

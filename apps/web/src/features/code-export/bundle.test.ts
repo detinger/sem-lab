@@ -3,8 +3,8 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { type AnalysisConfiguration, SemModel } from '@sem-studio/contracts';
-import { estimate } from '@sem-studio/engine';
+import { type AnalysisConfiguration, SemModel } from '@sem-lab/contracts';
+import { estimate } from '@sem-lab/engine';
 import { describe, expect, it } from 'vitest';
 import { buildAnalysisData } from '@/domain/dataset/analysis-data';
 import { createDataset, isDatasetError } from '@/domain/dataset/transform';
@@ -15,7 +15,7 @@ const fixture = (name: string, file: string): string =>
   readFileSync(join(repo, 'packages/fixtures/synthetic', name, file), 'utf8');
 const python = join(repo, 'packages/python-engine/.venv/bin/python');
 const engineSource = readFileSync(
-  join(repo, 'packages/python-engine/dist/semstudio_bundle.py'),
+  join(repo, 'packages/python-engine/dist/semlab_bundle.py'),
   'utf8',
 );
 

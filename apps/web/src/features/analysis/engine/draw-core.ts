@@ -1,5 +1,5 @@
 /** The draw worker's logic, free of any worker global so tests can run it in-process. */
-import { type BootstrapProblem, fitDraw } from '@sem-studio/engine';
+import { type BootstrapProblem, fitDraw } from '@sem-lab/engine';
 import type { FromDrawWorker, ToDrawWorker } from './protocol';
 
 export function createDrawHandler(reply: (m: FromDrawWorker) => void): (m: ToDrawWorker) => void {

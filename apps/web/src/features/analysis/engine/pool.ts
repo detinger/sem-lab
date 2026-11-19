@@ -4,7 +4,7 @@
  * workers pick up, and returns them in draw order whatever order the tasks finish in. Results
  * therefore equal a single-threaded run exactly.
  */
-import { type BootstrapProblem, type DrawResult, EngineError, fitDraw } from '@sem-studio/engine';
+import { type BootstrapProblem, type DrawResult, EngineError, fitDraw } from '@sem-lab/engine';
 import type { FromDrawWorker, ToDrawWorker } from './protocol';
 
 /** Minimal worker surface (a real Worker is adapted; tests use an in-process fake). */

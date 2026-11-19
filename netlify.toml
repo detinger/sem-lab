@@ -1,6 +1,6 @@
 # Netlify: static SPA build of apps/web (PLAN §3.6). No R/Python computation runs on Netlify.
 [build]
-  command = "npm ci && npm run build --workspace @sem-studio/web"
+  command = "npm ci && npm run build --workspace @sem-lab/web"
   publish = "apps/web/dist"
 
 [build.environment]

@@ -99,7 +99,7 @@ find$bootstrap_effects <- list(
   total_draws_dim = dim(Tt), total_draw_colnames = colnames(Tt),
   indirect_draws_dim = dim(In), indirect_draw_colnames = colnames(In),
   total_draws_vs_recomputed_from_path_draws = max(abs(Tt - own_total)),
-  conclusion = "Per-draw total (and hence specific indirect) effects can be recomputed from the raw path draws alone; SEM Studio only needs to store the path draw matrix."
+  conclusion = "Per-draw total (and hence specific indirect) effects can be recomputed from the raw path draws alone; SEM Lab only needs to store the path draw matrix."
 )
 
 write_evidence("csem_effects", find, packages = c("cSEM"))

@@ -59,9 +59,9 @@ describe('configuration', () => {
 
   it('names the in-browser engine and states the privacy line', async () => {
     renderPage();
-    expect(
-      await screen.findAllByText(/SEM Studio engine \(runs in this browser\)/),
-    ).not.toHaveLength(0);
+    expect(await screen.findAllByText(/SEM Lab engine \(runs in this browser\)/)).not.toHaveLength(
+      0,
+    );
     expect(
       screen.getAllByText('Your data stay on this device; nothing is uploaded.'),
     ).not.toHaveLength(0);

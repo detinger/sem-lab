@@ -237,7 +237,7 @@
           "id": "a",
           "text": "Refuse to estimate and name the missing columns.",
           "correct": true,
-          "feedback": "Correct. That is what SEM Studio does; any estimate would be for a different model than the one specified."
+          "feedback": "Correct. That is what SEM Lab does; any estimate would be for a different model than the one specified."
         },
         {
           "id": "b",

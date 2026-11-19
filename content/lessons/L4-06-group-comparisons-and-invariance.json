@@ -20,8 +20,8 @@
     {
       "kind": "callout",
       "variant": "warning",
-      "text": "SEM Studio does not run MICOM, permutation tests or PLS-MGA yet; they are planned. Estimating separate models per group is possible, but comparing them by eye is not a test.",
-      "title": "Not available in SEM Studio"
+      "text": "SEM Lab does not run MICOM, permutation tests or PLS-MGA yet; they are planned. Estimating separate models per group is possible, but comparing them by eye is not a test.",
+      "title": "Not available in SEM Lab"
     }
   ],
   "mistake": {

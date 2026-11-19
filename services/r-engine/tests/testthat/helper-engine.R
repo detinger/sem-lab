@@ -3,7 +3,7 @@
 # validated against the JSON Schema (via node + ajv) and the cross-field rules.
 
 ENGINE_DIR <- local({
-  e <- Sys.getenv("SEM_STUDIO_R_ENGINE_DIR", "")
+  e <- Sys.getenv("SEM_LAB_R_ENGINE_DIR", "")
   if (!nzchar(e)) e <- normalizePath(file.path(getwd(), "..", ".."), mustWork = TRUE)
   normalizePath(e, mustWork = TRUE)
 })
@@ -169,7 +169,7 @@ set_indicator <- function(model, id, ...) {
 
 #' Path of a temporary copy of the capability registry with r-csem statuses changed,
 #' e.g. registry_override(list("ipma.construct" = "beta")). Use with
-#' withr::local_envvar(SEM_STUDIO_REGISTRY = path).
+#' withr::local_envvar(SEM_LAB_REGISTRY = path).
 registry_override <- function(statuses) {
   reg <- read_json_list(file.path(REPO_DIR, "packages", "method-registry", "registry.json"))
   for (i in seq_along(reg$capabilities)) {

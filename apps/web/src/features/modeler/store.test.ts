@@ -1,7 +1,7 @@
-import { type DatasetRef, SemProject } from '@sem-studio/contracts';
+import { type DatasetRef, SemProject } from '@sem-lab/contracts';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { addConstruct, addIndicators, connect } from '@/domain/model-ops';
-import { modelHash } from '@sem-studio/contracts';
+import { modelHash } from '@sem-lab/contracts';
 import { useModeler } from './store';
 
 const s = () => useModeler.getState();

@@ -20,8 +20,8 @@
     {
       "kind": "callout",
       "variant": "warning",
-      "text": "SEM Studio reports SRMR, the summary of residual correlations, but does not yet show the residual matrix or modification indices. In the exported lavaan script, `residuals(fit, type = \"cor\")` and `modindices(fit)` provide them.",
-      "title": "Not available in SEM Studio"
+      "text": "SEM Lab reports SRMR, the summary of residual correlations, but does not yet show the residual matrix or modification indices. In the exported lavaan script, `residuals(fit, type = \"cor\")` and `modindices(fit)` provide them.",
+      "title": "Not available in SEM Lab"
     },
     {
       "kind": "p",

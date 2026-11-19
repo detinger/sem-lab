@@ -19,10 +19,10 @@ NB_DIR = ROOT / "notebooks"
 COLAB = NB_DIR / "colab"
 FIXTURES = ROOT / "packages" / "fixtures" / "synthetic"
 EXAMPLES = ROOT / "content" / "examples"
-BUNDLE = ROOT / "packages" / "python-engine" / "dist" / "semstudio_bundle.py"
+BUNDLE = ROOT / "packages" / "python-engine" / "dist" / "semlab_bundle.py"
 
 sys.path.insert(0, str(NB_DIR))
-sys.path.insert(0, str(ROOT / "packages" / "python-engine"))  # the semstudio package (independent of the bundle)
+sys.path.insert(0, str(ROOT / "packages" / "python-engine"))  # the semlab package (independent of the bundle)
 
 import build_notebooks
 
@@ -44,10 +44,10 @@ def execute(name: str) -> dict:
 
 @pytest.fixture(scope="session", autouse=True)
 def _remove_workdirs():
-    """Delete the notebooks' working folders after the session (set SEMSTUDIO_KEEP_NOTEBOOK_RUNS=1
+    """Delete the notebooks' working folders after the session (set SEMLAB_KEEP_NOTEBOOK_RUNS=1
     to keep them for inspecting the exported figures)."""
     yield
-    if os.environ.get("SEMSTUDIO_KEEP_NOTEBOOK_RUNS") != "1":
+    if os.environ.get("SEMLAB_KEEP_NOTEBOOK_RUNS") != "1":
         for run in _CACHE.values():
             shutil.rmtree(run["dir"], ignore_errors=True)
 

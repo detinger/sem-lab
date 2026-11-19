@@ -6,9 +6,9 @@
 ENGINE_ID <- "r-csem"
 
 registry_path <- function() {
-  p <- Sys.getenv("SEM_STUDIO_REGISTRY", "")
+  p <- Sys.getenv("SEM_LAB_REGISTRY", "")
   if (nzchar(p)) return(p)
-  engine_dir <- Sys.getenv("SEM_STUDIO_R_ENGINE_DIR", "")
+  engine_dir <- Sys.getenv("SEM_LAB_R_ENGINE_DIR", "")
   if (!nzchar(engine_dir)) engine_dir <- ENGINE_DIR
   file.path(engine_dir, "..", "..", "packages", "method-registry", "registry.json")
 }

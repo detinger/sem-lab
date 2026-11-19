@@ -277,7 +277,7 @@ export function ModelerToolbar({
             },
             {
               id: 'project',
-              label: 'Project file (.semstudio.json)',
+              label: 'Project file (.semlab.json)',
               disabled: !hasModel,
               onSelect: () => onExport('project'),
             },

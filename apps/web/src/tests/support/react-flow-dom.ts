@@ -5,7 +5,7 @@
  * Two levels, both verified by src/tests/spike/reactflow.spike.test.tsx:
  *
  * 1. installResizeObserverStub(): enough to RENDER a flow whose nodes carry explicit `width`,
- *    `height` and `handles`. This is the route for SEM Studio component tests, because construct
+ *    `height` and `handles`. This is the route for SEM Lab component tests, because construct
  *    and indicator nodes have known sizes.
  * 2. installMeasuringDom(): emulates measurement, so React Flow fills `node.measured` itself
  *    through `onNodesChange`. Use it only when a test is about the measuring lifecycle.

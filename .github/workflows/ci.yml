@@ -1,4 +1,4 @@
-# SEM Studio continuous integration.
+# SEM Lab continuous integration.
 # Jobs mirror the local commands documented in README.md; nothing here is CI-only.
 name: ci
 
@@ -32,7 +32,7 @@ jobs:
       - run: npm run format:check
       - run: npm run test
       - name: JSON Schema is up to date with the Zod contracts
-        run: npm run check-schema --workspace @sem-studio/contracts
+        run: npm run check-schema --workspace @sem-lab/contracts
       - run: npm run build
 
   fixtures:
@@ -61,7 +61,7 @@ jobs:
         run: uv run --frozen --python 3.12 pytest -q -rs
 
   python-engine:
-    name: Python engine (semstudio, Python ${{ matrix.python }})
+    name: Python engine (semlab, Python ${{ matrix.python }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -82,7 +82,7 @@ jobs:
       - name: pytest (package and bundle; R, lavaan, population and TypeScript parity)
         working-directory: packages/python-engine
         env:
-          SEMSTUDIO_REQUIRE_NODE: '1'
+          SEMLAB_REQUIRE_NODE: '1'
         run: uv run --frozen --python ${{ matrix.python }} pytest -q -rs
 
   r-engine:

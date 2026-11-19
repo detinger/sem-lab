@@ -1,9 +1,9 @@
 /**
  * Dev-only test hook (registered only when `import.meta.env.DEV`, never in a production build).
- * Playwright calls `window.__semStudioTest.loadIpmaFixture()` to open the stored real-engine IPMA
+ * Playwright calls `window.__semLabTest.loadIpmaFixture()` to open the stored real-engine IPMA
  * fixture as a current run of the open project, without a running analysis service.
  */
-import { NormalizedSemResult, SemModel, modelHash } from '@sem-studio/contracts';
+import { NormalizedSemResult, SemModel, modelHash } from '@sem-lab/contracts';
 import { setWorkersOverride } from '@/features/analysis/engine';
 import { finishRun, makeRun, saveRun, useRuns } from '@/features/analysis/runs';
 import { useModeler } from '@/features/modeler/store';
@@ -55,7 +55,7 @@ export function lastRun(): { status: string; durationMs: number | null; result: 
 
 declare global {
   interface Window {
-    __semStudioTest?: {
+    __semLabTest?: {
       loadIpmaFixture: typeof loadIpmaFixture;
       loadModel: typeof loadModel;
       lastRun: typeof lastRun;
@@ -65,7 +65,7 @@ declare global {
 }
 
 export function registerDevHook(): void {
-  window.__semStudioTest = {
+  window.__semLabTest = {
     loadIpmaFixture,
     loadModel,
     lastRun,

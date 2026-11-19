@@ -13,7 +13,7 @@
  *  6. missingData "fiml" → cb.missing.fiml
  *  7. ipma requested → ipma.construct
  */
-import type { AnalysisConfiguration, SemModel } from '@sem-studio/contracts';
+import type { AnalysisConfiguration, SemModel } from '@sem-lab/contracts';
 
 export function requiredCapabilities(model: SemModel, a: AnalysisConfiguration): string[] {
   const out: string[] = [];

@@ -7,12 +7,12 @@
  *   cancelled and carries no result.
  * - Reloading the page ends a running analysis (it lived in a worker of this page).
  */
-import type { AnalysisConfiguration, SemModel } from '@sem-studio/contracts';
-import type { ProgressEvent } from '@sem-studio/engine';
+import type { AnalysisConfiguration, SemModel } from '@sem-lab/contracts';
+import type { ProgressEvent } from '@sem-lab/engine';
 import { create } from 'zustand';
 import type { AnalysisData } from '@/domain/dataset/types';
 import { type RunHandle, engineInput, runEstimate } from './engine';
-import { NormalizedSemResult } from '@sem-studio/contracts';
+import { NormalizedSemResult } from '@sem-lab/contracts';
 import { finishRun, makeRun, saveRun, useRuns } from './runs';
 
 export interface ActiveJob {

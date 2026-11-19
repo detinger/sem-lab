@@ -1,4 +1,4 @@
-# Entry point of the SEM Studio R engine.
+# Entry point of the SEM Lab R engine.
 #
 #   services/r-engine/bin/run-job <job-dir>
 #

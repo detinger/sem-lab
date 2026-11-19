@@ -2,7 +2,7 @@
  * The Colab notebooks shipped in the repository (notebooks/colab): a downloadable copy bundled
  * with the app, and an "Open in Colab" link to the public repository's main branch.
  */
-export const REPOSITORY = 'detinger/sem-studio';
+export const REPOSITORY = 'detinger/sem-lab';
 export const REPOSITORY_URL = `https://github.com/${REPOSITORY}`;
 const colabUrl = (stem: string): string =>
   `https://colab.research.google.com/github/${REPOSITORY}/blob/main/notebooks/colab/${stem}.ipynb`;

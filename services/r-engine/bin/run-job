@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# SEM Studio R engine: run one job directory.
+# SEM Lab R engine: run one job directory.
 #
 #   services/r-engine/bin/run-job <job-dir>
 #

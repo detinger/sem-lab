@@ -4,7 +4,7 @@
  */
 import { readdirSync } from 'node:fs';
 import { afterAll, describe, expect, it } from 'vitest';
-import { NormalizedSemResult } from '@sem-studio/contracts';
+import { NormalizedSemResult } from '@sem-lab/contracts';
 import { estimatePls } from '../src/index.ts';
 import {
   analysisData,

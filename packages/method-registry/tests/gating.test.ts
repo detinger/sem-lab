@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { AnalysisConfiguration, SemModel } from '@sem-studio/contracts';
+import { AnalysisConfiguration, SemModel } from '@sem-lab/contracts';
 import { describe, expect, it } from 'vitest';
 import { requiredCapabilities } from '../src/index.ts';
 

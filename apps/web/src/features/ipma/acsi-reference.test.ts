@@ -8,8 +8,8 @@
  */
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { AnalysisConfiguration, type NormalizedSemResult, SemModel } from '@sem-studio/contracts';
-import { estimate } from '@sem-studio/engine';
+import { AnalysisConfiguration, type NormalizedSemResult, SemModel } from '@sem-lab/contracts';
+import { estimate } from '@sem-lab/engine';
 import { describe, expect, it } from 'vitest';
 import { buildAnalysisData } from '@/domain/dataset/analysis-data';
 import { createDataset, isDatasetError } from '@/domain/dataset/transform';

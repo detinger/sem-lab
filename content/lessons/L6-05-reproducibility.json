@@ -3,7 +3,7 @@
   "level": 6,
   "order": 5,
   "title": "Reproducible SEM analyses",
-  "summary": "A reproducible analysis lets anyone obtain the same numbers from the same model, data, settings and seed, and SEM Studio's exported scripts check that agreement automatically.",
+  "summary": "A reproducible analysis lets anyone obtain the same numbers from the same model, data, settings and seed, and SEM Lab's exported scripts check that agreement automatically.",
   "minutes": 7,
   "prerequisites": [
     "reporting-specification-and-estimation"
@@ -15,7 +15,7 @@
     },
     {
       "kind": "p",
-      "text": "SEM Studio exports an R script (cSEM for PLS, lavaan for CB-SEM) or a Python script with the analysed data. The PLS export and the browser engine agree to about 1e-12; the Python script compares its numbers with the app's result and prints whether they agree within tolerance. Keep the exported folder with your paper's materials."
+      "text": "SEM Lab exports an R script (cSEM for PLS, lavaan for CB-SEM) or a Python script with the analysed data. The PLS export and the browser engine agree to about 1e-12; the Python script compares its numbers with the app's result and prints whether they agree within tolerance. Keep the exported folder with your paper's materials."
     },
     {
       "kind": "list",

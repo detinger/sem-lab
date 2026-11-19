@@ -22,7 +22,7 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 EVIDENCE_DIR = REPO_ROOT / "docs" / "validation" / "phase-0" / "evidence" / "python"
 TAM_DATA = REPO_ROOT / "TEMP" / "Example - TAM" / "Data.txt"
 
-# --- tam-v1: SEM Studio's own specification of the classic Technology Acceptance Model -----
+# --- tam-v1: SEM Lab's own specification of the classic Technology Acceptance Model -----
 TAM_BLOCKS: dict[str, list[str]] = {
     "PU": ["USEF1", "USEF2", "USEF3", "USEF4", "USEF5"],
     "PEOU": ["EOU1", "EOU2", "EOU3", "EOU4", "EOU5"],

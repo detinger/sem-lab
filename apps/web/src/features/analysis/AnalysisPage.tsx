@@ -1,4 +1,4 @@
-import { modelHash as hashModel } from '@sem-studio/contracts';
+import { modelHash as hashModel } from '@sem-lab/contracts';
 import { ClipboardCheck, Play } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';

@@ -1,5 +1,5 @@
-import { isOffered, unavailableReason } from '@sem-studio/method-registry';
-import type { NormalizedSemResult, SemModel } from '@sem-studio/contracts';
+import { isOffered, unavailableReason } from '@sem-lab/method-registry';
+import type { NormalizedSemResult, SemModel } from '@sem-lab/contracts';
 import { ChartScatter, ClipboardCopy, Download, FlaskConical, Route } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';

@@ -5,8 +5,8 @@
  */
 import { readdirSync } from 'node:fs';
 import { afterAll, describe, expect, it } from 'vitest';
-import type { AnalysisConfiguration, SemModel } from '@sem-studio/contracts';
-import { NormalizedSemResult } from '@sem-studio/contracts';
+import type { AnalysisConfiguration, SemModel } from '@sem-lab/contracts';
+import { NormalizedSemResult } from '@sem-lab/contracts';
 import {
   bootstrapIndices,
   type BootstrapProblem,

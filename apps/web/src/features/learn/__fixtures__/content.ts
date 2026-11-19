@@ -3,7 +3,7 @@
  * and, through the development-only fixture flag (see ../content.ts), by the Playwright specs.
  * Real content lives in content/ and is written separately.
  */
-import type { SemModel } from '@sem-studio/contracts';
+import type { SemModel } from '@sem-lab/contracts';
 import type { ContentSet } from '../content';
 import { Challenge, Lesson, Theory, GlossaryTerm } from '../schema';
 

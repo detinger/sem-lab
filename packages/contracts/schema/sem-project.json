@@ -1,5 +1,5 @@
 {
-  "$id": "https://sem-studio.local/schema/sem-project.json",
+  "$id": "https://sem-lab.local/schema/sem-project.json",
   "title": "sem-project",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",

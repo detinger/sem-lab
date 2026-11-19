@@ -1,4 +1,4 @@
-"""SEM Studio's bootstrap definition (port of packages/engine/src/pls/bootstrap.ts):
+"""SEM Lab's bootstrap definition (port of packages/engine/src/pls/bootstrap.ts):
 
     set.seed(seed, kind = "Mersenne-Twister", normal.kind = "Inversion", sample.kind = "Rejection")
     for (b in 1:B) {

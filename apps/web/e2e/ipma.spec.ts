@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 /**
  * IPMA page from the stored real-engine fixture. The run is injected through the dev-only hook
- * `window.__semStudioTest.loadIpmaFixture()` (src/features/ipma/devHook.ts; absent in production
+ * `window.__semLabTest.loadIpmaFixture()` (src/features/ipma/devHook.ts; absent in production
  * builds). Screenshots go to test-results/phase4-ipma/ and must be looked at.
  */
 const OUT = 'test-results/phase4-ipma';
@@ -15,17 +15,17 @@ for (const theme of ['light', 'dark'] as const) {
     test(`ipma page (${theme}, ${vp.name})`, async ({ page }) => {
       await page.setViewportSize({ width: vp.width, height: vp.height });
       await page.addInitScript((value) => {
-        window.localStorage.setItem('sem-studio:theme', value);
+        window.localStorage.setItem('sem-lab:theme', value);
       }, theme);
       await page.goto('/ipma');
       await expect(page.getByRole('heading', { level: 1, name: 'IPMA' })).toBeVisible();
       await page.waitForFunction(() =>
-        Boolean((window as unknown as Record<string, unknown>).__semStudioTest),
+        Boolean((window as unknown as Record<string, unknown>).__semLabTest),
       );
       await page.evaluate(() =>
         (
-          window as unknown as { __semStudioTest: { loadIpmaFixture: () => Promise<void> } }
-        ).__semStudioTest.loadIpmaFixture(),
+          window as unknown as { __semLabTest: { loadIpmaFixture: () => Promise<void> } }
+        ).__semLabTest.loadIpmaFixture(),
       );
       await expect(page.getByTestId('ipma-target')).toBeVisible();
       await page.locator('.ipma-pt').first().click();

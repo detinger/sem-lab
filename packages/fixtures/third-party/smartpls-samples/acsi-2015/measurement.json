@@ -10,7 +10,7 @@
     "measurement mode (reflective / formative, Mode A / Mode B)",
     "construct positions and any other diagram information"
   ],
-  "naming": "'name' is the construct name exactly as stored. 'code' is SEM Studio's suggested short identifier and 'label' SEM Studio's reading of the abbreviation; neither is taken from the project file unless listed under alternateNames.",
+  "naming": "'name' is the construct name exactly as stored. 'code' is SEM Lab's suggested short identifier and 'label' SEM Lab's reading of the abbreviation; neither is taken from the project file unless listed under alternateNames.",
   "constructs": [
     {
       "name": "CUSA",

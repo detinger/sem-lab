@@ -3,9 +3,9 @@
  * reference, citations) and validated with the Zod schemas in ./schema.ts; an invalid or missing
  * file is skipped with a console warning, so the app renders (with empty states) while content
  * is being written. In development a test-only fixture set can replace the real content
- * (localStorage key `sem-studio:learn-fixtures` = "1"), which the Playwright specs use.
+ * (localStorage key `sem-lab:learn-fixtures` = "1"), which the Playwright specs use.
  */
-import { registry } from '@sem-studio/method-registry';
+import { registry } from '@sem-lab/method-registry';
 import { create } from 'zustand';
 import {
   Challenge,
@@ -92,7 +92,7 @@ export function loadContent(
   };
 }
 
-export const FIXTURE_FLAG = 'sem-studio:learn-fixtures';
+export const FIXTURE_FLAG = 'sem-lab:learn-fixtures';
 
 export const useContent = create<ContentSet>()(() => loadContent());
 

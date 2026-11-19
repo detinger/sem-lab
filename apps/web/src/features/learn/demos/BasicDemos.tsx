@@ -467,7 +467,7 @@ export function RmseaCfiDemo({ initial = {} }: { initial?: DemoInitial }) {
       formula="RMSEA = √(max(χ²/(N·df) − 1/N, 0)) · CFI = 1 − max(χ² − df, 0) / max(χ² − df, χ²_B − df_B, 0)"
       guideline={
         <>
-          These are the formulas of SEM Studio’s CB-SEM engine (lavaan conventions, ML). Popular
+          These are the formulas of SEM Lab’s CB-SEM engine (lavaan conventions, ML). Popular
           cut-offs (RMSEA ≤ .06, CFI ≥ .95; Hu & Bentler, 1999) are heuristics that depend on model
           and sample; they are not tests. Read fit indices together with the residuals.
         </>

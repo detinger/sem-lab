@@ -1,4 +1,4 @@
-# SEM Studio
+# SEM Lab
 
 An interactive workspace for structural equation modeling (PLS-SEM and CB-SEM): import data and drag its columns onto constructs to build a model, estimate it with validated engines, and report the results — including a diagram of the estimated model with path coefficients, significance and R².
 
@@ -61,9 +61,9 @@ npm run lint
 npm run format:check
 npm run test           # web, contracts and registry unit tests
 npm run build
-npm run check-schema --workspace @sem-studio/contracts         # JSON Schema in sync with Zod
+npm run check-schema --workspace @sem-lab/contracts         # JSON Schema in sync with Zod
 uv run --python 3.12 --with numpy python packages/fixtures/scripts/generate_synthetic.py --check
-npm run e2e --workspace @sem-studio/web                         # browser tests (uses installed Google Chrome)
+npm run e2e --workspace @sem-lab/web                         # browser tests (uses installed Google Chrome)
 ```
 
 R engine (packages are installed into `services/r-engine/r-lib`, never into the system library):

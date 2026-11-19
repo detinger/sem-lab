@@ -5,10 +5,10 @@
     {
       "id": "browser",
       "language": "TypeScript",
-      "package": "@sem-studio/engine",
+      "package": "@sem-lab/engine",
       "version": "0.1.0",
       "license": "project licence",
-      "notes": "SEM Studio's in-browser engine (Web Worker). Verified against committed R reference results (packages/fixtures/reference-results): cSEM 0.7.1 for PLS, lavaan 0.7-3 for CB-SEM."
+      "notes": "SEM Lab's in-browser engine (Web Worker). Verified against committed R reference results (packages/fixtures/reference-results): cSEM 0.7.1 for PLS, lavaan 0.7-3 for CB-SEM."
     },
     {
       "id": "r-csem",
@@ -38,7 +38,7 @@
       "package": "semopy",
       "version": "2.3.11",
       "license": "MIT",
-      "notes": "Python 3.12; pinned in services/python-spike/uv.lock (Phase 0 verification only; SEM Studio's Python exports use packages/python-engine)."
+      "notes": "Python 3.12; pinned in services/python-spike/uv.lock (Phase 0 verification only; SEM Lab's Python exports use packages/python-engine)."
     },
     {
       "id": "py-plspm",
@@ -178,7 +178,7 @@
             "services/r-engine/tests/testthat/test-reference.R"
           ],
           "implementation": "`csem(.model with \"=~\", .disattenuate = FALSE)` — a plain \"=~\" call is PLSc because .disattenuate defaults to TRUE",
-          "notes": "Matches an independent reference implementation (_ref_pls.R) to 3e-16, seminr to 6e-15 and Python plspm to 5e-11 on tam-v1. Becomes supported when the Phase 3 adapter has reference tests. Phase 3: SEM Studio R engine reproduces the population limits of classic PLS on exact-covariance data (≤ 1e-15) and the Phase 0 parity values (≤ 5.6e-16)."
+          "notes": "Matches an independent reference implementation (_ref_pls.R) to 3e-16, seminr to 6e-15 and Python plspm to 5e-11 on tam-v1. Becomes supported when the Phase 3 adapter has reference tests. Phase 3: SEM Lab R engine reproduces the population limits of classic PLS on exact-covariance data (≤ 1e-15) and the Phase 0 parity values (≤ 5.6e-16)."
         },
         "r-seminr": {
           "status": "beta",
@@ -289,7 +289,7 @@
             "services/r-engine/tests/testthat/test-parity-tam.R"
           ],
           "implementation": "`.PLS_weight_scheme_inner = \"centroid\"`",
-          "notes": "Schemes give different estimates (max |Δ| up to 0.009 on tam-v1), so the option is applied. Phase 3: equals the Phase 0 parity values through the SEM Studio engine (test runs only where the git-ignored TAM sample is present, so it stays beta)."
+          "notes": "Schemes give different estimates (max |Δ| up to 0.009 on tam-v1), so the option is applied. Phase 3: equals the Phase 0 parity values through the SEM Lab engine (test runs only where the git-ignored TAM sample is present, so it stays beta)."
         },
         "py-plspm": {
           "status": "beta",
@@ -335,7 +335,7 @@
             "services/r-engine/tests/testthat/test-parity-tam.R"
           ],
           "implementation": "`.PLS_weight_scheme_inner = \"factorial\"`",
-          "notes": "Schemes give different estimates (max |Δ| up to 0.009 on tam-v1), so the option is applied. Phase 3: equals the Phase 0 parity values through the SEM Studio engine (test runs only where the git-ignored TAM sample is present, so it stays beta)."
+          "notes": "Schemes give different estimates (max |Δ| up to 0.009 on tam-v1), so the option is applied. Phase 3: equals the Phase 0 parity values through the SEM Lab engine (test runs only where the git-ignored TAM sample is present, so it stays beta)."
         },
         "py-plspm": {
           "status": "beta",
@@ -486,7 +486,7 @@
           "verification": "engine-verified",
           "evidence": ["docs/validation/phase-0/evidence/r/csem_assess.json"],
           "implementation": "`Estimates$Reliabilities` of a PLSc fit (weights are identical to the classic fit)",
-          "notes": "assess() on a classic (non-PLSc) object returns 1 for every block (defect, csem_assess.json); SEM Studio takes ρA from a PLSc run."
+          "notes": "assess() on a classic (non-PLSc) object returns 1 for every block (defect, csem_assess.json); SEM Lab takes ρA from a PLSc run."
         },
         "browser": {
           "status": "supported",
@@ -565,7 +565,7 @@
           "verification": "engine-verified",
           "evidence": ["docs/validation/phase-0/evidence/r/csem_assess.json"],
           "implementation": "`assess()`, `calculatef2()`, `calculateVIFModeB()`",
-          "notes": "seminr's f² re-estimates the model without the predictor and differs from cSEM by 1.1e-3 on tam-v1; SEM Studio reports cSEM's definition and states it."
+          "notes": "seminr's f² re-estimates the model without the predictor and differs from cSEM by 1.1e-3 on tam-v1; SEM Lab reports cSEM's definition and states it."
         },
         "browser": {
           "status": "supported",
@@ -657,7 +657,7 @@
             "services/r-engine/R/pls_results.R",
             "services/r-engine/tests/testthat/test-reference.R"
           ],
-          "implementation": "SEM Studio R engine: product of path coefficients along each directed route of length ≥ 2, computed within every bootstrap draw (pls_results.R / pls_bootstrap.R)",
+          "implementation": "SEM Lab R engine: product of path coefficients along each directed route of length ≥ 2, computed within every bootstrap draw (pls_results.R / pls_bootstrap.R)",
           "notes": "cSEM does not report specific indirect effects; the engine computes them. Reference test: tam-mediation-exact indirect effect .30 recovered under PLSc to 1e-15. At most 500 routes are listed (warning if more). Phase 3: specific indirect effect recovered on tam-mediation-exact."
         },
         "browser": {
@@ -728,7 +728,7 @@
             "apps/web/src/features/code-export/r-csem.test.ts"
           ],
           "implementation": "packages/engine/src/pls/bootstrap.ts",
-          "notes": "SEM Studio bootstrap: R-compatible set.seed + sample.int per draw (bit-exact vs R), full refit, failed/inadmissible counted; every draw equals the R reference implementation (≤ 2.4e-12); the exported R script reproduces the app's intervals exactly."
+          "notes": "SEM Lab bootstrap: R-compatible set.seed + sample.int per draw (bit-exact vs R), full refit, failed/inadmissible counted; every draw equals the R reference implementation (≤ 2.4e-12); the exported R script reproduces the app's intervals exactly."
         }
       }
     },
@@ -772,13 +772,13 @@
           "status": "unsupported",
           "verification": "smoke-only",
           "evidence": ["docs/validation/phase-0/evidence/r/csem_resampling_followup.json"],
-          "reason": "Replacements are drawn with seed+1 (cSEM source), which collides with the next chunk's seed. SEM Studio excludes and counts inadmissible draws."
+          "reason": "Replacements are drawn with seed+1 (cSEM source), which collides with the next chunk's seed. SEM Lab excludes and counts inadmissible draws."
         },
         "browser": {
           "status": "unsupported",
           "verification": "none",
           "evidence": [],
-          "reason": "SEM Studio excludes and counts inadmissible draws; replacing them would condition the distribution on admissibility."
+          "reason": "SEM Lab excludes and counts inadmissible draws; replacing them would condition the distribution on admissibility."
         }
       }
     },
@@ -821,7 +821,7 @@
             "services/r-engine/tests/testthat/test-ipma.R"
           ],
           "implementation": "services/r-engine/R/pls_ipma.R",
-          "notes": "Phase 4: SEM Studio R engine — indicators rescaled to 0–100 with the ORIGINAL endpoints before a classic PLS refit; performance = mean score with sum-to-one unstandardised weights; importance = unstandardised total effect (sign kept). Reference tests: range-restricted fixture performance = (mean − 1)/6·100 to 7e-14 (observed extrema would be wrong); equals cSEM::doIPMA on the rescaled fit to 4e-16; Phase 0 TAM values reproduced. Point estimates only (no intervals yet). Refused for PLSc."
+          "notes": "Phase 4: SEM Lab R engine — indicators rescaled to 0–100 with the ORIGINAL endpoints before a classic PLS refit; performance = mean score with sum-to-one unstandardised weights; importance = unstandardised total effect (sign kept). Reference tests: range-restricted fixture performance = (mean − 1)/6·100 to 7e-14 (observed extrema would be wrong); equals cSEM::doIPMA on the rescaled fit to 4e-16; Phase 0 TAM values reproduced. Point estimates only (no intervals yet). Refused for PLSc."
         },
         "browser": {
           "status": "supported",
@@ -1219,7 +1219,7 @@
           "verification": "engine-verified",
           "evidence": ["docs/validation/phase-0/evidence/python/semopy_probe.json"],
           "implementation": "semopy.calc_stats()",
-          "notes": "Verified: chi2, DoF, CFI, TLI, NFI, RMSEA (≤5e-9). NOT reported by SEM Studio: GFI (it equals NFI), AGFI, LogLik/AIC/BIC (LogLik is the F_ML value). SRMR and the RMSEA CI are absent. chi2 p-values underflow to 0.0."
+          "notes": "Verified: chi2, DoF, CFI, TLI, NFI, RMSEA (≤5e-9). NOT reported by SEM Lab: GFI (it equals NFI), AGFI, LogLik/AIC/BIC (LogLik is the F_ML value). SRMR and the RMSEA CI are absent. chi2 p-values underflow to 0.0."
         },
         "browser": {
           "status": "supported",

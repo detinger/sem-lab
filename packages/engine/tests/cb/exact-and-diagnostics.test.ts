@@ -2,7 +2,7 @@
  * R-independent checks: exact fixtures (analytic oracles), the closed-form Heywood case, the
  * singular covariance fixture, error paths, parameter counting and performance.
  */
-import { NormalizedSemResult, type SemModel } from '@sem-studio/contracts';
+import { NormalizedSemResult, type SemModel } from '@sem-lab/contracts';
 import { describe, expect, it } from 'vitest';
 import { cbParameterCount, estimateCb } from '../../src/cb/index.ts';
 import { type Variant, analysisFor, fitValue, loadData, loadModel, readJson } from './helpers.ts';

@@ -513,7 +513,7 @@ wheels = [
 ]
 
 [[package]]
-name = "semstudio"
+name = "semlab"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

@@ -185,7 +185,7 @@
       "options": [
         {
           "id": "a",
-          "text": "WLSMV on polychoric correlations, for example in R with lavaan (not available in SEM Studio's browser engine)",
+          "text": "WLSMV on polychoric correlations, for example in R with lavaan (not available in SEM Lab's browser engine)",
           "correct": true,
           "feedback": "Correct (Flora & Curran 2004; Rhemtulla et al. 2012)."
         },
@@ -243,7 +243,7 @@
   "hints": [
     "First decide the estimand: is the construct a composite or a common factor?",
     "Then the data: continuous or few ordinal categories? Complete or missing?",
-    "FIML needs a mean structure; SEM Studio adds it when you choose FIML, or tells you to."
+    "FIML needs a mean structure; SEM Lab adds it when you choose FIML, or tells you to."
   ],
   "solution": [
     {

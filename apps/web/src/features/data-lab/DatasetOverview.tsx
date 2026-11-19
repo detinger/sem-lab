@@ -23,7 +23,7 @@ export function LinkBanner() {
       <Callout variant="warning" title="This project's data is not stored in this browser">
         This project's data (fingerprint {ref.fingerprint.slice(0, 12)}…,{' '}
         {plural(ref.rowCount, 'row')}) is not stored in this browser — import the same file again.
-        SEM Studio checks the fingerprint after import and tells you if the file differs.
+        SEM Lab checks the fingerprint after import and tells you if the file differs.
       </Callout>
     );
   }

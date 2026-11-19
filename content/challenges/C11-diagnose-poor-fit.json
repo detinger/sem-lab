@@ -22,7 +22,7 @@
     {
       "kind": "callout",
       "variant": "info",
-      "text": "SEM Studio does not compute modification indices yet. Suppose a colleague ran the model in lavaan and sends you the largest ones: residual covariances v5~~v6 (MI = 98), v7~~v8 (MI = 85) and v1~~v2 (MI = 71).",
+      "text": "SEM Lab does not compute modification indices yet. Suppose a colleague ran the model in lavaan and sends you the largest ones: residual covariances v5~~v6 (MI = 98), v7~~v8 (MI = 85) and v1~~v2 (MI = 71).",
       "title": "A colleague's suggestion"
     }
   ],

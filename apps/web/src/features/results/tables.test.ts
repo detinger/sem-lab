@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { type AnalysisConfiguration, NormalizedSemResult, SemModel } from '@sem-studio/contracts';
+import { type AnalysisConfiguration, NormalizedSemResult, SemModel } from '@sem-lab/contracts';
 import { describe, expect, it } from 'vitest';
 import { updateConstruct } from '@/domain/model-ops';
 import { toHtml } from '../reports/table';

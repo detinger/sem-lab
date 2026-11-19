@@ -15,7 +15,7 @@ Five SmartPLS 4 sample folders in `TEMP/`: ACSI, OI, Regression (two datasets), 
 - `*.splsm.settings → plsAlgorithmSettings.initialWeights` lists every indicator →
   construct assignment.
 - **No structural path information exists in plain form** (searched every plain JSON file).
-  Structural models for the examples are therefore SEM Studio's own specifications from the
+  Structural models for the examples are therefore SEM Lab's own specifications from the
   published theory (`proposed-model.json`, status "proposal").
 
 ## Parsing facts (`parsing-facts.json`)
@@ -52,7 +52,7 @@ The statistics SmartPLS stores per column were recomputed from the converted CSV
 | `cramerVanMises` | p-value of a Cramér–von Mises normality test with mean and population SD estimated | 1e-14 (W statistic cross-checked with scipy) |
 
 Library cross-check: the script's own formulas agree with numpy/pandas/scipy to ≤ 3e-14.
-These conventions become the Data Lab's reference tests (Phase 2). SEM Studio will label
+These conventions become the Data Lab's reference tests (Phase 2). SEM Lab will label
 which SD it shows rather than silently copy SmartPLS's choice.
 
 ## Scale endpoints

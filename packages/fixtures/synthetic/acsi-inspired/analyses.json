@@ -22,7 +22,7 @@
       },
       "seed": 20261403
     },
-    "description": "Classic PLS-SEM (Mode A, path weighting) in SEM Studio's engine with 5000 percentile bootstrap draws (seeded) and IPMA with target LOY (importance = unstandardised total effect on 0-100 rescaled scores; performance from the endpoints 1 and 10).",
+    "description": "Classic PLS-SEM (Mode A, path weighting) in SEM Lab's engine with 5000 percentile bootstrap draws (seeded) and IPMA with target LOY (importance = unstandardised total effect on 0-100 rescaled scores; performance from the endpoints 1 and 10).",
     "id": "pls-browser-boot-ipma"
   },
   {

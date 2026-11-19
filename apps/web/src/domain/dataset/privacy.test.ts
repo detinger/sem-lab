@@ -5,7 +5,7 @@
  */
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import type { SemModel } from '@sem-studio/contracts';
+import type { SemModel } from '@sem-lab/contracts';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { buildAnalysisData } from './analysis-data';
 import { parseCsv } from './parse';

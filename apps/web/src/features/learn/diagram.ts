@@ -2,7 +2,7 @@
  * Read-only model diagrams for lessons, theories and example cards: automatic layout (the
  * modeler's ELK layout) → the modeler's scene → its SVG exporter. Layout is cached per model.
  */
-import { type SemLayout, type SemModel } from '@sem-studio/contracts';
+import { type SemLayout, type SemModel } from '@sem-lab/contracts';
 import { computeAutoLayout, mergeLayout } from '@/features/modeler/layout/auto-layout';
 import { emptyLayout } from '@/features/modeler/store';
 import { buildScene } from '@/features/modeler/scene';

@@ -18,7 +18,7 @@
       "ordered": false,
       "items": [
         "Population, sampling procedure, period and response rate.",
-        "N collected and N analysed, with the reason for every exclusion; SEM Studio reports the number of cases used after listwise deletion.",
+        "N collected and N analysed, with the reason for every exclusion; SEM Lab reports the number of cases used after listwise deletion.",
         "Amount and pattern of missing data, the assumed [[missing-data-mechanism]] and the handling (listwise, FIML).",
         "Item screening: reverse-scored items (with endpoints), dropped constant or problematic items, any other transformation.",
         "Descriptive statistics of the indicators and the response scales with their endpoints.",
@@ -32,7 +32,7 @@
     {
       "kind": "callout",
       "variant": "tip",
-      "text": "SEM Studio keeps a transformation log in Data Lab and a method statement with every run; copy both into your notes before writing."
+      "text": "SEM Lab keeps a transformation log in Data Lab and a method statement with every run; copy both into your notes before writing."
     }
   ],
   "mistake": {

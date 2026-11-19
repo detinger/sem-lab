@@ -44,7 +44,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
       <div className="sidebar__brand">
         <BrandMark />
         <span className="sidebar__wordmark">
-          <span className="sidebar__name">SEM Studio</span>
+          <span className="sidebar__name">SEM Lab</span>
           <span className="sidebar__subtitle">Structural Equation Modeling</span>
         </span>
       </div>

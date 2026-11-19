@@ -72,7 +72,7 @@ def test_results_are_strict_json(eng):
     assert cb["ok"]
     json.dumps(cb, allow_nan=False)
     prov = cb["result"]["provenance"]
-    assert prov["engine"] == "browser" and prov["packageVersions"]["semstudio"] == eng.__version__
+    assert prov["engine"] == "browser" and prov["packageVersions"]["semlab"] == eng.__version__
 
 
 def test_progress_and_cancellation(eng):

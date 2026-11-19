@@ -68,11 +68,11 @@ export function SettingsPage() {
         <Card id="about-engine">
           <CardHeader title="About the engine" />
           <p>
-            SEM Studio estimates models with its own engine, written in TypeScript, in Web Workers
-            in this browser. There is no analysis server. PLS-SEM, PLSc and CB-SEM (ML, MLR, FIML)
-            are offered only where their numbers reproduce reference results from R (cSEM and
-            lavaan) in automated tests; R and Python are used for exported scripts and for
-            verification, not for running your analysis.
+            SEM Lab estimates models with its own engine, written in TypeScript, in Web Workers in
+            this browser. There is no analysis server. PLS-SEM, PLSc and CB-SEM (ML, MLR, FIML) are
+            offered only where their numbers reproduce reference results from R (cSEM and lavaan) in
+            automated tests; R and Python are used for exported scripts and for verification, not
+            for running your analysis.
           </p>
         </Card>
       </div>

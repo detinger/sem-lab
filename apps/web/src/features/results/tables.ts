@@ -12,7 +12,7 @@ import type {
   NormalizedSemResult,
   ParameterEstimate,
   SemModel,
-} from '@sem-studio/contracts';
+} from '@sem-lab/contracts';
 import {
   MISSING,
   MISSING_REASON_TEXT,

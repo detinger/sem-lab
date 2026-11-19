@@ -35,7 +35,7 @@ for (const theme of ['light', 'dark'] as const) {
     // --- Analysis, idle
     await page.getByRole('link', { name: 'Analysis', exact: true }).click();
     await expect(page.getByRole('heading', { level: 1, name: 'Analysis' })).toBeVisible();
-    await expect(page.getByText('SEM Studio engine (runs in this browser)').first()).toBeVisible();
+    await expect(page.getByText('SEM Lab engine (runs in this browser)').first()).toBeVisible();
     await expect(
       page.getByText('Your data stay on this device; nothing is uploaded.'),
     ).toBeVisible();
@@ -66,7 +66,7 @@ for (const theme of ['light', 'dark'] as const) {
     });
     await expect(page.getByLabel('Run provenance')).toContainText('B = 200 (200 valid');
     await expect(page.getByLabel('Run provenance')).toContainText(
-      'SEM Studio engine (in browser), @sem-studio/engine 0.1.0',
+      'SEM Lab engine (in browser), @sem-lab/engine 0.1.0',
     );
 
     // --- Results tabs

@@ -13,14 +13,14 @@ import {
   type SemMethod,
   type SemModel,
   validateModelStructure,
-} from '@sem-studio/contracts';
-import { cbParameterCount } from '@sem-studio/engine';
+} from '@sem-lab/contracts';
+import { cbParameterCount } from '@sem-lab/engine';
 import {
   capability,
   isOffered,
   requiredCapabilities,
   unavailableReason,
-} from '@sem-studio/method-registry';
+} from '@sem-lab/method-registry';
 import { constructRoles, findCycles, structuralGraph } from '../graph';
 import { blocksOf } from '../model-ops';
 
@@ -448,7 +448,7 @@ function dataIssues(
         layer: 'data',
         title: `${i.column} is not numeric${col.nonNumericCount ? ` (${col.nonNumericCount} non-numeric values)` : ''}`,
         explanation:
-          'Indicators must be numeric. Some engines silently treat text as ordinal categories, which would change the analysis without telling you; SEM Studio refuses instead.',
+          'Indicators must be numeric. Some engines silently treat text as ordinal categories, which would change the analysis without telling you; SEM Lab refuses instead.',
         fixes: [
           'Inspect the column in the Data Lab and recode or declare its non-numeric codes as missing.',
         ],

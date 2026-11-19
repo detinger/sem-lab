@@ -15,7 +15,7 @@ import {
   type SemLayout,
   type SemModel,
   type SemProject,
-} from '@sem-studio/contracts';
+} from '@sem-lab/contracts';
 import { create } from 'zustand';
 import * as ops from '@/domain/model-ops';
 import { type AlignMode, type Point, align, distribute, snap } from './geometry';

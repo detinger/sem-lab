@@ -25,7 +25,7 @@ MIN_NUMPY = (1, 22)
 MIN_SCIPY = (1, 12)
 if _version_tuple(np.__version__) < MIN_NUMPY or _version_tuple(scipy.__version__) < MIN_SCIPY:
     warnings.warn(
-        f"semstudio is tested with numpy >= 1.22.4 and scipy >= 1.12 (found numpy {np.__version__}, "
+        f"semlab is tested with numpy >= 1.22.4 and scipy >= 1.12 (found numpy {np.__version__}, "
         f"scipy {scipy.__version__}); with older scipy, Student-t p values can differ from the app by "
         "up to ~1e-11. Upgrade with: pip install -U numpy scipy",
         RuntimeWarning,
@@ -40,7 +40,7 @@ def iso_now():
 
 def provenance(call, started_at, package_versions):
     versions = dict(package_versions)
-    versions["semstudio"] = __version__
+    versions["semlab"] = __version__
     versions["numpy"] = np.__version__
     versions["scipy"] = scipy.__version__
     return {

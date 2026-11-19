@@ -31,7 +31,7 @@ export function watch(page: Page): { errors: string[]; uploads: string[] } {
 export async function setup(page: Page, theme: 'light' | 'dark', width = 1440, height = 900) {
   await page.setViewportSize({ width, height });
   await page.addInitScript((value) => {
-    window.localStorage.setItem('sem-studio:theme', value);
+    window.localStorage.setItem('sem-lab:theme', value);
   }, theme);
 }
 
@@ -53,10 +53,10 @@ type Hook = {
 export async function openModelAndSample(page: Page, model: unknown, sample: RegExp) {
   await page.goto('/modeler');
   await page.waitForFunction(() =>
-    Boolean((window as unknown as Record<string, unknown>).__semStudioTest),
+    Boolean((window as unknown as Record<string, unknown>).__semLabTest),
   );
   await page.evaluate(
-    (m) => (window as unknown as { __semStudioTest: Hook }).__semStudioTest.loadModel(m),
+    (m) => (window as unknown as { __semLabTest: Hook }).__semLabTest.loadModel(m),
     model,
   );
   await page.getByRole('link', { name: 'Data', exact: true }).click();
@@ -66,7 +66,7 @@ export async function openModelAndSample(page: Page, model: unknown, sample: Reg
 }
 
 export const lastRun = (page: Page) =>
-  page.evaluate(() => (window as unknown as { __semStudioTest: Hook }).__semStudioTest.lastRun());
+  page.evaluate(() => (window as unknown as { __semLabTest: Hook }).__semLabTest.lastRun());
 
 /** Everything except the wall-clock timestamps, which differ between runs. */
 export const canonical = (o: unknown): string =>
