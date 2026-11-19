@@ -77,13 +77,18 @@ function large(): SemModel {
 
 const models: Record<string, SemModel> = {
   'tam-v1': SemModel.parse(readJson('packages/contracts/examples/valid/model.tam-v1.json')),
-  utaut: fromProposed('packages/fixtures/third-party/smartpls-samples/utaut/proposed-model.json'),
   acsi: fromProposed(
     'packages/fixtures/third-party/smartpls-samples/acsi-2015/proposed-model.json',
   ),
-  oi: fromProposed('packages/fixtures/third-party/smartpls-samples/oi/proposed-model.json'),
   'large-15x4': large(),
 };
+// UTAUT and OI live with sample datasets kept on the owner's machine only (git-ignored);
+// include them when present. synthetic/utaut2-inspired covers the same shape in CI.
+for (const [name, path] of [
+  ['utaut', 'packages/fixtures/third-party/smartpls-samples/utaut/proposed-model.json'],
+  ['oi', 'packages/fixtures/third-party/smartpls-samples/oi/proposed-model.json'],
+] as const)
+  if (existsSync(join(repo, path))) models[name] = fromProposed(path);
 const synthDir = join(repo, 'packages/fixtures/synthetic');
 for (const d of readdirSync(synthDir)) {
   if (

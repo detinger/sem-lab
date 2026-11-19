@@ -18,10 +18,14 @@ const rscript = join(repo, 'services/r-engine/bin/rscript');
 function rWorks(): boolean {
   if (!existsSync(rscript)) return false;
   try {
-    execFileSync(rscript, ['-e', 'invisible(requireNamespace("cSEM"))'], {
-      timeout: 60_000,
-      stdio: 'ignore',
-    });
+    execFileSync(
+      rscript,
+      ['-e', 'if (!requireNamespace("cSEM", quietly = TRUE)) quit(status = 1)'],
+      {
+        timeout: 60_000,
+        stdio: 'ignore',
+      },
+    );
     return true;
   } catch {
     return false;
