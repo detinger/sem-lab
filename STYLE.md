@@ -249,13 +249,13 @@ Use Lucide outline icons, generally `18px` navigation, `16px` buttons and `13–
 
 | Group | Item | Suggested icon | Notes |
 |---|---|---|---|
-| Workspace | Overview | `layout-dashboard` | Recent models and quick start |
+| _(standalone)_ | Overview | `layout-dashboard` | Recent models and quick start; sits above the labelled groups |
 | Workspace | Data | `table` | CSV import and mapping |
 | Workspace | Modeler | `workflow` | Visual diagram editor |
-| Analyze | Analysis | `flask-conical` | Algorithm settings and bootstrap |
-| Analyze | Results | `chart-column-increasing` | Reliability, paths, fit, prediction |
-| Analyze | IPMA | `scatter-chart` or `chart-no-axes-combined` | Distinctive importance-performance view |
-| Analyze | Comparison | `git-compare-arrows` | Method/model comparison |
+| Workspace | Analysis | `flask-conical` | Algorithm settings and bootstrap |
+| Workspace | Results | `chart-column-increasing` | Reliability, paths, fit, prediction |
+| Workspace | IPMA | `scatter-chart` or `chart-no-axes-combined` | Distinctive importance-performance view |
+| Workspace | Comparison | `git-compare-arrows` | Method/model comparison |
 | Learn | Examples & Colab | `notebook-tabs` | Five Python notebooks |
 | Learn | Lessons | `book-open` | Progressive theory |
 | Learn | Challenges | `target` | Interactive assessment |

@@ -51,10 +51,16 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
 
       <nav className="sidebar__nav" aria-label="Main">
         {NAV_GROUPS.map((group) => (
-          <div key={group.label} className="sidebar__group" role="group" aria-label={group.label}>
-            <p className="sidebar__group-label" aria-hidden="true">
-              {group.label}
-            </p>
+          <div
+            key={group.label ?? group.items[0]?.path}
+            className="sidebar__group"
+            {...(group.label ? { role: 'group', 'aria-label': group.label } : {})}
+          >
+            {group.label ? (
+              <p className="sidebar__group-label" aria-hidden="true">
+                {group.label}
+              </p>
+            ) : null}
             {group.items.map((item) => (
               <Tooltip
                 key={item.path}

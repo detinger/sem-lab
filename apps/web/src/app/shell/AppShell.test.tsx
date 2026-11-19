@@ -25,6 +25,7 @@ describe('navigation', () => {
     expect(NAV_ITEMS).toHaveLength(12);
     expect(within(nav).getAllByRole('link')).toHaveLength(12);
     for (const group of NAV_GROUPS) {
+      if (!group.label) continue; // Overview sits on its own, above the labelled groups
       const region = within(nav).getByRole('group', { name: group.label });
       expect(
         within(region)
@@ -32,6 +33,8 @@ describe('navigation', () => {
           .map((l) => l.textContent),
       ).toEqual(group.items.map((i) => i.label));
     }
+    // Overview is a standalone link, not inside a labelled group.
+    expect(within(nav).getByRole('link', { name: 'Overview' })).toBeInTheDocument();
     const current = within(nav).getAllByRole('link', { current: 'page' });
     expect(current).toHaveLength(1);
     expect(current[0]).toHaveTextContent('IPMA');

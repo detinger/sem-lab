@@ -21,23 +21,21 @@ export interface NavItem {
 }
 
 export interface NavGroup {
-  label: string;
+  /** Omitted for the standalone Overview item, which sits above the labelled groups. */
+  label?: string;
   items: readonly NavItem[];
 }
 
 /** STYLE.md section 7 "Recommended sidebar". */
 export const NAV_GROUPS: readonly NavGroup[] = [
   {
-    label: 'Workspace',
-    items: [
-      { label: 'Overview', path: '/', icon: LayoutDashboard },
-      { label: 'Data', path: '/data', icon: Table },
-      { label: 'Modeler', path: '/modeler', icon: Workflow },
-    ],
+    items: [{ label: 'Overview', path: '/', icon: LayoutDashboard }],
   },
   {
-    label: 'Analyze',
+    label: 'Workspace',
     items: [
+      { label: 'Data', path: '/data', icon: Table },
+      { label: 'Modeler', path: '/modeler', icon: Workflow },
       { label: 'Analysis', path: '/analysis', icon: FlaskConical },
       { label: 'Results', path: '/results', icon: ChartColumnIncreasing },
       { label: 'IPMA', path: '/ipma', icon: ChartScatter },
