@@ -37,6 +37,15 @@ function renderAt(path: string) {
   return router;
 }
 
+/**
+ * Check buttons stay disabled until the attempt is saved to IndexedDB; under a loaded parallel
+ * run a second click can arrive before that and would be ignored. Click only once enabled.
+ */
+async function clickWhenEnabled(user: ReturnType<typeof userEvent.setup>, el: HTMLElement) {
+  await waitFor(() => expect(el).toBeEnabled());
+  await user.click(el);
+}
+
 beforeEach(() => {
   window.localStorage.clear();
   document.documentElement.dataset.theme = 'light';
@@ -93,7 +102,7 @@ describe('Learn page', () => {
     renderAt('/learn/what-is-a-construct');
     await screen.findByRole('heading', { level: 2, name: 'What is a construct?' });
     await user.click(screen.getByRole('radio', { name: 'From indicators to the construct' }));
-    await user.click(screen.getByRole('button', { name: 'Check answer' }));
+    await clickWhenEnabled(user, screen.getByRole('button', { name: 'Check answer' }));
     expect(screen.getByText('Not quite')).toBeInTheDocument();
     expect(screen.getByText(/That is the formative direction/)).toBeInTheDocument();
     expect(
@@ -105,7 +114,7 @@ describe('Learn page', () => {
 
     await user.click(screen.getByRole('button', { name: 'Try again' }));
     await user.click(screen.getByRole('radio', { name: 'From the construct to its indicators' }));
-    await user.click(screen.getByRole('button', { name: 'Check answer' }));
+    await clickWhenEnabled(user, screen.getByRole('button', { name: 'Check answer' }));
     expect(screen.getByText('Correct')).toBeInTheDocument();
     expect(await screen.findByText('(completed)')).toBeInTheDocument();
     await waitFor(async () => expect((await listLessonProgress())[0]?.completedAt).toBeDefined());
@@ -123,7 +132,7 @@ describe('Learn page', () => {
     renderAt('/learn/reliability-basics');
     await screen.findByRole('heading', { level: 2, name: 'Reliability basics' });
     await user.click(screen.getByRole('checkbox', { name: 'ρC ≥ .70' }));
-    await user.click(screen.getByRole('button', { name: 'Check answer' }));
+    await clickWhenEnabled(user, screen.getByRole('button', { name: 'Check answer' }));
     expect(screen.getByText('Not quite')).toBeInTheDocument();
     expect(screen.getByText(/You did not select “AVE ≥ .50”/)).toBeInTheDocument();
   });
@@ -185,12 +194,12 @@ describe('Challenges page', () => {
     await screen.findByRole('heading', { level: 2, name: 'Read the VIF' });
     // wrong number, with a comma decimal accepted after
     await user.type(screen.getByRole('textbox', { name: 'Answer' }), '2');
-    await user.click(screen.getByRole('button', { name: 'Check task 1' }));
+    await clickWhenEnabled(user, screen.getByRole('button', { name: 'Check task 1' }));
     expect(screen.getByText('Not there yet')).toBeInTheDocument();
     expect(screen.getByText(/Use VIF = 1 \/ \(1 − R²\)/)).toBeInTheDocument();
     await user.clear(screen.getByRole('textbox', { name: 'Answer' }));
     await user.type(screen.getByRole('textbox', { name: 'Answer' }), '5,0');
-    await user.click(screen.getByRole('button', { name: 'Check task 1' }));
+    await clickWhenEnabled(user, screen.getByRole('button', { name: 'Check task 1' }));
     expect(screen.getByText(/VIF = 1 \/ \(1 − .80\) = 5/)).toBeInTheDocument();
     expect(
       within(screen.getByRole('listitem', { name: 'Task 1' })).getByText('Solved'),
@@ -199,16 +208,16 @@ describe('Challenges page', () => {
     expect(screen.getAllByText('Correct:').length).toBeGreaterThan(0);
 
     await user.click(screen.getByRole('radio', { name: /No, any VIF below 10/ }));
-    await user.click(screen.getByRole('button', { name: 'Check task 2' }));
+    await clickWhenEnabled(user, screen.getByRole('button', { name: 'Check task 2' }));
     expect(screen.getByText(/10 is a very lenient rule/)).toBeInTheDocument();
     await user.click(screen.getByRole('radio', { name: /Yes, it reaches/ }));
-    await user.click(screen.getByRole('button', { name: 'Check task 2' }));
+    await clickWhenEnabled(user, screen.getByRole('button', { name: 'Check task 2' }));
 
-    await user.click(screen.getByRole('button', { name: 'Check task 3' }));
+    await clickWhenEnabled(user, screen.getByRole('button', { name: 'Check task 3' }));
     expect(screen.getByText(/Not yet ticked: The VIF value/)).toBeInTheDocument();
     await user.click(screen.getByRole('checkbox', { name: 'The VIF value' }));
     await user.click(screen.getByRole('checkbox', { name: 'The guideline used' }));
-    await user.click(screen.getByRole('button', { name: 'Check task 3' }));
+    await clickWhenEnabled(user, screen.getByRole('button', { name: 'Check task 3' }));
     expect(
       await screen.findByText('Challenge completed', {}, { timeout: 5000 }),
     ).toBeInTheDocument();
@@ -216,7 +225,7 @@ describe('Challenges page', () => {
     // best score is kept: a later wrong number does not take the solved state away
     await user.clear(screen.getByRole('textbox', { name: 'Answer' }));
     await user.type(screen.getByRole('textbox', { name: 'Answer' }), '9');
-    await user.click(screen.getByRole('button', { name: 'Check task 1' }));
+    await clickWhenEnabled(user, screen.getByRole('button', { name: 'Check task 1' }));
     expect(useProgress.getState().challenges['interpret-vif']?.tasks.compute).toMatchObject({
       correct: true,
       attempts: 3,
@@ -247,7 +256,7 @@ describe('Challenges page', () => {
     expect(screen.getByText('Show the solution without a check first?')).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: 'Keep trying' }));
     await user.type(screen.getByRole('textbox', { name: 'Answer' }), '3');
-    await user.click(screen.getByRole('button', { name: 'Check task 1' }));
+    await clickWhenEnabled(user, screen.getByRole('button', { name: 'Check task 1' }));
     await user.click(screen.getByRole('button', { name: 'Show solution' }));
     expect(screen.getByText(/right at the common limit/)).toBeInTheDocument();
     expect(useProgress.getState().challenges['interpret-vif']?.solutionShown).toBe(true);
@@ -260,11 +269,11 @@ describe('Challenges page', () => {
     useModeler
       .getState()
       .edit(() => ({ ...tamModel, relationships: [tamModel.relationships[0]!] }));
-    await user.click(screen.getByRole('button', { name: 'Check task 1' }));
+    await clickWhenEnabled(user, screen.getByRole('button', { name: 'Check task 1' }));
     expect(screen.getByText('Not there yet')).toBeInTheDocument();
     expect(screen.getByText(/Path PU → BI is missing/)).toBeInTheDocument();
     useModeler.getState().edit(() => tamModel);
-    await user.click(screen.getByRole('button', { name: 'Check task 1' }));
+    await clickWhenEnabled(user, screen.getByRole('button', { name: 'Check task 1' }));
     expect(
       await screen.findByText('Challenge completed', {}, { timeout: 5000 }),
     ).toBeInTheDocument();
@@ -285,12 +294,16 @@ describe('Challenges page', () => {
 
     // Check from the dock, against the model on the canvas
     useModeler.getState().edit(() => tamModel);
-    await user.click(within(dock).getByRole('button', { name: 'Check task 1' }));
+    await clickWhenEnabled(user, within(dock).getByRole('button', { name: 'Check task 1' }));
     expect(await within(dock).findByText('Correct')).toBeInTheDocument();
     expect(within(dock).getByText('1 of 1 tasks solved', { exact: false })).toBeInTheDocument();
 
     // collapse by keyboard: focus returns to the rail button; expand again
-    within(dock).getByRole('button', { name: 'Check task 1' }).focus();
+    // a disabled button (attempt still being saved) cannot take focus; wait until it can
+    const checkButton = within(dock).getByRole('button', { name: 'Check task 1' });
+    await waitFor(() => expect(checkButton).toBeEnabled());
+    checkButton.focus();
+    expect(checkButton).toHaveFocus();
     await user.keyboard('{Escape}');
     const rail = await screen.findByRole('button', { name: /Open active challenge: Draw the TAM/ });
     expect(rail).toHaveAttribute('aria-expanded', 'false');
