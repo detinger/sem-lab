@@ -1,6 +1,7 @@
 import { lazy, Suspense, type ComponentType, type ReactElement } from 'react';
 import { createBrowserRouter, createMemoryRouter, type RouteObject } from 'react-router-dom';
 
+import { RouteError } from '@/app/RouteError';
 import { AppShell, type RouteHandle } from '@/app/shell/AppShell';
 import { NAV_ITEMS } from '@/app/shell/navigation';
 import { Spinner } from '@/components/ui';
@@ -68,7 +69,12 @@ function titleOf(path: string): string {
 
 function child(path: string, element: RouteObject['element'], extra?: Partial<RouteHandle>) {
   const handle: RouteHandle = { title: titleOf(path), ...extra };
-  return path === '/' ? { index: true, element, handle } : { path: path.slice(1), element, handle };
+  // errorElement lives on each child so the AppShell (sidebar, header) stays mounted when a page's
+  // chunk fails to load; RouteError renders inside the Outlet. See @/app/staleChunk.
+  const errorElement = <RouteError />;
+  return path === '/'
+    ? { index: true, element, handle, errorElement }
+    : { path: path.slice(1), element, handle, errorElement };
 }
 
 /**
@@ -93,12 +99,14 @@ export const routes: RouteObject[] = [
         path: 'learn/:lessonId',
         element: page(<LearnPage />),
         handle: { title: 'Lessons' } satisfies RouteHandle,
+        errorElement: <RouteError />,
       },
       child('/challenges', page(<ChallengesPage />)),
       {
         path: 'challenges/:challengeId',
         element: page(<ChallengesPage />),
         handle: { title: 'Challenges' } satisfies RouteHandle,
+        errorElement: <RouteError />,
       },
       child('/reference', page(<ReferencePage />)),
       child('/settings', page(<SettingsPage />)),
@@ -107,11 +115,13 @@ export const routes: RouteObject[] = [
         path: 'dev/ui',
         element: page(<ComponentGallery />),
         handle: { title: 'Component gallery' } satisfies RouteHandle,
+        errorElement: <RouteError />,
       },
       {
         path: '*',
         element: page(<NotFoundPage />),
         handle: { title: 'Page not found' } satisfies RouteHandle,
+        errorElement: <RouteError />,
       },
     ],
   },

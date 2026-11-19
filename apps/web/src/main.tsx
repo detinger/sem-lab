@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { App } from '@/app/App';
+import { registerStaleChunkReload } from '@/app/staleChunk';
 import { applyTheme, resolveInitialTheme } from '@/app/theme';
 
 import '@/styles/index.css';
@@ -10,6 +11,9 @@ const container = document.getElementById('root');
 if (!container) {
   throw new Error('Root element #root is missing from index.html');
 }
+
+// Recover from stale page chunks after a redeploy by reloading to the current build.
+registerStaleChunkReload();
 
 applyTheme(resolveInitialTheme());
 
