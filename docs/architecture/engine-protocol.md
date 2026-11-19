@@ -42,7 +42,9 @@ One line per event, flushed immediately:
 
 `stage` ∈ `validating | estimating | bootstrapping | summarizing`. `done/total` appear only
 when the engine actually knows them. The API reports exactly what is here; it never
-interpolates a percentage.
+interpolates a percentage. An event may carry an optional `warnings` array
+(`[{code, severity, message}]`) so warnings can be shown while the job runs (reserved; the
+final list is always the one in `result.json`).
 
 ## result.json
 
@@ -57,6 +59,21 @@ Stable error codes: `REQUEST_INVALID`, `DATA_COLUMN_MISSING`, `DATA_NOT_NUMERIC`
 `DATA_INSUFFICIENT_ROWS`, `DATA_ZERO_VARIANCE`, `MODEL_NOT_IDENTIFIED`,
 `ENGINE_NONCONVERGENCE`, `ENGINE_INADMISSIBLE`, `CAPABILITY_UNSUPPORTED`, `CANCELLED`,
 `TIMEOUT`, `ENGINE_INTERNAL`.
+
+## Exit codes
+
+- `0`: `result.json` was written — either `{ok: true}` or a handled error `{ok: false}`.
+- non-zero: the engine crashed. The API treats this as `ENGINE_INTERNAL` **even if a
+  `result.json` exists** (it may be partial or stale).
+
+## Cancellation
+
+The API creates `cancel` in the job directory, then sends SIGTERM to the engine's process
+group and SIGKILL after a grace period. The engine checks for `cancel` between bootstrap
+chunks and, if present, stops and writes `{ok: false, error: {code: "CANCELLED"}}` (or simply
+exits). A cancelled job never has a result. HTTP: `POST /api/analysis/jobs/{id}/cancel`
+keeps the job record in state `cancelled`; `DELETE /api/analysis/jobs/{id}` cancels if needed
+and removes the record and all files.
 
 ## Job lifecycle (API side)
 

@@ -12,8 +12,8 @@ claims a feature beyond what the phase records in `docs/validation/` demonstrate
 |---|---|---|---|
 | 0 | Foundation, library verification, contracts, fixtures | **Done** | `docs/validation/phase-0.md` |
 | 1 | Design system, visual modeler, persistence, diagram export | **Done** | `docs/validation/phase-1.md` |
-| 2 | Data Lab (CSV import, mapping) and model validator | Next | — |
-| 3 | First PLS-SEM vertical slice (R/cSEM backend, bootstrap, Word tables, R export) | Planned | — |
+| 2 | Data Lab (CSV import, mapping) and model validator | **Done** | `docs/validation/phase-2.md` |
+| 3 | First PLS-SEM vertical slice (R/cSEM backend, bootstrap, Word tables, R export) | In progress | — |
 | 4–8 | Mature PLS + IPMA, CB-SEM + Python, notebooks + learning, advanced methods, hardening | Planned | — |
 
 What each estimation engine can and cannot do — verified by execution, with evidence files —

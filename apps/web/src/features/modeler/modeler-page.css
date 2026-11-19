@@ -8,6 +8,45 @@
   background: var(--bg);
 }
 
+.modeler[data-check='open'] {
+  grid-template-rows: auto auto auto minmax(0, 1fr);
+}
+
+/* "Check model" panel: sits between toolbar and canvas, scrolls on its own. */
+.modeler-check {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: min(260px, 36vh);
+  margin: 0 16px 8px;
+  padding: 10px 12px;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-sm);
+}
+.modeler-check__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.modeler-check__title {
+  margin: 0;
+  font-size: 14px;
+}
+.modeler-check__summary {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.modeler-check__note {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-subtle);
+}
+
 .modeler-bar {
   display: flex;
   align-items: center;

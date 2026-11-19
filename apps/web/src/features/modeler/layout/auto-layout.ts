@@ -13,7 +13,7 @@
  */
 import { type LayoutDirection, type SemLayout, type SemModel } from '@sem-studio/contracts';
 import type { ElkNode, LayoutOptions } from 'elkjs/lib/elk-api';
-import ELK from 'elkjs/lib/elk.bundled.js';
+import type ELKType from 'elkjs/lib/elk.bundled.js';
 import { longestPathLayers, structuralGraph } from '@/domain/graph';
 import {
   type Point,
@@ -62,8 +62,13 @@ const horizontalFlow = (d: LayoutDirection): boolean => d === 'LR' || d === 'RL'
 const byId = (a: { id: string }, b: { id: string }): number =>
   a.id < b.id ? -1 : a.id > b.id ? 1 : 0;
 
-let elkInstance: InstanceType<typeof ELK> | null = null;
-const elk = (): InstanceType<typeof ELK> => (elkInstance ??= new ELK());
+/**
+ * ELK (~1.4 MB) is loaded on first use so the app shell does not pay for it; the promise is
+ * cached, so every layout after the first reuses one instance.
+ */
+let elkInstance: Promise<InstanceType<typeof ELKType>> | null = null;
+const elk = (): Promise<InstanceType<typeof ELKType>> =>
+  (elkInstance ??= import('elkjs/lib/elk.bundled.js').then((m) => new m.default()));
 
 function baseOptions(direction: LayoutDirection): LayoutOptions {
   return {
@@ -236,7 +241,7 @@ async function elkPass(
     children: nodes.map((n) => ({ id: n.id, width: n.size.width, height: n.size.height })),
     edges: edges.map((e) => ({ id: e.id, sources: [e.source], targets: [e.target] })),
   };
-  const out = await elk().layout(graph);
+  const out = await (await elk()).layout(graph);
   return new Map((out.children ?? []).map((c) => [c.id, { x: c.x ?? 0, y: c.y ?? 0 }]));
 }
 

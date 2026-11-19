@@ -10,6 +10,7 @@
  */
 import {
   DEFAULT_LAYOUT_SETTINGS,
+  type DatasetRef,
   type LayoutSettings,
   type SemLayout,
   type SemModel,
@@ -23,6 +24,8 @@ import { computeAutoLayout, mergeLayout, sizeOf } from './layout/auto-layout';
 export interface Snapshot {
   model: SemModel;
   layout: SemLayout;
+  /** the dataset link travels with history so undo/redo keep model and data link consistent */
+  datasetRef?: DatasetRef | undefined;
 }
 
 const HISTORY_LIMIT = 200;
@@ -31,6 +34,8 @@ export interface ModelerState extends Snapshot {
   projectId: string;
   projectName: string;
   createdAt: string;
+  /** fingerprint + column schema of the linked dataset; never row-level data */
+  datasetRef: DatasetRef | undefined;
   selection: string[];
   past: Snapshot[];
   future: Snapshot[];
@@ -55,6 +60,8 @@ export interface ModelerState extends Snapshot {
   setPositions(positions: Record<string, Point>, opts?: { transient?: boolean }): void;
   setLayoutSettings(patch: Partial<LayoutSettings>): void;
   setPinned(ids: string[], pinned: boolean): void;
+  /** link (or unlink) the project's dataset; one undoable step, bumps revision (autosave) */
+  setDatasetRef(ref: DatasetRef | undefined): void;
 
   beginTransaction(): void;
   commitTransaction(): void;
@@ -79,8 +86,14 @@ let idCounter = 0;
 const newProjectId = (): string =>
   `proj_${Date.now().toString(36)}_${(idCounter++).toString(36)}_${Math.floor(Math.random() * 1e6).toString(36)}`;
 
+const snapshotOf = (s: Snapshot): Snapshot => ({
+  model: s.model,
+  layout: s.layout,
+  datasetRef: s.datasetRef,
+});
+
 function pushHistory(s: ModelerState): Pick<ModelerState, 'past' | 'future'> {
-  const past = [...s.past, { model: s.model, layout: s.layout }];
+  const past = [...s.past, snapshotOf(s)];
   return { past: past.length > HISTORY_LIMIT ? past.slice(-HISTORY_LIMIT) : past, future: [] };
 }
 
@@ -99,6 +112,7 @@ export const useModeler = create<ModelerState>()((set, get) => ({
   createdAt: new Date().toISOString(),
   model: ops.EMPTY_MODEL,
   layout: emptyLayout(),
+  datasetRef: undefined,
   selection: [],
   past: [],
   future: [],
@@ -113,6 +127,7 @@ export const useModeler = create<ModelerState>()((set, get) => ({
       createdAt: project.createdAt,
       model: project.model,
       layout: project.layout,
+      datasetRef: project.datasetRef,
       selection: [],
       past: [],
       future: [],
@@ -129,6 +144,7 @@ export const useModeler = create<ModelerState>()((set, get) => ({
       createdAt: new Date().toISOString(),
       model: ops.EMPTY_MODEL,
       layout: emptyLayout(),
+      datasetRef: undefined,
       selection: [],
       past: [],
       future: [],
@@ -153,6 +169,7 @@ export const useModeler = create<ModelerState>()((set, get) => ({
       updatedAt: now,
       model: s.model,
       layout: s.layout,
+      ...(s.datasetRef ? { datasetRef: s.datasetRef } : {}),
     };
   },
 
@@ -220,9 +237,15 @@ export const useModeler = create<ModelerState>()((set, get) => ({
     set({ ...pushHistory(s), layout: { ...s.layout, nodes }, revision: s.revision + 1 });
   },
 
+  setDatasetRef(ref) {
+    const s = get();
+    if (s.datasetRef === ref) return;
+    set({ ...pushHistory(s), datasetRef: ref, revision: s.revision + 1 });
+  },
+
   beginTransaction() {
     const s = get();
-    if (!s.pending) set({ pending: { model: s.model, layout: s.layout } });
+    if (!s.pending) set({ pending: snapshotOf(s) });
   },
 
   commitTransaction() {
@@ -253,9 +276,10 @@ export const useModeler = create<ModelerState>()((set, get) => ({
     if (!prev || s.pending) return;
     set({
       past: s.past.slice(0, -1),
-      future: [{ model: s.model, layout: s.layout }, ...s.future],
+      future: [snapshotOf(s), ...s.future],
       model: prev.model,
       layout: prev.layout,
+      datasetRef: prev.datasetRef,
       selection: [],
       revision: s.revision + 1,
     });
@@ -267,9 +291,10 @@ export const useModeler = create<ModelerState>()((set, get) => ({
     if (!next || s.pending) return;
     set({
       future: s.future.slice(1),
-      past: [...s.past, { model: s.model, layout: s.layout }],
+      past: [...s.past, snapshotOf(s)],
       model: next.model,
       layout: next.layout,
+      datasetRef: next.datasetRef,
       selection: [],
       revision: s.revision + 1,
     });

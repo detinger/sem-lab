@@ -2,6 +2,7 @@ import { ReactFlowProvider, useReactFlow } from '@xyflow/react';
 import { CircleDot, FolderOpen, PanelRightClose, PanelRightOpen } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Button, Card, Dialog, IconButton, Kbd, useToast } from '@/components/ui';
+import { useReadiness } from '@/features/data-lab/readiness';
 import {
   loadProject,
   PROJECT_FILE_EXTENSION,
@@ -9,6 +10,7 @@ import {
   toProjectFile,
 } from '@/storage/projects';
 import { SemCanvas } from './canvas/SemCanvas';
+import { CHECK_PANEL_ID, CheckPanel } from './CheckPanel';
 import { sceneToSvg, svgToPng } from './export/svg-export';
 import { Inspector } from './Inspector';
 import { computeAutoLayout } from './layout/auto-layout';
@@ -113,6 +115,8 @@ function ModelerWorkspace() {
   const [inspectorOpen, setInspectorOpen] = useState(true);
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
   const [newOpen, setNewOpen] = useState(false);
+  const [checkOpen, setCheckOpen] = useState(false);
+  const readiness = useReadiness(undefined);
   const [blank, setBlank] = useState(false);
   const fileInput = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
@@ -185,7 +189,11 @@ function ModelerWorkspace() {
   };
 
   return (
-    <div className="modeler" data-inspector={inspectorOpen ? 'open' : 'closed'}>
+    <div
+      className="modeler"
+      data-inspector={inspectorOpen ? 'open' : 'closed'}
+      data-check={checkOpen ? 'open' : 'closed'}
+    >
       <div className="modeler-bar">
         <h1 className="modeler-heading">Modeler</h1>
         <span className="modeler-title" title={projectName}>
@@ -214,7 +222,12 @@ function ModelerWorkspace() {
         onOpenFile={openFile}
         onNew={() => setNewOpen(true)}
         onShortcuts={() => setShortcutsOpen(true)}
+        checkOpen={checkOpen}
+        onToggleCheck={() => setCheckOpen((o) => !o)}
+        checkCounts={readiness.counts}
+        checkPanelId={CHECK_PANEL_ID}
       />
+      {checkOpen && <CheckPanel readiness={readiness} onClose={() => setCheckOpen(false)} />}
       <div className="modeler-body">
         <div className="modeler-canvas-wrap">
           {showStart ? (

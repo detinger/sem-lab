@@ -1,4 +1,4 @@
-import { SemProject } from '@sem-studio/contracts';
+import { type DatasetRef, SemProject } from '@sem-studio/contracts';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { addConstruct, addIndicators, connect } from '@/domain/model-ops';
 import { modelHash } from '@sem-studio/contracts';
@@ -115,5 +115,49 @@ describe('project round trip', () => {
     expect(s().model).toEqual(p.model);
     expect(s().layout).toEqual(p.layout);
     expect(s().past).toEqual([]);
+  });
+});
+
+describe('dataset link', () => {
+  const ref: DatasetRef = {
+    fingerprint: 'a'.repeat(64),
+    importedAt: '2026-11-19T12:00:00.000Z',
+    rowCount: 3,
+    columns: [
+      { name: 'x', type: 'numeric', nMissing: 0, nUnique: 3, observedMin: 1, observedMax: 3 },
+    ],
+    source: 'x.csv',
+  };
+
+  it('setDatasetRef is one undoable step and bumps the revision', () => {
+    const rev = s().revision;
+    s().setDatasetRef(ref);
+    expect(s().datasetRef).toEqual(ref);
+    expect(s().revision).toBe(rev + 1);
+    expect(s().past).toHaveLength(1);
+    s().undo();
+    expect(s().datasetRef).toBeUndefined();
+    s().redo();
+    expect(s().datasetRef).toEqual(ref);
+  });
+
+  it('setting the same ref again records nothing', () => {
+    s().setDatasetRef(ref);
+    const steps = s().past.length;
+    s().setDatasetRef(ref);
+    expect(s().past).toHaveLength(steps);
+  });
+
+  it('round-trips through toProject and load, and a new project has none', () => {
+    buildTam();
+    s().setDatasetRef(ref);
+    const p = s().toProject('2026-11-19T12:00:00.000Z');
+    expect(SemProject.safeParse(p).success).toBe(true);
+    expect(p.datasetRef).toEqual(ref);
+    s().newProject('Other');
+    expect(s().datasetRef).toBeUndefined();
+    expect(s().toProject('2026-11-19T12:00:00.000Z')).not.toHaveProperty('datasetRef');
+    s().load(SemProject.parse(JSON.parse(JSON.stringify(p))));
+    expect(s().datasetRef).toEqual(ref);
   });
 });

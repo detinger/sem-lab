@@ -1,13 +1,43 @@
+import { lazy, Suspense, type ComponentType, type ReactElement } from 'react';
 import { createBrowserRouter, createMemoryRouter, type RouteObject } from 'react-router-dom';
 
 import { AppShell, type RouteHandle } from '@/app/shell/AppShell';
 import { NAV_ITEMS } from '@/app/shell/navigation';
-import { ModelerPage } from '@/features/modeler/ModelerPage';
-import { ComponentGallery } from '@/pages/ComponentGallery';
-import { NotFoundPage } from '@/pages/NotFoundPage';
-import { OverviewPage } from '@/pages/OverviewPage';
-import { placeholderElement } from '@/pages/placeholderRoutes';
-import { SettingsPage } from '@/pages/SettingsPage';
+import { Spinner } from '@/components/ui';
+
+import './routes.css';
+
+// Every page is its own chunk: the shell loads first, a page's code only when it is opened.
+const ModelerPage = lazy(() =>
+  import('@/features/modeler/ModelerPage').then((m) => ({ default: m.ModelerPage })),
+);
+const DataPage = lazy(() => import('@/pages/DataPage').then((m) => ({ default: m.DataPage })));
+const ComponentGallery = lazy(() =>
+  import('@/pages/ComponentGallery').then((m) => ({ default: m.ComponentGallery })),
+);
+const NotFoundPage = lazy(() =>
+  import('@/pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })),
+);
+const OverviewPage = lazy(() =>
+  import('@/pages/OverviewPage').then((m) => ({ default: m.OverviewPage })),
+);
+const SettingsPage = lazy(() =>
+  import('@/pages/SettingsPage').then((m) => ({ default: m.SettingsPage })),
+);
+const PlaceholderRoute: ComponentType<{ path: string }> = lazy(
+  () => import('@/pages/PlaceholderRoute'),
+);
+
+function RouteLoading() {
+  return (
+    <div className="route-loading">
+      <Spinner label="Loading page" size={16} />
+    </div>
+  );
+}
+
+const page = (element: ReactElement) => <Suspense fallback={<RouteLoading />}>{element}</Suspense>;
+const placeholder = (path: string) => page(<PlaceholderRoute path={path} />);
 
 function titleOf(path: string): string {
   const item = NAV_ITEMS.find((n) => n.path === path);
@@ -29,27 +59,27 @@ export const routes: RouteObject[] = [
     path: '/',
     element: <AppShell />,
     children: [
-      child('/', <OverviewPage />),
-      child('/modeler', <ModelerPage />, { fullBleed: true }),
-      child('/data', placeholderElement('/data')),
-      child('/analysis', placeholderElement('/analysis')),
-      child('/results', placeholderElement('/results')),
-      child('/ipma', placeholderElement('/ipma')),
-      child('/comparison', placeholderElement('/comparison')),
-      child('/examples', placeholderElement('/examples')),
-      child('/learn', placeholderElement('/learn')),
-      child('/challenges', placeholderElement('/challenges')),
-      child('/reference', placeholderElement('/reference')),
-      child('/settings', <SettingsPage />),
+      child('/', page(<OverviewPage />)),
+      child('/modeler', page(<ModelerPage />), { fullBleed: true }),
+      child('/data', page(<DataPage />)),
+      child('/analysis', placeholder('/analysis')),
+      child('/results', placeholder('/results')),
+      child('/ipma', placeholder('/ipma')),
+      child('/comparison', placeholder('/comparison')),
+      child('/examples', placeholder('/examples')),
+      child('/learn', placeholder('/learn')),
+      child('/challenges', placeholder('/challenges')),
+      child('/reference', placeholder('/reference')),
+      child('/settings', page(<SettingsPage />)),
       // Visual-review page; deliberately not in the sidebar.
       {
         path: 'dev/ui',
-        element: <ComponentGallery />,
+        element: page(<ComponentGallery />),
         handle: { title: 'Component gallery' } satisfies RouteHandle,
       },
       {
         path: '*',
-        element: <NotFoundPage />,
+        element: page(<NotFoundPage />),
         handle: { title: 'Page not found' } satisfies RouteHandle,
       },
     ],

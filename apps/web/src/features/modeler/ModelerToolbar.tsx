@@ -9,6 +9,7 @@ import {
   ArrowRightLeft,
   CircleDot,
   Download,
+  ListChecks,
   FilePlus2,
   FolderOpen,
   Grid3x3,
@@ -22,6 +23,7 @@ import {
   Workflow,
 } from 'lucide-react';
 import {
+  Badge,
   Button,
   IconButton,
   Menu,
@@ -40,6 +42,11 @@ export interface ModelerToolbarProps {
   onOpenFile: () => void;
   onNew: () => void;
   onShortcuts: () => void;
+  /** "Check model" panel: open state, toggle and the issue counts shown in the badge */
+  checkOpen: boolean;
+  onToggleCheck: () => void;
+  checkCounts: { error: number; warning: number };
+  checkPanelId: string;
 }
 
 export function ModelerToolbar({
@@ -49,6 +56,10 @@ export function ModelerToolbar({
   onOpenFile,
   onNew,
   onShortcuts,
+  checkOpen,
+  onToggleCheck,
+  checkCounts,
+  checkPanelId,
 }: ModelerToolbarProps) {
   const rf = useReactFlow();
   const canUndo = useModeler((s) => s.past.length > 0);
@@ -271,6 +282,25 @@ export function ModelerToolbar({
       </ToolbarGroup>
       <div className="modeler-toolbar-spacer" />
       <ToolbarGroup>
+        <Button
+          size="small"
+          variant={checkOpen ? 'selected' : 'default'}
+          icon={<ListChecks size={16} />}
+          aria-expanded={checkOpen}
+          aria-controls={checkOpen ? checkPanelId : undefined}
+          onClick={onToggleCheck}
+        >
+          Check model
+          {checkCounts.error + checkCounts.warning > 0 ? (
+            <Badge variant={checkCounts.error > 0 ? 'error' : 'warning'}>
+              {checkCounts.error + checkCounts.warning}
+              <span className="sr-only">
+                {' '}
+                {checkCounts.error} errors, {checkCounts.warning} warnings
+              </span>
+            </Badge>
+          ) : null}
+        </Button>
         <Menu
           label="Export"
           size="small"

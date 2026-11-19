@@ -205,6 +205,13 @@ Rules:
 - All element references are model **ids**, never names, so renaming a construct does
   not orphan a stored result.
 
+### Serialisation quirks shared by Zod and Pydantic (documented, tested)
+
+- An integral float such as `5.0` is accepted where an integer is required (JSON has one
+  number type; Python serialises integral floats with `.0`).
+- An `optional` field must be **absent**, not `null`; `null` is only valid where the schema
+  says `nullable` (result numbers). Producers omit absent optional fields.
+
 ## 7. Capability registry (`packages/method-registry/registry.json`)
 
 ```jsonc

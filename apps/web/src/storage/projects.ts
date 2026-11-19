@@ -7,6 +7,7 @@
  */
 import { SCHEMA_VERSION, SemProject } from '@sem-studio/contracts';
 import Dexie, { type EntityTable } from 'dexie';
+import type { StoredDataset } from './datasets';
 
 export interface StoredProject {
   id: string;
@@ -17,16 +18,26 @@ export interface StoredProject {
   project: SemProject;
 }
 
-class SemStudioDb extends Dexie {
+export const DB_NAME = 'sem-studio';
+
+export class SemStudioDb extends Dexie {
   projects!: EntityTable<StoredProject, 'id'>;
+  /** Phase 2: original tables + parse options + transformation log (see datasets.ts). */
+  datasets!: EntityTable<StoredDataset, 'id'>;
   constructor() {
-    super('sem-studio');
+    super(DB_NAME);
+    // Keep every older version declared so existing browsers upgrade in place.
     this.version(1).stores({ projects: 'id, updatedAt, name' });
+    this.version(2).stores({
+      projects: 'id, updatedAt, name',
+      datasets: 'id, fingerprint, importedAt',
+    });
   }
 }
 
 let db: SemStudioDb | null = null;
-const getDb = (): SemStudioDb => (db ??= new SemStudioDb());
+/** The one shared connection to the 'sem-studio' IndexedDB database. */
+export const getDb = (): SemStudioDb => (db ??= new SemStudioDb());
 
 /** For tests: close and forget the connection so a fresh fake IndexedDB can be used. */
 export function resetDbForTests(): void {

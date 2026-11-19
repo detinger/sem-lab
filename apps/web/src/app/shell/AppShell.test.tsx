@@ -105,7 +105,7 @@ describe('theme', () => {
   it('the Settings segmented control changes the theme', async () => {
     const user = userEvent.setup();
     renderAt('/settings');
-    await user.click(screen.getByRole('radio', { name: 'Dark' }));
+    await user.click(await screen.findByRole('radio', { name: 'Dark' }));
     expect(document.documentElement.dataset.theme).toBe('dark');
     expect(screen.getByRole('radio', { name: 'Dark' })).toHaveAttribute('aria-checked', 'true');
   });
@@ -142,13 +142,15 @@ describe('routes', () => {
     ['/no/such/page', 'Page not found'],
   ];
 
-  it.each(HEADINGS)('%s renders the heading "%s"', (path, heading) => {
+  // Pages are lazy chunks, so their heading appears after the chunk has loaded.
+  it.each(HEADINGS)('%s renders the heading "%s"', async (path, heading) => {
     renderAt(path);
-    expect(screen.getByRole('heading', { level: 1, name: heading })).toBeInTheDocument();
+    expect(
+      await screen.findByRole('heading', { level: 1, name: heading }, { timeout: 5000 }),
+    ).toBeInTheDocument();
   });
 
   it.each([
-    ['/data', 'Phase 2'],
     ['/analysis', 'Phase 3'],
     ['/results', 'Phase 3'],
     ['/ipma', 'Phase 4'],
@@ -157,13 +159,14 @@ describe('routes', () => {
     ['/learn', 'Phase 6'],
     ['/challenges', 'Phase 6'],
     ['/reference', 'Phase 6'],
-  ])('%s names its roadmap phase (%s)', (path, phase) => {
+  ])('%s names its roadmap phase (%s)', async (path, phase) => {
     renderAt(path);
-    expect(screen.getByText(`Planned for ${phase}`)).toBeInTheDocument();
+    expect(await screen.findByText(`Planned for ${phase}`)).toBeInTheDocument();
   });
 
-  it('Overview links the four workflow steps and shows an empty recent-projects state', () => {
+  it('Overview links the four workflow steps and shows an empty recent-projects state', async () => {
     renderAt('/');
+    await screen.findByText('No projects yet');
     const hrefs = ['/modeler', '/data', '/analysis', '/results'];
     for (const href of hrefs) {
       expect(
@@ -175,9 +178,9 @@ describe('routes', () => {
     expect(screen.getByText('No projects yet')).toBeInTheDocument();
   });
 
-  it('Settings states the privacy position plainly', () => {
+  it('Settings states the privacy position plainly', async () => {
     renderAt('/settings');
-    expect(screen.getByText(/stays in your browser/)).toBeInTheDocument();
+    expect(await screen.findByText(/stays in your browser/)).toBeInTheDocument();
     expect(screen.getByText(/nothing is sent to a server/i)).toBeInTheDocument();
   });
 });
