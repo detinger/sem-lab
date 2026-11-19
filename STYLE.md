@@ -250,8 +250,8 @@ Use Lucide outline icons, generally `18px` navigation, `16px` buttons and `13–
 | Group | Item | Suggested icon | Notes |
 |---|---|---|---|
 | Workspace | Overview | `layout-dashboard` | Recent models and quick start |
-| Workspace | Modeler | `workflow` | Visual diagram editor |
 | Workspace | Data | `table` | CSV import and mapping |
+| Workspace | Modeler | `workflow` | Visual diagram editor |
 | Analyze | Analysis | `flask-conical` | Algorithm settings and bootstrap |
 | Analyze | Results | `chart-column-increasing` | Reliability, paths, fit, prediction |
 | Analyze | IPMA | `scatter-chart` or `chart-no-axes-combined` | Distinctive importance-performance view |

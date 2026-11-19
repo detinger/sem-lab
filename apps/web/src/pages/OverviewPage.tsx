@@ -8,17 +8,17 @@ import './pages.css';
 const STEPS = [
   {
     step: 1,
-    title: 'Build model',
-    body: 'Draw constructs and indicators, then connect them with paths.',
-    to: '/modeler',
-    icon: Workflow,
-  },
-  {
-    step: 2,
     title: 'Import data',
     body: 'Load a CSV file and map its columns to your indicators.',
     to: '/data',
     icon: Table,
+  },
+  {
+    step: 2,
+    title: 'Build model',
+    body: 'Draw constructs and indicators, then connect them with paths.',
+    to: '/modeler',
+    icon: Workflow,
   },
   {
     step: 3,
@@ -42,7 +42,7 @@ export function OverviewPage() {
       <PageHeader
         eyebrow="Workspace"
         title="Overview"
-        description="Build a structural equation model, bring your data and analyze it, all in one place."
+        description="Import your data, build a structural equation model and analyze it, all in one place."
       />
 
       <section aria-labelledby="workflow-heading" className="overview__section">

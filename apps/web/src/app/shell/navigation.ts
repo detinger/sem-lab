@@ -31,8 +31,8 @@ export const NAV_GROUPS: readonly NavGroup[] = [
     label: 'Workspace',
     items: [
       { label: 'Overview', path: '/', icon: LayoutDashboard },
-      { label: 'Modeler', path: '/modeler', icon: Workflow },
       { label: 'Data', path: '/data', icon: Table },
+      { label: 'Modeler', path: '/modeler', icon: Workflow },
     ],
   },
   {

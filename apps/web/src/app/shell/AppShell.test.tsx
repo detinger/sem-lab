@@ -176,7 +176,7 @@ describe('routes', () => {
   it('Overview links the four workflow steps and shows an empty recent-projects state', async () => {
     renderAt('/');
     await screen.findByText('No projects yet');
-    const hrefs = ['/modeler', '/data', '/analysis', '/results'];
+    const hrefs = ['/data', '/modeler', '/analysis', '/results'];
     for (const href of hrefs) {
       expect(
         screen

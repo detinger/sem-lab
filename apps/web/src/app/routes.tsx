@@ -81,8 +81,8 @@ export const routes: RouteObject[] = [
     element: <AppShell />,
     children: [
       child('/', page(<OverviewPage />)),
-      child('/modeler', page(<ModelerPage />), { fullBleed: true }),
       child('/data', page(<DataPage />)),
+      child('/modeler', page(<ModelerPage />), { fullBleed: true }),
       child('/analysis', page(<AnalysisPage />)),
       child('/results', page(<ResultsPage />)),
       child('/ipma', page(<IpmaPage />)),
