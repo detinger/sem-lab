@@ -74,6 +74,19 @@ describe('CB degrees of freedom (necessary identification condition)', () => {
     if (name !== 'cfa-one-factor')
       expect(manifest(name).expectedTruths.join(' ')).toMatch(new RegExp(`df\\s*=\\s*${df}\\b`));
   });
+  it('counts the disturbance covariance lavaan frees between two outcomes of one factor', () => {
+    // A → B, A → C with three indicators each. lavaan 0.7-3 sem(): npar = 21, df = 24, B ~~ C
+    // free (auto.cov.y). The validator's former independent count missed B ~~ C (df 25).
+    let m = SemModel.parse({ constructs: [], indicators: [], relationships: [] });
+    for (const name of ['A', 'B', 'C']) {
+      const r = addConstruct(m, { name });
+      m = addIndicators(r.model, r.id, [1, 2, 3].map((k) => ({ name: `${name.toLowerCase()}${k}` }))).model;
+    }
+    const id = (n: string) => m.constructs.find((c) => c.name === n)!.id;
+    m = connect(m, id('A'), id('B')).model;
+    m = connect(m, id('A'), id('C')).model;
+    expect(cbDegreesOfFreedom(m)).toEqual({ moments: 45, parameters: 21, df: 24 });
+  });
   it('flags a negative-df model as not identified and a df = 0 model as just-identified', () => {
     const heywood = load('cb-heywood-exact');
     expect(codes(validate({ model: heywood, method: 'cb-sem' }))).toContain('CB_JUST_IDENTIFIED');

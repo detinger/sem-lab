@@ -40,10 +40,9 @@ LISREL all-y: Σ = Λ(I−B)⁻¹Ψ(I−B)⁻ᵀΛᵀ + Θ, μ = ν + Λ(I−B)�
 Refused: composite-formative constructs, `higherOrder` (`CAPABILITY_UNSUPPORTED`), structural
 cycles / self-loops / mixed covariance endpoints (`REQUEST_INVALID`), df < 0 (`MODEL_NOT_IDENTIFIED`, t-rule).
 
-**Known difference to `apps/web` `cbDegreesOfFreedom`:** it does not count the auto.cov.y
-disturbance covariances (e.g. A→B, A→C frees B~~C in lavaan), and it counts an exogenous factor
-pair as free even when an explicit covariance fixes it. For every committed fixture the counts agree
-(tested).
+The web validator's identification checks call `cbParameterCount`, so the df it reports is the
+df this engine (and lavaan) will use. Checked against lavaan 0.7-3 for A→B, A→C (npar 21, df 24,
+B~~C free) in `apps/web/src/domain/validation/validate.test.ts`.
 
 ## Estimation
 

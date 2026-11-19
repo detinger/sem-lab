@@ -14,6 +14,7 @@ import {
   type SemModel,
   validateModelStructure,
 } from '@sem-studio/contracts';
+import { cbParameterCount } from '@sem-studio/engine';
 import {
   capability,
   isOffered,
@@ -308,36 +309,17 @@ function measurementIssues(model: SemModel, method: SemMethod | undefined): Vali
 // ---------------------------------------------------------------- CB identification (necessary conditions)
 
 /**
- * Free parameters of the CB model as lavaan's sem() defaults specify it (marker
- * identification, no mean structure): loadings (k − 1 per factor), residual variances (one per
- * indicator), (residual) factor variances, structural paths, covariances among exogenous
- * factors (auto.cov.lv.x), and explicit covariance relationships not already free.
- * Returns null if the model is not a pure reflective model (then the count is not defined here).
+ * Moments, free parameters and degrees of freedom exactly as the browser CB engine (and lavaan
+ * `sem()` defaults: marker identification, auto.cov.lv.x, auto.cov.y) will specify the model.
+ * Delegates to the engine so the validator and the estimator can never disagree. df does not
+ * depend on the identification choice or on a mean structure (that adds p moments and p
+ * intercepts). Returns null when the model cannot be built for CB-SEM (e.g. composites,
+ * higher-order constructs, structural cycles) — those cases have their own issues.
  */
 export function cbDegreesOfFreedom(
   model: SemModel,
 ): { moments: number; parameters: number; df: number } | null {
-  if (model.constructs.some((c) => c.measurement !== 'reflective' || c.indicatorIds.length === 0))
-    return null;
-  const indicators = new Set(model.constructs.flatMap((c) => c.indicatorIds));
-  const p = indicators.size;
-  const roles = constructRoles(model);
-  const exo = model.constructs.filter((c) => roles.get(c.id) !== 'endogenous').map((c) => c.id);
-  const loadings = model.constructs.reduce((s, c) => s + c.indicatorIds.length - 1, 0);
-  const residuals = p;
-  const factorVariances = model.constructs.length;
-  const paths = model.relationships.filter((r) => r.kind === 'structural').length;
-  const exoPairs = new Set<string>();
-  for (let a = 0; a < exo.length; a++)
-    for (let b = a + 1; b < exo.length; b++) exoPairs.add([exo[a], exo[b]].sort().join('|'));
-  let extra = 0;
-  for (const r of model.relationships) {
-    if (r.kind !== 'covariance' || r.fixedValue !== undefined) continue;
-    if (!exoPairs.has([r.sourceId, r.targetId].sort().join('|'))) extra++;
-  }
-  const parameters = loadings + residuals + factorVariances + paths + exoPairs.size + extra;
-  const moments = (p * (p + 1)) / 2;
-  return { moments, parameters, df: moments - parameters };
+  return cbParameterCount(model);
 }
 
 function identificationIssues(model: SemModel): ValidationIssue[] {

@@ -11,8 +11,8 @@
  * - covariances among exogenous factors free (auto.cov.lv.x). "Exogenous" = not the target of a
  *   structural path (an isolated factor counts as exogenous);
  * - covariances among the disturbances of "pure" endogenous factors free (auto.cov.y): factors
- *   that are a target and never a source. (lavaan does this; apps/web cbDegreesOfFreedom does
- *   not count these pairs — see README);
+ *   that are a target and never a source (lavaan does this; the web validator reuses this
+ *   count through `cbParameterCount`);
  * - explicit covariance relationships: factor↔factor (disturbance covariance for endogenous
  *   factors) or indicator↔indicator (residual covariance); `fixedValue` fixes, a
  *   `parameterLabel` shared by several free parameters is an equality constraint;
