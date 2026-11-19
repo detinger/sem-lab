@@ -1,11 +1,5 @@
 import { useReactFlow } from '@xyflow/react';
 import {
-  AlignCenterHorizontal,
-  AlignCenterVertical,
-  AlignEndHorizontal,
-  AlignEndVertical,
-  AlignStartHorizontal,
-  AlignStartVertical,
   ArrowRightLeft,
   CircleDot,
   Download,
@@ -72,7 +66,6 @@ export function ModelerToolbar({
   const rf = useReactFlow();
   const canUndo = useModeler((s) => s.past.length > 0);
   const canRedo = useModeler((s) => s.future.length > 0);
-  const selectionCount = useModeler((s) => s.selection.filter((id) => s.layout.nodes[id]).length);
   const settings = useModeler((s) => s.layout.settings);
   const hasModel = useModeler((s) => s.model.constructs.length > 0);
   const s = useModeler.getState;
@@ -179,9 +172,7 @@ export function ModelerToolbar({
         </Button>
         <Menu
           label={
-            { LR: 'Left → right', RL: 'Right → left', TB: 'Top → bottom', BT: 'Bottom → top' }[
-              settings.direction
-            ]
+            { LR: 'L→R', RL: 'R→L', TB: 'T→B', BT: 'B→T' }[settings.direction]
           }
           size="small"
           icon={<ArrowRightLeft size={14} />}
@@ -198,67 +189,6 @@ export function ModelerToolbar({
               arrange();
             },
           }))}
-        />
-        <Menu
-          label="Align"
-          size="small"
-          icon={<AlignStartVertical size={14} />}
-          items={[
-            {
-              id: 'left',
-              label: 'Align left',
-              icon: <AlignStartVertical size={14} />,
-              disabled: selectionCount < 2,
-              onSelect: () => s().alignSelection('left'),
-            },
-            {
-              id: 'center',
-              label: 'Align centers',
-              icon: <AlignCenterVertical size={14} />,
-              disabled: selectionCount < 2,
-              onSelect: () => s().alignSelection('center'),
-            },
-            {
-              id: 'right',
-              label: 'Align right',
-              icon: <AlignEndVertical size={14} />,
-              disabled: selectionCount < 2,
-              onSelect: () => s().alignSelection('right'),
-            },
-            {
-              id: 'top',
-              label: 'Align top',
-              icon: <AlignStartHorizontal size={14} />,
-              disabled: selectionCount < 2,
-              onSelect: () => s().alignSelection('top'),
-            },
-            {
-              id: 'middle',
-              label: 'Align middles',
-              icon: <AlignCenterHorizontal size={14} />,
-              disabled: selectionCount < 2,
-              onSelect: () => s().alignSelection('middle'),
-            },
-            {
-              id: 'bottom',
-              label: 'Align bottom',
-              icon: <AlignEndHorizontal size={14} />,
-              disabled: selectionCount < 2,
-              onSelect: () => s().alignSelection('bottom'),
-            },
-            {
-              id: 'dh',
-              label: 'Distribute horizontally',
-              disabled: selectionCount < 3,
-              onSelect: () => s().distributeSelection('horizontal'),
-            },
-            {
-              id: 'dv',
-              label: 'Distribute vertically',
-              disabled: selectionCount < 3,
-              onSelect: () => s().distributeSelection('vertical'),
-            },
-          ]}
         />
       </ToolbarGroup>
       <ToolbarSeparator />

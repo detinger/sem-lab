@@ -45,11 +45,6 @@ const SEED = '1';
 /** Gap between a construct outline and its indicator fan, and between indicators. */
 const FAN_GAP = 56;
 const INDICATOR_GAP = 14;
-/** Maximum indicators per row when a fan sits above or below its construct. */
-const ROW_MAX = 3;
-const ROW_GAP = 18;
-/** In a wrapped (multi-row) fan, wider gaps give arrows to the outer row a clear corridor. */
-const WRAPPED_GAP = 30;
 
 const ELK_DIRECTION: Record<LayoutDirection, string> = {
   LR: 'RIGHT',
@@ -194,26 +189,18 @@ function buildCluster(
       cursor += z.height + INDICATOR_GAP;
     });
   } else {
-    // Rows above/below the construct, at most ROW_MAX per row (a single long row is what makes
-    // chain-shaped models unreadably wide). Rows are balanced (5 → 3 + 2), each centred on the
-    // construct, filled in block order, row 0 nearest the construct.
-    const rowCount = Math.ceil(inds.length / ROW_MAX);
-    const perRow = Math.ceil(inds.length / Math.max(1, rowCount));
-    const rowHeight = Math.max(0, ...sizes.map((z) => z.height));
-    for (let r = 0; r < rowCount; r++) {
-      const ids = inds.slice(r * perRow, (r + 1) * perRow);
-      const zs = sizes.slice(r * perRow, (r + 1) * perRow);
-      const gap = rowCount > 1 ? WRAPPED_GAP : INDICATOR_GAP;
-      const width = zs.reduce((s, z) => s + z.width, 0) + gap * Math.max(0, zs.length - 1);
-      let cursor = -width / 2;
-      const offset = FAN_GAP + r * (rowHeight + ROW_GAP);
-      ids.forEach((id, k) => {
-        const z = zs[k]!;
-        const y = world === 'top' ? -cs.height / 2 - offset - z.height : cs.height / 2 + offset;
-        local.set(id, { x: cursor, y });
-        cursor += z.width + gap;
-      });
-    }
+    // One row above/below the construct, centred on it, block order left to right — the mirror of
+    // the vertical (beside-the-construct) case, so both flow directions keep a block's indicators
+    // in a single line. ELK sizes each cluster to this fan, so wide blocks spread rather than wrap.
+    const width =
+      sizes.reduce((s, z) => s + z.width, 0) + INDICATOR_GAP * Math.max(0, sizes.length - 1);
+    let cursor = -width / 2;
+    inds.forEach((id, k) => {
+      const z = sizes[k]!;
+      const y = world === 'top' ? -cs.height / 2 - FAN_GAP - z.height : cs.height / 2 + FAN_GAP;
+      local.set(id, { x: cursor, y });
+      cursor += z.width + INDICATOR_GAP;
+    });
   }
   const rects: Rect[] = [{ x: -cs.width / 2, y: -cs.height / 2, ...cs }];
   inds.forEach((id, k) => rects.push({ ...local.get(id)!, ...sizes[k]! }));

@@ -98,10 +98,9 @@ export function sceneToSvg(scene: Scene, opts: SvgExportOptions): string {
         );
       out.push('</g>');
       if (n.capsule !== undefined) {
-        const { width: cw, height: ch } = pillSize(n.capsule);
+        // R² sits inside the construct near the top, with no outline.
         out.push(
-          `<g data-capsule="${escapeXml(n.id)}"><rect x="${f(x + w / 2 - cw / 2)}" y="${f(y + h + 4)}" width="${f(cw)}" height="${f(ch)}" rx="8" fill="#ffffff" stroke="${MEASURE}" stroke-width="0.75"/>`,
-          `<text x="${f(x + w / 2)}" y="${f(y + h + 4 + 12)}" text-anchor="middle" font-size="11" fill="${INK}">${escapeXml(n.capsule)}</text></g>`,
+          `<text data-capsule="${escapeXml(n.id)}" x="${f(x + w / 2)}" y="${f(y + 15)}" text-anchor="middle" font-size="11" fill="${MEASURE}" style="font-variant-numeric:tabular-nums">${escapeXml(n.capsule)}</text>`,
         );
       }
     } else {

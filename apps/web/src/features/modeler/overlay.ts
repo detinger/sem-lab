@@ -11,12 +11,12 @@ import type { Scene } from './scene';
 export type OverlayMode = 'none' | 'estimate' | 't' | 'p' | 'ci' | 'hypothesis';
 
 export const OVERLAY_LABELS: Record<OverlayMode, string> = {
-  none: 'Model view',
-  estimate: 'Estimates',
+  none: 'Model',
+  estimate: 'Est.',
   t: 't',
   p: 'p',
   ci: 'CI',
-  hypothesis: 'Hypotheses',
+  hypothesis: 'H.',
 };
 
 export type OverlayScale = 'standardized' | 'unstandardized';
@@ -138,7 +138,7 @@ export function applyOverlay(scene: Scene, model: SemModel, overlay: OverlayInpu
     if (!m || (m.value === null && m.missing === 'not-applicable')) return n;
     return {
       ...n,
-      capsule: `R² ${m.value === null ? NOT_ESTIMATED : formatNumber(m.value, typographic)}`,
+      capsule: `R² = ${m.value === null ? NOT_ESTIMATED : formatNumber(m.value, typographic)}`,
     };
   });
   return { ...scene, edges, nodes };

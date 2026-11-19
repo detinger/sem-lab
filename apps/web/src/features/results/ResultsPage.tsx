@@ -22,6 +22,7 @@ import { formatInterval, formatNumber, formatP } from '../reports/format';
 import type { ReportTable } from '../reports/table';
 import { BootstrapSection } from './BootstrapChart';
 import { ExportRButton } from './ExportR';
+import { ResultDiagram } from './ResultDiagram';
 import { ResultTable } from './ResultTable';
 import { styleOf, useResultStyle } from './store';
 import {
@@ -169,6 +170,7 @@ function PlsBody({ run }: { run: RunView }) {
 
   const summary = (
     <>
+      <ResultDiagram model={run.model} result={result} scale="standardized" />
       <KpiGrid>
         <KpiTile
           label="Observations used"
@@ -415,6 +417,7 @@ function CbBody({ run }: { run: RunView }) {
 
   const summary = (
     <>
+      <ResultDiagram model={run.model} result={result} scale={sty.scale} />
       <KpiGrid>
         <KpiTile
           label="Observations used"

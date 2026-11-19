@@ -43,7 +43,7 @@ describe('result overlays on the scene', () => {
     const r2 = FIXTURE_RESULT.constructMetrics.find(
       (m) => m.metric === 'r2' && m.constructId === 'c_bi',
     )!;
-    expect(scene.nodes.find((n) => n.id === 'c_bi')?.capsule).toBe(`R² ${r2.value!.toFixed(3)}`);
+    expect(scene.nodes.find((n) => n.id === 'c_bi')?.capsule).toBe(`R² = ${r2.value!.toFixed(3)}`);
     expect(scene.nodes.find((n) => n.id === 'c_peou')?.capsule).toBeUndefined();
   });
 
