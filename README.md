@@ -30,8 +30,10 @@ reference results now; until a capability reproduces them it stays `planned`.
 
 ```text
 apps/web/                  React 19 + TypeScript + Vite single-page app (the modeler lives in src/features/modeler)
-apps/api/                  FastAPI analysis service: job store, R engine runner, contracts mirror (also hosts the Phase 0 Python spike scripts)
-services/r-engine/         R engine: pinned library (renv.lock), wrapper bin/rscript, spike scripts
+packages/engine/           in-browser estimation engine (TypeScript): PLS-PM, PLSc, CB-SEM ML/MLR/FIML, IPMA, bootstrap
+packages/python-engine/    the same engine in Python (numpy/scipy), shipped with Python exports and notebooks
+services/r-engine/         R verification oracle (cSEM, lavaan): produces the committed reference results
+services/python-spike/     Phase 0 verification of plspm/semopy (evidence only)
 packages/contracts/        Zod contracts (model, layout, analysis, results) → generated JSON Schema
 packages/method-registry/  capability registry with evidence
 packages/fixtures/         synthetic benchmark datasets + converted sample datasets with provenance
@@ -68,19 +70,18 @@ services/r-engine/bin/rscript services/r-engine/scripts/install_packages.R   # f
 services/r-engine/bin/rscript services/r-engine/spike/csem_01_pls_core.R      # example verification script
 ```
 
-Python engine environment:
+Python engine:
 
 ```bash
-cd apps/api && uv sync && uv run python spike/plspm_probe.py
+cd packages/python-engine && uv run pytest
 ```
 
 ## Deployment
 
 - **Netlify** (web): `netlify.toml` builds `apps/web` and serves it as an SPA with deep-link
   fallback. Set `VITE_API_BASE_URL` in the Netlify UI once the API exists.
-- **No server deployment.** The former API/R worker (`apps/api`, Railway) is retiring with the
-  move to in-browser estimation and will be removed from the deployment once the browser engine
-  reaches parity.
+- **No server.** The former API/R worker was removed in Phase 4 when estimation moved into the
+  browser (it remains in git history).
 
 ## Data and privacy
 

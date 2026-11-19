@@ -37,7 +37,6 @@ sem-studio/
 ├── apps/
 │   ├── web/                     React 19 + TypeScript + Vite SPA (Netlify)
 │   │   └── src/{app,features,domain,components/ui,storage,styles,tests}
-│   └── api/                     former FastAPI service — retiring (see §3); also hosts the Phase 0 Python spike
 │       ├── app/                 endpoints, job store, engine runners, code export
 │       └── tests/               pytest
 ├── services/
@@ -62,8 +61,7 @@ sem-studio/
 **Decision (2026-11-19, product owner): estimation runs in the browser. There is no
 backend.** R and Python exist only as code that users run locally (exported scripts and the
 Colab notebooks). This supersedes the original server design (FastAPI + R worker on Railway),
-which is kept only until the browser engine reaches parity and is then removed from the
-deployment (it stays in git history).
+which was removed in Phase 4 once the browser engine reached parity (it stays in git history).
 
 ```text
 Browser (React SPA, static hosting on Netlify)
@@ -105,7 +103,7 @@ Decisions and their reasons:
 
 - Source of truth: Zod schemas in `packages/contracts/src`. JSON Schema is emitted into
   `packages/contracts/schema/*.json` by a script and committed.
-- Python mirrors the contracts with Pydantic models in `apps/api/app/contracts/`.
+- The Python engine (`packages/python-engine`) produces the same JSON shapes and is tested against the same references.
 - Drift guard: every file in `packages/contracts/examples/` (valid and deliberately
   invalid) is checked by Zod (Vitest), by the emitted JSON Schema, and by Pydantic
   (pytest). A change that only one side accepts fails CI.
@@ -126,7 +124,7 @@ Decisions and their reasons:
 
 R is always invoked through `services/r-engine/bin/rscript`, a wrapper that puts the
 project library first on the library path. Python is always invoked through
-`uv run` inside `apps/api`.
+Python verification scripts run with `uv run` inside `services/python-spike`; the Python engine inside `packages/python-engine`.
 
 ## 6. Ownership map (who may change what)
 
@@ -137,7 +135,7 @@ project library first on the library path. Python is always invoked through
 | Modeler, layout, diagram export | `apps/web/src/features/modeler` | Agent 2 |
 | Data Lab, validator | `apps/web/src/features/{data-lab,validation}` | Agent 3 |
 | PLS engine | `services/r-engine/R/pls_*`, fixtures for PLS | Agent 4 |
-| CB engine, Python engines, code export | `services/r-engine/R/cb_*`, `apps/api/app/{engines,export}` | Agent 5 |
+| Browser engine (PLS, CB), Python engine, code export | `packages/engine`, `packages/python-engine`, `apps/web/src/features/code-export` | Agents 4–5 |
 | Results, tables, clipboard, IPMA UI | `apps/web/src/features/{results,ipma,reports}` | Agent 6 |
 | Learn, challenges, notebooks | `content/`, `notebooks/`, `apps/web/src/features/{learn,challenges,examples}` | Agent 7 |
 | CI, deployment, security | `.github`, `netlify.toml`, Dockerfiles, `docs/{deployment,security-and-privacy}` | Agent 8 |

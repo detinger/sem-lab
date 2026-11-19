@@ -4,7 +4,6 @@ import type { ActiveJob, Outcome } from './jobs';
 import { ERROR_HINTS, hintFor } from './errorHints';
 
 const STAGE_TEXT: Record<string, string> = {
-  queued: 'Queued: waiting for a free worker',
   validating: 'Validating the request',
   estimating: 'Estimating the model',
   bootstrapping: 'Bootstrapping',
@@ -12,15 +11,20 @@ const STAGE_TEXT: Record<string, string> = {
 };
 
 export function stageText(active: ActiveJob): string {
-  if (active.phase === 'submitting') return 'Sending the analysis matrix to the service';
-  if (active.phase === 'finishing') return 'Fetching and checking the result';
-  const s = active.status;
-  return STAGE_TEXT[s?.stage ?? s?.status ?? 'queued'] ?? 'Running';
+  const stage = active.progress?.stage;
+  return stage ? (STAGE_TEXT[stage] ?? 'Running') : 'Starting the engine';
 }
 
 export function RunProgress({ active, onCancel }: { active: ActiveJob; onCancel: () => void }) {
-  const s = active.status;
-  const determinate = s && s.done !== null && s.total !== null && s.total > 0;
+  const p = active.progress;
+  const bar =
+    p !== null &&
+    p.stage === 'bootstrapping' &&
+    p.done !== undefined &&
+    p.total !== undefined &&
+    p.total > 0
+      ? { done: p.done, total: p.total, failed: p.failed ?? 0, inadmissible: p.inadmissible ?? 0 }
+      : null;
   return (
     <section className="an-card" aria-label="Analysis in progress">
       <div className="an-card__head">
@@ -28,7 +32,7 @@ export function RunProgress({ active, onCancel }: { active: ActiveJob; onCancel:
         <Button
           size="small"
           icon={<Ban size={14} />}
-          disabled={active.phase !== 'running' || active.cancelRequested}
+          disabled={active.cancelRequested}
           onClick={onCancel}
         >
           {active.cancelRequested ? 'Cancelling…' : 'Cancel'}
@@ -37,20 +41,15 @@ export function RunProgress({ active, onCancel }: { active: ActiveJob; onCancel:
       <p className="an-stage" role="status">
         {stageText(active)}
       </p>
-      {determinate ? (
+      {bar ? (
         <ProgressBar
-          value={s.done!}
-          max={s.total!}
-          label={`${s.done!.toLocaleString('en')} of ${s.total!.toLocaleString('en')} bootstrap samples (${s.failed ?? 0} failed, ${s.inadmissible ?? 0} inadmissible)`}
+          value={bar.done}
+          max={bar.total}
+          label={`${bar.done.toLocaleString('en')} of ${bar.total.toLocaleString('en')} bootstrap samples (${bar.failed} failed, ${bar.inadmissible} inadmissible)`}
         />
       ) : (
         <Spinner label={stageText(active)} />
       )}
-      {active.pollProblem ? <Callout variant="warning">{active.pollProblem}</Callout> : null}
-      <details className="an-tech">
-        <summary>Technical details</summary>
-        <pre>{JSON.stringify({ job: active.jobId, status: s }, null, 2)}</pre>
-      </details>
     </section>
   );
 }
@@ -60,7 +59,7 @@ export function RunFailure({ outcome, onDismiss }: { outcome: Outcome; onDismiss
   if (outcome.status === 'cancelled')
     return (
       <Callout variant="info" title="Analysis cancelled">
-        <p>The job was cancelled; it produced no results.</p>
+        <p>The run was cancelled; it produced no results.</p>
         <Button size="small" onClick={onDismiss}>
           Dismiss
         </Button>

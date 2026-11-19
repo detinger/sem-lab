@@ -19,9 +19,43 @@ export const OVERLAY_LABELS: Record<OverlayMode, string> = {
   hypothesis: 'Hypotheses',
 };
 
+export type OverlayScale = 'standardized' | 'unstandardized';
+
 export interface OverlayInput {
   mode: Exclude<OverlayMode, 'none'>;
   result: NormalizedSemResult;
+  /** CB-SEM: which scale the estimate overlay shows (default standardized) */
+  scale?: OverlayScale;
+}
+
+/** CB-SEM results carry both scales; PLS results carry standardized estimates only. */
+export const hasBothScales = (result: NormalizedSemResult): boolean =>
+  result.parameters.some((p) => p.scale === 'unstandardized');
+
+/**
+ * Which scale a mode reads. Inference (t / z, p, CI) exists for unstandardized CB estimates only,
+ * so those modes always read them; the estimate mode follows the toggle.
+ */
+function scaleFor(overlay: OverlayInput): OverlayScale | undefined {
+  if (!hasBothScales(overlay.result)) return undefined;
+  return overlay.mode === 'estimate' ? (overlay.scale ?? 'standardized') : 'unstandardized';
+}
+
+/** The one-line legend that explains what the pills and capsules show. */
+export function overlayLegend(overlay: OverlayInput): string {
+  const { mode, result } = overlay;
+  if (mode === 'hypothesis') return 'Hypothesis labels as written in the model.';
+  const cb = hasBothScales(result);
+  if (mode === 'estimate')
+    return cb
+      ? `${(overlay.scale ?? 'standardized') === 'standardized' ? 'Standardized (std.all)' : 'Unstandardized'} loadings on measurement lines and path coefficients on structural arrows; R² under endogenous factors.`
+      : 'Standardized path coefficients on structural arrows, loadings or weights on measurement lines; R² under endogenous constructs.';
+  const what = { t: cb ? 'z statistic' : 't statistic', p: 'p value', ci: 'confidence interval' }[
+    mode
+  ];
+  return cb
+    ? `${what} of the unstandardized estimates (analytic standard errors; not computed for standardized estimates).`
+    : `${what} of the path coefficients from the bootstrap.`;
 }
 
 export const NOT_ESTIMATED = '—';
@@ -34,7 +68,10 @@ function pillFor(mode: OverlayInput['mode'], p: ParameterEstimate | undefined): 
     case 'estimate':
       return v(p.est, formatNumber(p.est, typographic));
     case 't':
-      return v(p.statistic, `t = ${formatNumber(p.statistic, { decimals: 2 })}`);
+      return v(
+        p.statistic,
+        `${p.statisticType === 'z' ? 'z' : 't'} = ${formatNumber(p.statistic, { decimals: 2 })}`,
+      );
     case 'p':
       return v(
         p.pValue,
@@ -55,16 +92,22 @@ function measurementParam(
   result: NormalizedSemResult,
   constructId: string,
   indicatorId: string,
+  scale: OverlayScale | undefined,
 ): ParameterEstimate | undefined {
   const c = model.constructs.find((x) => x.id === constructId);
   const kind = c?.measurement === 'reflective' ? 'loading' : 'weight';
   return result.parameters.find(
-    (p) => p.kind === kind && p.sourceId === constructId && p.targetId === indicatorId,
+    (p) =>
+      p.kind === kind &&
+      p.sourceId === constructId &&
+      p.targetId === indicatorId &&
+      (scale === undefined || p.scale === scale),
   );
 }
 
 export function applyOverlay(scene: Scene, model: SemModel, overlay: OverlayInput): Scene {
   const { mode, result } = overlay;
+  const scale = scaleFor(overlay);
   const isConstruct = new Set(model.constructs.map((c) => c.id));
   const edges = scene.edges.map((e) => {
     if (e.kind === 'covariance') return e;
@@ -74,6 +117,7 @@ export function applyOverlay(scene: Scene, model: SemModel, overlay: OverlayInpu
       const p = result.parameters.find(
         (x) =>
           x.kind === 'path' &&
+          (scale === undefined || x.scale === scale) &&
           (x.relationshipId === e.id ||
             (x.sourceId === rel?.sourceId && x.targetId === rel?.targetId)),
       );
@@ -83,7 +127,10 @@ export function applyOverlay(scene: Scene, model: SemModel, overlay: OverlayInpu
     if (mode !== 'estimate') return e;
     const constructId = isConstruct.has(e.sourceId) ? e.sourceId : e.targetId;
     const indicatorId = constructId === e.sourceId ? e.targetId : e.sourceId;
-    return { ...e, pill: pillFor(mode, measurementParam(model, result, constructId, indicatorId)) };
+    return {
+      ...e,
+      pill: pillFor(mode, measurementParam(model, result, constructId, indicatorId, scale)),
+    };
   });
   const nodes = scene.nodes.map((n) => {
     if (mode !== 'estimate' || n.kind !== 'construct') return n;

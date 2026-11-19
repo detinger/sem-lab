@@ -2,7 +2,7 @@ import { Monitor, Moon, Sun } from 'lucide-react';
 
 import { useTheme } from '@/app/ThemeProvider';
 import { isThemePreference } from '@/app/theme';
-import { Callout, Card, CardHeader, PageHeader, SegmentedControl } from '@/components/ui';
+import { Card, CardHeader, PageHeader, SegmentedControl } from '@/components/ui';
 
 import './pages.css';
 
@@ -35,13 +35,21 @@ export function SettingsPage() {
         <Card>
           <CardHeader title="Privacy" />
           <p>
-            Data you import stays in your browser. In this version nothing is sent to a server:
-            models and datasets are processed and stored on your device only.
+            Data you import stays in your browser. Estimation runs on this device, so nothing is
+            sent to a server: models, datasets and results are processed and stored on your device
+            only.
           </p>
-          <Callout variant="info" title="Backend not configured">
-            No analysis service is connected. If one is added in a later version, you will be told
-            before any data leaves your browser.
-          </Callout>
+        </Card>
+
+        <Card id="about-engine">
+          <CardHeader title="About the engine" />
+          <p>
+            SEM Studio estimates models with its own engine, written in TypeScript, in Web Workers
+            in this browser. There is no analysis server. PLS-SEM, PLSc and CB-SEM (ML, MLR, FIML)
+            are offered only where their numbers reproduce reference results from R (cSEM and
+            lavaan) in automated tests; R and Python are used for exported scripts and for
+            verification, not for running your analysis.
+          </p>
         </Card>
       </div>
     </>

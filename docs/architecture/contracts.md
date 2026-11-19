@@ -2,7 +2,7 @@
 
 This document specifies the shared data contracts. The executable definition is the Zod
 source in `packages/contracts/src`; the JSON Schema in `packages/contracts/schema` is
-generated from it; the Pydantic models in `apps/api/app/contracts` mirror it. If this
+generated from it. (A Pydantic mirror existed while the API service did; it was removed with the server in Phase 4.) If this
 prose and the Zod source disagree, the Zod source wins and this file must be corrected.
 
 All contracts carry `schemaVersion`. Current version: **1**.

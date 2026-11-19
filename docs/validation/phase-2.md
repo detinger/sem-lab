@@ -1,5 +1,7 @@
 # Phase 2 — Data Lab and model validator: evidence and exit review
 
+> **Superseded in Phase 4.** The product owner moved estimation into the browser; the FastAPI service (`apps/api`) and the server deployment described here were removed (they remain in git history). The R engine continues as the verification oracle. See `docs/architecture/overview.md` §3.
+
 Date: 2026-11-19. Runs entirely in the browser; data never leave it in this phase.
 
 ## Exit criterion (PLAN §5)

@@ -1,8 +1,5 @@
-import { Trash2 } from 'lucide-react';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Badge, Button, Table, Td, Th, useToast } from '@/components/ui';
-import { deleteServerJob } from './jobs';
+import { Badge, Table, Td, Th } from '@/components/ui';
 import { STALE_LABEL, type RunView, useRuns } from './runs';
 
 const STATUS_TEXT = {
@@ -15,41 +12,22 @@ const STATUS_TEXT = {
 
 const METHOD_TEXT = { 'pls-sem': 'PLS-SEM', plsc: 'PLSc', 'cb-sem': 'CB-SEM' } as const;
 
-export function RunHistory({ runs, activeRunId }: { runs: RunView[]; activeRunId: string | null }) {
-  const { toast } = useToast();
-  const [busy, setBusy] = useState(false);
-  const withJobs = runs.filter((r) => r.serverJobId && r.runId !== activeRunId);
+/** "2.4 s", "840 ms", "1 min 12 s" — a measured wall-clock time. */
+export function formatDuration(ms: number): string {
+  if (ms < 1000) return `${Math.round(ms)} ms`;
+  const s = ms / 1000;
+  if (s < 60) return `${s.toFixed(s < 10 ? 1 : 0)} s`;
+  const m = Math.floor(s / 60);
+  return `${m} min ${Math.round(s - m * 60)} s`;
+}
 
-  const remove = async (list: RunView[]): Promise<void> => {
-    setBusy(true);
-    let failed = 0;
-    for (const r of list) if (!(await deleteServerJob(r)).ok) failed++;
-    setBusy(false);
-    toast(
-      failed === 0
-        ? { title: 'Uploaded data and jobs deleted from the service', variant: 'success' }
-        : {
-            title: `${failed} job${failed === 1 ? '' : 's'} could not be deleted`,
-            description: 'The service could not be reached. Try again later.',
-            variant: 'error',
-          },
-    );
-  };
-
+export function RunHistory({ runs }: { runs: RunView[] }) {
   return (
     <section className="an-card" aria-labelledby="an-history">
       <div className="an-card__head">
         <h2 id="an-history" className="an-h2">
           Run history
         </h2>
-        <Button
-          size="small"
-          icon={<Trash2 size={14} />}
-          disabled={busy || withJobs.length === 0}
-          onClick={() => void remove(withJobs)}
-        >
-          Delete uploaded data and jobs for this project
-        </Button>
       </div>
       {runs.length === 0 ? (
         <p className="an-note">No runs yet. A finished run is kept in this browser.</p>
@@ -61,6 +39,7 @@ export function RunHistory({ runs, activeRunId }: { runs: RunView[]; activeRunId
               <Th>Method</Th>
               <Th numeric>B</Th>
               <Th numeric>Seed</Th>
+              <Th numeric>Duration</Th>
               <Th>Status</Th>
               <Th>
                 <span className="sr-only">Actions</span>
@@ -83,6 +62,7 @@ export function RunHistory({ runs, activeRunId }: { runs: RunView[]; activeRunId
                     {o.bootstrap?.enabled ? o.bootstrap.repetitions.toLocaleString('en') : '–'}
                   </Td>
                   <Td numeric>{o.seed ?? '–'}</Td>
+                  <Td numeric>{r.durationMs !== undefined ? formatDuration(r.durationMs) : '–'}</Td>
                   <Td>
                     <span className="an-status">
                       {STATUS_TEXT[r.record.status]}
@@ -98,16 +78,6 @@ export function RunHistory({ runs, activeRunId }: { runs: RunView[]; activeRunId
                           Open results
                         </Link>
                       ) : null}
-                      <Button
-                        size="small"
-                        variant="ghost"
-                        icon={<Trash2 size={14} />}
-                        disabled={busy || !r.serverJobId || r.runId === activeRunId}
-                        aria-label={`Delete uploaded data and job for the run of ${new Date(r.createdAt).toLocaleString('en-GB')}`}
-                        onClick={() => void remove([r])}
-                      >
-                        Delete uploaded data
-                      </Button>
                     </span>
                   </Td>
                 </tr>

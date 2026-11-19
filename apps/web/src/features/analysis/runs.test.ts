@@ -22,7 +22,6 @@ async function newRun() {
     analysis: TAM_ANALYSIS,
     modelHash: await modelHash(TAM_MODEL),
     dataFingerprint: FP_A,
-    serverJobId: 'job-1',
   });
 }
 

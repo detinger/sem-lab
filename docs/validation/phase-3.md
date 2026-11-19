@@ -1,5 +1,7 @@
 # Phase 3 — First complete PLS-SEM vertical slice: evidence and exit review
 
+> **Superseded in Phase 4.** The product owner moved estimation into the browser; the FastAPI service (`apps/api`) and the server deployment described here were removed (they remain in git history). The R engine continues as the verification oracle. See `docs/architecture/overview.md` §3.
+
 Date: 2026-11-19. Local stack: web (Vite) + API (FastAPI, uv) + R engine (R 4.6.2, cSEM 0.7.1).
 
 ## Exit criterion (PLAN §5)

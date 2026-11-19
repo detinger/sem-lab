@@ -27,7 +27,7 @@ reference test, which arrives with Phase 3.
 - [x] PLAN.md and STYLE.md frozen as source of truth (unchanged since 2026-11-16).
 - [x] Library APIs and licences validated — `phase-0/{r,python,web}-spike.md`, `docs/licensing.md`.
 - [x] Tiny R PLS, R CB, Python PLS, Python CB models run in pinned environments
-      (`services/r-engine/renv.lock`, `apps/api/uv.lock`, `package-lock.json`).
+      (`services/r-engine/renv.lock`, `services/python-spike/uv.lock` — moved from `apps/api` in Phase 4 — and `package-lock.json`).
 - [x] Capability matrix with native estimator differences — `packages/method-registry/registry.json`.
 - [x] Canonical model and result JSON schemas — `packages/contracts` (Zod source, JSON Schema
       generated, 21 invalid examples, cross-language hash vectors).
@@ -88,7 +88,7 @@ npm ci && npm run typecheck && npm run lint && npm run format:check && npm run t
 npm run check-schema --workspace @sem-studio/contracts
 uv run --python 3.12 --with numpy python packages/fixtures/scripts/generate_synthetic.py --check
 services/r-engine/bin/rscript services/r-engine/spike/csem_01_pls_core.R      # and the other spike scripts
-cd apps/api && uv run python spike/plspm_probe.py                              # and the other spike scripts
+cd services/python-spike && uv run python spike/plspm_probe.py                # and the other spike scripts (moved from apps/api in Phase 4)
 ```
 
 ## Open items carried forward

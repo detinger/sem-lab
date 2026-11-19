@@ -1,0 +1,1618 @@
+{
+  "schemaVersion": 1,
+  "sample": {
+    "nRows": 450,
+    "nUsed": 450,
+    "nDropped": 0,
+    "missingData": "listwise"
+  },
+  "estimation": {
+    "converged": true,
+    "iterations": 8,
+    "admissible": true,
+    "messages": [
+      "ML by Fisher scoring with Newton refinement: 8 iterations, max |gradient| 2.39e-15."
+    ]
+  },
+  "parameters": [
+    {
+      "key": "loading:c_sq:i_sq1",
+      "kind": "loading",
+      "sourceId": "c_sq",
+      "targetId": "i_sq1",
+      "scale": "unstandardized",
+      "est": 1,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-applicable",
+        "statistic": "not-applicable",
+        "pValue": "not-applicable",
+        "ciLower": "not-applicable",
+        "ciUpper": "not-applicable"
+      },
+      "status": "fixed",
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "lambda[1,1]"
+    },
+    {
+      "key": "loading:c_sq:i_sq1",
+      "kind": "loading",
+      "sourceId": "c_sq",
+      "targetId": "i_sq1",
+      "scale": "standardized",
+      "est": 0.7699375894155186,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:lambda[1,1]"
+    },
+    {
+      "key": "loading:c_sq:i_sq2",
+      "kind": "loading",
+      "sourceId": "c_sq",
+      "targetId": "i_sq2",
+      "scale": "unstandardized",
+      "est": 0.9244459605770534,
+      "se": 0.0638553128029882,
+      "statistic": 14.477197276117527,
+      "statisticType": "z",
+      "pValue": 1.6884266196917966e-47,
+      "ciLower": 0.7992918472616571,
+      "ciUpper": 1.0496000738924498,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "lambda[2,1]"
+    },
+    {
+      "key": "loading:c_sq:i_sq2",
+      "kind": "loading",
+      "sourceId": "c_sq",
+      "targetId": "i_sq2",
+      "scale": "standardized",
+      "est": 0.7191306946335589,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:lambda[2,1]"
+    },
+    {
+      "key": "loading:c_sq:i_sq3",
+      "kind": "loading",
+      "sourceId": "c_sq",
+      "targetId": "i_sq3",
+      "scale": "unstandardized",
+      "est": 0.9148563237883495,
+      "se": 0.06592901044603511,
+      "statistic": 13.876384881238087,
+      "statisticType": "z",
+      "pValue": 8.807538487984639e-44,
+      "ciLower": 0.7856378377777556,
+      "ciUpper": 1.0440748097989432,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "lambda[3,1]"
+    },
+    {
+      "key": "loading:c_sq:i_sq3",
+      "kind": "loading",
+      "sourceId": "c_sq",
+      "targetId": "i_sq3",
+      "scale": "standardized",
+      "est": 0.6893911975834324,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:lambda[3,1]"
+    },
+    {
+      "key": "loading:c_sq:i_sq4",
+      "kind": "loading",
+      "sourceId": "c_sq",
+      "targetId": "i_sq4",
+      "scale": "unstandardized",
+      "est": 0.9396244925811067,
+      "se": 0.06782656160088897,
+      "statistic": 13.853341086492456,
+      "statisticType": "z",
+      "pValue": 1.2142992180833887e-43,
+      "ciLower": 0.8066868746481769,
+      "ciUpper": 1.0725621105140364,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "lambda[4,1]"
+    },
+    {
+      "key": "loading:c_sq:i_sq4",
+      "kind": "loading",
+      "sourceId": "c_sq",
+      "targetId": "i_sq4",
+      "scale": "standardized",
+      "est": 0.6882645124965602,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:lambda[4,1]"
+    },
+    {
+      "key": "loading:c_sq:i_sq5",
+      "kind": "loading",
+      "sourceId": "c_sq",
+      "targetId": "i_sq5",
+      "scale": "unstandardized",
+      "est": 0.8862644791866443,
+      "se": 0.0665251320894937,
+      "statistic": 13.322250574330116,
+      "statisticType": "z",
+      "pValue": 1.718478751228578e-40,
+      "ciLower": 0.7558776162244668,
+      "ciUpper": 1.0166513421488217,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "lambda[5,1]"
+    },
+    {
+      "key": "loading:c_sq:i_sq5",
+      "kind": "loading",
+      "sourceId": "c_sq",
+      "targetId": "i_sq5",
+      "scale": "standardized",
+      "est": 0.6624680777666109,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:lambda[5,1]"
+    },
+    {
+      "key": "loading:c_sat:i_sat1",
+      "kind": "loading",
+      "sourceId": "c_sat",
+      "targetId": "i_sat1",
+      "scale": "unstandardized",
+      "est": 1,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-applicable",
+        "statistic": "not-applicable",
+        "pValue": "not-applicable",
+        "ciLower": "not-applicable",
+        "ciUpper": "not-applicable"
+      },
+      "status": "fixed",
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "lambda[6,2]"
+    },
+    {
+      "key": "loading:c_sat:i_sat1",
+      "kind": "loading",
+      "sourceId": "c_sat",
+      "targetId": "i_sat1",
+      "scale": "standardized",
+      "est": 0.854287968135343,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:lambda[6,2]"
+    },
+    {
+      "key": "loading:c_sat:i_sat2",
+      "kind": "loading",
+      "sourceId": "c_sat",
+      "targetId": "i_sat2",
+      "scale": "unstandardized",
+      "est": 0.9950640125320952,
+      "se": 0.04652126009057558,
+      "statistic": 21.389446687272308,
+      "statisticType": "z",
+      "pValue": 1.6753408814297142e-101,
+      "ciLower": 0.9038840182391465,
+      "ciUpper": 1.0862440068250439,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "lambda[7,2]"
+    },
+    {
+      "key": "loading:c_sat:i_sat2",
+      "kind": "loading",
+      "sourceId": "c_sat",
+      "targetId": "i_sat2",
+      "scale": "standardized",
+      "est": 0.837333750883878,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:lambda[7,2]"
+    },
+    {
+      "key": "loading:c_sat:i_sat3",
+      "kind": "loading",
+      "sourceId": "c_sat",
+      "targetId": "i_sat3",
+      "scale": "unstandardized",
+      "est": 0.9345646669854436,
+      "se": 0.0489186205496189,
+      "statistic": 19.104477119045097,
+      "statisticType": "z",
+      "pValue": 2.3173727813273675e-81,
+      "ciLower": 0.8386859325348096,
+      "ciUpper": 1.0304434014360777,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "lambda[8,2]"
+    },
+    {
+      "key": "loading:c_sat:i_sat3",
+      "kind": "loading",
+      "sourceId": "c_sat",
+      "targetId": "i_sat3",
+      "scale": "standardized",
+      "est": 0.7749344239656988,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:lambda[8,2]"
+    },
+    {
+      "key": "loading:c_sat:i_sat4",
+      "kind": "loading",
+      "sourceId": "c_sat",
+      "targetId": "i_sat4",
+      "scale": "unstandardized",
+      "est": 0.9526324557830126,
+      "se": 0.04761188100841413,
+      "statistic": 20.008292795965364,
+      "statisticType": "z",
+      "pValue": 4.6634815085084136e-89,
+      "ciLower": 0.8593148837703143,
+      "ciUpper": 1.0459500277957108,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "lambda[9,2]"
+    },
+    {
+      "key": "loading:c_sat:i_sat4",
+      "kind": "loading",
+      "sourceId": "c_sat",
+      "targetId": "i_sat4",
+      "scale": "standardized",
+      "est": 0.7998380784433062,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:lambda[9,2]"
+    },
+    {
+      "key": "loading:c_loy:i_loy1",
+      "kind": "loading",
+      "sourceId": "c_loy",
+      "targetId": "i_loy1",
+      "scale": "unstandardized",
+      "est": 1,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-applicable",
+        "statistic": "not-applicable",
+        "pValue": "not-applicable",
+        "ciLower": "not-applicable",
+        "ciUpper": "not-applicable"
+      },
+      "status": "fixed",
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "lambda[10,3]"
+    },
+    {
+      "key": "loading:c_loy:i_loy1",
+      "kind": "loading",
+      "sourceId": "c_loy",
+      "targetId": "i_loy1",
+      "scale": "standardized",
+      "est": 0.8313295199226804,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:lambda[10,3]"
+    },
+    {
+      "key": "loading:c_loy:i_loy2",
+      "kind": "loading",
+      "sourceId": "c_loy",
+      "targetId": "i_loy2",
+      "scale": "unstandardized",
+      "est": 1.025295039264536,
+      "se": 0.05079379393243043,
+      "statistic": 20.185439202050105,
+      "statisticType": "z",
+      "pValue": 1.3145418692065258e-90,
+      "ciLower": 0.9257410325188231,
+      "ciUpper": 1.1248490460102487,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "lambda[11,3]"
+    },
+    {
+      "key": "loading:c_loy:i_loy2",
+      "kind": "loading",
+      "sourceId": "c_loy",
+      "targetId": "i_loy2",
+      "scale": "standardized",
+      "est": 0.8341500441729396,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:lambda[11,3]"
+    },
+    {
+      "key": "loading:c_loy:i_loy3",
+      "kind": "loading",
+      "sourceId": "c_loy",
+      "targetId": "i_loy3",
+      "scale": "unstandardized",
+      "est": 0.954894354715522,
+      "se": 0.05082290315370897,
+      "statistic": 18.788662108253362,
+      "statisticType": "z",
+      "pValue": 9.350712208002592e-79,
+      "ciLower": 0.8552832949444853,
+      "ciUpper": 1.0545054144865587,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "lambda[12,3]"
+    },
+    {
+      "key": "loading:c_loy:i_loy3",
+      "kind": "loading",
+      "sourceId": "c_loy",
+      "targetId": "i_loy3",
+      "scale": "standardized",
+      "est": 0.7897480244497903,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:lambda[12,3]"
+    },
+    {
+      "key": "loading:c_loy:i_loy4",
+      "kind": "loading",
+      "sourceId": "c_loy",
+      "targetId": "i_loy4",
+      "scale": "unstandardized",
+      "est": 0.9398861121374856,
+      "se": 0.05178926769136947,
+      "statistic": 18.148279634664828,
+      "statisticType": "z",
+      "pValue": 1.3248567415472463e-73,
+      "ciLower": 0.8383810126766976,
+      "ciUpper": 1.0413912115982735,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "lambda[13,3]"
+    },
+    {
+      "key": "loading:c_loy:i_loy4",
+      "kind": "loading",
+      "sourceId": "c_loy",
+      "targetId": "i_loy4",
+      "scale": "standardized",
+      "est": 0.769514745463477,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:lambda[13,3]"
+    },
+    {
+      "key": "path:c_sq->c_sat",
+      "kind": "path",
+      "sourceId": "c_sq",
+      "targetId": "c_sat",
+      "relationshipId": "r_sq_sat",
+      "scale": "unstandardized",
+      "est": 0.6428912452307776,
+      "se": 0.06403772371291697,
+      "statistic": 10.039258236486953,
+      "statisticType": "z",
+      "pValue": 1.0244157937483808e-23,
+      "ciLower": 0.5173796131015337,
+      "ciUpper": 0.7684028773600214,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "beta[2,1]"
+    },
+    {
+      "key": "path:c_sq->c_sat",
+      "kind": "path",
+      "sourceId": "c_sq",
+      "targetId": "c_sat",
+      "relationshipId": "r_sq_sat",
+      "scale": "standardized",
+      "est": 0.5532047344775958,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:beta[2,1]"
+    },
+    {
+      "key": "path:c_sq->c_loy",
+      "kind": "path",
+      "sourceId": "c_sq",
+      "targetId": "c_loy",
+      "relationshipId": "r_sq_loy",
+      "scale": "unstandardized",
+      "est": 0.21649054421537475,
+      "se": 0.061428261153986606,
+      "statistic": 3.524282474359521,
+      "statisticType": "z",
+      "pValue": 0.00042463130627027126,
+      "ciLower": 0.09609336472064015,
+      "ciUpper": 0.33688772371010933,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "beta[3,1]"
+    },
+    {
+      "key": "path:c_sq->c_loy",
+      "kind": "path",
+      "sourceId": "c_sq",
+      "targetId": "c_loy",
+      "relationshipId": "r_sq_loy",
+      "scale": "standardized",
+      "est": 0.19047347868611444,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:beta[3,1]"
+    },
+    {
+      "key": "path:c_sat->c_loy",
+      "kind": "path",
+      "sourceId": "c_sat",
+      "targetId": "c_loy",
+      "relationshipId": "r_sat_loy",
+      "scale": "unstandardized",
+      "est": 0.5850827333942189,
+      "se": 0.055854970217937214,
+      "statistic": 10.475034381207601,
+      "statisticType": "z",
+      "pValue": 1.1249671877171962e-25,
+      "ciLower": 0.4756090034095046,
+      "ciUpper": 0.6945564633789332,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "beta[3,2]"
+    },
+    {
+      "key": "path:c_sat->c_loy",
+      "kind": "path",
+      "sourceId": "c_sat",
+      "targetId": "c_loy",
+      "relationshipId": "r_sat_loy",
+      "scale": "standardized",
+      "est": 0.5982249009186732,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:beta[3,2]"
+    },
+    {
+      "key": "residual-variance:i_sq1",
+      "kind": "residual-variance",
+      "sourceId": "i_sq1",
+      "targetId": "i_sq1",
+      "scale": "unstandardized",
+      "est": 0.696556700995059,
+      "se": 0.0634180639080423,
+      "statistic": 10.983569318752503,
+      "statisticType": "z",
+      "pValue": 4.5844458468405235e-28,
+      "ciLower": 0.5722595797660366,
+      "ciUpper": 0.8208538222240813,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "theta[1,1]"
+    },
+    {
+      "key": "residual-variance:i_sq1",
+      "kind": "residual-variance",
+      "sourceId": "i_sq1",
+      "targetId": "i_sq1",
+      "scale": "standardized",
+      "est": 0.4071961084050203,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:theta[1,1]"
+    },
+    {
+      "key": "residual-variance:i_sq2",
+      "kind": "residual-variance",
+      "sourceId": "i_sq2",
+      "targetId": "i_sq2",
+      "scale": "unstandardized",
+      "est": 0.8091415117736831,
+      "se": 0.06714520422227431,
+      "statistic": 12.050622544763424,
+      "statisticType": "z",
+      "pValue": 1.9249057839779642e-33,
+      "ciLower": 0.6775393297634387,
+      "ciUpper": 0.9407436937839275,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "theta[2,2]"
+    },
+    {
+      "key": "residual-variance:i_sq2",
+      "kind": "residual-variance",
+      "sourceId": "i_sq2",
+      "targetId": "i_sq2",
+      "scale": "standardized",
+      "est": 0.4828510440358548,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:theta[2,2]"
+    },
+    {
+      "key": "residual-variance:i_sq3",
+      "kind": "residual-variance",
+      "sourceId": "i_sq3",
+      "targetId": "i_sq3",
+      "scale": "unstandardized",
+      "est": 0.9370919541049283,
+      "se": 0.07488503270198593,
+      "statistic": 12.513741668968743,
+      "statisticType": "z",
+      "pValue": 6.279511986783713e-36,
+      "ciLower": 0.7903199870279317,
+      "ciUpper": 1.083863921181925,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "theta[3,3]"
+    },
+    {
+      "key": "residual-variance:i_sq3",
+      "kind": "residual-variance",
+      "sourceId": "i_sq3",
+      "targetId": "i_sq3",
+      "scale": "standardized",
+      "est": 0.5247397766944808,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:theta[3,3]"
+    },
+    {
+      "key": "residual-variance:i_sq4",
+      "kind": "residual-variance",
+      "sourceId": "i_sq4",
+      "targetId": "i_sq4",
+      "scale": "unstandardized",
+      "est": 0.9946918059835776,
+      "se": 0.07938822548895923,
+      "statistic": 12.52946264836103,
+      "statisticType": "z",
+      "pValue": 5.151049277955379e-36,
+      "ciLower": 0.8390937432286728,
+      "ciUpper": 1.1502898687384824,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "theta[4,4]"
+    },
+    {
+      "key": "residual-variance:i_sq4",
+      "kind": "residual-variance",
+      "sourceId": "i_sq4",
+      "targetId": "i_sq4",
+      "scale": "standardized",
+      "est": 0.5262919608378723,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:theta[4,4]"
+    },
+    {
+      "key": "residual-variance:i_sq5",
+      "kind": "residual-variance",
+      "sourceId": "i_sq5",
+      "targetId": "i_sq5",
+      "scale": "unstandardized",
+      "est": 1.018424514311758,
+      "se": 0.07920016149474596,
+      "statistic": 12.858869162524613,
+      "statisticType": "z",
+      "pValue": 7.669039618686058e-38,
+      "ciLower": 0.8631950502123,
+      "ciUpper": 1.173653978411216,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "theta[5,5]"
+    },
+    {
+      "key": "residual-variance:i_sq5",
+      "kind": "residual-variance",
+      "sourceId": "i_sq5",
+      "targetId": "i_sq5",
+      "scale": "standardized",
+      "est": 0.5611360459402114,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:theta[5,5]"
+    },
+    {
+      "key": "residual-variance:i_sat1",
+      "kind": "residual-variance",
+      "sourceId": "i_sat1",
+      "targetId": "i_sat1",
+      "scale": "unstandardized",
+      "est": 0.5070270896281059,
+      "se": 0.048437343999547834,
+      "statistic": 10.467689756747172,
+      "statisticType": "z",
+      "pValue": 1.2157379338906693e-25,
+      "ciLower": 0.41209163988221487,
+      "ciUpper": 0.601962539373997,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "theta[6,6]"
+    },
+    {
+      "key": "residual-variance:i_sat1",
+      "kind": "residual-variance",
+      "sourceId": "i_sat1",
+      "targetId": "i_sat1",
+      "scale": "standardized",
+      "est": 0.27019206749918717,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:theta[6,6]"
+    },
+    {
+      "key": "residual-variance:i_sat2",
+      "kind": "residual-variance",
+      "sourceId": "i_sat2",
+      "targetId": "i_sat2",
+      "scale": "unstandardized",
+      "est": 0.5780394775145087,
+      "se": 0.05225647326641275,
+      "statistic": 11.06158608460929,
+      "statisticType": "z",
+      "pValue": 1.9266012257148487e-28,
+      "ciLower": 0.4756186719532595,
+      "ciUpper": 0.6804602830757578,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "theta[7,7]"
+    },
+    {
+      "key": "residual-variance:i_sat2",
+      "kind": "residual-variance",
+      "sourceId": "i_sat2",
+      "targetId": "i_sat2",
+      "scale": "standardized",
+      "est": 0.29887218963073603,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:theta[7,7]"
+    },
+    {
+      "key": "residual-variance:i_sat3",
+      "kind": "residual-variance",
+      "sourceId": "i_sat3",
+      "targetId": "i_sat3",
+      "scale": "unstandardized",
+      "est": 0.795696309549104,
+      "se": 0.0636194790551177,
+      "statistic": 12.507117652751297,
+      "statisticType": "z",
+      "pValue": 6.825628858779924e-36,
+      "ciLower": 0.671004421885873,
+      "ciUpper": 0.920388197212335,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "theta[8,8]"
+    },
+    {
+      "key": "residual-variance:i_sat3",
+      "kind": "residual-variance",
+      "sourceId": "i_sat3",
+      "targetId": "i_sat3",
+      "scale": "standardized",
+      "est": 0.39947663855295057,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:theta[8,8]"
+    },
+    {
+      "key": "residual-variance:i_sat4",
+      "kind": "residual-variance",
+      "sourceId": "i_sat4",
+      "targetId": "i_sat4",
+      "scale": "unstandardized",
+      "est": 0.6998881512417024,
+      "se": 0.058126158319643594,
+      "statistic": 12.040846522024095,
+      "statisticType": "z",
+      "pValue": 2.1672024752807546e-33,
+      "ciLower": 0.5859629743755278,
+      "ciUpper": 0.8138133281078771,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "theta[9,9]"
+    },
+    {
+      "key": "residual-variance:i_sat4",
+      "kind": "residual-variance",
+      "sourceId": "i_sat4",
+      "targetId": "i_sat4",
+      "scale": "standardized",
+      "est": 0.3602590482721196,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:theta[9,9]"
+    },
+    {
+      "key": "residual-variance:i_loy1",
+      "kind": "residual-variance",
+      "sourceId": "i_loy1",
+      "targetId": "i_loy1",
+      "scale": "unstandardized",
+      "est": 0.5855067572726393,
+      "se": 0.053627604436959714,
+      "statistic": 10.918010666706433,
+      "statisticType": "z",
+      "pValue": 9.454388480541833e-28,
+      "ciLower": 0.4803985839990379,
+      "ciUpper": 0.6906149305462408,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "theta[10,10]"
+    },
+    {
+      "key": "residual-variance:i_loy1",
+      "kind": "residual-variance",
+      "sourceId": "i_loy1",
+      "targetId": "i_loy1",
+      "scale": "standardized",
+      "est": 0.3088912293051257,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:theta[10,10]"
+    },
+    {
+      "key": "residual-variance:i_loy2",
+      "kind": "residual-variance",
+      "sourceId": "i_loy2",
+      "targetId": "i_loy2",
+      "scale": "unstandardized",
+      "est": 0.6020496632354866,
+      "se": 0.05560737839983451,
+      "statistic": 10.826794583023865,
+      "statisticType": "z",
+      "pValue": 2.5699472193721378e-27,
+      "ciLower": 0.4930612042971204,
+      "ciUpper": 0.7110381221738528,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "theta[11,11]"
+    },
+    {
+      "key": "residual-variance:i_loy2",
+      "kind": "residual-variance",
+      "sourceId": "i_loy2",
+      "targetId": "i_loy2",
+      "scale": "standardized",
+      "est": 0.304193703806283,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:theta[11,11]"
+    },
+    {
+      "key": "residual-variance:i_loy3",
+      "kind": "residual-variance",
+      "sourceId": "i_loy3",
+      "targetId": "i_loy3",
+      "scale": "unstandardized",
+      "est": 0.7206730326131833,
+      "se": 0.06007877619864858,
+      "statistic": 11.995467920822831,
+      "statisticType": "z",
+      "pValue": 3.7529027143916114e-33,
+      "ciLower": 0.6029207950285899,
+      "ciUpper": 0.8384252701977767,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "theta[12,12]"
+    },
+    {
+      "key": "residual-variance:i_loy3",
+      "kind": "residual-variance",
+      "sourceId": "i_loy3",
+      "targetId": "i_loy3",
+      "scale": "standardized",
+      "est": 0.3762980578776536,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:theta[12,12]"
+    },
+    {
+      "key": "residual-variance:i_loy4",
+      "kind": "residual-variance",
+      "sourceId": "i_loy4",
+      "targetId": "i_loy4",
+      "scale": "unstandardized",
+      "est": 0.7970519779416666,
+      "se": 0.06439367741530602,
+      "statistic": 12.377798720844785,
+      "statisticType": "z",
+      "pValue": 3.4466684770213024e-35,
+      "ciLower": 0.6708426893755766,
+      "ciUpper": 0.9232612665077566,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "theta[13,13]"
+    },
+    {
+      "key": "residual-variance:i_loy4",
+      "kind": "residual-variance",
+      "sourceId": "i_loy4",
+      "targetId": "i_loy4",
+      "scale": "standardized",
+      "est": 0.4078470565142803,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:theta[13,13]"
+    },
+    {
+      "key": "variance:c_sq",
+      "kind": "variance",
+      "sourceId": "c_sq",
+      "targetId": "c_sq",
+      "scale": "unstandardized",
+      "est": 1.0140605829555633,
+      "se": 0.11275825574038947,
+      "statistic": 8.993226937549474,
+      "statisticType": "z",
+      "pValue": 2.4007585669819296e-19,
+      "ciLower": 0.7930584627448432,
+      "ciUpper": 1.2350627031662835,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "psi[1,1]"
+    },
+    {
+      "key": "variance:c_sq",
+      "kind": "variance",
+      "sourceId": "c_sq",
+      "targetId": "c_sq",
+      "scale": "standardized",
+      "est": 1,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:psi[1,1]"
+    },
+    {
+      "key": "residual-variance:c_sat",
+      "kind": "residual-variance",
+      "sourceId": "c_sat",
+      "targetId": "c_sat",
+      "scale": "unstandardized",
+      "est": 0.9503955994192801,
+      "se": 0.0945692405241369,
+      "statistic": 10.04973281113229,
+      "statisticType": "z",
+      "pValue": 9.211683890773505e-24,
+      "ciLower": 0.765043293946666,
+      "ciUpper": 1.1357479048918941,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "psi[2,2]"
+    },
+    {
+      "key": "residual-variance:c_sat",
+      "kind": "residual-variance",
+      "sourceId": "c_sat",
+      "targetId": "c_sat",
+      "scale": "standardized",
+      "est": 0.6939645217515726,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:psi[2,2]"
+    },
+    {
+      "key": "residual-variance:c_loy",
+      "kind": "residual-variance",
+      "sourceId": "c_loy",
+      "targetId": "c_loy",
+      "scale": "unstandardized",
+      "est": 0.6285085347971967,
+      "se": 0.06908311854117298,
+      "statistic": 9.097859912369339,
+      "statisticType": "z",
+      "pValue": 9.212922687477875e-20,
+      "ciLower": 0.49310811051678644,
+      "ciUpper": 0.7639089590776069,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "psi[3,3]"
+    },
+    {
+      "key": "residual-variance:c_loy",
+      "kind": "residual-variance",
+      "sourceId": "c_loy",
+      "targetId": "c_loy",
+      "scale": "standardized",
+      "est": 0.4797759129239417,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:psi[3,3]"
+    }
+  ],
+  "constructMetrics": [
+    {
+      "constructId": "c_sq",
+      "metric": "r2",
+      "value": null,
+      "missing": "not-applicable",
+      "definition": "R² of an exogenous factor is not defined."
+    },
+    {
+      "constructId": "c_sat",
+      "metric": "r2",
+      "value": 0.30603547824842736,
+      "definition": "R² = 1 − ψ_jj / Var(η_j), model-implied."
+    },
+    {
+      "constructId": "c_loy",
+      "metric": "r2",
+      "value": 0.5202240870760583,
+      "definition": "R² = 1 − ψ_jj / Var(η_j), model-implied."
+    }
+  ],
+  "matrices": [
+    {
+      "id": "latent-correlations",
+      "title": "Model-implied factor correlations",
+      "rowIds": ["c_sq", "c_sat", "c_loy"],
+      "colIds": ["c_sq", "c_sat", "c_loy"],
+      "values": [
+        [1, 0.5532047344775958, 0.5214143261567152],
+        [0.5532047344775958, 1, 0.7035957311202492],
+        [0.5214143261567152, 0.7035957311202492, 1]
+      ],
+      "symmetric": true,
+      "definition": "Φ = (I − B)⁻¹ Ψ (I − B)⁻ᵀ scaled to unit diagonal."
+    }
+  ],
+  "fit": [
+    {
+      "name": "chisq",
+      "value": 62.389480637803004,
+      "variant": "standard",
+      "definition": "Likelihood-ratio χ² against the saturated model, N·(F − F_h1) (lavaan: N·F_ML)."
+    },
+    {
+      "name": "df",
+      "value": 62,
+      "definition": "Degrees of freedom: sample moments − free parameters."
+    },
+    {
+      "name": "pvalue",
+      "value": 0.46224221805185794,
+      "variant": "standard",
+      "definition": "p value of the χ² test, P(χ²_df > X²)."
+    },
+    {
+      "name": "baseline.chisq",
+      "value": 3117.712976836735,
+      "variant": "standard",
+      "definition": "χ² of the independence (baseline) model."
+    },
+    {
+      "name": "baseline.df",
+      "value": 78,
+      "definition": "Degrees of freedom of the independence model, p(p−1)/2."
+    },
+    {
+      "name": "baseline.pvalue",
+      "value": 0,
+      "variant": "standard",
+      "definition": "p value of the baseline χ² test."
+    },
+    {
+      "name": "cfi",
+      "value": 0.9998718692716151,
+      "variant": "standard",
+      "definition": "CFI = 1 − max(X² − df, 0) / max(X² − df, X²_B − df_B, 0)."
+    },
+    {
+      "name": "tli",
+      "value": 0.9998388032771932,
+      "variant": "standard",
+      "definition": "TLI = (X²_B/df_B − X²/df) / (X²_B/df_B − 1)."
+    },
+    {
+      "name": "rmsea",
+      "value": 0.0037362922116915627,
+      "variant": "standard",
+      "ciLower": 0,
+      "ciUpper": 0.028797468550965762,
+      "definition": "RMSEA = sqrt(max(X²/(N·df) − 1/N, 0)); 90% CI by noncentral χ² inversion (lavaan uniroot convention)."
+    },
+    {
+      "name": "rmsea.pvalue",
+      "value": 0.9999859685741082,
+      "variant": "standard",
+      "definition": "Close-fit test P(RMSEA ≤ .05): 1 − F(X²; df, λ = N·df·0.05²)."
+    },
+    {
+      "name": "srmr",
+      "value": 0.02243668174660222,
+      "variant": "standard",
+      "definition": "SRMR (Bentler): root mean square of the covariance residuals scaled by the observed SDs, diagonal included (lavaan 'srmr')."
+    },
+    {
+      "name": "logl",
+      "value": -8606.841960853862,
+      "definition": "Log-likelihood of the fitted model."
+    },
+    {
+      "name": "unrestricted.logl",
+      "value": -8575.64722053496,
+      "definition": "Log-likelihood of the saturated (h1) model."
+    },
+    {
+      "name": "aic",
+      "value": 17271.683921707725,
+      "definition": "AIC = −2 logL + 2·npar."
+    },
+    {
+      "name": "bic",
+      "value": 17390.852101607892,
+      "definition": "BIC = −2 logL + npar·ln N."
+    },
+    {
+      "name": "bic2",
+      "value": 17298.81714384277,
+      "definition": "Sample-size adjusted BIC = −2 logL + npar·ln((N + 2)/24)."
+    },
+    {
+      "name": "npar",
+      "value": 29,
+      "definition": "Number of free parameters."
+    },
+    {
+      "name": "ntotal",
+      "value": 450,
+      "definition": "Number of cases used."
+    }
+  ],
+  "warnings": [],
+  "provenance": {
+    "engine": "browser",
+    "packageVersions": {
+      "@sem-studio/engine/cb": "0.1.0",
+      "ml-matrix": "6.15.1"
+    },
+    "call": "estimateCb(estimator=ML, missing=listwise, identification=marker, meanStructure=false)",
+    "startedAt": "2026-11-19T17:58:06.884Z",
+    "finishedAt": "2026-11-19T17:58:06.947Z"
+  }
+}

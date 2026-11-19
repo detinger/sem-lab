@@ -1,5 +1,7 @@
 # Phase 0 — Python engine spike (plspm, semopy)
 
+> **Moved in Phase 4.** The scripts and the pinned environment now live in `services/python-spike/` (run `cd services/python-spike && uv run python spike/<name>.py`). Paths below that say `apps/api` refer to that directory; evidence JSON files keep the original paths as recorded.
+
 Status: complete for the scope in PLAN.md §5 Phase 0 (Python part). Date: 2026-11-19. Machine: macOS arm64,
 8 cores. Every statement below was **executed here** unless it is explicitly labelled "from source".
 "R parity" (cSEM / lavaan vs Python) is a separate task; one informational cross-look is noted in §7.

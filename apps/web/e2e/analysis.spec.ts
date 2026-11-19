@@ -1,22 +1,13 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test } from '@playwright/test';
+import { OUT, expandLayout, setup, watch } from './helpers';
 
 /**
- * Phase 3 vertical slice against the REAL API and R engine (see playwright.config.ts):
- * sample data → "Two constructs" model → Analysis → confirm → run (cancel one, finish one) →
- * Results → Copy table → Modeler overlay → delete the job. Screenshots go to
- * test-results/phase3/ and must be looked at.
+ * Phase 4 vertical slice, entirely in the browser (no API server): sample data → "Two constructs"
+ * model → Analysis → run (cancel one, finish one with B = 200) → Results → Copy table → Modeler
+ * overlay. Screenshots go to test-results/phase4-browser/ and must be looked at.
  */
-const OUT = 'test-results/phase3';
-
-async function expandLayout(page: Page) {
-  await page.addStyleTag({
-    content: `.shell, .shell__column, .shell__main { height: auto !important; max-height: none !important; overflow: visible !important; }`,
-  });
-  await page.evaluate(() => document.fonts.ready);
-}
-
 for (const theme of ['light', 'dark'] as const) {
-  test(`analysis slice: import → model → run → results → overlay (${theme})`, async ({
+  test(`analysis slice in the browser: import → model → run → results → overlay (${theme})`, async ({
     page,
     context,
   }) => {
@@ -24,21 +15,10 @@ for (const theme of ['light', 'dark'] as const) {
     await context.grantPermissions(['clipboard-read', 'clipboard-write'], {
       origin: 'http://localhost:5173',
     });
-    const errors: string[] = [];
-    page.on('console', (m) => m.type() === 'error' && errors.push(m.text()));
-    page.on('pageerror', (e) => errors.push(e.message));
-    const jobIds: string[] = [];
-    page.on('response', async (r) => {
-      if (r.url().endsWith('/api/analysis/jobs') && r.request().method() === 'POST' && r.ok()) {
-        jobIds.push(((await r.json()) as { id: string }).id);
-      }
-    });
-    await page.setViewportSize({ width: 1440, height: 900 });
-    await page.addInitScript((value) => {
-      window.localStorage.setItem('sem-studio:theme', value);
-    }, theme);
+    const { errors, uploads } = watch(page);
+    await setup(page, theme);
 
-    // --- model + data (as in the Data Lab spec)
+    // --- model + data
     await page.goto('/modeler');
     await page
       .locator('.modeler-start-card', { hasText: 'Two constructs' })
@@ -55,7 +35,10 @@ for (const theme of ['light', 'dark'] as const) {
     // --- Analysis, idle
     await page.getByRole('link', { name: 'Analysis', exact: true }).click();
     await expect(page.getByRole('heading', { level: 1, name: 'Analysis' })).toBeVisible();
-    await expect(page.getByText(/Engine r-csem available/)).toBeVisible();
+    await expect(page.getByText('SEM Studio engine (runs in this browser)').first()).toBeVisible();
+    await expect(
+      page.getByText('Your data stay on this device; nothing is uploaded.'),
+    ).toBeVisible();
     await expect(page.getByText(/rows will be used/)).toBeVisible();
     await expandLayout(page);
     await page.screenshot({ path: `${OUT}/analysis-idle-${theme}.png`, fullPage: true });
@@ -63,28 +46,26 @@ for (const theme of ['light', 'dark'] as const) {
     // --- first run: large B, cancelled while bootstrapping (determinate progress)
     await page.getByLabel('Bootstrap samples (B)').fill('10000');
     await page.getByRole('button', { name: 'Run analysis' }).click();
-    const dialog = page.getByRole('dialog', { name: /Data leaves your browser/ });
-    await expect(dialog).toContainText('localhost:8000');
-    await expect(dialog).toContainText('Up to 24 hours');
-    await page.screenshot({ path: `${OUT}/analysis-confirm-${theme}.png` });
-    await dialog.getByRole('button', { name: 'Send data and run' }).click();
+    await expect(page.getByRole('dialog')).toHaveCount(0);
     await expect(page.getByRole('progressbar')).toBeVisible({ timeout: 60_000 });
     await expect(
       page.getByText(/bootstrap samples \(\d+ failed, \d+ inadmissible\)/),
     ).toBeVisible();
     await page.screenshot({ path: `${OUT}/analysis-running-${theme}.png`, fullPage: true });
     await page.getByRole('button', { name: 'Cancel' }).click();
-    await expect(page.getByText('Analysis cancelled')).toBeVisible({ timeout: 60_000 });
+    await expect(page.getByText('Analysis cancelled')).toBeVisible({ timeout: 30_000 });
     await page.getByRole('button', { name: 'Dismiss' }).click();
 
-    // --- second run: B = 200, no second confirmation
+    // --- second run: B = 200
     await page.getByLabel('Bootstrap samples (B)').fill('200');
     await page.getByRole('button', { name: 'Run analysis' }).click();
-    await expect(page.getByRole('dialog')).toHaveCount(0);
     await expect(page.getByRole('heading', { level: 1, name: 'Results' })).toBeVisible({
       timeout: 120_000,
     });
     await expect(page.getByLabel('Run provenance')).toContainText('B = 200 (200 valid');
+    await expect(page.getByLabel('Run provenance')).toContainText(
+      'SEM Studio engine (in browser), @sem-studio/engine 0.1.0',
+    );
 
     // --- Results tabs
     for (const tab of [
@@ -121,7 +102,6 @@ for (const theme of ['light', 'dark'] as const) {
     });
     expect(clip.types).toEqual(expect.arrayContaining(['text/html', 'text/plain']));
     expect(clip.html).toContain('<table');
-    expect(clip.html).toContain('<thead>');
     expect(clip.text).toContain('\t');
     expect(clip.text).toContain('β');
 
@@ -135,19 +115,13 @@ for (const theme of ['light', 'dark'] as const) {
     await page.getByRole('radio', { name: 'p', exact: true }).click();
     await page.screenshot({ path: `${OUT}/modeler-overlay-p-${theme}.png` });
 
-    // --- delete the uploaded data and jobs
+    // --- run history with measured durations
     await page.getByRole('link', { name: 'Analysis', exact: true }).click();
-    expect(jobIds.length).toBeGreaterThanOrEqual(2);
-    await page
-      .getByRole('button', { name: /Delete uploaded data and jobs for this project/ })
-      .click();
-    await expect(page.getByText('Uploaded data and jobs deleted from the service')).toBeVisible();
-    for (const id of jobIds) {
-      const res = await page.request.get(`http://localhost:8000/api/analysis/jobs/${id}`);
-      expect(res.status()).toBe(404);
-    }
+    await expect(page.getByRole('columnheader', { name: 'Duration' })).toBeVisible();
     await expandLayout(page);
     await page.screenshot({ path: `${OUT}/analysis-history-${theme}.png`, fullPage: true });
+
+    expect(uploads, uploads.join('\n')).toEqual([]);
     expect(errors, errors.join('\n')).toEqual([]);
   });
 }

@@ -1,0 +1,485 @@
+{
+  "schemaVersion": 1,
+  "sample": {
+    "nRows": 200,
+    "nUsed": 200,
+    "nDropped": 0,
+    "missingData": "listwise"
+  },
+  "estimation": {
+    "converged": true,
+    "iterations": 5,
+    "admissible": false,
+    "messages": [
+      "ML by Fisher scoring with Newton refinement: 5 iterations, max |gradient| 1.17e-13."
+    ]
+  },
+  "parameters": [
+    {
+      "key": "loading:c_h:i_h1",
+      "kind": "loading",
+      "sourceId": "c_h",
+      "targetId": "i_h1",
+      "scale": "unstandardized",
+      "est": 1,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-applicable",
+        "statistic": "not-applicable",
+        "pValue": "not-applicable",
+        "ciLower": "not-applicable",
+        "ciUpper": "not-applicable"
+      },
+      "status": "fixed",
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "lambda[1,1]"
+    },
+    {
+      "key": "loading:c_h:i_h1",
+      "kind": "loading",
+      "sourceId": "c_h",
+      "targetId": "i_h1",
+      "scale": "standardized",
+      "est": 1.2020815280171298,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:lambda[1,1]"
+    },
+    {
+      "key": "loading:c_h:i_h2",
+      "kind": "loading",
+      "sourceId": "c_h",
+      "targetId": "i_h2",
+      "scale": "unstandardized",
+      "est": 0.5882352941176474,
+      "se": 0.048934725341628536,
+      "statistic": 12.020815280171574,
+      "statisticType": "z",
+      "pValue": 2.7623240713248776e-33,
+      "ciLower": 0.492324994854696,
+      "ciUpper": 0.6841455933805989,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "lambda[2,1]"
+    },
+    {
+      "key": "loading:c_h:i_h2",
+      "kind": "loading",
+      "sourceId": "c_h",
+      "targetId": "i_h2",
+      "scale": "standardized",
+      "est": 0.7071067811865483,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:lambda[2,1]"
+    },
+    {
+      "key": "loading:c_h:i_h3",
+      "kind": "loading",
+      "sourceId": "c_h",
+      "targetId": "i_h3",
+      "scale": "unstandardized",
+      "est": 0.5882352941176472,
+      "se": 0.04893472534162965,
+      "statistic": 12.020815280171297,
+      "statisticType": "z",
+      "pValue": 2.7623240713341913e-33,
+      "ciLower": 0.4923249948546936,
+      "ciUpper": 0.6841455933806008,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "lambda[3,1]"
+    },
+    {
+      "key": "loading:c_h:i_h3",
+      "kind": "loading",
+      "sourceId": "c_h",
+      "targetId": "i_h3",
+      "scale": "standardized",
+      "est": 0.7071067811865485,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:lambda[3,1]"
+    },
+    {
+      "key": "residual-variance:i_h1",
+      "kind": "residual-variance",
+      "sourceId": "i_h1",
+      "targetId": "i_h1",
+      "scale": "unstandardized",
+      "est": -0.4427749999999999,
+      "se": 0.07700891833498766,
+      "statistic": -5.74965873529005,
+      "statisticType": "z",
+      "pValue": 8.942376204149382e-9,
+      "ciLower": -0.5937097064249619,
+      "ciUpper": -0.2918402935750379,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "theta[1,1]"
+    },
+    {
+      "key": "residual-variance:i_h1",
+      "kind": "residual-variance",
+      "sourceId": "i_h1",
+      "targetId": "i_h1",
+      "scale": "standardized",
+      "est": -0.4449999999999973,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:theta[1,1]"
+    },
+    {
+      "key": "residual-variance:i_h2",
+      "kind": "residual-variance",
+      "sourceId": "i_h2",
+      "targetId": "i_h2",
+      "scale": "unstandardized",
+      "est": 0.4975000000000002,
+      "se": 0.05431737540383545,
+      "statistic": 9.159131793486303,
+      "statisticType": "z",
+      "pValue": 5.2316517647999527e-20,
+      "ciLower": 0.39103990047374093,
+      "ciUpper": 0.6039600995262595,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "theta[2,2]"
+    },
+    {
+      "key": "residual-variance:i_h2",
+      "kind": "residual-variance",
+      "sourceId": "i_h2",
+      "targetId": "i_h2",
+      "scale": "standardized",
+      "est": 0.49999999999999883,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:theta[2,2]"
+    },
+    {
+      "key": "residual-variance:i_h3",
+      "kind": "residual-variance",
+      "sourceId": "i_h3",
+      "targetId": "i_h3",
+      "scale": "unstandardized",
+      "est": 0.4974999999999997,
+      "se": 0.05431737540383464,
+      "statistic": 9.15913179348643,
+      "statisticType": "z",
+      "pValue": 5.2316517647937127e-20,
+      "ciLower": 0.39103990047374204,
+      "ciUpper": 0.6039600995262574,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "theta[3,3]"
+    },
+    {
+      "key": "residual-variance:i_h3",
+      "kind": "residual-variance",
+      "sourceId": "i_h3",
+      "targetId": "i_h3",
+      "scale": "standardized",
+      "est": 0.4999999999999988,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:theta[3,3]"
+    },
+    {
+      "key": "variance:c_h",
+      "kind": "variance",
+      "sourceId": "c_h",
+      "targetId": "c_h",
+      "scale": "unstandardized",
+      "est": 1.4377750000000058,
+      "se": 0.10913124891902021,
+      "statistic": 13.174732390966156,
+      "statisticType": "z",
+      "pValue": 1.2266160181305e-39,
+      "ciLower": 1.2238816825308505,
+      "ciUpper": 1.651668317469161,
+      "status": "estimated",
+      "inference": {
+        "method": "analytic",
+        "level": 0.95,
+        "sides": "two-sided"
+      },
+      "sourceMethod": "sem-studio:cb-sem:ML",
+      "rawPath": "psi[1,1]"
+    },
+    {
+      "key": "variance:c_h",
+      "kind": "variance",
+      "sourceId": "c_h",
+      "targetId": "c_h",
+      "scale": "standardized",
+      "est": 1,
+      "se": null,
+      "statistic": null,
+      "pValue": null,
+      "ciLower": null,
+      "ciUpper": null,
+      "missing": {
+        "se": "not-supported",
+        "statistic": "not-supported",
+        "pValue": "not-supported",
+        "ciLower": "not-supported",
+        "ciUpper": "not-supported"
+      },
+      "status": "estimated",
+      "sourceMethod": "sem-studio:cb-sem:ML:std.all",
+      "rawPath": "std.all:psi[1,1]"
+    }
+  ],
+  "constructMetrics": [
+    {
+      "constructId": "c_h",
+      "metric": "r2",
+      "value": null,
+      "missing": "not-applicable",
+      "definition": "R² of an exogenous factor is not defined."
+    }
+  ],
+  "matrices": [
+    {
+      "id": "latent-correlations",
+      "title": "Model-implied factor correlations",
+      "rowIds": ["c_h"],
+      "colIds": ["c_h"],
+      "values": [[1]],
+      "symmetric": true,
+      "definition": "Φ = (I − B)⁻¹ Ψ (I − B)⁻ᵀ scaled to unit diagonal."
+    }
+  ],
+  "fit": [
+    {
+      "name": "chisq",
+      "value": 5.329070518200751e-13,
+      "variant": "standard",
+      "definition": "Likelihood-ratio χ² against the saturated model, N·(F − F_h1) (lavaan: N·F_ML)."
+    },
+    {
+      "name": "df",
+      "value": 0,
+      "definition": "Degrees of freedom: sample moments − free parameters."
+    },
+    {
+      "name": "pvalue",
+      "value": null,
+      "missing": "not-applicable",
+      "variant": "standard",
+      "definition": "p value of the χ² test (not defined for df = 0)."
+    },
+    {
+      "name": "baseline.chisq",
+      "value": 718.713854861921,
+      "variant": "standard",
+      "definition": "χ² of the independence (baseline) model."
+    },
+    {
+      "name": "baseline.df",
+      "value": 3,
+      "definition": "Degrees of freedom of the independence model, p(p−1)/2."
+    },
+    {
+      "name": "baseline.pvalue",
+      "value": 1.836920932173774e-155,
+      "variant": "standard",
+      "definition": "p value of the baseline χ² test."
+    },
+    {
+      "name": "cfi",
+      "value": null,
+      "missing": "not-applicable",
+      "variant": "standard",
+      "definition": "CFI = 1 − max(X² − df, 0) / max(X² − df, X²_B − df_B, 0). Not informative for a just-identified model (df = 0)."
+    },
+    {
+      "name": "tli",
+      "value": null,
+      "missing": "not-applicable",
+      "variant": "standard",
+      "definition": "TLI = (X²_B/df_B − X²/df) / (X²_B/df_B − 1). Not informative for df = 0."
+    },
+    {
+      "name": "rmsea",
+      "value": null,
+      "missing": "not-applicable",
+      "variant": "standard",
+      "definition": "RMSEA = sqrt(max(X²/(N·df) − 1/N, 0)); 90% CI by noncentral χ² inversion (lavaan uniroot convention). Not informative for df = 0."
+    },
+    {
+      "name": "rmsea.pvalue",
+      "value": null,
+      "missing": "not-applicable",
+      "variant": "standard",
+      "definition": "Close-fit test P(RMSEA ≤ .05); not defined for df = 0."
+    },
+    {
+      "name": "srmr",
+      "value": null,
+      "missing": "not-applicable",
+      "variant": "standard",
+      "definition": "SRMR (Bentler): root mean square of the covariance residuals scaled by the observed SDs, diagonal included (lavaan 'srmr'). Zero by construction for df = 0."
+    },
+    {
+      "name": "logl",
+      "value": -490.50242994478003,
+      "definition": "Log-likelihood of the fitted model."
+    },
+    {
+      "name": "unrestricted.logl",
+      "value": -490.50242994477975,
+      "definition": "Log-likelihood of the saturated (h1) model."
+    },
+    {
+      "name": "aic",
+      "value": 993.0048598895601,
+      "definition": "AIC = −2 logL + 2·npar."
+    },
+    {
+      "name": "bic",
+      "value": 1012.7947640888483,
+      "definition": "BIC = −2 logL + npar·ln N."
+    },
+    {
+      "name": "bic2",
+      "value": 993.7861430918796,
+      "definition": "Sample-size adjusted BIC = −2 logL + npar·ln((N + 2)/24)."
+    },
+    {
+      "name": "npar",
+      "value": 6,
+      "definition": "Number of free parameters."
+    },
+    {
+      "name": "ntotal",
+      "value": 200,
+      "definition": "Number of cases used."
+    }
+  ],
+  "warnings": [
+    {
+      "code": "CB_NEGATIVE_VARIANCE",
+      "severity": "warning",
+      "message": "Negative residual variance estimate (Heywood case) for i_h1: the solution is inadmissible; the standardized loading exceeds 1 in absolute value. Do not interpret the fit of this solution.",
+      "elementIds": ["i_h1"]
+    },
+    {
+      "code": "CB_JUST_IDENTIFIED",
+      "severity": "info",
+      "message": "The model is just-identified (df = 0): it reproduces the sample moments exactly, so χ² = 0 and the global fit indices carry no information about fit."
+    }
+  ],
+  "provenance": {
+    "engine": "browser",
+    "packageVersions": {
+      "@sem-studio/engine/cb": "0.1.0",
+      "ml-matrix": "6.15.1"
+    },
+    "call": "estimateCb(estimator=ML, missing=listwise, identification=marker, meanStructure=false)",
+    "startedAt": "2026-11-19T17:58:07.036Z",
+    "finishedAt": "2026-11-19T17:58:07.037Z"
+  }
+}

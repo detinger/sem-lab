@@ -348,3 +348,14 @@
   font-size: 12px;
   color: var(--text-muted);
 }
+
+.modeler-legend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-3) var(--space-6);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-subtle, var(--bg));
+  font-size: 12px;
+  color: var(--text-muted);
+}

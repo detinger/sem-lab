@@ -5,8 +5,7 @@
 
 [build.environment]
   NODE_VERSION = "26"
-  # VITE_API_BASE_URL is set in the Netlify UI per context (it is baked in at build time).
-  # Never put credentials in VITE_* variables: they end up in the public bundle.
+  # No environment variables are needed: estimation runs in the browser (no backend).
 
 # Hashed assets are immutable.
 [[headers]]

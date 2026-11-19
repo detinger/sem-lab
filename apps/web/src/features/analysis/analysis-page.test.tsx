@@ -1,5 +1,5 @@
 import 'fake-indexeddb/auto';
-import { render, screen, waitFor, within } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Dexie from 'dexie';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
@@ -8,49 +8,11 @@ import { ToastProvider } from '@/components/ui';
 import { useDataLab } from '@/features/data-lab/store';
 import { useModeler } from '@/features/modeler/store';
 import { DB_NAME, resetDbForTests } from '@/storage/projects';
-import { type Health, type JobStatus, api } from './api';
 import { AnalysisPage } from './AnalysisPage';
-import { useAnalysisConfig, defaultConfig } from './config';
+import { defaultConfig, toConfiguration, useAnalysisConfig } from './config';
 import { useJobs } from './jobs';
 import { useRuns } from './runs';
-import { FIXTURE_RESULT, openTamProject } from './test-support';
-
-vi.mock('./api', async (orig) => ({
-  ...(await orig<Record<string, unknown>>()),
-  API_BASE_URL: 'https://api.example.test',
-}));
-
-const HEALTH: Health = {
-  status: 'ok',
-  version: '1',
-  engines: [{ id: 'r-csem', available: true, version: '0.7.1', jobs: true }],
-  limits: {
-    maxCsvMb: 25,
-    maxRows: 1000,
-    maxColumns: 500,
-    maxBootstrapReps: 10000,
-    maxConcurrentJobs: 2,
-    jobTimeoutSeconds: 1800,
-    dataRetentionHours: 24,
-  },
-};
-
-const status = (over: Partial<JobStatus>): JobStatus => ({
-  id: 'job-1',
-  status: 'estimating',
-  stage: 'estimating',
-  done: null,
-  total: null,
-  failed: null,
-  inadmissible: null,
-  warnings: [],
-  error: null,
-  engine: 'r-csem',
-  createdAt: '',
-  updatedAt: '',
-  finishedAt: null,
-  ...over,
-});
+import { loadFixtureCase, openTamProject } from './test-support';
 
 function renderPage() {
   return render(
@@ -65,11 +27,17 @@ function renderPage() {
   );
 }
 
+const setConfig = (patch: Partial<ReturnType<typeof defaultConfig>>) =>
+  useAnalysisConfig.setState({ config: { ...defaultConfig(42), ...patch } });
+
+let fetchSpy: ReturnType<typeof vi.fn>;
+
 beforeEach(async () => {
   window.localStorage.clear();
-  vi.spyOn(api, 'health').mockResolvedValue(HEALTH);
-  useAnalysisConfig.setState({ config: defaultConfig(42) });
-  useJobs.setState({ active: null, outcome: null, remoteConfirmed: false, intervalMs: 5 });
+  fetchSpy = vi.fn(() => Promise.reject(new Error('no network in the Analysis flow')));
+  vi.stubGlobal('fetch', fetchSpy);
+  setConfig({});
+  useJobs.setState({ active: null, outcome: null });
   useRuns.setState({ projectId: null, runs: [], selectedRunId: null });
   await openTamProject();
 });
@@ -80,19 +48,23 @@ afterEach(async () => {
 });
 
 describe('configuration', () => {
-  it('gates options by the registry: BCa disabled with the reason, centroid enabled', async () => {
+  it('gates options by the registry: BCa disabled with the reason, CB-SEM and centroid enabled', async () => {
     renderPage();
     const bca = await screen.findByRole('option', { name: /BCa/ });
     expect(bca).toBeDisabled();
-    expect(screen.getByText(/BCa unavailable: .*not yet checked/)).toBeInTheDocument();
+    expect(screen.getByText(/BCa unavailable: .*not implemented/)).toBeInTheDocument();
     expect(screen.getByRole('radio', { name: 'Centroid' })).toBeEnabled();
-    const cb = screen.getByRole('radio', { name: /CB-SEM/ });
-    expect(cb).toBeDisabled();
+    expect(screen.getByRole('radio', { name: /CB-SEM/ })).toBeEnabled();
+  });
+
+  it('names the in-browser engine and states the privacy line', async () => {
+    renderPage();
     expect(
-      within(cb).getByText(
-        /arrives in a later release \(lavaan engine verified, adapter pending\)/,
-      ),
-    ).toBeInTheDocument();
+      await screen.findAllByText(/SEM Studio engine \(runs in this browser\)/),
+    ).not.toHaveLength(0);
+    expect(
+      screen.getAllByText('Your data stay on this device; nothing is uploaded.'),
+    ).not.toHaveLength(0);
   });
 
   it('shows what listwise deletion will do', async () => {
@@ -113,92 +85,129 @@ describe('configuration', () => {
   });
 });
 
-describe('running', () => {
-  it('asks for confirmation once, polls, shows stage and a determinate bar only with done/total', async () => {
+describe('CB-SEM options', () => {
+  it('offers ML and MLR, disables MLM and WLSMV with the registry reasons, hides the bootstrap', async () => {
     const user = userEvent.setup();
-    let current = status({ status: 'estimating', stage: 'estimating' });
-    const submit = vi.spyOn(api, 'submitJob').mockResolvedValue({ id: 'job-1' });
-    vi.spyOn(api, 'status').mockImplementation(() => Promise.resolve(current));
-    vi.spyOn(api, 'result').mockResolvedValue(FIXTURE_RESULT);
     renderPage();
-    const run = await screen.findByRole('button', { name: 'Run analysis' });
-    await waitFor(() => expect(run).toBeEnabled());
-    await user.click(run);
-
-    const dialog = await screen.findByRole('dialog', { name: /Data leaves your browser/ });
-    expect(within(dialog).getByText('api.example.test')).toBeInTheDocument();
-    expect(dialog).toHaveTextContent('Up to 24 hours');
-    expect(dialog).toHaveTextContent('Delete uploaded data');
-    expect(submit).not.toHaveBeenCalled();
-    await user.click(within(dialog).getByRole('button', { name: 'Send data and run' }));
-
-    expect((await screen.findAllByText('Estimating the model')).length).toBeGreaterThan(0);
-    expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
-    expect(submit).toHaveBeenCalledTimes(1);
-
-    current = status({
-      status: 'bootstrapping',
-      stage: 'bootstrapping',
-      done: 200,
-      total: 1000,
-      failed: 1,
-      inadmissible: 2,
-    });
-    const bar = await screen.findByRole('progressbar');
-    expect(bar).toHaveAttribute('aria-valuenow', '200');
-    expect(bar).toHaveAttribute('aria-valuemax', '1000');
+    await user.click(await screen.findByRole('radio', { name: /CB-SEM/ }));
+    expect(screen.getByRole('radio', { name: 'ML' })).toBeEnabled();
+    expect(screen.getByRole('radio', { name: 'MLR' })).toBeEnabled();
+    expect(screen.getByRole('radio', { name: 'MLM' })).toBeDisabled();
+    expect(screen.getByRole('radio', { name: 'WLSMV' })).toBeDisabled();
+    expect(screen.getByText(/MLM \(Satorra/)).toBeInTheDocument();
+    expect(screen.getByText(/Ordinal estimation \(WLSMV\/DWLS\)/)).toBeInTheDocument();
+    expect(screen.queryByLabelText('Bootstrap samples (B)')).not.toBeInTheDocument();
     expect(
-      screen.getByText('200 of 1,000 bootstrap samples (1 failed, 2 inadmissible)'),
+      screen.getByText(
+        'Bootstrap for CB-SEM is not available yet; standard errors are analytic (ML: expected information; MLR: robust sandwich; FIML: observed information).',
+      ),
     ).toBeInTheDocument();
-
-    current = status({ status: 'complete', stage: null, finishedAt: 'x' });
-    expect(await screen.findByText('results page')).toBeInTheDocument();
-    expect(useRuns.getState().runs[0]?.record.status).toBe('complete');
-    expect(useJobs.getState().remoteConfirmed).toBe(true);
+    await user.click(screen.getByRole('radio', { name: 'FIML' }));
+    expect(screen.getByText(/FIML implies a mean structure/)).toBeInTheDocument();
   });
 
-  it('does not ask again in the same session', async () => {
-    const user = userEvent.setup();
-    useJobs.setState({ remoteConfirmed: true });
-    const submit = vi.spyOn(api, 'submitJob').mockResolvedValue({ id: 'job-1' });
-    vi.spyOn(api, 'status').mockResolvedValue(
-      status({
-        status: 'failed',
-        error: { code: 'ENGINE_NONCONVERGENCE', message: 'did not converge' },
-      }),
-    );
-    renderPage();
-    const run = await screen.findByRole('button', { name: 'Run analysis' });
-    await waitFor(() => expect(run).toBeEnabled());
-    await user.click(run);
-    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-    await waitFor(() => expect(submit).toHaveBeenCalledTimes(1));
-    // failed job: code, message and a fix hint
-    const failure = await screen.findByRole('region', { name: 'Analysis failed' });
-    expect(failure).toHaveTextContent('ENGINE_NONCONVERGENCE');
-    expect(failure).toHaveTextContent('did not converge');
-    expect(failure).toHaveTextContent(/Raise the maximum iterations/);
-    await user.click(within(failure).getByRole('button', { name: 'Dismiss' }));
-    await waitFor(() => expect(screen.getByRole('button', { name: 'Run analysis' })).toBeEnabled());
-    await user.click(screen.getByRole('button', { name: 'Run analysis' }));
-    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-    await waitFor(() => expect(submit).toHaveBeenCalledTimes(2));
+  it('builds the CB configuration for the browser engine (FIML turns the mean structure on)', () => {
+    const ml = toConfiguration({ ...defaultConfig(1), method: 'cb-sem' });
+    expect(ml.ok && ml.analysis).toMatchObject({
+      method: 'cb-sem',
+      engine: 'browser',
+      estimator: 'ML',
+      missingData: 'listwise',
+      cb: { identification: 'marker', meanStructure: false },
+    });
+    expect(ml.ok && ml.analysis.bootstrap).toBeUndefined();
+    const fiml = toConfiguration({
+      ...defaultConfig(1),
+      method: 'cb-sem',
+      cbEstimator: 'MLR',
+      identification: 'std-lv',
+      cbMissing: 'fiml',
+    });
+    expect(fiml.ok && fiml.analysis).toMatchObject({
+      estimator: 'MLR',
+      missingData: 'fiml',
+      cb: { identification: 'std-lv', meanStructure: true },
+    });
   });
 
-  it('cancel calls api.cancel', async () => {
+  it('runs a CB-SEM analysis locally and records the run with engine browser', async () => {
     const user = userEvent.setup();
-    useJobs.setState({ remoteConfirmed: true });
-    vi.spyOn(api, 'submitJob').mockResolvedValue({ id: 'job-1' });
-    vi.spyOn(api, 'status').mockResolvedValue(
-      status({ status: 'bootstrapping', stage: 'bootstrapping' }),
-    );
-    const cancel = vi.spyOn(api, 'cancel').mockResolvedValue({});
-    renderPage();
-    const run = await screen.findByRole('button', { name: 'Run analysis' });
-    await waitFor(() => expect(run).toBeEnabled());
-    await user.click(run);
-    await user.click(await screen.findByRole('button', { name: 'Cancel' }));
-    expect(cancel).toHaveBeenCalledWith('job-1');
+    const { model, csv } = await loadFixtureCase('service-quality');
+    useModeler.getState().newProject('CB');
     useDataLab.getState().clear();
+    useModeler.getState().edit(() => model);
+    await useDataLab
+      .getState()
+      .importText(csv, { name: 'sq', source: { kind: 'file', fileName: 'sq.csv' } });
+    renderPage();
+    await user.click(await screen.findByRole('radio', { name: /CB-SEM/ }));
+    const run = screen.getByRole('button', { name: 'Run analysis' });
+    await waitFor(() => expect(run).toBeEnabled());
+    await user.click(run);
+    expect(
+      await screen.findByText('results page', undefined, { timeout: 30_000 }),
+    ).toBeInTheDocument();
+    const rec = useRuns.getState().runs[0];
+    expect(rec?.record).toMatchObject({ status: 'complete', engine: 'browser', method: 'cb-sem' });
+    expect(rec?.durationMs).toBeGreaterThan(0);
+    expect(fetchSpy).not.toHaveBeenCalled();
+  }, 60_000);
+});
+
+describe('running locally', () => {
+  it('runs without any confirmation or network call, records a browser run with its duration', async () => {
+    const user = userEvent.setup();
+    setConfig({ repetitions: '40' });
+    renderPage();
+    const run = await screen.findByRole('button', { name: 'Run analysis' });
+    await waitFor(() => expect(run).toBeEnabled());
+    await user.click(run);
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    expect(
+      await screen.findByText('results page', undefined, { timeout: 30_000 }),
+    ).toBeInTheDocument();
+    const rec = useRuns.getState().runs[0];
+    expect(rec?.record).toMatchObject({ status: 'complete', engine: 'browser' });
+    expect(rec?.record.result?.bootstrap?.requested).toBe(40);
+    expect(rec?.durationMs).toBeGreaterThan(0);
+    expect(fetchSpy).not.toHaveBeenCalled();
+  }, 60_000);
+
+  it('shows a determinate bar only with real counts, and Cancel stops the run with no result', async () => {
+    const user = userEvent.setup();
+    setConfig({ repetitions: '10000' });
+    renderPage();
+    const run = await screen.findByRole('button', { name: 'Run analysis' });
+    await waitFor(() => expect(run).toBeEnabled());
+    await user.click(run);
+    const bar = await screen.findByRole('progressbar', undefined, { timeout: 30_000 });
+    expect(bar).toHaveAttribute('aria-valuemax', '10000');
+    expect(Number(bar.getAttribute('aria-valuenow'))).toBeLessThan(10000);
+    expect(
+      screen.getByText(/bootstrap samples \(\d+ failed, \d+ inadmissible\)/),
+    ).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: 'Cancel' }));
+    expect(
+      await screen.findByText('Analysis cancelled', undefined, { timeout: 30_000 }),
+    ).toBeInTheDocument();
+    const rec = useRuns.getState().runs[0];
+    expect(rec?.record.status).toBe('cancelled');
+    expect(rec?.record.result).toBeUndefined();
+    expect(fetchSpy).not.toHaveBeenCalled();
+    // the run history shows it as cancelled, with its measured duration column
+    expect(await screen.findByText('Cancelled')).toBeInTheDocument();
+  }, 60_000);
+
+  it('keeps Run disabled and calls no network when the data cannot be mapped', async () => {
+    const { model } = await loadFixtureCase('pls-two-construct');
+    useModeler.getState().newProject('bad');
+    useDataLab.getState().clear();
+    useModeler.getState().edit(() => model);
+    await useDataLab
+      .getState()
+      .importText('a,b\n1,1\n1,1\n1,1', { name: 'x', source: { kind: 'file', fileName: 'x.csv' } });
+    renderPage();
+    expect(await screen.findByRole('button', { name: 'Run analysis' })).toBeDisabled();
+    expect(fetchSpy).not.toHaveBeenCalled();
   });
 });

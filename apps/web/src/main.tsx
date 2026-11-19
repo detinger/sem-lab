@@ -13,6 +13,9 @@ if (!container) {
 
 applyTheme(resolveInitialTheme());
 
+// End-to-end tests drive the app through this hook; it does not exist in a production build.
+if (import.meta.env.DEV) void import('@/features/ipma/devHook').then((m) => m.registerDevHook());
+
 createRoot(container).render(
   <StrictMode>
     <App />

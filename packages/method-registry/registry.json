@@ -38,7 +38,7 @@
       "package": "semopy",
       "version": "2.3.11",
       "license": "MIT",
-      "notes": "Python 3.12; pinned in apps/api/uv.lock"
+      "notes": "Python 3.12; pinned in services/python-spike/uv.lock (Phase 0 verification only; SEM Studio's Python exports use packages/python-engine)."
     },
     {
       "id": "py-plspm",

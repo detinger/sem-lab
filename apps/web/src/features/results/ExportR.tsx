@@ -2,9 +2,13 @@ import { FileCode2 } from 'lucide-react';
 import { Button, Tooltip, useToast } from '@/components/ui';
 import { buildAnalysisData } from '@/domain/dataset/analysis-data';
 import type { Dataset } from '@/domain/dataset/types';
-import { analysisCsv } from '@/features/analysis/api';
 import type { RunView } from '@/features/analysis/runs';
-import { exportCsemScript } from '@/features/code-export';
+import {
+  LAVAAN_TESTED,
+  analysisCsv,
+  exportCsemScript,
+  exportLavaanScript,
+} from '@/features/code-export';
 import { useDataLab } from '@/features/data-lab/store';
 import { listDatasets, loadDataset } from '@/storage/datasets';
 
@@ -37,15 +41,33 @@ async function datasetOf(run: RunView): Promise<Dataset | null> {
   }
 }
 
+/** Why the CB export is unavailable for this run, or null when it is offered. */
+export function cbExportBlock(run: RunView): string | null {
+  if (run.record.method !== 'cb-sem') return null;
+  const e = run.record.options.estimator;
+  if (e !== 'ML' && e !== 'MLR')
+    return `The lavaan export covers ML and MLR only; this run used ${e}.`;
+  if (run.model.constructs.some((c) => c.measurement !== 'reflective'))
+    return 'The lavaan export needs reflective constructs only; this model has composite constructs.';
+  return null;
+}
+
 export function ExportRButton({ run, projectName }: { run: RunView; projectName: string }) {
   const { toast } = useToast();
   const isCb = run.record.method === 'cb-sem';
   const result = run.record.result;
+  const block = cbExportBlock(run);
 
   const onClick = async (): Promise<void> => {
-    if (!result) return;
+    if (!result || block) return;
     const ds = await datasetOf(run);
-    const data = ds ? buildAnalysisData(run.model, ds, 'listwise') : null;
+    const data = ds
+      ? buildAnalysisData(
+          run.model,
+          ds,
+          run.record.options.missingData === 'fiml' ? 'fiml' : 'listwise',
+        )
+      : null;
     if (!ds || !data || 'error' in data) {
       toast({
         title: 'The data of this run are not available in this browser',
@@ -54,21 +76,40 @@ export function ExportRButton({ run, projectName }: { run: RunView; projectName:
       });
       return;
     }
-    const script = exportCsemScript({
+    const common = {
       model: run.model,
       analysis: run.record.options,
       projectName,
       modelHash: run.modelHash,
       dataFingerprint: run.dataFingerprint,
-      dataColumns: data.columns,
       nRows: result.sample.nRows,
       nUsed: result.sample.nUsed,
       transformations: ds.transformations,
       generatedAt: new Date().toISOString(),
       appVersion: APP_VERSION,
-      ...(result.bootstrap ? { chunkSize: result.bootstrap.chunkSize } : {}),
-    });
-    download(`${safe(projectName)}-cSEM.R`, script, 'text/plain;charset=utf-8');
+    };
+    let script: string;
+    try {
+      script = isCb
+        ? exportLavaanScript(common)
+        : exportCsemScript({
+            ...common,
+            dataColumns: data.columns,
+            ...(result.bootstrap ? { chunkSize: result.bootstrap.chunkSize } : {}),
+          });
+    } catch (e) {
+      toast({
+        title: 'The R script could not be written',
+        ...(e instanceof Error ? { description: e.message } : {}),
+        variant: 'error',
+      });
+      return;
+    }
+    download(
+      `${safe(projectName)}-${isCb ? 'lavaan' : 'cSEM'}.R`,
+      script,
+      'text/plain;charset=utf-8',
+    );
     download('analysis-data.csv', analysisCsv(data), 'text/csv;charset=utf-8');
     toast({
       title: 'R script and data file downloaded',
@@ -80,7 +121,7 @@ export function ExportRButton({ run, projectName }: { run: RunView; projectName:
   const button = (
     <Button
       icon={<FileCode2 size={16} />}
-      disabled={isCb || !result}
+      disabled={Boolean(block) || !result}
       onClick={() => void onClick()}
     >
       Export R script
@@ -88,18 +129,15 @@ export function ExportRButton({ run, projectName }: { run: RunView; projectName:
   );
   return (
     <div className="rs-export">
-      {isCb ? (
-        <Tooltip content="CB-SEM export arrives with the lavaan adapter">{button}</Tooltip>
-      ) : (
-        button
-      )}
-      {isCb ? <p className="rs-note">CB-SEM export arrives with the lavaan adapter</p> : null}
+      {block ? <Tooltip content={block}>{button}</Tooltip> : button}
+      {block ? <p className="rs-note">{block}</p> : null}
       {run.staleness !== 'current' ? (
         <p className="rs-note">Exports the model and data of this historical run.</p>
       ) : null}
       <p className="rs-note">
-        The script and data file reproduce these estimates and bootstrap intervals exactly with R
-        4.6.2 and cSEM 0.7.1 (verified by an automated test).
+        {isCb
+          ? `The script and data file reproduce these estimates, standard errors and fit indices with R ${LAVAAN_TESTED.R} and lavaan ${LAVAAN_TESTED.lavaan} (verified by an automated test; the last digits, about 1e-6, can differ).`
+          : 'The script and data file reproduce these estimates and bootstrap intervals exactly with R 4.6.2 and cSEM 0.7.1 (verified by an automated test).'}
       </p>
     </div>
   );

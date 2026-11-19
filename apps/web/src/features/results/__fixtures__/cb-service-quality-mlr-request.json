@@ -1,0 +1,189 @@
+{
+  "model": {
+    "constructs": [
+      {
+        "id": "c_sq",
+        "name": "SQ",
+        "label": "Service quality (synthetic)",
+        "measurement": "reflective",
+        "indicatorIds": ["i_sq1", "i_sq2", "i_sq3", "i_sq4", "i_sq5"]
+      },
+      {
+        "id": "c_sat",
+        "name": "SAT",
+        "label": "Customer satisfaction (synthetic)",
+        "measurement": "reflective",
+        "indicatorIds": ["i_sat1", "i_sat2", "i_sat3", "i_sat4"]
+      },
+      {
+        "id": "c_loy",
+        "name": "LOY",
+        "label": "Loyalty intentions (synthetic)",
+        "measurement": "reflective",
+        "indicatorIds": ["i_loy1", "i_loy2", "i_loy3", "i_loy4"]
+      }
+    ],
+    "indicators": [
+      {
+        "id": "i_sq1",
+        "name": "sq1",
+        "column": "sq1",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_sq2",
+        "name": "sq2",
+        "column": "sq2",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_sq3",
+        "name": "sq3",
+        "column": "sq3",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_sq4",
+        "name": "sq4",
+        "column": "sq4",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_sq5",
+        "name": "sq5",
+        "column": "sq5",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_sat1",
+        "name": "sat1",
+        "column": "sat1",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_sat2",
+        "name": "sat2",
+        "column": "sat2",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_sat3",
+        "name": "sat3",
+        "column": "sat3",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_sat4",
+        "name": "sat4",
+        "column": "sat4",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_loy1",
+        "name": "loy1",
+        "column": "loy1",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_loy2",
+        "name": "loy2",
+        "column": "loy2",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_loy3",
+        "name": "loy3",
+        "column": "loy3",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_loy4",
+        "name": "loy4",
+        "column": "loy4",
+        "scale": {
+          "min": 1,
+          "max": 7
+        },
+        "level": "ordinal"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "r_sq_sat",
+        "sourceId": "c_sq",
+        "targetId": "c_sat",
+        "kind": "structural"
+      },
+      {
+        "id": "r_sq_loy",
+        "sourceId": "c_sq",
+        "targetId": "c_loy",
+        "kind": "structural"
+      },
+      {
+        "id": "r_sat_loy",
+        "sourceId": "c_sat",
+        "targetId": "c_loy",
+        "kind": "structural"
+      }
+    ]
+  },
+  "analysis": {
+    "method": "cb-sem",
+    "engine": "browser",
+    "estimator": "MLR",
+    "missingData": "listwise",
+    "cb": {
+      "identification": "marker",
+      "meanStructure": false
+    }
+  }
+}

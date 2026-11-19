@@ -117,10 +117,11 @@ describe('theme', () => {
   });
 });
 
-describe('backend status', () => {
-  it('honestly reports that no backend is configured', () => {
+describe('engine status', () => {
+  it('says the engine runs in the browser and links to Settings', () => {
     renderAt('/');
-    expect(screen.getByRole('status')).toHaveTextContent('Backend: not configured');
+    const link = screen.getByRole('link', { name: 'Engine: in browser' });
+    expect(link).toHaveAttribute('href', '/settings#about-engine');
   });
 });
 

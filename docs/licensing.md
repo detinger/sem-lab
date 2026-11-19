@@ -7,12 +7,12 @@ structured; review it before distributing container images or a hosted service.
 
 | Component | Version | Licence | How SEM Studio uses it |
 |---|---|---|---|
-| cSEM | 0.7.1 | GPL-3 | R engine, run as a separate process (`Rscript`) |
-| seminr | 2.6.0 | GPL-3 | verification and R code export only |
-| lavaan | 0.7-3 | GPL (≥ 2) | R engine, separate process |
-| plspm (Python) | 0.5.7 | GPL-3 | Python code export / notebooks; unofficial GoogleCloudPlatform port, repository archived |
-| semopy | 2.3.11 | MIT | Python engine / code export |
-| numpy, pandas, scipy, statsmodels, scikit-learn | pinned in `apps/api/uv.lock` | BSD | Python runtime |
+| cSEM | 0.7.1 | GPL-3 | verification oracle; called by exported R scripts |
+| seminr | 2.6.0 | GPL-3 | Phase 0 verification only |
+| lavaan | 0.7-3 | GPL (≥ 2) | verification oracle; called by exported R scripts |
+| plspm (Python) | 0.5.7 | GPL-3 | Phase 0 verification only (not used by exports: see python-spike.md) |
+| semopy | 2.3.11 | MIT | Phase 0 verification only |
+| numpy, pandas, scipy, statsmodels, scikit-learn | pinned in `services/python-spike/uv.lock` | BSD | Phase 0 verification spike only |
 | React, React Flow (@xyflow/react), Zustand, TanStack Query, Zod, Papa Parse, Recharts, React Router | see `package-lock.json` | MIT | bundled in the web app |
 | lucide-react, d3-scale, d3-array | | ISC | bundled |
 | Dexie | | Apache-2.0 | bundled |
@@ -25,16 +25,16 @@ dependency: `docs/validation/phase-0/evidence/r/r_environment.json`.
 
 ## Structure relevant to copyleft
 
-- SEM Studio's own code never links GPL R/Python packages into the web bundle. The API invokes
-  R as a child process and exchanges JSON files (`docs/architecture/engine-protocol.md`).
-- A container image that *contains* cSEM, seminr, lavaan or plspm distributes those packages:
-  ship their licence texts and offer their source (CRAN/PyPI sources are pinned in the lock
-  files).
+- The application is a static web app. Its estimation engine (`packages/engine`) is SEM
+  Studio's own TypeScript code; no GPL package is bundled or executed in the browser.
+- GPL R packages (cSEM, seminr, lavaan) and plspm are used only by the verification oracle
+  (`services/r-engine`, `services/python-spike`) on developer machines and in CI, and by
+  scripts that users export and run themselves. Exported scripts call those packages but
+  contain none of their code.
+- SEM Studio's Python engine (`packages/python-engine`, numpy/scipy) is its own code, shipped
+  with Python exports.
 - elkjs under EPL-2.0: keep its notice in the bundle's third-party notices and point to its
-  source; modifications to elkjs files themselves would have to be published. SEM Studio does
-  not modify elkjs.
-- Generated R/Python scripts are the user's output; they call those packages but contain none
-  of their code.
+  source; SEM Studio does not modify elkjs.
 
 ## Data
 

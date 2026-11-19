@@ -8,6 +8,8 @@ export interface SegmentedOption<T extends string> {
   value: T;
   label: string;
   icon?: ReactNode;
+  /** not selectable (e.g. a method the engine does not offer); explain why next to the control */
+  disabled?: boolean;
 }
 
 export interface SegmentedControlProps<T extends string> {
@@ -36,7 +38,7 @@ export function SegmentedControl<T extends string>({
     if (next === null) return;
     event.preventDefault();
     const option = options[next];
-    if (!option) return;
+    if (!option || option.disabled) return;
     onChange(option.value);
     group.current?.querySelectorAll<HTMLElement>('[role="radio"]')[next]?.focus();
   }
@@ -59,6 +61,7 @@ export function SegmentedControl<T extends string>({
             type="button"
             role="radio"
             aria-checked={selected}
+            disabled={option.disabled === true}
             tabIndex={selected ? 0 : -1}
             className="ui-segmented__item"
             onClick={() => onChange(option.value)}

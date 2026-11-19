@@ -1,5 +1,7 @@
 # Engine job protocol
 
+> **Scope since Phase 4.** There is no API any more. This job-directory protocol remains the interface of the R verification oracle (`services/r-engine/bin/run-job`), which produces the reference results the browser engine is tested against.
+
 The API and an engine (R or Python) communicate through a **job directory**. Nothing
 else crosses the boundary: no shared memory, no sockets, no code strings.
 

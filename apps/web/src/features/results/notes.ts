@@ -12,6 +12,43 @@ const NO_VERDICT =
   'It does not decide whether a hypothesis is supported or rejected, and it says nothing about causation.';
 
 export const TABLE_NOTES: Record<string, TableNote> = {
+  'cb-fit': {
+    shows:
+      'The χ² test of exact fit with its degrees of freedom, the comparative and absolute fit indices (CFI, TLI, RMSEA with its 90% interval, SRMR) and information criteria. Scaled and robust variants are labelled when the estimator provides them.',
+    notShown:
+      'No cut-off is applied: an index summarises how well the model reproduces the sample covariances, it does not say the model is correct, and different indices can disagree. Values that cannot be computed (for example when df = 0) are shown as an en dash with the reason.',
+  },
+  'cb-loadings': {
+    shows:
+      'The loading of each indicator on its factor on the selected scale, with the unstandardized estimate’s analytic standard error, z, p and 95% interval, and the loading on the other scale. A fixed marker loading has no standard error.',
+    notShown:
+      'Loadings do not establish that an indicator measures the intended concept. Standardized estimates have no standard errors in this release.',
+  },
+  'cb-paths': {
+    shows:
+      'The structural path coefficients on the selected scale with analytic standard errors, z, p and 95% intervals (unstandardized).',
+    notShown: `An interval that contains 0 means the data are compatible with no effect of that size; it is not evidence that the effect is absent. ${NO_VERDICT}`,
+  },
+  'cb-covariances': {
+    shows:
+      'Variances of exogenous factors and covariances between factors (and between indicator residuals, if specified) on the selected scale.',
+    notShown: 'A covariance or correlation describes association, not direction or causation.',
+  },
+  'cb-residuals': {
+    shows:
+      'The residual variance of every indicator and the disturbance variance of every endogenous factor. Standardized, they are the share of variance not explained by the model.',
+    notShown:
+      'A negative variance is reported as estimated and signals an inadmissible solution; it is never clamped to zero.',
+  },
+  'cb-r2': {
+    shows:
+      'The model-implied share of each endogenous factor’s variance accounted for by its predictors.',
+    notShown: 'It is the same on both scales and is not a measure of out-of-sample prediction.',
+  },
+  'latent-correlations': {
+    shows: 'Model-implied correlations between the factors.',
+    notShown: 'They are implied by the estimated model, not sample correlations of scores.',
+  },
   paths: {
     shows:
       'The standardized estimate of each structural path, with its bootstrap standard error, t, p and percentile confidence interval when a bootstrap was run.',

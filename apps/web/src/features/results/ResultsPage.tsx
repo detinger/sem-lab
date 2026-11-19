@@ -14,10 +14,11 @@ import {
   Switch,
   Tabs,
 } from '@/components/ui';
+import { formatDuration } from '@/features/analysis/RunHistory';
 import { STALE_LABEL, type RunView, useProjectRuns, useRuns } from '@/features/analysis/runs';
 import { useProjectData } from '@/features/data-lab/useProjectData';
 import { useModeler } from '@/features/modeler/store';
-import { formatNumber } from '../reports/format';
+import { formatInterval, formatNumber, formatP } from '../reports/format';
 import type { ReportTable } from '../reports/table';
 import { BootstrapSection } from './BootstrapChart';
 import { ExportRButton } from './ExportR';
@@ -25,6 +26,15 @@ import { ResultTable } from './ResultTable';
 import { styleOf, useResultStyle } from './store';
 import {
   type TableContext,
+  SCALE_LABEL,
+  cbCorrelationsTable,
+  cbCovariancesTable,
+  cbDiagnostics,
+  cbFitTable,
+  cbLoadingsTable,
+  cbPathsTable,
+  cbR2Table,
+  cbResidualsTable,
   effectsTable,
   fitTable,
   loadingsTable,
@@ -32,28 +42,42 @@ import {
   pathsTable,
   r2Table,
   reliabilityTable,
+  scaleLegend,
 } from './tables';
 import './results.css';
 
 const METHOD_TEXT = { 'pls-sem': 'PLS-SEM', plsc: 'PLSc', 'cb-sem': 'CB-SEM' } as const;
 const short = (h: string): string => h.slice(0, 8);
 
+/** "SEM Studio engine (in browser), @sem-studio/engine 0.1.0"; earlier R-engine runs keep their own wording. */
+export function engineText(r: NormalizedSemResult): string {
+  const v = r.provenance.packageVersions;
+  if (r.provenance.engine === 'browser') {
+    const key = Object.keys(v).find((k) => k.startsWith('@sem-studio/engine'));
+    return `SEM Studio engine (in browser)${key ? `, @sem-studio/engine ${v[key]}` : ''}`;
+  }
+  const cs = v['cSEM'];
+  return `${r.provenance.engine}${cs ? ` (cSEM ${cs})` : ''}`;
+}
+
 function Provenance({ run }: { run: RunView }) {
   const r = run.record.result!;
   const o = run.record.options;
   const b = r.bootstrap;
-  const cs = r.provenance.packageVersions['cSEM'];
   const parts = [
-    `${METHOD_TEXT[run.record.method]}${o.pls ? `, ${o.pls.innerWeighting} weighting` : ''}`,
-    `${r.provenance.engine}${cs ? ` (cSEM ${cs})` : ''}`,
+    `${METHOD_TEXT[run.record.method]}${o.pls ? `, ${o.pls.innerWeighting} weighting` : ''}${o.cb ? `, ${o.estimator}, ${o.cb.identification === 'std-lv' ? 'std.lv' : 'marker'}, ${o.missingData === 'fiml' ? 'FIML' : 'listwise'}` : ''}`,
+    engineText(r),
     `N = ${r.sample.nUsed}${r.sample.nDropped ? `, ${r.sample.nDropped} dropped` : ''}`,
     new Date(r.provenance.finishedAt).toLocaleString('en-GB', {
       dateStyle: 'medium',
       timeStyle: 'short',
     }),
+    ...(run.durationMs !== undefined ? [`${formatDuration(run.durationMs)} on this device`] : []),
     b
       ? `seed ${b.seed}, B = ${b.requested.toLocaleString('en')} (${b.completed.toLocaleString('en')} valid, ${b.failed} failed, ${b.inadmissible} inadmissible)`
-      : 'no bootstrap',
+      : run.record.method === 'cb-sem'
+        ? 'analytic standard errors'
+        : 'no bootstrap',
     `model ${short(run.modelHash)}`,
     `data ${short(run.dataFingerprint)}`,
     `${r.warnings.length} warning${r.warnings.length === 1 ? '' : 's'}`,
@@ -120,6 +144,10 @@ function Tables({ ids }: { ids: Array<ReportTable | string | null> }) {
 }
 
 function ResultBody({ run }: { run: RunView }) {
+  return run.record.method === 'cb-sem' ? <CbBody run={run} /> : <PlsBody run={run} />;
+}
+
+function PlsBody({ run }: { run: RunView }) {
   const sty = useResultStyle();
   const projectName = useModeler((s) => s.projectName);
   const result = run.record.result!;
@@ -308,10 +336,12 @@ function ResultBody({ run }: { run: RunView }) {
                 </dl>
                 <h3 className="rs-h3">Method statement</h3>
                 <p className="rs-prose">
-                  {METHOD_TEXT[run.record.method]} was estimated with the R package cSEM (
-                  {result.provenance.packageVersions['cSEM'] ?? 'version not reported'}), engine
-                  r-csem. Constructs are composites: Mode A weights for reflective blocks and Mode B
-                  for composite blocks
+                  {METHOD_TEXT[run.record.method]} was estimated with{' '}
+                  {result.provenance.engine === 'browser'
+                    ? 'SEM Studio’s own engine, running in this browser, which follows the semantics of the R package cSEM 0.7.1 (reference-tested)'
+                    : `the R package cSEM (${result.provenance.packageVersions['cSEM'] ?? 'version not reported'})`}
+                  . Constructs are composites: Mode A weights for reflective blocks and Mode B for
+                  composite blocks
                   {run.record.method === 'plsc'
                     ? ', with the consistency correction applied to reflective constructs'
                     : ', without a consistency correction'}
@@ -323,6 +353,240 @@ function ResultBody({ run }: { run: RunView }) {
                 <p className="rs-note-small">
                   Full method statement: <code>docs/estimators/pls-csem.md</code> in the SEM Studio
                   repository (exact cSEM call, bootstrap procedure, definitions).
+                </p>
+                <ExportRButton run={run} projectName={projectName} />
+              </div>
+            ),
+          },
+        ]}
+      />
+    </>
+  );
+}
+
+function fitValue(r: NormalizedSemResult, name: string, variant?: 'scaled' | 'robust') {
+  return r.fit.find(
+    (f) => f.name === name && (f.variant ?? 'standard') === (variant ?? 'standard'),
+  );
+}
+
+function ScaleToggle() {
+  const s = useResultStyle();
+  return (
+    <div className="rs-scale" role="group" aria-label="Estimate scale">
+      <SegmentedControl
+        aria-label="Estimate scale"
+        size="small"
+        value={s.scale}
+        onChange={(scale) => s.set({ scale })}
+        options={[
+          { value: 'standardized', label: 'Standardized' },
+          { value: 'unstandardized', label: 'Unstandardized' },
+        ]}
+      />
+      <p className="rs-legend" role="note">
+        <strong>{SCALE_LABEL[s.scale]}.</strong> {scaleLegend(s.scale)}
+      </p>
+    </div>
+  );
+}
+
+function CbBody({ run }: { run: RunView }) {
+  const sty = useResultStyle();
+  const projectName = useModeler((s) => s.projectName);
+  const result = run.record.result!;
+  const style = styleOf(sty);
+  const ctx: TableContext = {
+    model: run.model,
+    result,
+    analysis: run.record.options,
+    style,
+    scale: sty.scale,
+  };
+  const diag = cbDiagnostics(result);
+  const num = (name: string, variant?: 'scaled' | 'robust', d = style.decimals): string =>
+    formatNumber(fitValue(result, name, variant)?.value ?? null, { ...style, decimals: d });
+  const chisq = fitValue(result, 'chisq');
+  const df = fitValue(result, 'df');
+  const pv = fitValue(result, 'pvalue');
+  const rmsea = fitValue(result, 'rmsea');
+  const fiml = run.record.options.missingData === 'fiml';
+  const corr = cbCorrelationsTable(ctx);
+
+  const summary = (
+    <>
+      <KpiGrid>
+        <KpiTile
+          label="Observations used"
+          value={result.sample.nUsed.toLocaleString('en')}
+          detail={
+            result.sample.nDropped
+              ? `${result.sample.nDropped} of ${result.sample.nRows} rows dropped (${fiml ? 'no observed value' : 'listwise'})`
+              : 'no rows dropped'
+          }
+        />
+        <KpiTile
+          label="χ² (df)"
+          value={`${formatNumber(chisq?.value ?? null, { ...style, decimals: 2 })} (${df?.value ?? '–'})`}
+          detail={
+            pv?.value !== null && pv?.value !== undefined
+              ? `p ${formatP(pv.value, style)}`
+              : 'p not applicable (df = 0)'
+          }
+        />
+        <KpiTile
+          label="CFI · TLI"
+          value={`${num('cfi')} · ${num('tli')}`}
+          detail={
+            (fitValue(result, 'cfi')?.value ?? null) === null
+              ? 'not applicable (df = 0)'
+              : 'standard (non-robust) variant'
+          }
+        />
+        <KpiTile
+          label="RMSEA · SRMR"
+          value={`${num('rmsea')} · ${num('srmr')}`}
+          detail={
+            rmsea?.ciLower !== undefined &&
+            rmsea.ciLower !== null &&
+            rmsea.ciUpper !== undefined &&
+            rmsea.ciUpper !== null
+              ? `RMSEA 90% CI ${formatInterval(rmsea.ciLower, rmsea.ciUpper, style)}`
+              : 'RMSEA interval not available'
+          }
+        />
+      </KpiGrid>
+      <p className="rs-notes">
+        Estimation {result.estimation.converged ? 'converged' : 'did not converge'}
+        {result.estimation.iterations !== null
+          ? ` after ${result.estimation.iterations} iterations`
+          : ''}
+        ; solution admissibility:{' '}
+        {result.estimation.admissible === null
+          ? 'not assessed'
+          : result.estimation.admissible
+            ? 'admissible'
+            : 'not admissible (see Diagnostics)'}
+        .
+      </p>
+      <h3 className="rs-h3">Diagnostics</h3>
+      {diag.admissible === false ? (
+        <Callout variant="warning" title="The solution is not admissible">
+          <p>
+            The estimator converged, but the solution has a property that a valid covariance
+            structure cannot have (for example a negative variance, called a Heywood case). The
+            values are reported exactly as estimated and are not clamped; fit and parameter
+            estimates of this solution should not be interpreted as they stand.
+          </p>
+          {diag.heywood.length > 0 ? (
+            <ul>
+              {diag.heywood.map((m, i) => (
+                <li key={i}>{m}</li>
+              ))}
+            </ul>
+          ) : null}
+        </Callout>
+      ) : null}
+      {diag.others.length === 0 && diag.admissible !== false ? (
+        <p className="rs-empty">The engine reported no warnings.</p>
+      ) : (
+        <ul className="rs-warnings">
+          {diag.others.map((w, i) => (
+            <li key={i}>
+              <strong>{w.severity}</strong> <code>{w.code}</code> {w.message}
+            </li>
+          ))}
+        </ul>
+      )}
+      {result.estimation.messages.length > 0 ? (
+        <>
+          <h3 className="rs-h3">Engine messages</h3>
+          <ul className="rs-warnings">
+            {result.estimation.messages.map((m, i) => (
+              <li key={i}>{m}</li>
+            ))}
+          </ul>
+        </>
+      ) : null}
+    </>
+  );
+
+  return (
+    <>
+      <Provenance run={run} />
+      <ScaleToggle />
+      <Tabs
+        aria-label="Result sections"
+        items={[
+          { id: 'summary', label: 'Summary', content: <div className="rs-pane">{summary}</div> },
+          {
+            id: 'fit',
+            label: 'Fit',
+            content: (
+              <div className="rs-pane">
+                <ResultTable table={cbFitTable(ctx)} />
+              </div>
+            ),
+          },
+          {
+            id: 'measurement',
+            label: 'Measurement',
+            content: (
+              <div className="rs-pane">
+                <Tables ids={[cbLoadingsTable(ctx), cbResidualsTable(ctx)]} />
+              </div>
+            ),
+          },
+          {
+            id: 'structural',
+            label: 'Structural',
+            content: (
+              <div className="rs-pane">
+                <Tables ids={[cbPathsTable(ctx), cbR2Table(ctx), cbCovariancesTable(ctx), corr]} />
+              </div>
+            ),
+          },
+          {
+            id: 'repro',
+            label: 'Reproducibility',
+            content: (
+              <div className="rs-pane">
+                <dl className="rs-dl">
+                  <dt>Model hash</dt>
+                  <dd>
+                    <code>{run.modelHash}</code>
+                  </dd>
+                  <dt>Data fingerprint</dt>
+                  <dd>
+                    <code>{run.dataFingerprint}</code>
+                  </dd>
+                  <dt>Engine and versions</dt>
+                  <dd>
+                    {engineText(result)};{' '}
+                    {Object.entries(result.provenance.packageVersions)
+                      .map(([k, v]) => `${k} ${v}`)
+                      .join(', ')}
+                  </dd>
+                  <dt>Engine call</dt>
+                  <dd>
+                    <pre className="rs-pre">{result.provenance.call}</pre>
+                  </dd>
+                </dl>
+                <h3 className="rs-h3">Method statement</h3>
+                <p className="rs-prose">
+                  CB-SEM was estimated by {run.record.options.estimator === 'MLR' ? 'robust ' : ''}
+                  maximum likelihood ({run.record.options.estimator}) with SEM Studio’s own engine
+                  in this browser, following the conventions of lavaan’s <code>sem()</code> defaults
+                  (
+                  {run.record.options.cb?.identification === 'std-lv'
+                    ? 'factor variances fixed to 1'
+                    : 'the first indicator of each factor as marker'}
+                  ;{' '}
+                  {fiml
+                    ? 'full-information ML for missing data, with an implied mean structure'
+                    : 'listwise deletion'}
+                  ). Standard errors are analytic; no bootstrap was run. Standardized estimates are
+                  lavaan’s <code>std.all</code> and have no standard errors.
                 </p>
                 <ExportRButton run={run} projectName={projectName} />
               </div>

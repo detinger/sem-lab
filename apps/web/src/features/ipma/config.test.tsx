@@ -13,7 +13,6 @@ const panel = (method: 'pls-sem' | 'plsc', ipmaTarget = '') =>
         config={{ ...defaultConfig(1), method, ipmaTarget }}
         problems={{}}
         onChange={() => undefined}
-        maxBootstrap={null}
       />
     </MemoryRouter>,
   );
@@ -63,7 +62,6 @@ describe('IPMA config while the registry does not offer it', () => {
           config={{ ...cfg.defaultConfig(1), ipmaTarget: 'c_bi' }}
           problems={{}}
           onChange={() => undefined}
-          maxBootstrap={null}
         />
       </MemoryRouter>,
     );

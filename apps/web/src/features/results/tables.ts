@@ -14,6 +14,7 @@ import type {
   SemModel,
 } from '@sem-studio/contracts';
 import {
+  MISSING,
   MISSING_REASON_TEXT,
   type NumberStyle,
   formatInterval,
@@ -22,17 +23,26 @@ import {
 } from '../reports/format';
 import type { ReportColumn, ReportTable } from '../reports/table';
 
+export type CbScale = 'standardized' | 'unstandardized';
+
 export interface TableContext {
   model: SemModel;
   result: NormalizedSemResult;
   analysis: AnalysisConfiguration;
   style?: Partial<NumberStyle>;
+  /** CB-SEM tables: which estimates are shown (default standardized) */
+  scale?: CbScale;
 }
 
 const METHOD_TEXT: Record<AnalysisConfiguration['method'], string> = {
   'pls-sem': 'PLS-SEM (classic PLS path modeling, no consistency correction)',
   plsc: 'PLSc (consistent PLS)',
   'cb-sem': 'CB-SEM',
+};
+
+const CB_ESTIMATOR_TEXT: Record<string, string> = {
+  ML: 'maximum likelihood (ML)',
+  MLR: 'robust maximum likelihood (MLR)',
 };
 
 const nameOf = (m: SemModel, id: string | undefined): string =>
@@ -43,11 +53,21 @@ const nameOf = (m: SemModel, id: string | undefined): string =>
 /** "PLS-SEM … , path weighting scheme, N = 500" */
 export function methodLine(ctx: TableContext): string {
   const parts = [METHOD_TEXT[ctx.analysis.method]];
+  if (ctx.analysis.method === 'cb-sem') {
+    const a = ctx.analysis;
+    parts.push(CB_ESTIMATOR_TEXT[a.estimator] ?? a.estimator);
+    parts.push(
+      a.cb?.identification === 'std-lv' ? 'factor variances fixed to 1' : 'marker indicators',
+    );
+    parts.push(a.missingData === 'fiml' ? 'FIML' : 'listwise deletion');
+  }
   if (ctx.analysis.pls) parts.push(`${ctx.analysis.pls.innerWeighting} weighting scheme`);
   parts.push(`N = ${ctx.result.sample.nUsed}`);
   if (ctx.result.sample.nDropped > 0)
     parts.push(
-      `${ctx.result.sample.nDropped} of ${ctx.result.sample.nRows} rows removed by listwise deletion`,
+      ctx.analysis.missingData === 'fiml'
+        ? `${ctx.result.sample.nDropped} of ${ctx.result.sample.nRows} rows without any observed value removed`
+        : `${ctx.result.sample.nDropped} of ${ctx.result.sample.nRows} rows removed by listwise deletion`,
     );
   return parts.join(', ');
 }
@@ -352,5 +372,355 @@ export function fitTable(ctx: TableContext): ReportTable {
     notes: [
       `${methodLine(ctx)}. No universal cut-offs are applied; interpret discrepancy measures with their definitions and limitations.`,
     ],
+  };
+}
+
+// =============================================================== CB-SEM
+
+const CB_ROWS_NOTE =
+  'Standard errors, z and p are analytic and belong to the unstandardized estimates; they are not computed for standardized ones.';
+
+export const scaleOf = (ctx: TableContext): CbScale => ctx.scale ?? 'standardized';
+export const SCALE_LABEL: Record<CbScale, string> = {
+  standardized: 'Standardized',
+  unstandardized: 'Unstandardized',
+};
+const SHORT: Record<CbScale, string> = { standardized: 'Std.', unstandardized: 'Unstd.' };
+
+/** The legend line shown with the Standardized / Unstandardized toggle. */
+export function scaleLegend(scale: CbScale): string {
+  return scale === 'standardized'
+    ? 'Showing standardized estimates (lavaan std.all): loadings, paths and (co)variances are scaled by the model-implied standard deviations. Standard errors, z and p are not computed for standardized estimates and show an en dash; switch to Unstandardized for them.'
+    : 'Showing unstandardized estimates, in the units of the indicators and of the identification scaling (marker indicator or fixed factor variance). Standard errors, z and p are analytic.';
+}
+
+function inferenceMethodNote(ctx: TableContext): string {
+  const a = ctx.analysis;
+  const how =
+    a.estimator === 'MLR'
+      ? 'robust (Huber–White sandwich) standard errors'
+      : a.missingData === 'fiml'
+        ? 'standard errors from the observed information matrix'
+        : 'standard errors from the expected information matrix';
+  return `Analytic ${how}; z = estimate / SE; two-sided normal p; 95% Wald confidence intervals. No bootstrap was run.`;
+}
+
+function cbParam(
+  ctx: TableContext,
+  scale: CbScale,
+  kind: ParameterEstimate['kind'],
+  match: (p: ParameterEstimate) => boolean,
+): ParameterEstimate | undefined {
+  return ctx.result.parameters.find((p) => p.kind === kind && p.scale === scale && match(p));
+}
+
+function cbInference(
+  p: ParameterEstimate | undefined,
+  scale: CbScale,
+  style?: Partial<NumberStyle>,
+): Record<string, string> {
+  // inference exists for the unstandardized record only: standardized rows show an en dash
+  const q = scale === 'unstandardized' ? p : undefined;
+  return {
+    se: formatNumber(q?.se ?? null, style),
+    z: formatNumber(q?.statistic ?? null, { ...style, decimals: 2 }),
+    p: formatP(q?.pValue ?? null, { ...style, decimals: 3 }),
+    ci: formatInterval(q?.ciLower ?? null, q?.ciUpper ?? null, style),
+  };
+}
+
+const cbInferenceColumns = (): ReportColumn[] => [
+  { key: 'se', label: 'SE', align: 'right', numeric: true },
+  { key: 'z', label: 'z', align: 'right', numeric: true },
+  { key: 'p', label: 'p', align: 'right', numeric: true },
+  { key: 'ci', label: '95% CI', align: 'right', numeric: true },
+];
+
+function cbNotes(ctx: TableContext, extra: string[], params: ParameterEstimate[]): string[] {
+  const scale = scaleOf(ctx);
+  const fixed = params.some((p) => p.status === 'fixed');
+  return [
+    `${methodLine(ctx)}. ${SCALE_LABEL[scale]} estimates.`,
+    ...extra,
+    ...(fixed ? ['Fixed parameters (identification constraints) have no standard error.'] : []),
+    inferenceMethodNote(ctx),
+    ...(scale === 'standardized' ? [`– ${CB_ROWS_NOTE}`] : []),
+    ...missingNotes(scale === 'unstandardized' ? params.filter((p) => p.status !== 'fixed') : []),
+  ];
+}
+
+/** CB-SEM loadings: the selected scale first, then SE / z / p / CI, then the other scale. */
+export function cbLoadingsTable(ctx: TableContext): ReportTable {
+  const { model, style } = ctx;
+  const scale = scaleOf(ctx);
+  const other: CbScale = scale === 'standardized' ? 'unstandardized' : 'standardized';
+  const rows: Array<Record<string, string>> = [];
+  const used: ParameterEstimate[] = [];
+  for (const c of model.constructs) {
+    c.indicatorIds.forEach((iid, k) => {
+      const isMine = (p: ParameterEstimate): boolean => p.sourceId === c.id && p.targetId === iid;
+      const mine = cbParam(ctx, scale, 'loading', isMine);
+      const unstd = cbParam(ctx, 'unstandardized', 'loading', isMine);
+      const alt = cbParam(ctx, other, 'loading', isMine);
+      if (unstd) used.push(unstd);
+      rows.push({
+        c: k === 0 ? c.name : '',
+        i: nameOf(model, iid),
+        est:
+          formatNumber(mine?.est ?? null, style) +
+          (unstd?.status === 'fixed' && scale === 'unstandardized' ? ' (fixed)' : ''),
+        ...cbInference(unstd, scale, style),
+        alt: formatNumber(alt?.est ?? null, style),
+      });
+    });
+  }
+  return {
+    id: 'cb-loadings',
+    title: `Factor loadings (${scale})`,
+    caption: `Factor loadings, ${scale} estimates`,
+    columns: [
+      { key: 'c', label: 'Factor', align: 'left' },
+      { key: 'i', label: 'Indicator', align: 'left' },
+      { key: 'est', label: `${SCALE_LABEL[scale]} loading`, align: 'right', numeric: true },
+      ...cbInferenceColumns(),
+      { key: 'alt', label: `${SCALE_LABEL[other]} loading`, align: 'right', numeric: true },
+    ],
+    rows,
+    notes: cbNotes(
+      ctx,
+      [`The last column repeats the loading on the ${other} scale (${SHORT[other]}).`],
+      used,
+    ),
+  };
+}
+
+export function cbPathsTable(ctx: TableContext): ReportTable {
+  const { model, result, style } = ctx;
+  const scale = scaleOf(ctx);
+  const paths = result.parameters.filter((p) => p.kind === 'path' && p.scale === 'unstandardized');
+  const rows = paths.map((u) => {
+    const mine = cbParam(ctx, scale, 'path', (p) => p.key === u.key);
+    return {
+      path: `${nameOf(model, u.sourceId)} → ${nameOf(model, u.targetId)}`,
+      est: formatNumber(mine?.est ?? null, style),
+      ...cbInference(u, scale, style),
+    };
+  });
+  return {
+    id: 'cb-paths',
+    title: `Structural paths (${scale})`,
+    caption: `Structural paths, ${scale} estimates`,
+    columns: [
+      { key: 'path', label: 'Path', align: 'left' },
+      {
+        key: 'est',
+        label: scale === 'standardized' ? 'β (standardized)' : 'B (unstandardized)',
+        align: 'right',
+        numeric: true,
+      },
+      ...cbInferenceColumns(),
+    ],
+    rows,
+    notes: cbNotes(ctx, [], paths),
+  };
+}
+
+/** Variances and covariances of the factors (and covariances between indicator residuals). */
+export function cbCovariancesTable(ctx: TableContext): ReportTable {
+  const { model, result, style } = ctx;
+  const scale = scaleOf(ctx);
+  const unstd = result.parameters.filter(
+    (p) =>
+      p.scale === 'unstandardized' &&
+      (p.kind === 'covariance' || (p.kind === 'variance' && !p.key.includes('intercept'))),
+  );
+  const rows = unstd.map((u) => {
+    const mine = cbParam(ctx, scale, u.kind, (p) => p.key === u.key);
+    const label =
+      u.kind === 'variance'
+        ? `${nameOf(model, u.sourceId)} (variance)`
+        : `${nameOf(model, u.sourceId)} ↔ ${nameOf(model, u.targetId)}`;
+    return {
+      label,
+      est: formatNumber(mine?.est ?? null, style),
+      ...cbInference(u, scale, style),
+    };
+  });
+  return {
+    id: 'cb-covariances',
+    title: `Factor variances and covariances (${scale})`,
+    caption: `Factor variances and covariances, ${scale} estimates`,
+    columns: [
+      { key: 'label', label: 'Parameter', align: 'left' },
+      {
+        key: 'est',
+        label:
+          scale === 'standardized'
+            ? 'Estimate (standardized: variance 1 / correlation)'
+            : 'Estimate (unstandardized)',
+        align: 'right',
+        numeric: true,
+      },
+      ...cbInferenceColumns(),
+    ],
+    rows,
+    notes: cbNotes(ctx, [], unstd),
+  };
+}
+
+/** Model-implied factor correlations (the same on both scales). */
+export function cbCorrelationsTable(ctx: TableContext): ReportTable | null {
+  return matrixTable(ctx, 'latent-correlations', 'lower');
+}
+
+export function cbResidualsTable(ctx: TableContext): ReportTable {
+  const { model, result, style } = ctx;
+  const scale = scaleOf(ctx);
+  const unstd = result.parameters.filter(
+    (p) => p.scale === 'unstandardized' && p.kind === 'residual-variance',
+  );
+  const rows = unstd.map((u) => {
+    const mine = cbParam(ctx, scale, 'residual-variance', (p) => p.key === u.key);
+    const isInd = model.indicators.some((i) => i.id === u.sourceId);
+    return {
+      label: `${nameOf(model, u.sourceId)} (${isInd ? 'indicator residual' : 'disturbance'})`,
+      est: formatNumber(mine?.est ?? null, style),
+      ...cbInference(u, scale, style),
+    };
+  });
+  return {
+    id: 'cb-residuals',
+    title: `Residual variances (${scale})`,
+    caption: `Residual variances, ${scale} estimates`,
+    columns: [
+      { key: 'label', label: 'Residual', align: 'left' },
+      {
+        key: 'est',
+        label:
+          scale === 'standardized' ? 'Standardized (share of variance)' : 'Unstandardized variance',
+        align: 'right',
+        numeric: true,
+      },
+      ...cbInferenceColumns(),
+    ],
+    rows,
+    notes: cbNotes(
+      ctx,
+      [
+        'A negative residual variance is reported as estimated, never clamped; see the diagnostics.',
+      ],
+      unstd,
+    ),
+  };
+}
+
+export function cbR2Table(ctx: TableContext): ReportTable {
+  const { model, result, style } = ctx;
+  const rows = model.constructs
+    .map((c) => ({
+      c,
+      m: result.constructMetrics.find((x) => x.constructId === c.id && x.metric === 'r2'),
+    }))
+    .filter((x) => x.m && x.m.value !== null)
+    .map(({ c, m }) => ({ c: c.name, r2: formatNumber(m!.value, style) }));
+  return {
+    id: 'cb-r2',
+    title: 'Explained variance (R²)',
+    caption: 'Coefficient of determination of the endogenous factors',
+    columns: [
+      { key: 'c', label: 'Factor', align: 'left' },
+      { key: 'r2', label: 'R²', align: 'right', numeric: true },
+    ],
+    rows,
+    notes: [
+      `${methodLine(ctx)}. R² = 1 − ψ / Var(η), model-implied; it is the same on the standardized and the unstandardized scale. Exogenous factors have no R².`,
+    ],
+  };
+}
+
+const FIT_LABEL: Record<string, string> = {
+  chisq: 'χ²',
+  df: 'df',
+  pvalue: 'p (χ² test)',
+  'chisq.scaling.factor': 'χ² scaling factor',
+  cfi: 'CFI',
+  tli: 'TLI',
+  rmsea: 'RMSEA',
+  srmr: 'SRMR',
+  aic: 'AIC',
+  bic: 'BIC',
+};
+const FIT_ORDER = Object.keys(FIT_LABEL);
+const VARIANT_LABEL = { standard: '', scaled: ' (scaled)', robust: ' (robust)' } as const;
+
+/** Fit indices of a CB-SEM result; scaled / robust variants are labelled, absent values show an en dash. */
+export function cbFitTable(ctx: TableContext): ReportTable {
+  const { result, style } = ctx;
+  const reasons = new Set<MissingReason>();
+  const shown = result.fit.filter(
+    (f) => FIT_ORDER.includes(f.name) && (f.variant === undefined || f.variant in VARIANT_LABEL),
+  );
+  const rank = (f: (typeof shown)[number]): number =>
+    FIT_ORDER.indexOf(f.name) * 3 + (f.variant === 'scaled' ? 1 : f.variant === 'robust' ? 2 : 0);
+  shown.sort((a, b) => rank(a) - rank(b));
+  const rows = shown.map((f) => {
+    if (f.missing) reasons.add(f.missing);
+    const isP = f.name === 'pvalue';
+    const isDf = f.name === 'df';
+    const hasCi = f.ciLower !== undefined && f.ciUpper !== undefined && f.ciLower !== null;
+    return {
+      m: `${FIT_LABEL[f.name]}${f.variant ? VARIANT_LABEL[f.variant] : ''}${hasCi ? ' [90% CI]' : ''}`,
+      v: isDf
+        ? f.value === null
+          ? MISSING
+          : String(f.value)
+        : isP
+          ? formatP(f.value, style)
+          : formatNumber(f.value, style),
+      ci: hasCi ? formatInterval(f.ciLower ?? null, f.ciUpper ?? null, style) : '',
+      d: f.definition,
+    };
+  });
+  return {
+    id: 'cb-fit',
+    title: 'Model fit',
+    caption: 'Global fit of the CB-SEM model',
+    columns: [
+      { key: 'm', label: 'Measure', align: 'left' },
+      { key: 'v', label: 'Value', align: 'right', numeric: true },
+      { key: 'ci', label: '90% CI', align: 'right', numeric: true },
+      { key: 'd', label: 'Definition', align: 'left' },
+    ],
+    rows,
+    notes: [
+      `${methodLine(ctx)}. No universal cut-offs are applied; interpret fit indices with their definitions and limitations.`,
+      ...(shown.some((f) => f.variant === 'scaled' || f.variant === 'robust')
+        ? [
+            '(scaled) = Yuan–Bentler scaled test statistic and the indices built from it; (robust) = robust CFI, TLI and RMSEA.',
+          ]
+        : []),
+      ...[...reasons].map(
+        (r) =>
+          `– ${MISSING_REASON_TEXT[r]}${r === 'not-applicable' && shown.some((f) => f.name === 'df' && f.value === 0) ? ' (the model is just-identified, df = 0)' : ''}.`,
+      ),
+    ],
+  };
+}
+
+/** Heywood / admissibility diagnostics of a CB result, in neutral words. */
+export function cbDiagnostics(result: NormalizedSemResult): {
+  admissible: boolean | null;
+  heywood: string[];
+  others: Array<{ code: string; severity: string; message: string }>;
+} {
+  const heywood = result.warnings
+    .filter((w) => w.code === 'CB_NEGATIVE_VARIANCE')
+    .map((w) => w.message);
+  return {
+    admissible: result.estimation.admissible,
+    heywood,
+    others: result.warnings
+      .filter((w) => w.code !== 'CB_NEGATIVE_VARIANCE')
+      .map((w) => ({ code: w.code, severity: w.severity, message: w.message })),
   };
 }

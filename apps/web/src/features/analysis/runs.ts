@@ -2,8 +2,8 @@
  * Analysis run records (PLAN §3.3), kept in this browser's IndexedDB.
  *
  * A run binds a result to the exact model, data and configuration it was computed from.
- * `record` (the contracts AnalysisRun) is immutable once its status is terminal; only the
- * wrapper's `serverJobId` may change afterwards (to null, once the server copy is deleted).
+ * `record` (the contracts AnalysisRun) is immutable once its status is terminal.
+ * Runs are computed in this browser by the SEM Studio engine (engine 'browser'); nothing is uploaded.
  * The record holds the model AS SUBMITTED, so a historical run still reads with the names it
  * was computed with, but never any row-level data.
  *
@@ -35,8 +35,8 @@ export interface StoredRun {
   createdAt: string;
   modelHash: string;
   dataFingerprint: string;
-  /** id of the job on the analysis service; null before submission and after "Delete uploaded data" */
-  serverJobId: string | null;
+  /** measured wall-clock time of the run, milliseconds (absent on runs stored before it was measured) */
+  durationMs?: number;
   /** immutable once terminal */
   record: AnalysisRun;
   /** the model as submitted (structure and names, no data) */
@@ -57,7 +57,6 @@ export interface NewRunInput {
   analysis: AnalysisConfiguration;
   modelHash: string;
   dataFingerprint: string;
-  serverJobId: string;
   now?: string;
 }
 
@@ -70,7 +69,6 @@ export function makeRun(input: NewRunInput): StoredRun {
     createdAt,
     modelHash: input.modelHash,
     dataFingerprint: input.dataFingerprint,
-    serverJobId: input.serverJobId,
     model: input.model,
     record: AnalysisRun.parse({
       runId,
@@ -92,14 +90,15 @@ export function makeRun(input: NewRunInput): StoredRun {
 export function finishRun(
   run: StoredRun,
   outcome:
-    | { status: 'complete'; result: NormalizedSemResult }
-    | { status: 'failed' | 'cancelled'; failure: RunFailure },
+    | { status: 'complete'; result: NormalizedSemResult; durationMs?: number }
+    | { status: 'failed' | 'cancelled'; failure: RunFailure; durationMs?: number },
 ): StoredRun {
   if (isTerminalStatus(run.record.status))
     throw new Error('A finished run is immutable and cannot be changed.');
   if (outcome.status === 'complete') {
     return {
       ...run,
+      ...(outcome.durationMs !== undefined ? { durationMs: outcome.durationMs } : {}),
       record: AnalysisRun.parse({
         ...run.record,
         status: 'complete',
@@ -115,6 +114,7 @@ export function finishRun(
   }
   return {
     ...run,
+    ...(outcome.durationMs !== undefined ? { durationMs: outcome.durationMs } : {}),
     failure: outcome.failure,
     record: AnalysisRun.parse({ ...run.record, status: outcome.status }),
   };
@@ -126,7 +126,6 @@ export async function saveRun(run: StoredRun): Promise<void> {
   const db = getDb();
   const existing = await db.runs.get(run.runId);
   if (existing && isTerminalStatus(existing.record.status)) {
-    // Only the server link may change on a finished run.
     const same = JSON.stringify(existing.record) === JSON.stringify(run.record);
     if (!same) throw new Error('A finished run is immutable and cannot be changed.');
   }
@@ -140,12 +139,6 @@ export async function listRuns(projectId: string): Promise<StoredRun[]> {
 
 export async function getRun(runId: string): Promise<StoredRun | undefined> {
   return getDb().runs.get(runId);
-}
-
-/** After "Delete uploaded data": forget the server job id, keep the immutable record. */
-export async function clearServerJob(runId: string): Promise<void> {
-  const row = await getDb().runs.get(runId);
-  if (row) await getDb().runs.put({ ...row, serverJobId: null });
 }
 
 export async function deleteRunsOfProject(projectId: string): Promise<void> {

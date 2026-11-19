@@ -6,17 +6,25 @@
 import { AnalysisConfiguration, type EngineId, type SemMethod } from '@sem-studio/contracts';
 import { METHOD_CAPABILITY, isOffered, unavailableReason } from '@sem-studio/method-registry';
 import { create } from 'zustand';
-import type { EngineHealth, Health } from './api';
+import { poolSize } from './engine';
 
-export const ENGINE: EngineId = 'r-csem';
+export const ENGINE: EngineId = 'browser';
+export const ENGINE_LABEL = 'SEM Studio engine (runs in this browser)';
+export const PRIVACY_LINE = 'Your data stay on this device; nothing is uploaded.';
 export const BOOTSTRAP_PRESETS = [500, 2000, 5000, 10000] as const;
 export const DEFAULT_MAX_ITERATIONS = 300;
 export const DEFAULT_TOLERANCE = 1e-7;
-export const CB_SEM_REASON =
-  'CB-SEM estimation arrives in a later release (lavaan engine verified, adapter pending).';
+export const CB_BOOTSTRAP_NOTE =
+  'Bootstrap for CB-SEM is not available yet; standard errors are analytic (ML: expected information; MLR: robust sandwich; FIML: observed information).';
+export const FIML_MEAN_NOTE =
+  'FIML implies a mean structure (indicator intercepts are estimated); it is switched on automatically.';
+export type CbEstimator = 'ML' | 'MLR' | 'MLM' | 'WLSMV';
 
 export interface ConfigState {
-  method: 'pls-sem' | 'plsc';
+  method: 'pls-sem' | 'plsc' | 'cb-sem';
+  cbEstimator: CbEstimator;
+  identification: 'marker' | 'std-lv';
+  cbMissing: 'listwise' | 'fiml';
   innerWeighting: 'path' | 'centroid' | 'factorial';
   /** text fields keep what the user typed; parsing happens in toConfiguration */
   maxIterations: string;
@@ -36,6 +44,9 @@ export const randomSeed = (): number => Math.floor(Math.random() * 2_147_483_647
 export function defaultConfig(seed: number = randomSeed()): ConfigState {
   return {
     method: 'pls-sem',
+    cbEstimator: 'ML',
+    identification: 'marker',
+    cbMissing: 'listwise',
     innerWeighting: 'path',
     maxIterations: String(DEFAULT_MAX_ITERATIONS),
     tolerance: String(DEFAULT_TOLERANCE),
@@ -74,6 +85,21 @@ export function toConfiguration(
   maxBootstrap = 100_000,
 ): { ok: true; analysis: AnalysisConfiguration } | { ok: false; problems: FieldProblems } {
   const problems: FieldProblems = {};
+  if (c.method === 'cb-sem') {
+    const parsed = AnalysisConfiguration.safeParse({
+      method: 'cb-sem',
+      engine: ENGINE,
+      estimator: c.cbEstimator,
+      missingData: c.cbMissing,
+      cb: { identification: c.identification, meanStructure: c.cbMissing === 'fiml' },
+    });
+    return parsed.success
+      ? { ok: true, analysis: parsed.data }
+      : {
+          ok: false,
+          problems: { seed: parsed.error.issues[0]?.message ?? 'Invalid configuration.' },
+        };
+  }
   const maxIt = INT.test(c.maxIterations.trim()) ? Number(c.maxIterations) : NaN;
   if (!(maxIt >= 1 && maxIt <= 100_000))
     problems.maxIterations = 'Enter a whole number from 1 to 100,000.';
@@ -134,8 +160,9 @@ const gate = (id: string): Gate => {
     : { offered: false, ...(reason ? { reason } : {}) };
 };
 
-export const methodGate = (m: SemMethod): Gate =>
-  m === 'cb-sem' ? { offered: false, reason: CB_SEM_REASON } : gate(METHOD_CAPABILITY[m]);
+export const methodGate = (m: SemMethod): Gate => gate(METHOD_CAPABILITY[m]);
+export const cbEstimatorGate = (e: CbEstimator): Gate => gate(`cb.estimation.${e.toLowerCase()}`);
+export const fimlGate = (): Gate => gate('cb.missing.fiml');
 export const weightingGate = (w: ConfigState['innerWeighting']): Gate =>
   gate(`pls.inner-weighting.${w}`);
 export const ipmaGate = (): Gate => gate('ipma.construct');
@@ -146,16 +173,8 @@ export const ciGate = (ci: ConfigState['ci']): Gate =>
 export const SIDES_RATIONALE =
   'Two-sided is the default: it makes no assumption about the sign of an effect. Choose one-sided only when theory fixed the direction before seeing the data; the one-sided interval then has one bound only.';
 
-/** Seconds-level rough resource note from the engine's measured speed (docs/estimators/pls-csem.md §4). */
-export function durationNote(reps: number): string {
-  const seconds = Math.max(1, Math.round((reps / 100) * 0.75));
-  return `Measured on a small model (3 constructs, 11 indicators, n = 500): about 0.75 s per 100 draws, so roughly ${seconds < 60 ? `${seconds} s` : `${Math.round(seconds / 60)} min`} here. Larger models and slower servers take longer.`;
-}
-
-/**
- * The service reports `engines` as a list of `{id, available, version, reason}`; api.ts types it as
- * a record. Accept both so an engine's availability is always read from the real payload.
- */
-export function engineHealth(health: Health, id: string): EngineHealth | undefined {
-  return health.engines.find((x) => x.id === id);
+/** What to expect from a bootstrap in this browser; no timing is promised, the run records it. */
+export function durationNote(): string {
+  const k = poolSize();
+  return `Draws run in parallel in ${k === 1 ? 'one worker' : `${k} workers`} on this device. Time grows with the number of samples, the sample size and the model size; each finished run records its measured duration.`;
 }

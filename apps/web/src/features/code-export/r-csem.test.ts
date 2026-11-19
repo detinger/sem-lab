@@ -6,7 +6,7 @@ import { type AnalysisConfiguration, SemModel } from '@sem-studio/contracts';
 import { describe, expect, it } from 'vitest';
 import { buildAnalysisData } from '@/domain/dataset/analysis-data';
 import { createDataset, isDatasetError } from '@/domain/dataset/transform';
-import { analysisCsv } from '@/features/analysis/api';
+import { analysisCsv } from '@/features/code-export/analysis-csv';
 import { estimate } from '@sem-studio/engine';
 import { exportCsemScript, identifiers, rComment, rString } from './r-csem';
 

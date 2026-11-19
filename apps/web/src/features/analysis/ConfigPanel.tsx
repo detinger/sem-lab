@@ -7,12 +7,17 @@ import { Checkbox, Field, Input, SegmentedControl, Select, Switch } from '@/comp
 import { cx } from '@/components/ui/cx';
 import {
   BOOTSTRAP_PRESETS,
-  CB_SEM_REASON,
+  CB_BOOTSTRAP_NOTE,
+  type CbEstimator,
   type ConfigState,
+  ENGINE_LABEL,
+  FIML_MEAN_NOTE,
   type FieldProblems,
   SIDES_RATIONALE,
   IPMA_PLSC_TEXT,
+  cbEstimatorGate,
   ciGate,
+  fimlGate,
   ipmaGate,
   durationNote,
   methodGate,
@@ -55,8 +60,97 @@ export interface ConfigPanelProps {
   config: ConfigState;
   problems: FieldProblems;
   onChange: (patch: Partial<ConfigState>) => void;
-  /** from health.limits.maxBootstrapReps when known */
-  maxBootstrap: number | null;
+}
+
+const CB_ESTIMATORS: Array<{ id: CbEstimator; label: string }> = [
+  { id: 'ML', label: 'ML' },
+  { id: 'MLR', label: 'MLR' },
+  { id: 'MLM', label: 'MLM' },
+  { id: 'WLSMV', label: 'WLSMV' },
+];
+
+function CbSections({
+  config,
+  onChange,
+}: {
+  config: ConfigState;
+  onChange: (patch: Partial<ConfigState>) => void;
+}) {
+  const fiml = fimlGate();
+  return (
+    <>
+      <section aria-labelledby="an-cb-est">
+        <h2 id="an-cb-est" className="an-h2">
+          Estimator
+        </h2>
+        <SegmentedControl
+          aria-label="CB-SEM estimator"
+          value={config.cbEstimator}
+          onChange={(cbEstimator) => onChange({ cbEstimator })}
+          options={CB_ESTIMATORS.map((e) => ({
+            value: e.id,
+            label: e.label,
+            disabled: !cbEstimatorGate(e.id).offered,
+          }))}
+        />
+        {CB_ESTIMATORS.map((e) => {
+          const g = cbEstimatorGate(e.id);
+          return g.offered ? null : (
+            <p key={e.id} className="an-note">
+              {g.reason?.startsWith(e.label) ? g.reason : `${e.label}: ${g.reason}`}
+            </p>
+          );
+        })}
+        <p className="an-note">
+          ML: normal-theory maximum likelihood. MLR: the same estimates with robust standard errors
+          and a scaled test statistic.
+        </p>
+      </section>
+
+      <section aria-labelledby="an-cb-id">
+        <h2 id="an-cb-id" className="an-h2">
+          Identification
+        </h2>
+        <SegmentedControl
+          aria-label="Identification"
+          value={config.identification}
+          onChange={(identification) => onChange({ identification })}
+          options={[
+            { value: 'marker', label: 'Marker' },
+            { value: 'std-lv', label: 'Std. LV' },
+          ]}
+        />
+        <p className="an-note">
+          Marker: the first indicator of each factor has loading 1. Std. LV (standardized latent
+          variables): factor variances fixed to 1, all loadings free.
+        </p>
+      </section>
+
+      <section aria-labelledby="an-cb-missing">
+        <h2 id="an-cb-missing" className="an-h2">
+          Missing data
+        </h2>
+        <SegmentedControl
+          aria-label="Missing data handling"
+          value={config.cbMissing}
+          onChange={(cbMissing) => onChange({ cbMissing })}
+          options={[
+            { value: 'listwise', label: 'Listwise deletion' },
+            { value: 'fiml', label: 'FIML', disabled: !fiml.offered },
+          ]}
+        />
+        {!fiml.offered ? <p className="an-note">FIML: {fiml.reason}</p> : null}
+        {config.cbMissing === 'fiml' ? <p className="an-note">{FIML_MEAN_NOTE}</p> : null}
+      </section>
+
+      <section aria-labelledby="an-cb-boot">
+        <h2 id="an-cb-boot" className="an-h2">
+          Standard errors
+        </h2>
+        <p className="an-note">{CB_BOOTSTRAP_NOTE}</p>
+      </section>
+    </>
+  );
 }
 
 function IpmaSection({
@@ -113,8 +207,9 @@ function IpmaSection({
   );
 }
 
-export function ConfigPanel({ config, problems, onChange, maxBootstrap }: ConfigPanelProps) {
+export function ConfigPanel({ config, problems, onChange }: ConfigPanelProps) {
   const reps = Number(config.repetitions);
+  const cb = config.method === 'cb-sem';
   const bca = ciGate('bca');
   return (
     <div className="an-config">
@@ -135,7 +230,7 @@ export function ConfigPanel({ config, problems, onChange, maxBootstrap }: Config
                 aria-disabled={!gate.offered}
                 disabled={!gate.offered}
                 className={cx('an-method', selected && 'an-method--selected')}
-                onClick={() => m.id !== 'cb-sem' && onChange({ method: m.id })}
+                onClick={() => onChange({ method: m.id })}
               >
                 <span className="an-method__title">
                   {m.title}
@@ -146,215 +241,218 @@ export function ConfigPanel({ config, problems, onChange, maxBootstrap }: Config
                     {l}
                   </span>
                 ))}
-                {!gate.offered ? (
-                  <span className="an-method__reason">
-                    {m.id === 'cb-sem' ? CB_SEM_REASON : gate.reason}
-                  </span>
-                ) : null}
+                {!gate.offered ? <span className="an-method__reason">{gate.reason}</span> : null}
               </button>
             );
           })}
         </div>
         <p className="an-note">
-          Engine: <strong>r-csem</strong> (R package cSEM). It is fixed for PLS methods.
+          Engine: <strong>{ENGINE_LABEL}</strong>
         </p>
       </section>
 
-      <section aria-labelledby="an-weighting">
-        <h2 id="an-weighting" className="an-h2">
-          Inner weighting scheme
-        </h2>
-        <SegmentedControl
-          aria-label="Inner weighting scheme"
-          value={config.innerWeighting}
-          onChange={(innerWeighting) => onChange({ innerWeighting })}
-          options={(['path', 'centroid', 'factorial'] as const).map((w) => ({
-            value: w,
-            label: w[0]!.toUpperCase() + w.slice(1),
-          }))}
-        />
-        {(['path', 'centroid', 'factorial'] as const).map((w) => {
-          const g = weightingGate(w);
-          return g.offered ? null : (
-            <p key={w} className="an-note">
-              {w}: {g.reason}
-            </p>
-          );
-        })}
-        <details className="an-advanced">
-          <summary>Advanced: iterations and tolerance</summary>
-          <div className="an-grid2">
-            <Field
-              label="Maximum iterations"
-              {...(problems.maxIterations ? { error: problems.maxIterations } : {})}
-            >
-              {(p) => (
-                <Input
-                  {...p}
-                  inputMode="numeric"
-                  value={config.maxIterations}
-                  onChange={(e) => onChange({ maxIterations: e.target.value })}
-                />
-              )}
-            </Field>
-            <Field label="Tolerance" {...(problems.tolerance ? { error: problems.tolerance } : {})}>
-              {(p) => (
-                <Input
-                  {...p}
-                  inputMode="decimal"
-                  value={config.tolerance}
-                  onChange={(e) => onChange({ tolerance: e.target.value })}
-                />
-              )}
-            </Field>
-          </div>
-          <p className="an-note">Defaults: 300 iterations and 1e-7, the cSEM defaults.</p>
-        </details>
-      </section>
-
-      <section aria-labelledby="an-boot">
-        <h2 id="an-boot" className="an-h2">
-          Bootstrap
-        </h2>
-        <Switch
-          label="Bootstrap for standard errors, t, p and confidence intervals"
-          checked={config.bootstrap}
-          onChange={(e) => onChange({ bootstrap: e.target.checked })}
-        />
-        {config.bootstrap ? (
-          <>
-            <div className="an-presets" role="group" aria-label="Bootstrap presets">
-              {BOOTSTRAP_PRESETS.map((b) => (
-                <button
-                  key={b}
-                  type="button"
-                  className={cx('an-preset', Number(config.repetitions) === b && 'an-preset--on')}
-                  aria-pressed={Number(config.repetitions) === b}
-                  onClick={() => onChange({ repetitions: String(b) })}
+      {cb ? (
+        <CbSections config={config} onChange={onChange} />
+      ) : (
+        <>
+          <section aria-labelledby="an-weighting">
+            <h2 id="an-weighting" className="an-h2">
+              Inner weighting scheme
+            </h2>
+            <SegmentedControl
+              aria-label="Inner weighting scheme"
+              value={config.innerWeighting}
+              onChange={(innerWeighting) => onChange({ innerWeighting })}
+              options={(['path', 'centroid', 'factorial'] as const).map((w) => ({
+                value: w,
+                label: w[0]!.toUpperCase() + w.slice(1),
+              }))}
+            />
+            {(['path', 'centroid', 'factorial'] as const).map((w) => {
+              const g = weightingGate(w);
+              return g.offered ? null : (
+                <p key={w} className="an-note">
+                  {w}: {g.reason}
+                </p>
+              );
+            })}
+            <details className="an-advanced">
+              <summary>Advanced: iterations and tolerance</summary>
+              <div className="an-grid2">
+                <Field
+                  label="Maximum iterations"
+                  {...(problems.maxIterations ? { error: problems.maxIterations } : {})}
                 >
-                  {b.toLocaleString('en')}
-                </button>
-              ))}
-            </div>
-            <div className="an-grid2">
-              <Field
-                label="Bootstrap samples (B)"
-                {...(problems.repetitions ? { error: problems.repetitions } : {})}
-                hint={
-                  maxBootstrap
-                    ? `Service limit: ${maxBootstrap.toLocaleString('en')}`
-                    : 'Quick: 500; research: 5,000 or more'
-                }
-              >
-                {(p) => (
-                  <Input
-                    {...p}
-                    inputMode="numeric"
-                    value={config.repetitions}
-                    onChange={(e) => onChange({ repetitions: e.target.value })}
-                  />
-                )}
-              </Field>
-              <Field
-                label="Seed"
-                required
-                {...(problems.seed ? { error: problems.seed } : {})}
-                hint="Same seed, data and settings reproduce the draws."
-              >
-                {(p) => (
-                  <span className="an-seed">
+                  {(p) => (
                     <Input
                       {...p}
                       inputMode="numeric"
-                      value={config.seed}
-                      onChange={(e) => onChange({ seed: e.target.value })}
+                      value={config.maxIterations}
+                      onChange={(e) => onChange({ maxIterations: e.target.value })}
                     />
-                    <button
-                      type="button"
-                      className="an-linkbtn"
-                      onClick={() => onChange({ seed: String(randomSeed()) })}
-                    >
-                      New random seed
-                    </button>
-                  </span>
-                )}
-              </Field>
-            </div>
-            {Number.isFinite(reps) && reps > 0 ? (
-              <p className="an-note">{durationNote(reps)}</p>
-            ) : null}
-            <div className="an-grid2">
-              <Field
-                label="Confidence interval method"
-                hint={!bca.offered ? `BCa unavailable: ${bca.reason}` : undefined}
-              >
-                {(p) => (
-                  <Select
-                    {...p}
-                    value={config.ci}
-                    onChange={(e) => onChange({ ci: e.target.value as ConfigState['ci'] })}
-                  >
-                    <option value="percentile" disabled={!ciGate('percentile').offered}>
-                      Percentile
-                    </option>
-                    <option value="bca" disabled={!bca.offered}>
-                      BCa (not available)
-                    </option>
-                  </Select>
-                )}
-              </Field>
-              <Field label="Confidence level">
-                {(p) => (
-                  <Select
-                    {...p}
-                    value={config.confidenceLevel}
-                    onChange={(e) =>
-                      onChange({
-                        confidenceLevel: e.target.value as ConfigState['confidenceLevel'],
-                      })
-                    }
-                  >
-                    <option value="0.90">90%</option>
-                    <option value="0.95">95%</option>
-                    <option value="0.99">99%</option>
-                  </Select>
-                )}
-              </Field>
-            </div>
-            <Field label="Test direction" hint={SIDES_RATIONALE}>
-              {(p) => (
-                <Select
-                  {...p}
-                  value={config.sides}
-                  onChange={(e) => onChange({ sides: e.target.value as ConfigState['sides'] })}
+                  )}
+                </Field>
+                <Field
+                  label="Tolerance"
+                  {...(problems.tolerance ? { error: problems.tolerance } : {})}
                 >
-                  <option value="two-sided">Two-sided</option>
-                  <option value="one-sided">One-sided (direction fixed in advance)</option>
-                </Select>
-              )}
-            </Field>
-          </>
-        ) : (
-          <p className="an-note">
-            Without a bootstrap the result has no standard errors, t, p or confidence intervals.
-          </p>
-        )}
-      </section>
+                  {(p) => (
+                    <Input
+                      {...p}
+                      inputMode="decimal"
+                      value={config.tolerance}
+                      onChange={(e) => onChange({ tolerance: e.target.value })}
+                    />
+                  )}
+                </Field>
+              </div>
+              <p className="an-note">Defaults: 300 iterations and 1e-7, the cSEM defaults.</p>
+            </details>
+          </section>
 
-      <IpmaSection config={config} onChange={onChange} />
+          <section aria-labelledby="an-boot">
+            <h2 id="an-boot" className="an-h2">
+              Bootstrap
+            </h2>
+            <Switch
+              label="Bootstrap for standard errors, t, p and confidence intervals"
+              checked={config.bootstrap}
+              onChange={(e) => onChange({ bootstrap: e.target.checked })}
+            />
+            {config.bootstrap ? (
+              <>
+                <div className="an-presets" role="group" aria-label="Bootstrap presets">
+                  {BOOTSTRAP_PRESETS.map((b) => (
+                    <button
+                      key={b}
+                      type="button"
+                      className={cx(
+                        'an-preset',
+                        Number(config.repetitions) === b && 'an-preset--on',
+                      )}
+                      aria-pressed={Number(config.repetitions) === b}
+                      onClick={() => onChange({ repetitions: String(b) })}
+                    >
+                      {b.toLocaleString('en')}
+                    </button>
+                  ))}
+                </div>
+                <div className="an-grid2">
+                  <Field
+                    label="Bootstrap samples (B)"
+                    {...(problems.repetitions ? { error: problems.repetitions } : {})}
+                    hint="Quick: 500; research: 5,000 or more"
+                  >
+                    {(p) => (
+                      <Input
+                        {...p}
+                        inputMode="numeric"
+                        value={config.repetitions}
+                        onChange={(e) => onChange({ repetitions: e.target.value })}
+                      />
+                    )}
+                  </Field>
+                  <Field
+                    label="Seed"
+                    required
+                    {...(problems.seed ? { error: problems.seed } : {})}
+                    hint="Same seed, data and settings reproduce the draws."
+                  >
+                    {(p) => (
+                      <span className="an-seed">
+                        <Input
+                          {...p}
+                          inputMode="numeric"
+                          value={config.seed}
+                          onChange={(e) => onChange({ seed: e.target.value })}
+                        />
+                        <button
+                          type="button"
+                          className="an-linkbtn"
+                          onClick={() => onChange({ seed: String(randomSeed()) })}
+                        >
+                          New random seed
+                        </button>
+                      </span>
+                    )}
+                  </Field>
+                </div>
+                {Number.isFinite(reps) && reps > 0 ? (
+                  <p className="an-note">{durationNote()}</p>
+                ) : null}
+                <div className="an-grid2">
+                  <Field
+                    label="Confidence interval method"
+                    hint={!bca.offered ? `BCa unavailable: ${bca.reason}` : undefined}
+                  >
+                    {(p) => (
+                      <Select
+                        {...p}
+                        value={config.ci}
+                        onChange={(e) => onChange({ ci: e.target.value as ConfigState['ci'] })}
+                      >
+                        <option value="percentile" disabled={!ciGate('percentile').offered}>
+                          Percentile
+                        </option>
+                        <option value="bca" disabled={!bca.offered}>
+                          BCa (not available)
+                        </option>
+                      </Select>
+                    )}
+                  </Field>
+                  <Field label="Confidence level">
+                    {(p) => (
+                      <Select
+                        {...p}
+                        value={config.confidenceLevel}
+                        onChange={(e) =>
+                          onChange({
+                            confidenceLevel: e.target.value as ConfigState['confidenceLevel'],
+                          })
+                        }
+                      >
+                        <option value="0.90">90%</option>
+                        <option value="0.95">95%</option>
+                        <option value="0.99">99%</option>
+                      </Select>
+                    )}
+                  </Field>
+                </div>
+                <Field label="Test direction" hint={SIDES_RATIONALE}>
+                  {(p) => (
+                    <Select
+                      {...p}
+                      value={config.sides}
+                      onChange={(e) => onChange({ sides: e.target.value as ConfigState['sides'] })}
+                    >
+                      <option value="two-sided">Two-sided</option>
+                      <option value="one-sided">One-sided (direction fixed in advance)</option>
+                    </Select>
+                  )}
+                </Field>
+              </>
+            ) : (
+              <p className="an-note">
+                Without a bootstrap the result has no standard errors, t, p or confidence intervals.
+              </p>
+            )}
+          </section>
 
-      <section aria-labelledby="an-missing">
-        <h2 id="an-missing" className="an-h2">
-          Missing data
-        </h2>
-        <Checkbox
-          label="Listwise deletion"
-          checked
-          readOnly
-          disabled
-          hint="The only handling for PLS methods; nothing is imputed."
-        />
-      </section>
+          <IpmaSection config={config} onChange={onChange} />
+          <section aria-labelledby="an-missing">
+            <h2 id="an-missing" className="an-h2">
+              Missing data
+            </h2>
+            <Checkbox
+              label="Listwise deletion"
+              checked
+              readOnly
+              disabled
+              hint="The only handling for PLS methods; nothing is imputed."
+            />
+          </section>
+        </>
+      )}
     </div>
   );
 }

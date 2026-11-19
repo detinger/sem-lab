@@ -1,0 +1,44 @@
+{
+  "model": {
+    "constructs": [
+      {
+        "id": "c_h",
+        "name": "H",
+        "label": "Single factor H",
+        "measurement": "reflective",
+        "indicatorIds": ["i_h1", "i_h2", "i_h3"]
+      }
+    ],
+    "indicators": [
+      {
+        "id": "i_h1",
+        "name": "h1",
+        "column": "h1",
+        "level": "continuous"
+      },
+      {
+        "id": "i_h2",
+        "name": "h2",
+        "column": "h2",
+        "level": "continuous"
+      },
+      {
+        "id": "i_h3",
+        "name": "h3",
+        "column": "h3",
+        "level": "continuous"
+      }
+    ],
+    "relationships": []
+  },
+  "analysis": {
+    "method": "cb-sem",
+    "engine": "browser",
+    "estimator": "ML",
+    "missingData": "listwise",
+    "cb": {
+      "identification": "marker",
+      "meanStructure": false
+    }
+  }
+}

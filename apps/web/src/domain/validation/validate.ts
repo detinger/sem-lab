@@ -691,8 +691,8 @@ function estimatorIssues(model: SemModel, a: AnalysisConfiguration): ValidationI
         code: 'BOOTSTRAP_TOO_LARGE',
         severity: 'error',
         layer: 'estimator',
-        title: `${a.bootstrap.repetitions} bootstrap samples exceed the service limit of 10,000`,
-        explanation: 'Very large runs are limited to keep the shared service responsive.',
+        title: `${a.bootstrap.repetitions} bootstrap samples exceed the limit of 10,000`,
+        explanation: 'Very large runs would keep this browser busy for a long time.',
         fixes: ['Use 5,000 or 10,000 samples.'],
         elementIds: [],
       });

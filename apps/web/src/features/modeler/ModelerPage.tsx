@@ -1,7 +1,7 @@
 import { ReactFlowProvider, useReactFlow } from '@xyflow/react';
 import { CircleDot, FolderOpen, PanelRightClose, PanelRightOpen } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Button, Card, Dialog, IconButton, Kbd, useToast } from '@/components/ui';
+import { Button, Card, Dialog, IconButton, Kbd, SegmentedControl, useToast } from '@/components/ui';
 import { useProjectRuns } from '@/features/analysis/runs';
 import { useReadiness } from '@/features/data-lab/readiness';
 import {
@@ -17,7 +17,8 @@ import { useFocusRequest } from './focus';
 import { Inspector } from './Inspector';
 import { computeAutoLayout } from './layout/auto-layout';
 import { ModelerToolbar } from './ModelerToolbar';
-import type { OverlayInput, OverlayMode } from './overlay';
+import { useResultStyle } from '@/features/results/store';
+import { type OverlayInput, type OverlayMode, hasBothScales, overlayLegend } from './overlay';
 import { buildScene } from './scene';
 import { emptyLayout, useModeler } from './store';
 import { TEMPLATES } from './templates';
@@ -121,10 +122,13 @@ function ModelerWorkspace() {
   const [checkOpen, setCheckOpen] = useState(false);
   const readiness = useReadiness(undefined);
   const [overlayMode, setOverlayMode] = useState<OverlayMode>('none');
+  const scale = useResultStyle((s) => s.scale);
   const { current: currentRun } = useProjectRuns();
   const currentResult = currentRun?.record.result;
   const overlay: OverlayInput | null =
-    currentResult && overlayMode !== 'none' ? { mode: overlayMode, result: currentResult } : null;
+    currentResult && overlayMode !== 'none'
+      ? { mode: overlayMode, result: currentResult, scale }
+      : null;
   const [blank, setBlank] = useState(false);
   const fileInput = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
@@ -255,6 +259,23 @@ function ModelerWorkspace() {
         onOverlay={setOverlayMode}
         overlayAvailable={currentResult !== undefined}
       />
+      {overlay ? (
+        <div className="modeler-legend" role="note" aria-label="Overlay legend">
+          {hasBothScales(overlay.result) && overlay.mode === 'estimate' ? (
+            <SegmentedControl
+              aria-label="Estimate scale"
+              size="small"
+              value={scale}
+              onChange={(v) => useResultStyle.getState().set({ scale: v })}
+              options={[
+                { value: 'standardized', label: 'Standardized' },
+                { value: 'unstandardized', label: 'Unstandardized' },
+              ]}
+            />
+          ) : null}
+          <span className="modeler-legend__text">{overlayLegend(overlay)}</span>
+        </div>
+      ) : null}
       {checkOpen && <CheckPanel readiness={readiness} onClose={() => setCheckOpen(false)} />}
       <div className="modeler-body">
         <div className="modeler-canvas-wrap">
