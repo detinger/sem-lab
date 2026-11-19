@@ -1,6 +1,6 @@
 # SEM Studio
 
-An interactive workspace for structural equation modeling (PLS-SEM and CB-SEM): draw a model, map survey data, estimate it with validated engines, and report the results.
+An interactive workspace for structural equation modeling (PLS-SEM and CB-SEM): import data and drag its columns onto constructs to build a model, estimate it with validated engines, and report the results — including a diagram of the estimated model with path coefficients, significance and R².
 
 `PLAN.md` (product) and `STYLE.md` (design) are the specifications. Nothing in this README
 claims a feature beyond what the phase records in `docs/validation/` demonstrate.

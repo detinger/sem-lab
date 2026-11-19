@@ -171,9 +171,7 @@ export function ModelerToolbar({
           Arrange
         </Button>
         <Menu
-          label={
-            { LR: 'L→R', RL: 'R→L', TB: 'T→B', BT: 'B→T' }[settings.direction]
-          }
+          label={{ LR: 'L→R', RL: 'R→L', TB: 'T→B', BT: 'B→T' }[settings.direction]}
           size="small"
           icon={<ArrowRightLeft size={14} />}
           items={(['LR', 'RL', 'TB', 'BT'] as const).map((d) => ({

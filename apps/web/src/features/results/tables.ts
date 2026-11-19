@@ -333,7 +333,8 @@ export function matrixTable(
   // cross-loadings each indicator's loading on its own construct.
   const constructOf = new Map<string, string>();
   if (matrixId === 'cross-loadings')
-    for (const c of ctx.model.constructs) for (const iid of c.indicatorIds) constructOf.set(iid, c.id);
+    for (const c of ctx.model.constructs)
+      for (const iid of c.indicatorIds) constructOf.set(iid, c.id);
   const emphatic = (rid: string, cid: string): boolean =>
     matrixId === 'fornell-larcker'
       ? rid === cid

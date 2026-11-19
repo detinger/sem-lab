@@ -159,12 +159,7 @@ export function IndicatorPalette({ collapsed, onToggle, onResize }: IndicatorPal
               onChange={(e) => setScaleHi(e.target.value)}
             />
           </div>
-          <Button
-            size="small"
-            variant="primary"
-            disabled={!scaleValid}
-            onClick={applyScaleToAll}
-          >
+          <Button size="small" variant="primary" disabled={!scaleValid} onClick={applyScaleToAll}>
             Apply to all {indicators.length} indicators
           </Button>
           <p className="inspector-hint">

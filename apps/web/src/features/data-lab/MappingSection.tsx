@@ -433,7 +433,10 @@ export function MappingSection() {
             response scale. Edits change the project (not the data) and can be undone.
           </p>
           {allMapped ? (
-            <Callout variant="success" title={`All ${used.length} indicators are mapped to columns`}>
+            <Callout
+              variant="success"
+              title={`All ${used.length} indicators are mapped to columns`}
+            >
               Nothing left to reconcile. Set their response scales below — IPMA and reverse scoring
               need the permitted minimum and maximum (e.g. 1 and 7).
             </Callout>
