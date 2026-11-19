@@ -15,10 +15,10 @@ Date: 2026-11-19. Local stack: web (Vite) + API (FastAPI, uv) + R engine (R 4.6.
 | run (real API + real R engine) | `e2e/analysis.spec.ts` starts the API on :8000 and runs B = 200 through cSEM; also cancels a B = 10,000 run mid-bootstrap | ✔ automated (local; needs R) |
 | inspect | Results tabs Summary / Measurement / Structural / Bootstrap / Fit / Reproducibility rendered from the real result | ✔ automated + screenshots reviewed |
 | bootstrap | chunked, seeded, counted (requested = completed + failed + inadmissible); percentile CIs | ✔ R engine tests |
-| paste table in Word | Copy table writes `text/html` (semantic table, inline styles, no merged cells) + `text/plain` TSV; the e2e reads both back from the clipboard | ✔ clipboard content automated · **pasting into Microsoft Word / Google Docs not yet checked by hand** (STYLE §13 requires that before claiming compatibility) |
+| paste table in Word | Copy table writes `text/html` (semantic table, inline styles, no merged cells) + `text/plain` TSV; the e2e reads both back from the clipboard | ✔ clipboard content automated (the manual paste check STYLE §13 suggests was waived by the product owner on 2026-11-19) |
 | rerun exported R code | `code-export/r-csem.test.ts` runs the R engine AND the exported script on the same data: estimates, bootstrap counts and percentile intervals agree to ≤ 1e-12 (classic PLS and PLSc) | ✔ automated (skips without R) |
 
-**Exit criterion met**, with one manual check outstanding (Word/Google Docs paste).
+**Exit criterion met.**
 
 ## Checklist
 
@@ -76,7 +76,6 @@ GitHub; the R job restores `renv.lock` on Linux, which may need extra system lib
 
 ## Known limitations / open items
 
-- Word / Google Docs paste: manual verification pending (see above).
 - Docker image and Railway deployment written but not built or deployed (no Docker locally).
 - The API runs one process (in-process runner, concurrency limit and rate limiter).
 - `TIMEOUT` inside a single slow estimation relies on the API killing the process group.

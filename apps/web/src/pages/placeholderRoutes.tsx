@@ -46,13 +46,6 @@ export const PLACEHOLDER_SPECS: readonly Spec[] = [
     willContain: 'Side-by-side results for PLS-SEM and CB-SEM runs on the same model.',
   },
   {
-    path: '/examples',
-    phase: 'Phase 6',
-    description: 'Worked example models and companion Python notebooks.',
-    willContain:
-      'Example models with synthetic teaching data and links to Google Colab notebooks once they are hosted.',
-  },
-  {
     path: '/learn',
     phase: 'Phase 6',
     description: 'Progressive lessons on structural equation modeling.',

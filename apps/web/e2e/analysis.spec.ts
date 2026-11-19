@@ -43,7 +43,9 @@ for (const theme of ['light', 'dark'] as const) {
     await expandLayout(page);
     await page.screenshot({ path: `${OUT}/analysis-idle-${theme}.png`, fullPage: true });
 
-    // --- first run: large B, cancelled while bootstrapping (determinate progress)
+    // --- first run: the largest B the app allows, cancelled while bootstrapping (determinate
+    // progress). Cancel is clicked as soon as progress shows: with the worker pool this small
+    // model can finish 10,000 draws in a few seconds, so nothing slow may come before the click.
     await page.getByLabel('Bootstrap samples (B)').fill('10000');
     await page.getByRole('button', { name: 'Run analysis' }).click();
     await expect(page.getByRole('dialog')).toHaveCount(0);
@@ -51,9 +53,9 @@ for (const theme of ['light', 'dark'] as const) {
     await expect(
       page.getByText(/bootstrap samples \(\d+ failed, \d+ inadmissible\)/),
     ).toBeVisible();
-    await page.screenshot({ path: `${OUT}/analysis-running-${theme}.png`, fullPage: true });
     await page.getByRole('button', { name: 'Cancel' }).click();
     await expect(page.getByText('Analysis cancelled')).toBeVisible({ timeout: 30_000 });
+    await page.screenshot({ path: `${OUT}/analysis-cancelled-${theme}.png`, fullPage: true });
     await page.getByRole('button', { name: 'Dismiss' }).click();
 
     // --- second run: B = 200

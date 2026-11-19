@@ -151,9 +151,16 @@ describe('routes', () => {
     ).toBeInTheDocument();
   });
 
+  it('/examples is the Examples gallery, not a placeholder', async () => {
+    renderAt('/examples');
+    expect(
+      await screen.findByRole('heading', { level: 1, name: 'Examples & Colab' }),
+    ).toBeInTheDocument();
+    expect(screen.queryByText('Planned for Phase 6')).not.toBeInTheDocument();
+  });
+
   it.each([
     ['/comparison', 'Phase 5'],
-    ['/examples', 'Phase 6'],
     ['/learn', 'Phase 6'],
     ['/challenges', 'Phase 6'],
     ['/reference', 'Phase 6'],

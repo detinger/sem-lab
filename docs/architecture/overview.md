@@ -33,21 +33,23 @@ file is stale — fix one of them, do not leave the disagreement.
 ```text
 sem-studio/
 ├── PLAN.md, STYLE.md            frozen specifications
-├── package.json                 npm workspaces root (apps/web, packages/contracts, packages/method-registry)
+├── package.json                 npm workspaces root (apps/web, packages/*)
 ├── apps/
-│   ├── web/                     React 19 + TypeScript + Vite SPA (Netlify)
-│   │   └── src/{app,features,domain,components/ui,storage,styles,tests}
-│       ├── app/                 endpoints, job store, engine runners, code export
-│       └── tests/               pytest
+│   └── web/                     React 19 + TypeScript + Vite SPA (Netlify); estimation in Web Workers
+│       └── src/{app,features,domain,components/ui,storage,styles,tests}
+│           └── features/code-export/   R (cSEM, lavaan) and Python export bundles + manifest
 ├── services/
-│   └── r-engine/                R adapters run as a subprocess by the API
-│       ├── R/                   cSEM / lavaan adapters, result normalisation
-│       ├── tests/testthat/
-│       ├── scripts/             install + maintenance scripts
-│       ├── r-lib/               project-local R library (git-ignored)
-│       └── renv.lock            pinned package versions
+│   ├── r-engine/                verification oracle (never deployed): cSEM / lavaan adapters
+│   │   ├── R/                   adapters, IPMA, result normalisation
+│   │   ├── tests/testthat/
+│   │   ├── scripts/             install + maintenance scripts
+│   │   ├── r-lib/               project-local R library (git-ignored)
+│   │   └── renv.lock            pinned package versions
+│   └── python-spike/            Phase 0 evidence on plspm / semopy
 ├── packages/
 │   ├── contracts/               Zod schemas (source of truth) → emitted JSON Schema + shared examples
+│   ├── engine/                  SEM Studio's estimation engine (TypeScript): PLS, PLSc, IPMA, CB-SEM
+│   ├── python-engine/           the same engine in Python; dist/semstudio_bundle.py ships with exports
 │   ├── fixtures/                numerical benchmark cases (model + data + expected results + provenance)
 │   └── method-registry/         capability registry: supported / beta / planned / unsupported per engine
 ├── notebooks/colab/             five Python notebooks
@@ -74,7 +76,9 @@ Browser (React SPA, static hosting on Netlify)
   │     └─ R-compatible RNG (MT19937, set.seed, sample.int "Rejection")
   │          run inside a Web Worker pool; bootstrap draws fitted in parallel,
   │          resampling indices generated in one sequential stream
-  └─ exports: R script (cSEM / lavaan) + exact analysis matrix, Python script, notebooks
+  └─ exports: one ZIP per language — R script (cSEM / lavaan) or Python script + the
+       verified Python engine, the exact analysis matrix, model, result, README and a
+       reproducibility manifest (versions, settings, capabilities, SHA-256 per file)
 
 Verification only (developer machines and CI, never deployed):
   services/r-engine (cSEM 0.7.1, lavaan 0.7-3)  ──▶  packages/fixtures/reference-results/*.json

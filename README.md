@@ -13,8 +13,9 @@ claims a feature beyond what the phase records in `docs/validation/` demonstrate
 | 0 | Foundation, library verification, contracts, fixtures | **Done** | `docs/validation/phase-0.md` |
 | 1 | Design system, visual modeler, persistence, diagram export | **Done** | `docs/validation/phase-1.md` |
 | 2 | Data Lab (CSV import, mapping) and model validator | **Done** | `docs/validation/phase-2.md` |
-| 3 | First PLS-SEM vertical slice (R/cSEM backend, bootstrap, Word tables, R export) | **Done** (Word paste check pending) | `docs/validation/phase-3.md` |
-| 4–8 | Mature PLS + IPMA, CB-SEM + Python, notebooks + learning, advanced methods, hardening | Planned | — |
+| 3 | First PLS-SEM vertical slice (R/cSEM backend, bootstrap, Word tables, R export) | **Done** | `docs/validation/phase-3.md` |
+| 4 | In-browser engine (PLS, PLSc, Mode B, bootstrap, IPMA, CB-SEM ML/MLR/FIML), R and Python export bundles, Python engine, examples | **Done** | `docs/validation/phase-4.md` |
+| 5–8 | Remaining CB features, notebooks + learning, advanced methods, hardening | Planned | — |
 
 **Architecture:** everything runs in the browser — modeling, data, estimation and reporting.
 There is no backend; data never leave the user's machine. R and Python are provided as

@@ -178,3 +178,37 @@ export function durationNote(): string {
   const k = poolSize();
   return `Draws run in parallel in ${k === 1 ? 'one worker' : `${k} workers`} on this device. Time grows with the number of samples, the sample size and the model size; each finished run records its measured duration.`;
 }
+
+/** The inverse of toConfiguration: form state for a stored AnalysisConfiguration. */
+export function configFromAnalysis(a: AnalysisConfiguration): ConfigState {
+  const base = defaultConfig(a.seed ?? 0);
+  const b = a.bootstrap;
+  return {
+    ...base,
+    method: a.method === 'cb-sem' ? 'cb-sem' : a.method === 'plsc' ? 'plsc' : 'pls-sem',
+    ...(a.method === 'cb-sem'
+      ? {
+          cbEstimator: a.estimator as CbEstimator,
+          identification: a.cb?.identification ?? base.identification,
+          cbMissing: a.missingData,
+        }
+      : {}),
+    ...(a.pls
+      ? {
+          innerWeighting: a.pls.innerWeighting ?? base.innerWeighting,
+          maxIterations: String(a.pls.maxIterations ?? DEFAULT_MAX_ITERATIONS),
+          tolerance: String(a.pls.tolerance ?? DEFAULT_TOLERANCE),
+        }
+      : {}),
+    bootstrap: b?.enabled === true,
+    ...(b
+      ? {
+          repetitions: String(b.repetitions),
+          ci: b.ci,
+          confidenceLevel: String(b.confidenceLevel) as ConfigState['confidenceLevel'],
+          sides: b.sides,
+        }
+      : {}),
+    ipmaTarget: a.ipma?.targetConstructId ?? '',
+  };
+}

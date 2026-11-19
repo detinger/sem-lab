@@ -1,0 +1,50 @@
+.ex-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--space-8);
+}
+
+.ex-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.ex-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.ex-summary {
+  margin: 0 0 var(--space-4);
+  font-size: 13px;
+}
+
+.ex-size {
+  margin: 0 0 var(--space-4);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.ex-small {
+  margin: 0 0 var(--space-4);
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.ex-actions {
+  margin-top: auto;
+  padding-top: var(--space-6);
+}
+
+.ex-inline-icon {
+  vertical-align: -2px;
+}
+.ex-section {
+  margin-bottom: var(--space-13);
+}
+
+.ex-section {
+  margin-bottom: var(--space-13);
+}

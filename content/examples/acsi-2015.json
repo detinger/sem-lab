@@ -242,7 +242,7 @@
   },
   "analysis": {
     "method": "pls-sem",
-    "engine": "r-csem",
+    "engine": "browser",
     "estimator": "pls-pm",
     "missingData": "listwise",
     "seed": 20150101,
