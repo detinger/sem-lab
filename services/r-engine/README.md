@@ -21,6 +21,7 @@ R/pls_alias.R      C1..Ck / X1..Xp aliases and cSEM syntax (no user text in code
 R/pls_estimate.R   csem() options and calls, convergence, verify(), rho_A fit
 R/pls_results.R    parameters, effects, construct metrics, matrices, fit
 R/pls_bootstrap.R  chunked seeded bootstrap with per-draw fallback
+R/pls_ipma.R       IPMA (endpoint rescaling, classic refit, importance/performance)
 tests/             testthat suite + validate-result.mjs (ajv schema check)
 spike/             Phase 0 scripts (not used by the engine)
 ```
@@ -57,8 +58,13 @@ node services/r-engine/tests/validate-result.mjs /tmp/job1/result.json   # schem
   and `result.json`, written to `result.json.tmp` then renamed:
   `{"ok": true, "result": NormalizedSemResult}` or
   `{"ok": false, "error": {"code", "message", "details"?}}`.
+- IPMA: `analysis.ipma = {targetConstructId}` (classic `pls-sem` only, every indicator
+  needs `scale: {min, max}`); adds `result.ipma` (see docs/estimators/pls-csem.md §5).
+  Enabled only when the registry marks `ipma.construct` `beta`/`supported` for r-csem.
 - Exit status 0 = result.json written (success or handled error); non-zero = crash.
-- Error codes: `REQUEST_INVALID` (bad request, cycles, empty cells in mapped columns),
+- Error codes: `REQUEST_INVALID` (bad request, cycles, empty cells in mapped columns;
+  IPMA: `details.reason` `ipma-target-unknown`, `ipma-no-predecessors`,
+  `ipma-scale-missing`, `ipma-out-of-scale`),
   `DATA_COLUMN_MISSING`, `DATA_NOT_NUMERIC`, `DATA_INSUFFICIENT_ROWS` (< 3 rows),
   `DATA_ZERO_VARIANCE`, `MODEL_NOT_IDENTIFIED` (isolated construct, no structural path,
   collinear Mode B block), `ENGINE_NONCONVERGENCE`, `CAPABILITY_UNSUPPORTED` (anything the

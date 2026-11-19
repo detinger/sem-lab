@@ -83,6 +83,12 @@ run_job_inner <- function(job_dir, progress, started) {
   mats <- build_matrices(spec, al, est$fit, data)
   fit_idx <- build_fit(est$fit)
   warnings <- c(spec$warnings, collect_warnings(spec, al, est, theta, ts, bs, es, dat))
+  ipma <- NULL
+  if (!is.null(spec$ipma)) {
+    ipma <- compute_ipma(spec, al, model, dat$X, est$opts)
+    warnings <- c(warnings, ipma$warnings)
+    calls <- c(calls, ipma$call)
+  }
 
   admissible <- !any(est$verify)
   messages <- c(
@@ -97,8 +103,7 @@ run_job_inner <- function(job_dir, progress, started) {
 
   result <- list(
     schemaVersion = 1L,
-    sample = list(nRows = as.integer(dat$n_rows), nUsed = as.integer(n), nDropped = as.integer(dat$n_rows - n),
-                  missingData = "listwise"),
+    sample = sample_block(req$dataPreparation, dat$n_rows, n),
     estimation = list(converged = est$converged, iterations = est$iterations, admissible = admissible,
                       messages = I(as.character(messages))),
     parameters = params,
@@ -120,6 +125,7 @@ run_job_inner <- function(job_dir, progress, started) {
       inadmissible = as.integer(bs$inadmissible), seed = spec$bootstrap$seed, ciMethod = "percentile",
       confidenceLevel = spec$bootstrap$level, chunkSize = as.integer(bs$chunk_size), draws = draws)
   }
+  if (!is.null(ipma)) result$ipma <- ipma$result
   result$warnings <- warnings
   call_txt <- paste(calls, collapse = "\n")
   if (nchar(call_txt) > 4000L) call_txt <- paste0(substr(call_txt, 1L, 3980L), "\n[truncated]")
@@ -182,4 +188,27 @@ collect_warnings <- function(spec, al, est, theta, ts, bs, es, dat) {
     }
   }
   w
+}
+
+
+#' The `sample` block. The web app may remove incomplete rows BEFORE upload (listwise deletion
+#' in the browser) and declares that in request.dataPreparation = {nRows, nDropped, missingData};
+#' the engine then reports the original row count so "N of M rows used" is never lost. The
+#' declaration must be consistent with the data received, otherwise the request is refused.
+sample_block <- function(prep, n_received, n_used) {
+  if (is.null(prep)) {
+    return(list(nRows = as.integer(n_received), nUsed = as.integer(n_used),
+                nDropped = as.integer(n_received - n_used), missingData = "listwise"))
+  }
+  ok <- is.list(prep) && is.numeric(prep$nRows) && is.numeric(prep$nDropped) &&
+    length(prep$nRows) == 1L && length(prep$nDropped) == 1L &&
+    prep$nRows >= 0 && prep$nDropped >= 0 && prep$nRows - prep$nDropped == n_received &&
+    identical(prep$missingData, "listwise")
+  if (!isTRUE(ok)) {
+    engine_error("REQUEST_INVALID",
+                 "request.dataPreparation is inconsistent with data.csv (nRows - nDropped must equal the uploaded rows; missingData must be 'listwise').",
+                 list(reason = "data-preparation-mismatch", uploadedRows = as.integer(n_received)))
+  }
+  list(nRows = as.integer(prep$nRows), nUsed = as.integer(n_used),
+       nDropped = as.integer(prep$nRows - n_used), missingData = "listwise")
 }

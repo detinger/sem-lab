@@ -9,12 +9,12 @@ from pydantic import Field, StringConstraints, model_validator
 from .common import Id, Int, Strict
 
 SemMethod = Literal["pls-sem", "plsc", "cb-sem"]
-EngineId = Literal["r-csem", "r-seminr", "r-lavaan", "py-semopy", "py-plspm"]
+EngineId = Literal["browser", "r-csem", "r-seminr", "r-lavaan", "py-semopy", "py-plspm"]
 
 ENGINES_BY_METHOD: dict[str, tuple[str, ...]] = {
-    "pls-sem": ("r-csem", "r-seminr", "py-plspm"),
-    "plsc": ("r-csem", "r-seminr"),
-    "cb-sem": ("r-lavaan", "py-semopy"),
+    "pls-sem": ("browser", "r-csem", "r-seminr", "py-plspm"),
+    "plsc": ("browser", "r-csem", "r-seminr"),
+    "cb-sem": ("browser", "r-lavaan", "py-semopy"),
 }
 
 

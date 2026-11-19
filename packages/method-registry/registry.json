@@ -3,6 +3,14 @@
   "updated": "2026-11-19",
   "engines": [
     {
+      "id": "browser",
+      "language": "TypeScript",
+      "package": "@sem-studio/engine",
+      "version": "0.1.0",
+      "license": "project licence",
+      "notes": "SEM Studio's in-browser engine (Web Worker). Verified against committed R reference results (packages/fixtures/reference-results): cSEM 0.7.1 for PLS, lavaan 0.7-3 for CB-SEM."
+    },
+    {
       "id": "r-csem",
       "language": "R",
       "package": "cSEM",
@@ -204,6 +212,17 @@
           "verification": "none",
           "evidence": [],
           "reason": "Not a PLS-SEM engine."
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/pls-reference.test.ts",
+            "packages/fixtures/reference-results/pls",
+            "packages/engine/tests/pls-population.test.ts"
+          ],
+          "implementation": "packages/engine/src/pls/core.ts",
+          "notes": "Reproduces all 61 R (cSEM 0.7.1) reference runs (classic PLS ≤ 1.4e-15) and population truths without R."
         }
       }
     },
@@ -240,6 +259,16 @@
           "verification": "engine-verified",
           "evidence": ["docs/validation/phase-0/evidence/r/seminr.json"],
           "implementation": "`inner_weights = path_weighting`"
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/pls-reference.test.ts",
+            "packages/fixtures/reference-results/pls"
+          ],
+          "implementation": "packages/engine/src/pls/core.ts",
+          "notes": "Every reference fixture is run under this scheme for classic PLS and PLSc (CI-runnable: references are committed)."
         }
       }
     },
@@ -276,6 +305,16 @@
           "verification": "engine-verified",
           "evidence": ["docs/validation/phase-0/evidence/r/seminr.json"],
           "reason": "seminr 2.6.0 offers path and factorial weighting only."
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/pls-reference.test.ts",
+            "packages/fixtures/reference-results/pls"
+          ],
+          "implementation": "packages/engine/src/pls/core.ts",
+          "notes": "Every reference fixture is run under this scheme for classic PLS and PLSc (CI-runnable: references are committed)."
         }
       }
     },
@@ -312,6 +351,16 @@
           "verification": "engine-verified",
           "evidence": ["docs/validation/phase-0/evidence/r/seminr.json"],
           "implementation": "`inner_weights = path_factorial`"
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/pls-reference.test.ts",
+            "packages/fixtures/reference-results/pls"
+          ],
+          "implementation": "packages/engine/src/pls/core.ts",
+          "notes": "Every reference fixture is run under this scheme for classic PLS and PLSc (CI-runnable: references are committed)."
         }
       }
     },
@@ -339,6 +388,17 @@
           "evidence": ["docs/validation/phase-0/evidence/python/plspm_probe.json"],
           "implementation": "Mode.B blocks, NUM route",
           "notes": "Mixed and all-Mode-B models match ref_pls.py to 7.6e-10. A missing value in a Mode B block raises."
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/pls-reference.test.ts",
+            "packages/fixtures/reference-results/pls",
+            "packages/engine/tests/pls-population.test.ts"
+          ],
+          "implementation": "packages/engine/src/pls/core.ts",
+          "notes": "Mode B weights ≤ 3.3e-16 vs cSEM; composite loadings R·w exact on pls-mixed-composite-exact."
         }
       }
     },
@@ -373,6 +433,17 @@
           "verification": "none",
           "evidence": [],
           "reason": "plspm has no consistent PLS. Use the R export (PLAN §2.9 parity policy)."
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/pls-reference.test.ts",
+            "packages/fixtures/reference-results/pls",
+            "packages/engine/tests/pls-population.test.ts"
+          ],
+          "implementation": "packages/engine/src/pls/core.ts",
+          "notes": "PLSc (dist_squared_euclid correction) ≤ 5.1e-15 vs cSEM; tam-mediation-exact population paths recovered."
         }
       }
     },
@@ -389,6 +460,16 @@
           "verification": "engine-verified",
           "evidence": ["docs/validation/phase-0/evidence/r/csem_assess.json"],
           "implementation": "`assess(.quality_criterion = c(\"cronbachs_alpha\", \"rho_C\", \"ave\"))`"
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/pls-reference.test.ts",
+            "packages/fixtures/reference-results/pls"
+          ],
+          "implementation": "packages/engine/src/pls/assess.ts",
+          "notes": "α, ρC, AVE reproduce cSEM's values in all reference runs (max matrix deviation 3.1e-13)."
         }
       }
     },
@@ -406,6 +487,16 @@
           "evidence": ["docs/validation/phase-0/evidence/r/csem_assess.json"],
           "implementation": "`Estimates$Reliabilities` of a PLSc fit (weights are identical to the classic fit)",
           "notes": "assess() on a classic (non-PLSc) object returns 1 for every block (defect, csem_assess.json); SEM Studio takes ρA from a PLSc run."
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/pls-reference.test.ts",
+            "packages/fixtures/reference-results/pls"
+          ],
+          "implementation": "packages/engine/src/pls/assess.ts",
+          "notes": "ρA (PLSc correction of the same weights) reproduce cSEM's values in all reference runs (max matrix deviation 3.1e-13)."
         }
       }
     },
@@ -422,6 +513,16 @@
           "verification": "engine-verified",
           "evidence": ["docs/validation/phase-0/evidence/r/csem_assess.json"],
           "implementation": "`assess(.quality_criterion = \"htmt\")`, `.type_htmt = \"htmt2\"`"
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/pls-reference.test.ts",
+            "packages/fixtures/reference-results/pls"
+          ],
+          "implementation": "packages/engine/src/pls/assess.ts",
+          "notes": "HTMT, HTMT2 reproduce cSEM's values in all reference runs (max matrix deviation 3.1e-13)."
         }
       }
     },
@@ -438,6 +539,16 @@
           "verification": "engine-verified",
           "evidence": ["docs/validation/phase-0/evidence/r/csem_assess.json"],
           "implementation": "`assess(.quality_criterion = \"fl_criterion\")`"
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/pls-reference.test.ts",
+            "packages/fixtures/reference-results/pls"
+          ],
+          "implementation": "packages/engine/src/pls/assess.ts",
+          "notes": "Fornell–Larcker reproduce cSEM's values in all reference runs (max matrix deviation 3.1e-13)."
         }
       }
     },
@@ -455,6 +566,16 @@
           "evidence": ["docs/validation/phase-0/evidence/r/csem_assess.json"],
           "implementation": "`assess()`, `calculatef2()`, `calculateVIFModeB()`",
           "notes": "seminr's f² re-estimates the model without the predictor and differs from cSEM by 1.1e-3 on tam-v1; SEM Studio reports cSEM's definition and states it."
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/pls-reference.test.ts",
+            "packages/fixtures/reference-results/pls"
+          ],
+          "implementation": "packages/engine/src/pls/assess.ts",
+          "notes": "R², adjusted R², f², VIF reproduce cSEM's values in all reference runs (max matrix deviation 3.1e-13)."
         }
       }
     },
@@ -472,6 +593,16 @@
           "evidence": ["docs/validation/phase-0/evidence/r/csem_assess.json"],
           "implementation": "`assess()`",
           "notes": "cSEM's d_G uses log10; the natural-log definition is about 5.3× larger. Shown with that definition stated; no CB-style cutoffs."
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/pls-reference.test.ts",
+            "packages/fixtures/reference-results/pls"
+          ],
+          "implementation": "packages/engine/src/pls/assess.ts",
+          "notes": "SRMR, d_ULS, d_G (log10, as cSEM) reproduce cSEM's values in all reference runs (max matrix deviation 3.1e-13)."
         }
       }
     },
@@ -498,6 +629,16 @@
           "verification": "engine-verified",
           "evidence": ["docs/validation/phase-0/evidence/r/lavaan.json"],
           "implementation": "defined parameters (`:=`)"
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/pls-reference.test.ts",
+            "packages/fixtures/reference-results/pls"
+          ],
+          "implementation": "packages/engine/src/pls/effects.ts",
+          "notes": "Total and total indirect effects ≤ 5.1e-15 vs the R engine."
         }
       }
     },
@@ -518,6 +659,17 @@
           ],
           "implementation": "SEM Studio R engine: product of path coefficients along each directed route of length ≥ 2, computed within every bootstrap draw (pls_results.R / pls_bootstrap.R)",
           "notes": "cSEM does not report specific indirect effects; the engine computes them. Reference test: tam-mediation-exact indirect effect .30 recovered under PLSc to 1e-15. At most 500 routes are listed (warning if more). Phase 3: specific indirect effect recovered on tam-mediation-exact."
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/pls-reference.test.ts",
+            "packages/fixtures/reference-results/pls",
+            "packages/engine/tests/pls-bootstrap.test.ts"
+          ],
+          "implementation": "packages/engine/src/pls/effects.ts",
+          "notes": "Products along each route, also within every bootstrap draw."
         }
       }
     },
@@ -565,6 +717,18 @@
           "verification": "engine-verified",
           "evidence": ["docs/validation/phase-0/evidence/python/semopy_probe.json"],
           "reason": "semopy has no nonparametric bootstrap (only a parametric bias correction)."
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/pls-bootstrap.test.ts",
+            "packages/fixtures/reference-results/pls-bootstrap",
+            "packages/engine/tests/rng.test.ts",
+            "apps/web/src/features/code-export/r-csem.test.ts"
+          ],
+          "implementation": "packages/engine/src/pls/bootstrap.ts",
+          "notes": "SEM Studio bootstrap: R-compatible set.seed + sample.int per draw (bit-exact vs R), full refit, failed/inadmissible counted; every draw equals the R reference implementation (≤ 2.4e-12); the exported R script reproduces the app's intervals exactly."
         }
       }
     },
@@ -587,6 +751,12 @@
           "verification": "smoke-only",
           "evidence": ["docs/validation/phase-0/evidence/r/lavaan.json"],
           "reason": "bca.simple ran but is unchecked; full bca fails when R < N."
+        },
+        "browser": {
+          "status": "planned",
+          "verification": "none",
+          "evidence": [],
+          "reason": "BCa intervals are not implemented in the browser engine yet."
         }
       }
     },
@@ -603,6 +773,12 @@
           "verification": "smoke-only",
           "evidence": ["docs/validation/phase-0/evidence/r/csem_resampling_followup.json"],
           "reason": "Replacements are drawn with seed+1 (cSEM source), which collides with the next chunk's seed. SEM Studio excludes and counts inadmissible draws."
+        },
+        "browser": {
+          "status": "unsupported",
+          "verification": "none",
+          "evidence": [],
+          "reason": "SEM Studio excludes and counts inadmissible draws; replacing them would condition the distribution on admissibility."
         }
       }
     },
@@ -619,6 +795,12 @@
           "verification": "smoke-only",
           "evidence": ["docs/validation/phase-0/evidence/r/csem_resampling_followup.json"],
           "reason": "`.sign_change_option = \"individual\"` silently drops draws (55 rows kept while the count says 100). Not offered."
+        },
+        "browser": {
+          "status": "unsupported",
+          "verification": "none",
+          "evidence": [],
+          "reason": "Not offered: sign-change corrections alter the bootstrap distribution and cSEM's implementation was defective (Phase 0)."
         }
       }
     },
@@ -631,11 +813,26 @@
       "references": ["ringle2016"],
       "engines": {
         "r-csem": {
-          "status": "planned",
-          "verification": "engine-verified",
-          "evidence": ["docs/validation/phase-0/evidence/r/csem_ipma.json"],
-          "implementation": "computed by SEM Studio from a classic PLS fit on endpoint-rescaled data",
-          "notes": "doIPMA() never rescales; it matches the first-principles computation to 9e-14 only when the data were rescaled to 0–100 beforehand. Must not run on a PLSc fit. Implementation in Phase 4."
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "docs/estimators/pls-csem.md",
+            "docs/validation/phase-0/evidence/r/csem_ipma.json",
+            "services/r-engine/tests/testthat/test-ipma.R"
+          ],
+          "implementation": "services/r-engine/R/pls_ipma.R",
+          "notes": "Phase 4: SEM Studio R engine — indicators rescaled to 0–100 with the ORIGINAL endpoints before a classic PLS refit; performance = mean score with sum-to-one unstandardised weights; importance = unstandardised total effect (sign kept). Reference tests: range-restricted fixture performance = (mean − 1)/6·100 to 7e-14 (observed extrema would be wrong); equals cSEM::doIPMA on the rescaled fit to 4e-16; Phase 0 TAM values reproduced. Point estimates only (no intervals yet). Refused for PLSc."
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/pls-reference.test.ts",
+            "packages/fixtures/reference-results/pls",
+            "packages/engine/tests/pls-behaviour.test.ts"
+          ],
+          "implementation": "packages/engine/src/pls/ipma.ts",
+          "notes": "Original-endpoint rescaling and classic refit; equals the R engine (and cSEM::doIPMA) to 7.1e-14 on the 0–100 scale. Refused for PLSc."
         }
       }
     },
@@ -648,10 +845,25 @@
       "references": ["ringle2016"],
       "engines": {
         "r-csem": {
-          "status": "planned",
-          "verification": "engine-verified",
-          "evidence": ["docs/validation/phase-0/evidence/r/csem_ipma.json"],
-          "reason": "Convention verified; implementation in Phase 4."
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "docs/estimators/pls-csem.md",
+            "docs/validation/phase-0/evidence/r/csem_ipma.json",
+            "services/r-engine/tests/testthat/test-ipma.R"
+          ],
+          "implementation": "services/r-engine/R/pls_ipma.R",
+          "notes": "Phase 4: indicator importance = normalised weight × construct importance (sums to the construct importance within a block, ≤ 1e-12); indicator performance = mean rescaled indicator; equals cSEM::doIPMA to 4e-16."
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/pls-reference.test.ts",
+            "packages/fixtures/reference-results/pls"
+          ],
+          "implementation": "packages/engine/src/pls/ipma.ts",
+          "notes": "Indicator importance/performance equal the R engine."
         }
       }
     },
@@ -669,6 +881,12 @@
           "evidence": ["docs/validation/phase-0/evidence/r/csem_smoke.json"],
           "implementation": "`predict()`",
           "reason": "Ran on tam-v1 without error; numbers not yet checked."
+        },
+        "browser": {
+          "status": "planned",
+          "verification": "none",
+          "evidence": [],
+          "reason": "Not implemented in the browser engine yet (Phase 7)."
         }
       }
     },
@@ -686,6 +904,12 @@
           "evidence": ["docs/validation/phase-0/evidence/r/csem_smoke.json"],
           "implementation": "`testCVPAT()`",
           "reason": "Ran on tam-v1 without error; numbers not yet checked."
+        },
+        "browser": {
+          "status": "planned",
+          "verification": "none",
+          "evidence": [],
+          "reason": "Not implemented in the browser engine yet (Phase 7)."
         }
       }
     },
@@ -703,6 +927,12 @@
           "evidence": ["docs/validation/phase-0/evidence/r/csem_smoke.json"],
           "implementation": "`testMICOM()`",
           "reason": "Ran on tam-v1 without error; numbers not yet checked (group tests used a fabricated row-parity grouping)."
+        },
+        "browser": {
+          "status": "planned",
+          "verification": "none",
+          "evidence": [],
+          "reason": "Not implemented in the browser engine yet (Phase 7)."
         }
       }
     },
@@ -720,6 +950,12 @@
           "evidence": ["docs/validation/phase-0/evidence/r/csem_smoke.json"],
           "implementation": "`testMGD()`",
           "reason": "Ran on tam-v1 without error; numbers not yet checked (group tests used a fabricated row-parity grouping)."
+        },
+        "browser": {
+          "status": "planned",
+          "verification": "none",
+          "evidence": [],
+          "reason": "Not implemented in the browser engine yet (Phase 7)."
         }
       }
     },
@@ -737,6 +973,12 @@
           "evidence": ["docs/validation/phase-0/evidence/r/csem_smoke.json"],
           "implementation": "second-order syntax",
           "reason": "Ran on tam-v1 without error; numbers not yet checked."
+        },
+        "browser": {
+          "status": "planned",
+          "verification": "none",
+          "evidence": [],
+          "reason": "Not implemented in the browser engine yet (Phase 7)."
         }
       }
     },
@@ -754,6 +996,12 @@
           "evidence": ["docs/validation/phase-0/evidence/r/csem_smoke.json"],
           "implementation": "`.` interaction syntax",
           "reason": "Ran on tam-v1 without error; numbers not yet checked."
+        },
+        "browser": {
+          "status": "planned",
+          "verification": "none",
+          "evidence": [],
+          "reason": "Not implemented in the browser engine yet (Phase 7)."
         }
       }
     },
@@ -770,6 +1018,12 @@
           "verification": "smoke-only",
           "evidence": ["docs/validation/phase-0/evidence/r/csem_smoke.json"],
           "reason": "testHausman requires instruments, which the model contract cannot express yet."
+        },
+        "browser": {
+          "status": "unsupported",
+          "verification": "none",
+          "evidence": [],
+          "reason": "Not implemented; the model contract cannot express instruments."
         }
       }
     },
@@ -813,6 +1067,17 @@
           "verification": "none",
           "evidence": [],
           "reason": "Not a CB-SEM engine."
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/cb/reference.test.ts",
+            "packages/fixtures/reference-results/cb",
+            "packages/engine/tests/cb/exact-and-diagnostics.test.ts"
+          ],
+          "implementation": "packages/engine/src/cb/engine.ts",
+          "notes": "lavaan-equivalent ML (marker and std.lv): ≤ 5e-8 vs tightly converged lavaan, within lavaan's own convergence error (~1e-6) of default lavaan; exact-covariance population truths recovered."
         }
       }
     },
@@ -835,6 +1100,17 @@
           "verification": "smoke-only",
           "evidence": ["docs/validation/phase-0/evidence/python/semopy_probe.json"],
           "reason": "semopy offers se_robust=True (sandwich SEs, changed SEs by up to 3×) but no scaled test statistic; not equivalent to lavaan's MLR/MLM. Unchecked."
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/cb/reference.test.ts",
+            "packages/fixtures/reference-results/cb",
+            "packages/engine/tests/cb/exact-and-diagnostics.test.ts"
+          ],
+          "implementation": "packages/engine/src/cb/engine.ts",
+          "notes": "Huber–White SEs and Yuan–Bentler (Mplus) scaled χ² as lavaan MLR: ≤ 7e-8 vs tight lavaan. Robust CFI/TLI/RMSEA under FIML are not produced (null, not-supported)."
         }
       }
     },
@@ -857,6 +1133,12 @@
           "verification": "smoke-only",
           "evidence": ["docs/validation/phase-0/evidence/python/semopy_probe.json"],
           "reason": "semopy offers se_robust=True (sandwich SEs, changed SEs by up to 3×) but no scaled test statistic; not equivalent to lavaan's MLR/MLM. Unchecked."
+        },
+        "browser": {
+          "status": "unsupported",
+          "verification": "none",
+          "evidence": [],
+          "reason": "MLM (Satorra–Bentler) is not implemented in the browser engine; use MLR, or the exported lavaan script."
         }
       }
     },
@@ -874,6 +1156,12 @@
           "evidence": ["docs/validation/phase-0/evidence/r/lavaan.json"],
           "implementation": "`ordered = ..., estimator = \"WLSMV\"`",
           "reason": "Ran on tam-v1; numbers not yet checked against the ordinal synthetic fixture."
+        },
+        "browser": {
+          "status": "unsupported",
+          "verification": "none",
+          "evidence": [],
+          "reason": "Ordinal estimation (WLSMV/DWLS) is not implemented in the browser engine; export the lavaan script for ordinal models."
         }
       }
     },
@@ -898,6 +1186,17 @@
           "evidence": ["docs/validation/phase-0/evidence/python/semopy_probe.json"],
           "implementation": "semopy.ModelMeans(desc).fit(data, obj=\"ML\")",
           "reason": "Use ModelMeans(obj=\"ML\"); NEVER Model(obj=\"FIML\"), which has no mean structure and silently assumes zero means (parameters off by up to 43 on raw data). ModelMeans(obj=\"FIML\") raises NotImplementedError. A Model fit on data with NaN silently uses pairwise covariances."
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/cb/reference.test.ts",
+            "packages/fixtures/reference-results/cb",
+            "packages/engine/tests/cb/exact-and-diagnostics.test.ts"
+          ],
+          "implementation": "packages/engine/src/cb/engine.ts",
+          "notes": "Casewise ML over missingness patterns with observed-information SEs, ML and MLR: ≤ 2.4e-8 vs tight lavaan."
         }
       }
     },
@@ -921,6 +1220,18 @@
           "evidence": ["docs/validation/phase-0/evidence/python/semopy_probe.json"],
           "implementation": "semopy.calc_stats()",
           "notes": "Verified: chi2, DoF, CFI, TLI, NFI, RMSEA (≤5e-9). NOT reported by SEM Studio: GFI (it equals NFI), AGFI, LogLik/AIC/BIC (LogLik is the F_ML value). SRMR and the RMSEA CI are absent. chi2 p-values underflow to 0.0."
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/cb/reference.test.ts",
+            "packages/fixtures/reference-results/cb",
+            "packages/engine/tests/cb/exact-and-diagnostics.test.ts",
+            "packages/engine/tests/cb/distributions.test.ts"
+          ],
+          "implementation": "packages/engine/src/cb/inference.ts",
+          "notes": "χ², df, p, CFI, TLI, RMSEA with 90% CI (noncentral χ² + R-identical uniroot), SRMR, AIC, BIC, logL. Just-identified models report fit as not-applicable rather than CFI = 1 / RMSEA = 0."
         }
       }
     },
@@ -943,6 +1254,17 @@
           "verification": "engine-verified",
           "evidence": ["docs/validation/phase-0/evidence/python/semopy_probe.json"],
           "reason": "semopy bounds variances at 0: a Heywood case that needs θ = −0.62 returns 3e-11 with success=True, an ordinary SE and no flag. Python exports must check boundary estimates themselves and say so."
+        },
+        "browser": {
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "packages/engine/tests/cb/reference.test.ts",
+            "packages/fixtures/reference-results/cb",
+            "packages/engine/tests/cb/exact-and-diagnostics.test.ts"
+          ],
+          "implementation": "packages/engine/src/cb/engine.ts",
+          "notes": "Heywood cases reported unclamped with admissible = false; singular covariance and t-rule non-identification refused; singular information ⇒ SEs null."
         }
       }
     },
@@ -966,6 +1288,12 @@
           "verification": "engine-verified",
           "evidence": ["docs/validation/phase-0/evidence/python/semopy_probe.json"],
           "reason": "Absent in semopy 2.3.11."
+        },
+        "browser": {
+          "status": "planned",
+          "verification": "none",
+          "evidence": [],
+          "reason": "Modification indices are not implemented in the browser engine yet."
         }
       }
     }

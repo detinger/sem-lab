@@ -7,16 +7,16 @@ import { describe, expect, it } from 'vitest';
 import { buildAnalysisData } from '@/domain/dataset/analysis-data';
 import { createDataset, isDatasetError } from '@/domain/dataset/transform';
 import { analysisCsv } from '@/features/analysis/api';
+import { estimate } from '@sem-studio/engine';
 import { exportCsemScript, identifiers, rComment, rString } from './r-csem';
 
 const repo = join(__dirname, '..', '..', '..', '..', '..');
 const fixture = (name: string, file: string): string =>
   readFileSync(join(repo, 'packages/fixtures/synthetic', name, file), 'utf8');
 const rscript = join(repo, 'services/r-engine/bin/rscript');
-const runJob = join(repo, 'services/r-engine/bin/run-job');
 
 function rWorks(): boolean {
-  if (!existsSync(rscript) || !existsSync(runJob)) return false;
+  if (!existsSync(rscript)) return false;
   try {
     execFileSync(rscript, ['-e', 'invisible(requireNamespace("cSEM"))'], {
       timeout: 60_000,
@@ -115,7 +115,7 @@ describe('exported script content', () => {
 });
 
 describe.skipIf(!rWorks())(
-  'the exported script reproduces the R engine exactly (requires R + cSEM)',
+  'the exported R script reproduces the in-app (browser) engine exactly, bootstrap included (requires R + cSEM)',
   () => {
     it.each(['pls-sem', 'plsc'] as const)(
       '%s with a 200-draw bootstrap',
@@ -145,22 +145,22 @@ describe.skipIf(!rWorks())(
         };
         const dir = mkdtempSync(join(tmpdir(), 'sem-export-'));
         const csv = analysisCsv(data);
-        // 1) the engine
-        writeFileSync(join(dir, 'data.csv'), csv);
-        writeFileSync(
-          join(dir, 'request.json'),
-          JSON.stringify({
-            protocolVersion: 1,
-            jobId: 'export-test',
-            model,
-            analysis,
-            limits: { maxBootstrap: 10000, timeoutSeconds: 600 },
-          }),
-        );
-        execFileSync(runJob, [dir], { timeout: 280_000, stdio: 'ignore' });
-        const engine = JSON.parse(readFileSync(join(dir, 'result.json'), 'utf8')) as {
-          ok: boolean;
-          result: {
+        // 1) the app's own browser engine (the numbers the user sees)
+        const outcome = await estimate({
+          model,
+          analysis: { ...analysis, engine: 'browser' },
+          data: {
+            columns: data.columns,
+            // listwise analysis data never contain null cells
+            rows: data.rows as number[][],
+            nRows: data.nRows,
+            nDropped: data.nDropped,
+          },
+        });
+        if (!outcome.ok) throw new Error(outcome.error.message);
+        const engine = {
+          ok: true,
+          result: outcome.result as unknown as {
             parameters: Array<{
               kind: string;
               est: number;
@@ -168,7 +168,7 @@ describe.skipIf(!rWorks())(
               ciUpper: number | null;
             }>;
             bootstrap: { completed: number; failed: number; inadmissible: number };
-          };
+          },
         };
         expect(engine.ok).toBe(true);
         // 2) the exported script, plus a test-only footer that writes its numbers as JSON

@@ -57,7 +57,7 @@ export type Capability = z.infer<typeof Capability>;
 
 export const EngineInfo = z.strictObject({
   id: EngineId,
-  language: z.enum(['R', 'Python']),
+  language: z.enum(['TypeScript', 'R', 'Python']),
   package: z.string(),
   version: z.string(),
   license: z.string(),
@@ -115,3 +115,5 @@ export const METHOD_CAPABILITY: Readonly<Record<SemMethod, string>> = {
   plsc: 'pls.estimation.plsc',
   'cb-sem': 'cb.estimation.ml',
 };
+
+export { requiredCapabilities } from './gating';

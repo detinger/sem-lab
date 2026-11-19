@@ -14,7 +14,12 @@ import {
   type SemModel,
   validateModelStructure,
 } from '@sem-studio/contracts';
-import { METHOD_CAPABILITY, isOffered, unavailableReason } from '@sem-studio/method-registry';
+import {
+  capability,
+  isOffered,
+  requiredCapabilities,
+  unavailableReason,
+} from '@sem-studio/method-registry';
 import { constructRoles, findCycles, structuralGraph } from '../graph';
 import { blocksOf } from '../model-ops';
 
@@ -678,22 +683,9 @@ function estimatorIssues(model: SemModel, a: AnalysisConfiguration): ValidationI
       });
     }
   };
-  gate(METHOD_CAPABILITY[a.method], methodLabel(a.method));
-  if (isPls(a.method) && a.pls)
-    gate(
-      `pls.inner-weighting.${a.pls.innerWeighting}`,
-      `The ${a.pls.innerWeighting} weighting scheme`,
-    );
-  if (isPls(a.method) && model.constructs.some((c) => c.measurement === 'composite-formative'))
-    gate('pls.mode-b', 'Mode B (composite/formative blocks)');
-  if (a.method === 'cb-sem' && a.estimator !== 'ML')
-    gate(`cb.estimation.${a.estimator.toLowerCase()}`, `The ${a.estimator} estimator`);
-  if (a.method === 'cb-sem' && a.missingData === 'fiml') gate('cb.missing.fiml', 'FIML');
+  // One definition shared with the API (packages/method-registry/src/gating.ts).
+  for (const id of requiredCapabilities(model, a)) gate(id, capability(id)?.title ?? id);
   if (a.bootstrap?.enabled) {
-    gate(
-      a.bootstrap.ci === 'bca' ? 'resampling.bootstrap-bca' : 'resampling.bootstrap-percentile',
-      `Bootstrap (${a.bootstrap.ci}) intervals`,
-    );
     if (a.bootstrap.repetitions > 10_000) {
       out.push({
         code: 'BOOTSTRAP_TOO_LARGE',

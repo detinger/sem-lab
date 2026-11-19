@@ -138,7 +138,15 @@ export const api = {
     f?: typeof fetch,
   ): Promise<{ id: string }> {
     const form = new FormData();
-    form.append('request', JSON.stringify({ model, analysis }));
+    // Declares rows removed in the browser so the result can report "N of M rows used".
+    const dataPreparation =
+      data.missingData === 'listwise'
+        ? { nRows: data.nRows, nDropped: data.nDropped, missingData: 'listwise' }
+        : undefined;
+    form.append(
+      'request',
+      JSON.stringify({ model, analysis, ...(dataPreparation ? { dataPreparation } : {}) }),
+    );
     form.append('data', new Blob([analysisCsv(data)], { type: 'text/csv' }), 'data.csv');
     return call<{ id: string }>('/api/analysis/jobs', { method: 'POST', body: form }, f);
   },

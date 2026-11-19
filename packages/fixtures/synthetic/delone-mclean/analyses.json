@@ -1,0 +1,51 @@
+[
+  {
+    "analysis": {
+      "bootstrap": {
+        "ci": "percentile",
+        "confidenceLevel": 0.95,
+        "enabled": true,
+        "repetitions": 2000,
+        "sides": "two-sided"
+      },
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      },
+      "seed": 20261401
+    },
+    "description": "Classic PLS-SEM, path weighting, 2000 percentile bootstrap draws (seeded).",
+    "id": "pls-csem-boot"
+  },
+  {
+    "analysis": {
+      "bootstrap": {
+        "ci": "percentile",
+        "confidenceLevel": 0.95,
+        "enabled": true,
+        "repetitions": 2000,
+        "sides": "two-sided"
+      },
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "ipma": {
+        "targetConstructId": "c_nb"
+      },
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      },
+      "seed": 20261401
+    },
+    "description": "Same as pls-csem-boot plus IPMA with target NB (importance = unstandardised total effect on 0-100 rescaled scores; performance from endpoints 1 and 7).",
+    "id": "pls-csem-boot-ipma"
+  }
+]

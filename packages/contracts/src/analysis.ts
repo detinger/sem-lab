@@ -6,14 +6,22 @@ import { Id } from './common.ts';
 export const SemMethod = z.enum(['pls-sem', 'plsc', 'cb-sem']);
 export type SemMethod = z.infer<typeof SemMethod>;
 
-export const EngineId = z.enum(['r-csem', 'r-seminr', 'r-lavaan', 'py-semopy', 'py-plspm']);
+/** 'browser' = SEM Studio's own TypeScript engine (packages/engine), verified against the R engines. */
+export const EngineId = z.enum([
+  'browser',
+  'r-csem',
+  'r-seminr',
+  'r-lavaan',
+  'py-semopy',
+  'py-plspm',
+]);
 export type EngineId = z.infer<typeof EngineId>;
 
 /** Which engines can run which method at all. Finer gating is the capability registry's job. */
 export const ENGINES_BY_METHOD: Readonly<Record<SemMethod, readonly EngineId[]>> = {
-  'pls-sem': ['r-csem', 'r-seminr', 'py-plspm'],
-  plsc: ['r-csem', 'r-seminr'],
-  'cb-sem': ['r-lavaan', 'py-semopy'],
+  'pls-sem': ['browser', 'r-csem', 'r-seminr', 'py-plspm'],
+  plsc: ['browser', 'r-csem', 'r-seminr'],
+  'cb-sem': ['browser', 'r-lavaan', 'py-semopy'],
 };
 
 export const BootstrapConfig = z.strictObject({

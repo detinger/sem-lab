@@ -30,6 +30,9 @@ const AnalysisPage = lazy(() =>
 const ResultsPage = lazy(() =>
   import('@/features/results/ResultsPage').then((m) => ({ default: m.ResultsPage })),
 );
+const IpmaPage = lazy(() =>
+  import('@/features/ipma/IpmaPage').then((m) => ({ default: m.IpmaPage })),
+);
 const PlaceholderRoute: ComponentType<{ path: string }> = lazy(
   () => import('@/pages/PlaceholderRoute'),
 );
@@ -70,7 +73,7 @@ export const routes: RouteObject[] = [
       child('/data', page(<DataPage />)),
       child('/analysis', page(<AnalysisPage />)),
       child('/results', page(<ResultsPage />)),
-      child('/ipma', placeholder('/ipma')),
+      child('/ipma', page(<IpmaPage />)),
       child('/comparison', placeholder('/comparison')),
       child('/examples', placeholder('/examples')),
       child('/learn', placeholder('/learn')),

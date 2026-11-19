@@ -9,13 +9,13 @@ import logging
 import threading
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
-from typing import Any
+from typing import Any, Literal
 
 from fastapi import FastAPI, File, Form, Request, UploadFile
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, PlainTextResponse, Response
-from pydantic import ValidationError
+from pydantic import Field, ValidationError
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from . import __version__
@@ -37,9 +37,18 @@ MULTIPART_OVERHEAD = 2 * 1024 * 1024
 MIB = 1024 * 1024
 
 
+class DataPreparation(Strict):
+    """Rows the browser removed before upload (listwise deletion), so results can report N of M."""
+
+    nRows: int = Field(ge=0)
+    nDropped: int = Field(ge=0)
+    missingData: Literal["listwise"]
+
+
 class JobRequest(Strict):
     model: SemModel
     analysis: AnalysisConfiguration
+    dataPreparation: DataPreparation | None = None
 
 
 def _error(
@@ -328,6 +337,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 "analysis": dump_contract(a),
                 "limits": {"maxBootstrap": s.max_bootstrap_reps, "timeoutSeconds": s.job_timeout_seconds},
             }
+            if jr.dataPreparation is not None:
+                request_doc["dataPreparation"] = dump_contract(jr.dataPreparation)
             (job_dir / "request.json").write_text(json.dumps(request_doc), encoding="utf-8")
             store.create(job_id, a.engine)
         except BaseException:

@@ -166,3 +166,26 @@ set_indicator <- function(model, id, ...) {
   model$indicators <- lapply(model$indicators, function(i) if (identical(i$id, id)) utils::modifyList(i, ch) else i)
   model
 }
+
+#' Path of a temporary copy of the capability registry with r-csem statuses changed,
+#' e.g. registry_override(list("ipma.construct" = "beta")). Use with
+#' withr::local_envvar(SEM_STUDIO_REGISTRY = path).
+registry_override <- function(statuses) {
+  reg <- read_json_list(file.path(REPO_DIR, "packages", "method-registry", "registry.json"))
+  for (i in seq_along(reg$capabilities)) {
+    id <- reg$capabilities[[i]]$id
+    if (id %in% names(statuses)) {
+      reg$capabilities[[i]]$engines$`r-csem`$status <- statuses[[id]]
+      if (!statuses[[id]] %in% c("supported", "beta")) reg$capabilities[[i]]$engines$`r-csem`$reason <- "test override"
+    }
+  }
+  f <- tempfile(fileext = ".json")
+  writeLines(jsonlite::toJSON(reg, auto_unbox = TRUE, null = "null", digits = NA), f)
+  f
+}
+
+registry_status <- function(cap_id) {
+  reg <- read_json_list(file.path(REPO_DIR, "packages", "method-registry", "registry.json"))
+  for (c in reg$capabilities) if (identical(c$id, cap_id)) return(c$engines$`r-csem`$status)
+  NA_character_
+}

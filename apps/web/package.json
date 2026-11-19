@@ -22,6 +22,7 @@
     "@fontsource-variable/inter": "5.3.0",
     "@fontsource-variable/jetbrains-mono": "5.3.0",
     "@sem-studio/contracts": "1.0.0",
+    "@sem-studio/engine": "0.1.0",
     "@sem-studio/method-registry": "1.0.0",
     "@tanstack/react-query": "5.107.1",
     "@xyflow/react": "12.12.1",

@@ -1,0 +1,3383 @@
+{
+ "request": {
+  "protocolVersion": 1,
+  "jobId": "ref",
+  "model": {
+   "constructs": [
+    {
+     "id": "c_sysq",
+     "indicatorIds": [
+      "i_sq1",
+      "i_sq2",
+      "i_sq3",
+      "i_sq4"
+     ],
+     "label": "System quality (synthetic)",
+     "measurement": "reflective",
+     "name": "SYSQ"
+    },
+    {
+     "id": "c_infq",
+     "indicatorIds": [
+      "i_iq1",
+      "i_iq2",
+      "i_iq3",
+      "i_iq4"
+     ],
+     "label": "Information quality (synthetic)",
+     "measurement": "reflective",
+     "name": "INFQ"
+    },
+    {
+     "id": "c_servq",
+     "indicatorIds": [
+      "i_svq1",
+      "i_svq2",
+      "i_svq3",
+      "i_svq4"
+     ],
+     "label": "Service quality (synthetic)",
+     "measurement": "reflective",
+     "name": "SERVQ"
+    },
+    {
+     "id": "c_use",
+     "indicatorIds": [
+      "i_use1",
+      "i_use2",
+      "i_use3"
+     ],
+     "label": "Use (synthetic)",
+     "measurement": "reflective",
+     "name": "USE"
+    },
+    {
+     "id": "c_sat",
+     "indicatorIds": [
+      "i_sat1",
+      "i_sat2",
+      "i_sat3",
+      "i_sat4"
+     ],
+     "label": "User satisfaction (synthetic)",
+     "measurement": "reflective",
+     "name": "SAT"
+    },
+    {
+     "id": "c_nb",
+     "indicatorIds": [
+      "i_nb1",
+      "i_nb2",
+      "i_nb3",
+      "i_nb4"
+     ],
+     "label": "Net benefits (synthetic)",
+     "measurement": "reflective",
+     "name": "NB"
+    }
+   ],
+   "indicators": [
+    {
+     "column": "sq1",
+     "id": "i_sq1",
+     "level": "ordinal",
+     "name": "sq1",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "sq2",
+     "id": "i_sq2",
+     "level": "ordinal",
+     "name": "sq2",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "sq3",
+     "id": "i_sq3",
+     "level": "ordinal",
+     "name": "sq3",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "sq4",
+     "id": "i_sq4",
+     "level": "ordinal",
+     "name": "sq4",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "iq1",
+     "id": "i_iq1",
+     "level": "ordinal",
+     "name": "iq1",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "iq2",
+     "id": "i_iq2",
+     "level": "ordinal",
+     "name": "iq2",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "iq3",
+     "id": "i_iq3",
+     "level": "ordinal",
+     "name": "iq3",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "iq4",
+     "id": "i_iq4",
+     "level": "ordinal",
+     "name": "iq4",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "svq1",
+     "id": "i_svq1",
+     "level": "ordinal",
+     "name": "svq1",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "svq2",
+     "id": "i_svq2",
+     "level": "ordinal",
+     "name": "svq2",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "svq3",
+     "id": "i_svq3",
+     "level": "ordinal",
+     "name": "svq3",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "svq4",
+     "id": "i_svq4",
+     "level": "ordinal",
+     "name": "svq4",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "use1",
+     "id": "i_use1",
+     "level": "ordinal",
+     "name": "use1",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "use2",
+     "id": "i_use2",
+     "level": "ordinal",
+     "name": "use2",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "use3",
+     "id": "i_use3",
+     "level": "ordinal",
+     "name": "use3",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "sat1",
+     "id": "i_sat1",
+     "level": "ordinal",
+     "name": "sat1",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "sat2",
+     "id": "i_sat2",
+     "level": "ordinal",
+     "name": "sat2",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "sat3",
+     "id": "i_sat3",
+     "level": "ordinal",
+     "name": "sat3",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "sat4",
+     "id": "i_sat4",
+     "level": "ordinal",
+     "name": "sat4",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "nb1",
+     "id": "i_nb1",
+     "level": "ordinal",
+     "name": "nb1",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "nb2",
+     "id": "i_nb2",
+     "level": "ordinal",
+     "name": "nb2",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "nb3",
+     "id": "i_nb3",
+     "level": "ordinal",
+     "name": "nb3",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "nb4",
+     "id": "i_nb4",
+     "level": "ordinal",
+     "name": "nb4",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    }
+   ],
+   "relationships": [
+    {
+     "id": "r_sysq_use",
+     "kind": "structural",
+     "sourceId": "c_sysq",
+     "targetId": "c_use"
+    },
+    {
+     "id": "r_infq_use",
+     "kind": "structural",
+     "sourceId": "c_infq",
+     "targetId": "c_use"
+    },
+    {
+     "id": "r_servq_use",
+     "kind": "structural",
+     "sourceId": "c_servq",
+     "targetId": "c_use"
+    },
+    {
+     "id": "r_sysq_sat",
+     "kind": "structural",
+     "sourceId": "c_sysq",
+     "targetId": "c_sat"
+    },
+    {
+     "id": "r_infq_sat",
+     "kind": "structural",
+     "sourceId": "c_infq",
+     "targetId": "c_sat"
+    },
+    {
+     "id": "r_servq_sat",
+     "kind": "structural",
+     "sourceId": "c_servq",
+     "targetId": "c_sat"
+    },
+    {
+     "id": "r_use_sat",
+     "kind": "structural",
+     "sourceId": "c_use",
+     "targetId": "c_sat"
+    },
+    {
+     "id": "r_use_nb",
+     "kind": "structural",
+     "sourceId": "c_use",
+     "targetId": "c_nb"
+    },
+    {
+     "id": "r_sat_nb",
+     "kind": "structural",
+     "sourceId": "c_sat",
+     "targetId": "c_nb"
+    },
+    {
+     "id": "r_sysq_infq",
+     "kind": "covariance",
+     "sourceId": "c_sysq",
+     "targetId": "c_infq"
+    },
+    {
+     "id": "r_sysq_servq",
+     "kind": "covariance",
+     "sourceId": "c_sysq",
+     "targetId": "c_servq"
+    },
+    {
+     "id": "r_infq_servq",
+     "kind": "covariance",
+     "sourceId": "c_infq",
+     "targetId": "c_servq"
+    }
+   ]
+  },
+  "analysis": {
+   "method": "plsc",
+   "engine": "r-csem",
+   "estimator": "pls-pm",
+   "missingData": "listwise",
+   "pls": {
+    "innerWeighting": "factorial",
+    "maxIterations": 300,
+    "tolerance": 1e-10
+   }
+  },
+  "limits": {
+   "maxBootstrap": 10000,
+   "timeoutSeconds": 1800
+  }
+ },
+ "response": {
+  "ok": true,
+  "result": {
+   "schemaVersion": 1,
+   "sample": {
+    "nRows": 400,
+    "nUsed": 400,
+    "nDropped": 0,
+    "missingData": "listwise"
+   },
+   "estimation": {
+    "converged": true,
+    "iterations": 7,
+    "admissible": true,
+    "messages": [
+     "PLS weights converged after 7 iteration(s) (tolerance 1e-10, .conv_criterion = \"diff_absolute\", .iter_max = 300).",
+     "Estimator: consistent PLS (PLSc, .disattenuate = TRUE); inner weighting scheme \"factorial\"."
+    ]
+   },
+   "parameters": [
+    {
+     "key": "path:c_sysq->c_use",
+     "kind": "path",
+     "sourceId": "c_sysq",
+     "targetId": "c_use",
+     "relationshipId": "r_sysq_use",
+     "scale": "standardized",
+     "est": 0.17550716885610496,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Path_estimates[\"C4\", \"C1\"]"
+    },
+    {
+     "key": "path:c_infq->c_use",
+     "kind": "path",
+     "sourceId": "c_infq",
+     "targetId": "c_use",
+     "relationshipId": "r_infq_use",
+     "scale": "standardized",
+     "est": 0.25095923198541353,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Path_estimates[\"C4\", \"C2\"]"
+    },
+    {
+     "key": "path:c_servq->c_use",
+     "kind": "path",
+     "sourceId": "c_servq",
+     "targetId": "c_use",
+     "relationshipId": "r_servq_use",
+     "scale": "standardized",
+     "est": 0.1782035602455385,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Path_estimates[\"C4\", \"C3\"]"
+    },
+    {
+     "key": "path:c_sysq->c_sat",
+     "kind": "path",
+     "sourceId": "c_sysq",
+     "targetId": "c_sat",
+     "relationshipId": "r_sysq_sat",
+     "scale": "standardized",
+     "est": 0.31712129104026393,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Path_estimates[\"C5\", \"C1\"]"
+    },
+    {
+     "key": "path:c_infq->c_sat",
+     "kind": "path",
+     "sourceId": "c_infq",
+     "targetId": "c_sat",
+     "relationshipId": "r_infq_sat",
+     "scale": "standardized",
+     "est": 0.24336485158954263,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Path_estimates[\"C5\", \"C2\"]"
+    },
+    {
+     "key": "path:c_servq->c_sat",
+     "kind": "path",
+     "sourceId": "c_servq",
+     "targetId": "c_sat",
+     "relationshipId": "r_servq_sat",
+     "scale": "standardized",
+     "est": 0.17032945075882236,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Path_estimates[\"C5\", \"C3\"]"
+    },
+    {
+     "key": "path:c_use->c_sat",
+     "kind": "path",
+     "sourceId": "c_use",
+     "targetId": "c_sat",
+     "relationshipId": "r_use_sat",
+     "scale": "standardized",
+     "est": 0.27629617286327407,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Path_estimates[\"C5\", \"C4\"]"
+    },
+    {
+     "key": "path:c_use->c_nb",
+     "kind": "path",
+     "sourceId": "c_use",
+     "targetId": "c_nb",
+     "relationshipId": "r_use_nb",
+     "scale": "standardized",
+     "est": 0.2382036502292375,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Path_estimates[\"C6\", \"C4\"]"
+    },
+    {
+     "key": "path:c_sat->c_nb",
+     "kind": "path",
+     "sourceId": "c_sat",
+     "targetId": "c_nb",
+     "relationshipId": "r_sat_nb",
+     "scale": "standardized",
+     "est": 0.5316214163663316,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Path_estimates[\"C6\", \"C5\"]"
+    },
+    {
+     "key": "loading:c_sysq:i_sq1",
+     "kind": "loading",
+     "sourceId": "c_sysq",
+     "targetId": "i_sq1",
+     "scale": "standardized",
+     "est": 0.8325551474807737,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C1\", \"X1\"]"
+    },
+    {
+     "key": "weight:c_sysq:i_sq1",
+     "kind": "weight",
+     "sourceId": "c_sysq",
+     "targetId": "i_sq1",
+     "scale": "standardized",
+     "est": 0.35469762820044765,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C1\", \"X1\"]"
+    },
+    {
+     "key": "loading:c_sysq:i_sq2",
+     "kind": "loading",
+     "sourceId": "c_sysq",
+     "targetId": "i_sq2",
+     "scale": "standardized",
+     "est": 0.7456137822869907,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C1\", \"X2\"]"
+    },
+    {
+     "key": "weight:c_sysq:i_sq2",
+     "kind": "weight",
+     "sourceId": "c_sysq",
+     "targetId": "i_sq2",
+     "scale": "standardized",
+     "est": 0.31765756410372553,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C1\", \"X2\"]"
+    },
+    {
+     "key": "loading:c_sysq:i_sq3",
+     "kind": "loading",
+     "sourceId": "c_sysq",
+     "targetId": "i_sq3",
+     "scale": "standardized",
+     "est": 0.6906814729052844,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C1\", \"X3\"]"
+    },
+    {
+     "key": "weight:c_sysq:i_sq3",
+     "kind": "weight",
+     "sourceId": "c_sysq",
+     "targetId": "i_sq3",
+     "scale": "standardized",
+     "est": 0.2942544779439413,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C1\", \"X3\"]"
+    },
+    {
+     "key": "loading:c_sysq:i_sq4",
+     "kind": "loading",
+     "sourceId": "c_sysq",
+     "targetId": "i_sq4",
+     "scale": "standardized",
+     "est": 0.6395194042466003,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C1\", \"X4\"]"
+    },
+    {
+     "key": "weight:c_sysq:i_sq4",
+     "kind": "weight",
+     "sourceId": "c_sysq",
+     "targetId": "i_sq4",
+     "scale": "standardized",
+     "est": 0.27245764627221974,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C1\", \"X4\"]"
+    },
+    {
+     "key": "loading:c_infq:i_iq1",
+     "kind": "loading",
+     "sourceId": "c_infq",
+     "targetId": "i_iq1",
+     "scale": "standardized",
+     "est": 0.8373448871111953,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C2\", \"X5\"]"
+    },
+    {
+     "key": "weight:c_infq:i_iq1",
+     "kind": "weight",
+     "sourceId": "c_infq",
+     "targetId": "i_iq1",
+     "scale": "standardized",
+     "est": 0.32304787804140983,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C2\", \"X5\"]"
+    },
+    {
+     "key": "loading:c_infq:i_iq2",
+     "kind": "loading",
+     "sourceId": "c_infq",
+     "targetId": "i_iq2",
+     "scale": "standardized",
+     "est": 0.7575145009474398,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C2\", \"X6\"]"
+    },
+    {
+     "key": "weight:c_infq:i_iq2",
+     "kind": "weight",
+     "sourceId": "c_infq",
+     "targetId": "i_iq2",
+     "scale": "standardized",
+     "est": 0.29224929402855626,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C2\", \"X6\"]"
+    },
+    {
+     "key": "loading:c_infq:i_iq3",
+     "kind": "loading",
+     "sourceId": "c_infq",
+     "targetId": "i_iq3",
+     "scale": "standardized",
+     "est": 0.7166447642638937,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C2\", \"X7\"]"
+    },
+    {
+     "key": "weight:c_infq:i_iq3",
+     "kind": "weight",
+     "sourceId": "c_infq",
+     "targetId": "i_iq3",
+     "scale": "standardized",
+     "est": 0.27648173884913657,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C2\", \"X7\"]"
+    },
+    {
+     "key": "loading:c_infq:i_iq4",
+     "kind": "loading",
+     "sourceId": "c_infq",
+     "targetId": "i_iq4",
+     "scale": "standardized",
+     "est": 0.7843289751784123,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C2\", \"X8\"]"
+    },
+    {
+     "key": "weight:c_infq:i_iq4",
+     "kind": "weight",
+     "sourceId": "c_infq",
+     "targetId": "i_iq4",
+     "scale": "standardized",
+     "est": 0.3025943252509914,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C2\", \"X8\"]"
+    },
+    {
+     "key": "loading:c_servq:i_svq1",
+     "kind": "loading",
+     "sourceId": "c_servq",
+     "targetId": "i_svq1",
+     "scale": "standardized",
+     "est": 0.7066767389720593,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C3\", \"X9\"]"
+    },
+    {
+     "key": "weight:c_servq:i_svq1",
+     "kind": "weight",
+     "sourceId": "c_servq",
+     "targetId": "i_svq1",
+     "scale": "standardized",
+     "est": 0.29374920514718067,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C3\", \"X9\"]"
+    },
+    {
+     "key": "loading:c_servq:i_svq2",
+     "kind": "loading",
+     "sourceId": "c_servq",
+     "targetId": "i_svq2",
+     "scale": "standardized",
+     "est": 0.7385503567295588,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C3\", \"X10\"]"
+    },
+    {
+     "key": "weight:c_servq:i_svq2",
+     "kind": "weight",
+     "sourceId": "c_servq",
+     "targetId": "i_svq2",
+     "scale": "standardized",
+     "est": 0.30699833217384614,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C3\", \"X10\"]"
+    },
+    {
+     "key": "loading:c_servq:i_svq3",
+     "kind": "loading",
+     "sourceId": "c_servq",
+     "targetId": "i_svq3",
+     "scale": "standardized",
+     "est": 0.7684237299640104,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C3\", \"X11\"]"
+    },
+    {
+     "key": "weight:c_servq:i_svq3",
+     "kind": "weight",
+     "sourceId": "c_servq",
+     "targetId": "i_svq3",
+     "scale": "standardized",
+     "est": 0.31941600373248535,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C3\", \"X11\"]"
+    },
+    {
+     "key": "loading:c_servq:i_svq4",
+     "kind": "loading",
+     "sourceId": "c_servq",
+     "targetId": "i_svq4",
+     "scale": "standardized",
+     "est": 0.7454894281105229,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C3\", \"X12\"]"
+    },
+    {
+     "key": "weight:c_servq:i_svq4",
+     "kind": "weight",
+     "sourceId": "c_servq",
+     "targetId": "i_svq4",
+     "scale": "standardized",
+     "est": 0.3098827439426313,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C3\", \"X12\"]"
+    },
+    {
+     "key": "loading:c_use:i_use1",
+     "kind": "loading",
+     "sourceId": "c_use",
+     "targetId": "i_use1",
+     "scale": "standardized",
+     "est": 0.8882546034088656,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C4\", \"X13\"]"
+    },
+    {
+     "key": "weight:c_use:i_use1",
+     "kind": "weight",
+     "sourceId": "c_use",
+     "targetId": "i_use1",
+     "scale": "standardized",
+     "est": 0.4107400082573838,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C4\", \"X13\"]"
+    },
+    {
+     "key": "loading:c_use:i_use2",
+     "kind": "loading",
+     "sourceId": "c_use",
+     "targetId": "i_use2",
+     "scale": "standardized",
+     "est": 0.8560748513080966,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C4\", \"X14\"]"
+    },
+    {
+     "key": "weight:c_use:i_use2",
+     "kind": "weight",
+     "sourceId": "c_use",
+     "targetId": "i_use2",
+     "scale": "standardized",
+     "est": 0.39585968949194716,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C4\", \"X14\"]"
+    },
+    {
+     "key": "loading:c_use:i_use3",
+     "kind": "loading",
+     "sourceId": "c_use",
+     "targetId": "i_use3",
+     "scale": "standardized",
+     "est": 0.7029925135072307,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C4\", \"X15\"]"
+    },
+    {
+     "key": "weight:c_use:i_use3",
+     "kind": "weight",
+     "sourceId": "c_use",
+     "targetId": "i_use3",
+     "scale": "standardized",
+     "est": 0.3250725070207466,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C4\", \"X15\"]"
+    },
+    {
+     "key": "loading:c_sat:i_sat1",
+     "kind": "loading",
+     "sourceId": "c_sat",
+     "targetId": "i_sat1",
+     "scale": "standardized",
+     "est": 0.8626219156056266,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C5\", \"X16\"]"
+    },
+    {
+     "key": "weight:c_sat:i_sat1",
+     "kind": "weight",
+     "sourceId": "c_sat",
+     "targetId": "i_sat1",
+     "scale": "standardized",
+     "est": 0.3050738391497158,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C5\", \"X16\"]"
+    },
+    {
+     "key": "loading:c_sat:i_sat2",
+     "kind": "loading",
+     "sourceId": "c_sat",
+     "targetId": "i_sat2",
+     "scale": "standardized",
+     "est": 0.8251177869970667,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C5\", \"X17\"]"
+    },
+    {
+     "key": "weight:c_sat:i_sat2",
+     "kind": "weight",
+     "sourceId": "c_sat",
+     "targetId": "i_sat2",
+     "scale": "standardized",
+     "est": 0.29181017369954554,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C5\", \"X17\"]"
+    },
+    {
+     "key": "loading:c_sat:i_sat3",
+     "kind": "loading",
+     "sourceId": "c_sat",
+     "targetId": "i_sat3",
+     "scale": "standardized",
+     "est": 0.7611162718778772,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C5\", \"X18\"]"
+    },
+    {
+     "key": "weight:c_sat:i_sat3",
+     "kind": "weight",
+     "sourceId": "c_sat",
+     "targetId": "i_sat3",
+     "scale": "standardized",
+     "est": 0.26917547409873427,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C5\", \"X18\"]"
+    },
+    {
+     "key": "loading:c_sat:i_sat4",
+     "kind": "loading",
+     "sourceId": "c_sat",
+     "targetId": "i_sat4",
+     "scale": "standardized",
+     "est": 0.8150128675916638,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C5\", \"X19\"]"
+    },
+    {
+     "key": "weight:c_sat:i_sat4",
+     "kind": "weight",
+     "sourceId": "c_sat",
+     "targetId": "i_sat4",
+     "scale": "standardized",
+     "est": 0.28823647993923757,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C5\", \"X19\"]"
+    },
+    {
+     "key": "loading:c_nb:i_nb1",
+     "kind": "loading",
+     "sourceId": "c_nb",
+     "targetId": "i_nb1",
+     "scale": "standardized",
+     "est": 0.7498977532662195,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C6\", \"X20\"]"
+    },
+    {
+     "key": "weight:c_nb:i_nb1",
+     "kind": "weight",
+     "sourceId": "c_nb",
+     "targetId": "i_nb1",
+     "scale": "standardized",
+     "est": 0.29971874949844984,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C6\", \"X20\"]"
+    },
+    {
+     "key": "loading:c_nb:i_nb2",
+     "kind": "loading",
+     "sourceId": "c_nb",
+     "targetId": "i_nb2",
+     "scale": "standardized",
+     "est": 0.793019006353468,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C6\", \"X21\"]"
+    },
+    {
+     "key": "weight:c_nb:i_nb2",
+     "kind": "weight",
+     "sourceId": "c_nb",
+     "targetId": "i_nb2",
+     "scale": "standardized",
+     "est": 0.31695342982096586,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C6\", \"X21\"]"
+    },
+    {
+     "key": "loading:c_nb:i_nb3",
+     "kind": "loading",
+     "sourceId": "c_nb",
+     "targetId": "i_nb3",
+     "scale": "standardized",
+     "est": 0.7438800226793335,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C6\", \"X22\"]"
+    },
+    {
+     "key": "weight:c_nb:i_nb3",
+     "kind": "weight",
+     "sourceId": "c_nb",
+     "targetId": "i_nb3",
+     "scale": "standardized",
+     "est": 0.2973135860232104,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C6\", \"X22\"]"
+    },
+    {
+     "key": "loading:c_nb:i_nb4",
+     "kind": "loading",
+     "sourceId": "c_nb",
+     "targetId": "i_nb4",
+     "scale": "standardized",
+     "est": 0.7447310828791824,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C6\", \"X23\"]"
+    },
+    {
+     "key": "weight:c_nb:i_nb4",
+     "kind": "weight",
+     "sourceId": "c_nb",
+     "targetId": "i_nb4",
+     "scale": "standardized",
+     "est": 0.2976537373274857,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C6\", \"X23\"]"
+    },
+    {
+     "key": "total:c_sysq->c_use",
+     "kind": "total-effect",
+     "sourceId": "c_sysq",
+     "targetId": "c_use",
+     "scale": "standardized",
+     "est": 0.17550716885610496,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "total:c_sysq->c_sat",
+     "kind": "total-effect",
+     "sourceId": "c_sysq",
+     "targetId": "c_sat",
+     "scale": "standardized",
+     "est": 0.3656132501052741,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "total:c_sysq->c_nb",
+     "kind": "total-effect",
+     "sourceId": "c_sysq",
+     "targetId": "c_nb",
+     "scale": "standardized",
+     "est": 0.23617428212618705,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "total:c_infq->c_use",
+     "kind": "total-effect",
+     "sourceId": "c_infq",
+     "targetId": "c_use",
+     "scale": "standardized",
+     "est": 0.25095923198541353,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "total:c_infq->c_sat",
+     "kind": "total-effect",
+     "sourceId": "c_infq",
+     "targetId": "c_sat",
+     "scale": "standardized",
+     "est": 0.3127039269318189,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "total:c_infq->c_nb",
+     "kind": "total-effect",
+     "sourceId": "c_infq",
+     "targetId": "c_nb",
+     "scale": "standardized",
+     "est": 0.22601950965645898,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "total:c_servq->c_use",
+     "kind": "total-effect",
+     "sourceId": "c_servq",
+     "targetId": "c_use",
+     "scale": "standardized",
+     "est": 0.1782035602455385,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "total:c_servq->c_sat",
+     "kind": "total-effect",
+     "sourceId": "c_servq",
+     "targetId": "c_sat",
+     "scale": "standardized",
+     "est": 0.21956641244527453,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "total:c_servq->c_nb",
+     "kind": "total-effect",
+     "sourceId": "c_servq",
+     "targetId": "c_nb",
+     "scale": "standardized",
+     "est": 0.1591749457049641,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "total:c_use->c_sat",
+     "kind": "total-effect",
+     "sourceId": "c_use",
+     "targetId": "c_sat",
+     "scale": "standardized",
+     "est": 0.27629617286327407,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "total:c_use->c_nb",
+     "kind": "total-effect",
+     "sourceId": "c_use",
+     "targetId": "c_nb",
+     "scale": "standardized",
+     "est": 0.3850886129834081,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "total:c_sat->c_nb",
+     "kind": "total-effect",
+     "sourceId": "c_sat",
+     "targetId": "c_nb",
+     "scale": "standardized",
+     "est": 0.5316214163663316,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "indirect:c_sysq->c_sat",
+     "kind": "indirect-effect",
+     "sourceId": "c_sysq",
+     "targetId": "c_sat",
+     "scale": "standardized",
+     "est": 0.04849195906501019,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I - B, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "indirect:c_sysq->c_nb",
+     "kind": "indirect-effect",
+     "sourceId": "c_sysq",
+     "targetId": "c_nb",
+     "scale": "standardized",
+     "est": 0.23617428212618705,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I - B, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "indirect:c_infq->c_sat",
+     "kind": "indirect-effect",
+     "sourceId": "c_infq",
+     "targetId": "c_sat",
+     "scale": "standardized",
+     "est": 0.06933907534227629,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I - B, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "indirect:c_infq->c_nb",
+     "kind": "indirect-effect",
+     "sourceId": "c_infq",
+     "targetId": "c_nb",
+     "scale": "standardized",
+     "est": 0.22601950965645898,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I - B, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "indirect:c_servq->c_sat",
+     "kind": "indirect-effect",
+     "sourceId": "c_servq",
+     "targetId": "c_sat",
+     "scale": "standardized",
+     "est": 0.04923696168645217,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I - B, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "indirect:c_servq->c_nb",
+     "kind": "indirect-effect",
+     "sourceId": "c_servq",
+     "targetId": "c_nb",
+     "scale": "standardized",
+     "est": 0.1591749457049641,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I - B, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "indirect:c_use->c_nb",
+     "kind": "indirect-effect",
+     "sourceId": "c_use",
+     "targetId": "c_nb",
+     "scale": "standardized",
+     "est": 0.14688496275417057,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I - B, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "specific-indirect:c_sysq->c_use->c_sat",
+     "kind": "specific-indirect",
+     "sourceId": "c_sysq",
+     "targetId": "c_sat",
+     "viaIds": [
+      "c_use"
+     ],
+     "scale": "standardized",
+     "est": 0.04849195906501021,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "product of Estimates$Path_estimates along the chain"
+    },
+    {
+     "key": "specific-indirect:c_sysq->c_use->c_sat->c_nb",
+     "kind": "specific-indirect",
+     "sourceId": "c_sysq",
+     "targetId": "c_nb",
+     "viaIds": [
+      "c_use",
+      "c_sat"
+     ],
+     "scale": "standardized",
+     "est": 0.0257793639605189,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "product of Estimates$Path_estimates along the chain"
+    },
+    {
+     "key": "specific-indirect:c_sysq->c_use->c_nb",
+     "kind": "specific-indirect",
+     "sourceId": "c_sysq",
+     "targetId": "c_nb",
+     "viaIds": [
+      "c_use"
+     ],
+     "scale": "standardized",
+     "est": 0.04180644826292335,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "product of Estimates$Path_estimates along the chain"
+    },
+    {
+     "key": "specific-indirect:c_sysq->c_sat->c_nb",
+     "kind": "specific-indirect",
+     "sourceId": "c_sysq",
+     "targetId": "c_nb",
+     "viaIds": [
+      "c_sat"
+     ],
+     "scale": "standardized",
+     "est": 0.1685884699027448,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "product of Estimates$Path_estimates along the chain"
+    },
+    {
+     "key": "specific-indirect:c_infq->c_use->c_sat",
+     "kind": "specific-indirect",
+     "sourceId": "c_infq",
+     "targetId": "c_sat",
+     "viaIds": [
+      "c_use"
+     ],
+     "scale": "standardized",
+     "est": 0.06933907534227632,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "product of Estimates$Path_estimates along the chain"
+    },
+    {
+     "key": "specific-indirect:c_infq->c_use->c_sat->c_nb",
+     "kind": "specific-indirect",
+     "sourceId": "c_infq",
+     "targetId": "c_nb",
+     "viaIds": [
+      "c_use",
+      "c_sat"
+     ],
+     "scale": "standardized",
+     "est": 0.03686213744299272,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "product of Estimates$Path_estimates along the chain"
+    },
+    {
+     "key": "specific-indirect:c_infq->c_use->c_nb",
+     "kind": "specific-indirect",
+     "sourceId": "c_infq",
+     "targetId": "c_nb",
+     "viaIds": [
+      "c_use"
+     ],
+     "scale": "standardized",
+     "est": 0.05977940511765152,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "product of Estimates$Path_estimates along the chain"
+    },
+    {
+     "key": "specific-indirect:c_infq->c_sat->c_nb",
+     "kind": "specific-indirect",
+     "sourceId": "c_infq",
+     "targetId": "c_nb",
+     "viaIds": [
+      "c_sat"
+     ],
+     "scale": "standardized",
+     "est": 0.12937796709581476,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "product of Estimates$Path_estimates along the chain"
+    },
+    {
+     "key": "specific-indirect:c_servq->c_use->c_sat",
+     "kind": "specific-indirect",
+     "sourceId": "c_servq",
+     "targetId": "c_sat",
+     "viaIds": [
+      "c_use"
+     ],
+     "scale": "standardized",
+     "est": 0.049236961686452176,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "product of Estimates$Path_estimates along the chain"
+    },
+    {
+     "key": "specific-indirect:c_servq->c_use->c_sat->c_nb",
+     "kind": "specific-indirect",
+     "sourceId": "c_servq",
+     "targetId": "c_nb",
+     "viaIds": [
+      "c_use",
+      "c_sat"
+     ],
+     "scale": "standardized",
+     "est": 0.026175423309326512,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "product of Estimates$Path_estimates along the chain"
+    },
+    {
+     "key": "specific-indirect:c_servq->c_use->c_nb",
+     "kind": "specific-indirect",
+     "sourceId": "c_servq",
+     "targetId": "c_nb",
+     "viaIds": [
+      "c_use"
+     ],
+     "scale": "standardized",
+     "est": 0.042448738534333105,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "product of Estimates$Path_estimates along the chain"
+    },
+    {
+     "key": "specific-indirect:c_servq->c_sat->c_nb",
+     "kind": "specific-indirect",
+     "sourceId": "c_servq",
+     "targetId": "c_nb",
+     "viaIds": [
+      "c_sat"
+     ],
+     "scale": "standardized",
+     "est": 0.09055078386130448,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "product of Estimates$Path_estimates along the chain"
+    },
+    {
+     "key": "specific-indirect:c_use->c_sat->c_nb",
+     "kind": "specific-indirect",
+     "sourceId": "c_use",
+     "targetId": "c_nb",
+     "viaIds": [
+      "c_sat"
+     ],
+     "scale": "standardized",
+     "est": 0.14688496275417057,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "product of Estimates$Path_estimates along the chain"
+    }
+   ],
+   "constructMetrics": [
+    {
+     "constructId": "c_sysq",
+     "metric": "r2",
+     "value": null,
+     "missing": "not-applicable",
+     "definition": "R\u00b2: share of the endogenous construct's variance explained by its predictors (cSEM Estimates$R2, OLS on the construct correlation matrix). Defined for endogenous constructs only."
+    },
+    {
+     "constructId": "c_sysq",
+     "metric": "r2-adjusted",
+     "value": null,
+     "missing": "not-applicable",
+     "definition": "Adjusted R\u00b2 = 1 - (1 - R\u00b2)(n - 1)/(n - k - 1), n = rows used, k = number of predictors (cSEM Estimates$R2adj). Defined for endogenous constructs only."
+    },
+    {
+     "constructId": "c_sysq",
+     "metric": "cronbach-alpha",
+     "value": 0.8179941459482438,
+     "definition": "Cronbach's alpha, standardized (correlation-based): k\u00b7r\u0304/(1 + (k - 1)\u00b7r\u0304), r\u0304 = mean inter-item correlation of the block (cSEM assess() RhoT). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_sysq",
+     "metric": "rho-a",
+     "value": 0.8274326710869631,
+     "definition": "Dijkstra\u2013Henseler rho_A of the Mode A weights, taken from a PLSc (consistent PLS) fit of the same model (cSEM Estimates$Reliabilities; the weights equal those of the classic fit). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_sysq",
+     "metric": "rho-c",
+     "value": 0.8193552699016151,
+     "definition": "Composite reliability rho_C = (\u03a3\u03bb)\u00b2 / ((\u03a3\u03bb)\u00b2 + \u03a3(1 - \u03bb\u00b2)) on the reported standardized loadings (cSEM assess() RhoC). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_sysq",
+     "metric": "ave",
+     "value": 0.5337784878388961,
+     "definition": "Average variance extracted: mean of the squared reported standardized loadings (cSEM assess() AVE). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_infq",
+     "metric": "r2",
+     "value": null,
+     "missing": "not-applicable",
+     "definition": "R\u00b2: share of the endogenous construct's variance explained by its predictors (cSEM Estimates$R2, OLS on the construct correlation matrix). Defined for endogenous constructs only."
+    },
+    {
+     "constructId": "c_infq",
+     "metric": "r2-adjusted",
+     "value": null,
+     "missing": "not-applicable",
+     "definition": "Adjusted R\u00b2 = 1 - (1 - R\u00b2)(n - 1)/(n - k - 1), n = rows used, k = number of predictors (cSEM Estimates$R2adj). Defined for endogenous constructs only."
+    },
+    {
+     "constructId": "c_infq",
+     "metric": "cronbach-alpha",
+     "value": 0.8568315308407664,
+     "definition": "Cronbach's alpha, standardized (correlation-based): k\u00b7r\u0304/(1 + (k - 1)\u00b7r\u0304), r\u0304 = mean inter-item correlation of the block (cSEM assess() RhoT). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_infq",
+     "metric": "rho-a",
+     "value": 0.8599933325010704,
+     "definition": "Dijkstra\u2013Henseler rho_A of the Mode A weights, taken from a PLSc (consistent PLS) fit of the same model (cSEM Estimates$Reliabilities; the weights equal those of the classic fit). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_infq",
+     "metric": "rho-c",
+     "value": 0.8572264313535625,
+     "definition": "Composite reliability rho_C = (\u03a3\u03bb)\u00b2 / ((\u03a3\u03bb)\u00b2 + \u03a3(1 - \u03bb\u00b2)) on the reported standardized loadings (cSEM assess() RhoC). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_infq",
+     "metric": "ave",
+     "value": 0.6009315846420449,
+     "definition": "Average variance extracted: mean of the squared reported standardized loadings (cSEM assess() AVE). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_servq",
+     "metric": "r2",
+     "value": null,
+     "missing": "not-applicable",
+     "definition": "R\u00b2: share of the endogenous construct's variance explained by its predictors (cSEM Estimates$R2, OLS on the construct correlation matrix). Defined for endogenous constructs only."
+    },
+    {
+     "constructId": "c_servq",
+     "metric": "r2-adjusted",
+     "value": null,
+     "missing": "not-applicable",
+     "definition": "Adjusted R\u00b2 = 1 - (1 - R\u00b2)(n - 1)/(n - k - 1), n = rows used, k = number of predictors (cSEM Estimates$R2adj). Defined for endogenous constructs only."
+    },
+    {
+     "constructId": "c_servq",
+     "metric": "cronbach-alpha",
+     "value": 0.8294619009591429,
+     "definition": "Cronbach's alpha, standardized (correlation-based): k\u00b7r\u0304/(1 + (k - 1)\u00b7r\u0304), r\u0304 = mean inter-item correlation of the block (cSEM assess() RhoT). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_servq",
+     "metric": "rho-a",
+     "value": 0.8295213098482318,
+     "definition": "Dijkstra\u2013Henseler rho_A of the Mode A weights, taken from a PLSc (consistent PLS) fit of the same model (cSEM Estimates$Reliabilities; the weights equal those of the classic fit). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_servq",
+     "metric": "rho-c",
+     "value": 0.8287886676208425,
+     "definition": "Composite reliability rho_C = (\u03a3\u03bb)\u00b2 / ((\u03a3\u03bb)\u00b2 + \u03a3(1 - \u03bb\u00b2)) on the reported standardized loadings (cSEM assess() RhoC). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_servq",
+     "metric": "ave",
+     "value": 0.5477695397564749,
+     "definition": "Average variance extracted: mean of the squared reported standardized loadings (cSEM assess() AVE). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_use",
+     "metric": "r2",
+     "value": 0.220261535371922,
+     "definition": "R\u00b2: share of the endogenous construct's variance explained by its predictors (cSEM Estimates$R2, OLS on the construct correlation matrix). Defined for endogenous constructs only."
+    },
+    {
+     "constructId": "c_use",
+     "metric": "r2-adjusted",
+     "value": 0.21435442579140618,
+     "definition": "Adjusted R\u00b2 = 1 - (1 - R\u00b2)(n - 1)/(n - k - 1), n = rows used, k = number of predictors (cSEM Estimates$R2adj). Defined for endogenous constructs only."
+    },
+    {
+     "constructId": "c_use",
+     "metric": "cronbach-alpha",
+     "value": 0.857553917948572,
+     "definition": "Cronbach's alpha, standardized (correlation-based): k\u00b7r\u0304/(1 + (k - 1)\u00b7r\u0304), r\u0304 = mean inter-item correlation of the block (cSEM assess() RhoT). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_use",
+     "metric": "rho-a",
+     "value": 0.8690914920912635,
+     "definition": "Dijkstra\u2013Henseler rho_A of the Mode A weights, taken from a PLSc (consistent PLS) fit of the same model (cSEM Estimates$Reliabilities; the weights equal those of the classic fit). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_use",
+     "metric": "rho-c",
+     "value": 0.8588993055242399,
+     "definition": "Composite reliability rho_C = (\u03a3\u03bb)\u00b2 / ((\u03a3\u03bb)\u00b2 + \u03a3(1 - \u03bb\u00b2)) on the reported standardized loadings (cSEM assess() RhoC). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_use",
+     "metric": "ave",
+     "value": 0.6720196218554783,
+     "definition": "Average variance extracted: mean of the squared reported standardized loadings (cSEM assess() AVE). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_sat",
+     "metric": "r2",
+     "value": 0.5477047473175762,
+     "definition": "R\u00b2: share of the endogenous construct's variance explained by its predictors (cSEM Estimates$R2, OLS on the construct correlation matrix). Defined for endogenous constructs only."
+    },
+    {
+     "constructId": "c_sat",
+     "metric": "r2-adjusted",
+     "value": 0.5431245422271214,
+     "definition": "Adjusted R\u00b2 = 1 - (1 - R\u00b2)(n - 1)/(n - k - 1), n = rows used, k = number of predictors (cSEM Estimates$R2adj). Defined for endogenous constructs only."
+    },
+    {
+     "constructId": "c_sat",
+     "metric": "cronbach-alpha",
+     "value": 0.8886195484311614,
+     "definition": "Cronbach's alpha, standardized (correlation-based): k\u00b7r\u0304/(1 + (k - 1)\u00b7r\u0304), r\u0304 = mean inter-item correlation of the block (cSEM assess() RhoT). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_sat",
+     "metric": "rho-a",
+     "value": 0.8906289886813525,
+     "definition": "Dijkstra\u2013Henseler rho_A of the Mode A weights, taken from a PLSc (consistent PLS) fit of the same model (cSEM Estimates$Reliabilities; the weights equal those of the classic fit). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_sat",
+     "metric": "rho-c",
+     "value": 0.8888951832140513,
+     "definition": "Composite reliability rho_C = (\u03a3\u03bb)\u00b2 / ((\u03a3\u03bb)\u00b2 + \u03a3(1 - \u03bb\u00b2)) on the reported standardized loadings (cSEM assess() RhoC). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_sat",
+     "metric": "ave",
+     "value": 0.6671199713398308,
+     "definition": "Average variance extracted: mean of the squared reported standardized loadings (cSEM assess() AVE). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_nb",
+     "metric": "r2",
+     "value": 0.4761275263040054,
+     "definition": "R\u00b2: share of the endogenous construct's variance explained by its predictors (cSEM Estimates$R2, OLS on the construct correlation matrix). Defined for endogenous constructs only."
+    },
+    {
+     "constructId": "c_nb",
+     "metric": "r2-adjusted",
+     "value": 0.4734883702652347,
+     "definition": "Adjusted R\u00b2 = 1 - (1 - R\u00b2)(n - 1)/(n - k - 1), n = rows used, k = number of predictors (cSEM Estimates$R2adj). Defined for endogenous constructs only."
+    },
+    {
+     "constructId": "c_nb",
+     "metric": "cronbach-alpha",
+     "value": 0.843376470533303,
+     "definition": "Cronbach's alpha, standardized (correlation-based): k\u00b7r\u0304/(1 + (k - 1)\u00b7r\u0304), r\u0304 = mean inter-item correlation of the block (cSEM assess() RhoT). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_nb",
+     "metric": "rho-a",
+     "value": 0.8444620046817592,
+     "definition": "Dijkstra\u2013Henseler rho_A of the Mode A weights, taken from a PLSc (consistent PLS) fit of the same model (cSEM Estimates$Reliabilities; the weights equal those of the classic fit). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_nb",
+     "metric": "rho-c",
+     "value": 0.8438343956540922,
+     "definition": "Composite reliability rho_C = (\u03a3\u03bb)\u00b2 / ((\u03a3\u03bb)\u00b2 + \u03a3(1 - \u03bb\u00b2)) on the reported standardized loadings (cSEM assess() RhoC). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_nb",
+     "metric": "ave",
+     "value": 0.5748019146848428,
+     "definition": "Average variance extracted: mean of the squared reported standardized loadings (cSEM assess() AVE). Reflective blocks with at least 2 indicators only."
+    }
+   ],
+   "matrices": [
+    {
+     "id": "htmt",
+     "title": "Heterotrait\u2013monotrait ratio (HTMT)",
+     "rowIds": [
+      "c_sysq",
+      "c_infq",
+      "c_servq",
+      "c_use",
+      "c_sat",
+      "c_nb"
+     ],
+     "colIds": [
+      "c_sysq",
+      "c_infq",
+      "c_servq",
+      "c_use",
+      "c_sat",
+      "c_nb"
+     ],
+     "values": [
+      [
+       null,
+       0.4276784175307173,
+       0.36534584547353005,
+       0.34389390543589415,
+       0.5793597004029907,
+       0.3202726982381763
+      ],
+      [
+       0.4276784175307173,
+       null,
+       0.3880622818513578,
+       0.39501045604999135,
+       0.5515606682553903,
+       0.3951074195965892
+      ],
+      [
+       0.36534584547353005,
+       0.3880622818513578,
+       null,
+       0.3347235302130363,
+       0.4741903684427754,
+       0.3234008977669359
+      ],
+      [
+       0.34389390543589415,
+       0.39501045604999135,
+       0.3347235302130363,
+       null,
+       0.5373205984631401,
+       0.527261949386581
+      ],
+      [
+       0.5793597004029907,
+       0.5515606682553903,
+       0.4741903684427754,
+       0.5373205984631401,
+       null,
+       0.660758221142717
+      ],
+      [
+       0.3202726982381763,
+       0.3951074195965892,
+       0.3234008977669359,
+       0.527261949386581,
+       0.660758221142717,
+       null
+      ]
+     ],
+     "symmetric": true,
+     "definition": "HTMT (Henseler, Ringle & Sarstedt, 2015): mean absolute heterotrait correlation / sqrt(product of the mean absolute monotrait correlations), on Pearson indicator correlations (cSEM assess(), .absolute = TRUE). Reflective constructs with at least 2 indicators only; other constructs are omitted (not applicable). Diagonal is null (not applicable)."
+    },
+    {
+     "id": "htmt2",
+     "title": "HTMT2 (geometric-mean HTMT)",
+     "rowIds": [
+      "c_sysq",
+      "c_infq",
+      "c_servq",
+      "c_use",
+      "c_sat",
+      "c_nb"
+     ],
+     "colIds": [
+      "c_sysq",
+      "c_infq",
+      "c_servq",
+      "c_use",
+      "c_sat",
+      "c_nb"
+     ],
+     "values": [
+      [
+       null,
+       0.42671391051316393,
+       0.3580546818478336,
+       0.3364617209049776,
+       0.578198912051053,
+       0.31137055378284595
+      ],
+      [
+       0.42671391051316393,
+       null,
+       0.38673843193043345,
+       0.3929382695052953,
+       0.5501363617579771,
+       0.3945140894332441
+      ],
+      [
+       0.3580546818478336,
+       0.38673843193043345,
+       null,
+       0.3247064347665019,
+       0.472107670085071,
+       0.3212343141519852
+      ],
+      [
+       0.3364617209049776,
+       0.3929382695052953,
+       0.3247064347665019,
+       null,
+       0.5308794026166521,
+       0.526910764551183
+      ],
+      [
+       0.578198912051053,
+       0.5501363617579771,
+       0.472107670085071,
+       0.5308794026166521,
+       null,
+       0.6611154184980249
+      ],
+      [
+       0.31137055378284595,
+       0.3945140894332441,
+       0.3212343141519852,
+       0.526910764551183,
+       0.6611154184980249,
+       null
+      ]
+     ],
+     "symmetric": true,
+     "definition": "HTMT2 (Roemer, Schuberth & Henseler, 2021): as HTMT with geometric instead of arithmetic means, on Pearson indicator correlations (cSEM assess(), .absolute = TRUE). Reflective constructs with at least 2 indicators only; other constructs are omitted (not applicable). Diagonal is null (not applicable)."
+    },
+    {
+     "id": "fornell-larcker",
+     "title": "Fornell\u2013Larcker criterion",
+     "rowIds": [
+      "c_sysq",
+      "c_infq",
+      "c_servq",
+      "c_use",
+      "c_sat",
+      "c_nb"
+     ],
+     "colIds": [
+      "c_sysq",
+      "c_infq",
+      "c_servq",
+      "c_use",
+      "c_sat",
+      "c_nb"
+     ],
+     "values": [
+      [
+       0.5337784878388961,
+       0.17844588277322074,
+       0.13413615490439926,
+       0.12026043323141195,
+       0.3342269484708794,
+       0.10409042511936141
+      ],
+      [
+       0.17844588277322074,
+       0.6009315846420449,
+       0.14964573122158462,
+       0.15526347275954977,
+       0.30479964606654564,
+       0.15560321910144156
+      ],
+      [
+       0.13413615490439926,
+       0.14964573122158462,
+       0.5477695397564749,
+       0.11530344554832066,
+       0.22509086705257839,
+       0.10464683783170688
+      ],
+      [
+       0.12026043323141195,
+       0.15526347275954977,
+       0.11530344554832066,
+       0.6720196218554783,
+       0.291601373560527,
+       0.27591896408911715
+      ],
+      [
+       0.3342269484708794,
+       0.30479964606654564,
+       0.22509086705257839,
+       0.291601373560527,
+       0.6671199713398308,
+       0.4359322947299481
+      ],
+      [
+       0.10409042511936141,
+       0.15560321910144156,
+       0.10464683783170688,
+       0.27591896408911715,
+       0.4359322947299481,
+       0.5748019146848428
+      ]
+     ],
+     "symmetric": true,
+     "definition": "Fornell\u2013Larcker matrix (cSEM assess() fl_criterion): diagonal = AVE, off-diagonal = squared construct correlations. Reflective constructs with at least 2 indicators only."
+    },
+    {
+     "id": "cross-loadings",
+     "title": "Cross-loadings",
+     "rowIds": [
+      "i_sq1",
+      "i_sq2",
+      "i_sq3",
+      "i_sq4",
+      "i_iq1",
+      "i_iq2",
+      "i_iq3",
+      "i_iq4",
+      "i_svq1",
+      "i_svq2",
+      "i_svq3",
+      "i_svq4",
+      "i_use1",
+      "i_use2",
+      "i_use3",
+      "i_sat1",
+      "i_sat2",
+      "i_sat3",
+      "i_sat4",
+      "i_nb1",
+      "i_nb2",
+      "i_nb3",
+      "i_nb4"
+     ],
+     "colIds": [
+      "c_sysq",
+      "c_infq",
+      "c_servq",
+      "c_use",
+      "c_sat",
+      "c_nb"
+     ],
+     "values": [
+      [
+       0.8579094054705135,
+       0.27517341546577095,
+       0.2726766065927231,
+       0.301728220139362,
+       0.4349370938175661,
+       0.25762415978240066
+      ],
+      [
+       0.8017092600873783,
+       0.30170833819239085,
+       0.27102980251980735,
+       0.2304314957751881,
+       0.413094291258737,
+       0.22362965489994435
+      ],
+      [
+       0.801991287548875,
+       0.2853242101908396,
+       0.24007021456649796,
+       0.19805341209319507,
+       0.39178603659869493,
+       0.23579004595774394
+      ],
+      [
+       0.7525684566468276,
+       0.28973635179899704,
+       0.18341206659109344,
+       0.20398730738699777,
+       0.35055528936345676,
+       0.13906561945053025
+      ],
+      [
+       0.3157061079692781,
+       0.873599966033816,
+       0.2699135395902071,
+       0.2986951511221598,
+       0.44254566128537853,
+       0.2924484308872697
+      ],
+      [
+       0.30324216454891134,
+       0.8300132381205472,
+       0.2683355750259443,
+       0.2974966598936703,
+       0.3811222056088577,
+       0.2733076623843879
+      ],
+      [
+       0.29508494076275393,
+       0.8197590094964933,
+       0.2605187780775011,
+       0.25577404215239313,
+       0.378659413570896,
+       0.2641384181804155
+      ],
+      [
+       0.2780819177003926,
+       0.8214503204963574,
+       0.2944166218579668,
+       0.2858687416452894,
+       0.4102358520139454,
+       0.2934040298192996
+      ],
+      [
+       0.2587427838775268,
+       0.29249220693687644,
+       0.8267733273639147,
+       0.2215827599487244,
+       0.3179085865822747,
+       0.23009036321390774
+      ],
+      [
+       0.23594863850861067,
+       0.2698325947731946,
+       0.8224779915162789,
+       0.24273860568268088,
+       0.32435594954039476,
+       0.21229110027224823
+      ],
+      [
+       0.22158913666550661,
+       0.2548786616531085,
+       0.7983374689165117,
+       0.22964353382574884,
+       0.35367584047702794,
+       0.22783628170774656
+      ],
+      [
+       0.2717341563864722,
+       0.2470725797953392,
+       0.8055784374355605,
+       0.24316732329137325,
+       0.3287127883978078,
+       0.21044277769541656
+      ],
+      [
+       0.2795571381639358,
+       0.32525325422101437,
+       0.29089604422536336,
+       0.899525608918049,
+       0.4460303404121977,
+       0.4253094628497617
+      ],
+      [
+       0.27345102335684274,
+       0.2970198734956749,
+       0.2867525383478715,
+       0.8935535531331719,
+       0.45262995747928103,
+       0.391601377991755
+      ],
+      [
+       0.2184222188503171,
+       0.2752690964148396,
+       0.17017394073954645,
+       0.8515239089717341,
+       0.34672141980389726,
+       0.3700414266579472
+      ],
+      [
+       0.4500995493553758,
+       0.44194005384813906,
+       0.34903437160477035,
+       0.4656836734281275,
+       0.8894192365363107,
+       0.5170145168144159
+      ],
+      [
+       0.44481356181210724,
+       0.43449124028086955,
+       0.3281484837372047,
+       0.3985650220506971,
+       0.8859269713993504,
+       0.5151864979782682
+      ],
+      [
+       0.410824884388926,
+       0.38838064185795756,
+       0.32753547918958886,
+       0.364475570554206,
+       0.8505051805257462,
+       0.47019328927914533
+      ],
+      [
+       0.4114373147131061,
+       0.405978208223597,
+       0.407274731247344,
+       0.41149871947620004,
+       0.8368261378521628,
+       0.478658407667382
+      ],
+      [
+       0.20003988187580518,
+       0.2569715083138666,
+       0.2266363603609354,
+       0.3620993654835411,
+       0.4712852809791232,
+       0.8386363582229347
+      ],
+      [
+       0.23981866082520914,
+       0.2850073149504227,
+       0.24204533929484767,
+       0.390829981965522,
+       0.49216996543889,
+       0.8572225703212838
+      ],
+      [
+       0.2330746825763611,
+       0.30107392186767296,
+       0.23744587111397794,
+       0.35921724215615064,
+       0.4674847723804323,
+       0.8028282030360829
+      ],
+      [
+       0.21644202646527225,
+       0.2663970162807829,
+       0.18648804856177414,
+       0.3722381204911875,
+       0.4581095286971861,
+       0.8004387775546455
+      ]
+     ],
+     "symmetric": false,
+     "definition": "Pearson correlation of each indicator with each construct score (cSEM Estimates$Construct_scores, standardized composites). For PLSc the own-block entries are composite (proxy) correlations and therefore differ from the consistency-corrected loadings."
+    },
+    {
+     "id": "construct-correlations",
+     "title": "Construct correlations",
+     "rowIds": [
+      "c_sysq",
+      "c_infq",
+      "c_servq",
+      "c_use",
+      "c_sat",
+      "c_nb"
+     ],
+     "colIds": [
+      "c_sysq",
+      "c_infq",
+      "c_servq",
+      "c_use",
+      "c_sat",
+      "c_nb"
+     ],
+     "values": [
+      [
+       1,
+       0.42242855345397845,
+       0.3662460305647001,
+       0.3467858607720504,
+       0.5781236446218745,
+       0.32263047766657355
+      ],
+      [
+       0.42242855345397845,
+       1,
+       0.38684070522837255,
+       0.3940348623656919,
+       0.5520866291321912,
+       0.3944657388182674
+      ],
+      [
+       0.3662460305647001,
+       0.38684070522837255,
+       1,
+       0.3395636104595436,
+       0.47443742164017627,
+       0.3234916348713006
+      ],
+      [
+       0.3467858607720504,
+       0.3940348623656919,
+       0.3395636104595436,
+       1,
+       0.5400012718138051,
+       0.525279891190513
+      ],
+      [
+       0.5781236446218745,
+       0.5520866291321912,
+       0.47443742164017627,
+       0.5400012718138051,
+       1,
+       0.6602516904408107
+      ],
+      [
+       0.32263047766657355,
+       0.3944657388182674,
+       0.3234916348713006,
+       0.525279891190513,
+       0.6602516904408107,
+       1
+      ]
+     ],
+     "symmetric": true,
+     "definition": "Construct correlations (cSEM Estimates$Construct_VCV): consistency-corrected for reflective constructs (PLSc), composite correlations for Mode B constructs."
+    },
+    {
+     "id": "f2",
+     "title": "Effect size f\u00b2",
+     "rowIds": [
+      "c_sysq",
+      "c_infq",
+      "c_servq",
+      "c_use",
+      "c_sat"
+     ],
+     "colIds": [
+      "c_use",
+      "c_sat",
+      "c_nb"
+     ],
+     "values": [
+      [
+       0.030543389180164672,
+       0.16681648042833122,
+       null
+      ],
+      [
+       0.061331579375211144,
+       0.09368484598519906,
+       null
+      ],
+      [
+       0.03259297302674031,
+       0.04971282925879319,
+       null
+      ],
+      [
+       null,
+       0.13160629645377822,
+       0.07672713034619713
+      ],
+      [
+       null,
+       null,
+       0.3821704179308916
+      ]
+     ],
+     "symmetric": false,
+     "definition": "f\u00b2 = (R\u00b2_incl - R\u00b2_excl) / (1 - R\u00b2_incl) per structural path (row = predictor, column = endogenous construct), cSEM definition (assess() F2): R\u00b2_excl drops the predictor from the regression on the SAME construct correlations; the model is not re-estimated. Null where there is no path."
+    },
+    {
+     "id": "vif-structural",
+     "title": "Structural VIF",
+     "rowIds": [
+      "c_sysq",
+      "c_infq",
+      "c_servq",
+      "c_use",
+      "c_sat"
+     ],
+     "colIds": [
+      "c_use",
+      "c_sat",
+      "c_nb"
+     ],
+     "values": [
+      [
+       1.2933722439688347,
+       1.3328762157711973,
+       null
+      ],
+      [
+       1.3169620068016605,
+       1.3977333666559535,
+       null
+      ],
+      [
+       1.2495677756353092,
+       1.290294904441675,
+       null
+      ],
+      [
+       null,
+       1.2824813002869917,
+       1.411634583519964
+      ],
+      [
+       null,
+       null,
+       1.411634583519964
+      ]
+     ],
+     "symmetric": false,
+     "definition": "Variance inflation factor of each predictor in the regression of the endogenous construct (row = predictor, column = endogenous construct): diagonal of the inverse predictor correlation matrix (cSEM Estimates$VIF). Equals 1 by definition for a single predictor. Null where there is no path."
+    },
+    {
+     "id": "vif-indicator-mode-b",
+     "title": "Indicator VIF (Mode B blocks)",
+     "rowIds": [],
+     "colIds": [],
+     "values": [],
+     "symmetric": false,
+     "definition": "Indicator VIF within each Mode B block: diagonal of the inverse indicator correlation matrix of the block (cSEM assess() VIF_modeB). Rows = indicators of Mode B blocks, columns = Mode B constructs; null outside the indicator's own block and for single-indicator blocks.",
+     "missing": "not-applicable"
+    }
+   ],
+   "fit": [
+    {
+     "name": "srmr",
+     "value": 0.028514904462787583,
+     "variant": "standard",
+     "definition": "Standardized root mean square residual: sqrt(mean of the squared differences between the empirical and the model-implied indicator correlations over the lower triangle INCLUDING the diagonal) (cSEM assess() SRMR, model-implied matrix from cSEM::fit()). No CB-SEM cutoffs apply."
+    },
+    {
+     "name": "d_uls",
+     "value": 0.22441553832004513,
+     "variant": "standard",
+     "definition": "Unweighted least-squares discrepancy d_ULS = 0.5 \u00b7 \u03a3_ij (s_ij - \u03c3\u0302_ij)\u00b2 over all elements of the empirical (S) and model-implied (\u03a3\u0302) indicator correlation matrices (cSEM assess() DL). No CB-SEM cutoffs apply."
+    },
+    {
+     "name": "d_g",
+     "value": 0.13001974583605577,
+     "variant": "standard",
+     "definition": "Geodesic discrepancy d_G = 0.5 \u00b7 \u03a3_i (log10 \u03bb_i)\u00b2, \u03bb_i the eigenvalues of S\u207b\u00b9\u03a3\u0302 \u2014 cSEM uses the BASE-10 logarithm; the natural-log definition is (ln 10)\u00b2 \u2248 5.30 times larger (cSEM assess() DG). No CB-SEM cutoffs apply."
+    }
+   ],
+   "warnings": [
+    {
+     "code": "EXOGENOUS_CORRELATION_IMPLIED",
+     "severity": "info",
+     "message": "PLS-SEM leaves the correlation between exogenous constructs free; this covariance relationship is not a separate parameter. The estimate is in the construct-correlations matrix.",
+     "elementIds": [
+      "r_sysq_infq",
+      "c_sysq",
+      "c_infq"
+     ]
+    },
+    {
+     "code": "EXOGENOUS_CORRELATION_IMPLIED",
+     "severity": "info",
+     "message": "PLS-SEM leaves the correlation between exogenous constructs free; this covariance relationship is not a separate parameter. The estimate is in the construct-correlations matrix.",
+     "elementIds": [
+      "r_sysq_servq",
+      "c_sysq",
+      "c_servq"
+     ]
+    },
+    {
+     "code": "EXOGENOUS_CORRELATION_IMPLIED",
+     "severity": "info",
+     "message": "PLS-SEM leaves the correlation between exogenous constructs free; this covariance relationship is not a separate parameter. The estimate is in the construct-correlations matrix.",
+     "elementIds": [
+      "r_infq_servq",
+      "c_infq",
+      "c_servq"
+     ]
+    }
+   ],
+   "provenance": {
+    "engine": "r-csem",
+    "packageVersions": {
+     "R": "4.6.2",
+     "cSEM": "0.7.1",
+     "jsonlite": "2.0.0",
+     "future": "1.82.0",
+     "future.apply": "1.21.0",
+     "matrixStats": "1.5.0"
+    },
+    "rVersion": "4.6.2",
+    "call": "model <- \"C1 =~ X1 + X2 + X3 + X4\\nC2 =~ X5 + X6 + X7 + X8\\nC3 =~ X9 + X10 + X11 + X12\\nC4 =~ X13 + X14 + X15\\nC5 =~ X16 + X17 + X18 + X19\\nC6 =~ X20 + X21 + X22 + X23\\nC4 ~ C1 + C2 + C3\\nC5 ~ C1 + C2 + C3 + C4\\nC6 ~ C4 + C5\"\nfit <- cSEM::csem(.data = data, .model = model, .approach_weights = \"PLS-PM\", .approach_paths = \"OLS\", .disattenuate = TRUE, .PLS_weight_scheme_inner = \"factorial\", .iter_max = 300L, .tolerance = 1e-10, .conv_criterion = \"diff_absolute\", .PLS_approach_cf = \"dist_squared_euclid\")",
+    "startedAt": "2026-11-19T17:13:40.186Z",
+    "finishedAt": "2026-11-19T17:13:40.866Z"
+   }
+  }
+ }
+}

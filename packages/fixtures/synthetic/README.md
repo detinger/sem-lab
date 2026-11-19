@@ -26,6 +26,8 @@ uv run --python 3.12 --with numpy python packages/fixtures/scripts/generate_synt
 | `pls-mixed-composite-exact` | exact | 400 | Mixed reflective/composite PLS: correct weights and reliability applicability (analytic oracle) |
 | `cb-heywood-exact` | degenerate | 200 | CB Heywood / singular covariance: actionable diagnostic, no fake fit numbers |
 | `cb-singular` | degenerate | 300 | CB Heywood / singular covariance: actionable diagnostic, no fake fit numbers |
+| `delone-mclean` | sampled | 400 | Reference/teaching project (SYNTHETIC; inspired by the DeLone & McLean (2003) updated IS success model; does not reproduce any published dataset): PLS-SEM with bootstrap, total/specific indirect effects and IPMA |
+| `service-quality` | sampled | 450 | Reference/teaching project for CB-SEM (SYNTHETIC; inspired by the service quality -> satisfaction -> loyalty chain, e.g. Cronin & Taylor 1992; Zeithaml, Berry & Parasuraman 1996; does not reproduce any published dataset): ML/MLR SEM, mediation, PLS vs CB estimands |
 | `broken-mapping` | model-only | — | Broken CSV mapping: cannot run; precisely names missing columns |
 
 ## Kinds

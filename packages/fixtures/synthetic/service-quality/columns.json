@@ -1,0 +1,132 @@
+[
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "sq1",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "sq2",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "sq3",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "sq4",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "sq5",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "sat1",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "sat2",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "sat3",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "sat4",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "loy1",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "loy2",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "loy3",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "loy4",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  }
+]

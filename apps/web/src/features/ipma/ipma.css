@@ -1,0 +1,410 @@
+/* IPMA page (STYLE.md section 11). Tokens only; category hues are local to the chart. */
+.ipma-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+  min-width: 0;
+}
+.ipma-chart,
+.ipma-swatch,
+.ipma-legend {
+  --ipma-c0: var(--chart-1);
+  --ipma-c1: var(--chart-2);
+  --ipma-c2: var(--chart-3);
+  --ipma-c3: #8a5fc7;
+  --ipma-c4: #c9477e;
+  --ipma-c5: #b98a00;
+  --ipma-c6: #1496b8;
+  --ipma-c7: #6b7787;
+}
+[data-theme='dark'] .ipma-chart,
+[data-theme='dark'] .ipma-swatch,
+[data-theme='dark'] .ipma-legend {
+  --ipma-c3: #a98be0;
+  --ipma-c4: #e0709f;
+  --ipma-c5: #d4a72a;
+  --ipma-c6: #3bb4d4;
+  --ipma-c7: #9aa6b5;
+}
+.ipma-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+.ipma-target {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.ipma-target strong {
+  font-size: 22px;
+  line-height: 1.2;
+}
+.ipma-target__k {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-subtle);
+}
+.ipma-target__link {
+  font-size: 12px;
+}
+.ipma-controls {
+  display: flex;
+  gap: var(--space-5);
+  align-items: center;
+  flex-wrap: wrap;
+}
+.ipma-purpose {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  max-width: 110ch;
+}
+.ipma-muted {
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0 0 var(--space-4);
+}
+.ipma-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: var(--space-7);
+  align-items: start;
+}
+.ipma-plot,
+.ipma-side,
+.ipma-table-card {
+  background: var(--chart-surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: var(--space-6);
+  min-width: 0;
+}
+.ipma-chart {
+  position: relative;
+}
+.ipma-svg {
+  display: block;
+  max-width: 100%;
+}
+.ipma-grid {
+  stroke: var(--chart-grid);
+  stroke-width: 1;
+  opacity: 0.8;
+}
+.ipma-frame {
+  fill: none;
+  stroke: var(--chart-axis);
+}
+.ipma-zero {
+  stroke: var(--text);
+  stroke-width: 1.25;
+}
+.ipma-tick {
+  font-size: 11px;
+  fill: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.ipma-axis-title {
+  font-size: 12px;
+  font-weight: 600;
+  fill: var(--text);
+}
+.ipma-median line {
+  stroke: var(--text-subtle);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 4;
+}
+.ipma-median text {
+  font-size: 11px;
+  fill: var(--text-muted);
+}
+.ipma-leader {
+  stroke: var(--chart-muted);
+  stroke-width: 1;
+}
+.ipma-label {
+  font-size: 12px;
+  fill: var(--text);
+  paint-order: stroke;
+  stroke: var(--chart-surface);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+.ipma-label[data-dim] {
+  fill: var(--text-muted);
+}
+.ipma-pt {
+  cursor: pointer;
+  outline: none;
+  --pt: var(--ipma-c0);
+}
+.ipma-pt[data-c='1'],
+.ipma-swatch[data-c='1'] {
+  --pt: var(--ipma-c1);
+}
+.ipma-pt[data-c='2'],
+.ipma-swatch[data-c='2'] {
+  --pt: var(--ipma-c2);
+}
+.ipma-pt[data-c='3'],
+.ipma-swatch[data-c='3'] {
+  --pt: var(--ipma-c3);
+}
+.ipma-pt[data-c='4'],
+.ipma-swatch[data-c='4'] {
+  --pt: var(--ipma-c4);
+}
+.ipma-pt[data-c='5'],
+.ipma-swatch[data-c='5'] {
+  --pt: var(--ipma-c5);
+}
+.ipma-pt[data-c='6'],
+.ipma-swatch[data-c='6'] {
+  --pt: var(--ipma-c6);
+}
+.ipma-pt[data-c='7'],
+.ipma-swatch[data-c='7'] {
+  --pt: var(--ipma-c7);
+}
+.ipma-mark {
+  fill: var(--pt);
+  stroke: var(--chart-surface);
+  stroke-width: 2px;
+}
+.ipma-pt[data-dim] .ipma-mark {
+  opacity: 0.6;
+}
+.ipma-hit {
+  fill: transparent;
+}
+.ipma-sel {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3px;
+}
+.ipma-halo {
+  fill: var(--accent);
+  opacity: 0.22;
+}
+.ipma-pt:focus-visible .ipma-hit {
+  stroke: var(--text);
+  stroke-width: 2px;
+  stroke-dasharray: 3 2;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ipma-mark,
+  .ipma-label {
+    transition: opacity 120ms ease;
+  }
+}
+.ipma-card {
+  position: absolute;
+  width: 260px;
+  z-index: 2;
+  pointer-events: none;
+  background: var(--bg-elevated, var(--chart-surface));
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 12px;
+  box-shadow: var(--shadow-md, 0 6px 18px rgba(0, 0, 0, 0.18));
+}
+.ipma-card__name {
+  margin: 0 0 4px;
+  font-weight: 650;
+  font-size: 13px;
+}
+.ipma-card__dl,
+.ipma-dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 2px 10px;
+  margin: 0;
+}
+.ipma-card__dl dt,
+.ipma-dl dt {
+  color: var(--text-muted);
+}
+.ipma-card__dl dd,
+.ipma-dl dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+.ipma-card__note {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-style: italic;
+}
+.ipma-chart-note {
+  margin: 4px 0 0;
+  min-height: 18px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.ipma-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-8);
+  margin-top: var(--space-4);
+  font-size: 12px;
+}
+.ipma-legend ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-6);
+}
+.ipma-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.ipma-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--pt, var(--ipma-c0));
+  display: inline-block;
+}
+.ipma-legend__shape {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 1.5;
+}
+.ipma-legend__dots {
+  stroke: var(--text-subtle);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 4;
+}
+.ipma-plot__foot {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-6);
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: var(--space-4);
+}
+.ipma-note {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.ipma-side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.ipma-side__h {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 650;
+}
+.ipma-side__sub {
+  margin: var(--space-4) 0 0;
+  font-size: 13px;
+  font-weight: 650;
+}
+.ipma-side__name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 650;
+}
+.ipma-routes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: 12px;
+}
+.ipma-routes li {
+  display: flex;
+  flex-direction: column;
+}
+.ipma-route__calc {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+.ipma-route--sum {
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-3);
+  font-weight: 600;
+}
+.ipma-bounds {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+.ipma-bounds li {
+  display: flex;
+  justify-content: space-between;
+}
+.ipma-interp {
+  background: var(--bg-sunken);
+  border-radius: var(--radius-sm);
+  padding: var(--space-5);
+  font-size: 12px;
+  line-height: 1.55;
+}
+.ipma-interp p {
+  margin: 0;
+}
+.ipma-interp__h {
+  font-weight: 650;
+  margin-bottom: 4px !important;
+}
+.ipma-table-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-5);
+  margin-bottom: var(--space-4);
+}
+.ipma-table-tools {
+  display: flex;
+  gap: var(--space-3);
+}
+.ipma-table tbody tr {
+  cursor: pointer;
+}
+.ipma-table tbody tr[data-selected] {
+  background: var(--accent-soft);
+}
+.ipma-empty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+@media (max-width: 1100px) {
+  .ipma-main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .ipma-plot,
+  .ipma-side,
+  .ipma-table-card {
+    padding: var(--space-4);
+  }
+}
+.ipma-details summary {
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.ipma-details p {
+  max-width: 110ch;
+  margin-top: var(--space-3);
+}

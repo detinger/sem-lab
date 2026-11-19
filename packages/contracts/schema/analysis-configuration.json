@@ -15,6 +15,7 @@
     "engine": {
       "type": "string",
       "enum": [
+        "browser",
         "r-csem",
         "r-seminr",
         "r-lavaan",

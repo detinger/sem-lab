@@ -1,0 +1,1304 @@
+{
+ "request": {
+  "protocolVersion": 1,
+  "jobId": "ref",
+  "model": {
+   "constructs": [
+    {
+     "id": "c_f",
+     "indicatorIds": [
+      "i_f1",
+      "i_f2",
+      "i_f3",
+      "i_f4"
+     ],
+     "label": "Composite F",
+     "measurement": "composite-formative",
+     "name": "F"
+    },
+    {
+     "id": "c_x",
+     "indicatorIds": [
+      "i_x1",
+      "i_x2",
+      "i_x3"
+     ],
+     "label": "Reflective X",
+     "measurement": "reflective",
+     "name": "X"
+    },
+    {
+     "id": "c_y",
+     "indicatorIds": [
+      "i_y1",
+      "i_y2",
+      "i_y3",
+      "i_y4"
+     ],
+     "label": "Reflective Y",
+     "measurement": "reflective",
+     "name": "Y"
+    }
+   ],
+   "indicators": [
+    {
+     "column": "f1",
+     "id": "i_f1",
+     "level": "ordinal",
+     "name": "f1",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "f2",
+     "id": "i_f2",
+     "level": "ordinal",
+     "name": "f2",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "f3",
+     "id": "i_f3",
+     "level": "ordinal",
+     "name": "f3",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "f4",
+     "id": "i_f4",
+     "level": "ordinal",
+     "name": "f4",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "x1",
+     "id": "i_x1",
+     "level": "ordinal",
+     "name": "x1",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "x2",
+     "id": "i_x2",
+     "level": "ordinal",
+     "name": "x2",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "x3",
+     "id": "i_x3",
+     "level": "ordinal",
+     "name": "x3",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "y1",
+     "id": "i_y1",
+     "level": "ordinal",
+     "name": "y1",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "y2",
+     "id": "i_y2",
+     "level": "ordinal",
+     "name": "y2",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "y3",
+     "id": "i_y3",
+     "level": "ordinal",
+     "name": "y3",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    },
+    {
+     "column": "y4",
+     "id": "i_y4",
+     "level": "ordinal",
+     "name": "y4",
+     "scale": {
+      "max": 7,
+      "min": 1
+     }
+    }
+   ],
+   "relationships": [
+    {
+     "id": "r_f_y",
+     "kind": "structural",
+     "sourceId": "c_f",
+     "targetId": "c_y"
+    },
+    {
+     "id": "r_x_y",
+     "kind": "structural",
+     "sourceId": "c_x",
+     "targetId": "c_y"
+    },
+    {
+     "id": "r_f_x",
+     "kind": "covariance",
+     "sourceId": "c_f",
+     "targetId": "c_x"
+    }
+   ]
+  },
+  "analysis": {
+   "method": "pls-sem",
+   "engine": "r-csem",
+   "estimator": "pls-pm",
+   "missingData": "listwise",
+   "pls": {
+    "innerWeighting": "path",
+    "maxIterations": 300,
+    "tolerance": 1e-10
+   },
+   "ipma": {
+    "targetConstructId": "c_y"
+   }
+  },
+  "limits": {
+   "maxBootstrap": 10000,
+   "timeoutSeconds": 1800
+  }
+ },
+ "response": {
+  "ok": true,
+  "result": {
+   "schemaVersion": 1,
+   "sample": {
+    "nRows": 400,
+    "nUsed": 400,
+    "nDropped": 0,
+    "missingData": "listwise"
+   },
+   "estimation": {
+    "converged": true,
+    "iterations": 10,
+    "admissible": true,
+    "messages": [
+     "PLS weights converged after 10 iteration(s) (tolerance 1e-10, .conv_criterion = \"diff_absolute\", .iter_max = 300).",
+     "Estimator: classic PLS-SEM (.disattenuate = FALSE); inner weighting scheme \"path\"."
+    ]
+   },
+   "parameters": [
+    {
+     "key": "path:c_f->c_y",
+     "kind": "path",
+     "sourceId": "c_f",
+     "targetId": "c_y",
+     "relationshipId": "r_f_y",
+     "scale": "standardized",
+     "est": 0.3729443655443678,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Path_estimates[\"C3\", \"C1\"]"
+    },
+    {
+     "key": "path:c_x->c_y",
+     "kind": "path",
+     "sourceId": "c_x",
+     "targetId": "c_y",
+     "relationshipId": "r_x_y",
+     "scale": "standardized",
+     "est": 0.26378930543661405,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Path_estimates[\"C3\", \"C2\"]"
+    },
+    {
+     "key": "loading:c_f:i_f1",
+     "kind": "loading",
+     "sourceId": "c_f",
+     "targetId": "i_f1",
+     "scale": "standardized",
+     "est": 0.6550812836951923,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C1\", \"X1\"]"
+    },
+    {
+     "key": "weight:c_f:i_f1",
+     "kind": "weight",
+     "sourceId": "c_f",
+     "targetId": "i_f1",
+     "scale": "standardized",
+     "est": 0.42336940793268696,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C1\", \"X1\"]"
+    },
+    {
+     "key": "loading:c_f:i_f2",
+     "kind": "loading",
+     "sourceId": "c_f",
+     "targetId": "i_f2",
+     "scale": "standardized",
+     "est": 0.681321226330094,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C1\", \"X2\"]"
+    },
+    {
+     "key": "weight:c_f:i_f2",
+     "kind": "weight",
+     "sourceId": "c_f",
+     "targetId": "i_f2",
+     "scale": "standardized",
+     "est": 0.4296845285720041,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C1\", \"X2\"]"
+    },
+    {
+     "key": "loading:c_f:i_f3",
+     "kind": "loading",
+     "sourceId": "c_f",
+     "targetId": "i_f3",
+     "scale": "standardized",
+     "est": 0.5576985467952313,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C1\", \"X3\"]"
+    },
+    {
+     "key": "weight:c_f:i_f3",
+     "kind": "weight",
+     "sourceId": "c_f",
+     "targetId": "i_f3",
+     "scale": "standardized",
+     "est": 0.28308368413305157,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C1\", \"X3\"]"
+    },
+    {
+     "key": "loading:c_f:i_f4",
+     "kind": "loading",
+     "sourceId": "c_f",
+     "targetId": "i_f4",
+     "scale": "standardized",
+     "est": 0.6460444121140668,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C1\", \"X4\"]"
+    },
+    {
+     "key": "weight:c_f:i_f4",
+     "kind": "weight",
+     "sourceId": "c_f",
+     "targetId": "i_f4",
+     "scale": "standardized",
+     "est": 0.42107023986140857,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C1\", \"X4\"]"
+    },
+    {
+     "key": "loading:c_x:i_x1",
+     "kind": "loading",
+     "sourceId": "c_x",
+     "targetId": "i_x1",
+     "scale": "standardized",
+     "est": 0.8739740121983351,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C2\", \"X5\"]"
+    },
+    {
+     "key": "weight:c_x:i_x1",
+     "kind": "weight",
+     "sourceId": "c_x",
+     "targetId": "i_x1",
+     "scale": "standardized",
+     "est": 0.3936532439887401,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C2\", \"X5\"]"
+    },
+    {
+     "key": "loading:c_x:i_x2",
+     "kind": "loading",
+     "sourceId": "c_x",
+     "targetId": "i_x2",
+     "scale": "standardized",
+     "est": 0.8793202349892925,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C2\", \"X6\"]"
+    },
+    {
+     "key": "weight:c_x:i_x2",
+     "kind": "weight",
+     "sourceId": "c_x",
+     "targetId": "i_x2",
+     "scale": "standardized",
+     "est": 0.3783888791270387,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C2\", \"X6\"]"
+    },
+    {
+     "key": "loading:c_x:i_x3",
+     "kind": "loading",
+     "sourceId": "c_x",
+     "targetId": "i_x3",
+     "scale": "standardized",
+     "est": 0.8673927592656556,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C2\", \"X7\"]"
+    },
+    {
+     "key": "weight:c_x:i_x3",
+     "kind": "weight",
+     "sourceId": "c_x",
+     "targetId": "i_x3",
+     "scale": "standardized",
+     "est": 0.37264813819589665,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C2\", \"X7\"]"
+    },
+    {
+     "key": "loading:c_y:i_y1",
+     "kind": "loading",
+     "sourceId": "c_y",
+     "targetId": "i_y1",
+     "scale": "standardized",
+     "est": 0.8651217763159125,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C3\", \"X8\"]"
+    },
+    {
+     "key": "weight:c_y:i_y1",
+     "kind": "weight",
+     "sourceId": "c_y",
+     "targetId": "i_y1",
+     "scale": "standardized",
+     "est": 0.3005593299491728,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C3\", \"X8\"]"
+    },
+    {
+     "key": "loading:c_y:i_y2",
+     "kind": "loading",
+     "sourceId": "c_y",
+     "targetId": "i_y2",
+     "scale": "standardized",
+     "est": 0.8544177292526177,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C3\", \"X9\"]"
+    },
+    {
+     "key": "weight:c_y:i_y2",
+     "kind": "weight",
+     "sourceId": "c_y",
+     "targetId": "i_y2",
+     "scale": "standardized",
+     "est": 0.31324133889533645,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C3\", \"X9\"]"
+    },
+    {
+     "key": "loading:c_y:i_y3",
+     "kind": "loading",
+     "sourceId": "c_y",
+     "targetId": "i_y3",
+     "scale": "standardized",
+     "est": 0.8169153078389395,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C3\", \"X10\"]"
+    },
+    {
+     "key": "weight:c_y:i_y3",
+     "kind": "weight",
+     "sourceId": "c_y",
+     "targetId": "i_y3",
+     "scale": "standardized",
+     "est": 0.27681076898763113,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C3\", \"X10\"]"
+    },
+    {
+     "key": "loading:c_y:i_y4",
+     "kind": "loading",
+     "sourceId": "c_y",
+     "targetId": "i_y4",
+     "scale": "standardized",
+     "est": 0.8195402656416249,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Loading_estimates[\"C3\", \"X11\"]"
+    },
+    {
+     "key": "weight:c_y:i_y4",
+     "kind": "weight",
+     "sourceId": "c_y",
+     "targetId": "i_y4",
+     "scale": "standardized",
+     "est": 0.3004241290641459,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "cSEM::csem",
+     "rawPath": "Estimates$Weight_estimates[\"C3\", \"X11\"]"
+    },
+    {
+     "key": "total:c_f->c_y",
+     "kind": "total-effect",
+     "sourceId": "c_f",
+     "targetId": "c_y",
+     "scale": "standardized",
+     "est": 0.3729443655443678,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
+    },
+    {
+     "key": "total:c_x->c_y",
+     "kind": "total-effect",
+     "sourceId": "c_x",
+     "targetId": "c_y",
+     "scale": "standardized",
+     "est": 0.26378930543661405,
+     "se": null,
+     "statistic": null,
+     "pValue": null,
+     "ciLower": null,
+     "ciUpper": null,
+     "missing": {
+      "se": "not-requested",
+      "statistic": "not-requested",
+      "pValue": "not-requested",
+      "ciLower": "not-requested",
+      "ciUpper": "not-requested"
+     },
+     "status": "estimated",
+     "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+     "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates"
+    }
+   ],
+   "constructMetrics": [
+    {
+     "constructId": "c_f",
+     "metric": "r2",
+     "value": null,
+     "missing": "not-applicable",
+     "definition": "R\u00b2: share of the endogenous construct's variance explained by its predictors (cSEM Estimates$R2, OLS on the construct correlation matrix). Defined for endogenous constructs only."
+    },
+    {
+     "constructId": "c_f",
+     "metric": "r2-adjusted",
+     "value": null,
+     "missing": "not-applicable",
+     "definition": "Adjusted R\u00b2 = 1 - (1 - R\u00b2)(n - 1)/(n - k - 1), n = rows used, k = number of predictors (cSEM Estimates$R2adj). Defined for endogenous constructs only."
+    },
+    {
+     "constructId": "c_f",
+     "metric": "cronbach-alpha",
+     "value": null,
+     "missing": "not-applicable",
+     "definition": "Cronbach's alpha, standardized (correlation-based): k\u00b7r\u0304/(1 + (k - 1)\u00b7r\u0304), r\u0304 = mean inter-item correlation of the block (cSEM assess() RhoT). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_f",
+     "metric": "rho-a",
+     "value": null,
+     "missing": "not-applicable",
+     "definition": "Dijkstra\u2013Henseler rho_A of the Mode A weights, taken from a PLSc (consistent PLS) fit of the same model (cSEM Estimates$Reliabilities; the weights equal those of the classic fit). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_f",
+     "metric": "rho-c",
+     "value": null,
+     "missing": "not-applicable",
+     "definition": "Composite reliability rho_C = (\u03a3\u03bb)\u00b2 / ((\u03a3\u03bb)\u00b2 + \u03a3(1 - \u03bb\u00b2)) on the reported standardized loadings (cSEM assess() RhoC). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_f",
+     "metric": "ave",
+     "value": null,
+     "missing": "not-applicable",
+     "definition": "Average variance extracted: mean of the squared reported standardized loadings (cSEM assess() AVE). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_x",
+     "metric": "r2",
+     "value": null,
+     "missing": "not-applicable",
+     "definition": "R\u00b2: share of the endogenous construct's variance explained by its predictors (cSEM Estimates$R2, OLS on the construct correlation matrix). Defined for endogenous constructs only."
+    },
+    {
+     "constructId": "c_x",
+     "metric": "r2-adjusted",
+     "value": null,
+     "missing": "not-applicable",
+     "definition": "Adjusted R\u00b2 = 1 - (1 - R\u00b2)(n - 1)/(n - k - 1), n = rows used, k = number of predictors (cSEM Estimates$R2adj). Defined for endogenous constructs only."
+    },
+    {
+     "constructId": "c_x",
+     "metric": "cronbach-alpha",
+     "value": 0.8448448837724646,
+     "definition": "Cronbach's alpha, standardized (correlation-based): k\u00b7r\u0304/(1 + (k - 1)\u00b7r\u0304), r\u0304 = mean inter-item correlation of the block (cSEM assess() RhoT). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_x",
+     "metric": "rho-a",
+     "value": 0.8454105259387324,
+     "definition": "Dijkstra\u2013Henseler rho_A of the Mode A weights, taken from a PLSc (consistent PLS) fit of the same model (cSEM Estimates$Reliabilities; the weights equal those of the classic fit). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_x",
+     "metric": "rho-c",
+     "value": 0.9062365648073168,
+     "definition": "Composite reliability rho_C = (\u03a3\u03bb)\u00b2 / ((\u03a3\u03bb)\u00b2 + \u03a3(1 - \u03bb\u00b2)) on the reported standardized loadings (cSEM assess() RhoC). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_x",
+     "metric": "ave",
+     "value": 0.7631349494953893,
+     "definition": "Average variance extracted: mean of the squared reported standardized loadings (cSEM assess() AVE). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_y",
+     "metric": "r2",
+     "value": 0.2665301065441614,
+     "definition": "R\u00b2: share of the endogenous construct's variance explained by its predictors (cSEM Estimates$R2, OLS on the construct correlation matrix). Defined for endogenous constructs only."
+    },
+    {
+     "constructId": "c_y",
+     "metric": "r2-adjusted",
+     "value": 0.2628350441086157,
+     "definition": "Adjusted R\u00b2 = 1 - (1 - R\u00b2)(n - 1)/(n - k - 1), n = rows used, k = number of predictors (cSEM Estimates$R2adj). Defined for endogenous constructs only."
+    },
+    {
+     "constructId": "c_y",
+     "metric": "cronbach-alpha",
+     "value": 0.8599366862314068,
+     "definition": "Cronbach's alpha, standardized (correlation-based): k\u00b7r\u0304/(1 + (k - 1)\u00b7r\u0304), r\u0304 = mean inter-item correlation of the block (cSEM assess() RhoT). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_y",
+     "metric": "rho-a",
+     "value": 0.8617336594366265,
+     "definition": "Dijkstra\u2013Henseler rho_A of the Mode A weights, taken from a PLSc (consistent PLS) fit of the same model (cSEM Estimates$Reliabilities; the weights equal those of the classic fit). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_y",
+     "metric": "rho-c",
+     "value": 0.9049807222097285,
+     "definition": "Composite reliability rho_C = (\u03a3\u03bb)\u00b2 / ((\u03a3\u03bb)\u00b2 + \u03a3(1 - \u03bb\u00b2)) on the reported standardized loadings (cSEM assess() RhoC). Reflective blocks with at least 2 indicators only."
+    },
+    {
+     "constructId": "c_y",
+     "metric": "ave",
+     "value": 0.7043655527766833,
+     "definition": "Average variance extracted: mean of the squared reported standardized loadings (cSEM assess() AVE). Reflective blocks with at least 2 indicators only."
+    }
+   ],
+   "matrices": [
+    {
+     "id": "htmt",
+     "title": "Heterotrait\u2013monotrait ratio (HTMT)",
+     "rowIds": [
+      "c_x",
+      "c_y"
+     ],
+     "colIds": [
+      "c_x",
+      "c_y"
+     ],
+     "values": [
+      [
+       null,
+       0.4374858535657825
+      ],
+      [
+       0.4374858535657825,
+       null
+      ]
+     ],
+     "symmetric": true,
+     "definition": "HTMT (Henseler, Ringle & Sarstedt, 2015): mean absolute heterotrait correlation / sqrt(product of the mean absolute monotrait correlations), on Pearson indicator correlations (cSEM assess(), .absolute = TRUE). Reflective constructs with at least 2 indicators only; other constructs are omitted (not applicable). Diagonal is null (not applicable)."
+    },
+    {
+     "id": "htmt2",
+     "title": "HTMT2 (geometric-mean HTMT)",
+     "rowIds": [
+      "c_x",
+      "c_y"
+     ],
+     "colIds": [
+      "c_x",
+      "c_y"
+     ],
+     "values": [
+      [
+       null,
+       0.4370415163945786
+      ],
+      [
+       0.4370415163945786,
+       null
+      ]
+     ],
+     "symmetric": true,
+     "definition": "HTMT2 (Roemer, Schuberth & Henseler, 2021): as HTMT with geometric instead of arithmetic means, on Pearson indicator correlations (cSEM assess(), .absolute = TRUE). Reflective constructs with at least 2 indicators only; other constructs are omitted (not applicable). Diagonal is null (not applicable)."
+    },
+    {
+     "id": "fornell-larcker",
+     "title": "Fornell\u2013Larcker criterion",
+     "rowIds": [
+      "c_x",
+      "c_y"
+     ],
+     "colIds": [
+      "c_x",
+      "c_y"
+     ],
+     "values": [
+      [
+       0.7631349494953893,
+       0.13946939344030185
+      ],
+      [
+       0.13946939344030185,
+       0.7043655527766833
+      ]
+     ],
+     "symmetric": true,
+     "definition": "Fornell\u2013Larcker matrix (cSEM assess() fl_criterion): diagonal = AVE, off-diagonal = squared construct correlations. Reflective constructs with at least 2 indicators only."
+    },
+    {
+     "id": "cross-loadings",
+     "title": "Cross-loadings",
+     "rowIds": [
+      "i_f1",
+      "i_f2",
+      "i_f3",
+      "i_f4",
+      "i_x1",
+      "i_x2",
+      "i_x3",
+      "i_y1",
+      "i_y2",
+      "i_y3",
+      "i_y4"
+     ],
+     "colIds": [
+      "c_f",
+      "c_x",
+      "c_y"
+     ],
+     "values": [
+      [
+       0.6550812836951936,
+       0.20957376630669503,
+       0.29512284405909595
+      ],
+      [
+       0.6813212263300935,
+       0.18736642606471945,
+       0.30694428772883875
+      ],
+      [
+       0.5576985467952297,
+       0.24359015895999914,
+       0.2512506239319672
+      ],
+      [
+       0.6460444121140652,
+       0.13267264951944857,
+       0.29105161304200083
+      ],
+      [
+       0.2928734456052206,
+       0.8739740121983341,
+       0.3364063973004544
+      ],
+      [
+       0.2469355269535329,
+       0.8793202349892916,
+       0.32336184586282946
+      ],
+      [
+       0.22897804078221537,
+       0.8673927592656548,
+       0.318455949612271
+      ],
+      [
+       0.3899847417660668,
+       0.30327746946960277,
+       0.8651217763159109
+      ],
+      [
+       0.3934754507334388,
+       0.33440344275096906,
+       0.854417729252617
+      ],
+      [
+       0.344076579905051,
+       0.30065354304171166,
+       0.8169153078389395
+      ],
+      [
+       0.38213604248118643,
+       0.31398949018982925,
+       0.8195402656416252
+      ]
+     ],
+     "symmetric": false,
+     "definition": "Pearson correlation of each indicator with each construct score (cSEM Estimates$Construct_scores, standardized composites)."
+    },
+    {
+     "id": "construct-correlations",
+     "title": "Construct correlations",
+     "rowIds": [
+      "c_f",
+      "c_x",
+      "c_y"
+     ],
+     "colIds": [
+      "c_f",
+      "c_x",
+      "c_y"
+     ],
+     "values": [
+      [
+       1,
+       0.2940564797864838,
+       0.45051332010638007
+      ],
+      [
+       0.2940564797864838,
+       1,
+       0.37345601272479445
+      ],
+      [
+       0.45051332010638007,
+       0.37345601272479445,
+       1
+      ]
+     ],
+     "symmetric": true,
+     "definition": "Construct correlations (cSEM Estimates$Construct_VCV): correlations of the standardized composites (classic PLS, no consistency correction)."
+    },
+    {
+     "id": "f2",
+     "title": "Effect size f\u00b2",
+     "rowIds": [
+      "c_f",
+      "c_x"
+     ],
+     "colIds": [
+      "c_y"
+     ],
+     "values": [
+      [
+       0.17323234973585153
+      ],
+      [
+       0.08666729952797322
+      ]
+     ],
+     "symmetric": false,
+     "definition": "f\u00b2 = (R\u00b2_incl - R\u00b2_excl) / (1 - R\u00b2_incl) per structural path (row = predictor, column = endogenous construct), cSEM definition (assess() F2): R\u00b2_excl drops the predictor from the regression on the SAME construct correlations; the model is not re-estimated. Null where there is no path."
+    },
+    {
+     "id": "vif-structural",
+     "title": "Structural VIF",
+     "rowIds": [
+      "c_f",
+      "c_x"
+     ],
+     "colIds": [
+      "c_y"
+     ],
+     "values": [
+      [
+       1.0946538579364082
+      ],
+      [
+       1.0946538579364082
+      ]
+     ],
+     "symmetric": false,
+     "definition": "Variance inflation factor of each predictor in the regression of the endogenous construct (row = predictor, column = endogenous construct): diagonal of the inverse predictor correlation matrix (cSEM Estimates$VIF). Equals 1 by definition for a single predictor. Null where there is no path."
+    },
+    {
+     "id": "vif-indicator-mode-b",
+     "title": "Indicator VIF (Mode B blocks)",
+     "rowIds": [
+      "i_f1",
+      "i_f2",
+      "i_f3",
+      "i_f4"
+     ],
+     "colIds": [
+      "c_f"
+     ],
+     "values": [
+      [
+       1.0992109930979161
+      ],
+      [
+       1.151274389441637
+      ],
+      [
+       1.1340278901831224
+      ],
+      [
+       1.0962221713509577
+      ]
+     ],
+     "symmetric": false,
+     "definition": "Indicator VIF within each Mode B block: diagonal of the inverse indicator correlation matrix of the block (cSEM assess() VIF_modeB). Rows = indicators of Mode B blocks, columns = Mode B constructs; null outside the indicator's own block and for single-indicator blocks."
+    }
+   ],
+   "fit": [
+    {
+     "name": "srmr",
+     "value": 0.0481852056170499,
+     "variant": "standard",
+     "definition": "Standardized root mean square residual: sqrt(mean of the squared differences between the empirical and the model-implied indicator correlations over the lower triangle INCLUDING the diagonal) (cSEM assess() SRMR, model-implied matrix from cSEM::fit()). No CB-SEM cutoffs apply."
+    },
+    {
+     "name": "d_uls",
+     "value": 0.1532397266635869,
+     "variant": "standard",
+     "definition": "Unweighted least-squares discrepancy d_ULS = 0.5 \u00b7 \u03a3_ij (s_ij - \u03c3\u0302_ij)\u00b2 over all elements of the empirical (S) and model-implied (\u03a3\u0302) indicator correlation matrices (cSEM assess() DL). No CB-SEM cutoffs apply."
+    },
+    {
+     "name": "d_g",
+     "value": 0.07683948998887158,
+     "variant": "standard",
+     "definition": "Geodesic discrepancy d_G = 0.5 \u00b7 \u03a3_i (log10 \u03bb_i)\u00b2, \u03bb_i the eigenvalues of S\u207b\u00b9\u03a3\u0302 \u2014 cSEM uses the BASE-10 logarithm; the natural-log definition is (ln 10)\u00b2 \u2248 5.30 times larger (cSEM assess() DG). No CB-SEM cutoffs apply."
+    }
+   ],
+   "ipma": {
+    "targetConstructId": "c_y",
+    "constructs": [
+     {
+      "constructId": "c_f",
+      "importance": 0.49070813174480876,
+      "performance": 50.03613633823949,
+      "predecessor": "direct"
+     },
+     {
+      "constructId": "c_x",
+      "importance": 0.24335535713222703,
+      "performance": 48.71536696723401,
+      "predecessor": "direct"
+     }
+    ],
+    "indicators": [
+     {
+      "indicatorId": "i_f1",
+      "constructId": "c_f",
+      "importance": 0.13897760977092538,
+      "performance": 50.04166666666668
+     },
+     {
+      "indicatorId": "i_f2",
+      "constructId": "c_f",
+      "importance": 0.13341388557460523,
+      "performance": 49.12499999999998
+     },
+     {
+      "indicatorId": "i_f3",
+      "constructId": "c_f",
+      "importance": 0.08891958247572827,
+      "performance": 51.08333333333338
+     },
+     {
+      "indicatorId": "i_f4",
+      "constructId": "c_f",
+      "importance": 0.1293970539235499,
+      "performance": 50.24999999999997
+     },
+     {
+      "indicatorId": "i_x1",
+      "constructId": "c_x",
+      "importance": 0.08480118807004429,
+      "performance": 49.20833333333332
+     },
+     {
+      "indicatorId": "i_x2",
+      "constructId": "c_x",
+      "importance": 0.08067759023726506,
+      "performance": 48.08333333333333
+     },
+     {
+      "indicatorId": "i_x3",
+      "constructId": "c_x",
+      "importance": 0.07787657882491766,
+      "performance": 48.8333333333333
+     }
+    ],
+    "convention": "Each indicator is first reverse scored where flagged ((min + max) - x), then rescaled to 0-100 as (x - min)/(max - min)*100 with its declared original scale endpoints (never the observed minimum/maximum). Classic PLS-SEM (no consistency correction; same inner weighting scheme, iteration cap and tolerance as the main fit) is re-estimated on the rescaled data. Unstandardized outer weights = standardized weight / sd(rescaled indicator), normalized to sum to 1 within each block; construct score = weighted sum of the rescaled indicators (0-100 when no weight is negative). Performance = mean construct score (constructs) or mean rescaled indicator (indicators), on the 0-100 scale. Importance = unstandardized total effect of the construct on the target: OLS of each endogenous score on its predictors' scores gives B, total effects = (I - B)^-1 - I. Indicator importance = normalized weight x the construct's importance. Negative importance keeps its sign. Constructs listed are all predecessors of the target (any directed path); 'direct' means a direct structural path exists. Point estimates only (no bootstrap intervals)."
+   },
+   "warnings": [
+    {
+     "code": "EXOGENOUS_CORRELATION_IMPLIED",
+     "severity": "info",
+     "message": "PLS-SEM leaves the correlation between exogenous constructs free; this covariance relationship is not a separate parameter. The estimate is in the construct-correlations matrix.",
+     "elementIds": [
+      "r_f_x",
+      "c_f",
+      "c_x"
+     ]
+    }
+   ],
+   "provenance": {
+    "engine": "r-csem",
+    "packageVersions": {
+     "R": "4.6.2",
+     "cSEM": "0.7.1",
+     "jsonlite": "2.0.0",
+     "future": "1.82.0",
+     "future.apply": "1.21.0",
+     "matrixStats": "1.5.0"
+    },
+    "rVersion": "4.6.2",
+    "call": "model <- \"C1 <~ X1 + X2 + X3 + X4\\nC2 =~ X5 + X6 + X7\\nC3 =~ X8 + X9 + X10 + X11\\nC3 ~ C1 + C2\"\nfit <- cSEM::csem(.data = data, .model = model, .approach_weights = \"PLS-PM\", .approach_paths = \"OLS\", .disattenuate = FALSE, .PLS_weight_scheme_inner = \"path\", .iter_max = 300L, .tolerance = 1e-10, .conv_criterion = \"diff_absolute\")\nfit_rhoA <- cSEM::csem(.data = data, .model = model, .approach_weights = \"PLS-PM\", .approach_paths = \"OLS\", .disattenuate = TRUE, .PLS_weight_scheme_inner = \"path\", .iter_max = 300L, .tolerance = 1e-10, .conv_criterion = \"diff_absolute\", .PLS_approach_cf = \"dist_squared_euclid\")\nfit_ipma <- cSEM::csem(.data = data_rescaled_0_100, .model = model, .approach_weights = \"PLS-PM\", .approach_paths = \"OLS\", .disattenuate = FALSE, .PLS_weight_scheme_inner = \"path\", .iter_max = 300L, .tolerance = 1e-10, .conv_criterion = \"diff_absolute\")",
+    "startedAt": "2026-11-19T17:13:08.554Z",
+    "finishedAt": "2026-11-19T17:13:09.207Z"
+   }
+  }
+ }
+}

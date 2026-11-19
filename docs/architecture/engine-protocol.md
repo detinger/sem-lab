@@ -21,9 +21,15 @@ else crosses the boundary: no shared memory, no sockets, no code strings.
   "jobId": "…",
   "model": { /* SemModel, already validated */ },
   "analysis": { /* AnalysisConfiguration */ },
-  "limits": { "maxBootstrap": 10000, "timeoutSeconds": 1800 }
+  "limits": { "maxBootstrap": 10000, "timeoutSeconds": 1800 },
+  "dataPreparation": { "nRows": 8239, "nDropped": 817, "missingData": "listwise" }   // optional
 }
 ```
+
+`dataPreparation` (optional) declares rows the web app removed before upload. The engine requires
+`nRows − nDropped` = rows in `data.csv` (otherwise `REQUEST_INVALID`,
+`details.reason = "data-preparation-mismatch"`) and reports `sample.nRows = nRows`, so results
+always state "N of M rows used".
 
 The engine resolves each indicator to its bound `column` in `data.csv`. Column names and
 construct names are **data**: an engine builds model syntax only through its own quoting

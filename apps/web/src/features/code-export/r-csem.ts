@@ -4,11 +4,11 @@
  * The script is derived from the same canonical model and analysis configuration as the job
  * the app sends to the R engine, and reproduces the engine's numbers EXACTLY:
  *  - csem() gets the same options as services/r-engine/R/pls_estimate.R csem_options();
- *  - the bootstrap replays the engine's chunked procedure (pls_bootstrap.R): chunk k uses
- *    .seed = (seed + k) mod (2^31 − 1), .handle_inadmissibles = "drop",
- *    .sign_change_option = "none"; a chunk that errors (or has < 3 draws) is re-run one draw
- *    at a time with seed + k + j·1e6; percentile CI = quantile(type = 7); SE = sd (B − 1);
- *    p from the t distribution with B_valid − 1 df.
+ *  - the bootstrap follows SEM Studio's definition (the browser engine implements the same):
+ *    set.seed(seed, "Mersenne-Twister", "Inversion", "Rejection"), then for b = 1..B in order
+ *    rows = sample.int(n, n, replace = TRUE) and a full re-estimation; failed = error or
+ *    non-convergence, inadmissible = verify() flags; percentile CI = quantile(type = 7);
+ *    SE = sd (B − 1); p from the t distribution with B_valid − 1 df.
  *  - it reads the exact analysis matrix the app analysed (exported with the script).
  *
  * Safety: user text never becomes R code. Names become sanitized identifiers; column names
@@ -106,7 +106,6 @@ export interface RExportInput {
   transformations: Transformation[];
   generatedAt: string;
   appVersion: string;
-  chunkSize?: number;
   dataFileName?: string;
 }
 
@@ -120,7 +119,6 @@ export function exportCsemScript(input: RExportInput): string {
   const ids = identifiers(model);
   const id = (x: string): string => ids.get(x)!;
   const inBlocks = model.constructs.flatMap((c) => c.indicatorIds);
-  const chunk = input.chunkSize ?? 100;
   const disattenuate = a.method === 'plsc';
   const L: string[] = [];
   const push = (...lines: string[]): number => L.push(...lines);
@@ -212,67 +210,45 @@ export function exportCsemScript(input: RExportInput): string {
   if (a.bootstrap?.enabled) {
     const b = a.bootstrap;
     push(
-      "# ---- Bootstrap (replays SEM Studio's chunked, seeded procedure) -----------------",
+      "# ---- Bootstrap (SEM Studio's definition — the app draws exactly these rows) ------",
+      '# One random stream: set.seed(), then for each draw b = 1..B, in order,',
+      '# rows = sample.int(n, n, replace = TRUE) and a full re-estimation. A draw that errors or',
+      '# does not converge is "failed"; one that verify() flags is "inadmissible"; both are',
+      '# excluded and counted. SE = sd (divisor B - 1); p from the t distribution with B_valid - 1 df;',
+      '# percentile intervals with quantile(type = 7).',
       `B <- ${b.repetitions}L`,
       `seed <- ${a.seed ?? 0}L`,
-      `chunk_size <- ${chunk}L`,
       `level <- ${num(b.confidenceLevel)}`,
-      'SEED_MOD <- 2147483647',
-      'with_seed <- function(s, expr) {',
-      '  old <- if (exists(".Random.seed", envir = globalenv())) get(".Random.seed", envir = globalenv()) else NULL',
-      '  on.exit(if (!is.null(old)) assign(".Random.seed", old, envir = globalenv()))',
-      '  set.seed(s, kind = "Mersenne-Twister", normal.kind = "Inversion", sample.kind = "Rejection")',
-      '  expr',
-      '}',
       'theta <- function(f) {',
       '  s <- summarize(f)$Estimates',
       '  c(stats::setNames(s$Path_estimates$Estimate, s$Path_estimates$Name),',
       '    stats::setNames(s$Loading_estimates$Estimate, s$Loading_estimates$Name),',
       '    stats::setNames(s$Weight_estimates$Estimate, s$Weight_estimates$Name))',
       '}',
-      'theta_resampled <- function(res) {',
-      '  E <- res$Estimates$Estimates_resample$Estimates1',
-      '  cbind(E$Path_estimates$Resampled, E$Loading_estimates$Resampled, E$Weight_estimates$Resampled)',
-      '}',
-      'draws <- NULL; failed <- 0L; inadmissible <- 0L; done <- 0L; k <- 0L',
-      'while (done < B) {',
-      '  r <- min(chunk_size, B - done)',
-      '  res <- if (r >= 3L) tryCatch(suppressMessages(suppressWarnings(resamplecSEMResults(',
-      '    .object = fit, .resample_method = "bootstrap", .R = r, .seed = as.integer((seed + k) %% SEED_MOD),',
-      '    .handle_inadmissibles = "drop", .sign_change_option = "none", .eval_plan = "sequential"))),',
-      '    error = function(e) NULL) else NULL',
-      '  if (!is.null(res)) {',
-      '    M <- theta_resampled(res)',
-      '    ok <- apply(M, 1L, function(x) all(is.finite(x)))',
-      '    failed <- failed + sum(!ok); inadmissible <- inadmissible + (r - nrow(M))',
-      '    draws <- rbind(draws, M[ok, , drop = FALSE])',
-      '  } else for (j in seq_len(r)) {  # chunk errored or too small: one draw at a time',
-      '    idx <- with_seed(as.integer((seed + k + j * 1e6) %% SEED_MOD), sample.int(nrow(data), nrow(data), replace = TRUE))',
-      '    f <- tryCatch(suppressMessages(suppressWarnings(do.call(csem, c(list(.data = data[idx, , drop = FALSE], .model = model), options)))), error = function(e) NULL)',
-      '    if (is.null(f)) { failed <- failed + 1L; next }',
-      '    if (any(verify(f))) { inadmissible <- inadmissible + 1L; next }',
-      '    t <- theta(f); if (!all(is.finite(t))) { failed <- failed + 1L; next }',
-      '    draws <- rbind(draws, t[colnames(draws) %||% names(t)])',
-      '  }',
-      '  done <- done + r; k <- k + 1L',
+      'est <- theta(fit)',
+      'draws <- matrix(NA_real_, 0L, length(est), dimnames = list(NULL, names(est)))',
+      'failed <- 0L; inadmissible <- 0L; n <- nrow(data)',
+      'set.seed(seed, kind = "Mersenne-Twister", normal.kind = "Inversion", sample.kind = "Rejection")',
+      'for (b in seq_len(B)) {',
+      '  idx <- sample.int(n, n, replace = TRUE)',
+      '  f <- tryCatch(suppressMessages(suppressWarnings(',
+      '    do.call(csem, c(list(.data = data[idx, , drop = FALSE], .model = model), options)))), error = function(e) NULL)',
+      '  if (is.null(f) || !isTRUE(all(f$Information$Weight_info$Convergence_status))) { failed <- failed + 1L; next }',
+      '  if (any(verify(f))) { inadmissible <- inadmissible + 1L; next }',
+      '  t <- theta(f)[names(est)]',
+      '  if (!all(is.finite(t))) { failed <- failed + 1L; next }',
+      '  draws <- rbind(draws, t)',
       '}',
       'cat(sprintf("Bootstrap: %d valid of %d requested (%d failed, %d inadmissible excluded)\\n", nrow(draws), B, failed, inadmissible))',
-      'est <- theta(fit)[colnames(draws)]',
       'se <- apply(draws, 2, stats::sd)                         # divisor B - 1',
       't_stat <- est / se',
       `p_value <- ${b.sides === 'one-sided' ? 'stats::pt(-abs(t_stat), df = nrow(draws) - 1)  # one-sided, direction = sign of the estimate' : '2 * stats::pt(-abs(t_stat), df = nrow(draws) - 1)  # two-sided'}`,
-      `alpha <- 1 - level`,
+      'alpha <- 1 - level',
       `ci <- t(apply(draws, 2, stats::quantile, probs = ${b.sides === 'one-sided' ? 'c(alpha, 1 - alpha)' : 'c(alpha / 2, 1 - alpha / 2)'}, type = 7, names = FALSE))`,
-      'bootstrap_table <- data.frame(parameter = colnames(draws), estimate = est, se = se, t = t_stat, p = p_value,',
+      'bootstrap_table <- data.frame(parameter = names(est), estimate = est, se = se, t = t_stat, p = p_value,',
       '                              ci_lower = ci[, 1], ci_upper = ci[, 2], row.names = NULL)',
       'print(bootstrap_table, digits = 3)',
       '',
-    );
-    // %||% is base R since 4.4; define it for older R
-    L.splice(
-      L.indexOf('draws <- NULL; failed <- 0L; inadmissible <- 0L; done <- 0L; k <- 0L'),
-      0,
-      '`%||%` <- function(x, y) if (is.null(x)) y else x',
     );
   }
 

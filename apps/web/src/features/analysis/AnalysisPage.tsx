@@ -179,7 +179,23 @@ function AnalysisInner() {
                 {matrix.nDropped > 0 ? ` (${matrix.nDropped.toLocaleString('en')} removed)` : ''}.
               </p>
             ) : null}
-            <ValidationList issues={issues} emptyTitle="No issues found" />
+            <ValidationList
+              issues={issues}
+              emptyTitle="No issues found"
+              focusLabel="Show in Data mapping"
+              onFocus={(ids) => {
+                // Take the user to the exact mapping field(s) on the Data page.
+                useModeler.getState().select(ids);
+                void navigate('/data');
+                window.setTimeout(() => {
+                  const row = document.getElementById(`map-ind-${ids[0]}`);
+                  if (row) {
+                    row.scrollIntoView({ block: 'center' });
+                    row.querySelector<HTMLElement>('select, input')?.focus();
+                  } else document.getElementById('dl-mapping')?.scrollIntoView({ block: 'start' });
+                }, 250);
+              }}
+            />
           </section>
           {!unavailable ? (
             <p className="an-privacy">

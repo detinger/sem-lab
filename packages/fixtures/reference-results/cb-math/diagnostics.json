@@ -1,0 +1,6 @@
+{
+  "cb-singular": {
+    "lavaan_error": "lavaan->lav_samp_icov():  \n   sample covariance matrix is not positive-definite",
+    "eigenvalues_S": [6.1981642985599468, 1.7968386955386422, 0.43296681694117939, 0.35643921253625621, 0.33488999618135068, 0.31327981938585248, -9.261446899869298e-16]
+  }
+}

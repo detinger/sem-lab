@@ -2,29 +2,7 @@
 # which was produced by direct cSEM calls on tam-v1 (TEMP/Example - TAM/Data.txt).
 # TEMP/ is git-ignored, so these tests are skipped when the data file is absent.
 
-tam_blocks <- list(PU = paste0("USEF", 1:5), PEOU = paste0("EOU", 1:5), ATU = paste0("ATT", 1:5),
-                   BI = paste0("BI", 1:3), USE = paste0("USE", 1:4))
-tam_struct <- list(c("PEOU", "PU"), c("PEOU", "ATU"), c("PU", "ATU"), c("PU", "BI"), c("ATU", "BI"), c("BI", "USE"))
-
-tam_model <- function() {
-  list(
-    constructs = lapply(names(tam_blocks), function(k) list(
-      id = paste0("c_", tolower(k)), name = k, measurement = "reflective",
-      indicatorIds = I(paste0("i_", tolower(tam_blocks[[k]]))))),
-    indicators = lapply(unlist(tam_blocks, use.names = FALSE), function(col) list(
-      id = paste0("i_", tolower(col)), name = col, column = col)),
-    relationships = lapply(tam_struct, function(p) list(
-      id = sprintf("r_%s_%s", tolower(p[1]), tolower(p[2])), kind = "structural",
-      sourceId = paste0("c_", tolower(p[1])), targetId = paste0("c_", tolower(p[2]))))
-  )
-}
-
-tam_csv <- function() {
-  d <- utils::read.table(TAM_TXT, header = TRUE, sep = ";", dec = ".", check.names = FALSE)
-  f <- tempfile(fileext = ".csv")
-  utils::write.csv(d, f, row.names = FALSE)
-  f
-}
+# tam_model(), tam_csv(): helper-tam.R
 
 compare_parity <- function(r, ev) {
   dev <- c()

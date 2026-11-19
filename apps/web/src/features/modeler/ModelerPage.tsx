@@ -1,6 +1,6 @@
 import { ReactFlowProvider, useReactFlow } from '@xyflow/react';
 import { CircleDot, FolderOpen, PanelRightClose, PanelRightOpen } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Button, Card, Dialog, IconButton, Kbd, useToast } from '@/components/ui';
 import { useProjectRuns } from '@/features/analysis/runs';
 import { useReadiness } from '@/features/data-lab/readiness';
@@ -13,6 +13,7 @@ import {
 import { SemCanvas } from './canvas/SemCanvas';
 import { CHECK_PANEL_ID, CheckPanel } from './CheckPanel';
 import { sceneToSvg, svgToPng } from './export/svg-export';
+import { useFocusRequest } from './focus';
 import { Inspector } from './Inspector';
 import { computeAutoLayout } from './layout/auto-layout';
 import { ModelerToolbar } from './ModelerToolbar';
@@ -133,6 +134,15 @@ function ModelerWorkspace() {
   const projectName = useModeler((s) => s.projectName);
   const revision = useModeler((s) => s.revision);
   const save = useAutosave();
+  const focusRequest = useFocusRequest((s) => s.request);
+  const focusedIds = useMemo(
+    () => (focusRequest ? new Set(focusRequest.ids) : undefined),
+    [focusRequest],
+  );
+  // A focus request (e.g. IPMA "View supporting paths") selects its elements once.
+  useEffect(() => {
+    if (focusRequest) useModeler.getState().select(focusRequest.ids);
+  }, [focusRequest]);
 
   // Re-open the last project on first visit.
   useEffect(() => {
@@ -221,6 +231,14 @@ function ModelerWorkspace() {
         >
           {inspectorOpen ? <PanelRightClose size={16} /> : <PanelRightOpen size={16} />}
         </IconButton>
+        {focusRequest ? (
+          <span className="modeler-focus" role="status">
+            {focusRequest.reason}
+            <Button size="small" onClick={() => useFocusRequest.getState().clear()}>
+              Clear focus
+            </Button>
+          </span>
+        ) : null}
       </div>
       <ModelerToolbar
         connectKind={connectKind}
@@ -248,6 +266,7 @@ function ModelerWorkspace() {
               showHypotheses={overlay === null}
               overlay={overlay}
               showMiniMap={false}
+              {...(focusedIds ? { focusedIds } : {})}
               onRequestShortcuts={() => setShortcutsOpen(true)}
             />
           )}

@@ -8,7 +8,8 @@ from typing import Any
 
 from .contracts import AnalysisConfiguration, SemModel
 
-OFFERED = frozenset({"supported", "stable", "beta"})
+# Statuses under which the application offers a capability (registry vocabulary: supported | beta | planned | unsupported).
+OFFERED = frozenset({"supported", "beta"})
 
 
 class Registry:
@@ -27,16 +28,23 @@ class Registry:
         return str(cap.get("engines", {}).get(engine, {}).get("status", "unsupported"))
 
     def required_capabilities(self, model: SemModel, a: AnalysisConfiguration) -> list[str]:
+        """Port of packages/method-registry/src/gating.ts `requiredCapabilities` — same rules, same order.
+
+        Both implementations are tested against packages/method-registry/gating-vectors.json.
+        """
         caps: list[str] = []
+        pls = a.method in ("pls-sem", "plsc")
         if a.method == "pls-sem":
             caps.append("pls.estimation.classic")
         elif a.method == "plsc":
             caps.append("pls.estimation.plsc")
         else:
             caps.append(f"cb.estimation.{a.estimator.lower()}")
-        if a.pls is not None:
-            caps.append(f"pls.inner-weighting.{a.pls.innerWeighting}")
-        if a.method != "cb-sem" and any(c.plsWeightingMode == "mode-b" for c in model.constructs):
+        if pls:
+            caps.append(f"pls.inner-weighting.{a.pls.innerWeighting if a.pls is not None else 'path'}")
+        if pls and any(
+            c.measurement == "composite-formative" or c.plsWeightingMode == "mode-b" for c in model.constructs
+        ):
             caps.append("pls.mode-b")
         if any(c.higherOrder is not None for c in model.constructs):
             caps.append("pls.higher-order")

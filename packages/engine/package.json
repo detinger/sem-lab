@@ -1,0 +1,26 @@
+{
+  "name": "@sem-studio/engine",
+  "version": "0.1.0",
+  "private": true,
+  "description": "In-browser SEM estimation (PLS-PM, PLSc, CB-SEM ML) verified against R reference results. Pure TypeScript: runs in Web Workers and Node.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "format": "prettier --ignore-path ../../.prettierignore --write src tests package.json tsconfig.json",
+    "format:check": "prettier --ignore-path ../../.prettierignore --check src tests package.json tsconfig.json"
+  },
+  "dependencies": {
+    "@sem-studio/contracts": "1.0.0",
+    "@sem-studio/method-registry": "1.0.0",
+    "ml-matrix": "6.15.1"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.6",
+    "vitest": "5.1.0"
+  }
+}

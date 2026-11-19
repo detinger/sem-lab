@@ -1,0 +1,265 @@
+{
+  "id": "acsi-2015",
+  "title": "American Customer Satisfaction Index (ACSI) 2015 — real survey data",
+  "summary": "Expectations, perceived quality and perceived value drive satisfaction, which drives loyalty. Real 2015 ACSI sample (8,239 respondents, four industries).",
+  "theory": "Fornell, C., Johnson, M. D., Anderson, E. W., Cha, J., & Bryant, B. E. (1996). The American Customer Satisfaction Index: Nature, purpose, and findings. Journal of Marketing, 60(4), 7–18.",
+  "modelNote": "SEM Studio's specification of the ACSI model for the constructs present in this sample; complaint behaviour (COMP/HANDLE) and price tolerance are omitted (see PROVENANCE.md notes). Loyalty is a single-indicator construct (REPUR), so its reliability is not applicable.",
+  "scaleSource": "All model items use the survey's 10-point scale (Morgeson, Hult, Sharma & Fornell 2023, Data in Brief 48:109123, Table 1: range 1–10).",
+  "dataset": {
+    "bundledId": "acsi-2015",
+    "synthetic": false,
+    "licence": "CC BY 4.0",
+    "attribution": "Hult, Tomas; Morgeson, Forrest (2023), \"The American Customer Satisfaction Index (ACSI): A Sample Dataset and Description\", Mendeley Data, V2, doi: 10.17632/64xkbj2ry5.2. Licensed under CC BY 4.0. Changes made: converted to CSV; the missing-data codes 98 and 99, SPSS '#NULL!' cells and empty cells are written as empty fields."
+  },
+  "model": {
+    "constructs": [
+      {
+        "id": "c_cuex",
+        "name": "CUEX",
+        "label": "Customer expectations",
+        "measurement": "reflective",
+        "indicatorIds": [
+          "i_customx",
+          "i_overallx",
+          "i_wrongx"
+        ]
+      },
+      {
+        "id": "c_perq",
+        "name": "PERQ",
+        "label": "Perceived quality",
+        "measurement": "reflective",
+        "indicatorIds": [
+          "i_customq",
+          "i_overallq",
+          "i_wrongq"
+        ]
+      },
+      {
+        "id": "c_perv",
+        "name": "PERV",
+        "label": "Perceived value",
+        "measurement": "reflective",
+        "indicatorIds": [
+          "i_pq",
+          "i_qp"
+        ]
+      },
+      {
+        "id": "c_cusa",
+        "name": "CUSA",
+        "label": "Customer satisfaction",
+        "measurement": "reflective",
+        "indicatorIds": [
+          "i_confirm",
+          "i_ideal",
+          "i_satis"
+        ]
+      },
+      {
+        "id": "c_cusl",
+        "name": "CUSL",
+        "label": "Customer loyalty",
+        "measurement": "reflective",
+        "indicatorIds": [
+          "i_repur"
+        ]
+      }
+    ],
+    "indicators": [
+      {
+        "id": "i_customx",
+        "name": "CUSTOMX",
+        "column": "CUSTOMX",
+        "scale": {
+          "min": 1,
+          "max": 10
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_overallx",
+        "name": "OVERALLX",
+        "column": "OVERALLX",
+        "scale": {
+          "min": 1,
+          "max": 10
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_wrongx",
+        "name": "WRONGX",
+        "column": "WRONGX",
+        "scale": {
+          "min": 1,
+          "max": 10
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_customq",
+        "name": "CUSTOMQ",
+        "column": "CUSTOMQ",
+        "scale": {
+          "min": 1,
+          "max": 10
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_overallq",
+        "name": "OVERALLQ",
+        "column": "OVERALLQ",
+        "scale": {
+          "min": 1,
+          "max": 10
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_wrongq",
+        "name": "WRONGQ",
+        "column": "WRONGQ",
+        "scale": {
+          "min": 1,
+          "max": 10
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_pq",
+        "name": "PQ",
+        "column": "PQ",
+        "scale": {
+          "min": 1,
+          "max": 10
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_qp",
+        "name": "QP",
+        "column": "QP",
+        "scale": {
+          "min": 1,
+          "max": 10
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_confirm",
+        "name": "CONFIRM",
+        "column": "CONFIRM",
+        "scale": {
+          "min": 1,
+          "max": 10
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_ideal",
+        "name": "IDEAL",
+        "column": "IDEAL",
+        "scale": {
+          "min": 1,
+          "max": 10
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_satis",
+        "name": "SATIS",
+        "column": "SATIS",
+        "scale": {
+          "min": 1,
+          "max": 10
+        },
+        "level": "ordinal"
+      },
+      {
+        "id": "i_repur",
+        "name": "REPUR",
+        "column": "REPUR",
+        "scale": {
+          "min": 1,
+          "max": 10
+        },
+        "level": "ordinal"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "r_cuex_perq",
+        "kind": "structural",
+        "sourceId": "c_cuex",
+        "targetId": "c_perq",
+        "hypothesis": "H1"
+      },
+      {
+        "id": "r_cuex_perv",
+        "kind": "structural",
+        "sourceId": "c_cuex",
+        "targetId": "c_perv",
+        "hypothesis": "H2"
+      },
+      {
+        "id": "r_perq_perv",
+        "kind": "structural",
+        "sourceId": "c_perq",
+        "targetId": "c_perv",
+        "hypothesis": "H3"
+      },
+      {
+        "id": "r_cuex_cusa",
+        "kind": "structural",
+        "sourceId": "c_cuex",
+        "targetId": "c_cusa",
+        "hypothesis": "H4"
+      },
+      {
+        "id": "r_perq_cusa",
+        "kind": "structural",
+        "sourceId": "c_perq",
+        "targetId": "c_cusa",
+        "hypothesis": "H5"
+      },
+      {
+        "id": "r_perv_cusa",
+        "kind": "structural",
+        "sourceId": "c_perv",
+        "targetId": "c_cusa",
+        "hypothesis": "H6"
+      },
+      {
+        "id": "r_cusa_cusl",
+        "kind": "structural",
+        "sourceId": "c_cusa",
+        "targetId": "c_cusl",
+        "hypothesis": "H7"
+      }
+    ]
+  },
+  "analysis": {
+    "method": "pls-sem",
+    "engine": "r-csem",
+    "estimator": "pls-pm",
+    "missingData": "listwise",
+    "seed": 20150101,
+    "bootstrap": {
+      "enabled": true,
+      "repetitions": 1000,
+      "ci": "percentile",
+      "confidenceLevel": 0.95,
+      "sides": "two-sided"
+    },
+    "pls": {
+      "innerWeighting": "path",
+      "maxIterations": 300,
+      "tolerance": 1e-07
+    },
+    "ipma": {
+      "targetConstructId": "c_cusl"
+    }
+  }
+}

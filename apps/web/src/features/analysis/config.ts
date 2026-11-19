@@ -27,6 +27,8 @@ export interface ConfigState {
   ci: 'percentile' | 'bca';
   confidenceLevel: '0.90' | '0.95' | '0.99';
   sides: 'two-sided' | 'one-sided';
+  /** IPMA target construct id; '' = no IPMA */
+  ipmaTarget: string;
 }
 
 export const randomSeed = (): number => Math.floor(Math.random() * 2_147_483_647);
@@ -43,6 +45,7 @@ export function defaultConfig(seed: number = randomSeed()): ConfigState {
     ci: 'percentile',
     confidenceLevel: '0.95',
     sides: 'two-sided',
+    ipmaTarget: '',
   };
 }
 
@@ -93,6 +96,9 @@ export function toConfiguration(
     engine: ENGINE,
     estimator: 'pls-pm',
     missingData: 'listwise' as const,
+    ...(c.ipmaTarget && c.method === 'pls-sem' && isOffered('ipma.construct', ENGINE)
+      ? { ipma: { targetConstructId: c.ipmaTarget } }
+      : {}),
     pls: { innerWeighting: c.innerWeighting, maxIterations: maxIt, tolerance: tol },
     ...(c.bootstrap
       ? {
@@ -132,6 +138,8 @@ export const methodGate = (m: SemMethod): Gate =>
   m === 'cb-sem' ? { offered: false, reason: CB_SEM_REASON } : gate(METHOD_CAPABILITY[m]);
 export const weightingGate = (w: ConfigState['innerWeighting']): Gate =>
   gate(`pls.inner-weighting.${w}`);
+export const ipmaGate = (): Gate => gate('ipma.construct');
+export const IPMA_PLSC_TEXT = 'IPMA uses a classic PLS fit';
 export const ciGate = (ci: ConfigState['ci']): Gate =>
   gate(ci === 'percentile' ? 'resampling.bootstrap-percentile' : 'resampling.bootstrap-bca');
 

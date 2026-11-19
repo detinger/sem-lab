@@ -1,0 +1,232 @@
+[
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "sq1",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "sq2",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "sq3",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "sq4",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "iq1",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 6,
+    "name": "iq2",
+    "observedMax": 7,
+    "observedMin": 2,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "iq3",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "iq4",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "svq1",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "svq2",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "svq3",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "svq4",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "use1",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "use2",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "use3",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "sat1",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "sat2",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "sat3",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "sat4",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "nb1",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "nb2",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "nb3",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "nb4",
+    "observedMax": 7,
+    "observedMin": 1,
+    "scaleMax": 7,
+    "scaleMin": 1,
+    "scaleType": "ORDINAL"
+  }
+]

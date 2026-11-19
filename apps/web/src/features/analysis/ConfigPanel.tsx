@@ -1,4 +1,8 @@
 import { Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useMemo } from 'react';
+import { eligibleTargets, missingEndpoints } from '@/features/ipma/data';
+import { useModeler } from '@/features/modeler/store';
 import { Checkbox, Field, Input, SegmentedControl, Select, Switch } from '@/components/ui';
 import { cx } from '@/components/ui/cx';
 import {
@@ -7,7 +11,9 @@ import {
   type ConfigState,
   type FieldProblems,
   SIDES_RATIONALE,
+  IPMA_PLSC_TEXT,
   ciGate,
+  ipmaGate,
   durationNote,
   methodGate,
   randomSeed,
@@ -51,6 +57,60 @@ export interface ConfigPanelProps {
   onChange: (patch: Partial<ConfigState>) => void;
   /** from health.limits.maxBootstrapReps when known */
   maxBootstrap: number | null;
+}
+
+function IpmaSection({
+  config,
+  onChange,
+}: {
+  config: ConfigState;
+  onChange: (patch: Partial<ConfigState>) => void;
+}) {
+  const model = useModeler((s) => s.model);
+  const gate = ipmaGate();
+  const plsc = config.method === 'plsc';
+  const targets = useMemo(() => eligibleTargets(model), [model]);
+  const disabled = !gate.offered || plsc;
+  const noScale = config.ipmaTarget !== '' && !disabled && missingEndpoints(model).length > 0;
+  return (
+    <section aria-labelledby="an-ipma">
+      <h2 id="an-ipma" className="an-h2">
+        IPMA
+      </h2>
+      <Field
+        label="Target construct"
+        hint={
+          plsc
+            ? IPMA_PLSC_TEXT
+            : !gate.offered
+              ? (gate.reason ?? 'IPMA is not offered for this engine.')
+              : 'Importance-performance map analysis of the constructs that lead to this target. Only constructs with at least one predecessor can be a target.'
+        }
+      >
+        {(p) => (
+          <Select
+            {...p}
+            value={disabled ? '' : config.ipmaTarget}
+            disabled={disabled}
+            onChange={(e) => onChange({ ipmaTarget: e.target.value })}
+          >
+            <option value="">No IPMA</option>
+            {targets.map((id) => (
+              <option key={id} value={id}>
+                {model.constructs.find((c) => c.id === id)?.name ?? id}
+              </option>
+            ))}
+          </Select>
+        )}
+      </Field>
+      {noScale ? (
+        <p className="an-note" role="status">
+          Set the permitted minimum and maximum for each indicator to calculate performance.{' '}
+          <Link to="/data">Open the Data page mapping section</Link>
+        </p>
+      ) : null}
+    </section>
+  );
 }
 
 export function ConfigPanel({ config, problems, onChange, maxBootstrap }: ConfigPanelProps) {
@@ -280,6 +340,8 @@ export function ConfigPanel({ config, problems, onChange, maxBootstrap }: Config
           </p>
         )}
       </section>
+
+      <IpmaSection config={config} onChange={onChange} />
 
       <section aria-labelledby="an-missing">
         <h2 id="an-missing" className="an-h2">

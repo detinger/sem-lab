@@ -55,7 +55,14 @@ validate_request <- function(req, caps) {
     invalid("analysis.missingData must be `listwise` for PLS methods (FIML is defined for CB-SEM only).")
   }
   if (!is.null(an$cb)) invalid("analysis.cb is only valid for CB-SEM.")
-  if (!is.null(an$ipma)) require_capability(caps, "ipma.construct", "Importance-performance map analysis")
+  if (!is.null(an$ipma)) {
+    if (method != "pls-sem") {
+      engine_error("CAPABILITY_UNSUPPORTED",
+                   "IPMA uses a classic PLS-SEM fit (method `pls-sem`); it is not computed from a PLSc fit (in Phase 0 a PLSc fit shifted importance by 0.086).",
+                   list(capabilityId = "ipma.construct", method = method))
+    }
+    require_capability(caps, "ipma.construct", "Importance-performance map analysis")
+  }
 
   pls <- an$pls
   if (!is.list(pls)) invalid("analysis.pls (innerWeighting, maxIterations, tolerance) is required for PLS methods.")
@@ -242,14 +249,40 @@ validate_request <- function(req, caps) {
                     paste(cyc, collapse = " -> ")), list(constructIds = I(unique(cyc))))
   }
 
+  ipma <- if (!is.null(an$ipma)) validate_ipma(an$ipma, constructs, indicators[used_inds], used_inds, p_src, p_tgt, caps) else NULL
+
   list(
     method = method, scheme = scheme, max_iter = as.integer(pls$maxIterations), tol = pls$tolerance,
     constructs = constructs, indicators = indicators[used_inds], indicator_ids = used_inds,
     paths = data.frame(id = p_id, source = p_src, target = p_tgt, stringsAsFactors = FALSE),
     bootstrap = boot,
     limits = list(max_bootstrap = max_boot, timeout = timeout, chunk_size = as.integer(chunk_size)),
-    warnings = warnings
+    warnings = warnings, ipma = ipma
   )
+}
+
+#' IPMA request checks: known target with at least one predecessor (any directed path)
+#' and declared scale endpoints on every model indicator.
+validate_ipma <- function(ip, constructs, indicators, used_inds, p_src, p_tgt, caps) {
+  cons_ids <- names(constructs)
+  tgt <- ip$targetConstructId
+  if (!is_scalar_string(tgt) || !tgt %in% cons_ids) {
+    invalid("analysis.ipma.targetConstructId is not a construct of the model.", list(reason = "ipma-target-unknown"))
+  }
+  preds <- cons_ids[vapply(cons_ids, function(c0) c0 != tgt && length(all_paths(cons_ids, p_src, p_tgt, c0, tgt, limit = 1L)) > 0L, logical(1))]
+  if (!length(preds)) {
+    invalid(sprintf("The IPMA target `%s` has no predecessor construct (no structural path leads to it).", tgt),
+            list(reason = "ipma-no-predecessors", constructIds = I(tgt)))
+  }
+  no_scale <- used_inds[vapply(used_inds, function(ii) is.na(indicators[[ii]]$scale_min) || is.na(indicators[[ii]]$scale_max), logical(1))]
+  if (length(no_scale)) {
+    invalid(sprintf("IPMA needs the original scale endpoints (scale.min, scale.max) of every model indicator; %d indicator(s) have none.", length(no_scale)),
+            list(reason = "ipma-scale-missing", indicatorIds = I(no_scale)))
+  }
+  e <- capability_entry(caps, "ipma.indicator")
+  list(target = tgt, predecessors = preds,
+       direct = preds %in% p_src[p_tgt == tgt],
+       indicator_level = !is.null(e) && e$status %in% c("supported", "beta"))
 }
 
 NUMBER_RE <- "^[[:space:]]*[-+]?([0-9]+\\.?[0-9]*|\\.[0-9]+)([eE][-+]?[0-9]+)?[[:space:]]*$"
@@ -313,6 +346,18 @@ load_job_data <- function(path, spec) {
     engine_error("DATA_ZERO_VARIANCE",
                  sprintf("%d mapped column(s) have zero variance: %s.", length(const), paste(sprintf("`%s`", const), collapse = ", ")),
                  list(columns = I(unname(const)), indicatorIds = I(names(const))))
+  }
+  # IPMA: every observed value must lie within the declared endpoints (never use observed extrema)
+  if (!is.null(spec$ipma)) {
+    oos <- vapply(spec$indicator_ids, function(ii) {
+      ind <- spec$indicators[[ii]]
+      sum(X[, ii] < ind$scale_min | X[, ii] > ind$scale_max)
+    }, numeric(1))
+    if (any(oos > 0)) {
+      bad <- names(oos)[oos > 0]
+      invalid(sprintf("IPMA: %d indicator(s) have observed values outside their declared scale endpoints.", length(bad)),
+              list(reason = "ipma-out-of-scale", indicatorIds = I(bad), cellsOutOfScale = I(as.integer(oos[oos > 0]))))
+    }
   }
   # reverse scoring: x' = (min + max) - x on the declared scale endpoints
   reversed <- character(0)

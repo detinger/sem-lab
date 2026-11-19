@@ -80,11 +80,13 @@ test_that("capabilities the registry does not offer for r-csem -> CAPABILITY_UNS
   e <- run_err(make_job(tam()$model, a, tam()$data), "CAPABILITY_UNSUPPORTED")
   expect_equal(e$details$capabilityId, "resampling.bootstrap-bca")
   expect_equal(e$details$status, "planned")
-  # IPMA: planned
-  a2 <- pls_analysis()
-  a2$ipma <- list(targetConstructId = "c_bi")
-  e2 <- run_err(make_job(tam()$model, a2, tam()$data), "CAPABILITY_UNSUPPORTED")
-  expect_equal(e2$details$capabilityId, "ipma.construct")
+  # IPMA when the registry does not offer it (override: planned)
+  withr::with_envvar(c(SEM_STUDIO_REGISTRY = registry_override(list("ipma.construct" = "planned"))), {
+    a2 <- pls_analysis()
+    a2$ipma <- list(targetConstructId = "c_bi")
+    e2 <- run_err(make_job(tam()$model, a2, tam()$data), "CAPABILITY_UNSUPPORTED")
+    expect_equal(e2$details$capabilityId, "ipma.construct")
+  })
   # higher-order constructs: planned
   m <- tam()$model
   m$constructs[[1]]$higherOrder <- list(approach = "two-stage", childConstructIds = I("c_pu"))

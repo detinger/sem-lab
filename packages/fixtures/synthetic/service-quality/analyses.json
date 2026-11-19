@@ -1,0 +1,45 @@
+[
+  {
+    "analysis": {
+      "cb": {
+        "identification": "marker",
+        "meanStructure": false
+      },
+      "engine": "r-lavaan",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "CB-SEM, ML, marker identification (first indicator of each factor), items treated as continuous.",
+    "id": "cb-lavaan-ml"
+  },
+  {
+    "analysis": {
+      "cb": {
+        "identification": "marker",
+        "meanStructure": false
+      },
+      "engine": "r-lavaan",
+      "estimator": "MLR",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "CB-SEM, MLR (robust SEs and scaled test; same point estimates as ML).",
+    "id": "cb-lavaan-mlr"
+  },
+  {
+    "analysis": {
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "Classic PLS-SEM on the same model: composites, a different estimand from the common factors of CB-SEM (do not merge or label interchangeably).",
+    "id": "pls-csem"
+  }
+]

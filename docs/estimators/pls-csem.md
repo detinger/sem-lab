@@ -197,7 +197,57 @@ Measured speed (macOS arm64, sequential, `tam-mediation` n = 500, 3 constructs,
 11 indicators): ≈ 0.75 s per 100 draws for both classic PLS and PLSc
 (`test-bootstrap.R`, "timing").
 
-## 5. Output encoding
+## 5. Importance-performance map analysis (IPMA)
+
+Requested with `analysis.ipma = { targetConstructId }`; implemented in `R/pls_ipma.R`.
+The convention is the one settled in Phase 0 (r-spike.md §5), whose first-principles
+computation matched `cSEM::doIPMA()` to ≤ 9e-14 when the data were rescaled before
+estimation.
+
+Preconditions (checked before estimation):
+
+- method `pls-sem` only; `plsc` is refused with `CAPABILITY_UNSUPPORTED` (IPMA uses a
+  classic fit; a PLSc fit shifted importance by 0.086 in Phase 0);
+- registry gate `ipma.construct` (indicator-level output additionally needs
+  `ipma.indicator`; otherwise only construct-level results with an info warning);
+- the target is a model construct (`REQUEST_INVALID`, `details.reason =
+  "ipma-target-unknown"`) with at least one predecessor (`"ipma-no-predecessors"`);
+- every model indicator declares `scale: {min, max}`, its ORIGINAL permissible endpoints
+  (`"ipma-scale-missing"`, with the indicator ids); every observed value lies in
+  [min, max] (`"ipma-out-of-scale"`). Observed extrema are never used.
+
+Computation:
+
+1. Reverse scoring first (where flagged), then x100 = (x − min)/(max − min)·100 with the
+   same declared endpoints.
+2. Classic PLS (same aliases and the same csem() options as the main fit) on the rescaled
+   data (`fit_ipma` in `provenance.call`). The main estimates come from the unrescaled fit
+   and are unchanged by requesting IPMA (tested).
+3. Unstandardized weight = standardized weight / sd(x100), normalized to sum to 1 within
+   each block. Construct score = weighted sum of the rescaled indicators (0–100 when no
+   weight is negative; warning `IPMA_NEGATIVE_WEIGHT` otherwise).
+4. Construct performance = mean score; indicator performance = mean rescaled indicator.
+5. Importance = unstandardized total effect on the target: OLS of every endogenous score
+   on its predictors' scores (with intercept) gives B, total effects = (I − B)⁻¹ − I.
+   Negative importance keeps its sign.
+6. Indicator importance = normalized weight × the construct's importance (so indicator
+   importances of a block sum to the construct importance).
+
+Output `ipma` (contracts.md §6 `IpmaResult`): `targetConstructId`; `constructs` = every
+predecessor of the target (any directed path), `predecessor: "direct"` when a direct
+structural path exists, else `"indirect"`; `indicators` = the indicators of those
+constructs; `convention` = the text of steps 1–6. The target's own performance is not part
+of `IpmaResult`. IPMA values are point estimates: with a bootstrap the warning
+`IPMA_NO_INTERVALS` is added.
+
+Verification (`test-ipma.R`): on `ipma-range-restricted` (PEOU items observed only in 3–7,
+BI items only in 1–6) every indicator performance equals (mean − 1)/6·100 (max |Δ| 7e-14);
+the engine equals `cSEM::doIPMA()` on a classic fit of the rescaled data with the user's
+names (max |Δ| 4e-16, construct and indicator importance and performance); on tam-v1
+(settings-file endpoints) target BI gives PU 0.626/91.9, PEOU 0.263/80.9, ATU 0.205/86.1, as
+in Phase 0.
+
+## 6. Output encoding
 
 - result.json is written to `result.json.tmp` and renamed. JSON uses jsonlite with
   `digits = NA` (jsonlite's maximum, 15 significant digits), `auto_unbox`, `na = "null"`.
@@ -206,7 +256,7 @@ Measured speed (macOS arm64, sequential, `tam-mediation` n = 500, 3 constructs,
 - Errors, messages and the technical log name ids, column names and counts only, never
   data values; cSEM messages are sanitized (numbers replaced by `#`).
 
-## 6. Not reported, and why
+## 7. Not reported, and why
 
 | Quantity | Reason |
 |---|---|
@@ -217,11 +267,12 @@ Measured speed (macOS arm64, sequential, `tam-mediation` n = 500, 3 constructs,
 | Unstandardized estimates | PLS works on standardized data; not reported |
 | Bootstrap intervals for HTMT, R², f², reliabilities | not computed in this slice |
 | Redundancy analysis | cSEM's `doRedundancyAnalysis()` is not the textbook procedure (r-spike.md §4) |
-| IPMA, PLSpredict, CVPAT, MICOM/MGA, higher-order, interaction, endogeneity | registry `planned`/`unsupported`; refused with `CAPABILITY_UNSUPPORTED` when requested |
+| IPMA bootstrap intervals; IPMA on PLSc | not implemented / not valid (§5) |
+| PLSpredict, CVPAT, MICOM/MGA, higher-order, interaction, endogeneity | registry `planned`/`unsupported`; refused with `CAPABILITY_UNSUPPORTED` when requested |
 | Indicator residual covariances, covariances involving endogenous constructs, fixed path values | not part of PLS-SEM in cSEM; refused. A covariance between two exogenous constructs is accepted (PLS leaves it free) with the info warning `EXOGENOUS_CORRELATION_IMPLIED` |
 | Missing-data handling | engine expects listwise-complete data |
 
-## 7. Verification (tests in `services/r-engine/tests/testthat/`)
+## 8. Verification (tests in `services/r-engine/tests/testthat/`)
 
 - `test-reference.R`: on `tam-mediation-exact`, PLSc returns paths .60/.20/.50, indirect
   .30, total .50, loadings λ, R², AVE and ρC equal to the population values (max |Δ|

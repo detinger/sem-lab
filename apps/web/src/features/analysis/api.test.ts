@@ -44,7 +44,10 @@ describe('analysis API client', () => {
     expect(out.id).toBe('job1');
     const form = fetchMock.mock.calls[0]![1]!.body as FormData;
     expect(await (form.get('data') as Blob).text()).toBe(analysisCsv(data));
-    expect(JSON.parse(form.get('request') as string)).toHaveProperty('analysis.method', 'pls-sem');
+    const request = JSON.parse(form.get('request') as string) as Record<string, unknown>;
+    expect(request).toHaveProperty('analysis.method', 'pls-sem');
+    // rows removed in the browser are declared so results can say "N of M rows used"
+    expect(request.dataPreparation).toEqual({ nRows: 3, nDropped: 1, missingData: 'listwise' });
     vi.unstubAllEnvs();
   });
 

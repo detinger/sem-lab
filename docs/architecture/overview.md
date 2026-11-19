@@ -37,7 +37,7 @@ sem-studio/
 ├── apps/
 │   ├── web/                     React 19 + TypeScript + Vite SPA (Netlify)
 │   │   └── src/{app,features,domain,components/ui,storage,styles,tests}
-│   └── api/                     FastAPI service (Railway) — Python 3.12, managed with uv
+│   └── api/                     former FastAPI service — retiring (see §3); also hosts the Phase 0 Python spike
 │       ├── app/                 endpoints, job store, engine runners, code export
 │       └── tests/               pytest
 ├── services/
@@ -59,39 +59,47 @@ sem-studio/
 
 ## 3. Runtime architecture
 
+**Decision (2026-11-19, product owner): estimation runs in the browser. There is no
+backend.** R and Python exist only as code that users run locally (exported scripts and the
+Colab notebooks). This supersedes the original server design (FastAPI + R worker on Railway),
+which is kept only until the browser engine reaches parity and is then removed from the
+deployment (it stays in git history).
+
 ```text
-Browser (React SPA)
+Browser (React SPA, static hosting on Netlify)
   ├─ canonical model + layout  ── IndexedDB (private, local-first)
-  ├─ Data Lab (CSV parsed client-side with Papa Parse)
-  ├─ validator + capability registry (pure TS, runs offline)
-  └─ explicit "Run on server"  ──HTTP──▶  FastAPI  (apps/api)
-                                            ├─ validates request (Pydantic, mirrors Zod contracts)
-                                            ├─ job store: SQLite + per-job directory (retention sweeper)
-                                            ├─ runner: spawns ONE subprocess per job
-                                            │     ├─ Rscript services/r-engine/R/run_job.R <job-dir>   (cSEM, lavaan)
-                                            │     └─ python -m app.engines.py_worker <job-dir>         (semopy, plspm subset)
-                                            └─ result: normalised JSON validated against the contract
+  ├─ Data Lab (CSV parsed client-side)
+  ├─ validator + capability registry (pure TS)
+  ├─ @sem-studio/engine (packages/engine, pure TypeScript)
+  │     ├─ PLS-PM / PLSc / Mode B / assessment / effects / IPMA
+  │     ├─ CB-SEM ML (CFA/SEM), FIML, MLR where verified
+  │     └─ R-compatible RNG (MT19937, set.seed, sample.int "Rejection")
+  │          run inside a Web Worker pool; bootstrap draws fitted in parallel,
+  │          resampling indices generated in one sequential stream
+  └─ exports: R script (cSEM / lavaan) + exact analysis matrix, Python script, notebooks
+
+Verification only (developer machines and CI, never deployed):
+  services/r-engine (cSEM 0.7.1, lavaan 0.7-3)  ──▶  packages/fixtures/reference-results/*.json
+  The browser engine must reproduce these references before a capability is offered.
 ```
 
 Decisions and their reasons:
 
-- **One API container that also contains R.** The plan warns against premature
-  microservices. The API launches the R engine as a child process (`Rscript`) with a job
-  directory as the only interface: `request.json` + `data.csv` in, `progress.ndjson` +
-  `result.json` out. The engine boundary is a directory of files, so the R engine can be
-  moved to its own worker service later without changing either side.
-- **Process boundary also serves licensing.** `cSEM`, `seminr` and Python `plspm` are
-  GPL-3; `lavaan` is GPL (≥2). SEM Studio's own code never links against them: it invokes
-  them as separate programs and exchanges JSON files. See `docs/licensing.md`.
-- **Job store is SQLite, not process memory.** Job state survives an API restart. On
-  Railway the data directory must be a mounted volume (documented in
-  `docs/deployment/railway.md`). Redis is not required for the single-service deployment;
-  the runner interface keeps a queue backend swappable.
-- **Cancellation = killing the child process group.** Progress is whatever the engine
-  wrote to `progress.ndjson`; the API never invents a percentage.
-- **Bootstrap runs in chunks.** The engine resamples in fixed-size chunks with
-  deterministic per-chunk seeds, so progress is real, cancellation is prompt, and failed
-  or inadmissible replications are counted, not hidden.
+- **Browser engine, R as oracle.** The statistical algorithms are re-implemented from their
+  published definitions and the packages' documented behaviour. Correctness is not assumed:
+  every capability is `planned` for engine `browser` until its tests reproduce the R
+  reference results (PLS to ~1e-10, CB-SEM ML to ~1e-6), and the registry records the
+  evidence.
+- **Reproducibility across languages.** Point estimates are deterministic. The bootstrap is
+  defined as `set.seed(seed, "Mersenne-Twister", "Inversion", "Rejection")` followed by
+  `sample.int(n, n, replace = TRUE)` per draw, in order, with a full re-estimation; the
+  browser implements R's generator bit-exactly, so an exported R script draws the same rows
+  and reproduces the app's intervals.
+- **Privacy is structural.** Row-level data never leave the browser; there is no upload path.
+- **Licensing.** The browser engine is SEM Studio's own code (no GPL code is bundled). GPL R
+  packages are used only by the verification oracle and by scripts users run themselves.
+- **Performance.** Bootstrap draws run in a Web Worker pool sized to the device's cores;
+  cancellation stops between draws; progress counts real completed draws.
 
 ## 4. Contracts
 

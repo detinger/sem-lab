@@ -16,9 +16,15 @@ claims a feature beyond what the phase records in `docs/validation/` demonstrate
 | 3 | First PLS-SEM vertical slice (R/cSEM backend, bootstrap, Word tables, R export) | **Done** (Word paste check pending) | `docs/validation/phase-3.md` |
 | 4–8 | Mature PLS + IPMA, CB-SEM + Python, notebooks + learning, advanced methods, hardening | Planned | — |
 
-What each estimation engine can and cannot do — verified by execution, with evidence files —
-is in `packages/method-registry/registry.json`. The app runs PLS-SEM and PLSc through the R
-engine (cSEM) when an analysis service is configured; CB-SEM arrives in Phase 5.
+**Architecture:** everything runs in the browser — modeling, data, estimation and reporting.
+There is no backend; data never leave the user's machine. R and Python are provided as
+exported scripts and notebooks that reproduce the app's results locally. The R engine in
+`services/r-engine` is a verification oracle used in development and CI only
+(`docs/architecture/overview.md` §3).
+
+What each engine can and cannot do — verified by execution, with evidence files — is in
+`packages/method-registry/registry.json`. The browser engine is being verified against the R
+reference results now; until a capability reproduces them it stays `planned`.
 
 ## Repository
 
@@ -72,13 +78,13 @@ cd apps/api && uv sync && uv run python spike/plspm_probe.py
 
 - **Netlify** (web): `netlify.toml` builds `apps/web` and serves it as an SPA with deep-link
   fallback. Set `VITE_API_BASE_URL` in the Netlify UI once the API exists.
-- **Railway** (API + R engine): `apps/api/Dockerfile` and `docs/deployment/railway.md`. Docker is
-  not available on the development machine, so the image has not been built yet.
-- **Local full stack**: `docs/deployment/local.md` (API on :8000 with `VITE_API_BASE_URL=http://localhost:8000`).
+- **No server deployment.** The former API/R worker (`apps/api`, Railway) is retiring with the
+  move to in-browser estimation and will be removed from the deployment once the browser engine
+  reaches parity.
 
 ## Data and privacy
 
-Models and data stay in the browser (IndexedDB). In this version nothing is sent to a server.
+Models, data and results stay in the browser (IndexedDB). Nothing is sent to a server.
 Sample data: `packages/fixtures/third-party/smartpls-samples/PROVENANCE.md` — only the ACSI
 2015 dataset (CC BY 4.0) may be redistributed; the others are local test fixtures.
 

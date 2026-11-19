@@ -1,0 +1,358 @@
+[
+  {
+    "name": "classic, defaults",
+    "model": {
+      "constructs": [
+        {
+          "id": "c0",
+          "name": "C0",
+          "measurement": "reflective",
+          "indicatorIds": ["i0"]
+        },
+        {
+          "id": "c1",
+          "name": "C1",
+          "measurement": "reflective",
+          "indicatorIds": ["i1"]
+        }
+      ],
+      "indicators": [
+        {
+          "id": "i0",
+          "name": "x0",
+          "column": "x0"
+        },
+        {
+          "id": "i1",
+          "name": "x1",
+          "column": "x1"
+        }
+      ],
+      "relationships": [
+        {
+          "id": "r01",
+          "kind": "structural",
+          "sourceId": "c0",
+          "targetId": "c1"
+        }
+      ]
+    },
+    "analysis": {
+      "method": "pls-sem",
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "missingData": "listwise"
+    },
+    "expected": ["pls.estimation.classic", "pls.inner-weighting.path"]
+  },
+  {
+    "name": "plsc centroid with composite block",
+    "model": {
+      "constructs": [
+        {
+          "id": "c0",
+          "name": "C0",
+          "measurement": "composite-formative",
+          "indicatorIds": ["i0"]
+        },
+        {
+          "id": "c1",
+          "name": "C1",
+          "measurement": "reflective",
+          "indicatorIds": ["i1"]
+        }
+      ],
+      "indicators": [
+        {
+          "id": "i0",
+          "name": "x0",
+          "column": "x0"
+        },
+        {
+          "id": "i1",
+          "name": "x1",
+          "column": "x1"
+        }
+      ],
+      "relationships": [
+        {
+          "id": "r01",
+          "kind": "structural",
+          "sourceId": "c0",
+          "targetId": "c1"
+        }
+      ]
+    },
+    "analysis": {
+      "method": "plsc",
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "centroid",
+        "maxIterations": 300,
+        "tolerance": 1e-7
+      }
+    },
+    "expected": ["pls.estimation.plsc", "pls.inner-weighting.centroid", "pls.mode-b"]
+  },
+  {
+    "name": "explicit mode B on a reflective block",
+    "model": {
+      "constructs": [
+        {
+          "id": "c0",
+          "name": "C0",
+          "measurement": "reflective",
+          "indicatorIds": ["i0"],
+          "plsWeightingMode": "mode-b"
+        },
+        {
+          "id": "c1",
+          "name": "C1",
+          "measurement": "reflective",
+          "indicatorIds": ["i1"]
+        }
+      ],
+      "indicators": [
+        {
+          "id": "i0",
+          "name": "x0",
+          "column": "x0"
+        },
+        {
+          "id": "i1",
+          "name": "x1",
+          "column": "x1"
+        }
+      ],
+      "relationships": [
+        {
+          "id": "r01",
+          "kind": "structural",
+          "sourceId": "c0",
+          "targetId": "c1"
+        }
+      ]
+    },
+    "analysis": {
+      "method": "pls-sem",
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "missingData": "listwise"
+    },
+    "expected": ["pls.estimation.classic", "pls.inner-weighting.path", "pls.mode-b"]
+  },
+  {
+    "name": "bootstrap bca + ipma",
+    "model": {
+      "constructs": [
+        {
+          "id": "c0",
+          "name": "C0",
+          "measurement": "reflective",
+          "indicatorIds": ["i0"]
+        },
+        {
+          "id": "c1",
+          "name": "C1",
+          "measurement": "reflective",
+          "indicatorIds": ["i1"]
+        }
+      ],
+      "indicators": [
+        {
+          "id": "i0",
+          "name": "x0",
+          "column": "x0"
+        },
+        {
+          "id": "i1",
+          "name": "x1",
+          "column": "x1"
+        }
+      ],
+      "relationships": [
+        {
+          "id": "r01",
+          "kind": "structural",
+          "sourceId": "c0",
+          "targetId": "c1"
+        }
+      ]
+    },
+    "analysis": {
+      "method": "pls-sem",
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "missingData": "listwise",
+      "seed": 1,
+      "bootstrap": {
+        "enabled": true,
+        "repetitions": 1000,
+        "ci": "bca",
+        "confidenceLevel": 0.95,
+        "sides": "two-sided"
+      },
+      "ipma": {
+        "targetConstructId": "c1"
+      }
+    },
+    "expected": [
+      "pls.estimation.classic",
+      "pls.inner-weighting.path",
+      "resampling.bootstrap-bca",
+      "ipma.construct"
+    ]
+  },
+  {
+    "name": "higher-order declared",
+    "model": {
+      "constructs": [
+        {
+          "id": "c0",
+          "name": "C0",
+          "measurement": "reflective",
+          "indicatorIds": ["i0"]
+        },
+        {
+          "id": "c1",
+          "name": "C1",
+          "measurement": "reflective",
+          "indicatorIds": ["i1"],
+          "higherOrder": {
+            "approach": "two-stage",
+            "childConstructIds": ["c0"]
+          }
+        }
+      ],
+      "indicators": [
+        {
+          "id": "i0",
+          "name": "x0",
+          "column": "x0"
+        },
+        {
+          "id": "i1",
+          "name": "x1",
+          "column": "x1"
+        }
+      ],
+      "relationships": [
+        {
+          "id": "r01",
+          "kind": "structural",
+          "sourceId": "c0",
+          "targetId": "c1"
+        }
+      ]
+    },
+    "analysis": {
+      "method": "pls-sem",
+      "engine": "r-csem",
+      "estimator": "pls-pm",
+      "missingData": "listwise"
+    },
+    "expected": ["pls.estimation.classic", "pls.inner-weighting.path", "pls.higher-order"]
+  },
+  {
+    "name": "cb MLR with FIML and bootstrap",
+    "model": {
+      "constructs": [
+        {
+          "id": "c0",
+          "name": "C0",
+          "measurement": "reflective",
+          "indicatorIds": ["i0"]
+        },
+        {
+          "id": "c1",
+          "name": "C1",
+          "measurement": "reflective",
+          "indicatorIds": ["i1"]
+        }
+      ],
+      "indicators": [
+        {
+          "id": "i0",
+          "name": "x0",
+          "column": "x0"
+        },
+        {
+          "id": "i1",
+          "name": "x1",
+          "column": "x1"
+        }
+      ],
+      "relationships": [
+        {
+          "id": "r01",
+          "kind": "structural",
+          "sourceId": "c0",
+          "targetId": "c1"
+        }
+      ]
+    },
+    "analysis": {
+      "method": "cb-sem",
+      "engine": "r-lavaan",
+      "estimator": "MLR",
+      "missingData": "fiml",
+      "seed": 3,
+      "bootstrap": {
+        "enabled": true,
+        "repetitions": 1000,
+        "ci": "percentile",
+        "confidenceLevel": 0.95,
+        "sides": "two-sided"
+      }
+    },
+    "expected": ["cb.estimation.mlr", "resampling.bootstrap-percentile", "cb.missing.fiml"]
+  },
+  {
+    "name": "cb ML ignores composite rule",
+    "model": {
+      "constructs": [
+        {
+          "id": "c0",
+          "name": "C0",
+          "measurement": "composite-formative",
+          "indicatorIds": ["i0"]
+        },
+        {
+          "id": "c1",
+          "name": "C1",
+          "measurement": "reflective",
+          "indicatorIds": ["i1"]
+        }
+      ],
+      "indicators": [
+        {
+          "id": "i0",
+          "name": "x0",
+          "column": "x0"
+        },
+        {
+          "id": "i1",
+          "name": "x1",
+          "column": "x1"
+        }
+      ],
+      "relationships": [
+        {
+          "id": "r01",
+          "kind": "structural",
+          "sourceId": "c0",
+          "targetId": "c1"
+        }
+      ]
+    },
+    "analysis": {
+      "method": "cb-sem",
+      "engine": "r-lavaan",
+      "estimator": "ML",
+      "missingData": "listwise"
+    },
+    "expected": ["cb.estimation.ml"]
+  }
+]

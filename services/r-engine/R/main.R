@@ -12,7 +12,7 @@ local({
   r_dir <- dirname(normalizePath(f, mustWork = TRUE))
   assign("ENGINE_DIR", normalizePath(file.path(r_dir, ".."), mustWork = TRUE), envir = globalenv())
   for (src in c("job_errors.R", "job_io.R", "registry.R", "model_graph.R", "job_validate.R",
-                "pls_alias.R", "pls_estimate.R", "pls_results.R", "pls_bootstrap.R", "run_job.R")) {
+                "pls_alias.R", "pls_estimate.R", "pls_results.R", "pls_bootstrap.R", "pls_ipma.R", "run_job.R")) {
     sys.source(file.path(r_dir, src), envir = globalenv())
   }
 })
