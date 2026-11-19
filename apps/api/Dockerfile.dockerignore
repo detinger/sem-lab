@@ -1,0 +1,13 @@
+**/node_modules
+**/.venv
+**/__pycache__
+**/.pytest_cache
+**/.ruff_cache
+.git
+.sem-studio-data
+apps/api/.data
+apps/web
+services/r-engine/r-lib
+services/r-engine/install-logs
+services/r-engine/spike
+docs

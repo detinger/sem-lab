@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# SEM Studio R engine: run one job directory.
+#
+#   services/r-engine/bin/run-job <job-dir>
+#
+# Reads <job-dir>/request.json and <job-dir>/data.csv; writes progress.ndjson and
+# result.json (atomically). Exit 0 = result.json written (ok:true or a handled
+# ok:false error); non-zero = crash. See docs/architecture/engine-protocol.md.
+set -euo pipefail
+
+src="${BASH_SOURCE[0]}"
+while [ -L "$src" ]; do
+  dir="$(cd -P "$(dirname "$src")" >/dev/null 2>&1 && pwd)"
+  src="$(readlink "$src")"
+  case "$src" in /*) ;; *) src="$dir/$src" ;; esac
+done
+bin_dir="$(cd -P "$(dirname "$src")" >/dev/null 2>&1 && pwd)"
+
+exec "$bin_dir/rscript" --vanilla "$bin_dir/../R/main.R" "$@"

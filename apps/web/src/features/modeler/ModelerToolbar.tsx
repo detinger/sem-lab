@@ -33,6 +33,7 @@ import {
   ToolbarSeparator,
 } from '@/components/ui';
 import { addConstruct } from '@/domain/model-ops';
+import { OVERLAY_LABELS, type OverlayMode } from './overlay';
 import { placementFor, useModeler } from './store';
 
 export interface ModelerToolbarProps {
@@ -47,6 +48,10 @@ export interface ModelerToolbarProps {
   onToggleCheck: () => void;
   checkCounts: { error: number; warning: number };
   checkPanelId: string;
+  /** result overlay selector: shown only when the project has a current complete run */
+  overlay: OverlayMode;
+  onOverlay: (m: OverlayMode) => void;
+  overlayAvailable: boolean;
 }
 
 export function ModelerToolbar({
@@ -60,6 +65,9 @@ export function ModelerToolbar({
   onToggleCheck,
   checkCounts,
   checkPanelId,
+  overlay,
+  onOverlay,
+  overlayAvailable,
 }: ModelerToolbarProps) {
   const rf = useReactFlow();
   const canUndo = useModeler((s) => s.past.length > 0);
@@ -281,6 +289,20 @@ export function ModelerToolbar({
         </IconButton>
       </ToolbarGroup>
       <div className="modeler-toolbar-spacer" />
+      {overlayAvailable && (
+        <ToolbarGroup>
+          <SegmentedControl
+            aria-label="Results overlay"
+            size="small"
+            value={overlay}
+            onChange={onOverlay}
+            options={(Object.keys(OVERLAY_LABELS) as OverlayMode[]).map((m) => ({
+              value: m,
+              label: OVERLAY_LABELS[m],
+            }))}
+          />
+        </ToolbarGroup>
+      )}
       <ToolbarGroup>
         <Button
           size="small"

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Run the R engine test suite (testthat). Works from any directory.
+#
+#   services/r-engine/bin/test            # all tests
+#   services/r-engine/bin/test bootstrap  # only test files matching "bootstrap"
+set -euo pipefail
+
+src="${BASH_SOURCE[0]}"
+while [ -L "$src" ]; do
+  dir="$(cd -P "$(dirname "$src")" >/dev/null 2>&1 && pwd)"
+  src="$(readlink "$src")"
+  case "$src" in /*) ;; *) src="$dir/$src" ;; esac
+done
+bin_dir="$(cd -P "$(dirname "$src")" >/dev/null 2>&1 && pwd)"
+tests_dir="$(cd -P "$bin_dir/../tests/testthat" && pwd)"
+
+export SEM_TEST_FILTER="${1:-}"
+export SEM_TESTS_DIR="$tests_dir"
+exec "$bin_dir/rscript" -e "f <- Sys.getenv('SEM_TEST_FILTER'); testthat::test_dir(Sys.getenv('SEM_TESTS_DIR'), filter = if (nzchar(f)) f else NULL, reporter = 'summary', stop_on_failure = TRUE)"

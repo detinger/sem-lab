@@ -100,7 +100,7 @@ describe('IndexedDB dataset store', () => {
     v1.close();
 
     expect(await loadProject(example.id)).toEqual(example);
-    expect(getDb().verno).toBe(2);
+    expect(getDb().verno).toBe(3);
     await saveDataset(await make('a\n1\n', 'd2', '2026-01-01T00:00:00Z'));
     expect((await listDatasets()).map((d) => d.id)).toEqual(['d2']);
   });

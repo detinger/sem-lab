@@ -6,6 +6,7 @@
  * an export made in dark mode still prints correctly; background is white or transparent.
  * All text is escaped; labels are data, never markup.
  */
+import { pillSize } from '../overlay';
 import { type Scene } from '../scene';
 
 export interface SvgExportOptions {
@@ -63,6 +64,15 @@ export function sceneToSvg(scene: Scene, opts: SvgExportOptions): string {
       );
     }
   }
+  // Result overlay pills sit on top of the edges, before the nodes.
+  for (const e of scene.edges) {
+    if (e.pill === undefined) continue;
+    const { width: pw, height: ph } = pillSize(e.pill);
+    out.push(
+      `<g data-pill="${escapeXml(e.id)}"><rect x="${f(e.labelAt.x - pw / 2)}" y="${f(e.labelAt.y - ph / 2)}" width="${f(pw)}" height="${f(ph)}" rx="4" fill="#ffffff" stroke="${MEASURE}" stroke-width="0.75"/>`,
+      `<text x="${f(e.labelAt.x)}" y="${f(e.labelAt.y + 4)}" text-anchor="middle" font-size="11" fill="${INK}" style="font-variant-numeric:tabular-nums">${escapeXml(e.pill)}</text></g>`,
+    );
+  }
   for (const n of scene.nodes) {
     const { x, y, width: w, height: h } = n.rect;
     if (n.kind === 'construct') {
@@ -87,6 +97,13 @@ export function sceneToSvg(scene: Scene, opts: SvgExportOptions): string {
           `<text x="${f(x + w / 2)}" y="${f(ty - 3)}" text-anchor="middle" font-size="10" fill="${MEASURE}">${escapeXml(n.tag)}</text>`,
         );
       out.push('</g>');
+      if (n.capsule !== undefined) {
+        const { width: cw, height: ch } = pillSize(n.capsule);
+        out.push(
+          `<g data-capsule="${escapeXml(n.id)}"><rect x="${f(x + w / 2 - cw / 2)}" y="${f(y + h + 4)}" width="${f(cw)}" height="${f(ch)}" rx="8" fill="#ffffff" stroke="${MEASURE}" stroke-width="0.75"/>`,
+          `<text x="${f(x + w / 2)}" y="${f(y + h + 4 + 12)}" text-anchor="middle" font-size="11" fill="${INK}">${escapeXml(n.capsule)}</text></g>`,
+        );
+      }
     } else {
       out.push(
         `<g data-id="${escapeXml(n.id)}" data-kind="indicator"><rect x="${f(x)}" y="${f(y)}" width="${f(w)}" height="${f(h)}" rx="6" fill="#ffffff" stroke="${INK}" stroke-width="1"/>`,

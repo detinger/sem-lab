@@ -20,6 +20,7 @@ import {
 } from './geometry';
 import { sizeOf } from './layout/auto-layout';
 import { type RoutedPath, pathData, routeStructural } from './layout/routing';
+import { type OverlayInput, applyOverlay } from './overlay';
 
 export interface SceneNode {
   id: string;
@@ -31,6 +32,8 @@ export interface SceneNode {
   tag?: string;
   /** indicator has no bound dataset column */
   unmapped?: boolean;
+  /** result overlay: R² capsule under an endogenous construct */
+  capsule?: string;
 }
 
 export interface SceneEdge {
@@ -46,6 +49,8 @@ export interface SceneEdge {
   targetId: string;
   /** false when routing could not avoid crossing another node */
   clear: boolean;
+  /** result overlay: coefficient pill at labelAt (one overlay mode at a time) */
+  pill?: string;
 }
 
 export interface Scene {
@@ -59,6 +64,8 @@ export interface SceneOptions {
   collapsed?: ReadonlySet<string>;
   /** optional live positions overriding layout.nodes (during a drag) */
   positions?: Readonly<Record<string, Point>>;
+  /** result overlay, applied last; absent = plain model view */
+  overlay?: OverlayInput | null;
 }
 
 const ARROW_GAP = 1.5;
@@ -185,5 +192,6 @@ export function buildScene(model: SemModel, layout: SemLayout, opts: SceneOption
   const bounds = nodes.length
     ? { x: minX, y: minY, width: maxX - minX, height: maxY - minY }
     : { x: 0, y: 0, width: 0, height: 0 };
-  return { nodes, edges, bounds };
+  const scene: Scene = { nodes, edges, bounds };
+  return opts.overlay ? applyOverlay(scene, model, opts.overlay) : scene;
 }

@@ -85,7 +85,7 @@ function inferenceCells(
   return {
     se: formatNumber(p.se, style),
     t: formatNumber(p.statistic, { ...style, decimals: 2 }),
-    p: formatP(p.pValue, style),
+    p: formatP(p.pValue, { ...style, decimals: 3 }),
     ci: formatInterval(p.ciLower, p.ciUpper, style),
   };
 }

@@ -1,5 +1,6 @@
 import { BaseEdge, type Edge, type EdgeProps } from '@xyflow/react';
 import { memo } from 'react';
+import { pillSize } from '../overlay';
 import type { SceneEdge } from '../scene';
 
 export interface SemEdgeData extends Record<string, unknown> {
@@ -29,11 +30,25 @@ export const SemEdge = memo(function SemEdge({ id, data, selected }: EdgeProps<S
         markerStart={e.arrowStart ? m : undefined}
         interactionWidth={14}
       />
+      {e.pill !== undefined && (
+        <g className="sem-pill" data-testid={`pill-${e.id}`}>
+          <rect
+            x={e.labelAt.x - pillSize(e.pill).width / 2}
+            y={e.labelAt.y - pillSize(e.pill).height / 2}
+            width={pillSize(e.pill).width}
+            height={pillSize(e.pill).height}
+            rx={4}
+          />
+          <text x={e.labelAt.x} y={e.labelAt.y + 4} textAnchor="middle">
+            {e.pill}
+          </text>
+        </g>
+      )}
       {data.showHypothesis && e.hypothesis && (
         <text
           className="sem-edge-hypothesis"
           x={e.labelAt.x}
-          y={e.labelAt.y - 7}
+          y={e.labelAt.y - (e.pill !== undefined ? 14 : 7)}
           textAnchor="middle"
         >
           {e.hypothesis}

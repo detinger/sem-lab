@@ -1,0 +1,1090 @@
+{
+  "schemaVersion": 1,
+  "sample": { "nRows": 500, "nUsed": 500, "nDropped": 0, "missingData": "listwise" },
+  "estimation": {
+    "converged": true,
+    "iterations": 4,
+    "admissible": true,
+    "messages": [
+      "PLS weights converged after 4 iteration(s) (tolerance 1e-07, .conv_criterion = \"diff_absolute\", .iter_max = 300).",
+      "Estimator: classic PLS-SEM (.disattenuate = FALSE); inner weighting scheme \"path\"."
+    ]
+  },
+  "parameters": [
+    {
+      "key": "path:c_peou->c_pu",
+      "kind": "path",
+      "sourceId": "c_peou",
+      "targetId": "c_pu",
+      "relationshipId": "r_peou_pu",
+      "scale": "standardized",
+      "est": 0.498191678135458,
+      "se": 0.03080015197397486,
+      "statistic": 16.17497467403453,
+      "pValue": 4.032046115002674e-38,
+      "ciLower": 0.4437287067384399,
+      "ciUpper": 0.5677147661940423,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Path_estimates[\"C2\", \"C1\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "path:c_peou->c_bi",
+      "kind": "path",
+      "sourceId": "c_peou",
+      "targetId": "c_bi",
+      "relationshipId": "r_peou_bi",
+      "scale": "standardized",
+      "est": 0.12758980240638382,
+      "se": 0.04300602018156122,
+      "statistic": 2.9667893440901976,
+      "pValue": 0.0033779024430468933,
+      "ciLower": 0.04713158904284126,
+      "ciUpper": 0.20282033857227968,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Path_estimates[\"C3\", \"C1\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "path:c_pu->c_bi",
+      "kind": "path",
+      "sourceId": "c_pu",
+      "targetId": "c_bi",
+      "relationshipId": "r_pu_bi",
+      "scale": "standardized",
+      "est": 0.5007475096219584,
+      "se": 0.04063823126555111,
+      "statistic": 12.32207933337001,
+      "pValue": 2.687545368439164e-26,
+      "ciLower": 0.42143667542971186,
+      "ciUpper": 0.5688231197269965,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Path_estimates[\"C3\", \"C2\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "loading:c_peou:i_peou1",
+      "kind": "loading",
+      "sourceId": "c_peou",
+      "targetId": "i_peou1",
+      "scale": "standardized",
+      "est": 0.842245472215771,
+      "se": 0.012751249916056001,
+      "statistic": 66.05199315835227,
+      "pValue": 2.58676273626738e-137,
+      "ciLower": 0.817727708565432,
+      "ciUpper": 0.8663258167733897,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Loading_estimates[\"C1\", \"X1\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "weight:c_peou:i_peou1",
+      "kind": "weight",
+      "sourceId": "c_peou",
+      "targetId": "i_peou1",
+      "scale": "standardized",
+      "est": 0.32483540016101164,
+      "se": 0.016818819027261345,
+      "statistic": 19.31380554333163,
+      "pValue": 1.6477600562571568e-47,
+      "ciLower": 0.29136115201589996,
+      "ciUpper": 0.3602302178411271,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Weight_estimates[\"C1\", \"X1\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "loading:c_peou:i_peou2",
+      "kind": "loading",
+      "sourceId": "c_peou",
+      "targetId": "i_peou2",
+      "scale": "standardized",
+      "est": 0.82724886669874,
+      "se": 0.015393435263832024,
+      "statistic": 53.74036740469623,
+      "pValue": 1.9628903547258547e-120,
+      "ciLower": 0.7956381217218915,
+      "ciUpper": 0.8564183433845971,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Loading_estimates[\"C1\", \"X2\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "weight:c_peou:i_peou2",
+      "kind": "weight",
+      "sourceId": "c_peou",
+      "targetId": "i_peou2",
+      "scale": "standardized",
+      "est": 0.32285995457083666,
+      "se": 0.016470868422992148,
+      "statistic": 19.601878072205796,
+      "pValue": 2.3769855776652625e-48,
+      "ciLower": 0.2912093362657519,
+      "ciUpper": 0.3566712313339499,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Weight_estimates[\"C1\", \"X2\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "loading:c_peou:i_peou3",
+      "kind": "loading",
+      "sourceId": "c_peou",
+      "targetId": "i_peou3",
+      "scale": "standardized",
+      "est": 0.7997297482637473,
+      "se": 0.018219368802336915,
+      "statistic": 43.89448157837222,
+      "pValue": 2.6424386571260784e-104,
+      "ciLower": 0.7582350790999446,
+      "ciUpper": 0.8313017178291121,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Loading_estimates[\"C1\", \"X3\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "weight:c_peou:i_peou3",
+      "kind": "weight",
+      "sourceId": "c_peou",
+      "targetId": "i_peou3",
+      "scale": "standardized",
+      "est": 0.3126876736505422,
+      "se": 0.018619232447778748,
+      "statistic": 16.79380041725863,
+      "pValue": 5.320954614411918e-40,
+      "ciLower": 0.27685062997789267,
+      "ciUpper": 0.3466569703490917,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Weight_estimates[\"C1\", \"X3\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "loading:c_peou:i_peou4",
+      "kind": "loading",
+      "sourceId": "c_peou",
+      "targetId": "i_peou4",
+      "scale": "standardized",
+      "est": 0.7840698757948225,
+      "se": 0.023518767165705855,
+      "statistic": 33.33805170443298,
+      "pValue": 2.1912669793130656e-83,
+      "ciLower": 0.7361130574580312,
+      "ciUpper": 0.8252183238152784,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Loading_estimates[\"C1\", \"X4\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "weight:c_peou:i_peou4",
+      "kind": "weight",
+      "sourceId": "c_peou",
+      "targetId": "i_peou4",
+      "scale": "standardized",
+      "est": 0.2668865306577508,
+      "se": 0.019681692500581213,
+      "statistic": 13.56014126579152,
+      "pValue": 4.2693307032781755e-30,
+      "ciLower": 0.22387236539873798,
+      "ciUpper": 0.3009466675654432,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Weight_estimates[\"C1\", \"X4\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "loading:c_pu:i_pu1",
+      "kind": "loading",
+      "sourceId": "c_pu",
+      "targetId": "i_pu1",
+      "scale": "standardized",
+      "est": 0.8708069367730696,
+      "se": 0.010118601507022934,
+      "statistic": 86.06000900111304,
+      "pValue": 2.1005294968511707e-159,
+      "ciLower": 0.8462309725033224,
+      "ciUpper": 0.8879284603879248,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Loading_estimates[\"C2\", \"X5\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "weight:c_pu:i_pu1",
+      "kind": "weight",
+      "sourceId": "c_pu",
+      "targetId": "i_pu1",
+      "scale": "standardized",
+      "est": 0.30819885502758465,
+      "se": 0.010757135171400206,
+      "statistic": 28.650644443604946,
+      "pValue": 1.5300345284498894e-72,
+      "ciLower": 0.2890608529713625,
+      "ciUpper": 0.3324594589016293,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Weight_estimates[\"C2\", \"X5\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "loading:c_pu:i_pu2",
+      "kind": "loading",
+      "sourceId": "c_pu",
+      "targetId": "i_pu2",
+      "scale": "standardized",
+      "est": 0.8665757293032958,
+      "se": 0.010980001420313908,
+      "statistic": 78.9230981063499,
+      "pValue": 3.908697552401572e-152,
+      "ciLower": 0.842871685908523,
+      "ciUpper": 0.8864969084487613,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Loading_estimates[\"C2\", \"X6\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "weight:c_pu:i_pu2",
+      "kind": "weight",
+      "sourceId": "c_pu",
+      "targetId": "i_pu2",
+      "scale": "standardized",
+      "est": 0.29685172925644276,
+      "se": 0.009644291836480369,
+      "statistic": 30.78004422611678,
+      "pValue": 1.3317675016868781e-77,
+      "ciLower": 0.27938866399958434,
+      "ciUpper": 0.3181532350712762,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Weight_estimates[\"C2\", \"X6\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "loading:c_pu:i_pu3",
+      "kind": "loading",
+      "sourceId": "c_pu",
+      "targetId": "i_pu3",
+      "scale": "standardized",
+      "est": 0.8351334304486089,
+      "se": 0.014744942675666775,
+      "statistic": 56.63863528115369,
+      "pValue": 1.0729544849513085e-124,
+      "ciLower": 0.7996997285270426,
+      "ciUpper": 0.8620659404824613,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Loading_estimates[\"C2\", \"X7\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "weight:c_pu:i_pu3",
+      "kind": "weight",
+      "sourceId": "c_pu",
+      "targetId": "i_pu3",
+      "scale": "standardized",
+      "est": 0.2816727569505052,
+      "se": 0.009721693545785547,
+      "statistic": 28.973630532986014,
+      "pValue": 2.5251166460352715e-73,
+      "ciLower": 0.2626629573887198,
+      "ciUpper": 0.30136624705334086,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Weight_estimates[\"C2\", \"X7\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "loading:c_pu:i_pu4",
+      "kind": "loading",
+      "sourceId": "c_pu",
+      "targetId": "i_pu4",
+      "scale": "standardized",
+      "est": 0.8383424665613322,
+      "se": 0.015175517524619363,
+      "statistic": 55.24308908749125,
+      "pValue": 1.1439580431825047e-122,
+      "ciLower": 0.8046654849046266,
+      "ciUpper": 0.8614671599732308,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Loading_estimates[\"C2\", \"X8\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "weight:c_pu:i_pu4",
+      "kind": "weight",
+      "sourceId": "c_pu",
+      "targetId": "i_pu4",
+      "scale": "standardized",
+      "est": 0.28525270891502336,
+      "se": 0.010280736419175695,
+      "statistic": 27.74633034876453,
+      "pValue": 2.5368586819225087e-70,
+      "ciLower": 0.26554881106973904,
+      "ciUpper": 0.3048527371112493,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Weight_estimates[\"C2\", \"X8\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "loading:c_bi:i_bi1",
+      "kind": "loading",
+      "sourceId": "c_bi",
+      "targetId": "i_bi1",
+      "scale": "standardized",
+      "est": 0.9127923663777544,
+      "se": 0.007353849182982365,
+      "statistic": 124.12443383936383,
+      "pValue": 1.8131735079062025e-190,
+      "ciLower": 0.8977187431298056,
+      "ciUpper": 0.9246259176197013,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Loading_estimates[\"C3\", \"X9\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "weight:c_bi:i_bi1",
+      "kind": "weight",
+      "sourceId": "c_bi",
+      "targetId": "i_bi1",
+      "scale": "standardized",
+      "est": 0.38651713863018045,
+      "se": 0.012098549616833376,
+      "statistic": 31.947394594505603,
+      "pValue": 2.793825632311807e-80,
+      "ciLower": 0.3674247281154045,
+      "ciUpper": 0.4140465002348907,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Weight_estimates[\"C3\", \"X9\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "loading:c_bi:i_bi2",
+      "kind": "loading",
+      "sourceId": "c_bi",
+      "targetId": "i_bi2",
+      "scale": "standardized",
+      "est": 0.8930724184390899,
+      "se": 0.00920069410157852,
+      "statistic": 97.06576575411518,
+      "pValue": 1.4554448096026338e-169,
+      "ciLower": 0.8735077698499879,
+      "ciUpper": 0.9091707947629544,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Loading_estimates[\"C3\", \"X10\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "weight:c_bi:i_bi2",
+      "kind": "weight",
+      "sourceId": "c_bi",
+      "targetId": "i_bi2",
+      "scale": "standardized",
+      "est": 0.37202826587159726,
+      "se": 0.01185129885474513,
+      "statistic": 31.391349626006708,
+      "pValue": 5.171914289524572e-79,
+      "ciLower": 0.35025613009651807,
+      "ciUpper": 0.39437380300440783,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Weight_estimates[\"C3\", \"X10\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "loading:c_bi:i_bi3",
+      "kind": "loading",
+      "sourceId": "c_bi",
+      "targetId": "i_bi3",
+      "scale": "standardized",
+      "est": 0.8868866222522647,
+      "se": 0.00943042836420391,
+      "statistic": 94.04521067343192,
+      "pValue": 6.872870337965882e-167,
+      "ciLower": 0.8657911761789923,
+      "ciUpper": 0.9007845997235543,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Loading_estimates[\"C3\", \"X11\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "weight:c_bi:i_bi3",
+      "kind": "weight",
+      "sourceId": "c_bi",
+      "targetId": "i_bi3",
+      "scale": "standardized",
+      "est": 0.35510956570158897,
+      "se": 0.012366974939517482,
+      "statistic": 28.71434343793084,
+      "pValue": 1.0714340276016691e-72,
+      "ciLower": 0.33054850762069493,
+      "ciUpper": 0.3783630899126199,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "cSEM::csem",
+      "rawPath": "Estimates$Weight_estimates[\"C3\", \"X11\"]; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "total:c_peou->c_pu",
+      "kind": "total-effect",
+      "sourceId": "c_peou",
+      "targetId": "c_pu",
+      "scale": "standardized",
+      "est": 0.498191678135458,
+      "se": 0.03080015197397486,
+      "statistic": 16.17497467403453,
+      "pValue": 4.032046115002674e-38,
+      "ciLower": 0.4437287067384399,
+      "ciUpper": 0.5677147661940423,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+      "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates; per draw; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "total:c_peou->c_bi",
+      "kind": "total-effect",
+      "sourceId": "c_peou",
+      "targetId": "c_bi",
+      "scale": "standardized",
+      "est": 0.3770580445470987,
+      "se": 0.03394094151198472,
+      "statistic": 11.109239394963677,
+      "pValue": 1.2752988585132287e-22,
+      "ciLower": 0.30896252816783654,
+      "ciUpper": 0.4397202169132299,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+      "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates; per draw; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "total:c_pu->c_bi",
+      "kind": "total-effect",
+      "sourceId": "c_pu",
+      "targetId": "c_bi",
+      "scale": "standardized",
+      "est": 0.5007475096219584,
+      "se": 0.04063823126555111,
+      "statistic": 12.32207933337001,
+      "pValue": 2.687545368439164e-26,
+      "ciLower": 0.42143667542971186,
+      "ciUpper": 0.5688231197269965,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+      "rawPath": "(I - B)^-1 - I, B = Estimates$Path_estimates; per draw; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "indirect:c_peou->c_bi",
+      "kind": "indirect-effect",
+      "sourceId": "c_peou",
+      "targetId": "c_bi",
+      "scale": "standardized",
+      "est": 0.24946824214071486,
+      "se": 0.026542825027284868,
+      "statistic": 9.398707254569638,
+      "pValue": 1.3473253249184696e-17,
+      "ciLower": 0.20274192387975226,
+      "ciUpper": 0.305758997120224,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+      "rawPath": "(I - B)^-1 - I - B, B = Estimates$Path_estimates; per draw; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    },
+    {
+      "key": "specific-indirect:c_peou->c_pu->c_bi",
+      "kind": "specific-indirect",
+      "sourceId": "c_peou",
+      "targetId": "c_bi",
+      "viaIds": ["c_pu"],
+      "scale": "standardized",
+      "est": 0.24946824214071484,
+      "se": 0.02654282502728487,
+      "statistic": 9.398707254569636,
+      "pValue": 1.3473253249185087e-17,
+      "ciLower": 0.20274192387975226,
+      "ciUpper": 0.30575899712022403,
+      "statisticType": "t",
+      "status": "estimated",
+      "inference": {
+        "method": "bootstrap-percentile",
+        "level": 0.95,
+        "sides": "two-sided",
+        "nValid": 200
+      },
+      "sourceMethod": "SEM Studio from cSEM::csem path estimates",
+      "rawPath": "product of Estimates$Path_estimates along the chain; per draw; se = sd(valid draws, divisor B_valid-1); t = est/se; p from t distribution, df = B_valid-1; CI = percentile, quantile(type 7)"
+    }
+  ],
+  "constructMetrics": [
+    {
+      "constructId": "c_peou",
+      "metric": "r2",
+      "value": null,
+      "missing": "not-applicable",
+      "definition": "R²: share of the endogenous construct's variance explained by its predictors (cSEM Estimates$R2, OLS on the construct correlation matrix). Defined for endogenous constructs only."
+    },
+    {
+      "constructId": "c_peou",
+      "metric": "r2-adjusted",
+      "value": null,
+      "missing": "not-applicable",
+      "definition": "Adjusted R² = 1 - (1 - R²)(n - 1)/(n - k - 1), n = rows used, k = number of predictors (cSEM Estimates$R2adj). Defined for endogenous constructs only."
+    },
+    {
+      "constructId": "c_peou",
+      "metric": "cronbach-alpha",
+      "value": 0.8299367715687984,
+      "definition": "Cronbach's alpha, standardized (correlation-based): k·r̄/(1 + (k - 1)·r̄), r̄ = mean inter-item correlation of the block (cSEM assess() RhoT). Reflective blocks with at least 2 indicators only."
+    },
+    {
+      "constructId": "c_peou",
+      "metric": "rho-a",
+      "value": 0.834279860383968,
+      "definition": "Dijkstra–Henseler rho_A of the Mode A weights, taken from a PLSc (consistent PLS) fit of the same model (cSEM Estimates$Reliabilities; the weights equal those of the classic fit). Reflective blocks with at least 2 indicators only."
+    },
+    {
+      "constructId": "c_peou",
+      "metric": "rho-c",
+      "value": 0.8867322944365698,
+      "definition": "Composite reliability rho_C = (Σλ)² / ((Σλ)² + Σ(1 - λ²)) on the reported standardized loadings (cSEM assess() RhoC). Reflective blocks with at least 2 indicators only."
+    },
+    {
+      "constructId": "c_peou",
+      "metric": "ave",
+      "value": 0.6620128408273054,
+      "definition": "Average variance extracted: mean of the squared reported standardized loadings (cSEM assess() AVE). Reflective blocks with at least 2 indicators only."
+    },
+    {
+      "constructId": "c_pu",
+      "metric": "r2",
+      "value": 0.24819494816342377,
+      "definition": "R²: share of the endogenous construct's variance explained by its predictors (cSEM Estimates$R2, OLS on the construct correlation matrix). Defined for endogenous constructs only."
+    },
+    {
+      "constructId": "c_pu",
+      "metric": "r2-adjusted",
+      "value": 0.24668529946495676,
+      "definition": "Adjusted R² = 1 - (1 - R²)(n - 1)/(n - k - 1), n = rows used, k = number of predictors (cSEM Estimates$R2adj). Defined for endogenous constructs only."
+    },
+    {
+      "constructId": "c_pu",
+      "metric": "cronbach-alpha",
+      "value": 0.8749727458131614,
+      "definition": "Cronbach's alpha, standardized (correlation-based): k·r̄/(1 + (k - 1)·r̄), r̄ = mean inter-item correlation of the block (cSEM assess() RhoT). Reflective blocks with at least 2 indicators only."
+    },
+    {
+      "constructId": "c_pu",
+      "metric": "rho-a",
+      "value": 0.8764050468536465,
+      "definition": "Dijkstra–Henseler rho_A of the Mode A weights, taken from a PLSc (consistent PLS) fit of the same model (cSEM Estimates$Reliabilities; the weights equal those of the classic fit). Reflective blocks with at least 2 indicators only."
+    },
+    {
+      "constructId": "c_pu",
+      "metric": "rho-c",
+      "value": 0.9143006267194381,
+      "definition": "Composite reliability rho_C = (Σλ)² / ((Σλ)² + Σ(1 - λ²)) on the reported standardized loadings (cSEM assess() RhoC). Reflective blocks with at least 2 indicators only."
+    },
+    {
+      "constructId": "c_pu",
+      "metric": "ave",
+      "value": 0.7273810384106589,
+      "definition": "Average variance extracted: mean of the squared reported standardized loadings (cSEM assess() AVE). Reflective blocks with at least 2 indicators only."
+    },
+    {
+      "constructId": "c_bi",
+      "metric": "r2",
+      "value": 0.3306864335134968,
+      "definition": "R²: share of the endogenous construct's variance explained by its predictors (cSEM Estimates$R2, OLS on the construct correlation matrix). Defined for endogenous constructs only."
+    },
+    {
+      "constructId": "c_bi",
+      "metric": "r2-adjusted",
+      "value": 0.327993018759024,
+      "definition": "Adjusted R² = 1 - (1 - R²)(n - 1)/(n - k - 1), n = rows used, k = number of predictors (cSEM Estimates$R2adj). Defined for endogenous constructs only."
+    },
+    {
+      "constructId": "c_bi",
+      "metric": "cronbach-alpha",
+      "value": 0.8794739853280494,
+      "definition": "Cronbach's alpha, standardized (correlation-based): k·r̄/(1 + (k - 1)·r̄), r̄ = mean inter-item correlation of the block (cSEM assess() RhoT). Reflective blocks with at least 2 indicators only."
+    },
+    {
+      "constructId": "c_bi",
+      "metric": "rho-a",
+      "value": 0.8812403488527129,
+      "definition": "Dijkstra–Henseler rho_A of the Mode A weights, taken from a PLSc (consistent PLS) fit of the same model (cSEM Estimates$Reliabilities; the weights equal those of the classic fit). Reflective blocks with at least 2 indicators only."
+    },
+    {
+      "constructId": "c_bi",
+      "metric": "rho-c",
+      "value": 0.9256196635445189,
+      "definition": "Composite reliability rho_C = (Σλ)² / ((Σλ)² + Σ(1 - λ²)) on the reported standardized loadings (cSEM assess() RhoC). Reflective blocks with at least 2 indicators only."
+    },
+    {
+      "constructId": "c_bi",
+      "metric": "ave",
+      "value": 0.805778709808059,
+      "definition": "Average variance extracted: mean of the squared reported standardized loadings (cSEM assess() AVE). Reflective blocks with at least 2 indicators only."
+    }
+  ],
+  "matrices": [
+    {
+      "id": "htmt",
+      "title": "Heterotrait–monotrait ratio (HTMT)",
+      "rowIds": ["c_peou", "c_pu", "c_bi"],
+      "colIds": ["c_peou", "c_pu", "c_bi"],
+      "values": [
+        [null, 0.5803028787319398, 0.44018479310262487],
+        [0.5803028787319398, null, 0.6428287991058821],
+        [0.44018479310262487, 0.6428287991058821, null]
+      ],
+      "symmetric": true,
+      "definition": "HTMT (Henseler, Ringle & Sarstedt, 2015): mean absolute heterotrait correlation / sqrt(product of the mean absolute monotrait correlations), on Pearson indicator correlations (cSEM assess(), .absolute = TRUE). Reflective constructs with at least 2 indicators only; other constructs are omitted (not applicable). Diagonal is null (not applicable)."
+    },
+    {
+      "id": "htmt2",
+      "title": "HTMT2 (geometric-mean HTMT)",
+      "rowIds": ["c_peou", "c_pu", "c_bi"],
+      "colIds": ["c_peou", "c_pu", "c_bi"],
+      "values": [
+        [null, 0.5763344175018359, 0.43853380242393947],
+        [0.5763344175018359, null, 0.6423701053814199],
+        [0.43853380242393947, 0.6423701053814199, null]
+      ],
+      "symmetric": true,
+      "definition": "HTMT2 (Roemer, Schuberth & Henseler, 2021): as HTMT with geometric instead of arithmetic means, on Pearson indicator correlations (cSEM assess(), .absolute = TRUE). Reflective constructs with at least 2 indicators only; other constructs are omitted (not applicable). Diagonal is null (not applicable)."
+    },
+    {
+      "id": "fornell-larcker",
+      "title": "Fornell–Larcker criterion",
+      "rowIds": ["c_peou", "c_pu", "c_bi"],
+      "colIds": ["c_peou", "c_pu", "c_bi"],
+      "values": [
+        [0.6620128408273054, 0.24819494816342377, 0.1421727689576818],
+        [0.24819494816342377, 0.7273810384106589, 0.31844768053145694],
+        [0.1421727689576818, 0.31844768053145694, 0.805778709808059]
+      ],
+      "symmetric": true,
+      "definition": "Fornell–Larcker matrix (cSEM assess() fl_criterion): diagonal = AVE, off-diagonal = squared construct correlations. Reflective constructs with at least 2 indicators only."
+    },
+    {
+      "id": "cross-loadings",
+      "title": "Cross-loadings",
+      "rowIds": [
+        "i_peou1",
+        "i_peou2",
+        "i_peou3",
+        "i_peou4",
+        "i_pu1",
+        "i_pu2",
+        "i_pu3",
+        "i_pu4",
+        "i_bi1",
+        "i_bi2",
+        "i_bi3"
+      ],
+      "colIds": ["c_peou", "c_pu", "c_bi"],
+      "values": [
+        [0.842245472215772, 0.4298114700793587, 0.32001242821719744],
+        [0.8272488666987421, 0.44303345805390837, 0.29714306039163757],
+        [0.7997297482637464, 0.39285804913145794, 0.3356329024741963],
+        [0.7840698757948205, 0.3473163873483508, 0.2706124312019535],
+        [0.4703097945818401, 0.8708069367730689, 0.48490479819940047],
+        [0.43626133558368013, 0.8665757293032985, 0.48182402418569775],
+        [0.3940620804213113, 0.835133430448609, 0.47474794601633374],
+        [0.39523289327639344, 0.8383424665613312, 0.48416972701436967],
+        [0.3270003457866658, 0.5333714634682584, 0.9127923663777516],
+        [0.3550777326682769, 0.5031002920614802, 0.8930724184390896],
+        [0.3338909026404445, 0.4815047602451327, 0.8868866222522631]
+      ],
+      "symmetric": false,
+      "definition": "Pearson correlation of each indicator with each construct score (cSEM Estimates$Construct_scores, standardized composites)."
+    },
+    {
+      "id": "construct-correlations",
+      "title": "Construct correlations",
+      "rowIds": ["c_peou", "c_pu", "c_bi"],
+      "colIds": ["c_peou", "c_pu", "c_bi"],
+      "values": [
+        [1, 0.498191678135458, 0.3770580445470986],
+        [0.498191678135458, 1, 0.5643116873957662],
+        [0.3770580445470986, 0.5643116873957662, 1]
+      ],
+      "symmetric": true,
+      "definition": "Construct correlations (cSEM Estimates$Construct_VCV): correlations of the standardized composites (classic PLS, no consistency correction)."
+    },
+    {
+      "id": "f2",
+      "title": "Effect size f²",
+      "rowIds": ["c_peou", "c_pu"],
+      "colIds": ["c_pu", "c_bi"],
+      "values": [
+        [0.3301320569170307, 0.01828552952584841],
+        [null, 0.28165223894295055]
+      ],
+      "symmetric": false,
+      "definition": "f² = (R²_incl - R²_excl) / (1 - R²_incl) per structural path (row = predictor, column = endogenous construct), cSEM definition (assess() F2): R²_excl drops the predictor from the regression on the SAME construct correlations; the model is not re-estimated. Null where there is no path."
+    },
+    {
+      "id": "vif-structural",
+      "title": "Structural VIF",
+      "rowIds": ["c_peou", "c_pu"],
+      "colIds": ["c_pu", "c_bi"],
+      "values": [
+        [1, 1.3301320569170307],
+        [null, 1.3301320569170307]
+      ],
+      "symmetric": false,
+      "definition": "Variance inflation factor of each predictor in the regression of the endogenous construct (row = predictor, column = endogenous construct): diagonal of the inverse predictor correlation matrix (cSEM Estimates$VIF). Equals 1 by definition for a single predictor. Null where there is no path."
+    },
+    {
+      "id": "vif-indicator-mode-b",
+      "title": "Indicator VIF (Mode B blocks)",
+      "rowIds": [],
+      "colIds": [],
+      "values": [],
+      "symmetric": false,
+      "definition": "Indicator VIF within each Mode B block: diagonal of the inverse indicator correlation matrix of the block (cSEM assess() VIF_modeB). Rows = indicators of Mode B blocks, columns = Mode B constructs; null outside the indicator's own block and for single-indicator blocks.",
+      "missing": "not-applicable"
+    }
+  ],
+  "fit": [
+    {
+      "name": "srmr",
+      "value": 0.052901710814606755,
+      "variant": "standard",
+      "definition": "Standardized root mean square residual: sqrt(mean of the squared differences between the empirical and the model-implied indicator correlations over the lower triangle INCLUDING the diagonal) (cSEM assess() SRMR, model-implied matrix from cSEM::fit()). No CB-SEM cutoffs apply."
+    },
+    {
+      "name": "d_uls",
+      "value": 0.18470700646941066,
+      "variant": "standard",
+      "definition": "Unweighted least-squares discrepancy d_ULS = 0.5 · Σ_ij (s_ij - σ̂_ij)² over all elements of the empirical (S) and model-implied (Σ̂) indicator correlation matrices (cSEM assess() DL). No CB-SEM cutoffs apply."
+    },
+    {
+      "name": "d_g",
+      "value": 0.09574820902685736,
+      "variant": "standard",
+      "definition": "Geodesic discrepancy d_G = 0.5 · Σ_i (log10 λ_i)², λ_i the eigenvalues of S⁻¹Σ̂ — cSEM uses the BASE-10 logarithm; the natural-log definition is (ln 10)² ≈ 5.30 times larger (cSEM assess() DG). No CB-SEM cutoffs apply."
+    }
+  ],
+  "bootstrap": {
+    "requested": 200,
+    "completed": 200,
+    "failed": 0,
+    "inadmissible": 0,
+    "seed": 20261119,
+    "ciMethod": "percentile",
+    "confidenceLevel": 0.95,
+    "chunkSize": 100,
+    "draws": {
+      "path:c_peou->c_pu": [
+        0.499369, 0.496601, 0.496633, 0.580687, 0.5677, 0.478362, 0.47482, 0.529022, 0.529974,
+        0.482273, 0.52123, 0.523431, 0.535514, 0.480637, 0.475089, 0.521348, 0.503227, 0.478398,
+        0.543814, 0.497668, 0.464592, 0.464297, 0.47143, 0.501943, 0.538341, 0.519024, 0.477902,
+        0.527354, 0.469991, 0.473172, 0.560957, 0.502441, 0.520941, 0.51039, 0.495316, 0.451062,
+        0.470509, 0.544009, 0.520268, 0.535385, 0.49516, 0.543302, 0.489604, 0.555824, 0.486758,
+        0.559631, 0.502656, 0.500326, 0.434623, 0.504333, 0.474944, 0.443888, 0.479784, 0.437509,
+        0.51938, 0.50615, 0.48643, 0.499195, 0.521186, 0.500799, 0.531502, 0.469647, 0.481445,
+        0.534461, 0.567056, 0.464502, 0.486663, 0.511994, 0.489288, 0.517806, 0.480757, 0.527696,
+        0.470054, 0.50574, 0.51752, 0.559824, 0.478913, 0.470577, 0.511636, 0.476339, 0.481209,
+        0.550201, 0.51814, 0.472909, 0.520003, 0.519828, 0.460459, 0.553739, 0.505367, 0.502968,
+        0.492802, 0.531228, 0.549021, 0.497297, 0.502091, 0.494654, 0.483742, 0.507493, 0.447284,
+        0.497789, 0.55059, 0.458298, 0.487248, 0.481744, 0.534728, 0.520349, 0.506158, 0.484267,
+        0.467301, 0.497054, 0.570307, 0.475691, 0.508094, 0.493258, 0.541056, 0.503291, 0.49726,
+        0.514067, 0.521189, 0.513572, 0.569628, 0.491122, 0.496317, 0.529904, 0.485139, 0.494682,
+        0.527036, 0.551405, 0.457721, 0.436816, 0.480491, 0.469124, 0.517416, 0.496595, 0.507829,
+        0.51468, 0.533846, 0.46905, 0.514203, 0.47713, 0.484299, 0.551075, 0.42439, 0.492729,
+        0.479909, 0.516401, 0.494575, 0.484804, 0.527578, 0.467757, 0.426024, 0.478756, 0.526918,
+        0.491969, 0.493861, 0.553655, 0.487416, 0.568301, 0.517183, 0.491633, 0.511349, 0.47883,
+        0.512168, 0.518269, 0.557858, 0.462466, 0.478736, 0.487494, 0.522498, 0.483875, 0.500484,
+        0.485564, 0.483841, 0.527298, 0.487599, 0.478834, 0.573677, 0.502874, 0.490786, 0.486175,
+        0.524957, 0.546418, 0.525806, 0.525879, 0.538304, 0.552006, 0.470242, 0.48714, 0.461281,
+        0.522624, 0.503525, 0.449678, 0.522519, 0.51843, 0.499134, 0.472288, 0.517459, 0.540498,
+        0.505404, 0.533586
+      ],
+      "path:c_peou->c_bi": [
+        0.178812, 0.0907426, 0.163163, 0.109926, 0.101599, 0.0998914, 0.0975318, 0.0937452,
+        0.214416, 0.0856926, 0.162737, 0.14435, 0.133826, 0.0786096, 0.190489, 0.105381, 0.159772,
+        0.160215, 0.0772978, 0.101491, 0.141825, 0.125052, 0.165511, 0.0730734, 0.125693, 0.16804,
+        0.0680947, 0.139188, 0.0819749, 0.0676762, 0.0760295, 0.161134, 0.156382, 0.105873,
+        0.123803, 0.202691, 0.105062, 0.0588601, 0.136173, 0.0782023, 0.132825, 0.164704, 0.197274,
+        0.0810268, 0.14457, 0.155556, 0.0915496, 0.1673, 0.0660889, 0.0947113, 0.137021, 0.134501,
+        0.116164, 0.094399, 0.182162, 0.0793371, 0.117221, 0.173873, 0.129114, 0.132492, 0.183075,
+        0.104912, 0.214708, 0.134273, 0.131617, 0.15377, 0.152294, 0.17935, 0.154106, 0.061513,
+        0.116271, 0.193845, 0.157715, 0.087813, 0.100813, 0.179404, 0.15821, 0.149471, 0.0594613,
+        0.128899, 0.198756, 0.0741673, 0.126712, 0.129238, 0.161964, 0.159434, 0.125685, 0.0770832,
+        0.0632072, 0.159883, 0.107988, 0.140034, 0.150504, 0.178006, 0.164814, 0.141426, 0.170001,
+        0.0858203, 0.0478623, 0.169312, 0.147414, 0.0252724, 0.0591407, 0.177904, 0.0738687,
+        0.131484, 0.167269, 0.175461, 0.108434, 0.0994402, 0.133664, 0.101792, 0.109712, 0.141267,
+        0.130245, 0.107912, 0.164827, 0.125481, 0.0997998, 0.168491, 0.0917039, 0.156102, 0.105363,
+        0.125706, 0.147751, 0.198972, 0.118007, 0.0902119, 0.182397, 0.123085, 0.117871, 0.125628,
+        0.0791258, 0.0841427, 0.104692, 0.169176, 0.0273106, 0.107705, 0.111291, 0.0883502,
+        0.230911, 0.155508, 0.182177, 0.201435, 0.11701, 0.184484, 0.171965, 0.0935616, 0.119028,
+        0.207869, 0.166278, 0.116834, 0.171607, 0.179275, 0.174919, 0.138288, 0.132031, 0.181534,
+        0.169636, 0.188352, 0.0258849, 0.0832033, 0.156385, 0.0979138, 0.115532, 0.144755, 0.13737,
+        0.130334, 0.11839, 0.166965, 0.168087, 0.135574, 0.18638, 0.141543, 0.232797, 0.150312,
+        0.0932906, 0.150531, 0.0747356, 0.0900874, 0.149826, 0.097685, 0.0969192, 0.0439665,
+        0.0568872, 0.190607, 0.138433, 0.158776, 0.0910432, 0.0517338, 0.149125, 0.158081, 0.162616,
+        0.0323418, 0.0594702, 0.157179, 0.100145, 0.0472127, 0.15886, 0.095026
+      ],
+      "path:c_pu->c_bi": [
+        0.498549, 0.432092, 0.495489, 0.477426, 0.489461, 0.540658, 0.544191, 0.485221, 0.437949,
+        0.519722, 0.467336, 0.498639, 0.49531, 0.507684, 0.474499, 0.523722, 0.457174, 0.517995,
+        0.525369, 0.471788, 0.490251, 0.445987, 0.518662, 0.556651, 0.524111, 0.451669, 0.502463,
+        0.491093, 0.511842, 0.553226, 0.557408, 0.455498, 0.483424, 0.526017, 0.521915, 0.421466,
+        0.559521, 0.498058, 0.52308, 0.516766, 0.553137, 0.451587, 0.459469, 0.565345, 0.449282,
+        0.474341, 0.520866, 0.482771, 0.558857, 0.542905, 0.494172, 0.501479, 0.461937, 0.527796,
+        0.511333, 0.571636, 0.555944, 0.477219, 0.522144, 0.479654, 0.464478, 0.500671, 0.485782,
+        0.523612, 0.491503, 0.502142, 0.439873, 0.474439, 0.530159, 0.548293, 0.454277, 0.454581,
+        0.513385, 0.551975, 0.486037, 0.431, 0.481597, 0.51318, 0.519376, 0.433239, 0.436862,
+        0.5524, 0.482684, 0.511757, 0.447756, 0.533153, 0.559048, 0.513861, 0.524413, 0.471849,
+        0.517139, 0.462471, 0.485344, 0.443479, 0.504304, 0.518737, 0.456172, 0.515565, 0.559116,
+        0.395818, 0.476987, 0.549552, 0.531394, 0.471523, 0.527691, 0.489594, 0.497133, 0.394892,
+        0.528137, 0.501093, 0.500413, 0.529905, 0.532514, 0.487637, 0.475303, 0.504482, 0.46677,
+        0.521467, 0.553617, 0.498154, 0.51392, 0.443922, 0.558949, 0.512696, 0.459815, 0.451271,
+        0.508002, 0.533815, 0.446911, 0.438172, 0.518332, 0.54722, 0.573012, 0.499566, 0.50972,
+        0.435634, 0.578096, 0.481356, 0.522242, 0.507516, 0.43746, 0.501965, 0.478051, 0.459255,
+        0.491478, 0.432848, 0.470544, 0.518963, 0.480639, 0.495498, 0.486505, 0.523378, 0.493435,
+        0.430995, 0.467784, 0.458909, 0.478525, 0.418134, 0.463618, 0.476332, 0.611902, 0.52759,
+        0.483457, 0.487604, 0.533207, 0.486184, 0.480072, 0.532177, 0.432982, 0.437081, 0.527169,
+        0.507882, 0.441012, 0.480831, 0.420285, 0.442156, 0.52713, 0.458369, 0.555224, 0.513075,
+        0.477937, 0.559529, 0.527492, 0.583094, 0.519201, 0.427448, 0.492735, 0.482307, 0.461888,
+        0.545919, 0.460389, 0.474127, 0.537518, 0.568751, 0.535005, 0.417871, 0.55754, 0.550029,
+        0.480605, 0.551976
+      ],
+      "specific-indirect:c_peou->c_pu->c_bi": [
+        0.24896, 0.214577, 0.246076, 0.277235, 0.277867, 0.25863, 0.258393, 0.256693, 0.232102,
+        0.250648, 0.24359, 0.261003, 0.265245, 0.244012, 0.225429, 0.273042, 0.230062, 0.247808,
+        0.285703, 0.234794, 0.227767, 0.207071, 0.244513, 0.279407, 0.28215, 0.234427, 0.240128,
+        0.25898, 0.240561, 0.261771, 0.312682, 0.228861, 0.251836, 0.268474, 0.258513, 0.190107,
+        0.26326, 0.270948, 0.272142, 0.276669, 0.273891, 0.245348, 0.224958, 0.314232, 0.218692,
+        0.265456, 0.261816, 0.241543, 0.242893, 0.273805, 0.234704, 0.222601, 0.22163, 0.230916,
+        0.265576, 0.289333, 0.270428, 0.238225, 0.272134, 0.24021, 0.246871, 0.235138, 0.233877,
+        0.27985, 0.27871, 0.233246, 0.21407, 0.24291, 0.2594, 0.283909, 0.218397, 0.239881,
+        0.241319, 0.279156, 0.251534, 0.241284, 0.230643, 0.241491, 0.265731, 0.206369, 0.210222,
+        0.303931, 0.250098, 0.242015, 0.232834, 0.277148, 0.257419, 0.284545, 0.265021, 0.237325,
+        0.254848, 0.245678, 0.266464, 0.220541, 0.253206, 0.256596, 0.220669, 0.261645, 0.250084,
+        0.197034, 0.262624, 0.251859, 0.258921, 0.227154, 0.282171, 0.25476, 0.251628, 0.191233,
+        0.246799, 0.24907, 0.285389, 0.252071, 0.270567, 0.240531, 0.257166, 0.253901, 0.232106,
+        0.268069, 0.288539, 0.255838, 0.292744, 0.21802, 0.277416, 0.27168, 0.223075, 0.223236,
+        0.267735, 0.294349, 0.20456, 0.191401, 0.249054, 0.256714, 0.296485, 0.248082, 0.258851,
+        0.224212, 0.308615, 0.22578, 0.268539, 0.242151, 0.211862, 0.27662, 0.20288, 0.226288,
+        0.235864, 0.223524, 0.232719, 0.251595, 0.253574, 0.231773, 0.207263, 0.25057, 0.26,
+        0.212036, 0.23102, 0.254077, 0.233241, 0.237626, 0.239775, 0.234181, 0.312896, 0.252626,
+        0.247611, 0.25271, 0.297453, 0.224844, 0.229827, 0.259433, 0.226232, 0.211493, 0.26384,
+        0.24661, 0.213379, 0.253541, 0.20493, 0.21172, 0.302402, 0.230502, 0.272496, 0.249444,
+        0.250896, 0.305736, 0.277358, 0.306637, 0.279488, 0.235954, 0.231705, 0.234951, 0.21306,
+        0.285311, 0.231817, 0.213204, 0.280864, 0.294858, 0.267039, 0.197356, 0.288504, 0.29729,
+        0.2429, 0.294527
+      ]
+    }
+  },
+  "warnings": [],
+  "provenance": {
+    "engine": "r-csem",
+    "packageVersions": {
+      "R": "4.6.2",
+      "cSEM": "0.7.1",
+      "jsonlite": "2.0.0",
+      "future": "1.82.0",
+      "future.apply": "1.21.0",
+      "matrixStats": "1.5.0"
+    },
+    "rVersion": "4.6.2",
+    "call": "model <- \"C1 =~ X1 + X2 + X3 + X4\\nC2 =~ X5 + X6 + X7 + X8\\nC3 =~ X9 + X10 + X11\\nC2 ~ C1\\nC3 ~ C1 + C2\"\nfit <- cSEM::csem(.data = data, .model = model, .approach_weights = \"PLS-PM\", .approach_paths = \"OLS\", .disattenuate = FALSE, .PLS_weight_scheme_inner = \"path\", .iter_max = 300L, .tolerance = 1e-07, .conv_criterion = \"diff_absolute\")\nfit_rhoA <- cSEM::csem(.data = data, .model = model, .approach_weights = \"PLS-PM\", .approach_paths = \"OLS\", .disattenuate = TRUE, .PLS_weight_scheme_inner = \"path\", .iter_max = 300L, .tolerance = 1e-07, .conv_criterion = \"diff_absolute\", .PLS_approach_cf = \"dist_squared_euclid\")\nfor (k in 0:1) cSEM::resamplecSEMResults(.object = fit, .resample_method = \"bootstrap\", .R = min(100, 200 - 100 * k), .seed = (20261119 + k) %% 2147483647, .handle_inadmissibles = \"drop\", .sign_change_option = \"none\", .eval_plan = \"sequential\")",
+    "startedAt": "2026-11-19T15:30:38.347Z",
+    "finishedAt": "2026-11-19T15:30:40.573Z"
+  }
+}

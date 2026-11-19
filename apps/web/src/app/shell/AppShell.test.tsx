@@ -151,8 +151,6 @@ describe('routes', () => {
   });
 
   it.each([
-    ['/analysis', 'Phase 3'],
-    ['/results', 'Phase 3'],
     ['/ipma', 'Phase 4'],
     ['/comparison', 'Phase 5'],
     ['/examples', 'Phase 6'],

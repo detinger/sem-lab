@@ -2,6 +2,7 @@ import { ReactFlowProvider, useReactFlow } from '@xyflow/react';
 import { CircleDot, FolderOpen, PanelRightClose, PanelRightOpen } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Button, Card, Dialog, IconButton, Kbd, useToast } from '@/components/ui';
+import { useProjectRuns } from '@/features/analysis/runs';
 import { useReadiness } from '@/features/data-lab/readiness';
 import {
   loadProject,
@@ -15,6 +16,7 @@ import { sceneToSvg, svgToPng } from './export/svg-export';
 import { Inspector } from './Inspector';
 import { computeAutoLayout } from './layout/auto-layout';
 import { ModelerToolbar } from './ModelerToolbar';
+import type { OverlayInput, OverlayMode } from './overlay';
 import { buildScene } from './scene';
 import { emptyLayout, useModeler } from './store';
 import { TEMPLATES } from './templates';
@@ -117,6 +119,11 @@ function ModelerWorkspace() {
   const [newOpen, setNewOpen] = useState(false);
   const [checkOpen, setCheckOpen] = useState(false);
   const readiness = useReadiness(undefined);
+  const [overlayMode, setOverlayMode] = useState<OverlayMode>('none');
+  const { current: currentRun } = useProjectRuns();
+  const currentResult = currentRun?.record.result;
+  const overlay: OverlayInput | null =
+    currentResult && overlayMode !== 'none' ? { mode: overlayMode, result: currentResult } : null;
   const [blank, setBlank] = useState(false);
   const fileInput = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
@@ -168,7 +175,7 @@ function ModelerWorkspace() {
       });
       return;
     }
-    const svg = sceneToSvg(buildScene(s.model, s.layout), {
+    const svg = sceneToSvg(buildScene(s.model, s.layout, { overlay }), {
       background: 'white',
       title: s.projectName,
     });
@@ -226,6 +233,9 @@ function ModelerWorkspace() {
         onToggleCheck={() => setCheckOpen((o) => !o)}
         checkCounts={readiness.counts}
         checkPanelId={CHECK_PANEL_ID}
+        overlay={overlay ? overlayMode : 'none'}
+        onOverlay={setOverlayMode}
+        overlayAvailable={currentResult !== undefined}
       />
       {checkOpen && <CheckPanel readiness={readiness} onClose={() => setCheckOpen(false)} />}
       <div className="modeler-body">
@@ -235,7 +245,8 @@ function ModelerWorkspace() {
           ) : (
             <SemCanvas
               connectKind={connectKind}
-              showHypotheses
+              showHypotheses={overlay === null}
+              overlay={overlay}
               showMiniMap={false}
               onRequestShortcuts={() => setShortcutsOpen(true)}
             />

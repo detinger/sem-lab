@@ -13,18 +13,18 @@ claims a feature beyond what the phase records in `docs/validation/` demonstrate
 | 0 | Foundation, library verification, contracts, fixtures | **Done** | `docs/validation/phase-0.md` |
 | 1 | Design system, visual modeler, persistence, diagram export | **Done** | `docs/validation/phase-1.md` |
 | 2 | Data Lab (CSV import, mapping) and model validator | **Done** | `docs/validation/phase-2.md` |
-| 3 | First PLS-SEM vertical slice (R/cSEM backend, bootstrap, Word tables, R export) | In progress | — |
+| 3 | First PLS-SEM vertical slice (R/cSEM backend, bootstrap, Word tables, R export) | **Done** (Word paste check pending) | `docs/validation/phase-3.md` |
 | 4–8 | Mature PLS + IPMA, CB-SEM + Python, notebooks + learning, advanced methods, hardening | Planned | — |
 
 What each estimation engine can and cannot do — verified by execution, with evidence files —
-is in `packages/method-registry/registry.json`. No statistical method is offered in the app
-yet: estimation arrives in Phase 3.
+is in `packages/method-registry/registry.json`. The app runs PLS-SEM and PLSc through the R
+engine (cSEM) when an analysis service is configured; CB-SEM arrives in Phase 5.
 
 ## Repository
 
 ```text
 apps/web/                  React 19 + TypeScript + Vite single-page app (the modeler lives in src/features/modeler)
-apps/api/                  Python service (Phase 3); currently the pinned Python engine environment + spike scripts
+apps/api/                  FastAPI analysis service: job store, R engine runner, contracts mirror (also hosts the Phase 0 Python spike scripts)
 services/r-engine/         R engine: pinned library (renv.lock), wrapper bin/rscript, spike scripts
 packages/contracts/        Zod contracts (model, layout, analysis, results) → generated JSON Schema
 packages/method-registry/  capability registry with evidence
@@ -72,9 +72,9 @@ cd apps/api && uv sync && uv run python spike/plspm_probe.py
 
 - **Netlify** (web): `netlify.toml` builds `apps/web` and serves it as an SPA with deep-link
   fallback. Set `VITE_API_BASE_URL` in the Netlify UI once the API exists.
-- **Railway** (API + R engine): Dockerfile and service configuration arrive with the API in
-  Phase 3. Docker is not available on the development machine, so container builds are
-  verified in CI.
+- **Railway** (API + R engine): `apps/api/Dockerfile` and `docs/deployment/railway.md`. Docker is
+  not available on the development machine, so the image has not been built yet.
+- **Local full stack**: `docs/deployment/local.md` (API on :8000 with `VITE_API_BASE_URL=http://localhost:8000`).
 
 ## Data and privacy
 

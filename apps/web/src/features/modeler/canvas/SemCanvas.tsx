@@ -26,6 +26,7 @@ import { type Guide, type Point } from '../geometry';
 import { sizeOf } from '../layout/auto-layout';
 import { buildScene } from '../scene';
 import { useModeler } from '../store';
+import type { OverlayInput } from '../overlay';
 import { type DragStart, dragPositions } from './drag';
 import { type SemFlowEdge, SemMarkers, edgeTypes } from './edges';
 import { type ConstructFlowNode, type IndicatorFlowNode, nodeTypes } from './nodes';
@@ -70,6 +71,8 @@ export interface SemCanvasProps {
   showMiniMap: boolean;
   onRequestShortcuts?: () => void;
   focusedIds?: ReadonlySet<string>;
+  /** result overlay (estimates, t, p, CI, hypotheses); null = model view */
+  overlay?: OverlayInput | null;
 }
 
 export function SemCanvas({
@@ -78,6 +81,7 @@ export function SemCanvas({
   showMiniMap,
   onRequestShortcuts,
   focusedIds,
+  overlay = null,
 }: SemCanvasProps) {
   const model = useModeler((s) => s.model);
   const layout = useModeler((s) => s.layout);
@@ -87,7 +91,7 @@ export function SemCanvas({
   const drag = useRef<DragStart | null>(null);
   const modifiers = useRef({ alt: false, shift: false });
 
-  const scene = useMemo(() => buildScene(model, layout), [model, layout]);
+  const scene = useMemo(() => buildScene(model, layout, { overlay }), [model, layout, overlay]);
   const roles = useMemo(() => constructRoles(model), [model]);
   const selected = useMemo(() => new Set(selection), [selection]);
 

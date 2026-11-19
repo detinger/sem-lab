@@ -1,18 +1,11 @@
-import {
-  CloudOff,
-  Monitor,
-  Moon,
-  PanelLeftClose,
-  PanelLeftOpen,
-  Sun,
-  type LucideIcon,
-} from 'lucide-react';
+import { Monitor, Moon, PanelLeftClose, PanelLeftOpen, Sun, type LucideIcon } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 
 import { useTheme } from '@/app/ThemeProvider';
 import type { Theme, ThemePreference } from '@/app/theme';
 import { Tooltip } from '@/components/ui';
 
+import { BackendStatus } from './BackendStatus';
 import { BrandMark } from './BrandMark';
 import { NAV_GROUPS } from './navigation';
 
@@ -93,10 +86,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
           </button>
         </Tooltip>
 
-        <div className="nav-item nav-item--static" role="status" title="Backend: not configured">
-          <CloudOff size={18} aria-hidden="true" />
-          <span className="nav-item__label">Backend: not configured</span>
-        </div>
+        <BackendStatus />
 
         <Tooltip
           content={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}

@@ -263,3 +263,31 @@
     animation-duration: 0ms !important;
   }
 }
+
+/* Results overlay: coefficient pills on edges, R² capsule under endogenous constructs (STYLE §8). */
+.sem-pill rect {
+  fill: var(--sem-node-bg);
+  stroke: var(--border-strong);
+  stroke-width: 1;
+}
+.sem-pill text {
+  fill: var(--sem-label);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+.sem-capsule {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 4px);
+  padding: 1px 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--sem-node-bg);
+  color: var(--sem-label);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  pointer-events: none;
+}

@@ -7,6 +7,7 @@
  */
 import { SCHEMA_VERSION, SemProject } from '@sem-studio/contracts';
 import Dexie, { type EntityTable } from 'dexie';
+import type { StoredRun } from '@/features/analysis/runs';
 import type { StoredDataset } from './datasets';
 
 export interface StoredProject {
@@ -24,6 +25,8 @@ export class SemStudioDb extends Dexie {
   projects!: EntityTable<StoredProject, 'id'>;
   /** Phase 2: original tables + parse options + transformation log (see datasets.ts). */
   datasets!: EntityTable<StoredDataset, 'id'>;
+  /** Phase 3: analysis run records (model snapshot, configuration, result); see features/analysis/runs.ts. */
+  runs!: EntityTable<StoredRun, 'runId'>;
   constructor() {
     super(DB_NAME);
     // Keep every older version declared so existing browsers upgrade in place.
@@ -31,6 +34,11 @@ export class SemStudioDb extends Dexie {
     this.version(2).stores({
       projects: 'id, updatedAt, name',
       datasets: 'id, fingerprint, importedAt',
+    });
+    this.version(3).stores({
+      projects: 'id, updatedAt, name',
+      datasets: 'id, fingerprint, importedAt',
+      runs: 'runId, projectId, createdAt',
     });
   }
 }

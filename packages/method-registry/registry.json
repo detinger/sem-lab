@@ -161,14 +161,16 @@
       "references": ["lohmoller1989", "wold1982"],
       "engines": {
         "r-csem": {
-          "status": "beta",
-          "verification": "engine-verified",
+          "status": "supported",
+          "verification": "reference-tested",
           "evidence": [
             "docs/validation/phase-0/evidence/r/csem_pls_core.json",
-            "docs/validation/phase-0/evidence/r/parity_csem_pls-modeA-path.json"
+            "docs/validation/phase-0/evidence/r/parity_csem_pls-modeA-path.json",
+            "services/r-engine/tests/testthat/test-parity-tam.R",
+            "services/r-engine/tests/testthat/test-reference.R"
           ],
           "implementation": "`csem(.model with \"=~\", .disattenuate = FALSE)` — a plain \"=~\" call is PLSc because .disattenuate defaults to TRUE",
-          "notes": "Matches an independent reference implementation (_ref_pls.R) to 3e-16, seminr to 6e-15 and Python plspm to 5e-11 on tam-v1. Becomes supported when the Phase 3 adapter has reference tests."
+          "notes": "Matches an independent reference implementation (_ref_pls.R) to 3e-16, seminr to 6e-15 and Python plspm to 5e-11 on tam-v1. Becomes supported when the Phase 3 adapter has reference tests. Phase 3: SEM Studio R engine reproduces the population limits of classic PLS on exact-covariance data (≤ 1e-15) and the Phase 0 parity values (≤ 5.6e-16)."
         },
         "r-seminr": {
           "status": "beta",
@@ -214,14 +216,15 @@
       "references": ["lohmoller1989"],
       "engines": {
         "r-csem": {
-          "status": "beta",
-          "verification": "engine-verified",
+          "status": "supported",
+          "verification": "reference-tested",
           "evidence": [
             "docs/validation/phase-0/evidence/r/csem_pls_core.json",
-            "docs/validation/phase-0/evidence/r/parity_csem_pls-modeA-path.json"
+            "docs/validation/phase-0/evidence/r/parity_csem_pls-modeA-path.json",
+            "services/r-engine/tests/testthat/test-reference.R"
           ],
           "implementation": "`.PLS_weight_scheme_inner = \"path\"`",
-          "notes": "Schemes give different estimates (max |Δ| up to 0.009 on tam-v1), so the option is applied."
+          "notes": "Schemes give different estimates (max |Δ| up to 0.009 on tam-v1), so the option is applied. Phase 3: reference tests use the path scheme."
         },
         "py-plspm": {
           "status": "beta",
@@ -253,10 +256,11 @@
           "verification": "engine-verified",
           "evidence": [
             "docs/validation/phase-0/evidence/r/csem_pls_core.json",
-            "docs/validation/phase-0/evidence/r/parity_csem_pls-modeA-centroid.json"
+            "docs/validation/phase-0/evidence/r/parity_csem_pls-modeA-centroid.json",
+            "services/r-engine/tests/testthat/test-parity-tam.R"
           ],
           "implementation": "`.PLS_weight_scheme_inner = \"centroid\"`",
-          "notes": "Schemes give different estimates (max |Δ| up to 0.009 on tam-v1), so the option is applied."
+          "notes": "Schemes give different estimates (max |Δ| up to 0.009 on tam-v1), so the option is applied. Phase 3: equals the Phase 0 parity values through the SEM Studio engine (test runs only where the git-ignored TAM sample is present, so it stays beta)."
         },
         "py-plspm": {
           "status": "beta",
@@ -288,10 +292,11 @@
           "verification": "engine-verified",
           "evidence": [
             "docs/validation/phase-0/evidence/r/csem_pls_core.json",
-            "docs/validation/phase-0/evidence/r/parity_csem_pls-modeA-factorial.json"
+            "docs/validation/phase-0/evidence/r/parity_csem_pls-modeA-factorial.json",
+            "services/r-engine/tests/testthat/test-parity-tam.R"
           ],
           "implementation": "`.PLS_weight_scheme_inner = \"factorial\"`",
-          "notes": "Schemes give different estimates (max |Δ| up to 0.009 on tam-v1), so the option is applied."
+          "notes": "Schemes give different estimates (max |Δ| up to 0.009 on tam-v1), so the option is applied. Phase 3: equals the Phase 0 parity values through the SEM Studio engine (test runs only where the git-ignored TAM sample is present, so it stays beta)."
         },
         "py-plspm": {
           "status": "beta",
@@ -319,10 +324,14 @@
       "references": ["lohmoller1989", "dijkstra2017"],
       "engines": {
         "r-csem": {
-          "status": "beta",
-          "verification": "engine-verified",
-          "evidence": ["docs/validation/phase-0/evidence/r/csem_pls_core.json"],
-          "implementation": "`\"<~\"` (defaults to Mode B); never \"=~\" with .PLS_modes = \"modeB\" and default .disattenuate"
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "docs/validation/phase-0/evidence/r/csem_pls_core.json",
+            "services/r-engine/tests/testthat/test-reference.R"
+          ],
+          "implementation": "`\"<~\"` (defaults to Mode B); never \"=~\" with .PLS_modes = \"modeB\" and default .disattenuate",
+          "notes": "Phase 3: Mode B weights and composite loadings R·w recovered on pls-mixed-composite-exact to ≤ 6e-16."
         },
         "py-plspm": {
           "status": "beta",
@@ -342,14 +351,16 @@
       "references": ["dijkstra2015"],
       "engines": {
         "r-csem": {
-          "status": "beta",
-          "verification": "engine-verified",
+          "status": "supported",
+          "verification": "reference-tested",
           "evidence": [
             "docs/validation/phase-0/evidence/r/csem_pls_core.json",
-            "docs/validation/phase-0/evidence/r/parity_csem_plsc.json"
+            "docs/validation/phase-0/evidence/r/parity_csem_plsc.json",
+            "services/r-engine/tests/testthat/test-parity-tam.R",
+            "services/r-engine/tests/testthat/test-reference.R"
           ],
           "implementation": "`\"=~\"` with `.disattenuate = TRUE` (default)",
-          "notes": "Matches _ref_pls.R and seminr (Δ 8e-15). Bootstrap keeps only ~90 of 100 draws on tam-v1 (inadmissible draws are counted and excluded)."
+          "notes": "Matches _ref_pls.R and seminr (Δ 8e-15). Bootstrap keeps only ~90 of 100 draws on tam-v1 (inadmissible draws are counted and excluded). Phase 3: PLSc recovers population paths, loadings, R², AVE and ρC on tam-mediation-exact to ≤ 1e-15."
         },
         "r-seminr": {
           "status": "beta",
@@ -473,11 +484,14 @@
       "references": ["bollen1987"],
       "engines": {
         "r-csem": {
-          "status": "beta",
-          "verification": "engine-verified",
-          "evidence": ["docs/validation/phase-0/evidence/r/csem_effects.json"],
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "docs/validation/phase-0/evidence/r/csem_effects.json",
+            "services/r-engine/tests/testthat/test-reference.R"
+          ],
           "implementation": "`summarize()$Estimates$Effect_estimates`",
-          "notes": "total = direct + indirect holds exactly on tam-v1."
+          "notes": "total = direct + indirect holds exactly on tam-v1. Phase 3: indirect .30 and total .50 recovered on tam-mediation-exact under PLSc."
         },
         "r-lavaan": {
           "status": "beta",
@@ -496,10 +510,14 @@
       "references": ["zhao2010"],
       "engines": {
         "r-csem": {
-          "status": "planned",
-          "verification": "engine-verified",
-          "evidence": ["docs/validation/phase-0/evidence/r/csem_effects.json"],
-          "reason": "cSEM does not report specific indirect effects; SEM Studio's adapter computes the products from each bootstrap draw (Phase 3)."
+          "status": "supported",
+          "verification": "reference-tested",
+          "evidence": [
+            "services/r-engine/R/pls_results.R",
+            "services/r-engine/tests/testthat/test-reference.R"
+          ],
+          "implementation": "SEM Studio R engine: product of path coefficients along each directed route of length ≥ 2, computed within every bootstrap draw (pls_results.R / pls_bootstrap.R)",
+          "notes": "cSEM does not report specific indirect effects; the engine computes them. Reference test: tam-mediation-exact indirect effect .30 recovered under PLSc to 1e-15. At most 500 routes are listed (warning if more). Phase 3: specific indirect effect recovered on tam-mediation-exact."
         }
       }
     },
@@ -512,14 +530,16 @@
       "references": ["efron1993"],
       "engines": {
         "r-csem": {
-          "status": "beta",
-          "verification": "engine-verified",
+          "status": "supported",
+          "verification": "reference-tested",
           "evidence": [
+            "apps/web/src/features/code-export/r-csem.test.ts",
             "docs/validation/phase-0/evidence/r/csem_resampling.json",
-            "docs/validation/phase-0/evidence/r/csem_resampling_followup.json"
+            "docs/validation/phase-0/evidence/r/csem_resampling_followup.json",
+            "services/r-engine/tests/testthat/test-bootstrap.R"
           ],
           "implementation": "`resamplecSEMResults(.resample_method = \"bootstrap\", .R, .seed)`; intervals = quantile(type = 7) of the concatenated chunk draws",
-          "notes": "Draws depend only on (seed, i) and are identical across future plans; our quantile(type 7) equals infer()$CI_percentile exactly. Always pass .seed (NULL is not reproducible even after set.seed). One erroring replication aborts the whole call."
+          "notes": "Draws depend only on (seed, i) and are identical across future plans; our quantile(type 7) equals infer()$CI_percentile exactly. Always pass .seed (NULL is not reproducible even after set.seed). One erroring replication aborts the whole call. Phase 3: chunked seeded bootstrap; identical draws for the same seed; requested = completed + failed + inadmissible; CI = quantile(type 7) of the draws; the exported R script reproduces the engine's intervals to 1e-12."
         },
         "r-lavaan": {
           "status": "beta",

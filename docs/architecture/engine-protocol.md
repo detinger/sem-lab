@@ -87,10 +87,24 @@ and removes the record and all files.
 - Retention: a sweeper deletes job directories and rows older than `DATA_RETENTION_HOURS`;
   `DELETE /api/analysis/jobs/{id}` deletes immediately.
 
+## Engine-specific facts (R engine, Phase 3)
+
+- `limits.chunkSize` (optional, default 100) sets the bootstrap chunk size.
+- Data must be complete for the R PLS engine: the web app sends the listwise analysis matrix;
+  an empty cell is refused with `REQUEST_INVALID` (`details.reason = "missing-values"`).
+- Numbers are written with 17 significant digits (`jsonlite digits = I(17)`), so every double
+  round-trips exactly.
+- Unexpected R errors are handled: `{ok:false, error:{code:"ENGINE_INTERNAL"}}` with exit 0.
+  Only a real process crash exits non-zero.
+- TIMEOUT is checked between bootstrap chunks; a slow estimation step relies on the API's
+  process-group kill.
+
 ## Bootstrap chunking
 
 The engine draws bootstrap replications in chunks of `chunkSize` (default 100). Chunk *k*
-uses seed `seed + k`. Raw draws from all completed chunks are concatenated; confidence
+(counting from 0) uses seed `(seed + k) mod (2³¹ − 1)`. cSEM needs at least 3 draws per call,
+so a chunk of 1–2 draws, or a chunk whose call errored, is re-run one draw at a time with
+seed `seed + k + j·10⁶` for draw *j*; failures are then counted per draw. Raw draws from all completed chunks are concatenated; confidence
 intervals are computed once at the end from the concatenated draws. Consequences that are
 part of the contract:
 

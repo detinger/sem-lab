@@ -24,6 +24,12 @@ const OverviewPage = lazy(() =>
 const SettingsPage = lazy(() =>
   import('@/pages/SettingsPage').then((m) => ({ default: m.SettingsPage })),
 );
+const AnalysisPage = lazy(() =>
+  import('@/features/analysis/AnalysisPage').then((m) => ({ default: m.AnalysisPage })),
+);
+const ResultsPage = lazy(() =>
+  import('@/features/results/ResultsPage').then((m) => ({ default: m.ResultsPage })),
+);
 const PlaceholderRoute: ComponentType<{ path: string }> = lazy(
   () => import('@/pages/PlaceholderRoute'),
 );
@@ -62,8 +68,8 @@ export const routes: RouteObject[] = [
       child('/', page(<OverviewPage />)),
       child('/modeler', page(<ModelerPage />), { fullBleed: true }),
       child('/data', page(<DataPage />)),
-      child('/analysis', placeholder('/analysis')),
-      child('/results', placeholder('/results')),
+      child('/analysis', page(<AnalysisPage />)),
+      child('/results', page(<ResultsPage />)),
       child('/ipma', placeholder('/ipma')),
       child('/comparison', placeholder('/comparison')),
       child('/examples', placeholder('/examples')),

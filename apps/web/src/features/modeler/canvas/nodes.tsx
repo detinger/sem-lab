@@ -49,7 +49,7 @@ export const ConstructNode = memo(function ConstructNode({
   data,
   selected,
 }: NodeProps<ConstructFlowNode>) {
-  const { rect, shape, lines, tag } = data.scene;
+  const { rect, shape, lines, tag, capsule } = data.scene;
   const w = rect.width;
   const h = rect.height;
   return (
@@ -80,6 +80,7 @@ export const ConstructNode = memo(function ConstructNode({
         ))}
         {tag && <span className="sem-construct-tag">{tag}</span>}
       </div>
+      {capsule !== undefined && <span className="sem-capsule">{capsule}</span>}
       <ConnectionHandles nodeId={id} />
     </div>
   );
