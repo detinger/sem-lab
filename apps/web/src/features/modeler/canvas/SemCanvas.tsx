@@ -347,7 +347,7 @@ export function SemCanvas({
         maxZoom={2.5}
         fitView
         fitViewOptions={{ padding: 0.15 }}
-        proOptions={{ hideAttribution: false }}
+        proOptions={{ hideAttribution: true }}
         nodesFocusable
         edgesFocusable
         aria-label="SEM path diagram"
