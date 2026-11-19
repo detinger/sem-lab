@@ -1,0 +1,162 @@
+"""Build dist/semstudio_bundle.py: every module of the semstudio package concatenated into one
+importable file (the file the web app ships next to exported Python scripts).
+
+Deterministic: fixed module order, no timestamps, the source hash of the package in the header.
+Relative imports (``from .x import y``) are removed, absolute imports are hoisted and
+de-duplicated, and every module-level name must be unique across modules (checked; the build
+fails otherwise), so the concatenation has exactly the semantics of the package.
+
+    python scripts/bundle.py           # write dist/semstudio_bundle.py
+    python scripts/bundle.py --check   # exit 1 if the committed bundle is out of date
+"""
+
+import ast
+import hashlib
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+PKG = ROOT / "semstudio"
+OUT = ROOT / "dist" / "semstudio_bundle.py"
+
+#: dependency order (each module only imports modules listed before it)
+MODULES = [
+    "meta",
+    "errors",
+    "jsnum",
+    "linalg",
+    "stats",
+    "rng",
+    "effects",
+    "pls_core",
+    "assess",
+    "bootstrap",
+    "ipma",
+    "pls",
+    "distributions",
+    "cb",
+    "api",
+]
+
+
+def _module_names(tree):
+    names = set()
+    for node in tree.body:
+        if isinstance(node, (ast.FunctionDef, ast.ClassDef, ast.AsyncFunctionDef)):
+            names.add(node.name)
+        elif isinstance(node, ast.Assign):
+            for t in node.targets:
+                for n in ast.walk(t):
+                    if isinstance(n, ast.Name):
+                        names.add(n.id)
+        elif isinstance(node, ast.AnnAssign) and isinstance(node.target, ast.Name):
+            names.add(node.target.id)
+    return names
+
+
+def _strip(source, name):
+    """(body without imports and module docstring, absolute import lines, docstring)."""
+    tree = ast.parse(source)
+    lines = source.splitlines()
+    drop = set()
+    imports = []
+    doc = ast.get_docstring(tree, clean=False)
+    for node in tree.body:
+        span = range(node.lineno - 1, node.end_lineno)
+        if isinstance(node, (ast.Import, ast.ImportFrom)):
+            drop.update(span)
+            if isinstance(node, ast.ImportFrom) and node.level > 0:
+                continue
+            imports.append("\n".join(lines[i] for i in span))
+        elif (
+            node is tree.body[0]
+            and isinstance(node, ast.Expr)
+            and isinstance(node.value, ast.Constant)
+            and isinstance(node.value.value, str)
+        ):
+            drop.update(span)
+    body = [ln for i, ln in enumerate(lines) if i not in drop]
+    # collapse leading/trailing blank lines
+    while body and not body[0].strip():
+        body.pop(0)
+    while body and not body[-1].strip():
+        body.pop()
+    return "\n".join(body), imports, doc, _module_names(tree)
+
+
+def build():
+    init = (PKG / "__init__.py").read_text(encoding="utf-8")
+    init_tree = ast.parse(init)
+    init_doc = ast.get_docstring(init_tree, clean=False)
+    all_names = None
+    for node in init_tree.body:
+        if isinstance(node, ast.Assign) and any(
+            isinstance(t, ast.Name) and t.id == "__all__" for t in node.targets
+        ):
+            all_names = ast.literal_eval(node.value)
+    sources = {m: (PKG / f"{m}.py").read_text(encoding="utf-8") for m in MODULES}
+    present = sorted(p.stem for p in PKG.glob("*.py") if p.stem != "__init__")
+    missing = sorted(set(present) - set(MODULES))
+    if missing:
+        raise SystemExit(f"bundle.py: modules not in MODULES: {missing}")
+
+    h = hashlib.sha256()
+    for m in ["__init__"] + MODULES:
+        h.update(m.encode())
+        h.update((PKG / f"{m}.py").read_bytes())
+
+    owner = {}
+    parts = []
+    hoisted = []
+    for m in MODULES:
+        body, imports, doc, names = _strip(sources[m], m)
+        for n in sorted(names):
+            if n in owner and n != "__version__":
+                raise SystemExit(f"bundle.py: module-level name {n!r} defined in both {owner[n]} and {m}")
+            owner[n] = m
+        for imp in imports:
+            if imp not in hoisted:
+                hoisted.append(imp)
+        header = f"# {'=' * 93}\n# semstudio/{m}.py\n# {'=' * 93}\n"
+        if doc:
+            header += "".join(f"# {ln}".rstrip() + "\n" for ln in doc.strip().splitlines())
+        parts.append(header + "\n" + body + "\n")
+    for n in all_names or []:
+        if n not in owner:
+            raise SystemExit(f"bundle.py: __all__ name {n!r} is not defined by any module")
+
+    future = [i for i in hoisted if i.startswith("from __future__")]
+    std = sorted(i for i in hoisted if i not in future and not i.startswith(("import numpy", "from numpy", "import scipy", "from scipy")))
+    third = sorted(i for i in hoisted if i.startswith(("import numpy", "from numpy", "import scipy", "from scipy")))
+    out = []
+    out.append('"""' + init_doc.rstrip() + "\n\nSingle-file bundle of the semstudio package (generated by\n"
+               "packages/python-engine/scripts/bundle.py; do not edit). Import it as a module next to\n"
+               "an exported script: ``import semstudio_bundle as semstudio``.\n"
+               f"Package source sha256: {h.hexdigest()}\n" + '"""\n')
+    out.append("# ruff: noqa\n# fmt: off\n")
+    out.extend(i + "\n" for i in future)
+    out.extend(i + "\n" for i in std)
+    out.extend(i + "\n" for i in third)
+    out.append("\n")
+    out.append("\n\n".join(parts))
+    out.append("\n\n__all__ = " + repr(list(all_names or [])) + "\n")
+    return "".join(out)
+
+
+def main(argv):
+    text = build()
+    if "--check" in argv:
+        current = OUT.read_text(encoding="utf-8") if OUT.exists() else ""
+        if current != text:
+            print(f"{OUT} is out of date: run python scripts/bundle.py", file=sys.stderr)
+            return 1
+        print(f"{OUT} is up to date")
+        return 0
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text(text, encoding="utf-8", newline="\n")
+    print(f"wrote {OUT} ({len(text.splitlines())} lines)")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))

@@ -43,6 +43,31 @@ jobs:
         # Also the first run on Linux: the generator was only verified on macOS arm64.
         run: uv run --python 3.12 --with numpy python packages/fixtures/scripts/generate_synthetic.py --check
 
+  python-engine:
+    name: Python engine (semstudio, Python ${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      # the cross-language tests run the TypeScript engine (packages/engine) with node
+      - run: npm ci
+      - uses: astral-sh/setup-uv@v5
+      - name: Single-file bundle is up to date
+        working-directory: packages/python-engine
+        run: uv run --frozen --python ${{ matrix.python }} python scripts/bundle.py --check
+      - name: pytest (package and bundle; R, lavaan, population and TypeScript parity)
+        working-directory: packages/python-engine
+        env:
+          SEMSTUDIO_REQUIRE_NODE: '1'
+        run: uv run --frozen --python ${{ matrix.python }} pytest -q -rs
+
   r-engine:
     name: R engine (cSEM reference tests)
     runs-on: ubuntu-latest
