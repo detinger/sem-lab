@@ -132,7 +132,7 @@ export function QualitySummary() {
       <h2 id="dl-quality-h" className="dl-h2">
         Data quality
       </h2>
-      <KpiGrid>
+      <KpiGrid className="dl-quality-kpis">
         <KpiTile
           label="Observations"
           value={rows.toLocaleString('en-US')}

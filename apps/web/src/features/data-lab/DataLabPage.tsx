@@ -23,13 +23,14 @@ export function DataLabPage() {
         <ImportSection />
         {dataset ? <DatasetHeader /> : <LinkBanner />}
         {!dataset ? <EmptyDataHint /> : null}
+        {/* Inspect → map → verify: look at the data, map it, then Readiness is the go/no-go check. */}
         <QualitySummary />
-        <MappingSection />
-        <ReadinessSection />
         <PreviewTable />
         <ProfileTable />
         <CorrelationsSection />
         <MissingnessSection />
+        <MappingSection />
+        <ReadinessSection />
         <TransformationsSection />
       </div>
     </>

@@ -366,10 +366,21 @@ export function MappingSection() {
   }, [model]);
 
   const noScale = used.filter((i) => !i.scale);
+  // Data-first workflow: indicators dragged from the Modeler palette arrive already mapped, so the
+  // common case is "all mapped" and the only remaining job is setting response scales.
+  const colSet = useMemo(() => new Set(columns), [columns]);
+  const unmapped = used.filter((i) => i.column === null || !colSet.has(i.column));
+  const allMapped = dataset !== null && used.length > 0 && unmapped.length === 0;
   const bulkA = parseEndpoint(bulkLo);
   const bulkB = parseEndpoint(bulkHi);
   const bulkValid = bulkA !== null && bulkB !== null && bulkA < bulkB;
   const selectedIds = model.indicators.filter((i) => selected.has(i.id)).map((i) => i.id);
+  const applyScale = (ids: string[]): void => {
+    if (bulkValid)
+      edit((m) =>
+        ids.reduce((acc, id) => updateIndicator(acc, id, { scale: { min: bulkA, max: bulkB } }), m),
+      );
+  };
   const toggle = (id: string): void =>
     setSelected((prev) => {
       const next = new Set(prev);
@@ -387,7 +398,7 @@ export function MappingSection() {
     <Card className="dl-card" aria-labelledby="dl-map-h" id="dl-mapping">
       <CardHeader
         level={2}
-        title={<span id="dl-map-h">Map columns to indicators</span>}
+        title={<span id="dl-map-h">Column mapping &amp; response scales</span>}
         action={
           <span className="dl-badges">
             <IconButton
@@ -417,26 +428,34 @@ export function MappingSection() {
       ) : (
         <>
           <p className="dl-muted">
-            Mapping and scale edits change the project (not the data) and can be undone. Suggestions
-            are only suggestions: nothing is bound until you apply them.
+            Indicators dragged onto constructs in the Modeler arrive already mapped to their column;
+            map any remaining ones here. The main job on this page is setting each indicator&apos;s
+            response scale. Edits change the project (not the data) and can be undone.
           </p>
-          <div className="dl-map-bar">
-            <Button
-              variant="primary"
-              icon={<Wand2 size={14} />}
-              disabled={applicable.length === 0}
-              onClick={() => edit((m) => applyMapping(m, applicable))}
-            >
-              Apply suggestions{applicable.length > 0 ? ` (${applicable.length})` : ''}
-            </Button>
-            <span className="dl-muted">
-              {dataset
-                ? applicable.length > 0
-                  ? 'Binds unmapped indicators whose name matches a column unambiguously.'
-                  : 'No unambiguous suggestions for unmapped indicators.'
-                : 'Import data to get suggestions.'}
-            </span>
-          </div>
+          {allMapped ? (
+            <Callout variant="success" title={`All ${used.length} indicators are mapped to columns`}>
+              Nothing left to reconcile. Set their response scales below — IPMA and reverse scoring
+              need the permitted minimum and maximum (e.g. 1 and 7).
+            </Callout>
+          ) : (
+            <div className="dl-map-bar">
+              <Button
+                variant="primary"
+                icon={<Wand2 size={14} />}
+                disabled={applicable.length === 0}
+                onClick={() => edit((m) => applyMapping(m, applicable))}
+              >
+                Apply suggestions{applicable.length > 0 ? ` (${applicable.length})` : ''}
+              </Button>
+              <span className="dl-muted">
+                {dataset
+                  ? applicable.length > 0
+                    ? 'Binds unmapped indicators whose name matches a column unambiguously.'
+                    : 'No unambiguous suggestions for unmapped indicators.'
+                  : 'Import data to get suggestions.'}
+              </span>
+            </div>
+          )}
           {noScale.length > 0 ? (
             <Callout variant="recommendation" title="Scale endpoints are missing">
               {IPMA_SCALE_TEXT}{' '}
@@ -459,12 +478,12 @@ export function MappingSection() {
               {lastError}
             </Callout>
           ) : null}
-          <div className="dl-map-bulk" role="group" aria-label="Set scale for selected indicators">
-            <span className="dl-map-bulk__label">Selected: {selectedIds.length}</span>
+          <div className="dl-map-bulk" role="group" aria-label="Set response scale">
+            <span className="dl-map-bulk__label">Response scale</span>
             <Input
               size="small"
               inputMode="decimal"
-              aria-label="Scale minimum for selected indicators"
+              aria-label="Scale minimum"
               value={bulkLo}
               onChange={(e) => setBulkLo(e.target.value)}
             />
@@ -472,24 +491,24 @@ export function MappingSection() {
             <Input
               size="small"
               inputMode="decimal"
-              aria-label="Scale maximum for selected indicators"
+              aria-label="Scale maximum"
               value={bulkHi}
               onChange={(e) => setBulkHi(e.target.value)}
             />
             <Button
               size="small"
-              disabled={!bulkValid || selectedIds.length === 0}
-              onClick={() =>
-                bulkValid &&
-                edit((m) =>
-                  selectedIds.reduce(
-                    (acc, id) => updateIndicator(acc, id, { scale: { min: bulkA, max: bulkB } }),
-                    m,
-                  ),
-                )
-              }
+              variant="primary"
+              disabled={!bulkValid || used.length === 0}
+              onClick={() => applyScale(used.map((i) => i.id))}
             >
-              Set {bulkValid ? `${bulkA}–${bulkB}` : 'scale'} for all selected
+              Apply {bulkValid ? `${bulkA}–${bulkB}` : 'scale'} to all {used.length} indicators
+            </Button>
+            <Button
+              size="small"
+              disabled={!bulkValid || selectedIds.length === 0}
+              onClick={() => applyScale(selectedIds)}
+            >
+              Apply to {selectedIds.length} selected
             </Button>
             <Button
               size="small"

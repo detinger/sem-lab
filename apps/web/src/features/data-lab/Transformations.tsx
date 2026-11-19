@@ -194,7 +194,7 @@ export function TransformationsSection() {
           </Field>
         ) : null}
         {kind === 'reverse' ? (
-          <>
+          <div className="dl-trans-pair">
             <Field label="Scale minimum">
               {(p) => (
                 <Input
@@ -219,7 +219,7 @@ export function TransformationsSection() {
                 />
               )}
             </Field>
-          </>
+          </div>
         ) : null}
         {kind === 'missing-code' ? (
           <Field label="Code to treat as missing" error={code !== '' ? codeError : undefined}>
