@@ -125,12 +125,22 @@ describe('Results page for a CB-SEM run', () => {
     expect(button).toBeEnabled();
     expect(screen.queryByText(/arrives with the lavaan adapter/)).not.toBeInTheDocument();
     await user.click(button);
-    await waitFor(() => expect(click).toHaveBeenCalledTimes(2));
-    expect(names).toEqual(['CB-test-lavaan.R', 'analysis-data.csv']);
-    const [script, csv] = await Promise.all(files.map((f) => f.text));
-    expect(script).toContain('estimator = "ML"');
-    expect(script).toContain('lavaan');
-    expect(csv!.split('\n')[0]).toBe('sq1,sq2,sq3,sq4,sq5,sat1,sat2,sat3,sat4,loy1,loy2,loy3,loy4');
+    await waitFor(() => expect(click).toHaveBeenCalledTimes(1));
+    expect(names).toEqual(['CB-test-R-export.zip']);
+    // stored (uncompressed) ZIP: entry names and text are readable in the bytes
+    const zipText = await files[0]!.text;
+    expect(zipText.startsWith('PK\u0003\u0004')).toBe(true);
+    for (const f of [
+      'lavaan.R',
+      'analysis-data.csv',
+      'manifest.json',
+      'README.md',
+      'browser-result.json',
+    ])
+      expect(zipText).toContain(f);
+    expect(zipText).toContain('estimator = "ML"');
+    expect(zipText).toContain('lavaan');
+    expect(zipText).toContain('sq1,sq2,sq3,sq4,sq5,sat1,sat2,sat3,sat4,loy1,loy2,loy3,loy4\n');
   });
 
   it('disables the export with the reason for an estimator the lavaan export does not cover', async () => {

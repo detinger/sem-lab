@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { expect, type Page } from '@playwright/test';
 
 export const OUT = 'test-results/phase4-browser';
-const REPO = join(process.cwd(), '..', '..');
+export const REPO = join(process.cwd(), '..', '..');
 
 export const fixtureModel = (id: string): unknown =>
   JSON.parse(readFileSync(join(REPO, 'packages/fixtures/synthetic', id, 'model.json'), 'utf8'));

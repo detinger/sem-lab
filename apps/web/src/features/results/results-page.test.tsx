@@ -71,7 +71,7 @@ describe('Results page', () => {
 
     await user.click(tab('Reproducibility'));
     expect(screen.getByRole('button', { name: 'Export R script' })).toBeEnabled();
-    expect(screen.getByText(/verified by an automated test/)).toBeInTheDocument();
+    expect(screen.getByText(/Both are verified by automated tests/)).toBeInTheDocument();
   });
 
   it('applies decimals and APA style to every table', async () => {
@@ -129,7 +129,7 @@ describe('Results page', () => {
     expect(screen.queryByText('Renamed')).not.toBeInTheDocument();
   });
 
-  it('Export R script downloads the script and the data file', async () => {
+  it('Export R script and Export Python script each download one ZIP bundle', async () => {
     const user = userEvent.setup();
     const blobs: Blob[] = [];
     URL.createObjectURL = vi.fn((b: Blob | MediaSource) => {
@@ -143,19 +143,27 @@ describe('Results page', () => {
     ) {
       names.push(this.download);
     });
-    renderPage();
-    await user.click(await screen.findByRole('tab', { name: 'Reproducibility' }));
-    await user.click(screen.getByRole('button', { name: 'Export R script' }));
-    await waitFor(() => expect(names).toHaveLength(2));
-    expect(names[0]).toBe('TAM-test-cSEM.R');
-    expect(names[1]).toBe('analysis-data.csv');
     const text = (b: Blob) =>
       new Promise<string>((res) => {
         const r = new FileReader();
         r.onload = () => res(r.result as string);
         r.readAsText(b);
       });
-    expect(await text(blobs[0]!)).toContain('.disattenuate = FALSE');
-    expect((await text(blobs[1]!)).split('\n')[0]).toContain(',');
+    renderPage();
+    await user.click(await screen.findByRole('tab', { name: 'Reproducibility' }));
+    await user.click(screen.getByRole('button', { name: 'Export R script' }));
+    await waitFor(() => expect(names).toHaveLength(1));
+    expect(names[0]).toBe('TAM-test-R-export.zip');
+    const r = await text(blobs[0]!);
+    expect(r).toContain('TAM-test/TAM-test-cSEM.R');
+    expect(r).toContain('.disattenuate = FALSE');
+    expect(r).toContain('TAM-test/manifest.json');
+
+    await user.click(screen.getByRole('button', { name: 'Export Python script' }));
+    await waitFor(() => expect(names).toHaveLength(2), { timeout: 5000 });
+    expect(names[1]).toBe('TAM-test-Python-export.zip');
+    const py = await text(blobs[1]!);
+    for (const f of ['run_analysis.py', 'semstudio_bundle.py', 'requirements.txt', 'analysis.json'])
+      expect(py).toContain(`TAM-test/${f}`);
   });
 });

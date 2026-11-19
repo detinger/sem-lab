@@ -138,6 +138,17 @@ export function exportCsemScript(input: RExportInput): string {
     '# =============================================================================',
     '',
   );
+  const reversed = model.indicators.filter(
+    (i) => inBlocks.includes(i.id) && i.reverseScored === true && i.scale && i.column !== null,
+  );
+  if (reversed.length) {
+    push(
+      '# Reverse-scored indicators (the exported file already holds min + max − x for these columns):',
+    );
+    for (const i of reversed)
+      push(`#   - ${rComment(i.column!)} (scale ${i.scale!.min}–${i.scale!.max})`);
+    push('');
+  }
   if (input.transformations.length) {
     push(
       '# Data Lab transformations applied before export (the exported file already contains them):',
@@ -252,6 +263,14 @@ export function exportCsemScript(input: RExportInput): string {
     );
   }
 
+  if (a.ipma)
+    pushIpma(
+      push,
+      input,
+      id,
+      targets.map((t) => t.id),
+    );
+
   const indirect = model.constructs.some((s) =>
     model.constructs.some((t) => directedPaths(model, s.id, t.id).some((p) => p.length > 2)),
   );
@@ -266,7 +285,108 @@ export function exportCsemScript(input: RExportInput): string {
   return `${L.join('\n')}\n`;
 }
 
-function describeTransformation(t: Transformation): string {
+/**
+ * IPMA with the convention of the browser engine (packages/engine/src/pls/ipma.ts) and the R
+ * oracle (services/r-engine/R/pls_ipma.R): declared endpoints → 0–100, classic PLS refit,
+ * normalised unstandardised weights, OLS on construct scores, total effects (I − B)⁻¹ − I.
+ */
+function pushIpma(
+  push: (...lines: string[]) => number,
+  input: RExportInput,
+  id: (x: string) => string,
+  endogenous: string[],
+): void {
+  const { model, analysis: a } = input;
+  if (a.method !== 'pls-sem')
+    throw new Error('IPMA is defined on classic PLS-SEM only (not PLSc).');
+  const target = a.ipma!.targetConstructId;
+  const g = structuralGraph(model);
+  const preds = model.constructs.filter(
+    (c) => c.id !== target && directedPaths(model, c.id, target).length > 0,
+  );
+  const direct = new Set(g.in.get(target) ?? []);
+  const inds = model.indicators.filter((i) =>
+    model.constructs.some((c) => c.indicatorIds.includes(i.id)),
+  );
+  const noScale = inds.filter((i) => !i.scale);
+  if (noScale.length)
+    throw new Error(
+      `IPMA needs the original scale endpoints of every indicator; missing for ${noScale.map((i) => i.name).join(', ')}.`,
+    );
+  const vec = (pick: (i: (typeof inds)[number]) => number): string =>
+    `c(${inds.map((i) => `${id(i.id)} = ${pick(i)}`).join(', ')})`;
+  push(
+    '# ---- IPMA (importance-performance map) -----------------------------------------',
+    '# SEM Studio convention: every indicator (already reverse scored where flagged) is rescaled',
+    '# to 0-100 with its DECLARED scale endpoints (never the observed min/max); classic PLS is',
+    '# re-estimated on the rescaled data with the same options; unstandardized weights =',
+    '# standardized weight / sd(rescaled indicator), normalized to sum to 1 per block; construct',
+    '# score = weighted sum; performance = mean score; importance = unstandardized total effect',
+    '# on the target from OLS of each endogenous score on its predictors: (I - B)^-1 - I.',
+    '# Negative importance keeps its sign. Point estimates only (no intervals).',
+    `ipma_target <- ${rString(id(target))}`,
+    `scale_min <- ${vec((i) => i.scale!.min)}`,
+    `scale_max <- ${vec((i) => i.scale!.max)}`,
+    'data_100 <- data',
+    'for (v in names(data_100)) data_100[[v]] <- (data_100[[v]] - scale_min[[v]]) / (scale_max[[v]] - scale_min[[v]]) * 100',
+    'fit_100 <- do.call(csem, c(list(.data = data_100, .model = model), options))',
+    'if (!isTRUE(all(fit_100$Information$Weight_info$Convergence_status))) stop("The PLS fit on the 0-100 data did not converge.")',
+    'blocks <- list(',
+    ...model.constructs.map(
+      (c, k) =>
+        `  ${id(c.id)} = c(${c.indicatorIds.map((i) => rString(id(i))).join(', ')})${k < model.constructs.length - 1 ? ',' : ''}`,
+    ),
+    ')',
+    'W <- fit_100$Estimates$Weight_estimates',
+    'w_norm <- lapply(names(blocks), function(cn) {',
+    '  ids <- blocks[[cn]]',
+    '  w_u <- W[cn, ids] / apply(data_100[, ids, drop = FALSE], 2L, stats::sd)',
+    '  w_u / sum(w_u)',
+    '})',
+    'names(w_norm) <- names(blocks)',
+    'scores <- sapply(names(blocks), function(cn) as.matrix(data_100[, blocks[[cn]], drop = FALSE]) %*% w_norm[[cn]])',
+    'colnames(scores) <- names(blocks)',
+    'k <- length(blocks)',
+    'B_u <- matrix(0, k, k, dimnames = list(names(blocks), names(blocks)))  # B_u[to, from]',
+    'predictors <- list(',
+  );
+  const tgts = endogenous;
+  tgts.forEach((t, k) =>
+    push(
+      `  ${id(t)} = c(${(g.in.get(t) ?? []).map((s) => rString(id(s))).join(', ')})${k < tgts.length - 1 ? ',' : ''}`,
+    ),
+  );
+  push(
+    ')',
+    'for (t in names(predictors)) {',
+    '  src <- predictors[[t]]',
+    '  B_u[t, src] <- stats::lm.fit(cbind(1, scores[, src, drop = FALSE]), scores[, t])$coefficients[-1]',
+    '}',
+    'total_u <- solve(diag(k) - B_u) - diag(k)',
+    `ipma_predecessors <- c(${preds.map((c) => rString(id(c.id))).join(', ')})`,
+    `ipma_direct <- c(${preds.map((c) => (direct.has(c.id) ? 'TRUE' : 'FALSE')).join(', ')})`,
+    'ipma_constructs <- data.frame(',
+    '  construct = ipma_predecessors,',
+    '  importance = unname(total_u[ipma_target, ipma_predecessors]),',
+    '  performance = unname(colMeans(scores)[ipma_predecessors]),',
+    '  predecessor = ifelse(ipma_direct, "direct", "indirect"))',
+    'ipma_indicators <- do.call(rbind, lapply(ipma_predecessors, function(cn) data.frame(',
+    '  indicator = blocks[[cn]], construct = cn,',
+    '  importance = unname(w_norm[[cn]] * total_u[ipma_target, cn]),',
+    '  performance = unname(colMeans(data_100[, blocks[[cn]], drop = FALSE])))))',
+    'if (any(unlist(w_norm[ipma_predecessors]) < 0)) warning("Some normalized IPMA weights are negative; performance can fall outside 0-100.")',
+    'print(ipma_constructs, digits = 3)',
+    'print(ipma_indicators, digits = 3)',
+    'plot(ipma_constructs$importance, ipma_constructs$performance, pch = 19,',
+    '     xlab = "Importance (unstandardized total effect)", ylab = "Performance (0-100)",',
+    '     main = paste("IPMA for", ipma_target), xlim = range(0, ipma_constructs$importance), ylim = c(0, 100))',
+    'text(ipma_constructs$importance, ipma_constructs$performance, ipma_constructs$construct, pos = 3)',
+    'abline(v = mean(ipma_constructs$importance), h = mean(ipma_constructs$performance), lty = 3)',
+    '',
+  );
+}
+
+export function describeTransformation(t: Transformation): string {
   switch (t.kind) {
     case 'missing-code':
       return `value ${t.code} declared missing in ${t.column === '*' ? 'all columns' : t.column}`;

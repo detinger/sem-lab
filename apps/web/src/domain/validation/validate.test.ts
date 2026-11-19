@@ -80,7 +80,11 @@ describe('CB degrees of freedom (necessary identification condition)', () => {
     let m = SemModel.parse({ constructs: [], indicators: [], relationships: [] });
     for (const name of ['A', 'B', 'C']) {
       const r = addConstruct(m, { name });
-      m = addIndicators(r.model, r.id, [1, 2, 3].map((k) => ({ name: `${name.toLowerCase()}${k}` }))).model;
+      m = addIndicators(
+        r.model,
+        r.id,
+        [1, 2, 3].map((k) => ({ name: `${name.toLowerCase()}${k}` })),
+      ).model;
     }
     const id = (n: string) => m.constructs.find((c) => c.name === n)!.id;
     m = connect(m, id('A'), id('B')).model;

@@ -1,7 +1,11 @@
-import { writeFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { existsSync, mkdtempSync, readdirSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { expect, test } from '@playwright/test';
 import {
   OUT,
+  REPO,
   canonical,
   exampleModel,
   expandLayout,
@@ -13,6 +17,9 @@ import {
 } from './helpers';
 
 /** CB-SEM, IPMA and the performance/equality check of the worker pool. */
+
+/** packages/python-engine's venv (uv sync); the Python export check is skipped without it. */
+const PY = join(REPO, 'packages', 'python-engine', '.venv', 'bin', 'python');
 
 for (const theme of ['light', 'dark'] as const) {
   test(`CB-SEM on the service-quality sample: fit table and Std/Unstd toggle (${theme})`, async ({
@@ -58,6 +65,25 @@ for (const theme of ['light', 'dark'] as const) {
 
     await page.getByRole('tab', { name: 'Reproducibility' }).click();
     await expect(page.getByRole('button', { name: 'Export R script' })).toBeEnabled();
+    await page.screenshot({ path: `${OUT}/cb-reproducibility-${theme}.png`, fullPage: true });
+    if (theme === 'light' && existsSync(PY)) {
+      // The Python bundle downloaded from the real app runs and matches the app's numbers.
+      const [dl] = await Promise.all([
+        page.waitForEvent('download'),
+        page.getByRole('button', { name: 'Export Python script' }).click(),
+      ]);
+      expect(dl.suggestedFilename()).toMatch(/-Python-export\.zip$/);
+      const dir = mkdtempSync(join(tmpdir(), 'sem-e2e-py-'));
+      await dl.saveAs(join(dir, 'bundle.zip'));
+      execFileSync('unzip', ['-q', 'bundle.zip'], { cwd: dir });
+      const folder = readdirSync(dir).find((f) => f !== 'bundle.zip')!;
+      const out = execFileSync(PY, ['-I', 'run_analysis.py'], {
+        cwd: join(dir, folder),
+        encoding: 'utf8',
+        timeout: 120_000,
+      });
+      expect(out).toMatch(/Check against the app: \d+ numbers, largest difference .* -> OK/);
+    }
 
     // Modeler overlay with the scale toggle
     await page.getByRole('link', { name: 'Modeler', exact: true }).click();

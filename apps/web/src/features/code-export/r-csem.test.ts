@@ -220,5 +220,86 @@ describe.skipIf(!rWorks())(
       },
       300_000,
     );
+
+    it('IPMA (construct and indicator level, one reverse-scored indicator)', async () => {
+      const raw = JSON.parse(fixture('tam-mediation', 'model.json')) as {
+        indicators: Array<{ id: string; reverseScored?: boolean }>;
+      };
+      // exercise the reverse-scoring path: the CSV then holds min + max − x for this column
+      raw.indicators.find((i) => i.id === 'i_peou1')!.reverseScored = true;
+      const model = SemModel.parse(raw);
+      const ds = await createDataset(fixture('tam-mediation', 'data.csv'), {
+        name: 'tam',
+        source: { kind: 'file', fileName: 'data.csv' },
+      });
+      if (isDatasetError(ds)) throw new Error(ds.error.message);
+      const data = buildAnalysisData(model, ds, 'listwise');
+      if ('error' in data) throw new Error(data.error.message);
+      const analysis: AnalysisConfiguration = {
+        method: 'pls-sem',
+        engine: 'r-csem',
+        estimator: 'pls-pm',
+        missingData: 'listwise',
+        ipma: { targetConstructId: 'c_bi' },
+        pls: { innerWeighting: 'path', maxIterations: 300, tolerance: 1e-7 },
+      };
+      const outcome = await estimate({
+        model,
+        analysis: { ...analysis, engine: 'browser' },
+        data: {
+          columns: data.columns,
+          rows: data.rows as number[][],
+          nRows: data.nRows,
+          nDropped: data.nDropped,
+        },
+      });
+      if (!outcome.ok) throw new Error(outcome.error.message);
+      const ipma = outcome.result.ipma!;
+      expect(ipma.constructs.map((c) => c.predecessor).sort()).toEqual(['direct', 'direct']);
+
+      const dir = mkdtempSync(join(tmpdir(), 'sem-export-ipma-'));
+      writeFileSync(join(dir, 'analysis-data.csv'), analysisCsv(data));
+      const script = exportCsemScript({
+        model,
+        analysis,
+        projectName: 'ipma export test',
+        modelHash: 'a'.repeat(64),
+        dataFingerprint: ds.fingerprint,
+        dataColumns: data.columns,
+        nRows: data.nRows,
+        nUsed: data.nUsed,
+        transformations: [],
+        generatedAt: '2026-11-19T12:00:00Z',
+        appVersion: 'test',
+      });
+      expect(script).toContain('# Reverse-scored indicators');
+      const footer =
+        '\njsonlite::write_json(list(c = ipma_constructs, i = ipma_indicators), "ipma-out.json", digits = I(17), dataframe = "rows")\n';
+      writeFileSync(join(dir, 'export.R'), `grDevices::pdf(NULL)\n${script}${footer}`);
+      execFileSync(rscript, ['export.R'], { cwd: dir, timeout: 120_000, stdio: 'pipe' });
+      const out = JSON.parse(readFileSync(join(dir, 'ipma-out.json'), 'utf8')) as {
+        c: Array<{
+          construct: string;
+          importance: number;
+          performance: number;
+          predecessor: string;
+        }>;
+        i: Array<{ indicator: string; importance: number; performance: number }>;
+      };
+      const ids = identifiers(model);
+      expect(out.c).toHaveLength(ipma.constructs.length);
+      for (const c of ipma.constructs) {
+        const r = out.c.find((x) => x.construct === ids.get(c.constructId))!;
+        expect(r.predecessor).toBe(c.predecessor);
+        expect(Math.abs(r.importance - c.importance!)).toBeLessThan(1e-12);
+        expect(Math.abs(r.performance - c.performance!)).toBeLessThan(1e-12);
+      }
+      expect(out.i).toHaveLength(ipma.indicators!.length);
+      for (const i of ipma.indicators!) {
+        const r = out.i.find((x) => x.indicator === ids.get(i.indicatorId))!;
+        expect(Math.abs(r.importance - i.importance!)).toBeLessThan(1e-12);
+        expect(Math.abs(r.performance - i.performance!)).toBeLessThan(1e-12);
+      }
+    }, 150_000);
   },
 );

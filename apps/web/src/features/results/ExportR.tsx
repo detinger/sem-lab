@@ -1,33 +1,32 @@
 import { FileCode2 } from 'lucide-react';
+import { useState } from 'react';
 import { Button, Tooltip, useToast } from '@/components/ui';
 import { buildAnalysisData } from '@/domain/dataset/analysis-data';
 import type { Dataset } from '@/domain/dataset/types';
 import type { RunView } from '@/features/analysis/runs';
 import {
+  type ExportLanguage,
   LAVAAN_TESTED,
-  analysisCsv,
-  exportCsemScript,
-  exportLavaanScript,
+  buildExportBundle,
+  exportBlock,
 } from '@/features/code-export';
 import { useDataLab } from '@/features/data-lab/store';
 import { listDatasets, loadDataset } from '@/storage/datasets';
 
 export const APP_VERSION = '0.0.0';
 
-export function download(filename: string, text: string, type: string): void {
-  const url = URL.createObjectURL(new Blob([text], { type }));
+export function download(filename: string, content: string | Uint8Array, type: string): void {
+  const url = URL.createObjectURL(
+    new Blob([typeof content === 'string' ? content : (content as Uint8Array<ArrayBuffer>)], {
+      type,
+    }),
+  );
   const a = document.createElement('a');
   a.href = url;
   a.download = filename;
   a.click();
   window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
-
-const safe = (name: string): string =>
-  name
-    .replace(/[^\p{L}\p{N}._ -]+/gu, '')
-    .trim()
-    .replace(/\s+/g, '-') || 'sem-model';
 
 /** The dataset the run was computed from: the active one when it matches, else the stored copy. */
 async function datasetOf(run: RunView): Promise<Dataset | null> {
@@ -41,103 +40,121 @@ async function datasetOf(run: RunView): Promise<Dataset | null> {
   }
 }
 
-/** Why the CB export is unavailable for this run, or null when it is offered. */
+/** Why the R (lavaan) export is unavailable for this run, or null when it is offered. */
 export function cbExportBlock(run: RunView): string | null {
-  if (run.record.method !== 'cb-sem') return null;
-  const e = run.record.options.estimator;
-  if (e !== 'ML' && e !== 'MLR')
-    return `The lavaan export covers ML and MLR only; this run used ${e}.`;
-  if (run.model.constructs.some((c) => c.measurement !== 'reflective'))
-    return 'The lavaan export needs reflective constructs only; this model has composite constructs.';
-  return null;
+  return exportBlock('r', run.record.options, run.model);
 }
 
-export function ExportRButton({ run, projectName }: { run: RunView; projectName: string }) {
+/** The verified single-file Python engine, loaded only when a Python export is requested. */
+async function pythonEngineSource(): Promise<string> {
+  return (await import('../../../../../packages/python-engine/dist/semstudio_bundle.py?raw'))
+    .default;
+}
+
+function ExportButton({
+  run,
+  projectName,
+  language,
+}: {
+  run: RunView;
+  projectName: string;
+  language: ExportLanguage;
+}) {
   const { toast } = useToast();
-  const isCb = run.record.method === 'cb-sem';
+  const [busy, setBusy] = useState(false);
   const result = run.record.result;
-  const block = cbExportBlock(run);
+  const block = exportBlock(language, run.record.options, run.model);
+  const label = language === 'r' ? 'Export R script' : 'Export Python script';
 
   const onClick = async (): Promise<void> => {
     if (!result || block) return;
-    const ds = await datasetOf(run);
-    const data = ds
-      ? buildAnalysisData(
-          run.model,
-          ds,
-          run.record.options.missingData === 'fiml' ? 'fiml' : 'listwise',
-        )
-      : null;
-    if (!ds || !data || 'error' in data) {
-      toast({
-        title: 'The data of this run are not available in this browser',
-        description: 'Import the same data again, then export.',
-        variant: 'error',
-      });
-      return;
-    }
-    const common = {
-      model: run.model,
-      analysis: run.record.options,
-      projectName,
-      modelHash: run.modelHash,
-      dataFingerprint: run.dataFingerprint,
-      nRows: result.sample.nRows,
-      nUsed: result.sample.nUsed,
-      transformations: ds.transformations,
-      generatedAt: new Date().toISOString(),
-      appVersion: APP_VERSION,
-    };
-    let script: string;
+    setBusy(true);
     try {
-      script = isCb
-        ? exportLavaanScript(common)
-        : exportCsemScript({
-            ...common,
-            dataColumns: data.columns,
-            ...(result.bootstrap ? { chunkSize: result.bootstrap.chunkSize } : {}),
-          });
+      const ds = await datasetOf(run);
+      const data = ds
+        ? buildAnalysisData(
+            run.model,
+            ds,
+            run.record.options.missingData === 'fiml' ? 'fiml' : 'listwise',
+          )
+        : null;
+      if (!ds || !data || 'error' in data) {
+        toast({
+          title: 'The data of this run are not available in this browser',
+          description: 'Import the same data again, then export.',
+          variant: 'error',
+        });
+        return;
+      }
+      const bundle = await buildExportBundle({
+        language,
+        projectName,
+        model: run.model,
+        analysis: run.record.options,
+        result,
+        modelHash: run.modelHash,
+        dataFingerprint: run.dataFingerprint,
+        runId: run.runId,
+        runCreatedAt: run.createdAt,
+        data,
+        transformations: ds.transformations,
+        generatedAt: new Date().toISOString(),
+        appVersion: APP_VERSION,
+        ...(language === 'python' ? { pythonEngineSource: await pythonEngineSource() } : {}),
+      });
+      download(bundle.fileName, bundle.bytes, 'application/zip');
+      toast({
+        title: `${language === 'r' ? 'R' : 'Python'} export downloaded`,
+        description: 'Unzip it and follow README.md. The folder contains your data.',
+        variant: 'success',
+      });
     } catch (e) {
       toast({
-        title: 'The R script could not be written',
+        title: 'The export could not be written',
         ...(e instanceof Error ? { description: e.message } : {}),
         variant: 'error',
       });
-      return;
+    } finally {
+      setBusy(false);
     }
-    download(
-      `${safe(projectName)}-${isCb ? 'lavaan' : 'cSEM'}.R`,
-      script,
-      'text/plain;charset=utf-8',
-    );
-    download('analysis-data.csv', analysisCsv(data), 'text/csv;charset=utf-8');
-    toast({
-      title: 'R script and data file downloaded',
-      description: 'Keep both files in the same folder.',
-      variant: 'success',
-    });
   };
 
   const button = (
     <Button
       icon={<FileCode2 size={16} />}
-      disabled={Boolean(block) || !result}
+      disabled={Boolean(block) || !result || busy}
       onClick={() => void onClick()}
     >
-      Export R script
+      {label}
     </Button>
   );
   return (
-    <div className="rs-export">
+    <>
       {block ? <Tooltip content={block}>{button}</Tooltip> : button}
       {block ? <p className="rs-note">{block}</p> : null}
+    </>
+  );
+}
+
+export function ExportRButton({ run, projectName }: { run: RunView; projectName: string }) {
+  const isCb = run.record.method === 'cb-sem';
+  return (
+    <div className="rs-export">
+      <div className="rs-export-buttons">
+        <ExportButton run={run} projectName={projectName} language="r" />
+        <ExportButton run={run} projectName={projectName} language="python" />
+      </div>
       {run.staleness !== 'current' ? (
         <p className="rs-note">Exports the model and data of this historical run.</p>
       ) : null}
       <p className="rs-note">
+        Each export is a ZIP with the script, the exact data analysed, the model, this result and a
+        reproducibility manifest (versions, settings and checksums).{' '}
         {isCb
-          ? `The script and data file reproduce these estimates, standard errors and fit indices with R ${LAVAAN_TESTED.R} and lavaan ${LAVAAN_TESTED.lavaan} (verified by an automated test; the last digits, about 1e-6, can differ).`
-          : 'The script and data file reproduce these estimates and bootstrap intervals exactly with R 4.6.2 and cSEM 0.7.1 (verified by an automated test).'}
+          ? `The R script reproduces these numbers with R ${LAVAAN_TESTED.R} and lavaan ${LAVAAN_TESTED.lavaan} to about 1e-6.`
+          : 'The R script reproduces these numbers exactly with R 4.6.2 and cSEM 0.7.1.'}{' '}
+        The Python script runs SEM Studio’s own engine and checks every number against this result.
+        Both are verified by automated tests.
       </p>
     </div>
   );
