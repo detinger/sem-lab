@@ -104,6 +104,7 @@ export function SemCanvas({
             : n.unmapped
               ? 'not mapped to a data column'
               : `column ${model.indicators.find((i) => i.id === n.id)?.column ?? ''}`;
+        const pinned = !!layout.nodes[n.id]?.pinned;
         return {
           id: n.id,
           type: n.kind,
@@ -111,10 +112,12 @@ export function SemCanvas({
           width: n.rect.width,
           height: n.rect.height,
           selected: selected.has(n.id),
-          data: { scene: n, description, focused: focusedIds?.has(n.id) ?? false },
+          // Pinned nodes are locked in place: dragging them does nothing.
+          draggable: !pinned,
+          data: { scene: n, description, focused: focusedIds?.has(n.id) ?? false, pinned },
         };
       }),
-    [scene, roles, model, selected, focusedIds],
+    [scene, roles, model, selected, focusedIds, layout],
   );
 
   const edges = useMemo<SemFlowEdge[]>(
@@ -138,6 +141,8 @@ export function SemCanvas({
       const moving = new Set(
         s.selection.includes(node.id) ? s.selection.filter((id) => s.layout.nodes[id]) : [node.id],
       );
+      // Pinned constructs stay put even when dragged as part of a multi-selection.
+      for (const id of [...moving]) if (s.layout.nodes[id]?.pinned) moving.delete(id);
       // Indicators follow their construct unless they were selected themselves.
       for (const c of s.model.constructs)
         if (moving.has(c.id)) c.indicatorIds.forEach((i) => moving.add(i));
@@ -330,6 +335,7 @@ export function SemCanvas({
         onEdgesChange={applySelectionChanges}
         connectionMode={ConnectionMode.Loose}
         connectionRadius={36}
+        zoomOnDoubleClick={false}
         deleteKeyCode={null}
         selectionKeyCode="Shift"
         multiSelectionKeyCode={['Meta', 'Control']}

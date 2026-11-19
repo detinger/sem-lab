@@ -11,6 +11,8 @@ import {
   ArrowUp,
   ChevronsDownUp,
   ChevronsUpDown,
+  PanelRightClose,
+  PanelRightOpen,
   Pin,
   PinOff,
   Plus,
@@ -30,6 +32,7 @@ import {
 } from '@/components/ui';
 import { constructRoles } from '@/domain/graph';
 import * as ops from '@/domain/model-ops';
+import { ResizeHandle } from './ResizeHandle';
 import { useModeler } from './store';
 
 const s = useModeler.getState;
@@ -582,11 +585,29 @@ function MeasurementPanel({ model, id }: { model: SemModel; id: string }) {
 
 // ---------------------------------------------------------------- inspector
 
-export function Inspector() {
+export interface InspectorProps {
+  collapsed: boolean;
+  onToggle: () => void;
+  /** px the pane should grow (positive) or shrink (negative) as the divider is dragged */
+  onResize: (deltaX: number) => void;
+}
+
+export function Inspector({ collapsed, onToggle, onResize }: InspectorProps) {
   const model = useModeler((st) => st.model);
   const selection = useModeler((st) => st.selection);
   const projectName = useModeler((st) => st.projectName);
   const lastError = useModeler((st) => st.lastError);
+
+  if (collapsed) {
+    return (
+      <aside className="modeler-rail" data-side="right" aria-label="Inspector (collapsed)">
+        <IconButton size="small" aria-label="Show inspector" onClick={onToggle}>
+          <PanelRightOpen size={16} />
+        </IconButton>
+        <span className="modeler-rail__label">Inspector</span>
+      </aside>
+    );
+  }
 
   let title = 'Model';
   let body;
@@ -645,6 +666,9 @@ export function Inspector() {
     <aside className="modeler-inspector" aria-label="Inspector">
       <header className="modeler-inspector-header">
         <h2>{title}</h2>
+        <IconButton size="small" aria-label="Hide inspector" onClick={onToggle}>
+          <PanelRightClose size={16} />
+        </IconButton>
       </header>
       <div className="modeler-inspector-body">
         {lastError && (
@@ -654,6 +678,7 @@ export function Inspector() {
         )}
         {body}
       </div>
+      <ResizeHandle side="left" ariaLabel="Resize inspector pane" onResize={onResize} />
     </aside>
   );
 }

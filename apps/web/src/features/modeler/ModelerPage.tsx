@@ -1,7 +1,7 @@
 import { ReactFlowProvider, useReactFlow } from '@xyflow/react';
-import { CircleDot, FolderOpen, PanelRightClose, PanelRightOpen } from 'lucide-react';
+import { CircleDot, FolderOpen } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Button, Card, Dialog, IconButton, Kbd, SegmentedControl, useToast } from '@/components/ui';
+import { Button, Card, Dialog, Kbd, SegmentedControl, useToast } from '@/components/ui';
 import { useProjectRuns } from '@/features/analysis/runs';
 import { useReadiness } from '@/features/data-lab/readiness';
 import {
@@ -14,6 +14,7 @@ import { SemCanvas } from './canvas/SemCanvas';
 import { CHECK_PANEL_ID, CheckPanel } from './CheckPanel';
 import { sceneToSvg, svgToPng } from './export/svg-export';
 import { useFocusRequest } from './focus';
+import { IndicatorPalette } from './IndicatorPalette';
 import { Inspector } from './Inspector';
 import { computeAutoLayout } from './layout/auto-layout';
 import { ModelerToolbar } from './ModelerToolbar';
@@ -116,7 +117,10 @@ function StartScreen({ onOpenFile, onBlank }: { onOpenFile: () => void; onBlank:
 
 function ModelerWorkspace() {
   const [connectKind, setConnectKind] = useState<'path' | 'covariance'>('path');
+  const [paletteOpen, setPaletteOpen] = useState(true);
+  const [paletteWidth, setPaletteWidth] = useState(300);
   const [inspectorOpen, setInspectorOpen] = useState(true);
+  const [inspectorWidth, setInspectorWidth] = useState(420);
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
   const [newOpen, setNewOpen] = useState(false);
   const [checkOpen, setCheckOpen] = useState(false);
@@ -135,8 +139,6 @@ function ModelerWorkspace() {
   const isEmpty = useModeler(
     (s) => s.model.constructs.length === 0 && s.model.indicators.length === 0,
   );
-  const projectName = useModeler((s) => s.projectName);
-  const revision = useModeler((s) => s.revision);
   const save = useAutosave();
   const focusRequest = useFocusRequest((s) => s.request);
   const focusedIds = useMemo(
@@ -209,41 +211,30 @@ function ModelerWorkspace() {
     }
   };
 
+  // Pane widths resize by dragging the divider: the palette's right edge grows with rightward
+  // movement; the inspector's left edge grows with leftward movement (hence `- dx`).
+  const resizePalette = (dx: number): void =>
+    setPaletteWidth((w) => Math.min(520, Math.max(200, w + dx)));
+  const resizeInspector = (dx: number): void =>
+    setInspectorWidth((w) => Math.min(640, Math.max(300, w - dx)));
+
+  const RAIL = '44px';
+  const bodyColumns = [
+    showStart ? null : paletteOpen ? `${paletteWidth}px` : RAIL,
+    'minmax(0, 1fr)',
+    inspectorOpen ? `${inspectorWidth}px` : RAIL,
+  ]
+    .filter(Boolean)
+    .join(' ');
+
   return (
     <div
       className="modeler"
+      data-palette={paletteOpen && !showStart ? 'open' : 'closed'}
       data-inspector={inspectorOpen ? 'open' : 'closed'}
       data-check={checkOpen ? 'open' : 'closed'}
     >
-      <div className="modeler-bar">
-        <h1 className="modeler-heading">Modeler</h1>
-        <span className="modeler-title" title={projectName}>
-          {projectName}
-        </span>
-        <span className="modeler-save" aria-live="polite">
-          {save.status === 'saving' && 'Saving…'}
-          {save.status === 'saved' && revision > 0 && 'Saved in this browser'}
-          {save.status === 'error' && (
-            <span className="modeler-save-error">Not saved: {save.message}</span>
-          )}
-        </span>
-        <IconButton
-          size="small"
-          aria-label={inspectorOpen ? 'Hide inspector' : 'Show inspector'}
-          aria-expanded={inspectorOpen}
-          onClick={() => setInspectorOpen((o) => !o)}
-        >
-          {inspectorOpen ? <PanelRightClose size={16} /> : <PanelRightOpen size={16} />}
-        </IconButton>
-        {focusRequest ? (
-          <span className="modeler-focus" role="status">
-            {focusRequest.reason}
-            <Button size="small" onClick={() => useFocusRequest.getState().clear()}>
-              Clear focus
-            </Button>
-          </span>
-        ) : null}
-      </div>
+      <h1 className="sr-only">Modeler</h1>
       <ModelerToolbar
         connectKind={connectKind}
         onConnectKind={setConnectKind}
@@ -259,6 +250,23 @@ function ModelerWorkspace() {
         onOverlay={setOverlayMode}
         overlayAvailable={currentResult !== undefined}
       />
+      {save.status === 'error' || focusRequest ? (
+        <div className="modeler-statusrow">
+          {save.status === 'error' ? (
+            <span className="modeler-save-error" role="status">
+              Not saved: {save.message}
+            </span>
+          ) : null}
+          {focusRequest ? (
+            <span className="modeler-focus" role="status">
+              {focusRequest.reason}
+              <Button size="small" onClick={() => useFocusRequest.getState().clear()}>
+                Clear focus
+              </Button>
+            </span>
+          ) : null}
+        </div>
+      ) : null}
       {overlay ? (
         <div className="modeler-legend" role="note" aria-label="Overlay legend">
           {hasBothScales(overlay.result) && overlay.mode === 'estimate' ? (
@@ -277,7 +285,14 @@ function ModelerWorkspace() {
         </div>
       ) : null}
       {checkOpen && <CheckPanel readiness={readiness} onClose={() => setCheckOpen(false)} />}
-      <div className="modeler-body">
+      <div className="modeler-body" style={{ gridTemplateColumns: bodyColumns }}>
+        {!showStart && (
+          <IndicatorPalette
+            collapsed={!paletteOpen}
+            onToggle={() => setPaletteOpen((o) => !o)}
+            onResize={resizePalette}
+          />
+        )}
         <div className="modeler-canvas-wrap">
           {showStart ? (
             <StartScreen onOpenFile={openFile} onBlank={() => setBlank(true)} />
@@ -292,7 +307,11 @@ function ModelerWorkspace() {
             />
           )}
         </div>
-        {inspectorOpen && <Inspector />}
+        <Inspector
+          collapsed={!inspectorOpen}
+          onToggle={() => setInspectorOpen((o) => !o)}
+          onResize={resizeInspector}
+        />
       </div>
       <input
         ref={fileInput}

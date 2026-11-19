@@ -90,6 +90,13 @@
   stroke: var(--sem-focus);
   stroke-width: 2.5px;
 }
+/* A data column is being dragged over this construct and can be dropped as an indicator. */
+.sem-construct[data-drop-active] .sem-construct-shape :is(ellipse, rect) {
+  fill: var(--primary-soft);
+  stroke: var(--primary);
+  stroke-width: 2.5px;
+  stroke-dasharray: 5 3;
+}
 .sem-construct-label {
   position: relative;
   display: flex;
@@ -110,6 +117,43 @@
   line-height: 13px;
   color: var(--text-subtle);
   letter-spacing: 0.02em;
+}
+/* Pinned construct: a small pin badge in the top-right corner; the node is locked from dragging. */
+.sem-construct[data-pinned] {
+  cursor: default;
+}
+.sem-construct-pin {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--text-on-primary);
+  box-shadow: var(--shadow-sm);
+  pointer-events: none;
+}
+
+/* Inline name editor (double-click a construct). Overrides the label's pointer-events: none. */
+.sem-construct-input {
+  width: min(150px, 100%);
+  padding: 2px 6px;
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 650;
+  text-align: center;
+  pointer-events: auto;
+}
+.sem-construct-input:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
 }
 
 /* ---------------------------------------------------------------- indicators */

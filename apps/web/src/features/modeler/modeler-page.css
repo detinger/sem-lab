@@ -1,15 +1,12 @@
-/* Modeler page composition (STYLE.md §5: toolbar → canvas + 420px inspector). */
+/* Modeler page composition (STYLE.md §5: toolbar → canvas + resizable side panes).
+   A flex column: toolbar and any status/legend/check rows size to content; the body fills. */
 
 .modeler {
-  display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr);
+  display: flex;
+  flex-direction: column;
   height: 100%;
   min-height: 0;
   background: var(--bg);
-}
-
-.modeler[data-check='open'] {
-  grid-template-rows: auto auto auto minmax(0, 1fr);
 }
 
 /* "Check model" panel: sits between toolbar and canvas, scrolls on its own. */
@@ -47,38 +44,18 @@
   color: var(--text-subtle);
 }
 
-.modeler-bar {
+/* Slim row under the toolbar, shown only when there is a save error or an active focus. */
+.modeler-statusrow {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 8px 16px 0;
+  gap: 16px;
+  padding: 0 16px 8px;
   min-width: 0;
-}
-.modeler-heading {
-  margin: 0;
   font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--primary);
-}
-.modeler-title {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 650;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.modeler-save {
-  flex: 1;
-  font-size: 12px;
-  color: var(--text-subtle);
-  white-space: nowrap;
 }
 .modeler-save-error {
   color: var(--error);
+  font-weight: 600;
 }
 
 .modeler-toolbar {
@@ -89,14 +66,14 @@
   flex: 1;
 }
 
+/* Body columns: optional left palette · canvas · optional inspector. The exact column widths are
+   set inline by ModelerPage (so the dividers can resize them and the rails shrink to 44px). */
 .modeler-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 420px;
+  grid-template-columns: minmax(0, 1fr);
+  flex: 1 1 auto;
   min-height: 0;
   border-top: 1px solid var(--border);
-}
-.modeler[data-inspector='closed'] .modeler-body {
-  grid-template-columns: minmax(0, 1fr);
 }
 .modeler-canvas-wrap {
   position: relative;
@@ -105,8 +82,176 @@
   background: var(--canvas-bg);
 }
 
+/* ---------------------------------------------------------------- palette (data indicators) */
+.modeler-palette {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  min-height: 0;
+  border-right: 1px solid var(--border);
+  background: var(--bg-elevated);
+}
+.modeler-palette-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.modeler-palette-header h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 650;
+}
+.modeler-palette-body {
+  overflow-y: auto;
+  padding: 14px 16px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 13px;
+}
+.modeler-palette-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.modeler-palette-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  appearance: none;
+  cursor: grab;
+  user-select: none;
+}
+.modeler-palette-chip:disabled {
+  opacity: 1;
+}
+.modeler-palette-chip:hover {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+.modeler-palette-chip[data-selected] {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+  box-shadow: inset 2px 0 0 var(--primary);
+}
+.modeler-palette-chip:active {
+  cursor: grabbing;
+}
+.modeler-palette-chip[data-used] {
+  cursor: default;
+  color: var(--text-subtle);
+  background: var(--bg-subtle);
+}
+.modeler-palette-chip[data-used]:hover {
+  border-color: var(--border);
+  background: var(--bg-subtle);
+}
+.modeler-palette-grip {
+  flex: none;
+  color: var(--text-subtle);
+}
+.modeler-palette-name {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Footer: set one response scale (Likert min/max) for every indicator at once. */
+.modeler-palette-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-elevated);
+}
+.modeler-palette-footer__label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.modeler-palette-scale {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.modeler-palette-scale > .ui-input {
+  width: 72px;
+}
+
+/* ---------------------------------------------------------------- collapsed rail + resizer */
+/* A collapsed pane shrinks to this rail: just the expand button and a vertical label. */
+.modeler-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 4px;
+  background: var(--bg-elevated);
+  overflow: hidden;
+}
+.modeler-rail[data-side='left'] {
+  border-right: 1px solid var(--border);
+}
+.modeler-rail[data-side='right'] {
+  border-left: 1px solid var(--border);
+}
+.modeler-rail__label {
+  writing-mode: vertical-rl;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Drag (or arrow-key) this edge to resize the pane. It straddles the pane's inner border. */
+.modeler-resize {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  z-index: 2;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  appearance: none;
+  cursor: col-resize;
+  touch-action: none;
+}
+.modeler-resize[data-side='right'] {
+  right: -4px;
+}
+.modeler-resize[data-side='left'] {
+  left: -4px;
+}
+.modeler-resize:hover,
+.modeler-resize:focus-visible {
+  background: color-mix(in srgb, var(--primary) 30%, transparent);
+  outline: none;
+}
+
 /* ---------------------------------------------------------------- inspector */
 .modeler-inspector {
+  position: relative;
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
   min-height: 0;
@@ -114,6 +259,10 @@
   background: var(--bg-elevated);
 }
 .modeler-inspector-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
   padding: 12px 16px;
   border-bottom: 1px solid var(--border);
 }
@@ -324,16 +473,25 @@
 }
 
 /* ---------------------------------------------------------------- responsive (STYLE §5) */
-@media (max-width: 1100px) {
-  .modeler-body {
-    grid-template-columns: minmax(0, 1fr) 340px;
-  }
-}
+/* Narrow: stack palette / canvas / inspector vertically (overriding the inline grid columns),
+   with the canvas taking the slack. */
 @media (max-width: 820px) {
-  .modeler-body,
-  .modeler[data-inspector='closed'] .modeler-body {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: minmax(320px, 1fr) minmax(280px, 45vh);
+  .modeler-body {
+    display: flex;
+    flex-direction: column;
+  }
+  .modeler-canvas-wrap {
+    flex: 1 1 auto;
+    min-height: 320px;
+  }
+  .modeler-palette,
+  .modeler-inspector {
+    flex: 0 0 auto;
+    max-height: 45vh;
+  }
+  .modeler-palette {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
   }
   .modeler-inspector {
     border-left: 0;
