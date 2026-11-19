@@ -24,6 +24,10 @@ export interface ReportTable {
   rows: Array<Record<string, string>>;
   /** footnotes: method, definitions, missing-value reasons */
   notes: string[];
+  /** cells to render bold on screen, keyed `${rowIndex}:${columnKey}` (e.g. a matrix diagonal) */
+  bold?: ReadonlySet<string>;
+  /** cells to flag on screen (red), keyed `${rowIndex}:${columnKey}` (e.g. a close cross-loading) */
+  warn?: ReadonlySet<string>;
 }
 
 export function escapeHtml(s: string): string {

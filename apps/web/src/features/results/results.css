@@ -114,6 +114,11 @@
   background: var(--bg-subtle);
   z-index: 2;
 }
+/* A cross-loading flagged as a possible discriminant-validity concern. */
+.rs-cell-warn {
+  color: var(--error);
+  font-weight: 600;
+}
 .rs-notes {
   margin: 0;
   color: var(--text-subtle);

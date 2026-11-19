@@ -97,11 +97,21 @@ export function ResultTable({ table }: { table: ReportTable }) {
         <tbody>
           {table.rows.map((r, i) => (
             <tr key={i}>
-              {table.columns.map((c) => (
-                <Td key={c.key} numeric={c.numeric}>
-                  {r[c.key] ?? ''}
-                </Td>
-              ))}
+              {table.columns.map((c) => {
+                const cell = r[c.key] ?? '';
+                const key = `${i}:${c.key}`;
+                if (table.warn?.has(key))
+                  return (
+                    <Td key={c.key} numeric={c.numeric}>
+                      <span className="rs-cell-warn">{cell}</span>
+                    </Td>
+                  );
+                return (
+                  <Td key={c.key} numeric={c.numeric}>
+                    {table.bold?.has(key) ? <strong>{cell}</strong> : cell}
+                  </Td>
+                );
+              })}
             </tr>
           ))}
         </tbody>

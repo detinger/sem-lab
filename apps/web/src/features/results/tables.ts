@@ -317,6 +317,10 @@ export function reliabilityTable(ctx: TableContext): ReportTable {
   };
 }
 
+/** Discriminant-validity margin for cross-loadings: own-construct loading should exceed any
+ *  cross-loading by at least this much (Gefen & Straub 2005). */
+const CROSS_LOADING_MARGIN = 0.1;
+
 /** A matrix (HTMT, Fornell–Larcker, …) as a lower-triangular table with construct names. */
 export function matrixTable(
   ctx: TableContext,
@@ -325,14 +329,59 @@ export function matrixTable(
 ): ReportTable | null {
   const m = ctx.result.matrices.find((x) => x.id === matrixId);
   if (!m) return null;
+  // Emphasise the cells readers look for: the Fornell–Larcker diagonal (√AVE), and in
+  // cross-loadings each indicator's loading on its own construct.
+  const constructOf = new Map<string, string>();
+  if (matrixId === 'cross-loadings')
+    for (const c of ctx.model.constructs) for (const iid of c.indicatorIds) constructOf.set(iid, c.id);
+  const emphatic = (rid: string, cid: string): boolean =>
+    matrixId === 'fornell-larcker'
+      ? rid === cid
+      : matrixId === 'cross-loadings'
+        ? constructOf.get(rid) === cid
+        : false;
+  const bold = new Set<string>();
   const rows = m.rowIds.map((rid, i) => {
     const row: Record<string, string> = { r: nameOf(ctx.model, rid) };
     m.colIds.forEach((cid, j) => {
-      row[cid] =
-        triangle === 'lower' && j > i ? '' : formatNumber(m.values[i]?.[j] ?? null, ctx.style);
+      const blank = triangle === 'lower' && j > i;
+      row[cid] = blank ? '' : formatNumber(m.values[i]?.[j] ?? null, ctx.style);
+      if (!blank && row[cid] !== '' && emphatic(rid, cid)) bold.add(`${i}:${cid}`);
     });
     return row;
   });
+  // Discriminant-validity flags (both by magnitude, so a sign flip cannot hide a problem):
+  //  - cross-loadings: an indicator should load on its own construct at least CROSS_LOADING_MARGIN
+  //    higher than on any other (Gefen & Straub 2005);
+  //  - Fornell–Larcker: a construct's √AVE (the bold diagonal) must exceed its correlation with
+  //    every other construct — a strict comparison, no margin (Fornell & Larcker 1981).
+  const warn = new Set<string>();
+  if (matrixId === 'cross-loadings') {
+    m.rowIds.forEach((rid, i) => {
+      const ownCid = constructOf.get(rid);
+      if (ownCid === undefined) return;
+      const own = m.values[i]?.[m.colIds.indexOf(ownCid)];
+      if (own === null || own === undefined) return;
+      m.colIds.forEach((cid, j) => {
+        if (cid === ownCid) return;
+        const other = m.values[i]?.[j];
+        if (other === null || other === undefined) return;
+        if (Math.abs(own) - Math.abs(other) < CROSS_LOADING_MARGIN) warn.add(`${i}:${cid}`);
+      });
+    });
+  } else if (matrixId === 'fornell-larcker') {
+    m.rowIds.forEach((_rid, i) => {
+      const diagI = m.values[i]?.[i];
+      m.colIds.forEach((cid, j) => {
+        if (j >= i) return; // only the shown lower off-diagonal correlations
+        const corr = m.values[i]?.[j];
+        const diagJ = m.values[j]?.[j];
+        if (corr === null || corr === undefined) return;
+        if (diagI === null || diagI === undefined || diagJ === null || diagJ === undefined) return;
+        if (Math.abs(corr) >= Math.min(diagI, diagJ)) warn.add(`${i}:${cid}`);
+      });
+    });
+  }
   return {
     id: m.id,
     title: m.title,
@@ -349,8 +398,20 @@ export function matrixTable(
     rows,
     notes: [
       `${methodLine(ctx)}. ${m.definition}`,
+      ...(warn.size > 0 && matrixId === 'cross-loadings'
+        ? [
+            `Red cross-loadings come within ${CROSS_LOADING_MARGIN.toFixed(1)} of the indicator's own-construct loading (Gefen & Straub 2005) — a possible discriminant-validity concern; corroborate with HTMT.`,
+          ]
+        : []),
+      ...(warn.size > 0 && matrixId === 'fornell-larcker'
+        ? [
+            `Red correlations equal or exceed a construct's √AVE (bold diagonal), so the Fornell–Larcker criterion is not met for that pair (Fornell & Larcker 1981); corroborate with HTMT.`,
+          ]
+        : []),
       ...(m.missing ? [`– ${MISSING_REASON_TEXT[m.missing]}.`] : []),
     ],
+    ...(bold.size > 0 ? { bold } : {}),
+    ...(warn.size > 0 ? { warn } : {}),
   };
 }
 
