@@ -314,12 +314,12 @@ Keep the canvas neutral, never a gradient, and use a faint 16px dot grid at low 
 
 ### Observed indicator node
 
-- Default `118 × 34px` compact rectangle, 6px radius, 1px border, elevated/sunken neutral contrast.
+- Default `80 × 34px` compact rectangle (widens to fit longer names), 6px radius, 1px border, elevated/sunken neutral contrast.
 - Indicator code such as `PU1`, `SYSQ_2`: 12px / 600; optional descriptive label in popover/inspector.
 - Optional missing-column warning icon or status dot with accessible tooltip.
 - Selected indicator: primary-soft fill and primary border.
 - Stable handles on correct side facing associated construct; no visible spaghetti of connections.
-- Dense mode `96 × 30px` for very large diagrams; accessibility and print legibility take priority.
+- Dense mode `64 × 30px` for very large diagrams; accessibility and print legibility take priority.
 - Group indicators around their latent construct with uniform spacing and no collisions.
 
 ### Scientific path semantics

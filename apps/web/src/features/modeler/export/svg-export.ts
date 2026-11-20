@@ -69,7 +69,7 @@ export function sceneToSvg(scene: Scene, opts: SvgExportOptions): string {
     if (e.pill === undefined) continue;
     const { width: pw, height: ph } = pillSize(e.pill);
     out.push(
-      `<g data-pill="${escapeXml(e.id)}"><rect x="${f(e.labelAt.x - pw / 2)}" y="${f(e.labelAt.y - ph / 2)}" width="${f(pw)}" height="${f(ph)}" rx="4" fill="#ffffff" stroke="${MEASURE}" stroke-width="0.75"/>`,
+      `<g data-pill="${escapeXml(e.id)}"><rect x="${f(e.labelAt.x - pw / 2)}" y="${f(e.labelAt.y - ph / 2)}" width="${f(pw)}" height="${f(ph)}" rx="4" fill="#ffffff"/>`,
       `<text x="${f(e.labelAt.x)}" y="${f(e.labelAt.y + 4)}" text-anchor="middle" font-size="11" fill="${INK}" style="font-variant-numeric:tabular-nums">${escapeXml(e.pill)}</text></g>`,
     );
   }

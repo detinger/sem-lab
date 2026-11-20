@@ -17,8 +17,8 @@ const r = (x: number, y: number, width: number, height: number): Rect => ({ x, y
 describe('sizing', () => {
   it('uses the STYLE minimums for short names', () => {
     expect(constructSize('PU')).toEqual({ width: 136, height: 72 });
-    expect(indicatorSize('PU1')).toEqual({ width: 118, height: 34 });
-    expect(indicatorSize('PU1', 'dense')).toEqual({ width: 96, height: 30 });
+    expect(indicatorSize('PU1')).toEqual({ width: 80, height: 34 });
+    expect(indicatorSize('PU1', 'dense')).toEqual({ width: 64, height: 30 });
   });
   it('grows for long names instead of clipping, and wraps at most into 3 lines', () => {
     const s = constructSize('Behavioral Intention to Use the Information System Daily');

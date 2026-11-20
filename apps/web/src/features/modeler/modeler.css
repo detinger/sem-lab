@@ -308,11 +308,10 @@
   }
 }
 
-/* Results overlay: coefficient pills on edges, R² capsule under endogenous constructs (STYLE §8). */
+/* Results overlay: coefficient labels on edges (no outline; the fill only masks the line), R² inside constructs. */
 .sem-pill rect {
-  fill: var(--sem-node-bg);
-  stroke: var(--border-strong);
-  stroke-width: 1;
+  fill: var(--canvas-bg);
+  stroke: none;
 }
 .sem-pill text {
   fill: var(--sem-label);

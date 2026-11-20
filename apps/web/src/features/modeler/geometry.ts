@@ -23,8 +23,8 @@ export type NodeShape = 'ellipse' | 'rounded-rect' | 'rect';
 
 export const CONSTRUCT_MIN: Size = { width: 136, height: 72 };
 export const INDICATOR_SIZE: Record<'default' | 'dense', Size> = {
-  default: { width: 118, height: 34 },
-  dense: { width: 96, height: 30 },
+  default: { width: 80, height: 34 },
+  dense: { width: 64, height: 30 },
 };
 
 /**
