@@ -32,6 +32,7 @@ import {
 } from '@/components/ui';
 import { constructRoles } from '@/domain/graph';
 import * as ops from '@/domain/model-ops';
+import { singleIndicatorConstructs } from './observed';
 import { ResizeHandle } from './ResizeHandle';
 import { useModeler } from './store';
 
@@ -89,6 +90,44 @@ function apply(fn: (m: SemModel) => SemModel): string | null {
 }
 
 // ---------------------------------------------------------------- model tree (nothing selected)
+
+/**
+ * Model-level switch for path-analysis notation: every single-indicator construct drawn as one
+ * observed-variable box. Shown only when the model has such constructs.
+ */
+function ObservedVariablesToggle({ model }: { model: SemModel }) {
+  const observedIds = useModeler((st) => st.layout.settings.observedConstructIds) ?? [];
+  const single = singleIndicatorConstructs(model);
+  if (single.length === 0) return null;
+  const all = single.every((id) => observedIds.includes(id));
+  const everyConstruct = single.length === model.constructs.length;
+  return (
+    <div className="inspector-section">
+      <Checkbox
+        label={
+          everyConstruct
+            ? 'Path-analysis view: draw variables as boxes'
+            : `Draw single-indicator constructs as boxes (${single.length})`
+        }
+        checked={all}
+        onChange={(e) =>
+          s().setLayoutSettings({
+            observedConstructIds: e.target.checked
+              ? [...new Set([...observedIds, ...single])]
+              : observedIds.filter((id) => !single.includes(id)),
+          })
+        }
+      />
+      <p className="inspector-hint">
+        {everyConstruct
+          ? 'Every construct has one indicator, so this is a path model of observed variables. '
+          : ''}
+        Observed variables are drawn as rectangles (latent variables are ovals). Only the diagram
+        changes; the model and its estimates stay the same.
+      </p>
+    </div>
+  );
+}
 
 function ModelTree({ model }: { model: SemModel }) {
   const roles = constructRoles(model);
@@ -154,6 +193,9 @@ function ConstructPanel({ model, c }: { model: SemModel; c: SemConstruct }) {
   const layout = useModeler((st) => st.layout);
   const pinned = !!layout.nodes[c.id]?.pinned;
   const collapsed = layout.settings.collapsedConstructIds.includes(c.id);
+  const single = singleIndicatorConstructs(model).includes(c.id);
+  const observedIds = layout.settings.observedConstructIds ?? [];
+  const observed = single && observedIds.includes(c.id);
   const [newIndicator, setNewIndicator] = useState('');
   const incoming = model.relationships.filter(
     (r) => r.kind === 'structural' && r.targetId === c.id,
@@ -280,10 +322,29 @@ function ConstructPanel({ model, c }: { model: SemModel; c: SemConstruct }) {
           Add indicator
         </Button>
       </div>
-      {c.measurement === 'reflective' && c.indicatorIds.length > 0 && (
+      {c.measurement === 'reflective' && c.indicatorIds.length > 0 && !single && (
         <p className="inspector-hint">
           In CB-SEM with marker identification, the first indicator&apos;s loading is fixed to 1.
         </p>
+      )}
+      {single && (
+        <>
+          <Checkbox
+            label="Show as observed variable (box)"
+            checked={observed}
+            onChange={(e) =>
+              s().setLayoutSettings({
+                observedConstructIds: e.target.checked
+                  ? [...observedIds.filter((x) => x !== c.id), c.id]
+                  : observedIds.filter((x) => x !== c.id),
+              })
+            }
+          />
+          <p className="inspector-hint">
+            Draws the construct and its single indicator as one rectangle, as in path analysis and
+            regression. Only the diagram changes: the model and its estimates stay the same.
+          </p>
+        </>
       )}
 
       <h4 className="inspector-subheading">Paths</h4>
@@ -319,19 +380,21 @@ function ConstructPanel({ model, c }: { model: SemModel; c: SemConstruct }) {
         >
           {pinned ? 'Unpin position' : 'Pin position'}
         </Button>
-        <Button
-          size="small"
-          icon={collapsed ? <ChevronsUpDown size={14} /> : <ChevronsDownUp size={14} />}
-          onClick={() =>
-            s().setLayoutSettings({
-              collapsedConstructIds: collapsed
-                ? layout.settings.collapsedConstructIds.filter((x) => x !== c.id)
-                : [...layout.settings.collapsedConstructIds, c.id],
-            })
-          }
-        >
-          {collapsed ? 'Show indicators' : 'Hide indicators'}
-        </Button>
+        {!observed && (
+          <Button
+            size="small"
+            icon={collapsed ? <ChevronsUpDown size={14} /> : <ChevronsDownUp size={14} />}
+            onClick={() =>
+              s().setLayoutSettings({
+                collapsedConstructIds: collapsed
+                  ? layout.settings.collapsedConstructIds.filter((x) => x !== c.id)
+                  : [...layout.settings.collapsedConstructIds, c.id],
+              })
+            }
+          >
+            {collapsed ? 'Show indicators' : 'Hide indicators'}
+          </Button>
+        )}
         <Button
           size="small"
           variant="danger"
@@ -619,6 +682,7 @@ export function Inspector({ collapsed, onToggle, onResize }: InspectorProps) {
           value={projectName}
           onCommit={(v) => (v.trim() ? (s().rename(v), null) : 'A project name cannot be empty.')}
         />
+        <ObservedVariablesToggle model={model} />
         <ModelTree model={model} />
       </>
     );

@@ -258,7 +258,11 @@
   stroke-width: 1.4px;
 }
 /* .sem-edge-unclear (a route that could not avoid every node) is deliberately NOT dashed:
-   STYLE §8 reserves dashed lines for unsupported relationships. */
+   STYLE §8 reserves dashed lines for unsupported relationships and non-significant paths. */
+/* Results overlay: a structural path that is not significant (p ≥ .05) is dashed. */
+.sem-canvas .sem-edge-structural.sem-edge-ns {
+  stroke-dasharray: 6 4;
+}
 .sem-canvas .react-flow__edge.selected .sem-edge {
   stroke: var(--sem-selection);
   stroke-width: 2.4px;
@@ -330,4 +334,13 @@
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
   pointer-events: none;
+}
+/* An observed variable (path-analysis box) has no room inside: R² sits above its top-right
+   corner, where AMOS and most path-analysis figures put it. */
+.sem-construct[data-observed] .sem-capsule {
+  top: auto;
+  bottom: calc(100% + 3px);
+  left: auto;
+  right: 0;
+  transform: none;
 }

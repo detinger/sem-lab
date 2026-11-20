@@ -1,0 +1,107 @@
+{
+  "constructs": [
+    {
+      "id": "c_sleepquality",
+      "indicatorIds": [
+        "i_sleep_quality"
+      ],
+      "label": "Sleep quality score, 0-100 (synthetic)",
+      "measurement": "reflective",
+      "name": "SleepQuality"
+    },
+    {
+      "id": "c_screentime",
+      "indicatorIds": [
+        "i_screen_time"
+      ],
+      "label": "Evening screen time, hours (synthetic)",
+      "measurement": "reflective",
+      "name": "ScreenTime"
+    },
+    {
+      "id": "c_exercise",
+      "indicatorIds": [
+        "i_exercise"
+      ],
+      "label": "Exercise, hours per week (synthetic)",
+      "measurement": "reflective",
+      "name": "Exercise"
+    },
+    {
+      "id": "c_caffeine",
+      "indicatorIds": [
+        "i_caffeine"
+      ],
+      "label": "Caffeinated drinks per day (synthetic)",
+      "measurement": "reflective",
+      "name": "Caffeine"
+    },
+    {
+      "id": "c_stress",
+      "indicatorIds": [
+        "i_stress"
+      ],
+      "label": "Perceived stress, 1-10 (synthetic)",
+      "measurement": "reflective",
+      "name": "Stress"
+    }
+  ],
+  "indicators": [
+    {
+      "column": "sleep_quality",
+      "id": "i_sleep_quality",
+      "level": "continuous",
+      "name": "sleep_quality"
+    },
+    {
+      "column": "screen_time",
+      "id": "i_screen_time",
+      "level": "continuous",
+      "name": "screen_time"
+    },
+    {
+      "column": "exercise",
+      "id": "i_exercise",
+      "level": "continuous",
+      "name": "exercise"
+    },
+    {
+      "column": "caffeine",
+      "id": "i_caffeine",
+      "level": "continuous",
+      "name": "caffeine"
+    },
+    {
+      "column": "stress",
+      "id": "i_stress",
+      "level": "continuous",
+      "name": "stress"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r_screentime_sleepquality",
+      "kind": "structural",
+      "sourceId": "c_screentime",
+      "targetId": "c_sleepquality"
+    },
+    {
+      "id": "r_exercise_sleepquality",
+      "kind": "structural",
+      "sourceId": "c_exercise",
+      "targetId": "c_sleepquality"
+    },
+    {
+      "id": "r_caffeine_sleepquality",
+      "kind": "structural",
+      "sourceId": "c_caffeine",
+      "targetId": "c_sleepquality"
+    },
+    {
+      "id": "r_stress_sleepquality",
+      "kind": "structural",
+      "sourceId": "c_stress",
+      "targetId": "c_sleepquality"
+    }
+  ]
+}

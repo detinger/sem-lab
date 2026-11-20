@@ -1,0 +1,119 @@
+{
+  "constructs": [
+    {
+      "id": "c_ses",
+      "indicatorIds": [
+        "i_ses"
+      ],
+      "label": "Socio-economic status index (synthetic)",
+      "measurement": "reflective",
+      "name": "SES"
+    },
+    {
+      "id": "c_priorgpa",
+      "indicatorIds": [
+        "i_prior_gpa"
+      ],
+      "label": "Prior grade point average, 1-5 (synthetic)",
+      "measurement": "reflective",
+      "name": "PriorGPA"
+    },
+    {
+      "id": "c_motivation",
+      "indicatorIds": [
+        "i_motivation"
+      ],
+      "label": "Study motivation, mean of 1-7 items (synthetic)",
+      "measurement": "reflective",
+      "name": "Motivation"
+    },
+    {
+      "id": "c_studyhours",
+      "indicatorIds": [
+        "i_study_hours"
+      ],
+      "label": "Self-study hours per week (synthetic)",
+      "measurement": "reflective",
+      "name": "StudyHours"
+    },
+    {
+      "id": "c_examscore",
+      "indicatorIds": [
+        "i_exam_score"
+      ],
+      "label": "Final exam score, 0-100 (synthetic)",
+      "measurement": "reflective",
+      "name": "ExamScore"
+    }
+  ],
+  "indicators": [
+    {
+      "column": "ses",
+      "id": "i_ses",
+      "level": "continuous",
+      "name": "ses"
+    },
+    {
+      "column": "prior_gpa",
+      "id": "i_prior_gpa",
+      "level": "continuous",
+      "name": "prior_gpa"
+    },
+    {
+      "column": "motivation",
+      "id": "i_motivation",
+      "level": "continuous",
+      "name": "motivation"
+    },
+    {
+      "column": "study_hours",
+      "id": "i_study_hours",
+      "level": "continuous",
+      "name": "study_hours"
+    },
+    {
+      "column": "exam_score",
+      "id": "i_exam_score",
+      "level": "continuous",
+      "name": "exam_score"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r_ses_motivation",
+      "kind": "structural",
+      "sourceId": "c_ses",
+      "targetId": "c_motivation"
+    },
+    {
+      "id": "r_priorgpa_motivation",
+      "kind": "structural",
+      "sourceId": "c_priorgpa",
+      "targetId": "c_motivation"
+    },
+    {
+      "id": "r_motivation_studyhours",
+      "kind": "structural",
+      "sourceId": "c_motivation",
+      "targetId": "c_studyhours"
+    },
+    {
+      "id": "r_priorgpa_examscore",
+      "kind": "structural",
+      "sourceId": "c_priorgpa",
+      "targetId": "c_examscore"
+    },
+    {
+      "id": "r_motivation_examscore",
+      "kind": "structural",
+      "sourceId": "c_motivation",
+      "targetId": "c_examscore"
+    },
+    {
+      "id": "r_studyhours_examscore",
+      "kind": "structural",
+      "sourceId": "c_studyhours",
+      "targetId": "c_examscore"
+    }
+  ]
+}

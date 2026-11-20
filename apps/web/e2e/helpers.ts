@@ -59,7 +59,10 @@ export async function openModelAndSample(page: Page, model: unknown, sample: Reg
     (m) => (window as unknown as { __semLabTest: Hook }).__semLabTest.loadModel(m),
     model,
   );
-  await page.getByRole('link', { name: 'Data', exact: true }).click();
+  await page
+    .getByRole('group', { name: 'Workspace' })
+    .getByRole('link', { name: 'Data', exact: true })
+    .click();
   await page.getByRole('button', { name: /Use sample dataset/ }).click();
   await page.getByRole('menuitem', { name: sample }).click();
   await expect(page.getByRole('region', { name: 'Preview of the working table' })).toBeVisible();

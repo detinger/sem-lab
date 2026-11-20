@@ -331,6 +331,7 @@ Keep the canvas neutral, never a gradient, and use a faint 16px dot grid at low 
 | Formative/composite path | Thin directed line, indicator → construct | Label weight; inspector explains semantics |
 | Covariance / correlated errors | Smooth curved line, double-headed arrows | CB only when method supports it |
 | Hypothesis | Tiny `H1`, `H2`, ... annotation near structural path | Distinct from coefficient label, togglable |
+| Non-significant structural path (results) | Same colour and width, dashed `6 4` | p ≥ .05 (or CI containing 0 when there is no p); legend says so; nothing dashed without inference |
 | Unsupported relationship | Dashed warning overlay, explanatory icon | Not an analyzable edge until fixed |
 | Selected/focused path | Primary or orange emphasis, width increment ≤1px | Preserve coefficient readability |
 | Model diagnostics overlay | Semantic indicator + caption | Never color a statistically negative sign automatically red |

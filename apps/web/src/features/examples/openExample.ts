@@ -1,6 +1,7 @@
 import type { AnalysisConfiguration, SemLayout, SemModel } from '@sem-lab/contracts';
 import { configFromAnalysis, useAnalysisConfig } from '@/features/analysis/config';
 import { useDataLab } from '@/features/data-lab/store';
+import { singleIndicatorConstructs } from '@/features/modeler/observed';
 import { useModeler } from '@/features/modeler/store';
 import type { Starter } from '@/features/learn/schema';
 import { EXAMPLES, type Example } from './examples';
@@ -17,6 +18,8 @@ export interface ProjectSpec {
   model: SemModel;
   /** a saved arrangement; automatic layout when absent */
   layout?: SemLayout | undefined;
+  /** draw single-indicator constructs as observed-variable boxes (path models) */
+  observedVariables?: boolean | undefined;
   bundledDatasetId?: string | undefined;
   analysis?: AnalysisConfiguration | undefined;
 }
@@ -35,7 +38,15 @@ export async function openProject(spec: ProjectSpec): Promise<void> {
       () => layout,
     );
   } else {
-    useModeler.getState().edit(() => spec.model);
+    useModeler.getState().edit(
+      () => spec.model,
+      spec.observedVariables
+        ? (l, m) => ({
+            ...l,
+            settings: { ...l.settings, observedConstructIds: singleIndicatorConstructs(m) },
+          })
+        : undefined,
+    );
     await useModeler.getState().autoArrange({ keepPinned: false });
   }
   if (spec.bundledDatasetId) {
@@ -51,6 +62,7 @@ export const openExample = (example: Example): Promise<void> =>
     title: example.title,
     model: example.model,
     layout: example.layout,
+    observedVariables: example.observedVariables,
     bundledDatasetId: example.dataset.bundledId,
     analysis: example.analysis,
   });
@@ -66,6 +78,7 @@ export function resolveStarter(
     return {
       title: starter.title,
       model: ex.model,
+      observedVariables: ex.observedVariables,
       bundledDatasetId: starter.bundledDatasetId ?? ex.dataset.bundledId,
       analysis: starter.analysis ?? ex.analysis,
     };

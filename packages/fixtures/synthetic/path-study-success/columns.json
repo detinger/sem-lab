@@ -1,0 +1,52 @@
+[
+  {
+    "nMissing": 0,
+    "nUnique": 244,
+    "name": "ses",
+    "observedMax": 3.37,
+    "observedMin": -2.25,
+    "scaleMax": null,
+    "scaleMin": null,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 193,
+    "name": "prior_gpa",
+    "observedMax": 5.0,
+    "observedMin": 1.75,
+    "scaleMax": 5.0,
+    "scaleMin": 1.0,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 248,
+    "name": "motivation",
+    "observedMax": 7.0,
+    "observedMin": 1.84,
+    "scaleMax": 7.0,
+    "scaleMin": 1.0,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 156,
+    "name": "study_hours",
+    "observedMax": 22.4,
+    "observedMin": 0.0,
+    "scaleMax": 40.0,
+    "scaleMin": 0.0,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 60,
+    "name": "exam_score",
+    "observedMax": 100,
+    "observedMin": 35,
+    "scaleMax": 100.0,
+    "scaleMin": 0.0,
+    "scaleType": "METRIC"
+  }
+]

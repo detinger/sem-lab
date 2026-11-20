@@ -22,6 +22,8 @@ const ExampleFile = z.object({
   model: SemModel,
   /** optional hand-arranged layout (exported from the Modeler); automatic layout otherwise */
   layout: SemLayout.optional(),
+  /** draw every single-indicator construct as an observed-variable box (path models) */
+  observedVariables: z.boolean().optional(),
   analysis: AnalysisConfiguration,
 });
 export type Example = z.infer<typeof ExampleFile>;
@@ -42,6 +44,10 @@ const ORDER = [
   'delone-mclean',
   'utaut2-inspired',
   'service-quality',
+  'path-study-success',
+  'path-work-wellbeing',
+  'regression-house-prices',
+  'regression-sleep-quality',
 ];
 
 export const EXAMPLES: readonly Example[] = Object.values(files)

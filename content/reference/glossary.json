@@ -1664,6 +1664,56 @@
       "seeAlso": [
         "causal-inference"
       ]
+    },
+    {
+      "id": "path-analysis",
+      "term": "path analysis",
+      "aliases": [
+        "path model"
+      ],
+      "definition": "A structural equation model in which every variable is observed (one column each): a system of regressions estimated together, drawn with boxes and arrows. A multiple regression is its simplest case.",
+      "lessons": [
+        "path-analysis-and-regression"
+      ],
+      "seeAlso": [
+        "observed-variable",
+        "multiple-regression",
+        "structural-model"
+      ]
+    },
+    {
+      "id": "observed-variable",
+      "term": "observed variable",
+      "aliases": [
+        "manifest variable",
+        "measured variable"
+      ],
+      "definition": "A variable measured directly, stored as one column of the data and drawn as a box (rectangle) in a path diagram. Contrast with a latent variable, drawn as an oval.",
+      "lessons": [
+        "path-analysis-and-regression"
+      ],
+      "seeAlso": [
+        "latent-variable",
+        "indicator",
+        "path-analysis"
+      ]
+    },
+    {
+      "id": "multiple-regression",
+      "term": "multiple regression",
+      "aliases": [
+        "OLS regression",
+        "linear regression"
+      ],
+      "definition": "One outcome predicted by several correlated predictors. As a path model it is just-identified (df = 0); CB-SEM ML reproduces the OLS slopes and PLS-SEM the standardised slopes.",
+      "lessons": [
+        "path-analysis-and-regression"
+      ],
+      "seeAlso": [
+        "path-analysis",
+        "r-squared",
+        "unstandardized-coefficient"
+      ]
     }
   ]
 }

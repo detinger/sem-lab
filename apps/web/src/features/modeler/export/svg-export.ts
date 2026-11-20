@@ -56,7 +56,7 @@ export function sceneToSvg(scene: Scene, opts: SvgExportOptions): string {
     const measurement = e.kind === 'measurement';
     const marker = measurement ? 'url(#arrow-m)' : 'url(#arrow)';
     out.push(
-      `<path data-id="${escapeXml(e.id)}" data-kind="${e.kind}" d="${e.d}" fill="none" stroke="${measurement ? MEASURE : EDGE}" stroke-width="${measurement ? 1.25 : 1.8}"${e.arrowEnd ? ` marker-end="${marker}"` : ''}${e.arrowStart ? ` marker-start="${marker}"` : ''}/>`,
+      `<path data-id="${escapeXml(e.id)}" data-kind="${e.kind}" d="${e.d}" fill="none" stroke="${measurement ? MEASURE : EDGE}" stroke-width="${measurement ? 1.25 : 1.8}"${e.nonSignificant ? ' stroke-dasharray="6 4"' : ''}${e.arrowEnd ? ` marker-end="${marker}"` : ''}${e.arrowStart ? ` marker-start="${marker}"` : ''}/>`,
     );
     if (opts.showHypotheses && e.hypothesis) {
       out.push(
@@ -79,7 +79,7 @@ export function sceneToSvg(scene: Scene, opts: SvgExportOptions): string {
       const shape =
         n.shape === 'ellipse'
           ? `<ellipse cx="${f(x + w / 2)}" cy="${f(y + h / 2)}" rx="${f(w / 2)}" ry="${f(h / 2)}"`
-          : `<rect x="${f(x)}" y="${f(y)}" width="${f(w)}" height="${f(h)}" rx="14"`;
+          : `<rect x="${f(x)}" y="${f(y)}" width="${f(w)}" height="${f(h)}" rx="${n.shape === 'rect' ? 3 : 14}"`;
       out.push(
         `<g data-id="${escapeXml(n.id)}" data-kind="construct">${shape} fill="#ffffff" stroke="${INK}" stroke-width="1.75"/>`,
       );
@@ -98,9 +98,11 @@ export function sceneToSvg(scene: Scene, opts: SvgExportOptions): string {
         );
       out.push('</g>');
       if (n.capsule !== undefined) {
-        // R² sits inside the construct near the top, with no outline.
+        // R² sits inside the construct near the top, with no outline; an observed-variable box
+        // has no room inside, so there it sits above the top-right corner (AMOS convention).
+        const [cx, cy, anchor] = n.observed ? [x + w, y - 5, 'end'] : [x + w / 2, y + 15, 'middle'];
         out.push(
-          `<text data-capsule="${escapeXml(n.id)}" x="${f(x + w / 2)}" y="${f(y + 15)}" text-anchor="middle" font-size="11" fill="${MEASURE}" style="font-variant-numeric:tabular-nums">${escapeXml(n.capsule)}</text>`,
+          `<text data-capsule="${escapeXml(n.id)}" x="${f(cx)}" y="${f(cy)}" text-anchor="${anchor}" font-size="11" fill="${MEASURE}" style="font-variant-numeric:tabular-nums">${escapeXml(n.capsule)}</text>`,
         );
       }
     } else {

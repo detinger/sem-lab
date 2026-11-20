@@ -1,0 +1,52 @@
+[
+  {
+    "nMissing": 0,
+    "nUnique": 285,
+    "name": "price",
+    "observedMax": 401.4,
+    "observedMin": 21.8,
+    "scaleMax": 900.0,
+    "scaleMin": 20.0,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 104,
+    "name": "area",
+    "observedMax": 173,
+    "observedMin": 25,
+    "scaleMax": 300.0,
+    "scaleMin": 25.0,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 64,
+    "name": "age",
+    "observedMax": 76,
+    "observedMin": 0,
+    "scaleMax": 120.0,
+    "scaleMin": 0.0,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 107,
+    "name": "distance",
+    "observedMax": 14.7,
+    "observedMin": 0.3,
+    "scaleMax": 30.0,
+    "scaleMin": 0.3,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 2,
+    "name": "garage",
+    "observedMax": 1,
+    "observedMin": 0,
+    "scaleMax": 1,
+    "scaleMin": 0,
+    "scaleType": "METRIC"
+  }
+]

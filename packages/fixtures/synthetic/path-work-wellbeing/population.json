@@ -1,0 +1,188 @@
+{
+  "caseId": "path-work-wellbeing",
+  "exogenousCorrelations": [
+    {
+      "a": "Demands",
+      "b": "Resources",
+      "r": -0.25
+    }
+  ],
+  "impliedCorrelation": {
+    "matrix": [
+      [
+        "1.000000",
+        "-0.250000",
+        "0.512500",
+        "-0.125000",
+        "0.216875"
+      ],
+      [
+        "-0.250000",
+        "1.000000",
+        "-0.362500",
+        "0.500000",
+        "-0.276875"
+      ],
+      [
+        "0.512500",
+        "-0.362500",
+        "1.000000",
+        "-0.181250",
+        "0.404375"
+      ],
+      [
+        "-0.125000",
+        "0.500000",
+        "-0.181250",
+        "1.000000",
+        "-0.363437"
+      ],
+      [
+        "0.216875",
+        "-0.276875",
+        "0.404375",
+        "-0.363437",
+        "1.000000"
+      ]
+    ],
+    "order": [
+      "Demands",
+      "Resources",
+      "Burnout",
+      "Engagement",
+      "QuitIntention"
+    ]
+  },
+  "kind": "observed-path-model",
+  "rSquared": {
+    "Burnout": "0.321250",
+    "Engagement": "0.250000",
+    "QuitIntention": "0.250562"
+  },
+  "sampleOls": {
+    "Burnout": {
+      "intercept": "2.523806",
+      "r2": "0.345831",
+      "standardized": {
+        "Demands": "0.479016",
+        "Resources": "-0.221898"
+      },
+      "unstandardized": {
+        "Demands": "0.695003",
+        "Resources": "-0.357225"
+      }
+    },
+    "Engagement": {
+      "intercept": "1.350314",
+      "r2": "0.293290",
+      "standardized": {
+        "Resources": "0.541563"
+      },
+      "unstandardized": {
+        "Resources": "0.732140"
+      }
+    },
+    "QuitIntention": {
+      "intercept": "2.939052",
+      "r2": "0.262034",
+      "standardized": {
+        "Burnout": "0.313515",
+        "Engagement": "-0.348248"
+      },
+      "unstandardized": {
+        "Burnout": "0.205059",
+        "Engagement": "-0.271238"
+      }
+    }
+  },
+  "standardizedPaths": [
+    {
+      "beta": 0.45,
+      "source": "Demands",
+      "target": "Burnout"
+    },
+    {
+      "beta": -0.25,
+      "source": "Resources",
+      "target": "Burnout"
+    },
+    {
+      "beta": 0.5,
+      "source": "Resources",
+      "target": "Engagement"
+    },
+    {
+      "beta": 0.35,
+      "source": "Burnout",
+      "target": "QuitIntention"
+    },
+    {
+      "beta": -0.3,
+      "source": "Engagement",
+      "target": "QuitIntention"
+    }
+  ],
+  "theme": "Job demands-resources: demands -> burnout and resources -> engagement -> turnover intention",
+  "variables": [
+    {
+      "column": "demands",
+      "decimals": 2,
+      "label": "Job demands, mean of 1-5 items (synthetic)",
+      "mean": 3.2,
+      "name": "Demands",
+      "range": [
+        1.0,
+        5.0
+      ],
+      "sd": 0.7
+    },
+    {
+      "column": "resources",
+      "decimals": 2,
+      "label": "Job resources, mean of 1-5 items (synthetic)",
+      "mean": 3.4,
+      "name": "Resources",
+      "range": [
+        1.0,
+        5.0
+      ],
+      "sd": 0.65
+    },
+    {
+      "column": "burnout",
+      "decimals": 2,
+      "label": "Burnout (exhaustion), mean of 1-7 items (synthetic)",
+      "mean": 3.4,
+      "name": "Burnout",
+      "range": [
+        1.0,
+        7.0
+      ],
+      "sd": 1.1
+    },
+    {
+      "column": "engagement",
+      "decimals": 2,
+      "label": "Work engagement, mean of 0-6 items (synthetic)",
+      "mean": 3.8,
+      "name": "Engagement",
+      "range": [
+        0.0,
+        6.0
+      ],
+      "sd": 0.9
+    },
+    {
+      "column": "quit_intention",
+      "decimals": 2,
+      "label": "Turnover intention, mean of 1-5 items (synthetic)",
+      "mean": 2.6,
+      "name": "QuitIntention",
+      "range": [
+        1.0,
+        5.0
+      ],
+      "sd": 0.7
+    }
+  ]
+}

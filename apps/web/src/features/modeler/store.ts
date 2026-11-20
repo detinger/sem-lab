@@ -103,7 +103,12 @@ function pruneLayout(layout: SemLayout, model: SemModel): SemLayout {
   for (const a of layout.annotations ?? []) ids.add(a.id);
   const nodes = Object.fromEntries(Object.entries(layout.nodes).filter(([id]) => ids.has(id)));
   const collapsed = layout.settings.collapsedConstructIds.filter((id) => ids.has(id));
-  return { ...layout, nodes, settings: { ...layout.settings, collapsedConstructIds: collapsed } };
+  const settings = { ...layout.settings, collapsedConstructIds: collapsed };
+  if (layout.settings.observedConstructIds)
+    settings.observedConstructIds = layout.settings.observedConstructIds.filter((id) =>
+      ids.has(id),
+    );
+  return { ...layout, nodes, settings };
 }
 
 export const useModeler = create<ModelerState>()((set, get) => ({

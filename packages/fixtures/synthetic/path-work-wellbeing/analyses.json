@@ -1,0 +1,39 @@
+[
+  {
+    "analysis": {
+      "bootstrap": {
+        "ci": "percentile",
+        "confidenceLevel": 0.95,
+        "enabled": true,
+        "repetitions": 5000,
+        "sides": "two-sided"
+      },
+      "engine": "browser",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      },
+      "seed": 20261120
+    },
+    "description": "Classic PLS-SEM with 5000 percentile bootstrap draws (seeded).",
+    "id": "pls-browser-boot"
+  },
+  {
+    "analysis": {
+      "cb": {
+        "identification": "marker",
+        "meanStructure": false
+      },
+      "engine": "browser",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "CB-SEM ML in the browser engine: unstandardised paths equal sample OLS.",
+    "id": "cb-browser-ml"
+  }
+]

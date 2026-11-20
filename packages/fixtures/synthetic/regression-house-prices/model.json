@@ -1,0 +1,107 @@
+{
+  "constructs": [
+    {
+      "id": "c_price",
+      "indicatorIds": [
+        "i_price"
+      ],
+      "label": "Sale price, thousand EUR (synthetic)",
+      "measurement": "reflective",
+      "name": "Price"
+    },
+    {
+      "id": "c_area",
+      "indicatorIds": [
+        "i_area"
+      ],
+      "label": "Living area, m2 (synthetic)",
+      "measurement": "reflective",
+      "name": "Area"
+    },
+    {
+      "id": "c_age",
+      "indicatorIds": [
+        "i_age"
+      ],
+      "label": "Building age, years (synthetic)",
+      "measurement": "reflective",
+      "name": "Age"
+    },
+    {
+      "id": "c_distance",
+      "indicatorIds": [
+        "i_distance"
+      ],
+      "label": "Distance to the city centre, km (synthetic)",
+      "measurement": "reflective",
+      "name": "Distance"
+    },
+    {
+      "id": "c_garage",
+      "indicatorIds": [
+        "i_garage"
+      ],
+      "label": "Has a garage, 0/1 (synthetic)",
+      "measurement": "reflective",
+      "name": "Garage"
+    }
+  ],
+  "indicators": [
+    {
+      "column": "price",
+      "id": "i_price",
+      "level": "continuous",
+      "name": "price"
+    },
+    {
+      "column": "area",
+      "id": "i_area",
+      "level": "continuous",
+      "name": "area"
+    },
+    {
+      "column": "age",
+      "id": "i_age",
+      "level": "continuous",
+      "name": "age"
+    },
+    {
+      "column": "distance",
+      "id": "i_distance",
+      "level": "continuous",
+      "name": "distance"
+    },
+    {
+      "column": "garage",
+      "id": "i_garage",
+      "level": "binary",
+      "name": "garage"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r_area_price",
+      "kind": "structural",
+      "sourceId": "c_area",
+      "targetId": "c_price"
+    },
+    {
+      "id": "r_age_price",
+      "kind": "structural",
+      "sourceId": "c_age",
+      "targetId": "c_price"
+    },
+    {
+      "id": "r_distance_price",
+      "kind": "structural",
+      "sourceId": "c_distance",
+      "targetId": "c_price"
+    },
+    {
+      "id": "r_garage_price",
+      "kind": "structural",
+      "sourceId": "c_garage",
+      "targetId": "c_price"
+    }
+  ]
+}

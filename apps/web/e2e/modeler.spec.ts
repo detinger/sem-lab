@@ -43,7 +43,7 @@ test('arrange, undo, shortcuts and SVG export work end to end', async ({ page })
   const before = await page.locator('.react-flow__node-construct').first().boundingBox();
 
   await page.getByRole('menuitem').count(); // menus closed
-  await page.getByRole('button', { name: /Left → right/ }).click();
+  await page.getByRole('button', { name: /L→R/ }).click();
   await page.getByRole('menuitem', { name: 'Top to bottom' }).click();
   await page.waitForTimeout(500);
   await page.screenshot({ path: 'test-results/phase1-modeler/tam-top-to-bottom.png' });
@@ -74,7 +74,10 @@ test('arrange, undo, shortcuts and SVG export work end to end', async ({ page })
 test('the project survives a reload (autosave to IndexedDB)', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   const errors = await openWithTam(page, 'light');
-  await expect(page.getByText('Saved in this browser')).toBeVisible({ timeout: 5000 });
+  // Autosave has no success message; it records the project id once IndexedDB has it.
+  await page.waitForFunction(() => localStorage.getItem('sem-lab.lastProjectId') !== null, null, {
+    timeout: 5000,
+  });
   await page.reload();
   await expect(page.locator('.react-flow__node-construct')).toHaveCount(5);
   await expect(page.locator('.react-flow__node-indicator')).toHaveCount(22);

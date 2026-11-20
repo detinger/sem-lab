@@ -19,7 +19,7 @@ const ids = readdirSync(DIR)
 
 describe('example content', () => {
   it('finds every file in content/examples', () => {
-    expect(ids).toHaveLength(6);
+    expect(ids).toHaveLength(10);
     expect(EXAMPLES.map((e) => e.id).sort()).toEqual([...ids].sort());
   });
 

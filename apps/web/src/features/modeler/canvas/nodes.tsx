@@ -73,7 +73,7 @@ export const ConstructNode = memo(function ConstructNode({
   data,
   selected,
 }: NodeProps<ConstructFlowNode>) {
-  const { rect, shape, lines, tag, capsule } = data.scene;
+  const { rect, shape, lines, tag, capsule, observed } = data.scene;
   const w = rect.width;
   const h = rect.height;
   const [dropActive, setDropActive] = useState(false);
@@ -109,9 +109,10 @@ export const ConstructNode = memo(function ConstructNode({
       data-drop-active={dropActive || undefined}
       data-editing={editing || undefined}
       data-pinned={data.pinned || undefined}
+      data-observed={observed || undefined}
       style={{ width: w, height: h }}
       role="group"
-      aria-label={`Construct ${lines.join(' ')}${tag ? `, ${tag.toLowerCase()}` : ''}${data.pinned ? ', position pinned' : ''}. ${data.description}`}
+      aria-label={`${observed ? 'Observed variable' : 'Construct'} ${lines.join(' ')}${tag ? `, ${tag.toLowerCase()}` : ''}${data.pinned ? ', position pinned' : ''}. ${data.description}`}
       onDoubleClick={(e) => {
         e.stopPropagation();
         startEditing();
@@ -142,7 +143,7 @@ export const ConstructNode = memo(function ConstructNode({
         {shape === 'ellipse' ? (
           <ellipse cx={w / 2} cy={h / 2} rx={w / 2 - 1} ry={h / 2 - 1} />
         ) : (
-          <rect x={1} y={1} width={w - 2} height={h - 2} rx={14} />
+          <rect x={1} y={1} width={w - 2} height={h - 2} rx={shape === 'rect' ? 3 : 14} />
         )}
       </svg>
       <div className="sem-construct-label">

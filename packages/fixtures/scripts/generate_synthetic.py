@@ -1489,6 +1489,312 @@ def case_broken_mapping(tam_files):
 
 
 # ----------------------------------------------------------------------------------------
+# Observed-variable path models and multiple regressions (no latent variables)
+# ----------------------------------------------------------------------------------------
+#
+# Each variable is ONE column, modelled in SEM Lab as a single-indicator construct and drawn as an
+# observed-variable box. Two generators:
+#  - path models: a recursive system on the standardised metric (exogenous correlation matrix,
+#    standardised path coefficients, disturbance variance 1 - R^2), then raw = mean + SD * z,
+#    rounded (and clipped to the variable's range, counted in the manifest);
+#  - regressions: simulated directly in raw units, y = b0 + sum(b x) + e, with a 0/1 dummy.
+# Oracle for both: on the written data, CB-SEM ML unstandardised path coefficients of a recursive
+# model with uncorrelated disturbances equal equation-by-equation OLS, and classic PLS-SEM paths
+# equal standardised OLS coefficients. The sample OLS values are stored in the manifest.
+
+def ols(rows, y_idx, x_idx):
+    """OLS with intercept on complete rows: (intercept, slopes, R^2, standardised slopes)."""
+    n = len(rows)
+    xs = [[1.0] + [float(r[j]) for j in x_idx] for r in rows]
+    ys = [float(r[y_idx]) for r in rows]
+    k = len(x_idx) + 1
+    xtx = [[math.fsum(x[a] * x[b] for x in xs) for b in range(k)] for a in range(k)]
+    xty = [math.fsum(x[a] * y for x, y in zip(xs, ys)) for a in range(k)]
+    inv = inverse(xtx)
+    beta = [math.fsum(inv[a][b] * xty[b] for b in range(k)) for a in range(k)]
+    ybar = math.fsum(ys) / n
+    sst = math.fsum((y - ybar) ** 2 for y in ys)
+    sse = math.fsum((y - math.fsum(b * v for b, v in zip(beta, x))) ** 2 for x, y in zip(xs, ys))
+    sd = lambda vals: math.sqrt(math.fsum((v - math.fsum(vals) / n) ** 2 for v in vals) / (n - 1))
+    sy = sd(ys)
+    std = [beta[a + 1] * sd([x[a + 1] for x in xs]) / sy for a in range(len(x_idx))]
+    return beta[0], beta[1:], 1 - sse / sst, std
+
+
+def observed_model(variables, paths):
+    """SemModel: one reflective single-indicator construct per variable (name, label, column)."""
+    cons = [{"name": v["name"], "label": v["label"], "measurement": "reflective", "indicators": [v["column"]]}
+            for v in variables]
+    model = build_model(cons, [(a, b) for a, b in paths])
+    for ind in model["indicators"]:
+        v = next(x for x in variables if x["column"] == ind["name"])
+        ind["level"] = "binary" if v.get("binary") else "continuous"
+    return model
+
+
+def ols_truths(rows, header, variables, equations):
+    """Per equation: sample OLS (raw and standardised) on the written data, as truth lines + dict."""
+    col = {v["name"]: header.index(v["column"]) for v in variables}
+    lines, out = [], {}
+    for target, preds in equations:
+        b0, b, r2, std = ols(rows, col[target], [col[p] for p in preds])
+        out[target] = {"intercept": r6(b0), "r2": r6(r2),
+                       "unstandardized": {p: r6(x) for p, x in zip(preds, b)},
+                       "standardized": {p: r6(x) for p, x in zip(preds, std)}}
+        terms = ", ".join(f"{p} {r6(x)} (std {r6(z)})" for p, x, z in zip(preds, b, std))
+        lines.append(f"Sample OLS of {target} on this data.csv: intercept {r6(b0)}; {terms}; R^2 {r6(r2)}.")
+    return lines, out
+
+
+def draw_path_model(spec, n, seed):
+    """Standardised recursive system -> raw rounded/clipped rows. Returns rows, implied R, R^2, clipped."""
+    rng = rng_for(seed)
+    names = [v["name"] for v in spec["variables"]]
+    idx = {nm: k for k, nm in enumerate(names)}
+    p = len(names)
+    exo = [nm for nm in names if nm not in spec["equations"]]
+    # Implied correlation matrix, filled in order (exogenous first, then each equation).
+    R = [[0.0] * p for _ in range(p)]
+    for a in exo:
+        for b in exo:
+            R[idx[a]][idx[b]] = 1.0 if a == b else spec["exoCor"].get((a, b), spec["exoCor"].get((b, a), 0.0))
+    r2 = {}
+    for target, eq in spec["equations"].items():
+        t = idx[target]
+        explained = math.fsum(ba * bb * R[idx[pa]][idx[pb]] for pa, ba in eq for pb, bb in eq)
+        require(0.0 < explained < 0.95, f"{target}: explained variance {explained}")
+        r2[target] = explained
+        for w in names[: t]:
+            c = math.fsum(bp * R[idx[pp]][idx[w]] for pp, bp in eq)
+            R[t][idx[w]] = R[idx[w]][t] = c
+        R[t][t] = 1.0
+    lo = cholesky([[R[i][j] for j in range(len(exo))] for i in range(len(exo))])
+    z = rng.standard_normal((n, p)).tolist()
+    clipped = {v["column"]: 0 for v in spec["variables"]}
+    rows = []
+    for zr in z:
+        std = [0.0] * p
+        for i in range(len(exo)):
+            std[i] = dot(lo[i][: i + 1], zr[: i + 1])
+        for target, eq in spec["equations"].items():
+            t = idx[target]
+            std[t] = math.fsum(b * std[idx[pp]] for pp, b in eq) + math.sqrt(1 - r2[target]) * zr[t]
+        row = []
+        for v, x in zip(spec["variables"], std):
+            raw = v["mean"] + v["sd"] * x
+            lo_, hi_ = v.get("range", (-math.inf, math.inf))
+            if raw < lo_ or raw > hi_:
+                clipped[v["column"]] += 1
+                raw = min(max(raw, lo_), hi_)
+            row.append(int(round(raw)) if v["decimals"] == 0 else round(raw, v["decimals"]))
+        rows.append(row)
+    return rows, R, r2, clipped
+
+
+def path_case(cid_, seed, n, spec, *, title, purpose, theme, analyses_):
+    order = [v["name"] for v in spec["variables"]]
+    require(all(t in order for t in spec["equations"]), f"{cid_}: unknown target")
+    rows, R, r2, clipped = draw_path_model(spec, n, seed)
+    require(max(clipped.values()) <= n // 50, f"{cid_}: too many clipped values {clipped}")
+    header = [v["column"] for v in spec["variables"]]
+    paths = [(p_, t) for t, eq in spec["equations"].items() for p_, _ in eq]
+    model = observed_model(spec["variables"], paths)
+    equations = [(t, [p_ for p_, _ in eq]) for t, eq in spec["equations"].items()]
+    ols_lines, ols_out = ols_truths(rows, header, spec["variables"], equations)
+    pop_lines = [f"{p_} -> {t} = {b:+.2f}" for t, eq in spec["equations"].items() for p_, b in eq]
+    truths = [
+        f"Population (standardised, before rounding): {'; '.join(pop_lines)}; "
+        + "; ".join(f"R^2({t}) = {r2[t]:.4f}" for t in spec["equations"]) + ". All disturbances uncorrelated.",
+        "Every variable is one column (a single-indicator construct): PLS-SEM construct scores are the standardised columns, so classic PLS-SEM path coefficients equal the standardised OLS coefficients below; CB-SEM ML (residual variance of each single indicator fixed to 0) gives unstandardised paths equal to the unstandardised OLS coefficients below.",
+        *ols_lines,
+        f"Omitted paths (testable restrictions): {spec['omitted']}.",
+    ]
+    population = {"caseId": cid_, "kind": "observed-path-model", "theme": theme,
+                  "variables": [{k: v[k] for k in ("name", "label", "column", "mean", "sd", "decimals")}
+                                | ({"range": list(v["range"])} if "range" in v else {}) for v in spec["variables"]],
+                  "exogenousCorrelations": [{"a": a, "b": b, "r": r} for (a, b), r in spec["exoCor"].items()],
+                  "standardizedPaths": [{"source": p_, "target": t, "beta": b} for t, eq in spec["equations"].items() for p_, b in eq],
+                  "rSquared": {t: r6(v) for t, v in r2.items()},
+                  "impliedCorrelation": {"order": order, "matrix": [[r6(x) for x in row] for row in R]},
+                  "sampleOls": ols_out}
+    meta = {v["column"]: {"scaleType": "METRIC", "scaleMin": v.get("range", (None, None))[0] if "range" in v and math.isfinite(v["range"][0]) else None,
+                          "scaleMax": v["range"][1] if "range" in v and math.isfinite(v["range"][1]) else None}
+            for v in spec["variables"]}
+    return finish(cid_, title=title, kind="sampled", purpose=purpose, seed=seed, header=header, rows=rows,
+                  meta=meta, population=population, model=model, analyses=analyses_(model), truths=truths,
+                  extra_manifest={"clippedValues": clipped, "sampleOls": ols_out})
+
+
+def regression_case(cid_, seed, n, spec, *, title, purpose, theme, analyses_):
+    """y = b0 + sum(b x) + e in raw units; predictors correlated normals (a dummy by threshold)."""
+    rng = rng_for(seed)
+    preds = spec["predictors"]
+    k = len(preds)
+    lo = cholesky(spec["predictorCor"])
+    z = rng.standard_normal((n, k + 1)).tolist()
+    clipped = {v["column"]: 0 for v in preds + [spec["outcome"]]}
+    rows = []
+    for zr in z:
+        u = [dot(lo[i][: i + 1], zr[: i + 1]) for i in range(k)]
+        xs = []
+        for v, ui in zip(preds, u):
+            if v.get("binary"):
+                xs.append(1 if ui > v["threshold"] else 0)
+                continue
+            raw = v["mean"] + v["sd"] * ui
+            lo_, hi_ = v.get("range", (-math.inf, math.inf))
+            if raw < lo_ or raw > hi_:
+                clipped[v["column"]] += 1
+                raw = min(max(raw, lo_), hi_)
+            xs.append(int(round(raw)) if v["decimals"] == 0 else round(raw, v["decimals"]))
+        y = spec["intercept"] + math.fsum(v["b"] * x for v, x in zip(preds, xs)) + spec["errorSd"] * zr[k]
+        o = spec["outcome"]
+        lo_, hi_ = o.get("range", (-math.inf, math.inf))
+        if y < lo_ or y > hi_:
+            clipped[o["column"]] += 1
+            y = min(max(y, lo_), hi_)
+        rows.append([round(y, o["decimals"])] + xs)
+    # Predictors floored at a natural limit (0 hours, 0 drinks) are fine: y is generated from the
+    # value as written, so the regression stays exactly linear. Only a clipped outcome would bend it.
+    require(clipped[spec["outcome"]["column"]] <= n // 50, f"{cid_}: too many clipped outcomes {clipped}")
+    variables = [spec["outcome"]] + preds
+    header = [v["column"] for v in variables]
+    model = observed_model(variables, [(v["name"], spec["outcome"]["name"]) for v in preds])
+    ols_lines, ols_out = ols_truths(rows, header, variables, [(spec["outcome"]["name"], [v["name"] for v in preds])])
+    gen = " + ".join(f"{v['b']}*{v['column']}" for v in preds)
+    truths = [
+        f"Generating equation (raw units): {spec['outcome']['column']} = {spec['intercept']} + {gen} + e, e ~ N(0, {spec['errorSd']}^2).",
+        "A multiple regression is a path model with one outcome and correlated predictors (their covariances are free in CB-SEM). CB-SEM ML unstandardised paths equal the OLS slopes below; classic PLS-SEM paths and R^2 equal the standardised OLS slopes and R^2. Standard errors differ slightly: ML divides by N, OLS by N - k - 1.",
+        *ols_lines,
+        *spec.get("notes", []),
+    ]
+    population = {"caseId": cid_, "kind": "multiple-regression", "theme": theme,
+                  "outcome": spec["outcome"], "intercept": spec["intercept"], "errorSd": spec["errorSd"],
+                  "predictors": preds, "predictorCorrelation": spec["predictorCor"], "sampleOls": ols_out}
+    meta = {}
+    for v in variables:
+        rng_ = v.get("range")
+        meta[v["column"]] = {"scaleType": "METRIC",
+                             "scaleMin": rng_[0] if rng_ and math.isfinite(rng_[0]) else None,
+                             "scaleMax": rng_[1] if rng_ and math.isfinite(rng_[1]) else None}
+        if v.get("binary"):
+            meta[v["column"]] = {"scaleType": "METRIC", "scaleMin": 0, "scaleMax": 1}
+    return finish(cid_, title=title, kind="sampled", purpose=purpose, seed=seed, header=header, rows=rows,
+                  meta=meta, population=population, model=model, analyses=analyses_(model), truths=truths,
+                  extra_manifest={"clippedValues": clipped, "sampleOls": ols_out})
+
+
+def browser_cb(model):
+    return [analysis("cb-browser-ml", "CB-SEM ML in the browser engine: unstandardised paths equal sample OLS.", cb("browser")),
+            analysis("pls-browser", "Classic PLS-SEM in the browser engine: paths equal standardised OLS.", pls("pls-sem", "browser"))]
+
+
+def browser_pls_boot(model):
+    return [analysis("pls-browser-boot", "Classic PLS-SEM with 5000 percentile bootstrap draws (seeded).", pls("pls-sem", "browser", seed=20261120, boot=5000)),
+            analysis("cb-browser-ml", "CB-SEM ML in the browser engine: unstandardised paths equal sample OLS.", cb("browser"))]
+
+
+@case
+def case_path_study_success():
+    spec = {
+        "variables": [
+            {"name": "SES", "label": "Socio-economic status index (synthetic)", "column": "ses", "mean": 0.0, "sd": 1.0, "decimals": 2},
+            {"name": "PriorGPA", "label": "Prior grade point average, 1-5 (synthetic)", "column": "prior_gpa", "mean": 3.4, "sd": 0.6, "decimals": 2, "range": (1.0, 5.0)},
+            {"name": "Motivation", "label": "Study motivation, mean of 1-7 items (synthetic)", "column": "motivation", "mean": 4.8, "sd": 1.0, "decimals": 2, "range": (1.0, 7.0)},
+            {"name": "StudyHours", "label": "Self-study hours per week (synthetic)", "column": "study_hours", "mean": 11.0, "sd": 4.0, "decimals": 1, "range": (0.0, 40.0)},
+            {"name": "ExamScore", "label": "Final exam score, 0-100 (synthetic)", "column": "exam_score", "mean": 68.0, "sd": 12.0, "decimals": 0, "range": (0.0, 100.0)},
+        ],
+        "exoCor": {("SES", "PriorGPA"): 0.30},
+        "equations": {
+            "Motivation": [("SES", 0.20), ("PriorGPA", 0.30)],
+            "StudyHours": [("Motivation", 0.45)],
+            "ExamScore": [("PriorGPA", 0.35), ("Motivation", 0.15), ("StudyHours", 0.30)],
+        },
+        "omitted": "SES -> StudyHours, PriorGPA -> StudyHours, SES -> ExamScore (3 degrees of freedom)",
+    }
+    return path_case("path-study-success", 1601, 400, spec,
+                     title="Study success path model (observed variables)",
+                     purpose="Path analysis with observed variables (SYNTHETIC; no published study): an over-identified recursive model (df = 3) for CB-SEM fit, mediation through motivation and study hours, ML = OLS oracle",
+                     theme="Student achievement: background -> motivation -> study time -> exam score",
+                     analyses_=browser_cb)
+
+
+@case
+def case_path_work_wellbeing():
+    spec = {
+        "variables": [
+            {"name": "Demands", "label": "Job demands, mean of 1-5 items (synthetic)", "column": "demands", "mean": 3.2, "sd": 0.7, "decimals": 2, "range": (1.0, 5.0)},
+            {"name": "Resources", "label": "Job resources, mean of 1-5 items (synthetic)", "column": "resources", "mean": 3.4, "sd": 0.65, "decimals": 2, "range": (1.0, 5.0)},
+            {"name": "Burnout", "label": "Burnout (exhaustion), mean of 1-7 items (synthetic)", "column": "burnout", "mean": 3.4, "sd": 1.1, "decimals": 2, "range": (1.0, 7.0)},
+            {"name": "Engagement", "label": "Work engagement, mean of 0-6 items (synthetic)", "column": "engagement", "mean": 3.8, "sd": 0.9, "decimals": 2, "range": (0.0, 6.0)},
+            {"name": "QuitIntention", "label": "Turnover intention, mean of 1-5 items (synthetic)", "column": "quit_intention", "mean": 2.6, "sd": 0.7, "decimals": 2, "range": (1.0, 5.0)},
+        ],
+        "exoCor": {("Demands", "Resources"): -0.25},
+        "equations": {
+            "Burnout": [("Demands", 0.45), ("Resources", -0.25)],
+            "Engagement": [("Resources", 0.50)],
+            "QuitIntention": [("Burnout", 0.35), ("Engagement", -0.30)],
+        },
+        "omitted": "Demands -> Engagement, Demands -> QuitIntention, Resources -> QuitIntention",
+    }
+    return path_case("path-work-wellbeing", 1602, 450, spec,
+                     title="Job demands and resources path model (observed variables)",
+                     purpose="Path analysis with observed variables (SYNTHETIC; inspired by the job demands-resources model, Demerouti et al. 2001; Bakker & Demerouti 2007; does not reproduce any published dataset): two mediated processes, indirect effects, ML = OLS oracle",
+                     theme="Job demands-resources: demands -> burnout and resources -> engagement -> turnover intention",
+                     analyses_=browser_pls_boot)
+
+
+@case
+def case_regression_house_prices():
+    spec = {
+        "outcome": {"name": "Price", "label": "Sale price, thousand EUR (synthetic)", "column": "price", "decimals": 1, "range": (20.0, 900.0)},
+        "intercept": 40.0,
+        "errorSd": 40.0,
+        "predictors": [
+            {"name": "Area", "label": "Living area, m2 (synthetic)", "column": "area", "mean": 95.0, "sd": 30.0, "decimals": 0, "range": (25.0, 300.0), "b": 2.2},
+            {"name": "Age", "label": "Building age, years (synthetic)", "column": "age", "mean": 35.0, "sd": 14.0, "decimals": 0, "range": (0.0, 120.0), "b": -0.6},
+            {"name": "Distance", "label": "Distance to the city centre, km (synthetic)", "column": "distance", "mean": 7.0, "sd": 2.8, "decimals": 1, "range": (0.3, 30.0), "b": -4.5},
+            {"name": "Garage", "label": "Has a garage, 0/1 (synthetic)", "column": "garage", "binary": True, "threshold": 0.125, "b": 12.0},
+        ],
+        "predictorCor": [[1.0, 0.10, 0.30, 0.30],
+                         [0.10, 1.0, -0.20, -0.10],
+                         [0.30, -0.20, 1.0, 0.25],
+                         [0.30, -0.10, 0.25, 1.0]],
+        "notes": ["garage is a 0/1 dummy (1 when a correlated standard-normal score exceeds 0.125, so P(garage = 1) is about .45): its slope is the expected price difference between otherwise equal houses with and without a garage."],
+    }
+    return regression_case("regression-house-prices", 1603, 300, spec,
+                           title="House prices: multiple regression (observed variables)",
+                           purpose="Multiple regression as a path model (SYNTHETIC hedonic house-price data): unstandardised slopes in EUR, a 0/1 dummy predictor, correlated predictors, ML = OLS oracle",
+                           theme="Hedonic house prices: area, age, distance and a garage dummy -> price",
+                           analyses_=browser_cb)
+
+
+@case
+def case_regression_sleep_quality():
+    spec = {
+        "outcome": {"name": "SleepQuality", "label": "Sleep quality score, 0-100 (synthetic)", "column": "sleep_quality", "decimals": 1, "range": (0.0, 100.0)},
+        "intercept": 70.0,
+        "errorSd": 9.0,
+        "predictors": [
+            {"name": "ScreenTime", "label": "Evening screen time, hours (synthetic)", "column": "screen_time", "mean": 2.5, "sd": 1.2, "decimals": 1, "range": (0.0, 8.0), "b": -3.0},
+            {"name": "Exercise", "label": "Exercise, hours per week (synthetic)", "column": "exercise", "mean": 3.5, "sd": 2.2, "decimals": 1, "range": (0.0, 15.0), "b": 1.2},
+            {"name": "Caffeine", "label": "Caffeinated drinks per day (synthetic)", "column": "caffeine", "mean": 2.2, "sd": 1.3, "decimals": 0, "range": (0.0, 8.0), "b": -0.3},
+            {"name": "Stress", "label": "Perceived stress, 1-10 (synthetic)", "column": "stress", "mean": 5.0, "sd": 1.8, "decimals": 1, "range": (1.0, 10.0), "b": -3.5},
+        ],
+        "predictorCor": [[1.0, -0.10, 0.15, 0.25],
+                         [-0.10, 1.0, -0.05, -0.20],
+                         [0.15, -0.05, 1.0, 0.30],
+                         [0.25, -0.20, 0.30, 1.0]],
+        "notes": ["Caffeine has a deliberately tiny population slope (-0.3 points per drink): with N = 250 it is not expected to be distinguishable from zero, a teaching case for a non-significant predictor that still correlates with the outcome through stress."],
+    }
+    return regression_case("regression-sleep-quality", 1604, 250, spec,
+                           title="Sleep quality: multiple regression (observed variables)",
+                           purpose="Multiple regression as a path model (SYNTHETIC): standardised slopes and bootstrap CIs in PLS-SEM, a near-zero predictor, ML = OLS oracle",
+                           theme="Sleep quality: screen time, exercise, caffeine and stress -> sleep score",
+                           analyses_=browser_pls_boot)
+
+
+# ----------------------------------------------------------------------------------------
 # README, driver
 # ----------------------------------------------------------------------------------------
 

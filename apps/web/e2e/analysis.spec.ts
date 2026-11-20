@@ -25,7 +25,10 @@ for (const theme of ['light', 'dark'] as const) {
       .getByRole('button', { name: 'Use template' })
       .click();
     await expect(page.locator('.react-flow__node-construct')).toHaveCount(2);
-    await page.getByRole('link', { name: 'Data', exact: true }).click();
+    await page
+      .getByRole('group', { name: 'Workspace' })
+      .getByRole('link', { name: 'Data', exact: true })
+      .click();
     await page.getByRole('button', { name: /Use sample dataset/ }).click();
     await page.getByRole('menuitem', { name: /Two reflective constructs/ }).click();
     await expect(page.getByRole('region', { name: 'Preview of the working table' })).toBeVisible();
@@ -109,7 +112,7 @@ for (const theme of ['light', 'dark'] as const) {
 
     // --- Modeler overlay
     await page.getByRole('link', { name: 'Modeler', exact: true }).click();
-    await page.getByRole('radio', { name: 'Estimates' }).click();
+    await page.getByRole('radio', { name: 'Est.', exact: true }).click();
     await expect(page.locator('.sem-pill').first()).toBeVisible();
     await expect(page.locator('.sem-capsule').first()).toContainText('R²');
     await page.waitForTimeout(400);

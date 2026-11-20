@@ -153,3 +153,60 @@ describe('CB-SEM overlay follows the Standardized / Unstandardized toggle', () =
     );
   });
 });
+
+describe('non-significant paths are dashed', () => {
+  const withP = (pPeouBi: number | null, ci?: [number, number]): NormalizedSemResult => ({
+    ...FIXTURE_RESULT,
+    parameters: FIXTURE_RESULT.parameters.map((p) => {
+      if (p.kind !== 'path') return p;
+      const ns = p.sourceId === 'c_peou' && p.targetId === 'c_bi';
+      return {
+        ...p,
+        pValue: ns ? pPeouBi : 0.001,
+        ...(ci && ns ? { ciLower: ci[0], ciUpper: ci[1] } : {}),
+      };
+    }),
+  });
+  const edge = (scene: ReturnType<typeof buildScene>, s: string, t: string) =>
+    scene.edges.find((e) => e.kind === 'structural' && e.sourceId === s && e.targetId === t)!;
+
+  it('marks a path with p ≥ .05 in every overlay mode, and only that path', () => {
+    for (const mode of ['estimate', 't', 'p', 'ci', 'hypothesis'] as const) {
+      const scene = buildScene(TAM_MODEL, layout, { overlay: { mode, result: withP(0.21) } });
+      expect(edge(scene, 'c_peou', 'c_bi').nonSignificant, mode).toBe(true);
+      expect(edge(scene, 'c_peou', 'c_pu').nonSignificant, mode).toBeUndefined();
+    }
+  });
+
+  it('uses the confidence interval when there is no p-value, and claims nothing without inference', () => {
+    const ci = buildScene(TAM_MODEL, layout, {
+      overlay: { mode: 'estimate', result: withP(null, [-0.05, 0.2]) },
+    });
+    expect(edge(ci, 'c_peou', 'c_bi').nonSignificant).toBe(true);
+    const none: NormalizedSemResult = {
+      ...FIXTURE_RESULT,
+      parameters: FIXTURE_RESULT.parameters.map((p) => ({
+        ...p,
+        pValue: null,
+        ciLower: null,
+        ciUpper: null,
+      })),
+    };
+    const scene = buildScene(TAM_MODEL, layout, { overlay: { mode: 'estimate', result: none } });
+    expect(scene.edges.some((e) => e.nonSignificant)).toBe(false);
+    expect(overlayLegend({ mode: 'estimate', result: none })).not.toMatch(/Dashed/);
+    expect(overlayLegend({ mode: 'estimate', result: withP(0.21) })).toMatch(
+      /Dashed arrows: not significant/,
+    );
+  });
+
+  it('is drawn dashed in the SVG export', () => {
+    const scene = buildScene(TAM_MODEL, layout, {
+      overlay: { mode: 'estimate', result: withP(0.21) },
+    });
+    const svg = sceneToSvg(scene, { background: 'white' });
+    const dashed = [...svg.matchAll(/<path [^>]*stroke-dasharray="6 4"[^>]*>/g)];
+    expect(dashed).toHaveLength(1);
+    expect(dashed[0]![0]).toContain('data-kind="structural"');
+  });
+});

@@ -1,0 +1,191 @@
+{
+  "caseId": "path-study-success",
+  "exogenousCorrelations": [
+    {
+      "a": "SES",
+      "b": "PriorGPA",
+      "r": 0.3
+    }
+  ],
+  "impliedCorrelation": {
+    "matrix": [
+      [
+        "1.000000",
+        "0.300000",
+        "0.290000",
+        "0.130500",
+        "0.187650"
+      ],
+      [
+        "0.300000",
+        "1.000000",
+        "0.360000",
+        "0.162000",
+        "0.452600"
+      ],
+      [
+        "0.290000",
+        "0.360000",
+        "1.000000",
+        "0.450000",
+        "0.411000"
+      ],
+      [
+        "0.130500",
+        "0.162000",
+        "0.450000",
+        "1.000000",
+        "0.424200"
+      ],
+      [
+        "0.187650",
+        "0.452600",
+        "0.411000",
+        "0.424200",
+        "1.000000"
+      ]
+    ],
+    "order": [
+      "SES",
+      "PriorGPA",
+      "Motivation",
+      "StudyHours",
+      "ExamScore"
+    ]
+  },
+  "kind": "observed-path-model",
+  "rSquared": {
+    "ExamScore": "0.347320",
+    "Motivation": "0.166000",
+    "StudyHours": "0.202500"
+  },
+  "sampleOls": {
+    "ExamScore": {
+      "intercept": "29.517283",
+      "r2": "0.309890",
+      "standardized": {
+        "Motivation": "0.125936",
+        "PriorGPA": "0.318424",
+        "StudyHours": "0.304264"
+      },
+      "unstandardized": {
+        "Motivation": "1.531426",
+        "PriorGPA": "6.337922",
+        "StudyHours": "0.917471"
+      }
+    },
+    "Motivation": {
+      "intercept": "3.268354",
+      "r2": "0.171414",
+      "standardized": {
+        "PriorGPA": "0.267882",
+        "SES": "0.245958"
+      },
+      "unstandardized": {
+        "PriorGPA": "0.438471",
+        "SES": "0.244885"
+      }
+    },
+    "StudyHours": {
+      "intercept": "2.439995",
+      "r2": "0.203261",
+      "standardized": {
+        "Motivation": "0.450845"
+      },
+      "unstandardized": {
+        "Motivation": "1.818150"
+      }
+    }
+  },
+  "standardizedPaths": [
+    {
+      "beta": 0.2,
+      "source": "SES",
+      "target": "Motivation"
+    },
+    {
+      "beta": 0.3,
+      "source": "PriorGPA",
+      "target": "Motivation"
+    },
+    {
+      "beta": 0.45,
+      "source": "Motivation",
+      "target": "StudyHours"
+    },
+    {
+      "beta": 0.35,
+      "source": "PriorGPA",
+      "target": "ExamScore"
+    },
+    {
+      "beta": 0.15,
+      "source": "Motivation",
+      "target": "ExamScore"
+    },
+    {
+      "beta": 0.3,
+      "source": "StudyHours",
+      "target": "ExamScore"
+    }
+  ],
+  "theme": "Student achievement: background -> motivation -> study time -> exam score",
+  "variables": [
+    {
+      "column": "ses",
+      "decimals": 2,
+      "label": "Socio-economic status index (synthetic)",
+      "mean": 0.0,
+      "name": "SES",
+      "sd": 1.0
+    },
+    {
+      "column": "prior_gpa",
+      "decimals": 2,
+      "label": "Prior grade point average, 1-5 (synthetic)",
+      "mean": 3.4,
+      "name": "PriorGPA",
+      "range": [
+        1.0,
+        5.0
+      ],
+      "sd": 0.6
+    },
+    {
+      "column": "motivation",
+      "decimals": 2,
+      "label": "Study motivation, mean of 1-7 items (synthetic)",
+      "mean": 4.8,
+      "name": "Motivation",
+      "range": [
+        1.0,
+        7.0
+      ],
+      "sd": 1.0
+    },
+    {
+      "column": "study_hours",
+      "decimals": 1,
+      "label": "Self-study hours per week (synthetic)",
+      "mean": 11.0,
+      "name": "StudyHours",
+      "range": [
+        0.0,
+        40.0
+      ],
+      "sd": 4.0
+    },
+    {
+      "column": "exam_score",
+      "decimals": 0,
+      "label": "Final exam score, 0-100 (synthetic)",
+      "mean": 68.0,
+      "name": "ExamScore",
+      "range": [
+        0.0,
+        100.0
+      ],
+      "sd": 12.0
+    }
+  ]
+}

@@ -25,6 +25,7 @@ import {
 import { type Guide, type Point } from '../geometry';
 import { sizeOf } from '../layout/auto-layout';
 import { buildScene } from '../scene';
+import { COLUMN_MIME, addObservedVariables, decodeColumns } from '../indicator-dnd';
 import { useModeler } from '../store';
 import type { OverlayInput } from '../overlay';
 import { type DragStart, dragPositions } from './drag';
@@ -100,7 +101,9 @@ export function SemCanvas({
       scene.nodes.map((n) => {
         const description =
           n.kind === 'construct'
-            ? `${roles.get(n.id) ?? 'isolated'}, ${model.constructs.find((c) => c.id === n.id)?.indicatorIds.length ?? 0} indicators`
+            ? n.observed
+              ? `${roles.get(n.id) ?? 'isolated'}, column ${model.indicators.find((i) => i.id === model.constructs.find((c) => c.id === n.id)?.indicatorIds[0])?.column ?? 'not mapped'}`
+              : `${roles.get(n.id) ?? 'isolated'}, ${model.constructs.find((c) => c.id === n.id)?.indicatorIds.length ?? 0} indicators`
             : n.unmapped
               ? 'not mapped to a data column'
               : `column ${model.indicators.find((i) => i.id === n.id)?.column ?? ''}`;
@@ -333,6 +336,20 @@ export function SemCanvas({
         onConnect={onConnect}
         isValidConnection={isValidConnection}
         onEdgesChange={applySelectionChanges}
+        // A data column dropped on empty canvas becomes an observed variable (one box); dropped
+        // on a construct it becomes one of its indicators (handled by the construct node).
+        onDragOver={(e) => {
+          if (!e.dataTransfer.types.includes(COLUMN_MIME)) return;
+          e.preventDefault();
+          e.dataTransfer.dropEffect = 'copy';
+        }}
+        onDrop={(e) => {
+          if (!e.dataTransfer.types.includes(COLUMN_MIME)) return;
+          e.preventDefault();
+          const columns = decodeColumns(e.dataTransfer.getData(COLUMN_MIME));
+          const at = rf.screenToFlowPosition({ x: e.clientX, y: e.clientY });
+          addObservedVariables(columns, { x: at.x - 48, y: at.y - 24 });
+        }}
         connectionMode={ConnectionMode.Loose}
         connectionRadius={36}
         zoomOnDoubleClick={false}

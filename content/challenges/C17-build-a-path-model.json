@@ -1,0 +1,276 @@
+{
+  "id": "build-a-path-model",
+  "number": 17,
+  "title": "Build a path model from hypotheses",
+  "category": "model",
+  "method": "cb",
+  "difficulty": 2,
+  "prerequisiteLessons": [
+    "path-analysis-and-regression",
+    "identification"
+  ],
+  "skills": [
+    "Drawing a path model of observed variables",
+    "Counting degrees of freedom",
+    "Reading unstandardised paths"
+  ],
+  "brief": [
+    {
+      "kind": "p",
+      "text": "An HR study surveyed 450 employees (SYNTHETIC data). Each variable is already a scale score in one column: `demands`, `resources`, `burnout`, `engagement` and `quit_intention`. Inspired by the job demands-resources model, the team states five hypotheses:"
+    },
+    {
+      "kind": "list",
+      "ordered": true,
+      "items": [
+        "H1: Job demands increase burnout.",
+        "H2: Job resources reduce burnout.",
+        "H3: Job resources increase work engagement.",
+        "H4: Burnout increases turnover intention.",
+        "H5: Engagement reduces turnover intention."
+      ]
+    },
+    {
+      "kind": "p",
+      "text": "Build exactly these paths as a path model of observed variables (drag each column onto empty canvas to make a box), estimate it with CB-SEM (ML) and answer the questions. No other arrows: the paths you leave out are part of the theory."
+    }
+  ],
+  "starter": {
+    "title": "Job demands-resources study (columns only)",
+    "model": {
+      "constructs": [],
+      "indicators": [],
+      "relationships": []
+    },
+    "bundledDatasetId": "path-work-wellbeing",
+    "analysis": {
+      "method": "cb-sem",
+      "engine": "browser",
+      "estimator": "ML",
+      "missingData": "listwise",
+      "cb": {
+        "identification": "marker",
+        "meanStructure": false
+      }
+    },
+    "open": "modeler"
+  },
+  "tasks": [
+    {
+      "id": "model",
+      "dimension": "structure",
+      "kind": "model",
+      "prompt": "Build the path model in the brief: one box per column and the five hypothesised paths. Names may differ; layout is not scored.",
+      "check": {
+        "constructs": [
+          {
+            "key": "demands",
+            "aliases": [
+              "demands",
+              "Demands",
+              "Job demands",
+              "JD"
+            ],
+            "indicators": [
+              "demands"
+            ]
+          },
+          {
+            "key": "resources",
+            "aliases": [
+              "resources",
+              "Resources",
+              "Job resources",
+              "JR"
+            ],
+            "indicators": [
+              "resources"
+            ]
+          },
+          {
+            "key": "burnout",
+            "aliases": [
+              "burnout",
+              "Burnout",
+              "Exhaustion",
+              "BO"
+            ],
+            "indicators": [
+              "burnout"
+            ]
+          },
+          {
+            "key": "engagement",
+            "aliases": [
+              "engagement",
+              "Engagement",
+              "Work engagement",
+              "ENG",
+              "WE"
+            ],
+            "indicators": [
+              "engagement"
+            ]
+          },
+          {
+            "key": "quit",
+            "aliases": [
+              "quit_intention",
+              "QuitIntention",
+              "Quit intention",
+              "Turnover intention",
+              "TI",
+              "Intention to quit"
+            ],
+            "indicators": [
+              "quit_intention"
+            ]
+          }
+        ],
+        "paths": [
+          [
+            "demands",
+            "burnout"
+          ],
+          [
+            "resources",
+            "burnout"
+          ],
+          [
+            "resources",
+            "engagement"
+          ],
+          [
+            "burnout",
+            "quit"
+          ],
+          [
+            "engagement",
+            "quit"
+          ]
+        ],
+        "exactPaths": true,
+        "allowExtraConstructs": false
+      }
+    },
+    {
+      "id": "estimator",
+      "dimension": "estimator",
+      "kind": "config",
+      "prompt": "Set up the analysis: CB-SEM with maximum likelihood.",
+      "expected": {
+        "method": "cb-sem",
+        "estimator": "ML"
+      }
+    },
+    {
+      "id": "df",
+      "dimension": "numeric",
+      "kind": "number",
+      "prompt": "How many degrees of freedom does the model have?",
+      "answer": 4,
+      "tolerance": 0.5,
+      "feedbackCorrect": "Correct: 15 variances and covariances, 11 free parameters.",
+      "feedbackWrong": "Count it: 5 variables give 5·6/2 = 15 variances and covariances. Subtract the free parameters: 5 paths, the variances of Demands and Resources and their covariance, and 3 disturbance variances.",
+      "derivation": {
+        "source": {
+          "fixture": "path-work-wellbeing"
+        },
+        "analysis": {
+          "method": "cb-sem",
+          "engine": "browser",
+          "estimator": "ML",
+          "missingData": "listwise",
+          "cb": {
+            "identification": "marker",
+            "meanStructure": false
+          }
+        },
+        "fitIndex": "df"
+      }
+    },
+    {
+      "id": "burnout-quit",
+      "dimension": "numeric",
+      "kind": "number",
+      "prompt": "Enter the unstandardised coefficient of Burnout → turnover intention (H4).",
+      "answer": 0.205,
+      "tolerance": 0.01,
+      "feedbackCorrect": "Correct. One point more burnout goes with about 0.2 points more turnover intention, holding engagement constant.",
+      "feedbackWrong": "Read the unstandardised (raw-unit) estimate of the path from burnout to turnover intention, with CB-SEM ML.",
+      "derivation": {
+        "source": {
+          "fixture": "path-work-wellbeing"
+        },
+        "analysis": {
+          "method": "cb-sem",
+          "engine": "browser",
+          "estimator": "ML",
+          "missingData": "listwise",
+          "cb": {
+            "identification": "marker",
+            "meanStructure": false
+          }
+        },
+        "parameterKey": "path:c_burnout->c_quitintention",
+        "field": "est"
+      }
+    },
+    {
+      "id": "why-four",
+      "dimension": "interpretation",
+      "kind": "choice",
+      "prompt": "Only three arrows between the variables are missing (Demands → Engagement, Demands → turnover intention, Resources → turnover intention), yet df = 4. What is the fourth restriction?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "The disturbances of Burnout and Engagement are assumed to be uncorrelated: no common cause outside the model.",
+          "correct": true,
+          "feedback": "Correct. Both are predicted by the model and both predict turnover intention; their residual covariance is fixed at 0 unless you add it."
+        },
+        {
+          "id": "b",
+          "text": "The covariance between Demands and Resources is fixed at 0.",
+          "correct": false,
+          "feedback": "Exogenous variables are allowed to correlate freely in CB-SEM, as predictors in a regression are."
+        },
+        {
+          "id": "c",
+          "text": "The variance of turnover intention is fixed at 1.",
+          "correct": false,
+          "feedback": "Nothing is standardised during estimation. Its disturbance variance is a free parameter."
+        }
+      ]
+    },
+    {
+      "id": "report",
+      "dimension": "reporting",
+      "kind": "self-assess",
+      "prompt": "Before you report the model, tick what your write-up contains.",
+      "checklist": [
+        "The path diagram with boxes for the observed variables",
+        "χ²(df), CFI, RMSEA and SRMR, and what the omitted paths claim",
+        "Unstandardised and standardised coefficients with confidence intervals or p-values",
+        "R² for burnout, engagement and turnover intention",
+        "A note that the scale scores are treated as free of measurement error"
+      ]
+    }
+  ],
+  "hints": [
+    "Drag each of the five columns from the left pane onto empty canvas. Each becomes a box; then draw arrows from a box's handle to another box.",
+    "Turnover intention has two incoming arrows, burnout one more than engagement. Demands has a single outgoing arrow.",
+    "For df: 5 observed variables give 15 variances and covariances. In a path model each box's own variance is a parameter only if it is exogenous; endogenous boxes have a disturbance variance instead."
+  ],
+  "solution": [
+    {
+      "kind": "p",
+      "text": "Five boxes (demands, resources, burnout, engagement, quit_intention) and the paths Demands → Burnout, Resources → Burnout, Resources → Engagement, Burnout → QuitIntention and Engagement → QuitIntention. Analysis: CB-SEM, ML."
+    },
+    {
+      "kind": "p",
+      "text": "df = 15 − 11 = 4: the three omitted arrows plus the zero covariance between the disturbances of Burnout and Engagement. The unstandardised Burnout → QuitIntention path is about 0.21, identical to the OLS slope of quit_intention on burnout and engagement, because a recursive path model with uncorrelated disturbances is estimated equation by equation."
+    }
+  ],
+  "nextLesson": "fit-indices"
+}

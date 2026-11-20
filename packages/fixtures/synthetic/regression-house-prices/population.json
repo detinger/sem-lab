@@ -1,0 +1,110 @@
+{
+  "caseId": "regression-house-prices",
+  "errorSd": 40.0,
+  "intercept": 40.0,
+  "kind": "multiple-regression",
+  "outcome": {
+    "column": "price",
+    "decimals": 1,
+    "label": "Sale price, thousand EUR (synthetic)",
+    "name": "Price",
+    "range": [
+      20.0,
+      900.0
+    ]
+  },
+  "predictorCorrelation": [
+    [
+      1.0,
+      0.1,
+      0.3,
+      0.3
+    ],
+    [
+      0.1,
+      1.0,
+      -0.2,
+      -0.1
+    ],
+    [
+      0.3,
+      -0.2,
+      1.0,
+      0.25
+    ],
+    [
+      0.3,
+      -0.1,
+      0.25,
+      1.0
+    ]
+  ],
+  "predictors": [
+    {
+      "b": 2.2,
+      "column": "area",
+      "decimals": 0,
+      "label": "Living area, m2 (synthetic)",
+      "mean": 95.0,
+      "name": "Area",
+      "range": [
+        25.0,
+        300.0
+      ],
+      "sd": 30.0
+    },
+    {
+      "b": -0.6,
+      "column": "age",
+      "decimals": 0,
+      "label": "Building age, years (synthetic)",
+      "mean": 35.0,
+      "name": "Age",
+      "range": [
+        0.0,
+        120.0
+      ],
+      "sd": 14.0
+    },
+    {
+      "b": -4.5,
+      "column": "distance",
+      "decimals": 1,
+      "label": "Distance to the city centre, km (synthetic)",
+      "mean": 7.0,
+      "name": "Distance",
+      "range": [
+        0.3,
+        30.0
+      ],
+      "sd": 2.8
+    },
+    {
+      "b": 12.0,
+      "binary": true,
+      "column": "garage",
+      "label": "Has a garage, 0/1 (synthetic)",
+      "name": "Garage",
+      "threshold": 0.125
+    }
+  ],
+  "sampleOls": {
+    "Price": {
+      "intercept": "57.260585",
+      "r2": "0.700108",
+      "standardized": {
+        "Age": "-0.138826",
+        "Area": "0.854125",
+        "Distance": "-0.209359",
+        "Garage": "0.111036"
+      },
+      "unstandardized": {
+        "Age": "-0.685214",
+        "Area": "2.072681",
+        "Distance": "-5.448565",
+        "Garage": "15.608267"
+      }
+    }
+  },
+  "theme": "Hedonic house prices: area, age, distance and a garage dummy -> price"
+}

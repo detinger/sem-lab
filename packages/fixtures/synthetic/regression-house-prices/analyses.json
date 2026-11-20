@@ -1,0 +1,31 @@
+[
+  {
+    "analysis": {
+      "cb": {
+        "identification": "marker",
+        "meanStructure": false
+      },
+      "engine": "browser",
+      "estimator": "ML",
+      "method": "cb-sem",
+      "missingData": "listwise"
+    },
+    "description": "CB-SEM ML in the browser engine: unstandardised paths equal sample OLS.",
+    "id": "cb-browser-ml"
+  },
+  {
+    "analysis": {
+      "engine": "browser",
+      "estimator": "pls-pm",
+      "method": "pls-sem",
+      "missingData": "listwise",
+      "pls": {
+        "innerWeighting": "path",
+        "maxIterations": 300,
+        "tolerance": 1e-07
+      }
+    },
+    "description": "Classic PLS-SEM in the browser engine: paths equal standardised OLS.",
+    "id": "pls-browser"
+  }
+]

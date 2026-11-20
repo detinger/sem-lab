@@ -90,6 +90,25 @@ export const BUNDLED_DATASETS: readonly BundledDatasetInfo[] = [
   ),
   synthetic('utaut2-inspired', 'Technology adoption model inspired by UTAUT2 (SYNTHETIC)', 450, 27),
   synthetic('item-screening', 'Item screening: a reverse-worded and a constant item', 300, 8),
+  synthetic('path-study-success', 'Study success path model (observed variables)', 400, 5),
+  synthetic(
+    'path-work-wellbeing',
+    'Job demands and resources path model (observed variables)',
+    450,
+    5,
+  ),
+  synthetic(
+    'regression-house-prices',
+    'House prices: multiple regression (observed variables)',
+    300,
+    5,
+  ),
+  synthetic(
+    'regression-sleep-quality',
+    'Sleep quality: multiple regression (observed variables)',
+    250,
+    5,
+  ),
   {
     id: 'acsi-2015',
     title: 'American Customer Satisfaction Index (ACSI) 2015 sample data',

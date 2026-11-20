@@ -31,6 +31,10 @@ uv run --python 3.12 --with numpy python packages/fixtures/scripts/generate_synt
 | `acsi-inspired` | sampled | 500 | Reference/teaching project (SYNTHETIC; inspired by the ACSI model structure of Fornell et al. 1996; NOT ACSI data): PLS-SEM on 10-point items with bootstrap, mediation and IPMA of loyalty/satisfaction |
 | `utaut2-inspired` | sampled | 450 | Reference/teaching project (SYNTHETIC; inspired by UTAUT2, Venkatesh, Thong & Xu 2012; does not reproduce any published dataset): eight-construct PLS-SEM, hypothesis tests incl. a near-zero path, indirect effects |
 | `item-screening` | sampled | 300 | Item screening (Challenge 5): detect a reverse-worded item (sat3r) and a constant item (loy4) before estimation |
+| `path-study-success` | sampled | 400 | Path analysis with observed variables (SYNTHETIC; no published study): an over-identified recursive model (df = 3) for CB-SEM fit, mediation through motivation and study hours, ML = OLS oracle |
+| `path-work-wellbeing` | sampled | 450 | Path analysis with observed variables (SYNTHETIC; inspired by the job demands-resources model, Demerouti et al. 2001; Bakker & Demerouti 2007; does not reproduce any published dataset): two mediated processes, indirect effects, ML = OLS oracle |
+| `regression-house-prices` | sampled | 300 | Multiple regression as a path model (SYNTHETIC hedonic house-price data): unstandardised slopes in EUR, a 0/1 dummy predictor, correlated predictors, ML = OLS oracle |
+| `regression-sleep-quality` | sampled | 250 | Multiple regression as a path model (SYNTHETIC): standardised slopes and bootstrap CIs in PLS-SEM, a near-zero predictor, ML = OLS oracle |
 | `broken-mapping` | model-only | — | Broken CSV mapping: cannot run; precisely names missing columns |
 
 ## Kinds

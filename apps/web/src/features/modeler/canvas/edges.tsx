@@ -25,7 +25,7 @@ export const SemEdge = memo(function SemEdge({ id, data, selected }: EdgeProps<S
       <BaseEdge
         id={id}
         path={e.d}
-        className={`sem-edge sem-edge-${e.kind}${e.clear ? '' : ' sem-edge-unclear'}`}
+        className={`sem-edge sem-edge-${e.kind}${e.clear ? '' : ' sem-edge-unclear'}${e.nonSignificant ? ' sem-edge-ns' : ''}`}
         markerEnd={e.arrowEnd ? m : undefined}
         markerStart={e.arrowStart ? m : undefined}
         interactionWidth={14}

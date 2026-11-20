@@ -1,0 +1,115 @@
+{
+  "caseId": "regression-sleep-quality",
+  "errorSd": 9.0,
+  "intercept": 70.0,
+  "kind": "multiple-regression",
+  "outcome": {
+    "column": "sleep_quality",
+    "decimals": 1,
+    "label": "Sleep quality score, 0-100 (synthetic)",
+    "name": "SleepQuality",
+    "range": [
+      0.0,
+      100.0
+    ]
+  },
+  "predictorCorrelation": [
+    [
+      1.0,
+      -0.1,
+      0.15,
+      0.25
+    ],
+    [
+      -0.1,
+      1.0,
+      -0.05,
+      -0.2
+    ],
+    [
+      0.15,
+      -0.05,
+      1.0,
+      0.3
+    ],
+    [
+      0.25,
+      -0.2,
+      0.3,
+      1.0
+    ]
+  ],
+  "predictors": [
+    {
+      "b": -3.0,
+      "column": "screen_time",
+      "decimals": 1,
+      "label": "Evening screen time, hours (synthetic)",
+      "mean": 2.5,
+      "name": "ScreenTime",
+      "range": [
+        0.0,
+        8.0
+      ],
+      "sd": 1.2
+    },
+    {
+      "b": 1.2,
+      "column": "exercise",
+      "decimals": 1,
+      "label": "Exercise, hours per week (synthetic)",
+      "mean": 3.5,
+      "name": "Exercise",
+      "range": [
+        0.0,
+        15.0
+      ],
+      "sd": 2.2
+    },
+    {
+      "b": -0.3,
+      "column": "caffeine",
+      "decimals": 0,
+      "label": "Caffeinated drinks per day (synthetic)",
+      "mean": 2.2,
+      "name": "Caffeine",
+      "range": [
+        0.0,
+        8.0
+      ],
+      "sd": 1.3
+    },
+    {
+      "b": -3.5,
+      "column": "stress",
+      "decimals": 1,
+      "label": "Perceived stress, 1-10 (synthetic)",
+      "mean": 5.0,
+      "name": "Stress",
+      "range": [
+        1.0,
+        10.0
+      ],
+      "sd": 1.8
+    }
+  ],
+  "sampleOls": {
+    "SleepQuality": {
+      "intercept": "69.376107",
+      "r2": "0.514811",
+      "standardized": {
+        "Caffeine": "-0.042272",
+        "Exercise": "0.189662",
+        "ScreenTime": "-0.199637",
+        "Stress": "-0.576580"
+      },
+      "unstandardized": {
+        "Caffeine": "-0.365052",
+        "Exercise": "0.994864",
+        "ScreenTime": "-1.965221",
+        "Stress": "-3.843235"
+      }
+    }
+  },
+  "theme": "Sleep quality: screen time, exercise, caffeine and stress -> sleep score"
+}

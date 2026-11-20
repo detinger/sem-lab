@@ -87,7 +87,7 @@ for (const theme of ['light', 'dark'] as const) {
 
     // Modeler overlay with the scale toggle
     await page.getByRole('link', { name: 'Modeler', exact: true }).click();
-    await page.getByRole('radio', { name: 'Estimates' }).click();
+    await page.getByRole('radio', { name: 'Est.', exact: true }).click();
     await expect(page.locator('.sem-pill').first()).toBeVisible();
     const stdPill = await page.locator('.sem-pill').first().textContent();
     await page.getByRole('radio', { name: 'Standardized', exact: true }).click();

@@ -43,6 +43,14 @@ function scaleFor(overlay: OverlayInput): OverlayScale | undefined {
 
 /** The one-line legend that explains what the pills and capsules show. */
 export function overlayLegend(overlay: OverlayInput): string {
+  const inference = overlay.result.parameters.some(
+    (x) => x.kind === 'path' && (x.pValue !== null || (x.ciLower !== null && x.ciUpper !== null)),
+  );
+  const text = legendText(overlay);
+  return inference ? `${text} Dashed arrows: not significant (p ≥ .05).` : text;
+}
+
+function legendText(overlay: OverlayInput): string {
   const { mode, result } = overlay;
   if (mode === 'hypothesis') return 'Hypothesis labels as written in the model.';
   const cb = hasBothScales(result);
@@ -105,6 +113,32 @@ function measurementParam(
   );
 }
 
+/** Significance level for drawing a path dashed; matches the * threshold of the result tables. */
+export const SIGNIFICANCE_ALPHA = 0.05;
+
+/**
+ * Whether a path is statistically significant: from its p-value (bootstrap or analytic, whichever
+ * scale carries one), else from a confidence interval that excludes zero. undefined when the run
+ * has no inference for it (no bootstrap), so nothing is claimed either way.
+ */
+export function pathSignificant(
+  result: NormalizedSemResult,
+  edgeId: string,
+  rel: { sourceId: string; targetId: string } | undefined,
+): boolean | undefined {
+  const matches = result.parameters.filter(
+    (x) =>
+      x.kind === 'path' &&
+      (x.relationshipId === edgeId ||
+        (rel !== undefined && x.sourceId === rel.sourceId && x.targetId === rel.targetId)),
+  );
+  const withP = matches.find((x) => x.pValue !== null);
+  if (withP) return withP.pValue! < SIGNIFICANCE_ALPHA;
+  const withCi = matches.find((x) => x.ciLower !== null && x.ciUpper !== null);
+  if (withCi) return withCi.ciLower! > 0 || withCi.ciUpper! < 0;
+  return undefined;
+}
+
 export function applyOverlay(scene: Scene, model: SemModel, overlay: OverlayInput): Scene {
   const { mode, result } = overlay;
   const scale = scaleFor(overlay);
@@ -112,8 +146,11 @@ export function applyOverlay(scene: Scene, model: SemModel, overlay: OverlayInpu
   const edges = scene.edges.map((e) => {
     if (e.kind === 'covariance') return e;
     if (e.kind === 'structural') {
-      if (mode === 'hypothesis') return e.hypothesis ? { ...e, pill: e.hypothesis } : e;
       const rel = model.relationships.find((r) => r.id === e.id);
+      // Non-significant paths are dashed in every overlay mode (STYLE §8).
+      const ns = pathSignificant(result, e.id, rel) === false ? { nonSignificant: true } : {};
+      if (mode === 'hypothesis')
+        return { ...e, ...ns, ...(e.hypothesis ? { pill: e.hypothesis } : {}) };
       const p = result.parameters.find(
         (x) =>
           x.kind === 'path' &&
@@ -121,7 +158,7 @@ export function applyOverlay(scene: Scene, model: SemModel, overlay: OverlayInpu
           (x.relationshipId === e.id ||
             (x.sourceId === rel?.sourceId && x.targetId === rel?.targetId)),
       );
-      return { ...e, pill: pillFor(mode, p) };
+      return { ...e, ...ns, pill: pillFor(mode, p) };
     }
     // Measurement edges are short: they carry loadings/weights in the estimate overlay only.
     if (mode !== 'estimate') return e;

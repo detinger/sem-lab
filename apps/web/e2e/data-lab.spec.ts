@@ -29,7 +29,10 @@ async function prepare(page: Page, theme: 'light' | 'dark', size: keyof typeof S
   await expect(page.locator('.react-flow__node-construct')).toHaveCount(2);
 
   // Navigate inside the app so the open project is kept in memory.
-  await page.getByRole('link', { name: 'Data', exact: true }).click();
+  await page
+    .getByRole('group', { name: 'Workspace' })
+    .getByRole('link', { name: 'Data', exact: true })
+    .click();
   await expect(page.getByRole('heading', { level: 1, name: 'Data' })).toBeVisible();
   await page.getByRole('button', { name: /Use sample dataset/ }).click();
   await page.getByRole('menuitem', { name: /Two reflective constructs/ }).click();

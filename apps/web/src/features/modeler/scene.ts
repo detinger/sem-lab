@@ -19,6 +19,7 @@ import {
   wrapLabel,
 } from './geometry';
 import { sizeOf } from './layout/auto-layout';
+import { observedConstructs } from './observed';
 import { type RoutedPath, pathData, routeStructural } from './layout/routing';
 import { type OverlayInput, applyOverlay } from './overlay';
 
@@ -34,6 +35,8 @@ export interface SceneNode {
   unmapped?: boolean;
   /** result overlay: R² capsule under an endogenous construct */
   capsule?: string;
+  /** single-indicator construct drawn as an observed variable (one rectangle, path analysis) */
+  observed?: boolean;
 }
 
 export interface SceneEdge {
@@ -51,6 +54,8 @@ export interface SceneEdge {
   clear: boolean;
   /** result overlay: coefficient pill at labelAt (one overlay mode at a time) */
   pill?: string;
+  /** result overlay: a structural path that is not significant (p ≥ .05), drawn dashed */
+  nonSignificant?: boolean;
 }
 
 export interface Scene {
@@ -76,8 +81,11 @@ export function constructShape(layout: SemLayout): NodeShape {
 
 export function buildScene(model: SemModel, layout: SemLayout, opts: SceneOptions = {}): Scene {
   const collapsed = opts.collapsed ?? new Set(layout.settings.collapsedConstructIds);
+  const observed = observedConstructs(model, layout.settings);
   const hiddenIndicators = new Set(
-    model.constructs.filter((c) => collapsed.has(c.id)).flatMap((c) => c.indicatorIds),
+    model.constructs
+      .filter((c) => collapsed.has(c.id) || observed.has(c.id))
+      .flatMap((c) => c.indicatorIds),
   );
   const cShape = constructShape(layout);
   const pos = (id: string): Point | undefined => opts.positions?.[id] ?? layout.nodes[id];
@@ -87,13 +95,16 @@ export function buildScene(model: SemModel, layout: SemLayout, opts: SceneOption
     const p = pos(c.id);
     if (!p) continue;
     const size = sizeOf(model, c.id, layout.settings);
+    const isObserved = observed.has(c.id);
     nodes.push({
       id: c.id,
       kind: 'construct',
       rect: { ...p, ...size },
-      shape: cShape,
+      shape: isObserved ? 'rect' : cShape,
       lines: wrapLabel(c.name, 14, 150),
-      ...(c.measurement === 'composite-formative' ? { tag: 'Composite' } : {}),
+      // With a single indicator the measurement type has no meaning, so no "Composite" tag.
+      ...(c.measurement === 'composite-formative' && !isObserved ? { tag: 'Composite' } : {}),
+      ...(isObserved ? { observed: true } : {}),
     });
   }
   for (const i of model.indicators) {

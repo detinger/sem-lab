@@ -4,6 +4,7 @@
  */
 import { type SemLayout, type SemModel } from '@sem-lab/contracts';
 import { computeAutoLayout, mergeLayout } from '@/features/modeler/layout/auto-layout';
+import { singleIndicatorConstructs } from '@/features/modeler/observed';
 import { emptyLayout } from '@/features/modeler/store';
 import { buildScene } from '@/features/modeler/scene';
 import { escapeXml, sceneToSvg } from '@/features/modeler/export/svg-export';
@@ -31,7 +32,14 @@ export function modelSvg(
       let layout: SemLayout;
       if (opts.layout) layout = opts.layout;
       else {
-        const base = emptyLayout();
+        // A pure path model (every construct one indicator) is drawn in path-analysis notation:
+        // each variable as one observed-variable box.
+        const single = singleIndicatorConstructs(model);
+        const base = emptyLayout(
+          single.length > 0 && single.length === model.constructs.length
+            ? { observedConstructIds: single }
+            : {},
+        );
         const computed = await computeAutoLayout(model, base.settings);
         layout = { ...base, nodes: mergeLayout(model, base, computed, base.settings, false) };
       }

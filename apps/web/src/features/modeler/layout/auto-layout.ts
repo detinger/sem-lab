@@ -15,12 +15,14 @@ import { type LayoutDirection, type SemLayout, type SemModel } from '@sem-lab/co
 import type { ElkNode, LayoutOptions } from 'elkjs/lib/elk-api';
 import type ELKType from 'elkjs/lib/elk.bundled.js';
 import { longestPathLayers, structuralGraph } from '@/domain/graph';
+import { observedConstructs } from '../observed';
 import {
   type Point,
   type Rect,
   type Size,
   constructSize,
   indicatorSize,
+  observedSize,
   rectsOverlap,
   snap,
 } from '../geometry';
@@ -33,6 +35,8 @@ export interface LayoutParams {
   constructShape: 'ellipse' | 'rounded';
   indicatorDensity: 'default' | 'dense';
   collapsedConstructIds: readonly string[];
+  /** single-indicator constructs drawn as one observed-variable rectangle */
+  observedConstructIds?: readonly string[];
 }
 
 export interface LayoutResult {
@@ -82,10 +86,13 @@ function baseOptions(direction: LayoutDirection): LayoutOptions {
 export function sizeOf(
   model: SemModel,
   id: string,
-  p: Pick<LayoutParams, 'constructShape' | 'indicatorDensity'>,
+  p: Pick<LayoutParams, 'constructShape' | 'indicatorDensity' | 'observedConstructIds'>,
 ): Size {
   const c = model.constructs.find((x) => x.id === id);
-  if (c) return constructSize(c.name, p.constructShape);
+  if (c)
+    return observedConstructs(model, p).has(c.id)
+      ? observedSize(c.name)
+      : constructSize(c.name, p.constructShape);
   const i = model.indicators.find((x) => x.id === id);
   return indicatorSize(i?.name ?? '', p.indicatorDensity);
 }
@@ -135,9 +142,10 @@ function buildCluster(
   side: IndicatorSide,
   p: LayoutParams,
   collapsed: boolean,
+  observed: boolean,
 ): Cluster {
   const c = model.constructs.find((x) => x.id === constructId)!;
-  const cs = constructSize(c.name, p.constructShape);
+  const cs = sizeOf(model, constructId, p);
   const inds = collapsed
     ? []
     : c.indicatorIds.filter((id) => model.indicators.some((i) => i.id === id));
@@ -203,7 +211,9 @@ function buildCluster(
     });
   }
   const rects: Rect[] = [{ x: -cs.width / 2, y: -cs.height / 2, ...cs }];
-  inds.forEach((id, k) => rects.push({ ...local.get(id)!, ...sizes[k]! }));
+  // An observed variable's indicator is not drawn: it keeps a fan position (so it reappears
+  // beside its construct if the box view is switched off) but takes no space in the layout.
+  if (!observed) inds.forEach((id, k) => rects.push({ ...local.get(id)!, ...sizes[k]! }));
   const minX = Math.min(...rects.map((r) => r.x));
   const minY = Math.min(...rects.map((r) => r.y));
   const maxX = Math.max(...rects.map((r) => r.x + r.width));
@@ -304,10 +314,10 @@ export async function computeAutoLayout(model: SemModel, p: LayoutParams): Promi
 
   // Pass A — constructs only (folded pairs as one stacked node).
   const stackedSize = (id: string): Size => {
-    const a = constructSize(constructs.find((c) => c.id === id)!.name, p.constructShape);
+    const a = sizeOf(model, id, p);
     const partner = [...folds].find(([, u]) => u === id)?.[0];
     if (!partner) return a;
-    const b = constructSize(constructs.find((c) => c.id === partner)!.name, p.constructShape);
+    const b = sizeOf(model, partner, p);
     return horizontalFlow(p.direction)
       ? { width: Math.max(a.width, b.width), height: a.height + b.height + FOLD_GAP }
       : { width: a.width + b.width + FOLD_GAP, height: Math.max(a.height, b.height) };
@@ -323,8 +333,9 @@ export async function computeAutoLayout(model: SemModel, p: LayoutParams): Promi
 
   // Clusters, then groups (a folded pair = two clusters with aligned construct centres).
   const collapsed = new Set(p.collapsedConstructIds);
+  const observed = observedConstructs(model, p);
   const clusterOf = (id: string): Cluster =>
-    buildCluster(model, id, sides[id]!, p, collapsed.has(id));
+    buildCluster(model, id, sides[id]!, p, collapsed.has(id), observed.has(id));
   const flowH = horizontalFlow(p.direction);
   const groups = new Map<string, Group>();
   for (const c of reps) {
@@ -340,7 +351,7 @@ export async function computeAutoLayout(model: SemModel, p: LayoutParams): Promi
     }
     const top = clusterOf(partner); // stacked on the cross-start side
     const centre = (cl: Cluster): Point => {
-      const cs = constructSize(constructs.find((k) => k.id === cl.id)!.name, p.constructShape);
+      const cs = sizeOf(model, cl.id, p);
       return { x: cl.constructAt.x + cs.width / 2, y: cl.constructAt.y + cs.height / 2 };
     };
     // Align construct centres on the flow axis; separate along the cross axis.

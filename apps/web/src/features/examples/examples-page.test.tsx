@@ -33,12 +33,12 @@ afterEach(async () => {
 const card = (title: string) => screen.getByRole('group', { name: title });
 
 describe('Examples page', () => {
-  it('renders six cards with their badges, sizes and attribution', async () => {
+  it('renders ten cards with their badges, sizes and attribution', async () => {
     renderApp();
     expect(
       await screen.findByRole('heading', { level: 1, name: 'Examples & Colab' }),
     ).toBeVisible();
-    expect(screen.getAllByRole('button', { name: /^Open example/ })).toHaveLength(6);
+    expect(screen.getAllByRole('button', { name: /^Open example/ })).toHaveLength(10);
 
     const acsi = within(card(EXAMPLES.find((e) => e.id === 'acsi-2015')!.title));
     expect(acsi.getByText('PLS-SEM')).toBeVisible();

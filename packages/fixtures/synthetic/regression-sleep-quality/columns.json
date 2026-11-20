@@ -1,0 +1,52 @@
+[
+  {
+    "nMissing": 0,
+    "nUnique": 191,
+    "name": "sleep_quality",
+    "observedMax": 74.1,
+    "observedMin": 12.4,
+    "scaleMax": 100.0,
+    "scaleMin": 0.0,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 51,
+    "name": "screen_time",
+    "observedMax": 5.7,
+    "observedMin": 0.0,
+    "scaleMax": 8.0,
+    "scaleMin": 0.0,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 73,
+    "name": "exercise",
+    "observedMax": 9.8,
+    "observedMin": 0.0,
+    "scaleMax": 15.0,
+    "scaleMin": 0.0,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 7,
+    "name": "caffeine",
+    "observedMax": 6,
+    "observedMin": 0,
+    "scaleMax": 8.0,
+    "scaleMin": 0.0,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 74,
+    "name": "stress",
+    "observedMax": 10.0,
+    "observedMin": 1.0,
+    "scaleMax": 10.0,
+    "scaleMin": 1.0,
+    "scaleType": "METRIC"
+  }
+]

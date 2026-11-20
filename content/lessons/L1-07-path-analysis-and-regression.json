@@ -1,0 +1,270 @@
+{
+  "id": "path-analysis-and-regression",
+  "level": 1,
+  "order": 7,
+  "title": "Path models and regression with observed variables",
+  "summary": "A path model is a structural model whose variables are all observed: each variable is one column drawn as a box, and a multiple regression is its simplest case.",
+  "minutes": 8,
+  "prerequisites": [
+    "measurement-and-structural-model",
+    "errors-and-residuals"
+  ],
+  "body": [
+    {
+      "kind": "p",
+      "text": "Not every model needs latent variables. In [[path-analysis]] every variable is an [[observed-variable]]: one column of the data, such as a test score, a scale mean or a count. The arrows are regressions, estimated together as one system. A [[multiple-regression]] is the simplest path model: one outcome with arrows from several correlated predictors."
+    },
+    {
+      "kind": "diagram",
+      "model": {
+        "constructs": [
+          {
+            "id": "c_ses",
+            "indicatorIds": [
+              "i_ses"
+            ],
+            "label": "Socio-economic status index",
+            "measurement": "reflective",
+            "name": "SES"
+          },
+          {
+            "id": "c_priorgpa",
+            "indicatorIds": [
+              "i_prior_gpa"
+            ],
+            "label": "Prior grade point average, 1-5",
+            "measurement": "reflective",
+            "name": "PriorGPA"
+          },
+          {
+            "id": "c_motivation",
+            "indicatorIds": [
+              "i_motivation"
+            ],
+            "label": "Study motivation, mean of 1-7 items",
+            "measurement": "reflective",
+            "name": "Motivation"
+          },
+          {
+            "id": "c_studyhours",
+            "indicatorIds": [
+              "i_study_hours"
+            ],
+            "label": "Self-study hours per week",
+            "measurement": "reflective",
+            "name": "StudyHours"
+          },
+          {
+            "id": "c_examscore",
+            "indicatorIds": [
+              "i_exam_score"
+            ],
+            "label": "Final exam score, 0-100",
+            "measurement": "reflective",
+            "name": "ExamScore"
+          }
+        ],
+        "indicators": [
+          {
+            "column": null,
+            "id": "i_ses",
+            "name": "ses"
+          },
+          {
+            "column": null,
+            "id": "i_prior_gpa",
+            "name": "prior_gpa"
+          },
+          {
+            "column": null,
+            "id": "i_motivation",
+            "name": "motivation"
+          },
+          {
+            "column": null,
+            "id": "i_study_hours",
+            "name": "study_hours"
+          },
+          {
+            "column": null,
+            "id": "i_exam_score",
+            "name": "exam_score"
+          }
+        ],
+        "relationships": [
+          {
+            "id": "r_ses_motivation",
+            "kind": "structural",
+            "sourceId": "c_ses",
+            "targetId": "c_motivation"
+          },
+          {
+            "id": "r_priorgpa_motivation",
+            "kind": "structural",
+            "sourceId": "c_priorgpa",
+            "targetId": "c_motivation"
+          },
+          {
+            "id": "r_motivation_studyhours",
+            "kind": "structural",
+            "sourceId": "c_motivation",
+            "targetId": "c_studyhours"
+          },
+          {
+            "id": "r_priorgpa_examscore",
+            "kind": "structural",
+            "sourceId": "c_priorgpa",
+            "targetId": "c_examscore"
+          },
+          {
+            "id": "r_motivation_examscore",
+            "kind": "structural",
+            "sourceId": "c_motivation",
+            "targetId": "c_examscore"
+          },
+          {
+            "id": "r_studyhours_examscore",
+            "kind": "structural",
+            "sourceId": "c_studyhours",
+            "targetId": "c_examscore"
+          }
+        ]
+      },
+      "caption": "A path model of observed variables (path-analysis notation: boxes, no ovals). Background predicts motivation, motivation predicts study hours, and three variables feed the exam score.",
+      "highlight": []
+    },
+    {
+      "kind": "p",
+      "text": "In a [[path-diagram]], **boxes are observed variables and ovals are latent variables**. In SEM Lab you build a path model by dragging data columns from the left pane onto empty canvas: each one becomes a box, and you draw the arrows between them. Technically each box is a construct with a single indicator. With nothing selected, the inspector can show every single-indicator construct as a box."
+    },
+    {
+      "kind": "formula",
+      "display": "ExamScore = β₁·PriorGPA + β₂·Motivation + β₃·StudyHours + ζ",
+      "explanation": "One regression equation per endogenous variable. Each β is a path coefficient, and ζ (the [[disturbance]]) is everything the equation leaves out. The model contains one such equation for Motivation, StudyHours and ExamScore each."
+    },
+    {
+      "kind": "p",
+      "text": "Both methods estimate the same equations. **CB-SEM (ML)** returns unstandardised coefficients in the variables' own units; in a recursive model they equal ordinary least squares, equation by equation. **PLS-SEM** returns standardised coefficients, because each construct score is just the standardised column, and R² is the regression R². Bootstrap intervals then give significance."
+    },
+    {
+      "kind": "callout",
+      "variant": "warning",
+      "title": "Fit is only testable when paths are left out",
+      "text": "A regression, or any path model in which every possible arrow is present, is just-identified: [[degrees-of-freedom]] = 0, and χ², CFI and RMSEA show a perfect fit by construction. Only the arrows you deliberately leave out (here SES → StudyHours, PriorGPA → StudyHours and SES → ExamScore, so df = 3) can be tested."
+    },
+    {
+      "kind": "list",
+      "ordered": false,
+      "items": [
+        "Use a path model when each concept really is one measurement (age, hours, sales, a grade) or a well-validated scale score.",
+        "Use latent constructs when you have several items per concept: a single score is treated as free of [[measurement-error]], which attenuates the paths.",
+        "Dummy variables and interaction terms work only if you create them as columns in the data first."
+      ]
+    }
+  ],
+  "mistake": {
+    "title": "Reading perfect fit of a just-identified model as support",
+    "text": "A multiple regression drawn as a path model always fits perfectly in CB-SEM (df = 0, CFI = 1, RMSEA = 0). That says nothing about the theory. Report the coefficients and R² instead, and use fit only for models whose omitted paths make testable claims."
+  },
+  "tryIt": {
+    "task": "Open the study-success example and run it (CB-SEM, ML). Check that df = 3, note which three paths are missing, then read the indirect effect of motivation on the exam score through study hours.",
+    "starter": {
+      "title": "Study success path model",
+      "exampleId": "path-study-success",
+      "open": "analysis"
+    }
+  },
+  "checks": [
+    {
+      "id": "df-regression",
+      "question": "You draw a multiple regression with four correlated predictors as a path model and estimate it with CB-SEM (ML). How many degrees of freedom does it have?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "0: the model is just-identified, so its fit is perfect by construction.",
+          "correct": true,
+          "feedback": "Correct. Every possible arrow is present, so the model reproduces the covariance matrix exactly."
+        },
+        {
+          "id": "b",
+          "text": "4: one per predictor.",
+          "correct": false,
+          "feedback": "Each predictor adds one free path, but its variance and covariances are free as well. Nothing is left over to test."
+        },
+        {
+          "id": "c",
+          "text": "N − 5, as in the regression F test.",
+          "correct": false,
+          "feedback": "That is the residual df of OLS. SEM df counts covariance moments minus free parameters, and here they are equal."
+        }
+      ],
+      "explanation": "df = (number of variances and covariances) − (free parameters). A regression uses all of them, so df = 0. Fit becomes testable only when paths are left out."
+    },
+    {
+      "id": "notation",
+      "question": "In a path diagram, how are observed and latent variables drawn?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "Observed variables as boxes, latent variables as ovals.",
+          "correct": true,
+          "feedback": "Correct. This is the standard notation, and SEM Lab draws a path model's variables as boxes."
+        },
+        {
+          "id": "b",
+          "text": "Observed variables as ovals, latent variables as boxes.",
+          "correct": false,
+          "feedback": "The other way round: a box is something you measured directly."
+        },
+        {
+          "id": "c",
+          "text": "The shape is a matter of taste.",
+          "correct": false,
+          "feedback": "The shapes carry meaning: readers infer whether a variable is measured or inferred from them."
+        }
+      ],
+      "explanation": "Boxes (rectangles) are measured columns; ovals (circles) are latent variables, including disturbances."
+    },
+    {
+      "id": "pls-equals",
+      "question": "In PLS-SEM, every construct of a path model has exactly one indicator. What do the path coefficients equal?",
+      "multiple": false,
+      "options": [
+        {
+          "id": "a",
+          "text": "The standardised OLS regression coefficients of each equation.",
+          "correct": true,
+          "feedback": "Correct. Each construct score is the standardised column, so PLS solves the same regressions on standardised data."
+        },
+        {
+          "id": "b",
+          "text": "The unstandardised OLS coefficients.",
+          "correct": false,
+          "feedback": "PLS works on standardised scores. The unstandardised slopes come from CB-SEM ML."
+        },
+        {
+          "id": "c",
+          "text": "The correlations between the variables.",
+          "correct": false,
+          "feedback": "Only for a single predictor. With several correlated predictors the coefficients are partial effects."
+        }
+      ],
+      "explanation": "Single-indicator constructs make PLS-SEM an equation-by-equation regression on standardised variables; R² is the regression R²."
+    }
+  ],
+  "references": [
+    "wright1934",
+    "kline2016",
+    "bollen1989"
+  ],
+  "glossary": [
+    "path-analysis",
+    "observed-variable",
+    "multiple-regression",
+    "path-diagram",
+    "degrees-of-freedom",
+    "disturbance"
+  ]
+}

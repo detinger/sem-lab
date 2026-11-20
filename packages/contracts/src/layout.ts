@@ -30,6 +30,12 @@ export const LayoutSettings = z.strictObject({
   constructShape: z.enum(['ellipse', 'rounded']),
   indicatorDensity: z.enum(['default', 'dense']),
   collapsedConstructIds: z.array(Id),
+  /**
+   * Single-indicator constructs drawn as one rectangle (an observed variable, as in path
+   * analysis) instead of an oval plus its indicator box. Display only; ignored for constructs
+   * that do not have exactly one indicator.
+   */
+  observedConstructIds: z.array(Id).optional(),
 });
 export type LayoutSettings = z.infer<typeof LayoutSettings>;
 

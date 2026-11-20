@@ -29,7 +29,9 @@ or to learn how SEM works with ready-made examples and lessons.
   zero). Export the diagram as SVG or PNG.
 - **Reproduce elsewhere.** Export a ready-to-run R script (cSEM or lavaan) or a Python
   script. Either one reproduces the app's results on your own machine.
-- **Learn.** Open worked examples, Google Colab notebooks, lessons and challenges.
+- **Learn.** Open worked examples, Google Colab notebooks, lessons and challenges, including
+  a lesson on path models and regression and a challenge where you build a path model from
+  hypotheses.
 
 ## How to use it
 
@@ -53,6 +55,24 @@ or to learn how SEM works with ready-made examples and lessons.
 Your projects are saved automatically in the browser. _Settings_ has the theme and other
 preferences.
 
+### Path models and regression
+
+For path analysis (or a multiple regression drawn as a path model), drag data columns from
+the left pane onto **empty canvas**. Each column becomes an observed variable, drawn as a box,
+and you then draw arrows between the boxes. If you drop a column onto an existing construct
+instead, it becomes one of that construct's indicators.
+
+Any construct with a single indicator can be shown as a box. Use the checkbox in its
+inspector, or with nothing selected, the "draw variables as boxes" option for the whole
+model. Only the diagram changes; the estimates stay the same. In CB-SEM each box is treated
+as measured without error, which is the classic path-analysis assumption. CB-SEM (ML)
+then gives the same unstandardized coefficients as ordinary least squares, and PLS-SEM
+gives the standardized regression coefficients and the same R². The regression examples
+and the tests check this. For a regression the model is just-identified (df = 0), so its
+global fit is perfect by construction and tells you nothing. A full regression toolkit
+(intercepts, F tests, residual diagnostics) is out of scope. Dummy variables and
+interaction terms work if you create them as columns in the data first.
+
 ### Examples and notebooks
 
 | Example                                       | Method                                           |
@@ -63,8 +83,13 @@ preferences.
 | Information systems success (DeLone & McLean) | PLS-SEM, discriminant validity, indirect effects |
 | Technology adoption inspired by UTAUT2        | PLS-SEM, hypothesis testing                      |
 | Service quality → satisfaction → loyalty      | CB-SEM (ML, MLR), CFA, global fit                |
+| Study success: path analysis                  | CB-SEM path model of observed variables, df = 3  |
+| Job demands and resources: path model         | PLS-SEM path model, two mediated processes       |
+| House prices: multiple regression             | CB-SEM, slopes in EUR, a 0/1 dummy predictor     |
+| Sleep quality: multiple regression            | PLS-SEM, standardized slopes, bootstrap CIs      |
 
-Except for ACSI 2015, every example uses synthetic teaching data. Five of the examples also
+Except for ACSI 2015, every example uses synthetic teaching data. The four path-model and
+regression examples open with their variables drawn as boxes. Five of the examples also
 come as Google Colab notebooks that run with a single _Run all_ and need no setup. Links are
 in [`notebooks/README.md`](notebooks/README.md).
 

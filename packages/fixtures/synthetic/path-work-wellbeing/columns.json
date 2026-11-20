@@ -1,0 +1,52 @@
+[
+  {
+    "nMissing": 0,
+    "nUnique": 227,
+    "name": "demands",
+    "observedMax": 5.0,
+    "observedMin": 1.16,
+    "scaleMax": 5.0,
+    "scaleMin": 1.0,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 216,
+    "name": "resources",
+    "observedMax": 5.0,
+    "observedMin": 1.69,
+    "scaleMax": 5.0,
+    "scaleMin": 1.0,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 272,
+    "name": "burnout",
+    "observedMax": 6.85,
+    "observedMin": 1.0,
+    "scaleMax": 7.0,
+    "scaleMin": 1.0,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 232,
+    "name": "engagement",
+    "observedMax": 6.0,
+    "observedMin": 1.31,
+    "scaleMax": 6.0,
+    "scaleMin": 0.0,
+    "scaleType": "METRIC"
+  },
+  {
+    "nMissing": 0,
+    "nUnique": 225,
+    "name": "quit_intention",
+    "observedMax": 4.42,
+    "observedMin": 1.0,
+    "scaleMax": 5.0,
+    "scaleMin": 1.0,
+    "scaleType": "METRIC"
+  }
+]

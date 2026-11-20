@@ -117,7 +117,10 @@ for (const theme of ['light', 'dark'] as const) {
     await page.screenshot({ path: `${OUT}/challenge-dock-modeler-${theme}.png` });
 
     // the dock follows the student to other workspace pages and collapses by keyboard
-    await page.getByRole('link', { name: 'Data', exact: true }).click();
+    await page
+      .getByRole('group', { name: 'Workspace' })
+      .getByRole('link', { name: 'Data', exact: true })
+      .click();
     await expect(dock).toBeVisible();
     await dock.getByRole('button', { name: 'Check task 1' }).focus();
     await page.keyboard.press('Escape');
@@ -153,8 +156,8 @@ test('examples: model previews and notebook downloads', async ({ page }) => {
   const { errors, uploads } = watch(page);
   await setup(page, 'light');
   await page.goto('/examples');
-  await expect(page.getByRole('button', { name: /^Open example/ })).toHaveCount(6);
-  await expect(page.locator('.ex-card .diagram__canvas svg')).toHaveCount(6, { timeout: 30_000 });
+  await expect(page.getByRole('button', { name: /^Open example/ })).toHaveCount(10);
+  await expect(page.locator('.ex-card .diagram__canvas svg')).toHaveCount(10, { timeout: 30_000 });
   const links = page.getByRole('link', { name: /^Download notebook/ });
   await expect(links).toHaveCount(5);
   const href = await links.first().getAttribute('href');

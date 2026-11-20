@@ -179,6 +179,11 @@
     {
       "key": "streukens2016",
       "text": "Streukens, S., & Leroi-Werelds, S. (2016). Bootstrapping and PLS-SEM: A step-by-step guide to get more out of your bootstrap results. European Management Journal, 34(6), 618–632."
+    },
+    {
+      "key": "wright1934",
+      "text": "Wright, S. (1934). The method of path coefficients. The Annals of Mathematical Statistics, 5(3), 161–215.",
+      "doi": "10.1214/aoms/1177732676"
     }
   ]
 }
