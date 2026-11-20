@@ -22,9 +22,6 @@ const NotFoundPage = lazy(() =>
 const OverviewPage = lazy(() =>
   import('@/pages/OverviewPage').then((m) => ({ default: m.OverviewPage })),
 );
-const SettingsPage = lazy(() =>
-  import('@/pages/SettingsPage').then((m) => ({ default: m.SettingsPage })),
-);
 const AnalysisPage = lazy(() =>
   import('@/features/analysis/AnalysisPage').then((m) => ({ default: m.AnalysisPage })),
 );
@@ -109,7 +106,6 @@ export const routes: RouteObject[] = [
         errorElement: <RouteError />,
       },
       child('/reference', page(<ReferencePage />)),
-      child('/settings', page(<SettingsPage />)),
       // Visual-review page; deliberately not in the sidebar.
       {
         path: 'dev/ui',

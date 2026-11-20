@@ -369,7 +369,7 @@ export function ReferencePage() {
   return (
     <>
       <PageHeader
-        eyebrow="Utilities"
+        eyebrow="Learn"
         title="Reference"
         description="A glossary, the theories behind the examples, what each method in this browser engine can do, and the references."
       />

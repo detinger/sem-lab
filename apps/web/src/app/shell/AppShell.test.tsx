@@ -19,11 +19,11 @@ beforeEach(() => {
 });
 
 describe('navigation', () => {
-  it('renders all 12 items in the STYLE.md groups and marks the active route', () => {
+  it('renders all 11 items in the STYLE.md groups and marks the active route', () => {
     renderAt('/ipma');
     const nav = screen.getByRole('navigation', { name: 'Main' });
-    expect(NAV_ITEMS).toHaveLength(12);
-    expect(within(nav).getAllByRole('link')).toHaveLength(12);
+    expect(NAV_ITEMS).toHaveLength(11);
+    expect(within(nav).getAllByRole('link')).toHaveLength(11);
     for (const group of NAV_GROUPS) {
       if (!group.label) continue; // Overview sits on its own, above the labelled groups
       const region = within(nav).getByRole('group', { name: group.label });
@@ -41,10 +41,10 @@ describe('navigation', () => {
   });
 
   it('highlights Overview only on the exact root route', () => {
-    renderAt('/settings');
+    renderAt('/reference');
     const nav = screen.getByRole('navigation', { name: 'Main' });
     expect(within(nav).getByRole('link', { name: 'Overview' })).not.toHaveAttribute('aria-current');
-    expect(within(nav).getByRole('link', { name: 'Settings' })).toHaveAttribute(
+    expect(within(nav).getByRole('link', { name: 'Reference' })).toHaveAttribute(
       'aria-current',
       'page',
     );
@@ -105,14 +105,6 @@ describe('theme', () => {
     expect(document.documentElement.dataset.theme).toBe('light');
   });
 
-  it('the Settings segmented control changes the theme', async () => {
-    const user = userEvent.setup();
-    renderAt('/settings');
-    await user.click(await screen.findByRole('radio', { name: 'Dark' }));
-    expect(document.documentElement.dataset.theme).toBe('dark');
-    expect(screen.getByRole('radio', { name: 'Dark' })).toHaveAttribute('aria-checked', 'true');
-  });
-
   it('ignores an unknown stored value', () => {
     window.localStorage.setItem(THEME_STORAGE_KEY, 'sepia');
     renderAt('/');
@@ -133,7 +125,6 @@ describe('routes', () => {
     ['/learn', 'Lessons'],
     ['/challenges', 'Challenges'],
     ['/reference', 'Reference'],
-    ['/settings', 'Settings'],
     ['/dev/ui', 'Component gallery'],
     ['/no/such/page', 'Page not found'],
   ];
@@ -180,11 +171,5 @@ describe('routes', () => {
       ).toBe(true);
     }
     expect(screen.getByText('No projects yet')).toBeInTheDocument();
-  });
-
-  it('Settings states the privacy position plainly', async () => {
-    renderAt('/settings');
-    expect(await screen.findByText(/stays in your browser/)).toBeInTheDocument();
-    expect(screen.getByText(/nothing is sent to a server/i)).toBeInTheDocument();
   });
 });

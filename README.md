@@ -52,8 +52,8 @@ or to learn how SEM works with ready-made examples and lessons.
 6. **Export.** Download the diagram, the tables, or an R or Python bundle for your appendix
    or your co-authors.
 
-Your projects are saved automatically in the browser. _Settings_ has the theme and other
-preferences.
+Your projects are saved automatically in the browser. The theme button at the bottom of the
+sidebar switches between light, dark and your system setting.
 
 ### Path models and regression
 

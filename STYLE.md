@@ -259,8 +259,7 @@ Use Lucide outline icons, generally `18px` navigation, `16px` buttons and `13–
 | Learn | Examples & Colab | `notebook-tabs` | Five Python notebooks |
 | Learn | Lessons | `book-open` | Progressive theory |
 | Learn | Challenges | `target` | Interactive assessment |
-| Utilities | Reference | `library` | Statistical glossary |
-| Utilities | Settings | `settings` | Theme, privacy, exports |
+| Learn | Reference | `library` | Statistical glossary |
 
 If an icon is missing in the chosen Lucide build, replace it with an actual available icon of comparable meaning. The overall shell keeps BPMN Studio's 232px/64px sidebar widths and 56px workspace header.
 

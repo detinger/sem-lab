@@ -7,7 +7,6 @@ const VIEWPORTS = [
 ] as const;
 const PAGES = [
   { slug: 'overview', path: '/' },
-  { slug: 'settings', path: '/settings' },
   { slug: 'placeholder-data', path: '/data' },
   { slug: 'gallery', path: '/dev/ui' },
 ] as const;
