@@ -37,7 +37,8 @@ export function RouteError() {
     );
   }
 
-  const message = error instanceof Error ? error.message : String(error ?? 'Unknown error');
+  const message =
+    error instanceof Error ? error.message : typeof error === 'string' ? error : 'Unknown error';
   return (
     <>
       <PageHeader title="Something went wrong" description="This page hit an unexpected error." />

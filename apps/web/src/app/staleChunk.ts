@@ -21,7 +21,7 @@ export function reloadForStaleChunk(): void {
 
 /** True when an error is a failed dynamic-import of an app chunk (stale deploy, offline, …). */
 export function isChunkLoadError(error: unknown): boolean {
-  const message = error instanceof Error ? error.message : String(error ?? '');
+  const message = error instanceof Error ? error.message : typeof error === 'string' ? error : '';
   return (
     /dynamically imported module/i.test(message) ||
     /Importing a module script failed/i.test(message) ||
