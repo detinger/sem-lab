@@ -91,6 +91,14 @@ export function SemCanvas({
   const [guides, setGuides] = useState<Guide[]>([]);
   const drag = useRef<DragStart | null>(null);
   const modifiers = useRef({ alt: false, shift: false });
+  // React Flow's measured node sizes, handed back on every node we pass in. Nodes here are rebuilt
+  // from the store on every change (a click changes the selection), and a node passed without
+  // `measured` has its handle measurements discarded; until it is re-measured React Flow skips
+  // every edge touching it, and in some states (e.g. with a results overlay) the re-measure never
+  // came, so all edges vanished until reload.
+  const [measured, setMeasured] = useState<ReadonlyMap<string, { width: number; height: number }>>(
+    () => new Map(),
+  );
 
   const scene = useMemo(() => buildScene(model, layout, { overlay }), [model, layout, overlay]);
   const roles = useMemo(() => constructRoles(model), [model]);
@@ -117,10 +125,11 @@ export function SemCanvas({
           selected: selected.has(n.id),
           // Pinned nodes are locked in place: dragging them does nothing.
           draggable: !pinned,
+          ...(measured.has(n.id) ? { measured: measured.get(n.id) } : {}),
           data: { scene: n, description, focused: focusedIds?.has(n.id) ?? false, pinned },
         };
       }),
-    [scene, roles, model, selected, focusedIds, layout],
+    [scene, roles, model, selected, focusedIds, layout, measured],
   );
 
   const edges = useMemo<SemFlowEdge[]>(
@@ -171,6 +180,22 @@ export function SemCanvas({
   const onNodesChange = useCallback(
     (changes: NodeChange<FlowNode>[]) => {
       applySelectionChanges(changes);
+      const dims = changes.filter(
+        (c): c is Extract<NodeChange<FlowNode>, { type: 'dimensions' }> =>
+          c.type === 'dimensions' && !!c.dimensions,
+      );
+      if (dims.length > 0)
+        setMeasured((prev) => {
+          let next: Map<string, { width: number; height: number }> | null = null;
+          for (const c of dims) {
+            const old = prev.get(c.id);
+            const { width, height } = c.dimensions!;
+            if (old && old.width === width && old.height === height) continue;
+            next ??= new Map(prev);
+            next.set(c.id, { width, height });
+          }
+          return next ?? prev;
+        });
       const d = drag.current;
       if (!d) return;
       const primary = changes.find(
