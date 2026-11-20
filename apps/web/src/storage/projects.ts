@@ -92,6 +92,26 @@ export async function deleteProject(id: string): Promise<void> {
   await getDb().projects.delete(id);
 }
 
+/** Deletes a project together with its analysis runs (one transaction). */
+export async function deleteProjectAndRuns(id: string): Promise<void> {
+  const d = getDb();
+  await d.transaction('rw', d.projects, d.runs, async () => {
+    await d.projects.delete(id);
+    await d.runs.where('projectId').equals(id).delete();
+  });
+}
+
+/**
+ * Removes every project, stored dataset and analysis run from this browser (one transaction).
+ * Learning progress is left alone; it has its own reset.
+ */
+export async function clearWorkspaceData(): Promise<void> {
+  const d = getDb();
+  await d.transaction('rw', d.projects, d.datasets, d.runs, async () => {
+    await Promise.all([d.projects.clear(), d.datasets.clear(), d.runs.clear()]);
+  });
+}
+
 // ---------------------------------------------------------------- file format
 
 export const PROJECT_FILE_EXTENSION = '.semlab.json';

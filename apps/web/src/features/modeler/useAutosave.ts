@@ -19,6 +19,9 @@ export function useAutosave(delayMs = 800): SaveState {
   const pending = useModeler((s) => s.pending);
   const [state, setState] = useState<SaveState>({ status: 'idle' });
   const first = useRef(true);
+  /** a committed change is waiting for its debounce timer */
+  const dirty = useRef(false);
+  const mounted = useRef(true);
 
   useEffect(() => {
     if (first.current) {
@@ -26,28 +29,48 @@ export function useAutosave(delayMs = 800): SaveState {
       return;
     }
     if (pending) return;
+    dirty.current = true;
     const timer = window.setTimeout(() => {
-      const s = useModeler.getState();
-      if (s.model.constructs.length === 0 && s.model.indicators.length === 0) return;
-      const now = new Date().toISOString();
+      dirty.current = false;
       setState({ status: 'saving' });
-      saveProject(s.toProject(now))
-        .then(() => {
-          try {
-            localStorage.setItem(LAST_PROJECT_KEY, s.projectId);
-          } catch {
-            /* storage may be unavailable (private mode); autosave in IndexedDB still worked */
-          }
-          setState({ status: 'saved', at: now });
-        })
-        .catch((e: unknown) =>
-          setState({ status: 'error', message: e instanceof Error ? e.message : String(e) }),
-        );
+      void saveNow().then((result) => {
+        if (mounted.current && result) setState(result);
+      });
     }, delayMs);
     return () => window.clearTimeout(timer);
   }, [revision, pending, delayMs]);
 
+  // Leaving the page inside the debounce window must not drop the last edit.
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+      if (dirty.current) {
+        dirty.current = false;
+        void saveNow();
+      }
+    };
+  }, []);
+
   return state;
+}
+
+/** Saves the open project (unless it is empty); resolves to the resulting state, or null if skipped. */
+async function saveNow(): Promise<SaveState | null> {
+  const s = useModeler.getState();
+  if (s.model.constructs.length === 0 && s.model.indicators.length === 0) return null;
+  const now = new Date().toISOString();
+  try {
+    await saveProject(s.toProject(now));
+  } catch (e: unknown) {
+    return { status: 'error', message: e instanceof Error ? e.message : String(e) };
+  }
+  try {
+    localStorage.setItem(LAST_PROJECT_KEY, s.projectId);
+  } catch {
+    /* storage may be unavailable (private mode); autosave in IndexedDB still worked */
+  }
+  return { status: 'saved', at: now };
 }
 
 export function readLastProjectId(): string | null {

@@ -378,12 +378,12 @@ describe('Reference page', () => {
   });
 });
 
-describe('Settings and Overview', () => {
+describe('Overview', () => {
   it('Reset progress asks first, then clears all learning records', async () => {
     const user = userEvent.setup();
     await useProgress.getState().answerCheck(fixtureContent.lessons[0]!, 'q-direction', true);
     await useProgress.getState().recordTask(fixtureContent.challenges[1]!, 'compute', true);
-    renderAt('/settings');
+    renderAt('/');
     await user.click(await screen.findByRole('button', { name: 'Reset progress' }));
     const dialog = await screen.findByRole('dialog', { name: 'Reset learning progress?' });
     await user.click(within(dialog).getByRole('button', { name: 'Cancel' }));
@@ -394,6 +394,7 @@ describe('Settings and Overview', () => {
     );
     await waitFor(() => expect(useProgress.getState().lessons).toEqual({}));
     expect(await listLessonProgress()).toEqual([]);
+    expect(screen.queryByRole('button', { name: 'Reset progress' })).not.toBeInTheDocument();
   });
 
   it('Overview shows learning progress', async () => {

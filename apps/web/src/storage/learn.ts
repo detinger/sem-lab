@@ -1,6 +1,6 @@
 /**
  * Local learning progress (PLAN §2.11/§2.12): lesson checks, challenge attempts and achieved
- * skills, in this browser's IndexedDB. Nothing leaves the device; "Reset progress" in Settings
+ * skills, in this browser's IndexedDB. Nothing leaves the device; "Reset progress" on the Overview
  * clears all three tables. Types live here so the Dexie schema and the store share them.
  */
 import { getDb } from './projects';

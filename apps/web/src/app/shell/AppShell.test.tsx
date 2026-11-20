@@ -120,14 +120,6 @@ describe('theme', () => {
   });
 });
 
-describe('engine status', () => {
-  it('says the engine runs in the browser and links to Settings', () => {
-    renderAt('/');
-    const link = screen.getByRole('link', { name: 'Engine: in browser' });
-    expect(link).toHaveAttribute('href', '/settings#about-engine');
-  });
-});
-
 describe('routes', () => {
   const HEADINGS: [string, string][] = [
     ['/', 'Overview'],

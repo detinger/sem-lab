@@ -1,7 +1,8 @@
-import { ChartColumnIncreasing, FileText, FlaskConical, Table, Workflow } from 'lucide-react';
+import { ChartColumnIncreasing, FlaskConical, Table, Workflow } from 'lucide-react';
 
 import { ProgressCard } from '@/features/learn/ProgressCard';
-import { Badge, Card, CardHeader, EmptyState, LinkCard, PageHeader } from '@/components/ui';
+import { RecentProjects } from '@/features/modeler/RecentProjects';
+import { Badge, LinkCard, PageHeader } from '@/components/ui';
 
 import './pages.css';
 
@@ -65,15 +66,7 @@ export function OverviewPage() {
 
       <section aria-labelledby="recent-heading" className="overview__section">
         <h2 id="recent-heading">Recent projects</h2>
-        <Card>
-          <CardHeader title="Saved in this browser" level={3} />
-          <EmptyState level={4} icon={<FileText />} title="No projects yet">
-            <p>
-              Models you create in the Modeler will be listed here, so you can pick up where you
-              left off.
-            </p>
-          </EmptyState>
-        </Card>
+        <RecentProjects />
       </section>
 
       <section aria-labelledby="learning-heading" className="overview__section">

@@ -6,7 +6,6 @@ import type { Theme, ThemePreference } from '@/app/theme';
 import { Tooltip } from '@/components/ui';
 
 import { BrandMark } from './BrandMark';
-import { EngineStatus } from './EngineStatus';
 import { NAV_GROUPS } from './navigation';
 
 const THEME_ICONS: Record<ThemePreference, LucideIcon> = {
@@ -91,8 +90,6 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
             <span className="nav-item__label">{themeText}</span>
           </button>
         </Tooltip>
-
-        <EngineStatus />
 
         <Tooltip
           content={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
