@@ -85,7 +85,8 @@ export function sceneToSvg(scene: Scene, opts: SvgExportOptions): string {
       );
       const lineH = 17;
       const total = n.lines.length * lineH + (n.tag ? 13 : 0);
-      let ty = y + h / 2 - total / 2 + 12.5;
+      // An observed-variable box with an R² moves its name down 6 px (as on the canvas).
+      let ty = y + h / 2 - total / 2 + 12.5 + (n.observed && n.capsule !== undefined ? 6 : 0);
       for (const line of n.lines) {
         out.push(
           `<text x="${f(x + w / 2)}" y="${f(ty)}" text-anchor="middle" font-size="14" font-weight="650" fill="${INK}">${escapeXml(line)}</text>`,
@@ -98,11 +99,9 @@ export function sceneToSvg(scene: Scene, opts: SvgExportOptions): string {
         );
       out.push('</g>');
       if (n.capsule !== undefined) {
-        // R² sits inside the construct near the top, with no outline; an observed-variable box
-        // has no room inside, so there it sits above the top-right corner (AMOS convention).
-        const [cx, cy, anchor] = n.observed ? [x + w, y - 5, 'end'] : [x + w / 2, y + 15, 'middle'];
+        // R² sits inside the construct (or observed-variable box) near the top, with no outline.
         out.push(
-          `<text data-capsule="${escapeXml(n.id)}" x="${f(cx)}" y="${f(cy)}" text-anchor="${anchor}" font-size="11" fill="${MEASURE}" style="font-variant-numeric:tabular-nums">${escapeXml(n.capsule)}</text>`,
+          `<text data-capsule="${escapeXml(n.id)}" x="${f(x + w / 2)}" y="${f(y + 15)}" text-anchor="middle" font-size="11" fill="${MEASURE}" style="font-variant-numeric:tabular-nums">${escapeXml(n.capsule)}</text>`,
         );
       }
     } else {

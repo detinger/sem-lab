@@ -102,15 +102,16 @@ export function constructSize(
 
 /**
  * A single-indicator construct drawn as an observed variable (path analysis): one rectangle
- * carrying the construct name in the construct's type, sized to the name, never clipped.
+ * carrying the construct name in the construct's type, sized to the name, never clipped, with
+ * room above the name for the R² of the results overlay.
  */
-export const OBSERVED_MIN: Size = { width: 96, height: 48 };
+export const OBSERVED_MIN: Size = { width: 96, height: 56 };
 export function observedSize(name: string): Size {
   const lines = wrapLabel(name, 14, 150);
   const textW = Math.max(...lines.map((l) => estimateTextWidth(l, 14, 650)));
   return {
     width: Math.max(OBSERVED_MIN.width, ceilTo(textW + 28, GRID / 2)),
-    height: Math.max(OBSERVED_MIN.height, ceilTo(lines.length * 18 + 22, GRID / 2)),
+    height: Math.max(OBSERVED_MIN.height, ceilTo(lines.length * 18 + 30, GRID / 2)),
   };
 }
 

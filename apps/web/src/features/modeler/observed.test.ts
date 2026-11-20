@@ -55,10 +55,10 @@ describe('observed variables (path-analysis boxes)', () => {
     expect(scene.edges.filter((e) => e.kind === 'measurement')).toHaveLength(2);
     expect(scene.edges.filter((e) => e.kind === 'structural')).toHaveLength(2);
     // Boxes are sized as boxes, smaller than the construct oval.
-    expect(sizeOf(model, 'c_x1', layout.settings)).toEqual({ width: 96, height: 48 });
+    expect(sizeOf(model, 'c_x1', layout.settings)).toEqual({ width: 96, height: 56 });
   });
 
-  it('exports boxes with R² above the top-right corner', async () => {
+  it('exports boxes with R² inside, near the top', async () => {
     buildPathModel();
     s().setLayoutSettings({ observedConstructIds: ['c_y'] });
     const { model, layout } = s();
@@ -72,8 +72,10 @@ describe('observed variables (path-analysis boxes)', () => {
     );
     expect(doc.querySelector('[data-id="c_y"] rect')?.getAttribute('rx')).toBe('3');
     const cap = doc.querySelector('[data-capsule="c_y"]')!;
-    expect(cap.getAttribute('text-anchor')).toBe('end');
-    expect(Number(cap.getAttribute('y'))).toBeLessThan(y.rect.y);
+    expect(cap.getAttribute('text-anchor')).toBe('middle');
+    expect(Number(cap.getAttribute('x'))).toBeCloseTo(y.rect.x + y.rect.width / 2);
+    expect(Number(cap.getAttribute('y'))).toBeGreaterThan(y.rect.y);
+    expect(Number(cap.getAttribute('y'))).toBeLessThan(y.rect.y + y.rect.height / 2);
   });
 
   it('makes a dropped column into an observed variable in one undoable step', () => {

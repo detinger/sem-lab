@@ -335,12 +335,8 @@
   white-space: nowrap;
   pointer-events: none;
 }
-/* An observed variable (path-analysis box) has no room inside: R² sits above its top-right
-   corner, where AMOS and most path-analysis figures put it. */
-.sem-construct[data-observed] .sem-capsule {
-  top: auto;
-  bottom: calc(100% + 3px);
-  left: auto;
-  right: 0;
-  transform: none;
+/* An observed variable (path-analysis box) is shorter than a construct: the name moves down
+   a little so the R² above it does not touch it. */
+.sem-construct[data-observed][data-has-capsule] .sem-construct-label {
+  padding-top: 12px;
 }

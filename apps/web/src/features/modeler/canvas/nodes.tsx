@@ -110,6 +110,7 @@ export const ConstructNode = memo(function ConstructNode({
       data-editing={editing || undefined}
       data-pinned={data.pinned || undefined}
       data-observed={observed || undefined}
+      data-has-capsule={capsule !== undefined || undefined}
       style={{ width: w, height: h }}
       role="group"
       aria-label={`${observed ? 'Observed variable' : 'Construct'} ${lines.join(' ')}${tag ? `, ${tag.toLowerCase()}` : ''}${data.pinned ? ', position pinned' : ''}. ${data.description}`}
