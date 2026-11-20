@@ -256,8 +256,8 @@ Use Lucide outline icons, generally `18px` navigation, `16px` buttons and `13–
 | Workspace | Results | `chart-column-increasing` | Reliability, paths, fit, prediction |
 | Workspace | IPMA | `scatter-chart` or `chart-no-axes-combined` | Distinctive importance-performance view |
 | Workspace | Comparison | `git-compare-arrows` | Method/model comparison |
-| Learn | Examples & Colab | `notebook-tabs` | Five Python notebooks |
 | Learn | Lessons | `book-open` | Progressive theory |
+| Learn | Examples & Colab | `notebook-tabs` | Five Python notebooks |
 | Learn | Challenges | `target` | Interactive assessment |
 | Learn | Reference | `library` | Statistical glossary |
 
