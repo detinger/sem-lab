@@ -56,6 +56,13 @@ const safeFileName = (name: string): string =>
     .trim()
     .replace(/\s+/g, '-') || 'sem-model';
 
+/**
+ * The project the user chose to start blank (Blank canvas or New model). Kept outside the
+ * component so an empty blank project stays a canvas after leaving the Modeler and coming back,
+ * instead of falling back to the template picker.
+ */
+let blankProjectId: string | null = null;
+
 function StartScreen({ onOpenFile, onBlank }: { onOpenFile: () => void; onBlank: () => void }) {
   const rf = useReactFlow();
   const start = async (
@@ -133,7 +140,13 @@ function ModelerWorkspace() {
     currentResult && overlayMode !== 'none'
       ? { mode: overlayMode, result: currentResult, scale }
       : null;
-  const [blank, setBlank] = useState(false);
+  const projectId = useModeler((s) => s.projectId);
+  const [blankId, setBlankId] = useState(blankProjectId);
+  const startBlank = (): void => {
+    const id = useModeler.getState().projectId;
+    blankProjectId = id;
+    setBlankId(id);
+  };
   const fileInput = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
   const isEmpty = useModeler(
@@ -159,8 +172,8 @@ function ModelerWorkspace() {
       .catch(() => toast({ title: 'The last project could not be opened', variant: 'warning' }));
   }, [toast]);
 
-  // "Blank canvas" keeps the (still empty) canvas open instead of the start screen.
-  const showStart = isEmpty && !blank;
+  // The template picker is for a first visit; a project started blank stays a canvas.
+  const showStart = isEmpty && blankId !== projectId;
 
   const openFile = (): void => fileInput.current?.click();
   const onFile = async (file: File | undefined): Promise<void> => {
@@ -295,7 +308,7 @@ function ModelerWorkspace() {
         )}
         <div className="modeler-canvas-wrap">
           {showStart ? (
-            <StartScreen onOpenFile={openFile} onBlank={() => setBlank(true)} />
+            <StartScreen onOpenFile={openFile} onBlank={startBlank} />
           ) : (
             <SemCanvas
               connectKind={connectKind}
@@ -356,7 +369,7 @@ function ModelerWorkspace() {
               variant="primary"
               onClick={() => {
                 useModeler.getState().newProject('Untitled model');
-                setBlank(false);
+                startBlank();
                 setNewOpen(false);
               }}
             >

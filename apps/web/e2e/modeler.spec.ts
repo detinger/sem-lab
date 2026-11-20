@@ -137,3 +137,27 @@ test('a structural path can be drawn with the mouse and an invalid one is refuse
   await expect(page.locator('.react-flow__edge-sem')).toHaveCount(7);
   expect(errors).toEqual([]);
 });
+
+test('New model opens a blank canvas that stays blank after leaving the Modeler', async ({
+  page,
+}) => {
+  await page.goto('/modeler');
+  await page
+    .locator('.modeler-start-card', { hasText: 'Two constructs' })
+    .getByRole('button', { name: 'Use template' })
+    .click();
+  await expect(page.locator('.react-flow__node-construct')).toHaveCount(2);
+  await page.getByRole('button', { name: 'File' }).click();
+  await page.getByRole('menuitem', { name: 'New model…' }).click();
+  await page.getByRole('dialog').getByRole('button', { name: 'New model' }).click();
+  await expect(page.locator('.react-flow')).toBeVisible();
+  await expect(page.locator('.modeler-start')).toHaveCount(0);
+  await expect(page.locator('.react-flow__node')).toHaveCount(0);
+  await page
+    .getByRole('group', { name: 'Workspace' })
+    .getByRole('link', { name: 'Data', exact: true })
+    .click();
+  await page.getByRole('link', { name: 'Modeler', exact: true }).click();
+  await expect(page.locator('.react-flow')).toBeVisible();
+  await expect(page.locator('.modeler-start')).toHaveCount(0);
+});
