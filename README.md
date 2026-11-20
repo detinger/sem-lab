@@ -1,33 +1,113 @@
 # SEM Lab
 
-An interactive workspace for structural equation modeling (PLS-SEM and CB-SEM): import data and drag its columns onto constructs to build a model, estimate it with validated engines, and report the results — including a diagram of the estimated model with path coefficients, significance and R².
+**A structural equation modeling workspace that runs entirely in your browser.**
 
-`PLAN.md` (product) and `STYLE.md` (design) are the specifications. Nothing in this README
-claims a feature beyond what the phase records in `docs/validation/` demonstrate.
+Load a dataset, draw your model, estimate it, and get tables and figures you can use in a
+paper. SEM Lab supports PLS-SEM and CB-SEM. You don't install anything, there's no account,
+and your data never leave your computer.
 
-## Status
+It is built for researchers, students and teachers. You can use it to run a real analysis
+or to learn how SEM works with ready-made examples and lessons.
 
-| Phase | Scope | State | Evidence |
-|---|---|---|---|
-| 0 | Foundation, library verification, contracts, fixtures | **Done** | `docs/validation/phase-0.md` |
-| 1 | Design system, visual modeler, persistence, diagram export | **Done** | `docs/validation/phase-1.md` |
-| 2 | Data Lab (CSV import, mapping) and model validator | **Done** | `docs/validation/phase-2.md` |
-| 3 | First PLS-SEM vertical slice (R/cSEM backend, bootstrap, Word tables, R export) | **Done** | `docs/validation/phase-3.md` |
-| 4 | In-browser engine (PLS, PLSc, Mode B, bootstrap, IPMA, CB-SEM ML/MLR/FIML), R and Python export bundles, Python engine, examples | **Done** | `docs/validation/phase-4.md` |
-| 6 | Five Colab notebooks (done: `notebooks/`); Learn levels and challenges | In progress | `notebooks/README.md` |
-| 5, 7, 8 | Remaining CB features, advanced methods, hardening | Planned | — |
+## What you can do
 
-**Architecture:** everything runs in the browser — modeling, data, estimation and reporting.
-There is no backend; data never leave the user's machine. R and Python are provided as
-exported scripts and notebooks that reproduce the app's results locally. The R engine in
-`services/r-engine` is a verification oracle used in development and CI only
+- **Import data.** Bring in a CSV or TSV file, then check variables, types and missing values.
+- **Draw the model visually.** Drag data columns onto constructs to create indicators, then
+  connect the constructs with paths. Automatic layout, grid snapping and alignment guides keep
+  the diagram tidy.
+- **Estimate it.**
+  - PLS-SEM: PLS, consistent PLS (PLSc), Mode A/Mode B, bootstrap confidence intervals.
+  - CB-SEM: ML, MLR and FIML for missing data.
+  - IPMA (importance–performance map analysis).
+- **Read the results.**
+  - Measurement model: loadings, reliability, AVE, HTMT.
+  - Structural model: path coefficients, R², and direct, indirect and total effects.
+  - Global fit for CB-SEM.
+  - A diagram of the estimated model, with path weights, significance stars and R²
+    drawn in.
+- **Report.** Copy tables into Word as editable tables, including APA style (no leading
+  zero). Export the diagram as SVG or PNG.
+- **Reproduce elsewhere.** Export a ready-to-run R script (cSEM or lavaan) or a Python
+  script. Either one reproduces the app's results on your own machine.
+- **Learn.** Open worked examples, Google Colab notebooks, lessons and challenges.
+
+## How to use it
+
+1. **Data.** Import your CSV file. If you just want to look around, go to _Examples & Colab_
+   and open a ready-made project instead.
+2. **Modeler.** Create constructs and drag data columns onto them to make indicators. Draw
+   paths between constructs. If the model has a problem, such as a construct with no
+   indicators, the validator flags it before you run anything.
+3. **Analysis.** Choose PLS-SEM or CB-SEM and set the options (estimator, bootstrap draws,
+   and so on), then run. Estimation runs in your browser, and every run is saved in the run
+   history.
+4. **Results.** Go through the measurement model, the structural model and fit. Choose
+   standardized or unstandardized estimates and the number of decimal places, then copy
+   tables into Word. To show estimates, t-values, p-values or confidence intervals directly
+   on the model, switch on the overlay in the Modeler.
+5. **IPMA** (optional). Plot the importance of each predictor of a target construct against
+   its performance.
+6. **Export.** Download the diagram, the tables, or an R or Python bundle for your appendix
+   or your co-authors.
+
+Your projects are saved automatically in the browser. _Settings_ has the theme and other
+preferences.
+
+### Examples and notebooks
+
+| Example                                       | Method                                           |
+| --------------------------------------------- | ------------------------------------------------ |
+| Technology acceptance (TAM): mediation        | PLS-SEM, bootstrap, mediation                    |
+| Customer satisfaction inspired by the ACSI    | PLS-SEM, Mode A vs Mode B, IPMA                  |
+| ACSI 2015 (real survey data, CC BY 4.0)       | PLS-SEM                                          |
+| Information systems success (DeLone & McLean) | PLS-SEM, discriminant validity, indirect effects |
+| Technology adoption inspired by UTAUT2        | PLS-SEM, hypothesis testing                      |
+| Service quality → satisfaction → loyalty      | CB-SEM (ML, MLR), CFA, global fit                |
+
+Except for ACSI 2015, every example uses synthetic teaching data. Five of the examples also
+come as Google Colab notebooks that run with a single _Run all_ and need no setup. Links are
+in [`notebooks/README.md`](notebooks/README.md).
+
+### Privacy
+
+Everything happens in your browser. Models, data and results are stored locally
+(IndexedDB) and are never uploaded. There is no server.
+
+### Trustworthiness
+
+Every estimation method is checked against reference results from established R packages
+(cSEM, lavaan). A method is marked _supported_ only after the in-browser engine reproduces
+those results. For each engine, the capability registry records what it can and can't do,
+with evidence:
+[`packages/method-registry/registry.json`](packages/method-registry/registry.json).
+
+---
+
+## For developers
+
+### Status
+
+| Phase   | Scope                                                                                                                            | State       | Evidence                     |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------------- |
+| 0       | Foundation, library verification, contracts, fixtures                                                                            | **Done**    | `docs/validation/phase-0.md` |
+| 1       | Design system, visual modeler, persistence, diagram export                                                                       | **Done**    | `docs/validation/phase-1.md` |
+| 2       | Data Lab (CSV import, mapping) and model validator                                                                               | **Done**    | `docs/validation/phase-2.md` |
+| 3       | First PLS-SEM vertical slice (R/cSEM backend, bootstrap, Word tables, R export)                                                  | **Done**    | `docs/validation/phase-3.md` |
+| 4       | In-browser engine (PLS, PLSc, Mode B, bootstrap, IPMA, CB-SEM ML/MLR/FIML), R and Python export bundles, Python engine, examples | **Done**    | `docs/validation/phase-4.md` |
+| 6       | Five Colab notebooks (done: `notebooks/`); Learn levels and challenges                                                           | In progress | `notebooks/README.md`        |
+| 5, 7, 8 | Remaining CB features, advanced methods, hardening                                                                               | Planned     | —                            |
+
+The specifications are `PLAN.md` (product) and `STYLE.md` (design). This README describes
+only features that the phase records in `docs/validation/` demonstrate.
+
+### Architecture
+
+Modeling, data handling, estimation and reporting all run in the browser, and there is no
+backend. R and Python are offered as exported scripts and notebooks. The R engine in
+`services/r-engine` is a verification oracle that is only used in development and CI
 (`docs/architecture/overview.md` §3).
 
-What each engine can and cannot do — verified by execution, with evidence files — is in
-`packages/method-registry/registry.json`. A capability is `supported` only once the browser
-engine reproduces the committed R reference results for it.
-
-## Repository
+### Repository
 
 ```text
 apps/web/                  React 19 + TypeScript + Vite single-page app (the modeler lives in src/features/modeler)
@@ -43,17 +123,17 @@ content/examples/          example projects shown on the Examples page
 docs/                      architecture, validation evidence per phase, licensing, research notes
 ```
 
-## Local development
+### Local development
 
-Requirements: Node ≥ 22 (developed on 26), npm. For the engines: R ≥ 4.6 and
+Requirements: Node ≥ 22 (developed on 26) and npm. The engines also need R ≥ 4.6 and
 [uv](https://docs.astral.sh/uv/) (Python 3.12).
 
 ```bash
 npm ci
-npm run dev            # http://localhost:5173 — the modeler works fully offline
+npm run dev            # http://localhost:5173
 ```
 
-Quality gates (all must pass; CI runs the same commands):
+Quality gates. All of them must pass, and CI runs the same commands:
 
 ```bash
 npm run typecheck
@@ -66,39 +146,32 @@ uv run --python 3.12 --with numpy python packages/fixtures/scripts/generate_synt
 npm run e2e --workspace @sem-lab/web                         # browser tests (uses installed Google Chrome)
 ```
 
-R engine (packages are installed into `services/r-engine/r-lib`, never into the system library):
+R engine. Packages are installed into `services/r-engine/r-lib`, never into the system library:
 
 ```bash
 services/r-engine/bin/rscript services/r-engine/scripts/install_packages.R   # first time; compiles from source
 services/r-engine/bin/rscript services/r-engine/spike/csem_01_pls_core.R      # example verification script
 ```
 
-Python engine:
+Python engine and notebooks:
 
 ```bash
 cd packages/python-engine && uv run pytest
+cd notebooks && uv run python build_notebooks.py && uv run pytest   # regenerate from notebooks/src, run all five
 ```
 
-Notebooks (regenerate from `notebooks/src`, then execute all five headless):
+### Deployment
 
-```bash
-cd notebooks && uv run python build_notebooks.py && uv run pytest
-```
+The site is deployed on Netlify. `netlify.toml` builds `apps/web` and serves it as an SPA
+with a deep-link fallback. There is no server: the former API and R worker were removed in
+Phase 4, when estimation moved into the browser. They remain in the git history.
 
-## Deployment
+### Sample data and licence
 
-- **Netlify** (web): `netlify.toml` builds `apps/web` and serves it as an SPA with deep-link
-  fallback. Set `VITE_API_BASE_URL` in the Netlify UI once the API exists.
-- **No server.** The former API/R worker was removed in Phase 4 when estimation moved into the
-  browser (it remains in git history).
+Sample data provenance is in
+`packages/fixtures/third-party/smartpls-samples/PROVENANCE.md`. Only the ACSI 2015 dataset
+(CC BY 4.0) may be redistributed. The other datasets are kept on the owner's machine only
+and are git-ignored.
 
-## Data and privacy
-
-Models, data and results stay in the browser (IndexedDB). Nothing is sent to a server.
-Sample data: `packages/fixtures/third-party/smartpls-samples/PROVENANCE.md` — only the ACSI
-2015 dataset (CC BY 4.0) may be redistributed; the others are kept on the owner's machine only (git-ignored).
-
-## Licence
-
-MIT — see `LICENSE`. Third-party components keep their own licences (`THIRD_PARTY_NOTICES.md`);
-the ACSI 2015 sample data are CC BY 4.0. Details: `docs/licensing.md`.
+SEM Lab is released under the MIT licence; see `LICENSE`. Third-party components keep their
+own licences (`THIRD_PARTY_NOTICES.md`). Details are in `docs/licensing.md`.
