@@ -13,7 +13,7 @@ for (const theme of ['light', 'dark'] as const) {
     const { errors, uploads } = watch(page);
     await setup(page, theme);
     await page.goto('/examples');
-    await expect(page.getByRole('heading', { level: 1, name: 'Examples & Colab' })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1, name: 'Examples' })).toBeVisible();
     await expect(page.getByRole('button', { name: /^Open example/ })).toHaveCount(10);
     await expandLayout(page);
     await page.screenshot({ path: `${OUT}/gallery-${theme}.png`, fullPage: true });

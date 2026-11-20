@@ -36,7 +36,7 @@ describe('Examples page', () => {
   it('renders ten cards with their badges, sizes and attribution', async () => {
     renderApp();
     expect(
-      await screen.findByRole('heading', { level: 1, name: 'Examples & Colab' }),
+      await screen.findByRole('heading', { level: 1, name: 'Examples' }),
     ).toBeVisible();
     expect(screen.getAllByRole('button', { name: /^Open example/ })).toHaveLength(10);
 

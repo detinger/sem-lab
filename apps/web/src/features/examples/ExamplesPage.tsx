@@ -142,7 +142,7 @@ export function ExamplesPage() {
     <>
       <PageHeader
         eyebrow="Learn"
-        title="Examples & Colab"
+        title="Examples"
         description="Complete, ready-to-run projects: the model, the data and the analysis settings, opened in one click. Everything runs in this browser."
       />
 

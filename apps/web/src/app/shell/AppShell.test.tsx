@@ -121,7 +121,7 @@ describe('routes', () => {
     ['/results', 'Results'],
     ['/ipma', 'IPMA'],
     ['/comparison', 'Comparison'],
-    ['/examples', 'Examples & Colab'],
+    ['/examples', 'Examples'],
     ['/learn', 'Lessons'],
     ['/challenges', 'Challenges'],
     ['/reference', 'Reference'],
@@ -139,9 +139,7 @@ describe('routes', () => {
 
   it('/examples is the Examples gallery, not a placeholder', async () => {
     renderAt('/examples');
-    expect(
-      await screen.findByRole('heading', { level: 1, name: 'Examples & Colab' }),
-    ).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { level: 1, name: 'Examples' })).toBeInTheDocument();
     expect(screen.queryByText('Planned for Phase 6')).not.toBeInTheDocument();
   });
 

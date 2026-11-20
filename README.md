@@ -35,7 +35,7 @@ or to learn how SEM works with ready-made examples and lessons.
 
 ## How to use it
 
-1. **Data.** Import your CSV file. If you just want to look around, go to _Examples & Colab_
+1. **Data.** Import your CSV file. If you just want to look around, go to _Examples_
    and open a ready-made project instead.
 2. **Modeler.** Create constructs and drag data columns onto them to make indicators. Draw
    paths between constructs. If the model has a problem, such as a construct with no

@@ -45,7 +45,7 @@ export const NAV_GROUPS: readonly NavGroup[] = [
     label: 'Learn',
     items: [
       { label: 'Lessons', path: '/learn', icon: BookOpen },
-      { label: 'Examples & Colab', path: '/examples', icon: NotebookTabs },
+      { label: 'Examples', path: '/examples', icon: NotebookTabs },
       { label: 'Challenges', path: '/challenges', icon: Target },
       { label: 'Reference', path: '/reference', icon: Library },
     ],
