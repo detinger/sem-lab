@@ -24,6 +24,7 @@ import { buildScene } from './scene';
 import { emptyLayout, useModeler } from './store';
 import { TEMPLATES } from './templates';
 import { readLastProjectId, useAutosave } from './useAutosave';
+import { usePanelState } from './usePanelState';
 import './modeler-page.css';
 
 const SHORTCUTS: Array<[string, string]> = [
@@ -124,10 +125,7 @@ function StartScreen({ onOpenFile, onBlank }: { onOpenFile: () => void; onBlank:
 
 function ModelerWorkspace() {
   const [connectKind, setConnectKind] = useState<'path' | 'covariance'>('path');
-  const [paletteOpen, setPaletteOpen] = useState(true);
-  const [paletteWidth, setPaletteWidth] = useState(300);
-  const [inspectorOpen, setInspectorOpen] = useState(true);
-  const [inspectorWidth, setInspectorWidth] = useState(420);
+  const [{ paletteOpen, paletteWidth, inspectorOpen, inspectorWidth }, setPanels] = usePanelState();
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
   const [newOpen, setNewOpen] = useState(false);
   const [checkOpen, setCheckOpen] = useState(false);
@@ -227,9 +225,9 @@ function ModelerWorkspace() {
   // Pane widths resize by dragging the divider: the palette's right edge grows with rightward
   // movement; the inspector's left edge grows with leftward movement (hence `- dx`).
   const resizePalette = (dx: number): void =>
-    setPaletteWidth((w) => Math.min(520, Math.max(200, w + dx)));
+    setPanels((p) => ({ paletteWidth: Math.min(520, Math.max(200, p.paletteWidth + dx)) }));
   const resizeInspector = (dx: number): void =>
-    setInspectorWidth((w) => Math.min(640, Math.max(300, w - dx)));
+    setPanels((p) => ({ inspectorWidth: Math.min(640, Math.max(300, p.inspectorWidth - dx)) }));
 
   const RAIL = '44px';
   const bodyColumns = [
@@ -302,7 +300,7 @@ function ModelerWorkspace() {
         {!showStart && (
           <IndicatorPalette
             collapsed={!paletteOpen}
-            onToggle={() => setPaletteOpen((o) => !o)}
+            onToggle={() => setPanels((p) => ({ paletteOpen: !p.paletteOpen }))}
             onResize={resizePalette}
           />
         )}
@@ -322,7 +320,7 @@ function ModelerWorkspace() {
         </div>
         <Inspector
           collapsed={!inspectorOpen}
-          onToggle={() => setInspectorOpen((o) => !o)}
+          onToggle={() => setPanels((p) => ({ inspectorOpen: !p.inspectorOpen }))}
           onResize={resizeInspector}
         />
       </div>

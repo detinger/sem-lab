@@ -28,6 +28,7 @@ for (const theme of ['light', 'dark'] as const) {
     await page.screenshot({ path: `test-results/phase1-modeler/tam-${theme}.png` });
 
     // Select a construct: the inspector shows it and the arrows keep their meaning.
+    await page.getByRole('button', { name: 'Show inspector' }).click();
     await page.locator('.react-flow__node-construct', { hasText: 'PU' }).first().click();
     await expect(page.getByRole('complementary', { name: 'Inspector' })).toContainText(
       'Construct · PU',
@@ -106,6 +107,7 @@ test('a structural path can be drawn with the mouse and an invalid one is refuse
   await expect(page.locator('.react-flow__edge-sem')).toHaveCount(7); // 6 measurement + 1 path
 
   // Delete the path X → Y via the inspector.
+  await page.getByRole('button', { name: 'Show inspector' }).click();
   await page.locator('.sem-canvas').focus();
   const inspector = page.getByRole('complementary', { name: 'Inspector' });
   await inspector.getByRole('button', { name: /^X Reflective/ }).click();
@@ -160,4 +162,34 @@ test('New model opens a blank canvas that stays blank after leaving the Modeler'
   await page.getByRole('link', { name: 'Modeler', exact: true }).click();
   await expect(page.locator('.react-flow')).toBeVisible();
   await expect(page.locator('.modeler-start')).toHaveCount(0);
+});
+
+test('side panels start closed and remember being opened across pages and reloads', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/modeler');
+  await page.getByRole('button', { name: 'Use template' }).nth(1).click();
+  const palette = page.getByRole('complementary', { name: 'Data indicators', exact: true });
+  const inspector = page.getByRole('complementary', { name: 'Inspector', exact: true });
+  await expect(palette).toHaveCount(0);
+  await expect(inspector).toHaveCount(0);
+
+  await page.getByRole('button', { name: 'Show data indicators' }).click();
+  await page.getByRole('button', { name: 'Show inspector' }).click();
+  await expect(palette).toBeVisible();
+  await expect(inspector).toBeVisible();
+
+  await page
+    .getByRole('group', { name: 'Workspace' })
+    .getByRole('link', { name: 'Data', exact: true })
+    .click();
+  await page.getByRole('link', { name: 'Modeler', exact: true }).click();
+  await expect(palette).toBeVisible();
+  await expect(inspector).toBeVisible();
+
+  await page.getByRole('button', { name: 'Hide data indicators' }).click();
+  await page.reload();
+  await expect(inspector).toBeVisible();
+  await expect(palette).toHaveCount(0);
 });
