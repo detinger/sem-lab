@@ -5,6 +5,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 
 import { createTestRouter } from '@/app/routes';
 import { THEME_STORAGE_KEY } from '@/app/theme';
+import { installResizeObserverStub } from '@/tests/support/react-flow-dom';
 
 import { NAV_GROUPS, NAV_ITEMS } from './navigation';
 import { SIDEBAR_STORAGE_KEY } from './useSidebarCollapsed';
@@ -16,6 +17,9 @@ function renderAt(path: string) {
 beforeEach(() => {
   window.localStorage.clear();
   document.documentElement.dataset.theme = 'light';
+  // The Modeler route now mounts React Flow directly (no template picker), which needs a
+  // ResizeObserver; jsdom has none, so stub it or the canvas throws and the page unmounts.
+  installResizeObserverStub();
 });
 
 describe('navigation', () => {

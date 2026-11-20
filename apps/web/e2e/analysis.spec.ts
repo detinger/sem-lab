@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
-import { OUT, expandLayout, setup, watch } from './helpers';
+import { OUT, expandLayout, seedModel, setup, watch } from './helpers';
+import { TWO_CONSTRUCT_MODEL } from './fixtures/models';
 
 /**
  * Phase 4 vertical slice, entirely in the browser (no API server): sample data → "Two constructs"
@@ -19,11 +20,7 @@ for (const theme of ['light', 'dark'] as const) {
     await setup(page, theme);
 
     // --- model + data
-    await page.goto('/modeler');
-    await page
-      .locator('.modeler-start-card', { hasText: 'Two constructs' })
-      .getByRole('button', { name: 'Use template' })
-      .click();
+    await seedModel(page, TWO_CONSTRUCT_MODEL, 'Two constructs');
     await expect(page.locator('.react-flow__node-construct')).toHaveCount(2);
     await page
       .getByRole('group', { name: 'Workspace' })

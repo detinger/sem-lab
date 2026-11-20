@@ -1,7 +1,6 @@
-import { ReactFlowProvider, useReactFlow } from '@xyflow/react';
-import { CircleDot, FolderOpen } from 'lucide-react';
+import { ReactFlowProvider } from '@xyflow/react';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Button, Card, Dialog, Kbd, SegmentedControl, useToast } from '@/components/ui';
+import { Button, Dialog, Kbd, SegmentedControl, useToast } from '@/components/ui';
 import { useProjectRuns } from '@/features/analysis/runs';
 import { useReadiness } from '@/features/data-lab/readiness';
 import {
@@ -16,13 +15,11 @@ import { sceneToSvg, svgToPng } from './export/svg-export';
 import { useFocusRequest } from './focus';
 import { IndicatorPalette } from './IndicatorPalette';
 import { Inspector } from './Inspector';
-import { computeAutoLayout } from './layout/auto-layout';
 import { ModelerToolbar } from './ModelerToolbar';
 import { useResultStyle } from '@/features/results/store';
 import { type OverlayInput, type OverlayMode, hasBothScales, overlayLegend } from './overlay';
 import { buildScene } from './scene';
-import { emptyLayout, useModeler } from './store';
-import { TEMPLATES } from './templates';
+import { useModeler } from './store';
 import { readLastProjectId, useAutosave } from './useAutosave';
 import { usePanelState } from './usePanelState';
 import './modeler-page.css';
@@ -57,72 +54,6 @@ const safeFileName = (name: string): string =>
     .trim()
     .replace(/\s+/g, '-') || 'sem-model';
 
-/**
- * The project the user chose to start blank (Blank canvas or New model). Kept outside the
- * component so an empty blank project stays a canvas after leaving the Modeler and coming back,
- * instead of falling back to the template picker.
- */
-let blankProjectId: string | null = null;
-
-function StartScreen({ onOpenFile, onBlank }: { onOpenFile: () => void; onBlank: () => void }) {
-  const rf = useReactFlow();
-  const start = async (
-    build: () => ReturnType<(typeof TEMPLATES)[number]['build']>,
-    name: string,
-  ): Promise<void> => {
-    const model = build();
-    const layout = emptyLayout();
-    const { positions } = await computeAutoLayout(model, layout.settings);
-    const st = useModeler.getState();
-    st.newProject(name);
-    st.edit(
-      () => model,
-      () => ({ ...layout, nodes: positions }),
-    );
-    // a fresh project starts with an empty history: the template is the starting point, not an edit
-    useModeler.setState({ past: [], future: [] });
-    window.setTimeout(() => void rf.fitView({ padding: 0.15 }), 50);
-  };
-  return (
-    <div className="modeler-start">
-      <h2>Start a model</h2>
-      <p className="modeler-start-lead">
-        Begin from a published theory, add constructs one by one, or open a saved project file.
-      </p>
-      <div className="modeler-start-grid">
-        {TEMPLATES.map((t) => (
-          <Card key={t.id} className="modeler-start-card">
-            <h3>{t.title}</h3>
-            <p>{t.description}</p>
-            <p className="modeler-start-citation">{t.citation}</p>
-            <Button
-              variant="primary"
-              size="small"
-              onClick={() => void start(() => t.build(), t.title)}
-            >
-              Use template
-            </Button>
-          </Card>
-        ))}
-      </div>
-      <div className="modeler-start-actions">
-        <Button
-          icon={<CircleDot size={16} />}
-          onClick={() => {
-            useModeler.getState().newProject('Untitled model');
-            onBlank();
-          }}
-        >
-          Blank canvas
-        </Button>
-        <Button icon={<FolderOpen size={16} />} onClick={onOpenFile}>
-          Open project file…
-        </Button>
-      </div>
-    </div>
-  );
-}
-
 function ModelerWorkspace() {
   const [connectKind, setConnectKind] = useState<'path' | 'covariance'>('path');
   const [{ paletteOpen, paletteWidth, inspectorOpen, inspectorWidth }, setPanels] = usePanelState();
@@ -138,18 +69,8 @@ function ModelerWorkspace() {
     currentResult && overlayMode !== 'none'
       ? { mode: overlayMode, result: currentResult, scale }
       : null;
-  const projectId = useModeler((s) => s.projectId);
-  const [blankId, setBlankId] = useState(blankProjectId);
-  const startBlank = (): void => {
-    const id = useModeler.getState().projectId;
-    blankProjectId = id;
-    setBlankId(id);
-  };
   const fileInput = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
-  const isEmpty = useModeler(
-    (s) => s.model.constructs.length === 0 && s.model.indicators.length === 0,
-  );
   const save = useAutosave();
   const focusRequest = useFocusRequest((s) => s.request);
   const focusedIds = useMemo(
@@ -169,9 +90,6 @@ function ModelerWorkspace() {
       .then((p) => p && useModeler.getState().load(p))
       .catch(() => toast({ title: 'The last project could not be opened', variant: 'warning' }));
   }, [toast]);
-
-  // The template picker is for a first visit; a project started blank stays a canvas.
-  const showStart = isEmpty && blankId !== projectId;
 
   const openFile = (): void => fileInput.current?.click();
   const onFile = async (file: File | undefined): Promise<void> => {
@@ -231,17 +149,15 @@ function ModelerWorkspace() {
 
   const RAIL = '44px';
   const bodyColumns = [
-    showStart ? null : paletteOpen ? `${paletteWidth}px` : RAIL,
+    paletteOpen ? `${paletteWidth}px` : RAIL,
     'minmax(0, 1fr)',
     inspectorOpen ? `${inspectorWidth}px` : RAIL,
-  ]
-    .filter(Boolean)
-    .join(' ');
+  ].join(' ');
 
   return (
     <div
       className="modeler"
-      data-palette={paletteOpen && !showStart ? 'open' : 'closed'}
+      data-palette={paletteOpen ? 'open' : 'closed'}
       data-inspector={inspectorOpen ? 'open' : 'closed'}
       data-check={checkOpen ? 'open' : 'closed'}
     >
@@ -297,26 +213,20 @@ function ModelerWorkspace() {
       ) : null}
       {checkOpen && <CheckPanel readiness={readiness} onClose={() => setCheckOpen(false)} />}
       <div className="modeler-body" style={{ gridTemplateColumns: bodyColumns }}>
-        {!showStart && (
-          <IndicatorPalette
-            collapsed={!paletteOpen}
-            onToggle={() => setPanels((p) => ({ paletteOpen: !p.paletteOpen }))}
-            onResize={resizePalette}
-          />
-        )}
+        <IndicatorPalette
+          collapsed={!paletteOpen}
+          onToggle={() => setPanels((p) => ({ paletteOpen: !p.paletteOpen }))}
+          onResize={resizePalette}
+        />
         <div className="modeler-canvas-wrap">
-          {showStart ? (
-            <StartScreen onOpenFile={openFile} onBlank={startBlank} />
-          ) : (
-            <SemCanvas
-              connectKind={connectKind}
-              showHypotheses={overlay === null}
-              overlay={overlay}
-              showMiniMap={false}
-              {...(focusedIds ? { focusedIds } : {})}
-              onRequestShortcuts={() => setShortcutsOpen(true)}
-            />
-          )}
+          <SemCanvas
+            connectKind={connectKind}
+            showHypotheses={overlay === null}
+            overlay={overlay}
+            showMiniMap={false}
+            {...(focusedIds ? { focusedIds } : {})}
+            onRequestShortcuts={() => setShortcutsOpen(true)}
+          />
         </div>
         <Inspector
           collapsed={!inspectorOpen}
@@ -367,7 +277,6 @@ function ModelerWorkspace() {
               variant="primary"
               onClick={() => {
                 useModeler.getState().newProject('Untitled model');
-                startBlank();
                 setNewOpen(false);
               }}
             >

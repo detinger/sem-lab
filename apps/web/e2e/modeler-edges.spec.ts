@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
-import { setup } from './helpers';
+import { seedModel, setup } from './helpers';
+import { TWO_CONSTRUCT_MODEL } from './fixtures/models';
 
 /**
  * Regression: with a results overlay on, selecting a node made every edge vanish until reload.
@@ -9,11 +10,7 @@ import { setup } from './helpers';
 test('edges survive selection and overlay changes after a run', async ({ page }) => {
   test.setTimeout(180_000);
   await setup(page, 'light');
-  await page.goto('/modeler');
-  await page
-    .locator('.modeler-start-card', { hasText: 'Two constructs' })
-    .getByRole('button', { name: 'Use template' })
-    .click();
+  await seedModel(page, TWO_CONSTRUCT_MODEL, 'Two constructs');
   const edges = page.locator('.react-flow__edge path.sem-edge');
   await expect(edges).not.toHaveCount(0);
   const n = await edges.count();

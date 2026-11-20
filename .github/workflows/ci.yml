@@ -99,6 +99,8 @@ jobs:
         with:
           r-version: '4.6.2'
           use-public-rspm: true
+      - name: System libraries for igraph (GLPK provides libglpk.so.40)
+        run: sudo apt-get update && sudo apt-get install -y libglpk40 libglpk-dev libxml2-dev
       - name: Cache the project R library
         uses: actions/cache@v4
         with:

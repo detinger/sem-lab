@@ -1,4 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
+import { seedModel } from './helpers';
+import { TWO_CONSTRUCT_MODEL } from './fixtures/models';
 
 /**
  * Phase 2 exit criterion (PLAN §5): map a (synthetic) CSV to a model, see broken specifications
@@ -19,13 +21,8 @@ async function prepare(page: Page, theme: 'light' | 'dark', size: keyof typeof S
     window.localStorage.setItem('sem-lab:theme', value);
   }, theme);
 
-  // Build the model: the "two constructs" template matches the bundled pls-two-construct data.
-  await page.goto('/modeler');
-  await page.getByRole('heading', { name: 'Two constructs' }).waitFor();
-  await page
-    .locator('.modeler-start-card', { hasText: 'Two constructs' })
-    .getByRole('button', { name: 'Use template' })
-    .click();
+  // Build the model: the two-construct model matches the bundled pls-two-construct data.
+  await seedModel(page, TWO_CONSTRUCT_MODEL, 'Two constructs');
   await expect(page.locator('.react-flow__node-construct')).toHaveCount(2);
 
   // Navigate inside the app so the open project is kept in memory.

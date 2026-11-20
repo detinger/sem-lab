@@ -1,4 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
+import { seedModel } from './helpers';
+import { TAM_MODEL, TWO_CONSTRUCT_MODEL } from './fixtures/models';
 
 /**
  * Phase 1 exit criterion (PLAN §5): build a readable TAM diagram, auto arrange it, save/reopen
@@ -12,8 +14,7 @@ async function openWithTam(page: Page, theme: 'light' | 'dark'): Promise<string[
   await page.addInitScript((value) => {
     window.localStorage.setItem('sem-lab:theme', value);
   }, theme);
-  await page.goto('/modeler');
-  await page.getByRole('button', { name: 'Use template' }).first().click();
+  await seedModel(page, TAM_MODEL, 'TAM');
   await expect(page.locator('.react-flow__node-construct')).toHaveCount(5);
   await expect(page.locator('.react-flow__node-indicator')).toHaveCount(22);
   await page.evaluate(() => document.fonts.ready);
@@ -101,8 +102,7 @@ test('a structural path can be drawn with the mouse and an invalid one is refuse
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto('/modeler');
-  await page.getByRole('button', { name: 'Use template' }).nth(1).click(); // Two constructs
+  await seedModel(page, TWO_CONSTRUCT_MODEL, 'Two constructs');
   await expect(page.locator('.react-flow__node-construct')).toHaveCount(2);
   await expect(page.locator('.react-flow__edge-sem')).toHaveCount(7); // 6 measurement + 1 path
 
@@ -144,32 +144,33 @@ test('New model opens a blank canvas that stays blank after leaving the Modeler'
   page,
 }) => {
   await page.goto('/modeler');
-  await page
-    .locator('.modeler-start-card', { hasText: 'Two constructs' })
-    .getByRole('button', { name: 'Use template' })
-    .click();
+  // The Modeler opens straight to a blank canvas — there is no template picker.
+  await expect(page.locator('.react-flow')).toBeVisible();
+  await expect(page.locator('.react-flow__node')).toHaveCount(0);
+
+  await seedModel(page, TWO_CONSTRUCT_MODEL, 'Two constructs');
   await expect(page.locator('.react-flow__node-construct')).toHaveCount(2);
+
   await page.getByRole('button', { name: 'File' }).click();
   await page.getByRole('menuitem', { name: 'New model…' }).click();
   await page.getByRole('dialog').getByRole('button', { name: 'New model' }).click();
   await expect(page.locator('.react-flow')).toBeVisible();
-  await expect(page.locator('.modeler-start')).toHaveCount(0);
   await expect(page.locator('.react-flow__node')).toHaveCount(0);
+
   await page
     .getByRole('group', { name: 'Workspace' })
     .getByRole('link', { name: 'Data', exact: true })
     .click();
   await page.getByRole('link', { name: 'Modeler', exact: true }).click();
   await expect(page.locator('.react-flow')).toBeVisible();
-  await expect(page.locator('.modeler-start')).toHaveCount(0);
+  await expect(page.locator('.react-flow__node')).toHaveCount(0);
 });
 
 test('side panels start closed and remember being opened across pages and reloads', async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto('/modeler');
-  await page.getByRole('button', { name: 'Use template' }).nth(1).click();
+  await seedModel(page, TWO_CONSTRUCT_MODEL, 'Two constructs');
   const palette = page.getByRole('complementary', { name: 'Data indicators', exact: true });
   const inspector = page.getByRole('complementary', { name: 'Inspector', exact: true });
   await expect(palette).toHaveCount(0);

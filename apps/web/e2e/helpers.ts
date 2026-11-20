@@ -49,6 +49,18 @@ type Hook = {
   setWorkers: (n: number | null) => void;
 };
 
+/** Open the Modeler and load a model through the dev hook (replaces the former template picker). */
+export async function seedModel(page: Page, model: unknown, name = 'Test model') {
+  await page.goto('/modeler');
+  await page.waitForFunction(() =>
+    Boolean((window as unknown as Record<string, unknown>).__semLabTest),
+  );
+  await page.evaluate(
+    ([m, n]) => (window as unknown as { __semLabTest: Hook }).__semLabTest.loadModel(m, n),
+    [model, name] as const,
+  );
+}
+
 /** Open a model through the dev hook, then load a bundled sample from the Data page (in-app navigation). */
 export async function openModelAndSample(page: Page, model: unknown, sample: RegExp) {
   await page.goto('/modeler');
